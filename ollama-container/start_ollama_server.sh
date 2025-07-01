@@ -4,7 +4,7 @@
 CONTAINER_IMAGE="/global/home/users/laurenmalek/bio_llm/ollama-container/ollama.sif"
 INSTANCE_NAME="ollama-gpu-$USER"
 MODEL_PATH="/global/home/users/laurenmalek/bio_llm/ollama-container/models"
-PORT=8000 # 11434
+PORT=11434
 
 # Start Apptainer instance without GPU and writable tempfs
 apptainer instance start \
