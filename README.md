@@ -1,4 +1,4 @@
-Models should be placed in ``~/ollama-container/models`` and downloaded from [ollama.com/library]. 
+Models should be placed in ``~/ollama-container/models`` and downloaded from [ollama.com/library](ollama.com/library). 
 
 When running Ollama models on Savio, first activate Ollama within an Apptainer using:
 ``
