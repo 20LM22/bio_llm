@@ -1,0 +1,5 @@
+# Do not add models
+ollama-container/models/*
+
+# Do not add the sif file
+ollama-container/ollama.sif
