@@ -1,13 +1,14 @@
 #!/bin/bash
 
 # Configuration
-CONTAINER_IMAGE="/global/home/users/laurenmalek/ollama-container/ollama.sif"
-INSTANCE_NAME="ollama-$USER"
-MODEL_PATH="/global/home/users/laurenmalek/ollama-container/models"
-PORT=11434
+CONTAINER_IMAGE="/global/home/users/laurenmalek/bio_llm/ollama-container/ollama.sif"
+INSTANCE_NAME="ollama-gpu-$USER"
+MODEL_PATH="/global/home/users/laurenmalek/bio_llm/ollama-container/models"
+PORT=8000 # 11434
 
 # Start Apptainer instance without GPU and writable tempfs
 apptainer instance start \
+  --nv \
   --writable-tmpfs \
   --bind "$MODEL_PATH" \
   "$CONTAINER_IMAGE" "$INSTANCE_NAME"

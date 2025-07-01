@@ -1,6 +1,6 @@
 import ollama
 
-ollama.base_url = "http://localhost:11434"
+ollama.base_url = "http://localhost:8000"
 model_name = "deepseek-r1:1.5b"
 prompt = """... Translate the following natural language statement into a signal temporal logic (STL) statement:
             ... In the mild and moderate groups, IL-6 concentrations were at their highest level in the first week after the symptom onset and then exhibited a decreasing trend.
@@ -45,6 +45,8 @@ if model_name not in model_names:
         ollama.pull(model=model_name)
     except Exception as e:
         print(f"Could not pull model: {e}")
+
+print("model ready")
 
 response = ollama.chat(model=model_name, messages=[{"role": "user", "content": prompt}], stream=False)
 
