@@ -93,3 +93,7 @@ print(response["message"]["content"])
 # result = json_parser.parse(text)
 # print(result.pretty())
 # # print( _.pretty() )
+
+embedding_original = ollama.embeddings(model='nomic-embed-text:latest', prompt=original_nl)
+embedding_translation = ollama.embeddings(model='nomic-embed-text:latest', prompt=translated_stl)
+sim = (embedding_original @ embedding_translation) / (numpy.linalg.norm(embedding_original) * numpy.linalg.norm(embedding_translation))
