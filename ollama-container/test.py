@@ -1,11 +1,12 @@
 import ollama, time
 from ollama import ChatResponse
 from ollama import chat
+import numpy
 
 ollama.base_url = "http://localhost:11434"
 model_name = "deepseek-r1:1.5b"
-prompt = """...Translate the following natural language statement into a signal temporal logic (STL) statement:
-            ... In the mild and moderate groups, IL-6 concentrations were at their highest level in the first week after the symptom onset and then exhibited a decreasing trend.
+prompt = """... Translate the following natural language statement into a signal temporal logic (STL) statement:
+            ... IL-12 reached its maximum level at the day>14 in mild patients. 
             ...
             ... It is extremely important to follow these rules:
             ... Rule: The time unit is days.
@@ -52,13 +53,25 @@ print("Prompting Ollama...")
 start = time.time()
 
 # response = ollama.chat(model=model_name, messages=[{"role": "user", "content": prompt}], stream=False)
-response: ChatResponse = chat(model=model_name, messages=[{"role": "user", "content": prompt}])
+"""
+response: ChatResponse = chat(
+        model=model_name,
+        messages=[{
+            "role": "user",
+            "content": prompt
+        }],
+        options={
+            "temperature": 0.5,
+          #  "num_predict": 100
+        }
+    )
 
 print(response.message.content)
 
 print("*************************************************")
 print(f'Ollama responds in {time.time()-start} seconds')
 print("*************************************************")
+"""
 
 # from lark import Lark
 # json_parser = Lark(r"""
@@ -102,6 +115,23 @@ print("*************************************************")
 # print(result.pretty())
 # # print( _.pretty() )
 
-# embedding_original = ollama.embeddings(model='nomic-embed-text:latest', prompt=original_nl)
-# embedding_translation = ollama.embeddings(model='nomic-embed-text:latest', prompt=translated_stl)
-# sim = (embedding_original @ embedding_translation) / (numpy.linalg.norm(embedding_original) * numpy.linalg.norm(embedding_translation))
+original_nl = "In the mild and moderate groups, IL-6 concentrations were at their highest level in the first week after the symptom onset and then exhibited a decreasing trend."
+
+stl = "G[1,7] (il6(t) > c(high)) ^ F[7,T] (d_il6(t) < 0)"
+
+translated_stl = "From days 1 to 7, the concentration of IL-6 was high and at some point from day 7 onwards, the concentration of IL-6 was decreasing."
+
+embedding_original = numpy.array(ollama.embeddings(model='nomic-embed-text:latest', prompt=original_nl).embedding)
+embedding_translation = numpy.array(ollama.embeddings(model='nomic-embed-text:latest', prompt=translated_stl).embedding)
+embedding_stl = numpy.array(ollama.embeddings(model='nomic-embed-text:latest', prompt=stl).embedding)
+
+print("********************************************")
+print(f"embedding_origin")
+print("*******************************************")
+
+sim_original_translated = (embedding_original @ embedding_translation) / (numpy.linalg.norm(embedding_original) * numpy.linalg.norm(embedding_translation))
+sim_original_stl = (embedding_original @ embedding_stl) / (numpy.linalg.norm(embedding_original) * numpy.linalg.norm(embedding_stl))
+print(f"Original-translated similarity: {sim_original_translated}")
+print(f"Original-STL similarity: {sim_original_stl}")
+
+
