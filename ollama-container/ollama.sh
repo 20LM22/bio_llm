@@ -39,7 +39,8 @@ ollama() {
 
     # bind on all interfaces
     BIND="0.0.0.0:${PORT}"
-    ENV_HOST="http://$(<"$HOST_FILE"):${PORT}"
+    # ENV_HOST="http://$(<"$HOST_FILE"):${PORT}"
+    ENV_HOST="http://$(<"$HOST_FILE")"
 
     echo "Starting Ollama server binding to ${BIND}"
     echo "Advertising server to clients at ${ENV_HOST}"
@@ -71,7 +72,7 @@ ollama() {
     --env OLLAMA_MODELS="/root/models" \
     --env OLLAMA_HOST="${ENV_HOST}" \
     --env OLLAMA_PORT="${PORT}" \
-    ollama.sif "$@"
+    /global/home/users/laurenmalek/bio_llm/ollama-container/ollama.sif "$@"
 }
 
 # Export so that subshells (e.g. slurm scripts) will inherit it

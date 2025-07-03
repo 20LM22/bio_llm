@@ -1,11 +1,34 @@
-import requests
+import requests, json
+import os
+
+print(os.environ['CUDA_VISIBLE_DEVICES'])
+# print(os.environ['NVIDIA_VISIBLE_DEVICES'])
+# print(os.environ['NVIDIA_REQUIRE_CUDA'])
+
+ollama_url = "http://127.0.0.1:39404"
 
 try:
-    r = requests.get("http://n0229.savio2:49376")
+    r = requests.get(ollama_url)
     r.raise_for_status()
     print("✅ Success:", r.text)
 except requests.exceptions.RequestException as e:
     print("❌ Failed to connect:", e)
+
+LLM_API_URL = f"{ollama_url}/api/chat"  # Could also be /api/generate
+payload = {
+    "model": "deepseek-r1:1.5b",
+    "prompt": (
+        "What color is the sky?"
+    ),
+    "keep_alive": -1  # Keeps model loaded after request
+}
+headers = {"Content-Type": "application/json"}
+
+# Send POST request
+response = requests.post(LLM_API_URL, headers=headers, data=json.dumps(payload))
+# Assuming the API returns a JSON response, print the result.
+data = response.json()
+print(data['message']['content'])
 
 # Ollama is running successfully
 

@@ -2,7 +2,7 @@
 
 # Configuration
 CONTAINER_IMAGE="/global/home/users/laurenmalek/bio_llm/ollama-container/ollama.sif"
-INSTANCE_NAME="ollama-gpu-$USER"
+INSTANCE_NAME="ollama-apptainer"
 MODEL_PATH="/global/home/users/laurenmalek/bio_llm/ollama-container/models"
 PORT=11434
 
