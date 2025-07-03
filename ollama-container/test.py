@@ -1,4 +1,6 @@
 import ollama, time
+from ollama import ChatResponse
+from ollama import chat
 
 ollama.base_url = "http://localhost:11434"
 model_name = "deepseek-r1:1.5b"
@@ -49,9 +51,14 @@ prompt = """...Translate the following natural language statement into a signal 
 print("Prompting Ollama...")
 start = time.time()
 
-response = ollama.chat(model=model_name, messages=[{"role": "user", "content": prompt}], stream=False)
+# response = ollama.chat(model=model_name, messages=[{"role": "user", "content": prompt}], stream=False)
+response: ChatResponse = chat(model=model_name, messages=[{"role": "user", "content": prompt}])
+
+print(response.message.content)
+
+print("*************************************************")
 print(f'Ollama responds in {time.time()-start} seconds')
-print(response["message"]["content"])
+print("*************************************************")
 
 # from lark import Lark
 # json_parser = Lark(r"""
@@ -95,6 +102,6 @@ print(response["message"]["content"])
 # print(result.pretty())
 # # print( _.pretty() )
 
-embedding_original = ollama.embeddings(model='nomic-embed-text:latest', prompt=original_nl)
-embedding_translation = ollama.embeddings(model='nomic-embed-text:latest', prompt=translated_stl)
-sim = (embedding_original @ embedding_translation) / (numpy.linalg.norm(embedding_original) * numpy.linalg.norm(embedding_translation))
+# embedding_original = ollama.embeddings(model='nomic-embed-text:latest', prompt=original_nl)
+# embedding_translation = ollama.embeddings(model='nomic-embed-text:latest', prompt=translated_stl)
+# sim = (embedding_original @ embedding_translation) / (numpy.linalg.norm(embedding_original) * numpy.linalg.norm(embedding_translation))
