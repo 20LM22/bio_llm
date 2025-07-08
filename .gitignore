@@ -3,3 +3,7 @@ ollama-container/models/*
 
 # Do not add the sif file
 ollama-container/ollama.sif
+
+# Do not add any .tmp files from vim
+*.swp
+

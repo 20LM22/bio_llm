@@ -8,7 +8,8 @@ import os
 import pandas
 from collections import defaultdict
 import pickle
-from sentence_transformers import SentenceTransformer
+import tensorflow_hub as hub
+import tensorflow as tf
 
 # ollama.base_url = "http://localhost:11434"
 # model_name = "deepseek-r1:1.5b"
@@ -92,6 +93,7 @@ json_parser = Lark(r
 
     , start='omega')
 """
+embed = hub.load("https://tfhub.dev/google/universal-sentence-encoder/4")
 
 csvFile = pandas.read_csv('text_input.csv', header=None)
 embedding_dict = defaultdict(dict)
@@ -100,21 +102,19 @@ embedding_dict = defaultdict(dict)
 # for unique NL statements: first get their embedding, then get embedding of stl and literal, package into dict
 # for already-seen NL statements: get embedding of stl and literal, package into dict
 
-model = SentenceTransformer('all-MiniLM-L6-v2') # other options: Qwen/Qwen3-Embedding-4B, Qwen/Qwen3-Embedding-0.6B <-- start with 0.6B
-
 # uncomment this to generate
-"""
+'''
 for _id, row in csvFile.iterrows():
     # obtain the nl statement
     if _id==1:
         nl = row[1]
-
-        embedding_nl = np.array(model.encode(nl), normalize_embeddings=true) if nl not in embedding_dict else embedding_dict[nl]['embedding']
-        print(type(model.encode(nl)))
+    
+        embedding_nl = np.array(tf.nn.l2_normalize(embed([nl]))) if nl not in embedding_dict else embedding_dict[nl]['embedding']
+        print(type(embed([nl])))
 
         # attach embedding of stl and literal stl
-        embedding_stl = np.array(model.encode(row[2]), normalize_embeddings=true)
-        embedding_literal = np.array(model.encode(row[3]), normalize_embeddings=true)
+        embedding_stl = np.array(tf.nn.l2_normalize(embed([row[2]])))
+        embedding_literal = np.array(tf.nn.l2_normalize(embed([row[3]])))
 
         embedding_dict[nl]['embedding'] = embedding_nl
         if 'stl' in embedding_dict[nl]:
@@ -127,8 +127,9 @@ for _id, row in csvFile.iterrows():
 print("*************************************************")
 print(f'Ollama responds in {time.time()-start} seconds')
 print("*************************************************")
-"""
 
+print(embedding_dict)
+'''
 # this is always commented out
 """
     embedding_dict = {
@@ -140,21 +141,21 @@ print("*************************************************")
     }     
 """
 
+
 # this is for opening file and printing contents
-'''
 nd = {}
 try:
-    with open('sbert_mini_lm.pkl', 'rb') as file:
+    with open('use_normalized.pkl', 'rb') as file:
        nd = pickle.load(file)
 except Exception as e:
     print(e)
 
 print(nd)
-'''
+
 '''
 # this is for writing to file
 try:
-    with open('sbert_mini_lm.pkl', 'wb') as results:
+    with open('use_normalized.pkl', 'wb') as results:
         pickle.dump(embedding_dict, results)
 except Exception as e:
     print(e)
