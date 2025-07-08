@@ -39,4 +39,3 @@ q to exit
 
 ### Note: also need to figure out where the models are being saved --> I think it's in ``<user_name>/.ollama/models``. If the models are too large for the 30GB of Savio space, we can also explore putting them in the scratch space.
 
-
