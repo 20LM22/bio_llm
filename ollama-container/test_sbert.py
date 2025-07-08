@@ -44,7 +44,7 @@ from sentence_transformers import SentenceTransformer
 #             ..."""
 
 # print("Prompting Ollama...")
-start = time.time()
+# start = time.time()
 
 # response = ollama.chat(model=model_name, messages=[{"role": "user", "content": prompt}], stream=False)
 
@@ -102,27 +102,28 @@ embedding_dict = defaultdict(dict)
 
 model = SentenceTransformer('all-MiniLM-L6-v2') # other options: Qwen/Qwen3-Embedding-4B, Qwen/Qwen3-Embedding-0.6B <-- start with 0.6B
 
+start = time.time()
+
 # uncomment this to generate
-"""
+
 for _id, row in csvFile.iterrows():
     # obtain the nl statement
-    if _id==1:
-        nl = row[1]
+    nl = row[1]
 
-        embedding_nl = np.array(model.encode(nl), normalize_embeddings=true) if nl not in embedding_dict else embedding_dict[nl]['embedding']
-        print(type(model.encode(nl)))
+    embedding_nl = np.array(model.encode(nl), normalize_embeddings=true) if nl not in embedding_dict else embedding_dict[nl]['embedding']
+    # print(type(model.encode(nl)))
 
-        # attach embedding of stl and literal stl
-        embedding_stl = np.array(model.encode(row[2]), normalize_embeddings=true)
-        embedding_literal = np.array(model.encode(row[3]), normalize_embeddings=true)
+    # attach embedding of stl and literal stl
+    embedding_stl = np.array(model.encode(row[2]), normalize_embeddings=true)
+    embedding_literal = np.array(model.encode(row[3]), normalize_embeddings=true)
 
-        embedding_dict[nl]['embedding'] = embedding_nl
-        if 'stl' in embedding_dict[nl]:
-            embedding_dict[nl]['stl'].append((row[2], embedding_stl))
-            embedding_dict[nl]['literal'].append((row[3], embedding_literal))
-        else:
-            embedding_dict[nl]['stl'] = [(row[2], embedding_stl)]
-            embedding_dict[nl]['literal'] = [(row[3], embedding_literal)]
+    embedding_dict[nl]['embedding'] = embedding_nl
+    if 'stl' in embedding_dict[nl]:
+        embedding_dict[nl]['stl'].append((row[2], embedding_stl))
+        embedding_dict[nl]['literal'].append((row[3], embedding_literal))
+    else:
+        embedding_dict[nl]['stl'] = [(row[2], embedding_stl)]
+        embedding_dict[nl]['literal'] = [(row[3], embedding_literal)]
 
 print("*************************************************")
 print(f'Ollama responds in {time.time()-start} seconds')
@@ -138,7 +139,7 @@ print("*************************************************")
             "literal": [ (row[0], embedding[row[0]]) ]
         }
     }     
-"""
+
 
 # this is for opening file and printing contents
 '''
@@ -151,14 +152,13 @@ except Exception as e:
 
 print(nd)
 '''
-'''
 # this is for writing to file
 try:
-    with open('sbert_mini_lm.pkl', 'wb') as results:
+    with open('st_mini_lm_v2.pkl', 'wb') as results: # change to st_qwen_v2.pkl
         pickle.dump(embedding_dict, results)
 except Exception as e:
     print(e)
-'''
+
 
 
 # print(arr_text_input)

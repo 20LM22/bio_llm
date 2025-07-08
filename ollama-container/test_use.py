@@ -45,7 +45,7 @@ import tensorflow as tf
 #             ..."""
 
 # print("Prompting Ollama...")
-start = time.time()
+# start = time.time()
 
 # response = ollama.chat(model=model_name, messages=[{"role": "user", "content": prompt}], stream=False)
 
@@ -103,35 +103,34 @@ embedding_dict = defaultdict(dict)
 # for already-seen NL statements: get embedding of stl and literal, package into dict
 
 # uncomment this to generate
-'''
+start = time.time()
 for _id, row in csvFile.iterrows():
     # obtain the nl statement
-    if _id==1:
-        nl = row[1]
+    nl = row[1]
     
-        embedding_nl = np.array(tf.nn.l2_normalize(embed([nl]))) if nl not in embedding_dict else embedding_dict[nl]['embedding']
-        print(type(embed([nl])))
+    embedding_nl = np.array(tf.nn.l2_normalize(embed([nl]))) if nl not in embedding_dict else embedding_dict[nl]['embedding']
+    # print(type(embed([nl])))
 
-        # attach embedding of stl and literal stl
-        embedding_stl = np.array(tf.nn.l2_normalize(embed([row[2]])))
-        embedding_literal = np.array(tf.nn.l2_normalize(embed([row[3]])))
+    # attach embedding of stl and literal stl
+    embedding_stl = np.array(tf.nn.l2_normalize(embed([row[2]])))
+    embedding_literal = np.array(tf.nn.l2_normalize(embed([row[3]])))
 
-        embedding_dict[nl]['embedding'] = embedding_nl
-        if 'stl' in embedding_dict[nl]:
-            embedding_dict[nl]['stl'].append((row[2], embedding_stl))
-            embedding_dict[nl]['literal'].append((row[3], embedding_literal))
-        else:
-            embedding_dict[nl]['stl'] = [(row[2], embedding_stl)]
-            embedding_dict[nl]['literal'] = [(row[3], embedding_literal)]
+    embedding_dict[nl]['embedding'] = embedding_nl
+    if 'stl' in embedding_dict[nl]:
+        embedding_dict[nl]['stl'].append((row[2], embedding_stl))
+        embedding_dict[nl]['literal'].append((row[3], embedding_literal))
+    else:
+        embedding_dict[nl]['stl'] = [(row[2], embedding_stl)]
+        embedding_dict[nl]['literal'] = [(row[3], embedding_literal)]
 
 print("*************************************************")
 print(f'Ollama responds in {time.time()-start} seconds')
 print("*************************************************")
 
-print(embedding_dict)
-'''
+# print(embedding_dict)
+
 # this is always commented out
-"""
+'''
     embedding_dict = {
         nl: {
             "embedding": embedding[row[0]]
@@ -139,9 +138,9 @@ print(embedding_dict)
             "literal": [ (row[0], embedding[row[0]]) ]
         }
     }     
-"""
 
-
+'''
+'''
 # this is for opening file and printing contents
 nd = {}
 try:
@@ -151,15 +150,14 @@ except Exception as e:
     print(e)
 
 print(nd)
-
 '''
+
 # this is for writing to file
 try:
-    with open('use_normalized.pkl', 'wb') as results:
+    with open('use_v2.pkl', 'wb') as results:
         pickle.dump(embedding_dict, results)
 except Exception as e:
     print(e)
-'''
 
 
 # print(arr_text_input)

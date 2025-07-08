@@ -42,7 +42,7 @@ model_name = "deepseek-r1:1.5b"
 #             ..."""
 
 # print("Prompting Ollama...")
-start = time.time()
+# start = time.time()
 
 # response = ollama.chat(model=model_name, messages=[{"role": "user", "content": prompt}], stream=False)
 
@@ -53,7 +53,8 @@ start = time.time()
 # print("*************************************************")
 
 # Parse the 
-json_parser = Lark(r"""
+'''
+json_parser = Lark(r
     u : s"("t_a") < "c
         | s"("t_a") > "c 
         | "abs("s"("t_a") - "c") < "e
@@ -87,7 +88,8 @@ json_parser = Lark(r"""
     s : /[a-zA-z0-9]+/
     d_s : "d_"/[a-zA-z0-9]+/
 
-    """, start='omega')
+    , start='omega')
+'''
 
 csvFile = pandas.read_csv('text_input.csv', header=None)
 embedding_dict = defaultdict(dict)
@@ -97,6 +99,8 @@ embedding_dict = defaultdict(dict)
 # for already-seen NL statements: get embedding of stl and literal, package into dict
 
 # uncomment this to generate
+
+start = time.time()
 
 for _id, row in csvFile.iterrows():
     # obtain the nl statement
@@ -144,7 +148,7 @@ print(nd)
 
 # this is for writing to file
 try:
-    with open('ollama_nomic.pkl', 'wb') as results:
+    with open('ollama_nomic_v2.pkl', 'wb') as results:
         pickle.dump(embedding_dict, results)
 except Exception as e:
     print(e)
