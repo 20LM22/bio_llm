@@ -154,7 +154,7 @@ print(nd)
 
 # this is for writing to file
 try:
-    with open('use_v2.pkl', 'wb') as results:
+    with open('use_v3.pkl', 'wb') as results:
         pickle.dump(embedding_dict, results)
 except Exception as e:
     print(e)
