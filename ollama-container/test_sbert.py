@@ -107,15 +107,16 @@ start = time.time()
 # uncomment this to generate
 
 for _id, row in csvFile.iterrows():
+    print("another row")
     # obtain the nl statement
     nl = row[1]
 
-    embedding_nl = np.array(model.encode(nl), normalize_embeddings=true) if nl not in embedding_dict else embedding_dict[nl]['embedding']
+    embedding_nl = np.array(model.encode(nl, normalize_embeddings=True)) if nl not in embedding_dict else embedding_dict[nl]['embedding']
     # print(type(model.encode(nl)))
 
     # attach embedding of stl and literal stl
-    embedding_stl = np.array(model.encode(row[2]), normalize_embeddings=true)
-    embedding_literal = np.array(model.encode(row[3]), normalize_embeddings=true)
+    embedding_stl = np.array(model.encode(row[2], normalize_embeddings=True))
+    embedding_literal = np.array(model.encode(row[3], normalize_embeddings=True))
 
     embedding_dict[nl]['embedding'] = embedding_nl
     if 'stl' in embedding_dict[nl]:
@@ -128,7 +129,7 @@ for _id, row in csvFile.iterrows():
 print("*************************************************")
 print(f'Ollama responds in {time.time()-start} seconds')
 print("*************************************************")
-"""
+
 
 # this is always commented out
 """
@@ -139,7 +140,7 @@ print("*************************************************")
             "literal": [ (row[0], embedding[row[0]]) ]
         }
     }     
-
+"""
 
 # this is for opening file and printing contents
 '''
@@ -154,7 +155,7 @@ print(nd)
 '''
 # this is for writing to file
 try:
-    with open('st_mini_lm_v2.pkl', 'wb') as results: # change to st_qwen_v2.pkl
+    with open('st_mini_lm_v3.pkl', 'wb') as results: # change to st_qwen_v2.pkl
         pickle.dump(embedding_dict, results)
 except Exception as e:
     print(e)

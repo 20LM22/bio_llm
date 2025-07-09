@@ -1,0 +1,84 @@
+2025-07-08 21:58:53.057203: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1752037133.074541   14624 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1752037133.079862   14624 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1752037133.094149   14624 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1752037133.094173   14624 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1752037133.094176   14624 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1752037133.094178   14624 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2025-07-08 21:58:53.098073: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+I0000 00:00:1752037137.333434   14624 gpu_device.cc:2019] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 10532 MB memory:  -> device: 0, name: NVIDIA GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1
+I0000 00:00:1752037137.337367   14624 gpu_device.cc:2019] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 10532 MB memory:  -> device: 1, name: NVIDIA GeForce GTX 1080 Ti, pci bus id: 0000:03:00.0, compute capability: 6.1
+2025-07-08 21:59:02.069711: W external/local_xla/xla/service/gpu/llvm_gpu_backend/default/nvptx_libdevice_path.cc:40] Can't find libdevice directory ${CUDA_DIR}/nvvm/libdevice. This may result in compilation or runtime failures, if the program we try to run uses routines from libdevice.
+Searched for CUDA in the following directories:
+  ./cuda_sdk_lib
+  test_use.py.runfiles/cuda_nvcc
+  test_us/cuda_nvcc
+  
+  /usr/local/cuda
+  /opt/cuda
+  /global/home/users/laurenmalek/.conda/envs/ollama_venv/lib/python3.12/site-packages/tensorflow/python/platform/../../../nvidia/cuda_nvcc
+  /global/home/users/laurenmalek/.conda/envs/ollama_venv/lib/python3.12/site-packages/tensorflow/python/platform/../../../../nvidia/cuda_nvcc
+  /global/home/users/laurenmalek/.conda/envs/ollama_venv/lib/python3.12/site-packages/tensorflow/python/platform/../../cuda
+  /global/home/users/laurenmalek/.conda/envs/ollama_venv/lib/python3.12/site-packages/tensorflow/python/platform/../../../../../..
+  /global/home/users/laurenmalek/.conda/envs/ollama_venv/lib/python3.12/site-packages/tensorflow/python/platform/../../../../../../..
+  .
+You can choose the search directory by setting xla_gpu_cuda_data_dir in HloModule's DebugOptions.  For most apps, setting the environment variable XLA_FLAGS=--xla_gpu_cuda_data_dir=/path/to/cuda will work.
+2025-07-08 21:59:02.075498: W tensorflow/compiler/mlir/tools/kernel_gen/transforms/gpu_kernel_to_blob_pass.cc:187] Failed to compile generated PTX with ptxas. Falling back to compilation by driver.
+2025-07-08 21:59:02.077597: W tensorflow/compiler/mlir/tools/kernel_gen/transforms/gpu_kernel_to_blob_pass.cc:187] Failed to compile generated PTX with ptxas. Falling back to compilation by driver.
+2025-07-08 21:59:02.084945: W tensorflow/compiler/mlir/tools/kernel_gen/transforms/gpu_kernel_to_blob_pass.cc:187] Failed to compile generated PTX with ptxas. Falling back to compilation by driver.
+2025-07-08 21:59:02.087050: W tensorflow/compiler/mlir/tools/kernel_gen/transforms/gpu_kernel_to_blob_pass.cc:187] Failed to compile generated PTX with ptxas. Falling back to compilation by driver.
+2025-07-08 21:59:02.095023: W tensorflow/compiler/mlir/tools/kernel_gen/transforms/gpu_kernel_to_blob_pass.cc:187] Failed to compile generated PTX with ptxas. Falling back to compilation by driver.
+2025-07-08 21:59:02.097107: W tensorflow/compiler/mlir/tools/kernel_gen/transforms/gpu_kernel_to_blob_pass.cc:187] Failed to compile generated PTX with ptxas. Falling back to compilation by driver.
+2025-07-08 21:59:02.105952: W tensorflow/compiler/mlir/tools/kernel_gen/transforms/gpu_kernel_to_blob_pass.cc:187] Failed to compile generated PTX with ptxas. Falling back to compilation by driver.
+2025-07-08 21:59:02.108029: W tensorflow/compiler/mlir/tools/kernel_gen/transforms/gpu_kernel_to_blob_pass.cc:187] Failed to compile generated PTX with ptxas. Falling back to compilation by driver.
+2025-07-08 21:59:02.300815: W tensorflow/compiler/mlir/tools/kernel_gen/tf_gpu_runtime_wrappers.cc:40] 'cuModuleLoadData(&module, data)' failed with 'CUDA_ERROR_UNSUPPORTED_PTX_VERSION'
+
+2025-07-08 21:59:02.300844: W tensorflow/compiler/mlir/tools/kernel_gen/tf_gpu_runtime_wrappers.cc:40] 'cuModuleGetFunction(&function, module, kernel_name)' failed with 'CUDA_ERROR_INVALID_HANDLE'
+
+2025-07-08 21:59:02.300852: W tensorflow/core/framework/op_kernel.cc:1844] INTERNAL: 'cuLaunchKernel(function, gridX, gridY, gridZ, blockX, blockY, blockZ, 0, reinterpret_cast<CUstream>(stream), params, nullptr)' failed with 'CUDA_ERROR_INVALID_HANDLE'
+2025-07-08 21:59:02.300875: I tensorflow/core/framework/local_rendezvous.cc:407] Local rendezvous is aborting with status: INTERNAL: 'cuLaunchKernel(function, gridX, gridY, gridZ, blockX, blockY, blockZ, 0, reinterpret_cast<CUstream>(stream), params, nullptr)' failed with 'CUDA_ERROR_INVALID_HANDLE'
+	 [[{{node text_preprocessor/Maximum}}]]
+2025-07-08 21:59:02.300883: I tensorflow/core/framework/local_rendezvous.cc:407] Local rendezvous is aborting with status: INTERNAL: 'cuLaunchKernel(function, gridX, gridY, gridZ, blockX, blockY, blockZ, 0, reinterpret_cast<CUstream>(stream), params, nullptr)' failed with 'CUDA_ERROR_INVALID_HANDLE'
+	 [[{{node text_preprocessor/Maximum}}]]
+	 [[StatefulPartitionedCall/StatefulPartitionedCall/text_preprocessor/add_bigrams/Fill/dims/_10]]
+2025-07-08 21:59:02.300892: I tensorflow/core/framework/local_rendezvous.cc:426] Local rendezvous recv item cancelled. Key hash: 12172246966033682518
+2025-07-08 21:59:02.300898: I tensorflow/core/framework/local_rendezvous.cc:426] Local rendezvous recv item cancelled. Key hash: 10752127762150056712
+2025-07-08 21:59:02.300904: I tensorflow/core/framework/local_rendezvous.cc:426] Local rendezvous recv item cancelled. Key hash: 13342258190553307873
+2025-07-08 21:59:02.300908: I tensorflow/core/framework/local_rendezvous.cc:426] Local rendezvous recv item cancelled. Key hash: 17841400805160770962
+2025-07-08 21:59:02.300913: I tensorflow/core/framework/local_rendezvous.cc:426] Local rendezvous recv item cancelled. Key hash: 2543176560093704179
+2025-07-08 21:59:02.300918: I tensorflow/core/framework/local_rendezvous.cc:426] Local rendezvous recv item cancelled. Key hash: 9873283181169781652
+2025-07-08 21:59:02.300922: I tensorflow/core/framework/local_rendezvous.cc:426] Local rendezvous recv item cancelled. Key hash: 4905901579015393073
+2025-07-08 21:59:02.300929: I tensorflow/core/framework/local_rendezvous.cc:426] Local rendezvous recv item cancelled. Key hash: 12565084059997983138
+2025-07-08 21:59:02.300949: I tensorflow/core/framework/local_rendezvous.cc:426] Local rendezvous recv item cancelled. Key hash: 1627574651528995158
+2025-07-08 21:59:02.300955: I tensorflow/core/framework/local_rendezvous.cc:426] Local rendezvous recv item cancelled. Key hash: 18176564334821822811
+2025-07-08 21:59:02.300959: I tensorflow/core/framework/local_rendezvous.cc:426] Local rendezvous recv item cancelled. Key hash: 8240563781850601077
+2025-07-08 21:59:02.300963: I tensorflow/core/framework/local_rendezvous.cc:426] Local rendezvous recv item cancelled. Key hash: 16203816786556243287
+2025-07-08 21:59:02.300975: I tensorflow/core/framework/local_rendezvous.cc:426] Local rendezvous recv item cancelled. Key hash: 90658992868519767
+Traceback (most recent call last):
+  File "/global/home/users/laurenmalek/bio_llm/ollama-container/test_use.py", line 111, in <module>
+    embedding_nl = np.array(tf.nn.l2_normalize(embed([nl]))) if nl not in embedding_dict else embedding_dict[nl]['embedding']
+                                               ^^^^^^^^^^^
+  File "/global/home/users/laurenmalek/.conda/envs/ollama_venv/lib/python3.12/site-packages/tensorflow/python/saved_model/load.py", line 817, in _call_attribute
+    return instance.__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/global/home/users/laurenmalek/.conda/envs/ollama_venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/global/home/users/laurenmalek/.conda/envs/ollama_venv/lib/python3.12/site-packages/tensorflow/python/eager/execute.py", line 53, in quick_execute
+    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow.python.framework.errors_impl.InternalError: Graph execution error:
+
+Detected at node text_preprocessor/Maximum defined at (most recent call last):
+<stack traces unavailable>
+Detected at node text_preprocessor/Maximum defined at (most recent call last):
+<stack traces unavailable>
+2 root error(s) found.
+  (0) INTERNAL:  'cuLaunchKernel(function, gridX, gridY, gridZ, blockX, blockY, blockZ, 0, reinterpret_cast<CUstream>(stream), params, nullptr)' failed with 'CUDA_ERROR_INVALID_HANDLE'
+	 [[{{node text_preprocessor/Maximum}}]]
+	 [[StatefulPartitionedCall/StatefulPartitionedCall/text_preprocessor/add_bigrams/Fill/dims/_10]]
+  (1) INTERNAL:  'cuLaunchKernel(function, gridX, gridY, gridZ, blockX, blockY, blockZ, 0, reinterpret_cast<CUstream>(stream), params, nullptr)' failed with 'CUDA_ERROR_INVALID_HANDLE'
+	 [[{{node text_preprocessor/Maximum}}]]
+0 successful operations.
+0 derived errors ignored. [Op:__inference_restored_function_body_4560]
