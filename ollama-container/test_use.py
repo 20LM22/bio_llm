@@ -1,4 +1,9 @@
 # import ollama
+import tensorflow as tf
+
+tf.config.list_physical_devices('GPU')
+
+
 import time
 # from ollama import ChatResponse
 # from ollama import chat
