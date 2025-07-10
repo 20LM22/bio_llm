@@ -42,7 +42,7 @@ for file in filenames:
 
   # export heatmap
   plt.figure(figsize=(10,10))
-  ax = sns.heatmap(sim_matrix, annot=True)
+  ax = sns.heatmap(sim_matrix, annot=True, vmin=0, vmax=1)
   plt.title(f'NL vs. Literal Cosine Similarities\nModel:{file}')
   ax.set_yticklabels(nl_statements, rotation=0)
   ax.set_xticklabels(literal_statements, rotation=45)

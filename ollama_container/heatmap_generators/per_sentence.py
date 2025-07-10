@@ -47,7 +47,7 @@ for file in filenames:
   fig, axs = plt.subplots(4, 4, figsize=(10,10))
 
   for _id, ax in enumerate(axs.flat):
-    sns.heatmap(sim_matrix_arr[_id], ax=ax, annot=True)
+    sns.heatmap(sim_matrix_arr[_id], ax=ax, annot=True, vmin=0, vmax=1)
     ax.set_title(f'{nl_statements[_id]} Cosine Similarities\nModel:{file}')
     ax.set_yticklabels(["NL", "STL", "Literal"], rotation=0)
     ax.set_xticklabels(["NL", "STL", "Literal"], rotation=45)
