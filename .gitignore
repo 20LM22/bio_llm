@@ -1,8 +1,8 @@
 # Do not add models
-ollama-container/models/*
+ollama_container/models/*
 
 # Do not add the sif file
-ollama-container/ollama.sif
+ollama_container/ollama.sif
 
 # Do not add any .tmp files from vim
 *.swp
