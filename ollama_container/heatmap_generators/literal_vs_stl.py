@@ -7,15 +7,14 @@ import pickle
 # Generates 1 16x16 Literal vs. STL heatmap for all pkl files (<filename>) included in 'filenames'
 # Saves heatmaps as 'ambiguous_mod_literal_vs_stl_<filename>' in ../images/<filename>_images/literal_vs_stl_<filename>.png
 
-filenames = ['ollama_nomic_v2.pkl', 'st_mini_lm_v3.pkl', 'st_qwen_p6_v2.pkl'] # specify pkl files
+filenames = ['ambiguous_mod_ollama_nomic_v2.pkl', 'ambiguous_mod_st_mini_lm_v2.pkl', 'ambiguous_mod_st_qwen_p6_v2.pkl'] # specify pkl files
 
-for file in filenames:
-
+for _id, file in enumerate(filenames):
   # load the data
   results_dict = {}
   try:
-    with open(filename, 'rb') as file:
-      results_dict = pickle.load(f'pkl/{file}')
+    with open(f'../pkl/{filenames[_id]}', 'rb') as f:
+      results_dict = pickle.load(f)
       print(f'Loaded {file}')
   except Exception as e:
     print(e)
@@ -37,7 +36,9 @@ for file in filenames:
       B.append(value['stl'][i][1])
 
   # compute similarity matrix
-  sim_matrix = cosine_similarity(np.array(A), np.array(B))
+  A = np.array(A)
+  B = np.array(B)
+  sim_matrix = cosine_similarity(A,B)
 
   # export heatmap
   plt.figure(figsize=(10,10))
@@ -45,4 +46,4 @@ for file in filenames:
   plt.title(f'Literal vs. STL Cosine Similarities\nModel:{file}')
   ax.set_yticklabels(stl_statements, rotation=0)
   ax.set_xticklabels(literal_statements, rotation=45)
-  plt.savefig(f'../images/{file[:-4]}_images/ambiguous_mod_literal_vs_stl_{file[:-4]}.png')
+  plt.savefig(f'../images/{file[14:-4]}_images/ambiguous_mod_literal_vs_stl_{file[14:-4]}.png')

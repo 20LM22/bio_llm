@@ -9,7 +9,7 @@ from sentence_transformers import SentenceTransformer
 # Generates pkl files from <csv> for all models (<model>) included in 'models_pkl_names'
 # Saves pkl files as 'ambiguous_mod_<pkl_name>' in ../pkl/<pkl_name>.pkl
 
-csv = 'csv_inputs/text_input_ambiguous_mod.csv' # specify csv input
+csv = '../csv_inputs/text_input_ambiguous_mod.csv' # specify csv input
 models_pkl_names = [['all-MiniLM-L6-v2', 'st_mini_lm_v2'], ['Qwen/Qwen3-Embedding-0.6B', 'st_qwen_p6_v2']] # specify models, pkl names
 
 csv_file = pandas.read_csv(csv, header=None)
@@ -27,7 +27,7 @@ for entry in models_pkl_names:
 
     start = time.time()
 
-    for _id, row in csvFile.iterrows():
+    for _id, row in csv_file.iterrows():
         # obtain the nl statement
         nl = row[1]
         embedding_nl = np.array(model.encode(nl, normalize_embeddings=True)) if nl not in embedding_dict else embedding_dict[nl]['embedding']
@@ -50,7 +50,7 @@ for entry in models_pkl_names:
 
     # write dictionary to pkl
     try:
-        with open(f'{pkl_name}.pkl', 'wb') as results:
+        with open(f'../pkl/ambiguous_mod_{pkl_name}.pkl', 'wb') as results:
             pickle.dump(embedding_dict, results)
     except Exception as e:
         print(e)

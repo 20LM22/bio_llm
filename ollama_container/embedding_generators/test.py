@@ -12,9 +12,9 @@ ollama.base_url = "http://localhost:11434"
 model_name = "deepseek-r1:1.5b"
 pkl_name = 'ollama_nomic_v2.pkl'
 
-csv = 'csv_inputs/text_input_ambiguous_mod.csv' # specify csv input
+csv = '../csv_inputs/text_input_ambiguous_mod.csv' # specify csv input
 
-csvFile = pandas.read_csv(csv, header=None)
+csv_file = pandas.read_csv(csv, header=None)
 embedding_dict = defaultdict(dict)
 
 # loop over all of the rows of the file
@@ -23,7 +23,7 @@ embedding_dict = defaultdict(dict)
 
 start = time.time()
 
-for _id, row in csvFile.iterrows():
+for _id, row in csv_file.iterrows():
     # obtain the nl statement
     nl = row[1]
     embedding_nl = np.array(ollama.embeddings(model='nomic-embed-text:latest', prompt=nl).embedding) if nl not in embedding_dict else embedding_dict[nl]['embedding']
@@ -46,7 +46,7 @@ print("*************************************************")
 
 # writing to pkl
 try:
-    with open(pkl_name, 'wb') as results:
+    with open(f'../pkl/ambiguous_mod_{pkl_name}', 'wb') as results:
         pickle.dump(embedding_dict, results)
 except Exception as e:
     print(e)
