@@ -1,5 +1,6 @@
-import ollama, time
-from ollama import chat
+# import ollama, time
+# from ollama import chat
+from vllm import LLM, SamplingParams
 from lark import Lark
 import numpy as np
 import os
@@ -11,11 +12,21 @@ import re
 from sklearn.metrics.pairwise import cosine_similarity
 from stl2literal import STL2literal
 
+sampling_params = SamplingParams(
+        temperature=0.7,
+        top_p=0.95,
+        max_tokens=4096)
+
+llm = LLM(model="deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+    dtype="half",
+    max_model_len=8192,
+    gpu_memory_utilization=0.8)
+
 # let's set up some parameters
-ollama.base_url = "http://localhost:11434" # this is the default port, can be changed on ollama serve & startup
-model_name = "deepseek-r1:1.5b"
-num_semantic_attempts = 3 # allow each sentence to get translated 3 times before declaring the translation a failure
-num_batch = 6 # when prompting the LLM for a translation, have it produce 6 STL statements, then process them 
+# ollama.base_url = "http://localhost:11434" # this is the default port, can be changed on ollama serve & startup
+# model_name = "deepseek-r1:1.5b"
+num_semantic_attempts = 1 # allow each sentence to get translated 3 times before declaring the translation a failure
+num_batch = 1 # when prompting the LLM for a translation, have it produce 6 STL statements, then process them 
 regex = r'\*\*.*\*\*' # for matching the STL statement in the response returned by the LLM
 
 # first need a bank of sentences to translate
@@ -127,6 +138,9 @@ grammar = """
     %ignore WS
 """
 
+parser = Lark(grammar)
+embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
+
 output_translations = [[[ "" for _ in range(6)] for _ in range(len(sentences))] for _ in range(3)]
 # array_3d[z][y][x] = depth z, row y, column x
 final_sentences = [ "" for _ in range(len(sentences))]
@@ -143,7 +157,8 @@ for k, sentence in enumerate(sentences):
             # for now, let's just use the original prompt without syntactic modification based on the previous responses
             # print("about to generate a response") # messages=[{"role": "user", "content": prompt}]
             print("generating response")
-            response = ollama.chat(model=model_name, messages=[{"role": "user", "content": prompt}], stream=False).message.content
+            # response = ollama.chat(model=model_name, messages=[{"role": "user", "content": prompt}], stream=False).message.content
+            response = llm.generate(prompt, sampling_params)[0].outputs[0].text
             print("done with response")
             # need to extract the **STL** part
             extracted_response = re.search(regex, response)
@@ -153,14 +168,14 @@ for k, sentence in enumerate(sentences):
                 output_translations[i][k][j] = response
                 continue # for now, skip over the rest of this iteration
             try:
-                parsed_STL = grammar.parse(extracted_response)
+                parsed_STL = parser.parse(extracted_response.group(0))
                 output_translations[i][k][j] = extracted_response + "\n" + "Success"
                 # TODO: need to do extra syntactic check: are the intervals correct?
                 syntactically_correct_responses.append(parsed_STL)
             except Exception as e:
                 # TODO: if not parsed correctly? --> update the prompt with exception information
                 # print(e)
-                output_translations[i][k][j] = extracted_response + "\n" + e # put the exception as the value --> couldn't be parsed correctly
+                output_translations[i][k][j] = extracted_response.group(0) + "\n" + str(e) # put the exception as the value --> couldn't be parsed correctly
                 continue # continue for now
 
         # at this point syntactically_correct_responses should be filled with responses
@@ -174,7 +189,7 @@ for k, sentence in enumerate(sentences):
         literal_embeddings = [] # np.zeroes_like(literal_translations)
         nl_embedding = np.array(model.encode(sentence, normalize_embeddings=True))
         for i, literal in enumerate(literal_translations):
-            embedding_literal = np.array(model.encode(literal_translations[i], normalize_embeddings=True))
+            embedding_literal = np.array(embedding_model.encode(literal_translations[i], normalize_embeddings=True))
             literal_embeddings.append(embedding_literal)
         
         # now compare the embeddings using cosine similarity, take max of the produced array

@@ -1,36 +1,27 @@
 # SPDX-License-Identifier: Apache-2.0
 # SPDX-FileCopyrightText: Copyright contributors to the vLLM project
-
-from vllm import LLM, SamplingParams
-print("done importing")
-# Sample prompts.
-prompts = [
-    "Hello, my name is",
-    "The president of the United States is",
-    "The capital of France is",
-    "The future of AI is",
-]
-
-# Create a sampling params object.
-sampling_params = SamplingParams(temperature=0.7, top_p=0.95)
-print("done sampling creation")
-def main():
-    print("inside main")
-    # Create an LLM.
-    llm = LLM(model="deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B", dtype="half")
-
     # Generate texts from the prompts.
     # The output is a list of RequestOutput objects
     # that contain the prompt, generated text, and other information.
-    outputs = llm.generate(prompts, sampling_params)
-    # Print the outputs.
-    print("\nGenerated Outputs:\n" + "-" * 60)
-    for output in outputs:
-        prompt = output.prompt
-        generated_text = output.outputs[0].text
-        print(f"Prompt:    {prompt!r}")
-        print(f"Output:    {generated_text!r}")
-        print("-" * 60)
 
-if __name__ == "__main__":
-    main()
+from vllm import LLM, SamplingParams
+
+prompt = 'What color is the sky?'
+
+# Create a sampling params object.
+sampling_params = SamplingParams(
+        temperature=0.7,
+        top_p=0.95,
+        max_tokens=1024)
+llm = LLM(model="deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+    dtype="half",
+    max_model_len=8192,
+    gpu_memory_utilization=0.8)
+
+output = llm.generate(prompt, sampling_params)
+print(output[0].outputs[0].text)
+print(len(output[0].outputs[0].text))
+
+# for output in outputs:
+#    prompt = output.prompt
+#    generated_text = output.outputs[0].text
