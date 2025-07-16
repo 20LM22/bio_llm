@@ -1,6 +1,6 @@
 from lark import Lark, Tree
 from lark.visitors import Interpreter
-from fastpunct import FastPunct
+# from fastpunct import FastPunct
 
 nl_to_literal_dict = {
     "c(low)": "low",
@@ -496,11 +496,12 @@ class Test(Interpreter):
                     case '0':
                         self.sentence.append('0')
 
-fastpunct = FastPunct() # TODO: might have to be moved into the function def?
+# fastpunct = FastPunct() # TODO: might have to be moved into the function def?
 
 def STL2literal(input_sentence, grammar):
     p = Lark(grammar) # TODO: this is also slow, improve if possible
     tree = p.parse(input)
     tester = Test() # TODO: this is redundant, see if this can be improved
     tester.visit(tree)
-    return fastpunct.punct(" ".join(tester.sentence))
+    # return fastpunct.punct(" ".join(tester.sentence))
+    return ' '.join(tester.sentence)

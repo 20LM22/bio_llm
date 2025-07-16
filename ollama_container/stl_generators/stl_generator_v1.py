@@ -1,5 +1,5 @@
 import ollama, time
-from ollama import generate
+from ollama import chat
 from lark import Lark
 import numpy as np
 import os
@@ -142,7 +142,9 @@ for k, sentence in enumerate(sentences):
         for j in range(num_batch):  
             # for now, let's just use the original prompt without syntactic modification based on the previous responses
             # print("about to generate a response") # messages=[{"role": "user", "content": prompt}]
-            response = ollama.generate(model=model_name, prompt=prompt, stream=False).message.content
+            print("generating response")
+            response = ollama.chat(model=model_name, messages=[{"role": "user", "content": prompt}], stream=False).message.content
+            print("done with response")
             # need to extract the **STL** part
             extracted_response = re.search(regex, response)
             # now put the STL through
@@ -187,3 +189,9 @@ for k, sentence in enumerate(sentences):
         else:
             # accept
             final_sentences[k] = ([sentence, syntactically_correct_responses[best_stl_id]])   
+
+with open("output_sentences.txt", "w") as f:
+    f.write(repr(output_translations))
+
+with open("final_sentences.txt", "w") as f:
+    f.write(repr(final_sentences)) 
