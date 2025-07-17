@@ -11,14 +11,34 @@ from sentence_transformers import SentenceTransformer
 import re
 from sklearn.metrics.pairwise import cosine_similarity
 from stl2literal import STL2literal
+import logging
+from vllm.sampling_params import GuidedDecodingParams
+from pydantic import BaseModel
+import json
+
+#print("testing json")
+class STLResponse(BaseModel):
+     thinking: str
+     input_statement: str
+     output_STL: str
+     explanation: str
+
+guided_decoding_params = GuidedDecodingParams(json=STLResponse.model_json_schema())
+stl_response_json = STLResponse.model_json_schema()
+#print(stl_response_json)
 
 sampling_params = SamplingParams(
-        temperature=0.4,
-        max_tokens=4096)
+        temperature=0.6, # was 0.4 with deepseek
+        top_p=0.95,
+        top_k=40,
+        min_p=0,
+        presence_penalty=1.5,
+        max_tokens=1024, # 2048, # 32768,
+        guided_decoding=guided_decoding_params)
 
 llm = LLM(model="deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
     dtype="half",
-    max_model_len=8192,
+    max_model_len=24000, # 32000, # 48000,
     gpu_memory_utilization=0.8)
 
 # let's set up some parameters
@@ -26,18 +46,18 @@ llm = LLM(model="deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
 # model_name = "deepseek-r1:1.5b"
 num_semantic_attempts = 1 # allow each sentence to get translated 3 times before declaring the translation a failure
 num_batch = 1 # when prompting the LLM for a translation, have it produce 6 STL statements, then process them 
-regex = r'\*\*.*\*\*' # for matching the STL statement in the response returned by the LLM
+regex = r'$$.*$$' # for matching the STL statement in the response returned by the LLM
 
 # first need a bank of sentences to translate
 sentences = [
     'In the mild and moderate groups, IL-6 concentrations were at their highest level in the first week after the symptom onset and then exhibited a decreasing trend.',
     'Remarkably, in the mild group, the amount of these cytokines (IL-1β and IL-1Ra) increased at the day 1–7, reached a peak at the day 8–14, and diminished after >14 days.',
     'TNF-α levels elevated at the day 1–7 and 8–14 times intervals, then decreased at the day>14.',
-    'We detected that IL-8 was significantly elevated in all COVID-19 subgroups at three studied time intervals compared to the control group.',
-    'We found that although there was no difference in the production of IFN-β in all patients with COVID-19 compared to the control group at the day 1–7, IFN-β levels were higher in moderate, severe, and critical subjects at the day 8–14 or >14 compared to the healthy control and themselves at the day 1–7.',
-    'IL-12 reached its maximum level at the day>14 in mild patients.',
-    'It is reported that in recovered cases, within a few hrs of virus entry, both α and β IFNs (at first day of infection) are rapidly produced and an antiviral state is soon reached [23]',
-    'By day 14, we detected no viral reads for SARS-CoV-2, and the observed cytokines returned to baseline, with the exception of IL-6 and IL1RN or IL1RA, which remained elevated, similar to results observed with MERS (Pascal et al., 2015; Figures 3B and 3C).'
+    # 'We detected that IL-8 was significantly elevated in all COVID-19 subgroups at three studied time intervals compared to the control group.',
+    # 'We found that although there was no difference in the production of IFN-β in all patients with COVID-19 compared to the control group at the day 1–7, IFN-β levels were higher in moderate, severe, and critical subjects at the day 8–14 or >14 compared to the healthy control and themselves at the day 1–7.',
+    # 'IL-12 reached its maximum level at the day>14 in mild patients.',
+    # 'It is reported that in recovered cases, within a few hrs of virus entry, both α and β IFNs (at first day of infection) are rapidly produced and an antiviral state is soon reached [23]',
+    # 'By day 14, we detected no viral reads for SARS-CoV-2, and the observed cytokines returned to baseline, with the exception of IL-6 and IL1RN or IL1RA, which remained elevated, similar to results observed with MERS (Pascal et al., 2015; Figures 3B and 3C).'
 ] # this can also be replaced with input from the csv file
 
 # for now, let's assume that we use one prompt to go directly from NL to STL
@@ -49,10 +69,10 @@ core_prompt_1 = """Translate the following natural language statement into a sig
 core_prompt_2 = """          
             It is extremely important to follow these rules:
             Rule: The time unit is days.
-            Rule: You must return the STL statement like this: **your STL response**
             Rule: You must accept feedback on your previous responses and amend them if asked to.
-            
-            Your response must conform to these rules:
+            Rule: Format your response in JSON. Include your thinking, the input statement, your STL response, and an explanation of how the input statement and STL output are relatedi.
+
+            Your STL response must conform to these rules:
             [BEGIN RULES]
             u : s"(t) < "c | s"(t) > "c | "abs("s"(t) - "c") < "e | d_s"(t) > "d_c | d_s"(t) < "d_c | "abs("d_s"(t) - "d_c") < "e
             e : "e" | [0-9]+
@@ -68,7 +88,7 @@ core_prompt_2 = """
             
             The d_s terms represent the derivative of a signal, so you may find those terms helpful for describing how signals increase or decrease. For general statements describing the levels of some species as “high” or “low” for example, you may find comparison statements helpful.
             
-            Here is an example of natural language to signal temporal logic output for reference; however, make sure the STL statements you generate are specific to the NL statement you are currently being asked to translate: {input: "From 4 to 8 days after infection, IL-6 levels were significantly elevated until day 9, at which point they steadily decreased.", output: "G[4,8] (IL6(t) > c(high)) ^ G[8,T] (d_IL6(t) < 0)"}
+            Here is a reference example of natural language to STL, but don't copy this statement. Instead, make sure your STL statements are specific to the statment above that you are being asked to translate: {input: "From 4 to 8 days after infection, IL-6 levels were significantly elevated until day 9, at which point they steadily decreased.", output: "G[4,8] (IL6(t) > c(high)) ^ G[8,T] (d_IL6(t) < 0)"}
 """
 
 grammar = """
@@ -132,8 +152,15 @@ grammar = """
     %ignore WS
 """
 
+logging.basicConfig(
+    filename="bio_logs_qwen",
+    encoding="utf-8",
+    level=logging.INFO,
+    filemode="a"
+)
+
 parser = Lark(grammar)
-embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
+embedding_model = SentenceTransformer('all-MiniLM-L6-v2', device='cpu')
 
 output_translations = [[[ "" for _ in range(6)] for _ in range(len(sentences))] for _ in range(3)]
 # array_3d[z][y][x] = depth z, row y, column x
@@ -154,13 +181,42 @@ for k, sentence in enumerate(sentences):
             # print("about to generate a response") # messages=[{"role": "user", "content": prompt}]
             # print("generating response")
             # response = ollama.chat(model=model_name, messages=[{"role": "user", "content": prompt}], stream=False).message.content
-            response = llm.generate(prompt, sampling_params)[0].outputs[0].text
+            response = llm.chat([{"role": "user", "content": prompt}], sampling_params) # [0].outputs[0].text
+            print(f"response is: {response[0].outputs[0].text}")
+            # print(f"type of response: {type(response)}")
+            """
+            completion = client.chat.completions.create(
+                model=model,
+                prompt=prompt,
+                temperature=0.6,
+                messages=[
+                    {
+                        "role": "user",
+                        "content": prompt
+                    }
+                ],
+                response_format={
+                    "type": "json_schema",
+                    "json_schema": stl_response_json
+                }
+            )
+            print("reasoning_content: ", completion.choices[0].message.reasoning_content)
+            print("content: ", completion.choices[0].message.content)
+            """
             # print("done with response")
             # need to extract the **STL** part
             # print(f"response: {response}")
-            extracted_response = re.search(regex, response)
-            print(f"extracted: {extracted_response}")
+            # extracted_response = re.search(regex, response[0].outputs[0].text)
+            # print(f"regular response: {response}\n")
             # now put the STL through
+            
+            # testing json parsing
+            try:
+                output_dict = json.loads(response)
+                extracted_response = output_dict["output_STL:"]
+            except Exception as e:
+                extracted_response = None
+
             if extracted_response is None:
                 # TODO: modify prompt to note that response was not included in ****
                 output_translations[i][k][j] = response
