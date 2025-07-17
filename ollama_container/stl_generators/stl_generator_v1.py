@@ -187,7 +187,7 @@ for k, sentence in enumerate(sentences):
         # these literal translations need to be evaluated for semantic integrity
         # obtain embeddings of the original sentence and all of the literal translations
         literal_embeddings = [] # np.zeroes_like(literal_translations)
-        nl_embedding = np.array(model.encode(sentence, normalize_embeddings=True))
+        nl_embedding = np.array(embedding_model.encode(sentence, normalize_embeddings=True))
         for i, literal in enumerate(literal_translations):
             embedding_literal = np.array(embedding_model.encode(literal_translations[i], normalize_embeddings=True))
             literal_embeddings.append(embedding_literal)
