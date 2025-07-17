@@ -13,8 +13,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from stl2literal import STL2literal
 
 sampling_params = SamplingParams(
-        temperature=0.7,
-        top_p=0.95,
+        temperature=0.4,
         max_tokens=4096)
 
 llm = LLM(model="deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
@@ -46,35 +45,30 @@ sentences = [
 # not only might that approach have the benefit of being more robust since it decomposes the semantic
 # and the syntactic translation, but it also has the benefit of filtering out sentences that
 # aren't any good for STL anyways.
-core_prompt_1 = """... Translate the following natural language statement into a signal temporal logic (STL) statement:
-            ..."""
+core_prompt_1 = """Translate the following natural language statement into a signal temporal logic (STL) statement: """
 core_prompt_2 = """          
-            ...
-            ... It is extremely important to follow these rules:
-            ... Rule: The time unit is days.
-            ... Rule: You must return the STL statement like this: **your STL response**
-            ... Rule: You must accept feedback on your previous responses and amend them if asked to.
-            ...
-            ... Your response must conform to these rules:
-            ... [BEGIN RULES]
-            ... u : s"(t) < "c | s"(t) > "c | "abs("s"(t) - "c") < "e | d_s"(t) > "d_c | d_s"(t) < "d_c | "abs("d_s"(t) - "d_c") < "e
-            ... e : "e" | [0-9]+
-            ... c : "s("t_a")" | "c(low)" | "c(mid)" | "c(high)"
-            ... d_c : "0" | "d_c(low)" | "d_c(high)" | "-d_c(low)" | "-d_c(high)"
-            ... phi : u | phi" ^ "phi | phi" → "phi
-            ... psi : "F["t_a","t_a"]G("phi")" | "G["t_a","t_a"]("phi")" | "F["t_a","t_a"]("phi")"
-            ... omega : phi | psi | omega" ^ "omega
-            ... t_a : [0-9]+ | "T"
-            ... s : [a-zA-z0-9]+
-            ... d_s : "d_"[a-zA-z0-9]+
-            ... [END RULES]
-            ...
-            ... The d_s terms represent the derivative of a signal, so you may find those terms helpful for describing how signals increase or decrease. For general statements describing the levels of some species as “high” or “low” for example, you may find comparison statements helpful.
-            ...
-            ... Here is an example of natural language-signal temporal logic pairs for reference; however, make sure the STL statements you generate are specific to the NL statement you are currently being asked to translate.
-            ...
-            ... {input: "From 4 to 8 days after infection, IL-6 levels were significantly elevated until day 9, at which point they steadily decreased.", output: "**G[4,8] (IL6(t) > c(high)) ^ G[8,T] (d_IL6(t) < 0)**"}
-            ...
+            It is extremely important to follow these rules:
+            Rule: The time unit is days.
+            Rule: You must return the STL statement like this: **your STL response**
+            Rule: You must accept feedback on your previous responses and amend them if asked to.
+            
+            Your response must conform to these rules:
+            [BEGIN RULES]
+            u : s"(t) < "c | s"(t) > "c | "abs("s"(t) - "c") < "e | d_s"(t) > "d_c | d_s"(t) < "d_c | "abs("d_s"(t) - "d_c") < "e
+            e : "e" | [0-9]+
+            c : "s("t_a")" | "c(low)" | "c(mid)" | "c(high)"
+            d_c : "0" | "d_c(low)" | "d_c(high)" | "-d_c(low)" | "-d_c(high)"
+            phi : u | phi" ^ "phi | phi" → "phi
+            psi : "F["t_a","t_a"]G("phi")" | "G["t_a","t_a"]("phi")" | "F["t_a","t_a"]("phi")"
+            omega : phi | psi | omega" ^ "omega
+            t_a : [0-9]+ | "T"
+            s : [a-zA-z0-9]+
+            d_s : "d_"[a-zA-z0-9]+
+            [END RULES]
+            
+            The d_s terms represent the derivative of a signal, so you may find those terms helpful for describing how signals increase or decrease. For general statements describing the levels of some species as “high” or “low” for example, you may find comparison statements helpful.
+            
+            Here is an example of natural language to signal temporal logic output for reference; however, make sure the STL statements you generate are specific to the NL statement you are currently being asked to translate: {input: "From 4 to 8 days after infection, IL-6 levels were significantly elevated until day 9, at which point they steadily decreased.", output: "G[4,8] (IL6(t) > c(high)) ^ G[8,T] (d_IL6(t) < 0)"}
 """
 
 grammar = """
@@ -146,8 +140,10 @@ output_translations = [[[ "" for _ in range(6)] for _ in range(len(sentences))] 
 final_sentences = [ "" for _ in range(len(sentences))]
 
 for k, sentence in enumerate(sentences):
- # change the prompt for each sentence
+    print(f"sentence: {sentence}")
+    # change the prompt for each sentence
     prompt = core_prompt_1 + sentence + core_prompt_2
+    # print(f"the prompt is: {prompt}")
     # allow each sentence to be translated up n times to get the semantic meaning correct --> n = num_semantic_attempts
     for i in range(num_semantic_attempts):
         # this scope works at the sentence level
@@ -156,12 +152,14 @@ for k, sentence in enumerate(sentences):
         for j in range(num_batch):  
             # for now, let's just use the original prompt without syntactic modification based on the previous responses
             # print("about to generate a response") # messages=[{"role": "user", "content": prompt}]
-            print("generating response")
+            # print("generating response")
             # response = ollama.chat(model=model_name, messages=[{"role": "user", "content": prompt}], stream=False).message.content
             response = llm.generate(prompt, sampling_params)[0].outputs[0].text
-            print("done with response")
+            # print("done with response")
             # need to extract the **STL** part
+            # print(f"response: {response}")
             extracted_response = re.search(regex, response)
+            print(f"extracted: {extracted_response}")
             # now put the STL through
             if extracted_response is None:
                 # TODO: modify prompt to note that response was not included in ****
@@ -193,17 +191,21 @@ for k, sentence in enumerate(sentences):
             literal_embeddings.append(embedding_literal)
         
         # now compare the embeddings using cosine similarity, take max of the produced array
-        sim_matrix = cosine_similarity(np.array(literal_embeddings), np.array(nl_embedding))
-        best_stl_id = np.argmax(sim_matrix)
+        if len(literal_embeddings) != 0:
+            sim_matrix = cosine_similarity(np.array(literal_embeddings), np.array(nl_embedding))
+            best_stl_id = np.argmax(sim_matrix)
 
-        # only accept what is above similarity threshold
-        # the final output is in the form [['nl', 'stl'],['nl', 'stl']]
-        if sim_matrix[best_stl_id] < 0.7: # semantic_threshold:
-            # reject
-            final_sentences[k] = "Failure" # ([sentence, None])
+            # only accept what is above similarity threshold
+            # the final output is in the form [['nl', 'stl'],['nl', 'stl']]
+            if sim_matrix[best_stl_id] < 0.7: # semantic_threshold:
+                # reject
+                final_sentences[k] = "Failure" # ([sentence, None])
+            else:
+                # accept
+                final_sentences[k] = ([sentence, syntactically_correct_responses[best_stl_id]])   
         else:
-            # accept
-            final_sentences[k] = ([sentence, syntactically_correct_responses[best_stl_id]])   
+            final_sentences[k] = None
+
 
 with open("output_sentences.txt", "w") as f:
     f.write(repr(output_translations))
