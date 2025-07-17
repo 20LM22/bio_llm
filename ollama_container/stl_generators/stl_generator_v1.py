@@ -52,7 +52,7 @@ regex = r'$$.*$$' # for matching the STL statement in the response returned by t
 sentences = [
     'In the mild and moderate groups, IL-6 concentrations were at their highest level in the first week after the symptom onset and then exhibited a decreasing trend.',
     'Remarkably, in the mild group, the amount of these cytokines (IL-1β and IL-1Ra) increased at the day 1–7, reached a peak at the day 8–14, and diminished after >14 days.',
-    'TNF-α levels elevated at the day 1–7 and 8–14 times intervals, then decreased at the day>14.',
+    # 'TNF-α levels elevated at the day 1–7 and 8–14 times intervals, then decreased at the day>14.',
     # 'We detected that IL-8 was significantly elevated in all COVID-19 subgroups at three studied time intervals compared to the control group.',
     # 'We found that although there was no difference in the production of IFN-β in all patients with COVID-19 compared to the control group at the day 1–7, IFN-β levels were higher in moderate, severe, and critical subjects at the day 8–14 or >14 compared to the healthy control and themselves at the day 1–7.',
     # 'IL-12 reached its maximum level at the day>14 in mild patients.',
@@ -88,7 +88,10 @@ core_prompt_2 = """
             
             The d_s terms represent the derivative of a signal, so you may find those terms helpful for describing how signals increase or decrease. For general statements describing the levels of some species as “high” or “low” for example, you may find comparison statements helpful.
             
-            Here is a reference example of natural language to STL, but don't copy this statement. Instead, make sure your STL statements are specific to the statment above that you are being asked to translate: {input: "From 4 to 8 days after infection, IL-6 levels were significantly elevated until day 9, at which point they steadily decreased.", output: "G[4,8] (IL6(t) > c(high)) ^ G[8,T] (d_IL6(t) < 0)"}
+            Here are 2 reference examples of natural language to STL translations, but don't copy them. Instead, make sure the STL statements you produce are specific to the input statement that you are currently being asked to translate:
+
+            {example input: "From 4 to 8 days after infection, IL-6 levels were significantly elevated until day 9, at which point they steadily decreased.", output: "G[4,8] (IL6(t) > c(high)) ^ G[8,T] (d_IL6(t) < 0)"}
+            {example input: "Once TNF levels stabilized at low levels, within 2 days the concentration of IL-12 became persistently higher compared to its original concentration.", output: "abs(TNF(t) - c(low)) < e → F[0,2]G( IL12(t) > IL12(0) )" }
 """
 
 grammar = """
