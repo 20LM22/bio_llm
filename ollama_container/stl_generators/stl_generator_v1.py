@@ -54,8 +54,66 @@ core_prompt = pandas.read_csv(core_prompt_csv, header=None)
 # Additional setup
 parser = Lark(grammar)
 embedding_model = SentenceTransformer(embedding_model_name, device='cpu')
+grammar = """
+    ?start: omega
+    ?u : gt
+        | lt
+        | err_bnd
+        | d_gt
+        | d_lt
+        | d_err_bnd
+    gt : s "(t)" ">" c
+    lt : s "(t)" "<" c 
+    err_bnd : "abs(" s "(t)" "-" c ")" "<" e
+    d_gt : "d_" s "(t)" ">" D_C
+    d_lt : "d_" s "(t)" "<" D_C
+    d_err_bnd : "abs(" "d_" s "(t)" "-" D_C ")" "<" e
 
+    ?e : ERROR
+        | /[0-9]+/
+    ERROR : "e"
+    
+    c : s "(" t_a ")"
+        | C_LOW
+        | C_MID
+        | C_HIGH
+        
+    C_LOW : "c(low)"
+    C_MID : "c(mid)"
+    C_HIGH : "c(high)"
+    
+    D_C : "0"
+        | "d_c(low)"
+        | "d_c(high)"
+        | "-d_c(low)" 
+        | "-d_c(high)"
+        
+    ?phi : u
+        | u_and_phi
+        
+    ?nu : u | u_implies_u | u_and_phi
+    
+    u_implies_u : u "→" u | psi "→" psi | psi "→" u | u "→" psi
+    u_and_phi : u "^" phi
+        
+    ?psi : temp_op_fg | temp_op_g | temp_op_f
+    
+    temp_op_fg : "F" "[" t_a "," t_a "]" "G" "(" nu ")"
+    temp_op_f : "F" "[" t_a "," t_a "]" "(" nu ")"
+    temp_op_g : "G" "[" t_a "," t_a "]" "(" nu ")"
+    
+    ?omega : nu
+        | psi
+        | omega "^" omega
+        
+    t_a : /[0-9]+/
+        | /T/
+    s : /[a-zA-Z0-9]+/
+    d_s : /d_[a-zA-Z0-9]+/
 
+    %import common.WS
+    %ignore WS
+"""
 
 for index, model_name in model_names.iterrows():
     # Create a file which contains all the relevant output related to this model
