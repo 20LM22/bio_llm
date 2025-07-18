@@ -1,5 +1,3 @@
-# import ollama, time
-# from ollama import chat
 from vllm import LLM, SamplingParams
 from lark import Lark
 import numpy as np
@@ -15,18 +13,18 @@ import logging
 from vllm.sampling_params import GuidedDecodingParams
 from pydantic import BaseModel
 import json
+import csv
 
-#print("testing json")
+# Set up the output formatting for STL generation
 class STLResponse(BaseModel):
      thinking: str
      input_statement: str
      output_STL: str
      explanation: str
-
 guided_decoding_params = GuidedDecodingParams(json=STLResponse.model_json_schema())
 stl_response_json = STLResponse.model_json_schema()
-#print(stl_response_json)
 
+# IMPORTANT: Evaluation parameters to set
 sampling_params = SamplingParams(
         temperature=0.6, # was 0.4 with deepseek
         top_p=0.95,
@@ -36,35 +34,33 @@ sampling_params = SamplingParams(
         max_tokens=1024, # 2048, # 32768,
         guided_decoding=guided_decoding_params)
 
-llm = LLM(model="deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
-    dtype="half",
-    max_model_len=24000, # 32000, # 48000,
-    gpu_memory_utilization=0.8)
+# IMPORTANT: Evaluation parameters to set
+model_dtype='half'
+max_model_len=24000
+gpu_memory_utilization=0.8
+num_translations_per_input_sentence = 6
 
-# let's set up some parameters
-# ollama.base_url = "http://localhost:11434" # this is the default port, can be changed on ollama serve & startup
-# model_name = "deepseek-r1:1.5b"
-num_semantic_attempts = 1 # allow each sentence to get translated 3 times before declaring the translation a failure
-num_batch = 1 # when prompting the LLM for a translation, have it produce 6 STL statements, then process them 
-regex = r'$$.*$$' # for matching the STL statement in the response returned by the LLM
+# Input paths
+model_names_csv = '../csv_inputs/stl_generation_model_names.csv'
+inputs_and_refs_csv = '../csv_inputs/stl_generation_inputs_and_refs.csv'
+core_prompt_csv = '../csv_inputs/stl_generation_core_prompt.csv'
 
-# first need a bank of sentences to translate
-sentences = [
-    'In the mild and moderate groups, IL-6 concentrations were at their highest level in the first week after the symptom onset and then exhibited a decreasing trend.',
-    'Remarkably, in the mild group, the amount of these cytokines (IL-1β and IL-1Ra) increased at the day 1–7, reached a peak at the day 8–14, and diminished after >14 days.',
-    # 'TNF-α levels elevated at the day 1–7 and 8–14 times intervals, then decreased at the day>14.',
-    # 'We detected that IL-8 was significantly elevated in all COVID-19 subgroups at three studied time intervals compared to the control group.',
-    # 'We found that although there was no difference in the production of IFN-β in all patients with COVID-19 compared to the control group at the day 1–7, IFN-β levels were higher in moderate, severe, and critical subjects at the day 8–14 or >14 compared to the healthy control and themselves at the day 1–7.',
-    # 'IL-12 reached its maximum level at the day>14 in mild patients.',
-    # 'It is reported that in recovered cases, within a few hrs of virus entry, both α and β IFNs (at first day of infection) are rapidly produced and an antiviral state is soon reached [23]',
-    # 'By day 14, we detected no viral reads for SARS-CoV-2, and the observed cytokines returned to baseline, with the exception of IL-6 and IL1RN or IL1RA, which remained elevated, similar to results observed with MERS (Pascal et al., 2015; Figures 3B and 3C).'
-] # this can also be replaced with input from the csv file
+# Load large text sections in from csv files
+model_names = pandas.read_csv(model_names_csv, header=None)
+inputs_and_refs = pandas.read_csv(inputs_and_refs_csv) # Make sure to include a header
 
-# for now, let's assume that we use one prompt to go directly from NL to STL
-# we can also try to extend this by doing a NL to literal translation, then literal to STL
-# not only might that approach have the benefit of being more robust since it decomposes the semantic
-# and the syntactic translation, but it also has the benefit of filtering out sentences that
-# aren't any good for STL anyways.
+for index, model_name in model_names.iterrows():
+    # Create a file which contains all the relevant output related to this model
+    # Augment the input file with correct number of stl and literal rows
+    for i in range(num_translations_per_input_sentence):
+        translations = inputs_and_refs.assign(f'STL-{i}': None, f'Literal-{i}': None)
+
+    # Create the LLM for this model
+    llm = LLM(model=model_name,
+        dtype=model_dtype,
+        max_model_len=max_model_len,
+        gpu_memory_utilization=gpu_memory_utilization)
+
 core_prompt_1 = """Translate the following natural language statement into a signal temporal logic (STL) statement: """
 core_prompt_2 = """          
             It is extremely important to follow these rules:
@@ -74,13 +70,14 @@ core_prompt_2 = """
 
             Your STL response must conform to these rules:
             [BEGIN RULES]
-            u : s"(t) < "c | s"(t) > "c | "abs("s"(t) - "c") < "e | d_s"(t) > "d_c | d_s"(t) < "d_c | "abs("d_s"(t) - "d_c") < "e
+            u : s(t) < c | s(t) > c | abs(s(t) - c) < e | d_s(t) > d_c | d_s(t) < d_c | abs(d_s(t) - d_c) < e
             e : "e" | [0-9]+
-            c : "s("t_a")" | "c(low)" | "c(mid)" | "c(high)"
-            d_c : "0" | "d_c(low)" | "d_c(high)" | "-d_c(low)" | "-d_c(high)"
-            phi : u | phi" ^ "phi | phi" → "phi
-            psi : "F["t_a","t_a"]G("phi")" | "G["t_a","t_a"]("phi")" | "F["t_a","t_a"]("phi")"
-            omega : phi | psi | omega" ^ "omega
+            c : s(t_a) | "c(low)" | "c(mid)" | "c(high)"
+            d_c : 0 | "d_c(low)" | "d_c(high)" | "-d_c(low)" | "-d_c(high)"
+            phi : u | u ^ phi
+            psi : F[t_a,t_a]G(nu) | G[t_a,t_a](nu) | F[t_a,t_a](nu)
+            nu : u | u ^ phi | u → u | psi → psi | psi → u | u → psi
+            omega : nu | psi | omega ^ omega
             t_a : [0-9]+ | "T"
             s : [a-zA-z0-9]+
             d_s : "d_"[a-zA-z0-9]+
