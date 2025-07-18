@@ -44,12 +44,10 @@ embedding_model_name = 'all-MiniLM-L6-v2'
 # Input paths
 model_names_csv = '../csv_inputs/stl_generation_model_names.csv'
 sentences_csv = '../csv_inputs/stl_generation_sentences.csv'
-core_prompt_csv = '../csv_inputs/stl_generation_core_prompt.csv'
 
 # Load from input files
 model_names = pandas.read_csv(model_names_csv, header=None)
 sentences = pandas.read_csv(sentences_csv) # Make sure to include a header
-core_prompt = pandas.read_csv(core_prompt_csv, header=None)
 
 # Additional setup
 parser = Lark(grammar)
@@ -114,6 +112,34 @@ grammar = """
     %import common.WS
     %ignore WS
 """
+core_prompt_1 = """Translate the following natural language statement into a signal temporal logic (STL) statement: """
+core_prompt_2 = """          
+            It is extremely important to follow these rules:
+            Rule: The time unit is days.
+            Rule: You must accept feedback on your previous responses and amend them if asked to.
+            Rule: Format your response in JSON. Include your thinking, the input statement, your STL response, and an explanation of how the input statement and STL output are relatedi.
+
+            Your STL response must conform to these rules:
+            [BEGIN RULES]
+            u : s"(t) < "c | s"(t) > "c | "abs("s"(t) - "c") < "e | d_s"(t) > "d_c | d_s"(t) < "d_c | "abs("d_s"(t) - "d_c") < "e
+            e : "e" | [0-9]+
+            c : "s("t_a")" | "c(low)" | "c(mid)" | "c(high)"
+            d_c : "0" | "d_c(low)" | "d_c(high)" | "-d_c(low)" | "-d_c(high)"
+            phi : u | phi" ^ "phi | phi" → "phi
+            psi : "F["t_a","t_a"]G("phi")" | "G["t_a","t_a"]("phi")" | "F["t_a","t_a"]("phi")"
+            omega : phi | psi | omega" ^ "omega
+            t_a : [0-9]+ | "T"
+            s : [a-zA-z0-9]+
+            d_s : "d_"[a-zA-z0-9]+
+            [END RULES]
+            
+            The d_s terms represent the derivative of a signal, so you may find those terms helpful for describing how signals increase or decrease. For general statements describing the levels of some species as “high” or “low” for example, you may find comparison statements helpful.
+            
+            Here are 2 reference examples of natural language to STL translations, but don't copy them. Instead, make sure the STL statements you produce are specific to the input statement that you are currently being asked to translate:
+
+            {example input: "From 4 to 8 days after infection, IL-6 levels were significantly elevated until day 9, at which point they steadily decreased.", output: "G[4,8] (IL6(t) > c(high)) ^ G[8,T] (d_IL6(t) < 0)"}
+            {example input: "Once TNF levels stabilized at low levels, within 2 days the concentration of IL-12 became persistently higher compared to its original concentration.", output: "abs(TNF(t) - c(low)) < e → F[0,2]G( IL12(t) > IL12(0) )" }
+"""
 
 for index, model_name in model_names.iterrows():
     # Create a file which contains all the relevant output related to this model
@@ -133,7 +159,7 @@ for index, model_name in model_names.iterrows():
 
     # do translations of each sentence
     for sentence_index, sentence in sentences['input sentence'].iterrows():
-        prompt = core_prompt[0] + sentence + core_prompt[1]
+        prompt = core_prompt_1 + sentence + core_prompt_2
 
         # accumulate syntactically valid responses
         syntactically_correct_responses = []
