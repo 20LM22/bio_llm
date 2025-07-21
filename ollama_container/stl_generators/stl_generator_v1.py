@@ -92,7 +92,7 @@ grammar = r"""
     ?nu : u | u_implies_u | u_and_phi
     
     u_implies_u : u "→" u | psi "→" psi | psi "→" u | u "→" psi
-    u_and_phi : u "^" phi
+    u_and_phi : u "^" phi | u "∧" phi
         
     ?psi : temp_op_fg | temp_op_g | temp_op_f
     
