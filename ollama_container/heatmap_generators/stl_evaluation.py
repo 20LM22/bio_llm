@@ -4,6 +4,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import pickle, sys
 import pandas
+from thefuzz import fuzz
 
 translations = []
 try:
@@ -93,34 +94,68 @@ print(total_sentences_success_rate_table)
 
 # Produce similarity heatmaps
 # remove all columns from the table that don't correspond to actual translations
+nl_sentence_embeddings = np.array(translations_sim['input sentence'])
+literal_sentence_embeddings = translations.filter(regex='Literal-').copy().to_numpy().flatten()
+nl_sentences = np.array(translations['input sentence'][:10])
+literal_sentences = translations.filter(regex='Literal-').copy()
 
+# still probably need a way to filter out bad, non-translated stuff
+for col in literal_sentences.columns:
+    literal_sentences[col] = translations['input sentence'][:10] + col
+  
+# compute similarity matrix
+sim_matrix = cosine_similarity(np.array(literal_sentences), np.array(nl_sentences))
 
-for _id, file in enumerate(filenames):
+# export heatmap
+plt.figure(figsize=(10,10))
+ax = sns.heatmap(sim_matrix, annot=True, vmin=0, vmax=1)
+plt.title(f'Produced Literal STL vs. Original NL Cosine Similarity\nModel:{sys.argv[4]}')
+ax.set_yticklabels(nl_statements, rotation=0)
+ax.set_xticklabels(literal_statements, rotation=45)
+plt.savefig(f'../images/produced_literal_vs_original_nl_{sys.argv[4]}.png')
 
-  sim_arr = []
-  nl_statements = [] # labels on the y-axis
-  stl_statements = [] # labels on the x-axis
-  A = [] # array of all stl embeddings 
-  B = [] # array of all nl embeddings
+# compute similarity for the stl against the reference stl using fuzzy matching
+stl_ref_statements = np.array(translations['STL'][:10]) # need to fix these names
+stl_produced_statements = ?? # need to fix these names
 
-  for _id, (key, value) in enumerate(results_dict.items()):
-    # record the nl statement
-    nl_statement = key[:10]
-    num_stl = len(value['stl'])
-    for i in range(num_stl): # for each STL statement
-      # add the nl, stl statements for the axis labels
-      nl_statements.append(f"{nl_statement}-{i+1}")
-      stl_statements.append(f"{value['stl'][i][0][:10]}")
-      A.append(value['stl'][i][1]) # stl embedding
-      B.append(value['embedding']) # nl embedding
+for col in stl_produced_statements.columns:
+    stl_produced_statements[col] = translations['input sentence'][:10] + col
 
-  # compute similarity matrix
-  sim_matrix = cosine_similarity(np.array(A), np.array(B))
+reference_stl = translations['STL']
+produced_stl_subset = translations.filter(regex='STL-').copy().to_numpy().flatten()
+fuzz_matrix = np.array(translations.shape[0], produced_stl_subset.shape[0])
+for i in range(fuzz_matrix.shape[0]):
+    for j in range(fuzz_matrix.shape[1]):
+        fuzz_matrix[i][j] = fuzz.ratio(produced_stl_subset[j], reference_stl[i])
 
-  # export heatmap
-  plt.figure(figsize=(10,10))
-  ax = sns.heatmap(sim_matrix, annot=True, vmin=0, vmax=1)
-  plt.title(f'NL vs. STL Cosine Similarities\nModel:{file}')
-  ax.set_yticklabels(nl_statements, rotation=0)
-  ax.set_xticklabels(stl_statements, rotation=45)
-  plt.savefig(f'../images/{file[14:-4]}_images/ambiguous_mod_nl_vs_stl_{file[14:-4]}.png')
+# heatmap
+plt.figure(figsize=(10,10))
+ax = sns.heatmap(fuzz_matrix, annot=True, vmin=0, vmax=1)
+plt.title(f'Produced STL vs. Reference STL Similarity\nModel:{sys.argv[4]}'
+ax.set_yticklabels(stl_ref_statements, rotation=0)
+ax.set_xticklabels(stl_produced_statements, rotation=45)
+plt.savefig(f'../images/produced_vs_ref_stl_{sys.argv[4]}.png')
+
+"""
+# final sentence comparison
+final_stl = final_sentence['stl']
+final_literal = final_sentence['literal']
+corresponding_nl = translations[final_sentence['sentence_index'], 'input sentence']
+corresponding_literal = translations[final_sentence['sentence_index'], 'Literal']
+corresponding_stl = translation[final_sentence['sentence_index'], 'STL']
+# compute sim between final literal and corresponding ground truth literal
+literal_sim = cosine_similarity(np.array(), np.array())
+# compute sim between final STL and corresponding ground truth STL
+
+final_dict = {
+    'produced stl': final_stl,
+    'produced literal': final_literal,
+    'original nl': corresponding_nl,
+    'reference literal': corresponding_literal,
+    'reference stl': corresponding_stl,
+    'ref. literal vs. produced literal': literal_sim,
+    'ref. stl vs. produced stl': stl_sim
+}
+print(final_dict)
+"""
+
