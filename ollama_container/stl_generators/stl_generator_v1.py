@@ -14,6 +14,7 @@ from vllm.sampling_params import GuidedDecodingParams
 from pydantic import BaseModel
 import json
 import csv
+import sys
 
 # Set up the output formatting for STL generation
 class STLResponse(BaseModel):
@@ -31,28 +32,27 @@ sampling_params = SamplingParams(
         top_k=40, # CAN CHANGE
         min_p=0, # CAN CHANGE
         presence_penalty=1.5, # CAN CHANGE
-        max_tokens=1024, # CAN CHANGE
+        max_tokens=int(sys.argv[2]), # 1024, # CAN CHANGE
         guided_decoding=guided_decoding_params)
 
 # IMPORTANT: Evaluation parameters to set
 model_dtype='half'
-max_model_len=24000
-gpu_memory_utilization=0.8
-num_translations_per_input_sentence = 6
+max_model_len=int(sys.argv[3]) # 6000 # works well with deepseek 24000
+gpu_memory_utilization=float(sys.argv[4]) # 0.8
+num_translations_per_input_sentence = 3
 embedding_model_name = 'all-MiniLM-L6-v2'
 
 # Input paths
-model_names_csv = '../csv_inputs/stl_generation_model_names.csv'
+# model_names_csv = '../csv_inputs/stl_generation_model_names.csv'
 sentences_csv = '../csv_inputs/stl_generation_sentences.csv'
 
 # Load from input files
-model_names = pandas.read_csv(model_names_csv, header=None)
+model_name = sys.argv[1]
 sentences = pandas.read_csv(sentences_csv) # Make sure to include a header
 
 # Additional setup
-parser = Lark(grammar)
 embedding_model = SentenceTransformer(embedding_model_name, device='cpu')
-grammar = """
+grammar = r"""
     ?start: omega
     ?u : gt
         | lt
@@ -106,18 +106,20 @@ grammar = """
         
     t_a : /[0-9]+/
         | /T/
-    s : /[a-zA-Z0-9]+/
-    d_s : /d_[a-zA-Z0-9]+/
+    s : /[\w]+/
+    d_s : /d_[\w]+/
 
     %import common.WS
     %ignore WS
 """
+parser = Lark(grammar)
+
 core_prompt_1 = """Translate the following natural language statement into a signal temporal logic (STL) statement: """
 core_prompt_2 = """          
             It is extremely important to follow these rules:
             Rule: The time unit is days.
             Rule: You must accept feedback on your previous responses and amend them if asked to.
-            Rule: Format your response in JSON. Include your thinking, the input statement, your STL response, and an explanation of how the input statement and STL output are relatedi.
+            Rule: Format your response in JSON. Include your thinking, the input statement, your STL response, and an explanation of how the input statement and STL output are related.
 
             Your STL response must conform to these rules:
             [BEGIN RULES]
@@ -141,110 +143,125 @@ core_prompt_2 = """
             {example input: "Once TNF levels stabilized at low levels, within 2 days the concentration of IL-12 became persistently higher compared to its original concentration.", output: "abs(TNF(t) - c(low)) < e → F[0,2]G( IL12(t) > IL12(0) )" }
 """
 
-for index, model_name in model_names.iterrows():
-    # Create a file which contains all the relevant output related to this model
-    # Augment the input file with correct number of stl and literal rows
-    translations = sentences.copy()
+# Create a file which contains all the relevant output related to this model
+# Augment the input file with correct number of stl and literal rows
+translations = sentences.copy()
+for i in range(num_translations_per_input_sentence):
+    label1 = 'STL-'+ str(i)
+    label2 = 'Literal-' + str(i)
+    translations = translations.assign(label1=None, label2=None)
+
+# Create the LLM for this model
+llm = LLM(model=model_name,
+    dtype=model_dtype,
+    max_model_len=max_model_len,
+    gpu_memory_utilization=gpu_memory_utilization)
+
+# storage for output sentences
+final_sentences = []
+
+# do translations of each sentence
+for sentence_index, sentence in sentences['input statement'].items():
+    prompt = core_prompt_1 + sentence + core_prompt_2
+
+    # accumulate syntactically valid responses
+    syntactically_correct_responses = []
+
+    # do num_translations_per_input_sentence-many translations for this one input sentence
     for i in range(num_translations_per_input_sentence):
-        translations = translations.assign(f'STL-{i}': None, f'Literal-{i}': None)
+        response = llm.chat([{"role": "user", "content": prompt}], sampling_params)[0].outputs[0].text
 
-    # Create the LLM for this model
-    llm = LLM(model=model_name,
-        dtype=model_dtype,
-        max_model_len=max_model_len,
-        gpu_memory_utilization=gpu_memory_utilization)
+        print(f"input: {sentence}")
+        print(f"output: {response}\n")
 
-    # storage for output sentences
-    final_sentences = []
-
-    # do translations of each sentence
-    for sentence_index, sentence in sentences['input sentence'].iterrows():
-        prompt = core_prompt_1 + sentence + core_prompt_2
-
-        # accumulate syntactically valid responses
-        syntactically_correct_responses = []
-
-        # do num_translations_per_input_sentence-many translations for this one input sentence
-        for i in range(num_translations_per_input_sentence):
-            response = llm.chat([{"role": "user", "content": prompt}], sampling_params)[0].outputs[0].text
+        # try to extract the STL statement, if unsuccessful, put a None into the translations dataframe entry
+        try:
+            output_dict = json.loads(response)
+            print("output_dict success")
+            print(output_dict)
+            extracted_response = output_dict["output_STL"]
+            label1 = 'STL-'+ str(i)
+            translations[sentence_index, label1] = extracted_response
+        except Exception as e:
+            label1 = 'STL-'+ str(i)
+            translations[sentence_index, label1] = "STL could not be extracted"
+            continue
             
-            # try to extract the STL statement, if unsuccessful, put a None into the translations dataframe entry
+        # try to parse the STL statement, if unsuccessful, put a None into the translations dataframe entry
+        try:
+            parsed_STL = parser.parse(extracted_response) # not used in stl2literal but to check syntax
+            syntactically_correct_responses.append((extracted_response, sentence_index))
+            label1 = 'STL-'+ str(i)
+            translations[sentence_index, label1] = extracted_response
+        except Exception as e:
+            label1 = 'STL-'+ str(i)
+            if translations[sentence_index, label1] != 'STL could not be extracted':
+                translations[sentence_index, label1] = "STL could not be parsed"
+            syntactically_correct_responses.append(("STL could not be parsed", sentence_index))
+            continue
+
+        print(translations[sentence_index, label1])
+
+    # at this point syntactically_correct_responses should be filled with responses and STL columns of 'translations' should also be full
+    literal_translations = [] 
+    for index, stl in enumerate(syntactically_correct_responses):
+        if stl[0] != 'STL could not be extracted' and stl[0] != 'STL could not be parsed':
             try:
-                output_dict = json.loads(response)
-                extracted_response = output_dict["output_STL"]
-                translations[sentence_index, f'STL-{i}'] = extracted_response
+                label1 = 'Literal-'+ str(i)
+                literal_translation = STL2literal(stl[0], grammar)
+                translations[sentence_index, label1] = literal_translation
+                literal_translations.append(literal_translation)
             except Exception as e:
-                translations[sentence_index, f'STL-{i}'] = "STL could not be extracted"
-                continue
-            
-            # try to parse the STL statement, if unsuccessful, put a None into the translations dataframe entry
-            try:
-                parsed_STL = parser.parse(extracted_response)
-                syntactically_correct_responses.append(parsed_STL)
-                translations[sentence_index, f'STL-{i}'] = parsed_STL
-            except Exception as e:
-                syntactically_correct_responses.append("STL could not be parsed")
-                translations[sentence_index, f'STL-{i}'] = "STL could not be parsed"
-                continue
+                label1 = 'Literal-'+ str(i)
+                translations[sentence_index, label1] = "STL to literal failed"
+        else:
+            label1 = 'Literal-'+ str(i)
+            translations[sentence_index, label1] = "Literal could not be generated"
 
-        # at this point syntactically_correct_responses should be filled with responses and STL columns of 'translations' should also be full
-        literal_translations = [] 
-        for index, stl in enumerate(syntactically_correct_responses):
-            if stl == "STL could not be parsed":
-                translations[sentence_index, f'Literal-{i}'] = "Literal could not be generated"
-            else:
-                try:
-                    literal_translation = STL2literal(stl, grammar)
-                    translations[sentence_index, f'Literal-{i}'] = literal_translation
-                    literal_translations.append(literal_translation)
-                except Exception as e:
-                    translations[sentence_index, f'Literal-{i}'] = "STL to literal translation failed"
-
-        # these literal translations need to be evaluated for semantic integrity
-        # obtain embeddings of the original sentence and all of the literal translations
-        literal_embeddings = []
-        nl_embedding = np.array(embedding_model.encode(sentence, normalize_embeddings=True))
-        for i, literal in enumerate(literal_translations):
-            embedding_literal = np.array(embedding_model.encode(literal_translations[i], normalize_embeddings=True))
-            literal_embeddings.append(embedding_literal)
+    # these literal translations need to be evaluated for semantic integrity
+    # obtain embeddings of the original sentence and all of the literal translations
+    literal_embeddings = []
+    nl_embedding = np.array(embedding_model.encode(sentence, normalize_embeddings=True))
+    for i, literal in enumerate(literal_translations):
+        embedding_literal = np.array(embedding_model.encode(literal_translations[i], normalize_embeddings=True))
+        literal_embeddings.append(embedding_literal)
         
-        # now compare the embeddings using cosine similarity, take max of the produced array
-        if len(literal_embeddings) != 0:
-            sim_matrix = cosine_similarity(np.array(literal_embeddings), np.array(nl_embedding))
-            best_stl_id = np.argmax(sim_matrix)
+    # now compare the embeddings using cosine similarity, take max of the produced array
+    if len(literal_embeddings) != 0:
+        sim_matrix = cosine_similarity(np.array(literal_embeddings), np.array(nl_embedding))
+        best_stl_id = np.argmax(sim_matrix)
 
-            # only accept what is above similarity threshold
-            # the final output is in the form [['nl', 'stl'],['nl', 'stl']]
-            if sim_matrix[best_stl_id] >= 0.7: # semantic_threshold:
-                final_sentences.append({sentence: syntactically_correct_rseponses[best_stl_id]})
-        
-    with open(f"final_sentences_{model_name}.txt", "w") as f:
-        f.write(repr(final_sentences)) 
+        best_stl = syntactically_correct_responses[best_stl_id][0]
+        best_input_sentence_index = syntactically_correct_response[best_stl_id][1]
 
-    # writing to pkl
-    try:
-        with open(f'../pkl/inputs_refs_translations_{model_name}', 'wb') as results:
-            pickle.dump(translations, results)
-    except Exception as e:
-        print(e)
-
-    # get embedding of everything in table so that similarities can be computed
-    embeddings_translations = embedding_model.encode(translations.values.flatten().tolist(), normalize_embeddings=True)
-    embeddings_translations = np.array(embeddings).reshape(translations.shape + (-1,))
-
-    # writing to pkl
-    try:
-        with open(f'../pkl/inputs_refs_translations_embeddings_{model_name}', 'wb') as results:
-            pickle.dump(embeddings_translations, results)
-    except Exception as e:
-        print(e)
+        # only accept what is above similarity threshold
+        # the final output is in the form [['nl', 'stl'],['nl', 'stl']]
+        # if sim_matrix[best_stl_id] >= 0.7: # semantic_threshold:
+        final_sentences.append({stl: best_stl, sentence_index: best_input_sentence_index})
     
+model_name = model_name.split('/')[0]
+try:
+    with open(f"../pkl/final_sentence_{model_name}", "wb") as f:
+        pickle.dump(final_sentences, f) # only one sentence though
+except Exception as e:
+    print(e)
 
+# writing to pkl
+try:
+    with open(f'../pkl/inputs_refs_translations_{model_name}', 'wb') as results:
+        pickle.dump(translations, results)
+except Exception as e:
+    print(e)
 
+# get embedding of everything in table so that similarities can be computed
+translations = translations.astype(str)
+data = translations.values.flatten().tolist()
+embeddings_translations = embedding_model.encode(data, normalize_embeddings=True)
+embeddings_translations = np.array(embeddings_translations).reshape(translations.shape + (-1,))
 
-
-
-
-
-
-
+# writing to pkl
+try:
+    with open(f'../pkl/inputs_refs_translations_embeddings_{model_name}', 'wb') as results:
+        pickle.dump(embeddings_translations, results)
+except Exception as e:
+    print(e)
