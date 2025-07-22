@@ -114,7 +114,7 @@ plt.tight_layout()
 plt.savefig(f'../images/produced_literal_vs_original_nl_test.png')
 
 # compute similarity for the stl against the reference stl using fuzzy matching
-stl_ref_statements = np.array(translations['reference STL'].str[:20]) # need to fix these names
+stl_ref_statements = np.array(translations['reference STL']) # need to fix these names
 stl_produced_statements = translations.filter(regex='STL-').copy()
 for col in stl_produced_statements.columns:
     stl_produced_statements[col] = np.where((stl_produced_statements[col]=='STL could not be extracted') | (stl_produced_statements[col]=='STL could not be parsed'), stl_produced_statements[col], "STL-'" + translations['reference STL'].str[:10] + "'-A-" + str(col.split('-')[1]))
@@ -126,9 +126,9 @@ produced_stl_subset = [x for x in translations.filter(regex='STL-').copy().to_nu
 fuzz_matrix = np.zeros((reference_stl.shape[0], len(produced_stl_subset)))
 
 print("--------------------------------------------------------------------------------------------")
-print(f'stl ref statements: {reference_stl}')
+print(f'stl ref statements: {stl_produced_clean_labels}')
 print("--------------------------------------------------------------------------------------------")
-print(reference_stl.shape)
+print(len(stl_produced_clean_labels))
 print("--------------------------------------------------------------------------------------------")
 print(f'stl produced statements: {produced_stl_subset}')
 print("--------------------------------------------------------------------------------------------")
@@ -149,9 +149,9 @@ fuzz_matrix = fuzz_matrix/100
 plt.figure(figsize=(30,10))
 ax = sns.heatmap(fuzz_matrix, annot=True, vmin=0, vmax=1)
 plt.title(f'Produced STL vs. Reference STL Similarity\nModel:Test')
-ax.set_xticks(range(len(stl_produced_statements)))
+ax.set_xticks(range(len(stl_produced_clean_labels)))
 ax.set_yticklabels(stl_ref_statements, rotation=0)
-ax.set_xticklabels(stl_produced_statements, rotation=45)
+ax.set_xticklabels(stl_produced_clean_labels, rotation=45)
 plt.tight_layout()
 plt.savefig(f'../images/produced_vs_ref_stl_test.png')
 
