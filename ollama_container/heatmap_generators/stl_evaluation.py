@@ -165,9 +165,6 @@ plt.savefig(f'../images/produced_vs_ref_stl_test.png')
 sentences = translations['input statement'].unique()
 num_sentences = len(sentences)
 
-# Export {num_sentences}-many plots
-fig, axs = plt.subplots(num_sentences, 1, figsize=(20,100))
-
 # These aggregate the data and labels for all the plots
 stl_matrix_arr = []
 stl_produced_labels_arr = []
@@ -195,20 +192,35 @@ for _id, sentence in enumerate(sentences):
                 stl_produced_labels.append(str(index) + '-A' + str(stl_produced_cols.columns[j].split('-')[1]))
     stl_produced_clean_labels = [x for x in stl_produced_labels if x != 'STL could not be extracted' and x != 'STL could not be parsed']
 
+    if len(stl_produced_clean_labels):
+        continue
+
     # Produce the fuzz data matrix
     
     # First set up the matrix inputs
-    reference_stl = subset['reference STL']
+    reference_stl = subset['reference STL'].reset_index(drop=True)
     produced_stl_subset = [x for x in subset.filter(regex='STL-').copy().to_numpy().flatten() if x != 'STL could not be extracted' and x != 'STL could not be parsed']
     fuzz_matrix = np.zeros((reference_stl.shape[0], len(produced_stl_subset)))
+
+    for i in range(fuzz_matrix.shape[0]):
+        for j in range(fuzz_matrix.shape[1]):
+            fuzz_matrix[i][j] = fuzz.ratio(produced_stl_subset[j], reference_stl[i])
+    fuzz_matrix = fuzz_matrix/100
 
     # Add labels and matrix to overall arrays
     stl_matrix_arr.append(fuzz_matrix)
     stl_produced_labels_arr.append(stl_produced_clean_labels)
     stl_ref_labels_arr.append(stl_ref_labels)
 
+print("lskjdkljlkjljl")
+print(len(stl_matrix_arr))
+
+# Export {stl_matrix_arr}-many plots
+fig, axs = plt.subplots(len(stl_matrix_arr), 1, figsize=(20,80))
+axs = np.atleast_1d(axs)
+
 # Print all the heatmaps
-for _id, ax in enumerate(axs.flat):
+for _id, ax in enumerate(axs):
     sns.heatmap(stl_matrix_arr[_id], ax=ax, annot=True, vmin=0, vmax=1)
     ax.set_title(f'Produced STL vs. Reference STL Similarity\nNL Sentence:\n{sentences[_id]}\nModel:Insert model name')
     ax.set_xticks(range(len(stl_produced_labels_arr[_id])))
