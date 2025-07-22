@@ -161,6 +161,7 @@ for i in range(fuzz_matrix.shape[0]):
     for j in range(fuzz_matrix.shape[1]):
         fuzz_matrix[i][j] = fuzz.ratio(produced_stl_subset[j], reference_stl[i])
 
+fuzz_matrix = fuzz_matrix/100
 
 # heatmap
 plt.figure(figsize=(30,10))
