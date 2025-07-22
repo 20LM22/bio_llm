@@ -222,6 +222,10 @@ for sentence_index, sentence in sentences['input statement'].items():
             try:
                 label1 = 'Literal-'+ str(stl[2])
                 literal_translation = STL2literal(stl[0], grammar)
+                print('----------------------------------------------------------------------------------------------------------------')
+                print(f'literal translation: {literal_translation}\n')
+                print('----------------------------------------------------------------------------------------------------------------')
+
                 translations.at[sentence_index, label1] = literal_translation
                 literal_translations.append(literal_translation)
             except Exception as e:

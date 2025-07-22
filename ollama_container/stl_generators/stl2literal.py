@@ -14,7 +14,7 @@ class Test(Interpreter):
     G_flag = False
     FG_flag = False
     
-    def clear(self):
+    def __init__(self):
         self.sentence = []
         self.F_flag = False
         self.G_flag = False

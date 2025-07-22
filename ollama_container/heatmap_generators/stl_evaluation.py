@@ -70,7 +70,7 @@ total_sentences_success_rate_table['STL Parsing Success Rate'] = np.where(num_to
 total_sentences_success_rate_table['Literal Translation Success Rate'] = np.where(num_total_passed_parsing==0, 0, 1-(total_sentences_success_rate_table['Literal Translation Success Rate'] / num_total_passed_parsing))
 
 translations.to_csv('mmm.csv')
-i
+
 stats = pandas.concat([per_sentence_success_rate_table, total_sentences_success_rate_table], ignore_index=True)
 print(stats)
 stats.to_csv('stats.csv', index=False)
@@ -87,6 +87,10 @@ stats.to_csv('stats.csv', index=False)
 # remove all columns from the table that don't correspond to actual translations
 nl_sentence_embeddings = embedding_model.encode(translations['input statement'], normalize_embeddings=True)
 literal_sentence_embeddings = embedding_model.encode(translations.filter(regex='Literal-').copy().to_numpy().flatten(), normalize_embeddings=True)
+test = translations.filter(regex='Literal-').copy().to_numpy().flatten()
+for i in test:
+    print(i)
+    print('\n')
 
 nl_sentences = np.array(translations['input statement'].str[:10])
 
