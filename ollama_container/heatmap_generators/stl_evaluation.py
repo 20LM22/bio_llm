@@ -216,7 +216,7 @@ print("lskjdkljlkjljl")
 print(len(stl_matrix_arr))
 
 # Export {stl_matrix_arr}-many plots
-fig, axs = plt.subplots(len(stl_matrix_arr), 1, figsize=(20,80))
+fig, axs = plt.subplots(len(stl_matrix_arr), 1, figsize=(20,60))
 axs = np.atleast_1d(axs)
 
 # Print all the heatmaps
