@@ -166,7 +166,7 @@ sentences = translations['input statement'].unique()
 num_sentences = len(sentences)
 
 # Export {num_sentences}-many plots
-fig, axs = plt.subplots(num_sentences, 1, figsize=(100,10))
+fig, axs = plt.subplots(num_sentences, 1, figsize=(20,100))
 
 # These aggregate the data and labels for all the plots
 stl_matrix_arr = []
