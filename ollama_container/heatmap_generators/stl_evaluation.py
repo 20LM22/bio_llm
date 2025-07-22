@@ -95,15 +95,23 @@ literal_sentence_embeddings = embedding_model.encode(translations.filter(regex='
 nl_sentences = np.array(translations['input statement'].str[:10])
 
 literal_sentences = translations.filter(regex='Literal-').copy()
-for col in literal_sentences.columns:
-    literal_sentences[col] = np.where(literal_sentences[col]==None, 0, 1)
+test_sentences = literal_sentences.copy()
 print("--------------------------------------------------------------------------------------------")
-for l in literal_sentences:
+print("test sentences BEFORE filtering")
+for l in test_sentences['Literal-0']:
+    print(f'{l}\n')
+print("--------------------------------------------------------------------------------------------")
+
+for col in test_sentences.columns:
+    test_sentences[col] = np.where(pandas.isna(test_sentences[col]), 0, 1)
+print("--------------------------------------------------------------------------------------------")
+print("test sentences after filtering")
+for l in test_sentences['Literal-0']:
     print(f'{l}\n')
 print("--------------------------------------------------------------------------------------------")
 
 for col in literal_sentences.columns:
-    literal_sentences[col] = np.where((literal_sentences[col]==None) | (literal_sentences[col]=='Literal could not be generated') | (literal_sentences[col]=='STL to literal failed'), literal_sentences[col], "Sentence-" + translations['input statement'].str[:20] + "-Attempt-" + str(col.split('-')[1]))
+    literal_sentences[col] = np.where((pandas.isna(literal_sentences[col])) | (literal_sentences[col]=='Literal could not be generated') | (literal_sentences[col]=='STL to literal failed'), literal_sentences[col], "Sentence-" + translations['input statement'].str[:20] + "-Attempt-" + str(col.split('-')[1]))
 
 literal_sentences = literal_sentences.to_numpy().flatten()
 print("--------------------------------------------------------------------------------------------")
