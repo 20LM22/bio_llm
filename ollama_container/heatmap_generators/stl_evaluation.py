@@ -76,89 +76,35 @@ stats = pandas.concat([per_sentence_success_rate_table, total_sentences_success_
 print(stats)
 stats.to_csv('stats.csv', index=False)
 
-# can also pickle results later
-
-
 # Produce similarity heatmaps
-#translations = translations.astype(str)
-#data = translations.values.flatten().tolist()
-#embeddings_translations = embedding_model.encode(data, normalize_embeddings=True)
-#embeddings_translations = np.array(embeddings_translations).reshape(translations.shape + (-1,))
 
 # remove all columns from the table that don't correspond to actual translations
 nl_sentence_embeddings = embedding_model.encode(translations['input statement'], normalize_embeddings=True)
 literal_sentence_embeddings = embedding_model.encode(translations.filter(regex='Literal-').copy().to_numpy().flatten(), normalize_embeddings=True)
-#test = translations.filter(regex='Literal-').copy().to_numpy().flatten()
-#for i in test:
-#    print(i)
-#    print('\n')
 
 nl_sentences = np.array(translations['input statement'].str[:10])
 
 literal_sentences = translations.filter(regex='Literal-').copy()
-test_sentences = literal_sentences.copy()
-print("--------------------------------------------------------------------------------------------")
-print("test sentences BEFORE filtering")
-for l in test_sentences['Literal-0']:
-    print(f'{l}\n')
-print("--------------------------------------------------------------------------------------------")
-
-for col in test_sentences.columns:
-    test_sentences[col] = np.where(pandas.isna(test_sentences[col]), 0, 1)
-print("--------------------------------------------------------------------------------------------")
-print("test sentences after filtering")
-for l in test_sentences['Literal-0']:
-    print(f'{l}\n')
-print("--------------------------------------------------------------------------------------------")
-
 for col in literal_sentences.columns:
     literal_sentences[col] = np.where((pandas.isna(literal_sentences[col])) | (literal_sentences[col]=='Literal could not be generated') | (literal_sentences[col]=='STL to literal failed'), literal_sentences[col], "S-" + translations['input statement'].str[:10] + "-A-" + str(col.split('-')[1]))
-
 literal_sentences = literal_sentences.to_numpy().flatten()
-print("--------------------------------------------------------------------------------------------")
-for l in literal_sentences:
-    print(f'{l}\n')
-print("--------------------------------------------------------------------------------------------")
 
 indices_to_remove = []
 for _id,l in enumerate(literal_sentences):
     if l=='Literal could not be generated' or l=='STL to literal failed' or l==None:
         indices_to_remove.append(_id)
-
 literal_sentences_clean = [x for x in literal_sentences if x != "Literal could not be generated" and x != 'STL to literal failed' and x != None ]
 literal_sentence_embeddings_clean = [x for _id, x in enumerate(literal_sentence_embeddings) if _id not in indices_to_remove ]
-print("--------------------------------------------------------------------------------------------")
-for l in literal_sentences_clean:
-    print(f'{l}\n')
-print("--------------------------------------------------------------------------------------------")
 
 # compute similarity matrix
 sim_matrix = cosine_similarity(np.array(nl_sentence_embeddings), np.array(literal_sentence_embeddings_clean))
-
-#print("here are the literal sentence labels:")
-#print(literal_sentences.shape)
-#print("here is the size of the sim matrix:")
-#print(sim_matrix.shape)
-"""
-print("--------------------------------------------------------------------------------------------")
-print(f'literal_sentences.shape = {literal_sentences.shape}')
-print("--------------------------------------------------------------------------------------------")
-print(f'literal_sentence_embeddings.shape = {literal_sentence_embeddings.shape}')
-print("--------------------------------------------------------------------------------------------")
-print(f'nl_sentences.shape = {nl_sentences.shape}')
-print("--------------------------------------------------------------------------------------------")
-print(f'nl_sentence_embeddings.shape = {nl_sentence_embeddings.shape}')
-print("--------------------------------------------------------------------------------------------")
-print(f'sim_matrix.shape = {sim_matrix.shape}')
-print("--------------------------------------------------------------------------------------------")
-"""
 
 # export heatmap
 plt.figure(figsize=(30,10))
 ax = sns.heatmap(sim_matrix, annot=True, vmin=0, vmax=1)
 
 # NEW BORDER AROUND HEATMAP
-ax.add_patch(Rectangle((3,4), 1,1,fill=False, edgecolor='blue', lw=3))
+# ax.add_patch(Rectangle((3,4), 1,1,fill=False, edgecolor='blue', lw=3))
 
 plt.title(f'Produced Literal STL vs. Original NL Cosine Similarity\nModel:Put model here')
 ax.set_xticks(range(len(literal_sentences_clean)))
@@ -167,30 +113,28 @@ ax.set_xticklabels(literal_sentences_clean, rotation=45)
 plt.tight_layout()
 plt.savefig(f'../images/produced_literal_vs_original_nl_test.png')
 
-print("DONE WITH THE FIRST IMAGE")
-
 # compute similarity for the stl against the reference stl using fuzzy matching
-stl_ref_statements = np.array(translations['reference STL'].str[:10]) # need to fix these names
+stl_ref_statements = np.array(translations['reference STL'].str[:20]) # need to fix these names
 stl_produced_statements = translations.filter(regex='STL-').copy()
 for col in stl_produced_statements.columns:
-    # literal_sentences[col] = translations['input statement'] np.where(literal_sentences[col]==None, 'Literal could not be generated', literal_sentences[col])
-    stl_produced_statements[col] = translations['reference STL'].str[:10] + "-" + str(col.split('-')[1])
+    stl_produced_statements[col] = np.where((stl_produced_statements[col]=='STL could not be extracted') | (stl_produced_statements[col]=='STL could not be parsed'), stl_produced_statements[col], "STL-'" + translations['reference STL'].str[:10] + "'-A-" + str(col.split('-')[1]))
 stl_produced_statements = stl_produced_statements.to_numpy().flatten()
+stl_produced_clean_labels = [x for x in stl_produced_statements if x != "STL could not be extracted" and x != 'STL could not be parsed' ]
 
 reference_stl = translations['reference STL']
-produced_stl_subset = translations.filter(regex='STL-').copy().to_numpy().flatten()
-fuzz_matrix = np.zeros((translations.shape[0], produced_stl_subset.shape[0]))
+produced_stl_subset = [x for x in translations.filter(regex='STL-').copy().to_numpy().flatten() if x != 'STL could not be extracted' and x != 'STL could not be parsed']
+fuzz_matrix = np.zeros((reference_stl.shape[0], len(produced_stl_subset)))
 
 print("--------------------------------------------------------------------------------------------")
-print(stl_ref_statements)
+print(f'stl ref statements: {reference_stl}')
 print("--------------------------------------------------------------------------------------------")
-print(stl_ref_statements.shape)
+print(reference_stl.shape)
 print("--------------------------------------------------------------------------------------------")
-print(stl_produced_statements)
+print(f'stl produced statements: {produced_stl_subset}')
 print("--------------------------------------------------------------------------------------------")
-print(stl_produced_statements.shape)
+print(len(produced_stl_subset))
 print("--------------------------------------------------------------------------------------------")
-print(fuzz_matrix)
+print(f'fuzz: {fuzz_matrix}')
 print("--------------------------------------------------------------------------------------------")
 print(fuzz_matrix.shape)
 print("--------------------------------------------------------------------------------------------")
