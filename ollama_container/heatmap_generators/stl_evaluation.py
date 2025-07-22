@@ -192,7 +192,7 @@ for _id, sentence in enumerate(sentences):
                 stl_produced_labels.append(str(index) + '-A' + str(stl_produced_cols.columns[j].split('-')[1]))
     stl_produced_clean_labels = [x for x in stl_produced_labels if x != 'STL could not be extracted' and x != 'STL could not be parsed']
 
-    if len(stl_produced_clean_labels):
+    if len(stl_produced_clean_labels) <= 0:
         continue
 
     # Produce the fuzz data matrix
