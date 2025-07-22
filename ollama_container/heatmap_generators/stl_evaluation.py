@@ -149,9 +149,10 @@ fuzz_matrix = fuzz_matrix/100
 plt.figure(figsize=(30,10))
 ax = sns.heatmap(fuzz_matrix, annot=True, vmin=0, vmax=1)
 plt.title(f'Produced STL vs. Reference STL Similarity\nModel:Test')
-ax.set_xticks(range(len(literal_sentences)))
+ax.set_xticks(range(len(stl_produced_statements)))
 ax.set_yticklabels(stl_ref_statements, rotation=0)
 ax.set_xticklabels(stl_produced_statements, rotation=45)
+plt.tight_layout()
 plt.savefig(f'../images/produced_vs_ref_stl_test.png')
 
 """
