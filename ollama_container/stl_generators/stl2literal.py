@@ -500,7 +500,7 @@ class Test(Interpreter):
 
 def STL2literal(input_sentence, grammar):
     p = Lark(grammar) # TODO: this is also slow, improve if possible
-    tree = p.parse(input)
+    tree = p.parse(input_sentence)
     tester = Test() # TODO: this is redundant, see if this can be improved
     tester.visit(tree)
     # return fastpunct.punct(" ".join(tester.sentence))
