@@ -155,6 +155,69 @@ ax.set_xticklabels(stl_produced_clean_labels, rotation=45)
 plt.tight_layout()
 plt.savefig(f'../images/produced_vs_ref_stl_test.png')
 
+#######################################################################################################################
+#
+# STL heatmaps on a per-sentence basis 
+#
+#######################################################################################################################
+
+# Get number of sentences
+sentences = translations['input statement'].unique()
+num_sentences = len(sentences)
+
+# Export {num_sentences}-many plots
+fig, axs = plt.subplots(num_sentences, 1, figsize=(10,10))
+
+# These aggregate the data and labels for all the plots
+stl_matrix_arr = []
+stl_produced_labels_arr = []
+stl_ref_labels_arr = []
+
+# Generate a small heatmap and labels for each sentence
+for _id, sentence in enumerate(sentences):
+    # First, need to take a subset of translations that corresponds only to the rows with this sentence
+    subset = translations[translations['input statement']==sentence]
+
+    # Labels for the reference STL 
+    stl_ref_labels = []
+    for index, val in enumerate(subset['reference STL']):
+        stl_ref_labels.append(f'{index} - {val}')
+    
+    # Labels for produced STL - also needs to be cleaned
+    stl_produced_labels = []
+    stl_produced_cols = subset.filter(regex='STL-').copy()
+    for index, row in stl_produced_cols.iterrows():
+        # for this row, need to get the STL number
+        for j, element in enumerate(row):
+            if element=='STL could not be extracted' or element=='STL could not be parsed':
+                stl_produced_labels.append(element)
+            else:
+                stl_produced_labels.append(str(index) + '-A' + str(stl_produced_cols.columns[j].split('-')[1]))
+    stl_produced_clean_labels = [x for x in stl_produced_labels if x != 'STL could not be extracted' and x != 'STL could not be parsed']
+
+    # Produce the fuzz data matrix
+    
+    # First set up the matrix inputs
+    reference_stl = subset['reference STL']
+    produced_stl_subset = [x for x in subset.filter(regex='STL-').copy().to_numpy().flatten() if x != 'STL could not be extracted' and x != 'STL could not be parsed']
+    fuzz_matrix = np.zeros((reference_stl.shape[0], len(produced_stl_subset)))
+
+    # Add labels and matrix to overall arrays
+    stl_matrix_arr.append(fuzz_matrix)
+    stl_produced_labels_arr.append(stl_produced_clean_labels)
+    stl_ref_labels_arr.append(stl_ref_labels)
+
+# Print all the heatmaps
+for _id, ax in enumerate(axs.flat):
+    sns.heatmap(stl_matrix_arr[_id], ax=ax, annot=True, vmin=0, vmax=1)
+    ax.set_title(f'Produced STL vs. Reference STL Similarity\nNL Sentence:\n{sentences[_id]}\nModel:Insert model name')
+    ax.set_xticks(range(len(stl_produced_labels_arr[_id])))
+    ax.set_yticklabels(stl_ref_labels_arr[_id], rotation=0)
+    ax.set_xticklabels(stl_produced_labels_arr[_id], rotation=45)
+fig.tight_layout()
+plt.savefig(f'../images/per_sentence_heatmaps.png')
+
+
 """
 # final sentence comparison
 final_stl = final_sentence['stl']
