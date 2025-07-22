@@ -85,23 +85,51 @@ print(stats)
 # remove all columns from the table that don't correspond to actual translations
 nl_sentence_embeddings = embedding_model.encode(translations['input statement'], normalize_embeddings=True)
 literal_sentence_embeddings = embedding_model.encode(translations.filter(regex='Literal-').copy().to_numpy().flatten(), normalize_embeddings=True)
-nl_sentences = np.array(translations['input statement'][:10])
-literal_sentences = translations.filter(regex='Literal-').copy()
+nl_sentences = np.array(translations['input statement'].str[:10])
 
-# still probably need a way to filter out bad, non-translated stuff
+literal_sentences = translations.filter(regex='Literal-').copy()
 for col in literal_sentences.columns:
-    literal_sentences[col] = translations['input statement'][:10] + col
-  
+    # literal_sentences[col] = translations['input statement'] np.where(literal_sentences[col]==None, 'Literal could not be generated', literal_sentences[col])
+    literal_sentences[col] = translations['input statement'].str[:10] + "-" + str(col.split('-')[1])
+literal_sentences = literal_sentences.to_numpy().flatten()
+"""
+print("--------------------------------------------------------------------------------------------")
+print(literal_sentences)
+print("--------------------------------------------------------------------------------------------")
+print(literal_sentences.shape)
+print("--------------------------------------------------------------------------------------------")
+"""
 # compute similarity matrix
-sim_matrix = cosine_similarity(np.array(literal_sentence_embeddings), np.array(nl_sentence_embeddings))
+sim_matrix = cosine_similarity(np.array(nl_sentence_embeddings), np.array(literal_sentence_embeddings))
+
+#print("here are the literal sentence labels:")
+#print(literal_sentences.shape)
+#print("here is the size of the sim matrix:")
+#print(sim_matrix.shape)
+
+print("--------------------------------------------------------------------------------------------")
+print(f'literal_sentences.shape = {literal_sentences.shape}')
+print("--------------------------------------------------------------------------------------------")
+print(f'literal_sentence_embeddings.shape = {literal_sentence_embeddings.shape}')
+print("--------------------------------------------------------------------------------------------")
+print(f'nl_sentences.shape = {nl_sentences.shape}')
+print("--------------------------------------------------------------------------------------------")
+print(f'nl_sentence_embeddings.shape = {nl_sentence_embeddings.shape}')
+print("--------------------------------------------------------------------------------------------")
+print(f'sim_matrix.shape = {sim_matrix.shape}')
+print("--------------------------------------------------------------------------------------------")
+
 
 # export heatmap
 plt.figure(figsize=(10,10))
 ax = sns.heatmap(sim_matrix, annot=True, vmin=0, vmax=1)
 plt.title(f'Produced Literal STL vs. Original NL Cosine Similarity\nModel:Put model here')
+ax.set_xticks(range(len(literal_sentences)))
 ax.set_yticklabels(nl_sentences, rotation=0)
 ax.set_xticklabels(literal_sentences, rotation=45)
 plt.savefig(f'../images/produced_literal_vs_original_nl_test.png')
+
+print("DONE WITH THE FIRST IMAGE")
 
 # compute similarity for the stl against the reference stl using fuzzy matching
 stl_ref_statements = np.array(translations['STL'][:10]) # need to fix these names
@@ -116,6 +144,22 @@ fuzz_matrix = np.array(translations.shape[0], produced_stl_subset.shape[0])
 for i in range(fuzz_matrix.shape[0]):
     for j in range(fuzz_matrix.shape[1]):
         fuzz_matrix[i][j] = fuzz.ratio(produced_stl_subset[j], reference_stl[i])
+
+print("--------------------------------------------------------------------------------------------")
+print(stl_ref_statements)
+print("--------------------------------------------------------------------------------------------")
+print(stl_ref_statements.shape)
+print("--------------------------------------------------------------------------------------------")
+print(stl_produced_statements)
+print("--------------------------------------------------------------------------------------------")
+print(stl_produced_statements.shape)
+print("--------------------------------------------------------------------------------------------")
+print(fuzz_matrix)
+print("--------------------------------------------------------------------------------------------")
+print(fuzz_matrix.shape)
+print("--------------------------------------------------------------------------------------------")
+
+
 
 # heatmap
 plt.figure(figsize=(10,10))
