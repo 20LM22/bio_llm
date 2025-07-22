@@ -111,7 +111,7 @@ for l in test_sentences['Literal-0']:
 print("--------------------------------------------------------------------------------------------")
 
 for col in literal_sentences.columns:
-    literal_sentences[col] = np.where((pandas.isna(literal_sentences[col])) | (literal_sentences[col]=='Literal could not be generated') | (literal_sentences[col]=='STL to literal failed'), literal_sentences[col], "Sentence-" + translations['input statement'].str[:20] + "-Attempt-" + str(col.split('-')[1]))
+    literal_sentences[col] = np.where((pandas.isna(literal_sentences[col])) | (literal_sentences[col]=='Literal could not be generated') | (literal_sentences[col]=='STL to literal failed'), literal_sentences[col], "S-" + translations['input statement'].str[:10] + "-A-" + str(col.split('-')[1]))
 
 literal_sentences = literal_sentences.to_numpy().flatten()
 print("--------------------------------------------------------------------------------------------")
@@ -153,12 +153,12 @@ print("-------------------------------------------------------------------------
 """
 
 # export heatmap
-plt.figure(figsize=(30,20))
+plt.figure(figsize=(30,10))
 ax = sns.heatmap(sim_matrix, annot=True, vmin=0, vmax=1)
 plt.title(f'Produced Literal STL vs. Original NL Cosine Similarity\nModel:Put model here')
 ax.set_xticks(range(len(literal_sentences_clean)))
 ax.set_yticklabels(nl_sentences, rotation=0)
-ax.set_xticklabels(literal_sentences_clean, rotation=45)
+ax.set_xticklabels(literal_sentences_clean, rotation=90)
 plt.savefig(f'../images/produced_literal_vs_original_nl_test.png')
 
 print("DONE WITH THE FIRST IMAGE")
