@@ -70,7 +70,7 @@ total_sentences_success_rate_table['STL Parsing Success Rate'] = np.where(num_to
 total_sentences_success_rate_table['Literal Translation Success Rate'] = np.where(num_total_passed_parsing==0, 0, 1-(total_sentences_success_rate_table['Literal Translation Success Rate'] / num_total_passed_parsing))
 
 translations.to_csv('mmm.csv')
-
+i
 stats = pandas.concat([per_sentence_success_rate_table, total_sentences_success_rate_table], ignore_index=True)
 print(stats)
 stats.to_csv('stats.csv', index=False)
@@ -87,22 +87,24 @@ stats.to_csv('stats.csv', index=False)
 # remove all columns from the table that don't correspond to actual translations
 nl_sentence_embeddings = embedding_model.encode(translations['input statement'], normalize_embeddings=True)
 literal_sentence_embeddings = embedding_model.encode(translations.filter(regex='Literal-').copy().to_numpy().flatten(), normalize_embeddings=True)
+
 nl_sentences = np.array(translations['input statement'].str[:10])
 
 literal_sentences = translations.filter(regex='Literal-').copy()
 for col in literal_sentences.columns:
-    # literal_sentences[col] = translations['input statement'] np.where(literal_sentences[col]==None, 'Literal could not be generated', literal_sentences[col])
-    literal_sentences[col] = translations['input statement'].str[:10] + "-" + str(col.split('-')[1])
+    literal_sentences[col] = np.where((literal_sentences[col]==None) | (literal_sentences[col]=='Literal could not be generated') | (literal_sentences[col]=='STL to literal failed'), literal_sentences[col], "Sentence-" + translations['input statement'].str[:20] + "-Attempt-" + str(col.split('-')[1]))
+
 literal_sentences = literal_sentences.to_numpy().flatten()
-"""
-print("--------------------------------------------------------------------------------------------")
-print(literal_sentences)
-print("--------------------------------------------------------------------------------------------")
-print(literal_sentences.shape)
-print("--------------------------------------------------------------------------------------------")
-"""
+indices_to_remove = []
+for _id,l in enumerate(literal_sentences):
+    if l=='Literal could not be generated' or l=='STL to literal failed' or l==None:
+        indices_to_remove.append(_id)
+
+literal_sentences_clean = [x for x in literal_sentences if x != "Literal could not be generated" and x != 'STL to literal failed' and x != None ]
+literal_sentence_embeddings_clean = [x for _id, x in enumerate(literal_sentence_embeddings) if _id not in indices_to_remove ]
+
 # compute similarity matrix
-sim_matrix = cosine_similarity(np.array(nl_sentence_embeddings), np.array(literal_sentence_embeddings))
+sim_matrix = cosine_similarity(np.array(nl_sentence_embeddings), np.array(literal_sentence_embeddings_clean))
 
 #print("here are the literal sentence labels:")
 #print(literal_sentences.shape)
@@ -126,9 +128,9 @@ print("-------------------------------------------------------------------------
 plt.figure(figsize=(30,10))
 ax = sns.heatmap(sim_matrix, annot=True, vmin=0, vmax=1)
 plt.title(f'Produced Literal STL vs. Original NL Cosine Similarity\nModel:Put model here')
-ax.set_xticks(range(len(literal_sentences)))
+ax.set_xticks(range(len(literal_sentences_clean)))
 ax.set_yticklabels(nl_sentences, rotation=0)
-ax.set_xticklabels(literal_sentences, rotation=45)
+ax.set_xticklabels(literal_sentences_clean, rotation=45)
 plt.savefig(f'../images/produced_literal_vs_original_nl_test.png')
 
 print("DONE WITH THE FIRST IMAGE")
