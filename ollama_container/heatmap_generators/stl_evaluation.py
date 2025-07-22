@@ -73,6 +73,8 @@ translations.to_csv('mmm.csv')
 
 stats = pandas.concat([per_sentence_success_rate_table, total_sentences_success_rate_table], ignore_index=True)
 print(stats)
+stats.to_csv('stats.csv', index=False)
+
 # can also pickle results later
 
 
@@ -180,8 +182,9 @@ corresponding_nl = translations[final_sentence['sentence_index'], 'input sentenc
 corresponding_literal = translations[final_sentence['sentence_index'], 'Literal']
 corresponding_stl = translation[final_sentence['sentence_index'], 'STL']
 # compute sim between final literal and corresponding ground truth literal
-literal_sim = cosine_similarity(np.array(), np.array())
+literal_sim = cosine_similarity(np.array(embedding_model.encode(final_literal, normalize_embeddings=True)), np.array(embedding_model.encode(corresponding_literal, normalize_embeddings=True)))
 # compute sim between final STL and corresponding ground truth STL
+stl_sim = fuzz.ratio(final_stl, corresponding_stl)/100
 
 final_dict = {
     'produced stl': final_stl,
