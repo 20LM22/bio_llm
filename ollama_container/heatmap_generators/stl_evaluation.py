@@ -121,7 +121,7 @@ print("-------------------------------------------------------------------------
 
 
 # export heatmap
-plt.figure(figsize=(10,10))
+plt.figure(figsize=(20,10))
 ax = sns.heatmap(sim_matrix, annot=True, vmin=0, vmax=1)
 plt.title(f'Produced Literal STL vs. Original NL Cosine Similarity\nModel:Put model here')
 ax.set_xticks(range(len(literal_sentences)))
