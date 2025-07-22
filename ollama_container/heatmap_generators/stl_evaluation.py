@@ -28,24 +28,14 @@ try:
 except Exception as e:
     print(e)
 
-print("-------------------------------------------------------------------------------------")
-print(translations.columns.tolist())
-print("-------------------------------------------------------------------------------------")
-
 per_sentence_success_rate_table = pandas.DataFrame(columns=['Input Sentence', 'STL Extraction Success Rate', 'STL Parsing Success Rate', 'Literal Translation Success Rate'])
 per_sentence_success_rate_table['Input Sentence'] = translations['input statement']
 per_sentence_success_rate_table['STL Extraction Success Rate'] = 0
 per_sentence_success_rate_table['STL Parsing Success Rate'] = 0
 per_sentence_success_rate_table['Literal Translation Success Rate'] = 0
 
-print(len(per_sentence_success_rate_table['STL Extraction Success Rate']))
-print(len(translations['STL-0']))
-
-total_sentences_success_rate_table = pandas.DataFrame(columns=['Input Sentence', 'STL Extraction Success Rate', 'STL Parsing Success Rate', 'Literal Translation Success Rate'])
-total_sentences_success_rate_table['Input Sentence'] = translations['input statement']
-total_sentences_success_rate_table['STL Extraction Success Rate'] = 0
-total_sentences_success_rate_table['STL Parsing Success Rate'] = 0
-total_sentences_success_rate_table['Literal Translation Success Rate'] = 0
+total_sentences_success_rate_table = pandas.DataFrame(index=[0])
+total_sentences_success_rate_table['Input Sentence'] = 'Overall'
 
 # count number of translations
 num_translations = 0
@@ -56,11 +46,9 @@ for col in translations.columns:
 for i in range(num_translations): # aggregate over all n columns
     col_name = 'STL-' + str(i)
     literal_col_name = 'Literal-' + str(i)
-    print(col_name)
+
     per_sentence_success_rate_table['STL Extraction Success Rate'] += np.where(translations[col_name] == 'STL could not be extracted', 1, 0)
-
     per_sentence_success_rate_table['STL Parsing Success Rate'] += np.where(translations[col_name] == 'STL could not be parsed', 1, 0)
-
     per_sentence_success_rate_table['Literal Translation Success Rate'] = np.where(translations[literal_col_name] == 'STL to literal failed', 1, 0)
 
 total_sentences_success_rate_table['STL Extraction Success Rate'] = per_sentence_success_rate_table['STL Extraction Success Rate'].sum()
@@ -76,25 +64,20 @@ num_total_translations = translations.shape[0] * num_translations
 num_total_passed_extraction = num_total_translations - per_sentence_success_rate_table['STL Extraction Success Rate'].sum()
 num_total_passed_parsing = num_total_passed_extraction - per_sentence_success_rate_table['STL Parsing Success Rate'].sum()
 
-per_sentence_success_rate_table['STL Extraction Success Rate'] = per_sentence_success_rate_table['STL Extraction Success Rate'] / num_translations
-per_sentence_success_rate_table['STL Parsing Success Rate'] = per_sentence_success_rate_table['STL Parsing Success Rate'] / num_passed_extraction
-per_sentence_success_rate_table['Literal Translation Success Rate'] = per_sentence_success_rate_table['Literal Translation Success Rate'] / num_passed_parsing
+per_sentence_success_rate_table['STL Extraction Success Rate'] = 1-(per_sentence_success_rate_table['STL Extraction Success Rate'] / num_translations)
+per_sentence_success_rate_table['STL Parsing Success Rate'] = 1-(per_sentence_success_rate_table['STL Parsing Success Rate'] / num_passed_extraction)
+per_sentence_success_rate_table['Literal Translation Success Rate'] = 1-(per_sentence_success_rate_table['Literal Translation Success Rate'] / num_passed_parsing)
 
-per_sentence_success_rate_table['STL Extraction Success Rate'] = 1 - per_sentence_success_rate_table['STL Extraction Success Rate']
-per_sentence_success_rate_table['STL Parsing Success Rate'] = 1 - per_sentence_success_rate_table['STL Parsing Success Rate']
-per_sentence_success_rate_table['Literal Translation Success Rate'] = 1 - per_sentence_success_rate_table['Literal Translation Success Rate'] 
+total_sentences_success_rate_table['STL Extraction Success Rate'] = 1-(total_sentences_success_rate_table['STL Extraction Success Rate'] / num_total_translations)
+total_sentences_success_rate_table['STL Parsing Success Rate'] = 1-(total_sentences_success_rate_table['STL Parsing Success Rate'] / num_total_passed_extraction)
+total_sentences_success_rate_table['Literal Translation Success Rate'] = 1-(total_sentences_success_rate_table['Literal Translation Success Rate'] / num_total_passed_parsing)
 
-total_sentences_success_rate_table['STL Extraction Success Rate'] = total_sentences_success_rate_table['STL Extraction Success Rate'] / num_total_translations
-total_sentences_success_rate_table['STL Parsing Success Rate'] = total_sentences_success_rate_table['STL Parsing Success Rate'] / num_total_passed_extraction
-total_sentences_success_rate_table['Literal Translation Success Rate'] = total_sentences_success_rate_table['Literal Translation Success Rate'] / num_total_passed_parsing
+translations.to_csv('mmm.csv')
 
-translations.to_csv('test_output.csv', index=False)
-
+stats = pandas.concat([per_sentence_success_rate_table, total_sentences_success_rate_table], ignore_index=True)
+print(stats)
 # can also pickle results later
-print(per_sentence_success_rate_table)
 
-# can also pickle/append to per_sentence table later
-print(total_sentences_success_rate_table)
 
 # Produce similarity heatmaps
 # remove all columns from the table that don't correspond to actual translations
