@@ -87,18 +87,30 @@ stats.to_csv('stats.csv', index=False)
 # remove all columns from the table that don't correspond to actual translations
 nl_sentence_embeddings = embedding_model.encode(translations['input statement'], normalize_embeddings=True)
 literal_sentence_embeddings = embedding_model.encode(translations.filter(regex='Literal-').copy().to_numpy().flatten(), normalize_embeddings=True)
-test = translations.filter(regex='Literal-').copy().to_numpy().flatten()
-for i in test:
-    print(i)
-    print('\n')
+#test = translations.filter(regex='Literal-').copy().to_numpy().flatten()
+#for i in test:
+#    print(i)
+#    print('\n')
 
 nl_sentences = np.array(translations['input statement'].str[:10])
 
 literal_sentences = translations.filter(regex='Literal-').copy()
 for col in literal_sentences.columns:
+    literal_sentences[col] = np.where(literal_sentences[col]==None, 0, 1)
+print("--------------------------------------------------------------------------------------------")
+for l in literal_sentences:
+    print(f'{l}\n')
+print("--------------------------------------------------------------------------------------------")
+
+for col in literal_sentences.columns:
     literal_sentences[col] = np.where((literal_sentences[col]==None) | (literal_sentences[col]=='Literal could not be generated') | (literal_sentences[col]=='STL to literal failed'), literal_sentences[col], "Sentence-" + translations['input statement'].str[:20] + "-Attempt-" + str(col.split('-')[1]))
 
 literal_sentences = literal_sentences.to_numpy().flatten()
+print("--------------------------------------------------------------------------------------------")
+for l in literal_sentences:
+    print(f'{l}\n')
+print("--------------------------------------------------------------------------------------------")
+
 indices_to_remove = []
 for _id,l in enumerate(literal_sentences):
     if l=='Literal could not be generated' or l=='STL to literal failed' or l==None:
@@ -106,6 +118,10 @@ for _id,l in enumerate(literal_sentences):
 
 literal_sentences_clean = [x for x in literal_sentences if x != "Literal could not be generated" and x != 'STL to literal failed' and x != None ]
 literal_sentence_embeddings_clean = [x for _id, x in enumerate(literal_sentence_embeddings) if _id not in indices_to_remove ]
+print("--------------------------------------------------------------------------------------------")
+for l in literal_sentences_clean:
+    print(f'{l}\n')
+print("--------------------------------------------------------------------------------------------")
 
 # compute similarity matrix
 sim_matrix = cosine_similarity(np.array(nl_sentence_embeddings), np.array(literal_sentence_embeddings_clean))
@@ -114,7 +130,7 @@ sim_matrix = cosine_similarity(np.array(nl_sentence_embeddings), np.array(litera
 #print(literal_sentences.shape)
 #print("here is the size of the sim matrix:")
 #print(sim_matrix.shape)
-
+"""
 print("--------------------------------------------------------------------------------------------")
 print(f'literal_sentences.shape = {literal_sentences.shape}')
 print("--------------------------------------------------------------------------------------------")
@@ -126,7 +142,7 @@ print(f'nl_sentence_embeddings.shape = {nl_sentence_embeddings.shape}')
 print("--------------------------------------------------------------------------------------------")
 print(f'sim_matrix.shape = {sim_matrix.shape}')
 print("--------------------------------------------------------------------------------------------")
-
+"""
 
 # export heatmap
 plt.figure(figsize=(30,10))
