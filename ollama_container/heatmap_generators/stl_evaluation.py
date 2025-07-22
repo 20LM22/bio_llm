@@ -132,18 +132,16 @@ plt.savefig(f'../images/produced_literal_vs_original_nl_test.png')
 print("DONE WITH THE FIRST IMAGE")
 
 # compute similarity for the stl against the reference stl using fuzzy matching
-stl_ref_statements = np.array(translations['STL'][:10]) # need to fix these names
-stl_produced_statements =  stl_ref_statements # need to fix these names
-
+stl_ref_statements = np.array(translations['reference STL'].str[:10]) # need to fix these names
+stl_produced_statements = translations.filter(regex='STL-').copy()
 for col in stl_produced_statements.columns:
-    stl_produced_statements[col] = translations['input statement'][:10] + col
+    # literal_sentences[col] = translations['input statement'] np.where(literal_sentences[col]==None, 'Literal could not be generated', literal_sentences[col])
+    stl_produced_statements[col] = translations['reference STL'].str[:10] + "-" + str(col.split('-')[1])
+stl_produced_statements = stl_produced_statements.to_numpy().flatten()
 
-reference_stl = translations['STL']
+reference_stl = translations['reference STL']
 produced_stl_subset = translations.filter(regex='STL-').copy().to_numpy().flatten()
-fuzz_matrix = np.array(translations.shape[0], produced_stl_subset.shape[0])
-for i in range(fuzz_matrix.shape[0]):
-    for j in range(fuzz_matrix.shape[1]):
-        fuzz_matrix[i][j] = fuzz.ratio(produced_stl_subset[j], reference_stl[i])
+fuzz_matrix = np.zeros((translations.shape[0], produced_stl_subset.shape[0]))
 
 print("--------------------------------------------------------------------------------------------")
 print(stl_ref_statements)
@@ -159,12 +157,16 @@ print("-------------------------------------------------------------------------
 print(fuzz_matrix.shape)
 print("--------------------------------------------------------------------------------------------")
 
+for i in range(fuzz_matrix.shape[0]):
+    for j in range(fuzz_matrix.shape[1]):
+        fuzz_matrix[i][j] = fuzz.ratio(produced_stl_subset[j], reference_stl[i])
 
 
 # heatmap
-plt.figure(figsize=(10,10))
+plt.figure(figsize=(30,10))
 ax = sns.heatmap(fuzz_matrix, annot=True, vmin=0, vmax=1)
 plt.title(f'Produced STL vs. Reference STL Similarity\nModel:Test')
+ax.set_xticks(range(len(literal_sentences)))
 ax.set_yticklabels(stl_ref_statements, rotation=0)
 ax.set_xticklabels(stl_produced_statements, rotation=45)
 plt.savefig(f'../images/produced_vs_ref_stl_test.png')
