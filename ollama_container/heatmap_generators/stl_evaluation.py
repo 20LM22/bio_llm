@@ -6,6 +6,7 @@ import pickle, sys
 import pandas
 from thefuzz import fuzz
 from sentence_transformers import SentenceTransformer
+from matplotlib.patches import Rectangle
 
 embedding_model_name = 'all-MiniLM-L6-v2'
 embedding_model = SentenceTransformer(embedding_model_name, device='cpu')
@@ -155,6 +156,10 @@ print("-------------------------------------------------------------------------
 # export heatmap
 plt.figure(figsize=(30,10))
 ax = sns.heatmap(sim_matrix, annot=True, vmin=0, vmax=1)
+
+# NEW BORDER AROUND HEATMAP
+ax.add_patch(Rectangle((3,4), 1,1,fill=False, edgecolor='blue', lw=3))
+
 plt.title(f'Produced Literal STL vs. Original NL Cosine Similarity\nModel:Put model here')
 ax.set_xticks(range(len(literal_sentences_clean)))
 ax.set_yticklabels(nl_sentences, rotation=0)
