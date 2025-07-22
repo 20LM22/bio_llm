@@ -6,68 +6,70 @@ import pickle, sys
 import pandas
 from thefuzz import fuzz
 
-translations = []
-try:
-    with open(f'../pkl/{sys.argv[0]}', 'rb') as f:
-        translations = pickle.load(f)
-        print(f'Loaded {file}')
-    except Exception as e:
-        print(e)
-
-translations_sim = []
 try:
     with open(f'../pkl/{sys.argv[1]}', 'rb') as f:
-        translations_sim = pickle.load(f)
-        print(f'Loaded {file}')
-    except Exception as e:
-        print(e)
+        translations = pickle.load(f)
+        print(f'Loaded {f}')
+except Exception as e:
+    print("there was an exception")
+    print(e)
 
-final_sentence = {}
 try:
     with open(f'../pkl/{sys.argv[2]}', 'rb') as f:
+        translations_sim = pickle.load(f)
+        print(f'Loaded {f}')
+except Exception as e:
+    print(e)
+
+try:
+    with open(f'../pkl/{sys.argv[3]}', 'rb') as f:
         final_sentence = pickle.load(f)
-        print(f'Loaded {file}')
-    except Exception as e:
-        print(e)
+        print(f'Loaded {f}')
+except Exception as e:
+    print(e)
+
+print("-------------------------------------------------------------------------------------")
+print(translations.columns.tolist())
+print("-------------------------------------------------------------------------------------")
 
 per_sentence_success_rate_table = pandas.DataFrame(columns=['Input Sentence', 'STL Extraction Success Rate', 'STL Parsing Success Rate', 'Literal Translation Success Rate'])
-per_sentence_success_rate_table['Input Sentence'] = translations['input sentence']
+per_sentence_success_rate_table['Input Sentence'] = translations['input statement']
 per_sentence_success_rate_table['STL Extraction Success Rate'] = 0
 per_sentence_success_rate_table['STL Parsing Success Rate'] = 0
 per_sentence_success_rate_table['Literal Translation Success Rate'] = 0
 
+print(len(per_sentence_success_rate_table['STL Extraction Success Rate']))
+print(len(translations['STL-0']))
+
 total_sentences_success_rate_table = pandas.DataFrame(columns=['Input Sentence', 'STL Extraction Success Rate', 'STL Parsing Success Rate', 'Literal Translation Success Rate'])
-total_sentences_success_rate_table['Input Sentence'] = translations['input sentence']
+total_sentences_success_rate_table['Input Sentence'] = translations['input statement']
 total_sentences_success_rate_table['STL Extraction Success Rate'] = 0
 total_sentences_success_rate_table['STL Parsing Success Rate'] = 0
 total_sentences_success_rate_table['Literal Translation Success Rate'] = 0
 
 # count number of translations
 num_translations = 0
-for col in df.columns:
+for col in translations.columns:
     if 'STL-' in col:
         num_translations += 1
 
 for i in range(num_translations): # aggregate over all n columns
     col_name = 'STL-' + str(i)
     literal_col_name = 'Literal-' + str(i)
+    print(col_name)
+    per_sentence_success_rate_table['STL Extraction Success Rate'] += np.where(translations[col_name] == 'STL could not be extracted', 1, 0)
 
-    per_sentence_success_rate_table['STL Extraction Success Rate'] = translations[col_name].apply(
-            lambda x: per_sentence_success_rate_table['STL Extraction Success Rate']+1 if x == 'STL could not be extracted' else per_sentence_success_rate_table['STL Extraction Success Rate'] )
+    per_sentence_success_rate_table['STL Parsing Success Rate'] += np.where(translations[col_name] == 'STL could not be parsed', 1, 0)
 
-    per_sentence_success_rate_table['STL Parsing Success Rate'] = translations[col_name].apply(
-            lambda x: per_sentence_success_rate_table['STL Parsing Success Rate']+1 if x == 'STL could not be parsed' else per_sentence_success_rate_table['STL Parsing Success Rate'] )
-
-    per_sentence_success_rate_table['Literal Translation Success Rate'] = translations[literal_col_name].apply(
-            lambda x: per_sentence_success_rate_table['Literal Translation Success Rate']+1 if x == 'STL to literal failed' else per_sentence_success_rate_table['Literal Translation Success Rate'] )
+    per_sentence_success_rate_table['Literal Translation Success Rate'] = np.where(translations[literal_col_name] == 'STL to literal failed', 1, 0)
 
 total_sentences_success_rate_table['STL Extraction Success Rate'] = per_sentence_success_rate_table['STL Extraction Success Rate'].sum()
 total_sentences_success_rate_table['STL Parsing Success Rate'] = per_sentence_success_rate_table['STL Parsing Success Rate'].sum()
 total_sentences_success_rate_table['Literal Translation Success Rate'] = per_sentence_success_rate_table['Literal Translation Success Rate'].sum()
 
-num_passed_extraction = np.zeroes(translations.shape[0])
+num_passed_extraction = np.zeros(translations.shape[0])
 num_passed_extraction = num_translations - per_sentence_success_rate_table['STL Extraction Success Rate']
-num_passed_parsing = np.zeroes(translations.shape[0])
+num_passed_parsing = np.zeros(translations.shape[0])
 num_passed_parsing = num_passed_extraction - per_sentence_success_rate_table['STL Parsing Success Rate']
 
 num_total_translations = translations.shape[0] * num_translations
@@ -85,6 +87,8 @@ per_sentence_success_rate_table['Literal Translation Success Rate'] = 1 - per_se
 total_sentences_success_rate_table['STL Extraction Success Rate'] = total_sentences_success_rate_table['STL Extraction Success Rate'] / num_total_translations
 total_sentences_success_rate_table['STL Parsing Success Rate'] = total_sentences_success_rate_table['STL Parsing Success Rate'] / num_total_passed_extraction
 total_sentences_success_rate_table['Literal Translation Success Rate'] = total_sentences_success_rate_table['Literal Translation Success Rate'] / num_total_passed_parsing
+
+translations.to_csv('test_output.csv', index=False)
 
 # can also pickle results later
 print(per_sentence_success_rate_table)
@@ -116,7 +120,7 @@ plt.savefig(f'../images/produced_literal_vs_original_nl_{sys.argv[4]}.png')
 
 # compute similarity for the stl against the reference stl using fuzzy matching
 stl_ref_statements = np.array(translations['STL'][:10]) # need to fix these names
-stl_produced_statements = ?? # need to fix these names
+stl_produced_statements =  stl_ref_statements # need to fix these names
 
 for col in stl_produced_statements.columns:
     stl_produced_statements[col] = translations['input sentence'][:10] + col
@@ -131,7 +135,7 @@ for i in range(fuzz_matrix.shape[0]):
 # heatmap
 plt.figure(figsize=(10,10))
 ax = sns.heatmap(fuzz_matrix, annot=True, vmin=0, vmax=1)
-plt.title(f'Produced STL vs. Reference STL Similarity\nModel:{sys.argv[4]}'
+plt.title(f'Produced STL vs. Reference STL Similarity\nModel:{sys.argv[4]}')
 ax.set_yticklabels(stl_ref_statements, rotation=0)
 ax.set_xticklabels(stl_produced_statements, rotation=45)
 plt.savefig(f'../images/produced_vs_ref_stl_{sys.argv[4]}.png')
