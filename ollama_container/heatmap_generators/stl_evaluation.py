@@ -11,20 +11,25 @@ from matplotlib.patches import Rectangle
 embedding_model_name = 'all-MiniLM-L6-v2'
 embedding_model = SentenceTransformer(embedding_model_name, device='cpu')
 
+model_name = sys.argv[1].split('/')[0]
+
 try:
-    with open(f'../pkl/{sys.argv[1]}', 'rb') as f:
+    with open(f'../pkl/{sys.argv[2]}', 'rb') as f:
         translations = pickle.load(f)
         print(f'Loaded {f}')
 except Exception as e:
     print("there was an exception")
     print(e)
 
+# No final sentence for now
+"""
 try:
     with open(f'../pkl/{sys.argv[2]}', 'rb') as f:
         final_sentence = pickle.load(f)
         print(f'Loaded {f}')
 except Exception as e:
     print(e)
+"""
 
 per_sentence_success_rate_table = pandas.DataFrame(columns=['Input Sentence', 'STL Extraction Success Rate', 'STL Parsing Success Rate', 'Literal Translation Success Rate'])
 per_sentence_success_rate_table['Input Sentence'] = translations['input statement']
@@ -70,11 +75,8 @@ total_sentences_success_rate_table['STL Extraction Success Rate'] = np.where(num
 total_sentences_success_rate_table['STL Parsing Success Rate'] = np.where(num_total_passed_extraction==0, 0, 1-(total_sentences_success_rate_table['STL Parsing Success Rate'] / num_total_passed_extraction))
 total_sentences_success_rate_table['Literal Translation Success Rate'] = np.where(num_total_passed_parsing==0, 0, 1-(total_sentences_success_rate_table['Literal Translation Success Rate'] / num_total_passed_parsing))
 
-translations.to_csv('mmm.csv')
-
 stats = pandas.concat([per_sentence_success_rate_table, total_sentences_success_rate_table], ignore_index=True)
-print(stats)
-stats.to_csv('stats.csv', index=False)
+stats.to_csv('stats_{model_name}.csv', index=False)
 
 # Produce similarity heatmaps
 
@@ -106,12 +108,12 @@ ax = sns.heatmap(sim_matrix, annot=True, vmin=0, vmax=1)
 # NEW BORDER AROUND HEATMAP
 # ax.add_patch(Rectangle((3,4), 1,1,fill=False, edgecolor='blue', lw=3))
 
-plt.title(f'Produced Literal STL vs. Original NL Cosine Similarity\nModel:Put model here')
+plt.title(f'Produced Literal STL vs. Original NL Cosine Similarity\nModel:{model_name}')
 ax.set_xticks(range(len(literal_sentences_clean)))
 ax.set_yticklabels(nl_sentences, rotation=0)
 ax.set_xticklabels(literal_sentences_clean, rotation=45)
 plt.tight_layout()
-plt.savefig(f'../images/produced_literal_vs_original_nl_test.png')
+plt.savefig(f'../images/produced_literal_vs_original_nl_{model_name}.png')
 
 # compute similarity for the stl against the reference stl using fuzzy matching
 stl_ref_statements = np.array(translations['reference STL']) # need to fix these names
@@ -124,20 +126,6 @@ stl_produced_clean_labels = [x for x in stl_produced_statements if x != "STL cou
 reference_stl = translations['reference STL']
 produced_stl_subset = [x for x in translations.filter(regex='STL-').copy().to_numpy().flatten() if x != 'STL could not be extracted' and x != 'STL could not be parsed']
 fuzz_matrix = np.zeros((reference_stl.shape[0], len(produced_stl_subset)))
-
-print("--------------------------------------------------------------------------------------------")
-print(f'stl ref statements: {stl_produced_clean_labels}')
-print("--------------------------------------------------------------------------------------------")
-print(len(stl_produced_clean_labels))
-print("--------------------------------------------------------------------------------------------")
-print(f'stl produced statements: {produced_stl_subset}')
-print("--------------------------------------------------------------------------------------------")
-print(len(produced_stl_subset))
-print("--------------------------------------------------------------------------------------------")
-print(f'fuzz: {fuzz_matrix}')
-print("--------------------------------------------------------------------------------------------")
-print(fuzz_matrix.shape)
-print("--------------------------------------------------------------------------------------------")
 
 for i in range(fuzz_matrix.shape[0]):
     for j in range(fuzz_matrix.shape[1]):
@@ -153,7 +141,7 @@ ax.set_xticks(range(len(stl_produced_clean_labels)))
 ax.set_yticklabels(stl_ref_statements, rotation=0)
 ax.set_xticklabels(stl_produced_clean_labels, rotation=45)
 plt.tight_layout()
-plt.savefig(f'../images/produced_vs_ref_stl_test.png')
+plt.savefig(f'../images/produced_vs_ref_stl_{model_name}.png')
 
 #######################################################################################################################
 #
@@ -212,9 +200,6 @@ for _id, sentence in enumerate(sentences):
     stl_produced_labels_arr.append(stl_produced_clean_labels)
     stl_ref_labels_arr.append(stl_ref_labels)
 
-print("lskjdkljlkjljl")
-print(len(stl_matrix_arr))
-
 # Export {stl_matrix_arr}-many plots
 fig, axs = plt.subplots(len(stl_matrix_arr), 1, figsize=(20,60))
 axs = np.atleast_1d(axs)
@@ -222,12 +207,12 @@ axs = np.atleast_1d(axs)
 # Print all the heatmaps
 for _id, ax in enumerate(axs):
     sns.heatmap(stl_matrix_arr[_id], ax=ax, annot=True, vmin=0, vmax=1)
-    ax.set_title(f'Produced STL vs. Reference STL Similarity\nNL Sentence:\n{sentences[_id]}\nModel:Insert model name')
+    ax.set_title(f'Produced STL vs. Reference STL Similarity\nNL Sentence:\n{sentences[_id]}\nModel:{model_name}')
     ax.set_xticks(range(len(stl_produced_labels_arr[_id])))
     ax.set_yticklabels(stl_ref_labels_arr[_id], rotation=0)
     ax.set_xticklabels(stl_produced_labels_arr[_id], rotation=45)
 fig.tight_layout()
-plt.savefig(f'../images/per_sentence_heatmaps.png')
+plt.savefig(f'../images/per_sentence_translation_heatmaps_{model_name}.png')
 
 
 """
