@@ -110,7 +110,7 @@ for sentence_index, sentence in sentences['input statement'].items():
             translations.at[sentence_index, f'STL-{i}'] = extracted_response
         except Exception as e:
             if translations.at[sentence_index, f'STL-{i}'] != 'STL could not be extracted':
-                translations.at[sentence_index, label1] = "STL could not be parsed"
+                translations.at[sentence_index, f'STL-{i}'] = "STL could not be parsed"
             syntactically_correct_responses.append(("STL could not be parsed", sentence_index, i))
             logging.error(f'response is: {extracted_response}\nerror is: {e}\n')
             

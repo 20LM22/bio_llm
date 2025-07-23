@@ -102,22 +102,27 @@ literal_sentences_clean = [x for x in literal_sentences if x != "Literal could n
 literal_sentence_embeddings_clean = [x for _id, x in enumerate(literal_sentence_embeddings) if _id not in indices_to_remove ]
 
 # compute similarity matrix
-sim_matrix = cosine_similarity(np.array(nl_sentence_embeddings), np.array(literal_sentence_embeddings_clean))
+# print("NL embeddings:", len(nl_sentence_embeddings))
+# print("Literal embeddings:", len(literal_sentence_embeddings_clean))
+if len(literal_sentence_embeddings_clean) > 0:
+    sim_matrix = cosine_similarity(np.array(nl_sentence_embeddings), np.array(literal_sentence_embeddings_clean))
 
-# export heatmap
-plt.figure(figsize=(30,10))
-ax = sns.heatmap(sim_matrix, annot=True, vmin=0, vmax=1)
+    # export heatmap
+    plt.figure(figsize=(30,10))
+    ax = sns.heatmap(sim_matrix, annot=True, vmin=0, vmax=1)
 
-# NEW BORDER AROUND HEATMAP
-# ax.add_patch(Rectangle((3,4), 1,1,fill=False, edgecolor='blue', lw=3))
+    # NEW BORDER AROUND HEATMAP
+    # ax.add_patch(Rectangle((3,4), 1,1,fill=False, edgecolor='blue', lw=3))
 
-plt.title(f'Produced Literal STL vs. Original NL Cosine Similarity\nModel:{model_name}')
-ax.set_xticks(range(len(literal_sentences_clean)))
-ax.set_yticklabels(nl_sentences, rotation=0)
-ax.set_xticklabels(literal_sentences_clean, rotation=45)
-plt.tight_layout()
-os.makedirs(f'../images/{model_name}', exist_ok=True)
-plt.savefig(f'../images/{model_name}/produced_literal_vs_original_nl.png')
+    plt.title(f'Produced Literal STL vs. Original NL Cosine Similarity\nModel:{model_name}')
+    ax.set_xticks(range(len(literal_sentences_clean)))
+    ax.set_yticklabels(nl_sentences, rotation=0)
+    ax.set_xticklabels(literal_sentences_clean, rotation=45)
+    plt.tight_layout()
+    os.makedirs(f'../images/{model_name}', exist_ok=True)
+    plt.savefig(f'../images/{model_name}/produced_literal_vs_original_nl.png')
+else:
+    print("literal sentence embeddings clean was empty")
 
 # compute similarity for the stl against the reference stl using fuzzy matching
 stl_ref_statements = np.array(translations['reference STL']) # need to fix these names
@@ -127,25 +132,28 @@ for col in stl_produced_statements.columns:
 stl_produced_statements = stl_produced_statements.to_numpy().flatten()
 stl_produced_clean_labels = [x for x in stl_produced_statements if x != "STL could not be extracted" and x != 'STL could not be parsed' ]
 
-reference_stl = translations['reference STL']
-produced_stl_subset = [x for x in translations.filter(regex='STL-').copy().to_numpy().flatten() if x != 'STL could not be extracted' and x != 'STL could not be parsed']
-fuzz_matrix = np.zeros((reference_stl.shape[0], len(produced_stl_subset)))
+if len(stl_produced_clean_labels) > 0:
+    reference_stl = translations['reference STL']
+    produced_stl_subset = [x for x in translations.filter(regex='STL-').copy().to_numpy().flatten() if x != 'STL could not be extracted' and x != 'STL could not be parsed']
+    fuzz_matrix = np.zeros((reference_stl.shape[0], len(produced_stl_subset)))
 
-for i in range(fuzz_matrix.shape[0]):
-    for j in range(fuzz_matrix.shape[1]):
-        fuzz_matrix[i][j] = fuzz.ratio(produced_stl_subset[j], reference_stl[i])
+    for i in range(fuzz_matrix.shape[0]):
+        for j in range(fuzz_matrix.shape[1]):
+            fuzz_matrix[i][j] = fuzz.ratio(produced_stl_subset[j], reference_stl[i])
 
-fuzz_matrix = fuzz_matrix/100
+    fuzz_matrix = fuzz_matrix/100
 
-# heatmap
-plt.figure(figsize=(30,10))
-ax = sns.heatmap(fuzz_matrix, annot=True, vmin=0, vmax=1)
-plt.title(f'Produced STL vs. Reference STL Similarity\nModel:Test')
-ax.set_xticks(range(len(stl_produced_clean_labels)))
-ax.set_yticklabels(stl_ref_statements, rotation=0)
-ax.set_xticklabels(stl_produced_clean_labels, rotation=45)
-plt.tight_layout()
-plt.savefig(f'../images/{model_name}/produced_vs_ref_stl.png')
+    # heatmap
+    plt.figure(figsize=(30,10))
+    ax = sns.heatmap(fuzz_matrix, annot=True, vmin=0, vmax=1)
+    plt.title(f'Produced STL vs. Reference STL Similarity\nModel:Test')
+    ax.set_xticks(range(len(stl_produced_clean_labels)))
+    ax.set_yticklabels(stl_ref_statements, rotation=0)
+    ax.set_xticklabels(stl_produced_clean_labels, rotation=45)
+    plt.tight_layout()
+    plt.savefig(f'../images/{model_name}/produced_vs_ref_stl.png')
+else:
+    print("stl produced clean labels was empty")
 
 #######################################################################################################################
 #
@@ -204,20 +212,23 @@ for _id, sentence in enumerate(sentences):
     stl_produced_labels_arr.append(stl_produced_clean_labels)
     stl_ref_labels_arr.append(stl_ref_labels)
 
-# Export {stl_matrix_arr}-many plots
-fig, axs = plt.subplots(len(stl_matrix_arr), 1, figsize=(20,60))
-axs = np.atleast_1d(axs)
 
-# Print all the heatmaps
-for _id, ax in enumerate(axs):
-    sns.heatmap(stl_matrix_arr[_id], ax=ax, annot=True, vmin=0, vmax=1)
-    ax.set_title(f'Produced STL vs. Reference STL Similarity\nNL Sentence:\n{sentences[_id]}\nModel:{model_name}')
-    ax.set_xticks(range(len(stl_produced_labels_arr[_id])))
-    ax.set_yticklabels(stl_ref_labels_arr[_id], rotation=0)
-    ax.set_xticklabels(stl_produced_labels_arr[_id], rotation=45)
-fig.tight_layout()
-plt.savefig(f'../images/{model_name}/per_sentence_translation_heatmaps.png')
+if len(stl_matrix_arr) > 0:
+    # Export {stl_matrix_arr}-many plots
+    fig, axs = plt.subplots(len(stl_matrix_arr), 1, figsize=(20,60))
+    axs = np.atleast_1d(axs)
 
+    # Print all the heatmaps
+    for _id, ax in enumerate(axs):
+        sns.heatmap(stl_matrix_arr[_id], ax=ax, annot=True, vmin=0, vmax=1)
+        ax.set_title(f'Produced STL vs. Reference STL Similarity\nNL Sentence:\n{sentences[_id]}\nModel:{model_name}')
+        ax.set_xticks(range(len(stl_produced_labels_arr[_id])))
+        ax.set_yticklabels(stl_ref_labels_arr[_id], rotation=0)
+        ax.set_xticklabels(stl_produced_labels_arr[_id], rotation=45)
+    fig.tight_layout()
+    plt.savefig(f'../images/{model_name}/per_sentence_translation_heatmaps.png')
+else:
+    print("there were no per-sentence matrices")
 
 """
 # final sentence comparison

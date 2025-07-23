@@ -2478,3 +2478,2345 @@ Expected one of:
 	* LESSTHAN
 
 
+2025-07-23 15:47:58,228 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 15:47:58,228 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 15:47:58,328 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 15:47:58,334 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 15:47:58,417 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 15:47:58,423 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 15:47:58,509 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 15:47:58,518 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 15:47:58,600 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 15:47:58,607 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 15:47:58,689 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 15:47:58,695 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 15:47:58,778 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 15:47:58,787 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 15:47:58,869 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 15:47:58,956 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 15:47:58,969 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 15:47:59,369 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 15:47:59,379 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 15:47:59,465 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 15:47:59,573 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 15:47:59,578 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 15:47:59,740 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 15:48:00,104 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 15:48:00,110 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 15:48:00,192 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 15:48:00,198 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 15:48:00,297 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1220
+2025-07-23 15:48:00,413 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 15:48:04,716 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1220
+2025-07-23 15:48:04,889 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 15:48:04,896 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 15:48:04,981 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 15:48:05,354 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-23 15:48:05,360 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/generation_config.json HTTP/1.1" 200 0
+2025-07-23 15:48:07,680 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 15:48:07,774 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B HTTP/1.1" 200 7874
+2025-07-23 15:48:07,828 DEBUG: Starting new HTTPS connection (1): stats.vllm.ai:443
+2025-07-23 15:48:07,962 DEBUG: https://stats.vllm.ai:443 "POST / HTTP/1.1" 200 None
+2025-07-23 15:48:07,996 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=False&expand=False HTTP/1.1" 200 1110
+2025-07-23 15:48:07,996 DEBUG: Attempting to acquire lock 140549427952624 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 15:48:07,996 DEBUG: Lock 140549427952624 acquired on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 15:48:08,099 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/revision/main HTTP/1.1" 200 7874
+2025-07-23 15:48:08,101 DEBUG: Attempting to release lock 140549427952624 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 15:48:08,101 DEBUG: Lock 140549427952624 released on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 15:48:08,101 DEBUG: Attempting to acquire lock 140551640483072 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 15:48:08,101 DEBUG: Lock 140551640483072 acquired on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 15:48:08,185 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/model.safetensors.index.json HTTP/1.1" 404 0
+2025-07-23 15:48:08,186 DEBUG: Attempting to release lock 140551640483072 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 15:48:08,186 DEBUG: Lock 140551640483072 released on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 15:48:35,871 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 15:48:35,878 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 15:48:35,963 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 15:48:36,437 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/processor_config.json HTTP/1.1" 404 0
+2025-07-23 15:48:36,523 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 15:48:36,605 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/video_preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 15:48:36,691 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 15:48:36,772 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 15:48:36,778 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 15:48:36,863 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 15:48:36,868 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 15:48:36,949 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 15:48:36,956 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 15:48:37,041 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 15:48:54,460 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 15:48:54,461 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 15:48:54,607 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 15:48:54,614 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 15:48:54,696 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 15:48:54,702 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 15:48:54,793 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 15:48:54,799 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 15:48:54,892 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 15:48:54,899 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 15:48:54,982 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 15:48:54,987 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 15:48:55,074 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 15:48:55,081 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 15:48:55,163 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 15:48:55,246 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 15:48:55,252 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 15:48:55,639 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 15:48:55,645 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 15:48:55,730 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 15:48:55,832 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 15:48:55,838 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 15:48:55,923 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 15:48:56,284 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 15:48:56,291 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/config.json HTTP/1.1" 200 0
+2025-07-23 15:48:56,371 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 15:48:56,376 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/config.json HTTP/1.1" 200 0
+2025-07-23 15:48:56,462 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1313
+2025-07-23 15:48:56,551 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 15:49:00,882 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1313
+2025-07-23 15:49:01,055 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 15:49:01,061 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 15:49:01,151 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 15:49:01,524 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-23 15:49:01,531 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/generation_config.json HTTP/1.1" 200 0
+2025-07-23 15:49:02,557 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 15:49:02,654 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B HTTP/1.1" 200 8302
+2025-07-23 15:49:02,695 DEBUG: Starting new HTTPS connection (1): stats.vllm.ai:443
+2025-07-23 15:49:02,738 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main?recursive=False&expand=False HTTP/1.1" 200 1313
+2025-07-23 15:49:02,738 DEBUG: Attempting to acquire lock 139628310010464 on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 15:49:02,738 DEBUG: Lock 139628310010464 acquired on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 15:49:02,823 DEBUG: https://stats.vllm.ai:443 "POST / HTTP/1.1" 200 None
+2025-07-23 15:49:02,826 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/revision/main HTTP/1.1" 200 8302
+2025-07-23 15:49:02,827 DEBUG: Attempting to release lock 139628310010464 on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 15:49:02,827 DEBUG: Lock 139628310010464 released on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 15:49:02,827 DEBUG: Attempting to acquire lock 139628372426048 on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 15:49:02,828 DEBUG: Lock 139628372426048 acquired on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 15:49:02,914 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/model.safetensors.index.json HTTP/1.1" 404 0
+2025-07-23 15:49:02,914 DEBUG: Attempting to release lock 139628372426048 on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 15:49:02,914 DEBUG: Lock 139628372426048 released on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 15:49:31,092 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 15:49:31,097 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 15:49:31,189 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 15:49:31,545 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/processor_config.json HTTP/1.1" 404 0
+2025-07-23 15:49:31,628 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 15:49:31,710 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/video_preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 15:49:31,794 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 15:49:31,876 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 15:49:31,883 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 15:49:31,967 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 15:49:31,973 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/config.json HTTP/1.1" 200 0
+2025-07-23 15:49:32,055 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 15:49:32,061 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 15:49:32,144 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 15:51:23,484 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 15:51:23,484 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 15:51:23,630 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 15:51:23,636 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 15:51:23,721 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 15:51:23,742 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 15:51:23,825 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 15:51:23,832 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 15:51:23,927 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 15:51:23,934 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 15:51:24,015 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 15:51:24,021 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 15:51:24,104 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 15:51:24,110 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 15:51:24,192 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 15:51:24,275 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 15:51:24,281 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 15:51:24,714 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 15:51:24,719 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 15:51:24,807 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 15:51:24,911 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 15:51:24,918 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 15:51:25,001 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 15:51:25,362 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 15:51:25,369 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 15:51:25,453 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 15:51:25,458 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 15:51:25,550 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1220
+2025-07-23 15:51:25,633 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 15:51:29,921 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1220
+2025-07-23 15:51:30,107 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 15:51:30,114 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 15:51:30,202 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 15:51:30,572 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-23 15:51:30,577 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/generation_config.json HTTP/1.1" 200 0
+2025-07-23 15:51:31,584 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 15:51:31,684 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B HTTP/1.1" 200 7874
+2025-07-23 15:51:31,736 DEBUG: Starting new HTTPS connection (1): stats.vllm.ai:443
+2025-07-23 15:51:31,768 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=False&expand=False HTTP/1.1" 200 1110
+2025-07-23 15:51:31,768 DEBUG: Attempting to acquire lock 139886381945520 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 15:51:31,769 DEBUG: Lock 139886381945520 acquired on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 15:51:31,856 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/revision/main HTTP/1.1" 200 7874
+2025-07-23 15:51:31,858 DEBUG: Attempting to release lock 139886381945520 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 15:51:31,858 DEBUG: Lock 139886381945520 released on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 15:51:31,858 DEBUG: Attempting to acquire lock 139886257162240 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 15:51:31,858 DEBUG: Lock 139886257162240 acquired on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 15:51:31,865 DEBUG: https://stats.vllm.ai:443 "POST / HTTP/1.1" 200 None
+2025-07-23 15:51:31,941 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/model.safetensors.index.json HTTP/1.1" 404 0
+2025-07-23 15:51:31,941 DEBUG: Attempting to release lock 139886257162240 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 15:51:31,941 DEBUG: Lock 139886257162240 released on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 15:51:59,671 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 15:51:59,677 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 15:51:59,763 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 15:52:00,127 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/processor_config.json HTTP/1.1" 404 0
+2025-07-23 15:52:00,210 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 15:52:00,291 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/video_preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 15:52:00,374 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 15:52:00,459 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 15:52:00,465 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 15:52:00,546 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 15:52:00,552 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 15:52:00,631 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 15:52:00,637 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 15:52:00,721 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 15:52:04,137 ERROR: response is: {
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{
+^
+Expected one of: 
+	* __ANON_6
+	* F
+	* D_
+	* G
+	* __ANON_1
+
+
+2025-07-23 15:52:06,290 ERROR: response is: s(t_a) = c(high) & [d_s(t_a) < 0 & phi] & psi
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(t_a) = c(high) & [d_s(t_a) < 0 & phi] &
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:52:08,903 ERROR: response is: s(t_a) = c(high) & [d_s(t_a) < 0 & phi] & psi
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(t_a) = c(high) & [d_s(t_a) < 0 & phi] &
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:52:12,058 ERROR: response is: [u(
+error is: No terminal matches '[' in the current parser context, at line 1 col 1
+
+[u(
+^
+Expected one of: 
+	* __ANON_6
+	* F
+	* D_
+	* G
+	* __ANON_1
+
+
+2025-07-23 15:52:14,443 ERROR: response is: {u(t) > c(high) | u(t+1) < u(t) | d_u(t) < 0 | phi
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{u(t) > c(high) | u(t+1) < u(t) | d_u(t)
+^
+Expected one of: 
+	* __ANON_6
+	* F
+	* D_
+	* G
+	* __ANON_1
+
+
+2025-07-23 15:52:16,777 ERROR: response is: {u(t) > c(high) | u(t+1) < u(t) | d_u(t) < 0 | phi}
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{u(t) > c(high) | u(t+1) < u(t) | d_u(t)
+^
+Expected one of: 
+	* __ANON_6
+	* F
+	* D_
+	* G
+	* __ANON_1
+
+
+2025-07-23 15:52:19,825 ERROR: response is: u(t_1) < c(high) ∧ u(t_2) < c(mid) ∧ u(t_3) < c(low) ∧ ¬(d_s(u,t_1) > d_s(c,t_1)) ∧ ¬(d_s(u,t_2) > d_s(c,t_2)) ∧ ¬(d_s(u,t_3) > d_s(c,t_3)) ∧ ¬(d_s(u,t_4) > d_s(c,t_4)) ∧ ¬(d_s(u,t_5) > d_s(c,t_5))
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+u(t_1) < c(high) ∧ u(t_2) < c(mid) ∧ u(t_
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:52:22,665 ERROR: response is: u(t_1) < c(high) ∧ u(t_2) < c(mid) ∧ u(t_3) < c(low) ∧ ¬(d_s(u,t_1) > d_s(c,t_1)) ∧ ¬(d_s(u,t_2) > d_s(c,t_2)) ∧ ¬(d_s(u,t_3) > d_s(c,t_3)) ∧ ¬(d_s(u,t_4) > d_s(c,t_4)) ∧ ¬(d_s(u,t_5) > d_s(c,t_5)
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+u(t_1) < c(high) ∧ u(t_2) < c(mid) ∧ u(t_
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:52:25,437 ERROR: response is: u(t₁) < c(high) ∧ u(t₂) < c(mid) ∧ u(t₃) < c(low) ∧ ¬(d_s(u,t₁) > d_s(c,t₁)) ∧ ¬(d_s(u,t₂) > d_s(c,t₂)) ∧ ¬(d_s(u,t₃) > d_s(c,t₃)) ∧ ¬(d_s(u,t₄) > d_s(c,t₄)) ∧ ¬(d_s(u,t₅) > d_s(c,t₅)
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+u(t₁) < c(high) ∧ u(t₂) < c(mid) ∧ u(t₃) 
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:52:27,679 ERROR: response is: u:t_a < s(t_8) > c(low) | u:t_a < s(t_8) > c(high) | e
+error is: No terminal matches ':' in the current parser context, at line 1 col 2
+
+u:t_a < s(t_8) > c(low) | u:t_a < s(t_8) 
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:52:31,285 ERROR: response is: [u:t_a < s(t_8) > c(high) | e]
+error is: No terminal matches '[' in the current parser context, at line 1 col 1
+
+[u:t_a < s(t_8) > c(high) | e]
+^
+Expected one of: 
+	* __ANON_6
+	* F
+	* D_
+	* G
+	* __ANON_1
+
+
+2025-07-23 15:52:33,712 ERROR: response is: [u:t_a < s(t_8) > c(high) | e],
+[e | [0-9]+],
+[c(mid)],
+[d_s(t_8) > d_c | d_s(t_14) < d_c | phi]
+error is: No terminal matches '[' in the current parser context, at line 1 col 1
+
+[u:t_a < s(t_8) > c(high) | e],
+^
+Expected one of: 
+	* __ANON_6
+	* F
+	* D_
+	* G
+	* __ANON_1
+
+
+2025-07-23 15:52:37,468 ERROR: response is: u : s(t) > c(high) | s(t) > c(mid) | d_s(t) < d_c(high) | e
+error is: No terminal matches ':' in the current parser context, at line 1 col 3
+
+u : s(t) > c(high) | s(t) > c(mid) | d_s(t
+  ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:52:39,799 ERROR: response is: u : s(t) > c(high) | d_s(t) < d_c(high) | e
+error is: No terminal matches ':' in the current parser context, at line 1 col 3
+
+u : s(t) > c(high) | d_s(t) < d_c(high) | 
+  ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:52:41,991 ERROR: response is: u : s(t) > c(high) | d_s(t) < d_c(high) | e
+error is: No terminal matches ':' in the current parser context, at line 1 col 3
+
+u : s(t) > c(high) | d_s(t) < d_c(high) | 
+  ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:52:44,400 ERROR: response is: u(t) > c for t in {1–7, 8–14} and u(t) < c for t > 14; d_s(u)(t) > 0 for all t.
+error is: No terminal matches 'f' in the current parser context, at line 1 col 10
+
+u(t) > c for t in {1–7, 8–14} and u(t) < c for t 
+         ^
+Expected one of: 
+	* LPAR
+
+
+2025-07-23 15:52:47,005 ERROR: response is: u(t) > c for t in {1–7, 8–14} and u(t) < c for t > 14; d_s(u)(t) > 0 for all t.
+error is: No terminal matches 'f' in the current parser context, at line 1 col 10
+
+u(t) > c for t in {1–7, 8–14} and u(t) < c for t 
+         ^
+Expected one of: 
+	* LPAR
+
+
+2025-07-23 15:52:49,510 ERROR: response is: u(t) > c for t in {1–7, 8–14} and u(t) < c for t > 14; d_s(u)(t) > 0 for all t
+error is: No terminal matches 'f' in the current parser context, at line 1 col 10
+
+u(t) > c for t in {1–7, 8–14} and u(t) < c for t 
+         ^
+Expected one of: 
+	* LPAR
+
+
+2025-07-23 15:52:53,433 ERROR: response is: { "type": "signal", "value": { "name": "s", "time_unit": "t_a" } },
+  "explanation": "The input statement describes that TNF-α levels are elevated during specific intervals (days 1–7 and 8–14) and then decrease after those intervals. Using the provided rules, we need to translate this into an STL statement. The signal s represents the level of TNF-α over time (t_a). The values indicate whether the signal is above or below certain thresholds. The first part of the input states that the signal is elevated (e) during those intervals. The second part indicates that after the specified intervals, the signal is low (l). Therefore, the STL uses the 'e' and 'l' operators appropriately to capture the described behavior. The result accurately reflects the changes in TNF-α levels as per the input statement.
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{ "type": "signal", "value": { "name": "
+^
+Expected one of: 
+	* __ANON_6
+	* F
+	* D_
+	* G
+	* __ANON_1
+
+
+2025-07-23 15:52:57,720 ERROR: response is: { "type": "signal", "value": { "name": "s", "time_unit": "t_a" }, "explanation": "The input statement describes that TNF-α levels are elevated during specific intervals (days 1–7 and 8–14) and then decrease after those intervals. Using the provided rules, we need to translate this into an STL statement. The signal s represents the level of TNF-α over time (t_a). The values indicate whether the signal is above or below certain thresholds. The first part of the input states that the signal is elevated (e) during those intervals. The second part indicates that after the specified intervals, the signal is low (l). Therefore, the STL uses the 'e' and 'l' operators appropriately to capture the described behavior. The result accurately reflects the changes in TNF-α levels as per the input statement. "}, 
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{ "type": "signal", "value": { "name": "
+^
+Expected one of: 
+	* __ANON_6
+	* F
+	* D_
+	* G
+	* __ANON_1
+
+
+2025-07-23 15:53:01,490 ERROR: response is: { "type": "signal", "value": { "name": "s", "time_unit": "t_a" }, "explanation": "The input statement describes that TNF-α levels are elevated during specific intervals (days 1–7 and 8–14) and then decrease after those intervals. Using the provided rules, we need to translate this into an STL statement. The signal s represents the level of TNF-α over time (t_a). The values indicate whether the signal is above or below certain thresholds. The first part of the input states that the signal is elevated (e) during those intervals. The second part indicates that after the specified intervals, the signal is low (l). Therefore, the STL uses the 'e' and 'l' operators appropriately to capture the described behavior. The result accurately reflects the changes in TNF-α levels as per the input statement. "},
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{ "type": "signal", "value": { "name": "
+^
+Expected one of: 
+	* __ANON_6
+	* F
+	* D_
+	* G
+	* __ANON_1
+
+
+2025-07-23 15:53:03,621 ERROR: response is: u(s(t_a) < c(
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+u(s(t_a) < c(
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:53:05,646 ERROR: response is: u(s(t_a) < c(0.5 | [0-9]+)) & u(s(t_a) > c(0.5 | [0-9])) & u(s(t_a) < c(0.5 | [0-9])) & u(s(t_a) > c(0.5 | [0-9])) & u(s(t_a) < c(0.5 | [0-9]))
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+u(s(t_a) < c(0.5 | [0-9]+)) & u(s(t_a) > 
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:53:08,183 ERROR: response is: u(s(t_a) < c(0.5 | [0-9]+)) & u(s(t_a) > c(0.5 | [0-9])) & u(s(t_a) < c(0.5 | [0-9])) & u(s(t_a) > c(0.5 | [0-9])) & u(s(t_a) < c(0.5 | [0-9]))
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+u(s(t_a) < c(0.5 | [0-9]+)) & u(s(t_a) > 
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:53:10,054 ERROR: response is: s(t_a) > c(low)
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(t_a) > c(low)
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:53:11,969 ERROR: response is: { s(t_a) > c(high) }
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{ s(t_a) > c(high) }
+^
+Expected one of: 
+	* __ANON_6
+	* F
+	* D_
+	* G
+	* __ANON_1
+
+
+2025-07-23 15:53:13,777 ERROR: response is: { s(t_a) > c(high) }
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{ s(t_a) > c(high) }
+^
+Expected one of: 
+	* __ANON_6
+	* F
+	* D_
+	* G
+	* __ANON_1
+
+
+2025-07-23 15:53:15,982 ERROR: response is: s(t) > c
+error is: Unexpected end-of-input. Expected one of: 
+	* LPAR
+
+
+2025-07-23 15:53:17,951 ERROR: response is: s(t) > c for t in [3,6] as observed by u
+error is: No terminal matches 'f' in the current parser context, at line 1 col 10
+
+s(t) > c for t in [3,6] as observed by u
+         ^
+Expected one of: 
+	* LPAR
+
+
+2025-07-23 15:53:19,446 ERROR: response is: u(t) > c for t in [3,6] as observed by u
+error is: No terminal matches 'f' in the current parser context, at line 1 col 10
+
+u(t) > c for t in [3,6] as observed by u
+         ^
+Expected one of: 
+	* LPAR
+
+
+2025-07-23 15:53:21,706 ERROR: response is: d_sIFN-β(t) > d_sIFN-β(0) for t_a in [0-9]+
+error is: No terminal matches '-' in the current parser context, at line 1 col 7
+
+d_sIFN-β(t) > d_sIFN-β(0) for t_a in [0-9]+
+      ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:53:23,099 ERROR: response is: ∀t_a ∈ [0,∞). d_sIFN-β(t_a) > d_sIFN-β(0)
+error is: No terminal matches '∀' in the current parser context, at line 1 col 1
+
+∀t_a ∈ [0,∞). d_sIFN-β(t_a) > d_sIFN-β(0
+^
+Expected one of: 
+	* __ANON_6
+	* F
+	* D_
+	* G
+	* __ANON_1
+
+
+2025-07-23 15:53:25,168 ERROR: response is: ∀t_a ∈ [0,∞). d_sIFN-β(t_a) > d_sIFN-β(0)
+error is: No terminal matches '∀' in the current parser context, at line 1 col 1
+
+∀t_a ∈ [0,∞). d_sIFN-β(t_a) > d_sIFN-β(0
+^
+Expected one of: 
+	* __ANON_6
+	* F
+	* D_
+	* G
+	* __ANON_1
+
+
+2025-07-23 15:53:28,563 ERROR: response is: s(t_a) < c(low) ∧ s(t_a) < c(mid) ∧ s(t_a) < c(high) ∧ s(8–14) > d_c(low) ∧ s(8–14) > d_c(mid) ∧ s(8–14) > d_c(high) ∧ s(>14) > d_c(low) ∧ s(>14) > d_c(mid) ∧ s(>14) > d_c(high)
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(t_a) < c(low) ∧ s(t_a) < c(mid) ∧ s(t_a
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:53:31,077 ERROR: response is: s(t_a) < c(low) ∧ s(t_a) < c(mid) ∧ s(t_a) < c(high) ∧ s(8–14) > d_c(low) ∧ s(8–14) > d_c(mid) ∧ s(8–14) > d_c(high) ∧ s(>14) > d_c(low) ∧ s(>14) > d_c(mid) ∧ s(>14) > d_c(high)
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(t_a) < c(low) ∧ s(t_a) < c(mid) ∧ s(t_a
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:53:34,124 ERROR: response is: s(t_a) < c(low) ∧ s(t_a) < c(mid) ∧ s(t_a) < c(high) ∧ s(8–14) > d_c(low) ∧ s(8–14) > d_c(mid) ∧ s(8–14) > d_c(high) ∧ s(>14) > d_c(low) ∧ s(>14) > d_c(mid) ∧ s(>14) > d_c(high)
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(t_a) < c(low) ∧ s(t_a) < c(mid) ∧ s(t_a
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:53:36,214 ERROR: response is: u(t_day) > c(high) ∧ d_s(t_day) = 0
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+u(t_day) > c(high) ∧ d_s(t_day) = 0
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:53:37,926 ERROR: response is: u(t_day) > c(high) ∧ d_s(t_day) = 0
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+u(t_day) > c(high) ∧ d_s(t_day) = 0
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:53:39,431 ERROR: response is: u(t_day > 14) ∧ d_s(t_day > 14) = 0
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+u(t_day > 14) ∧ d_s(t_day > 14) = 0
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:53:41,473 ERROR: response is: s(t_a) > c(low) ∧ s(t_a) < c(high) ∧ s(t_a) > c(low) ∧ s(t_a) < c(high) ∧ d_s(t_a) < e
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(t_a) > c(low) ∧ s(t_a) < c(high) ∧ s(t_
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:53:44,054 ERROR: response is: s(t_a) > c(low) ∧ s(t_a) < c(high) ∧ s(t_a) > c(low) ∧ s(t_a) < c(high) ∧ d_s(t_a) < e
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(t_a) > c(low) ∧ s(t_a) < c(high) ∧ s(t_
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:53:46,428 ERROR: response is: s(t_a) > c(low) ∧ s(t_a) < c(high) ∧ s(t_a) > c(low) ∧ s(t_a) < c(high) ∧ d_s(t_a) < e
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(t_a) > c(low) ∧ s(t_a) < c(high) ∧ s(t_
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:53:50,904 ERROR: response is: {s(t_a) > 0 | s(t_a +1) > 0 | s(t_a +2) > 0 | s(t_a +3) > 0 | s(t_a +4) > 0 | s(t_a +5) > 0 | s(t_a +6) > 0 | s(t_a +7) > 0 | s(t_a +8) > 0 | s(t_a +9) > 0 | phi < t_a +1 | phi < t_a +2 | phi < t_a +3 | phi < t_a +4 | phi < t_a +5 | phi < t_a +6 | phi < t_a +7 | phi < t_a +8 | phi < t_a +9 | c(low) | c(mid) | c(high) | d_c(low) | d_c(high) | -d_c(low) | -d_c(high) | phi ^ phi | phi -> phi | phi ^ phi | omega ^ omega | omega
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{s(t_a) > 0 | s(t_a +1) > 0 | s(t_a +2) 
+^
+Expected one of: 
+	* __ANON_6
+	* F
+	* D_
+	* G
+	* __ANON_1
+
+
+2025-07-23 15:53:54,723 ERROR: response is: {s(t_a) > 0 | s(t_a +1) > 0 | s(t_a +2) > 0 | s(t_a +3) > 0 | s(t_a +4) > 0 | s(t_a +5) > 0 | s(t_a +6) > 0 | s(t_a +7) > 0 | s(t_a +8) > 0 | s(t_a +9) > 0 | phi < t_a +1 | phi < t_a +2 | phi < t_a +3 | phi < t_a +4 | phi < t_a +5 | phi < t_a +6 | phi < t_a +7 | phi < t_a +8 | phi < t_a +9 | c(low) | c(mid) | c(high) | d_c(low) | d_c(high) | -d_c(low) | -d_c(high) | phi ^ phi | omega ^ omega | omega | phi -> phi | omega
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{s(t_a) > 0 | s(t_a +1) > 0 | s(t_a +2) 
+^
+Expected one of: 
+	* __ANON_6
+	* F
+	* D_
+	* G
+	* __ANON_1
+
+
+2025-07-23 15:53:57,477 ERROR: response is: s(t_a) > 0 | s(t_a +1) > 0 | s(t_a +2) > 0 | s(t_a +3) > 0 | s(t_a +4) > 0 | s(t_a +5) > 0 | s(t_a +6) > 0 | s(t_a +7) > 0 | s(t_a +8) > 0 | s(t_a +9) > 0 | phi < t_a +1 | phi < t_a +2 | phi < t_a +3 | phi < t_a +4 | phi < t_a +5 | phi < t_a +6 | phi < t_a +7 | phi < t_a +8 | phi < t_a +9 | c(low) | c(mid) | c(high) | d_c(low) | d_c(high) | -d_c(low) | -d_c(high) | phi ^ phi | omega ^ omega | omega | phi -> phi | omega
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(t_a) > 0 | s(t_a +1) > 0 | s(t_a +2) > 
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:53:59,760 ERROR: response is: {
+  "time_unit": "days",
+  "信号描述": 
+    "s(t_a)": "0" | 
+    "c"
+  }
+
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{
+^
+Expected one of: 
+	* __ANON_6
+	* F
+	* D_
+	* G
+	* __ANON_1
+
+
+2025-07-23 15:54:02,272 ERROR: response is: s(t_a) < 0 | c
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(t_a) < 0 | c
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:54:04,828 ERROR: response is: s(t_a) < 0 | c
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(t_a) < 0 | c
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 15:54:15,135 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 15:54:15,136 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 15:54:15,227 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 15:54:15,233 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 15:54:15,328 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 15:54:15,334 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 15:54:15,415 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 15:54:15,422 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 15:54:15,504 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 15:54:15,510 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 15:54:15,592 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 15:54:15,598 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 15:54:15,704 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 15:54:15,711 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 15:54:15,795 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 15:54:15,876 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 15:54:15,882 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 15:54:16,278 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 15:54:16,283 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 15:54:16,377 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 15:54:16,483 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 15:54:16,488 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 15:54:16,577 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 15:54:17,121 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 15:54:17,230 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/config.json HTTP/1.1" 200 0
+2025-07-23 15:54:17,333 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 15:54:17,339 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/config.json HTTP/1.1" 200 0
+2025-07-23 15:54:17,440 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1313
+2025-07-23 15:54:17,531 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 16:11:07,053 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 16:11:07,054 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 16:11:07,147 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 16:11:07,154 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 16:11:07,242 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 16:11:07,248 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 16:11:07,330 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 16:11:07,337 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 16:11:07,432 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 16:11:07,440 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 16:11:07,528 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 16:11:07,534 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 16:11:07,616 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 16:11:07,622 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 16:11:07,704 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 16:11:07,789 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 16:11:07,797 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 16:11:08,190 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 16:11:08,196 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 16:11:08,280 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 16:11:08,386 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 16:11:08,391 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 16:11:08,476 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 16:11:08,840 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 16:11:08,845 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 16:11:08,927 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 16:11:08,933 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 16:11:09,017 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1220
+2025-07-23 16:11:09,106 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 16:11:13,613 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1220
+2025-07-23 16:11:13,799 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 16:11:13,807 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 16:11:13,907 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 16:11:14,285 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-23 16:11:14,290 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/generation_config.json HTTP/1.1" 200 0
+2025-07-23 16:11:15,307 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 16:11:15,401 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B HTTP/1.1" 200 7874
+2025-07-23 16:11:15,468 DEBUG: Starting new HTTPS connection (1): stats.vllm.ai:443
+2025-07-23 16:11:15,487 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=False&expand=False HTTP/1.1" 200 1110
+2025-07-23 16:11:15,488 DEBUG: Attempting to acquire lock 140069395201296 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 16:11:15,488 DEBUG: Lock 140069395201296 acquired on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 16:11:15,576 DEBUG: https://stats.vllm.ai:443 "POST / HTTP/1.1" 200 None
+2025-07-23 16:11:15,580 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/revision/main HTTP/1.1" 200 7874
+2025-07-23 16:11:15,581 DEBUG: Attempting to release lock 140069395201296 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 16:11:15,581 DEBUG: Lock 140069395201296 released on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 16:11:15,581 DEBUG: Attempting to acquire lock 140071482193776 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 16:11:15,581 DEBUG: Lock 140071482193776 acquired on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 16:11:15,682 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/model.safetensors.index.json HTTP/1.1" 404 0
+2025-07-23 16:11:15,683 DEBUG: Attempting to release lock 140071482193776 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 16:11:15,683 DEBUG: Lock 140071482193776 released on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 16:11:43,517 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 16:11:43,526 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 16:11:43,608 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 16:11:43,969 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/processor_config.json HTTP/1.1" 404 0
+2025-07-23 16:11:44,049 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 16:11:44,139 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/video_preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 16:11:44,226 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 16:11:44,321 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 16:11:44,326 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 16:11:44,408 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 16:11:44,415 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 16:11:44,508 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 16:11:44,515 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 16:11:44,603 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 16:11:48,010 ERROR: response is: {
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{
+^
+Expected one of: 
+	* __ANON_1
+	* D_
+	* F
+	* G
+	* __ANON_6
+
+
+2025-07-23 16:11:50,145 ERROR: response is: s(t_a) = c(high) & [d_s(t_a) < 0 & phi] & psi
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(t_a) = c(high) & [d_s(t_a) < 0 & phi] &
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:11:52,768 ERROR: response is: s(t_a) = c(high) & [d_s(t_a) < 0 & phi] & psi
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(t_a) = c(high) & [d_s(t_a) < 0 & phi] &
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:11:55,924 ERROR: response is: [u(
+error is: No terminal matches '[' in the current parser context, at line 1 col 1
+
+[u(
+^
+Expected one of: 
+	* __ANON_1
+	* D_
+	* F
+	* G
+	* __ANON_6
+
+
+2025-07-23 16:11:58,300 ERROR: response is: {u(t) > c(high) | u(t+1) < u(t) | d_u(t) < 0 | phi
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{u(t) > c(high) | u(t+1) < u(t) | d_u(t)
+^
+Expected one of: 
+	* __ANON_1
+	* D_
+	* F
+	* G
+	* __ANON_6
+
+
+2025-07-23 16:12:00,660 ERROR: response is: {u(t) > c(high) | u(t+1) < u(t) | d_u(t) < 0 | phi}
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{u(t) > c(high) | u(t+1) < u(t) | d_u(t)
+^
+Expected one of: 
+	* __ANON_1
+	* D_
+	* F
+	* G
+	* __ANON_6
+
+
+2025-07-23 16:12:03,710 ERROR: response is: u(t_1) < c(high) ∧ u(t_2) < c(mid) ∧ u(t_3) < c(low) ∧ ¬(d_s(u,t_1) > d_s(c,t_1)) ∧ ¬(d_s(u,t_2) > d_s(c,t_2)) ∧ ¬(d_s(u,t_3) > d_s(c,t_3)) ∧ ¬(d_s(u,t_4) > d_s(c,t_4)) ∧ ¬(d_s(u,t_5) > d_s(c,t_5))
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+u(t_1) < c(high) ∧ u(t_2) < c(mid) ∧ u(t_
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:12:06,519 ERROR: response is: u(t_1) < c(high) ∧ u(t_2) < c(mid) ∧ u(t_3) < c(low) ∧ ¬(d_s(u,t_1) > d_s(c,t_1)) ∧ ¬(d_s(u,t_2) > d_s(c,t_2)) ∧ ¬(d_s(u,t_3) > d_s(c,t_3)) ∧ ¬(d_s(u,t_4) > d_s(c,t_4)) ∧ ¬(d_s(u,t_5) > d_s(c,t_5)
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+u(t_1) < c(high) ∧ u(t_2) < c(mid) ∧ u(t_
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:12:09,286 ERROR: response is: u(t₁) < c(high) ∧ u(t₂) < c(mid) ∧ u(t₃) < c(low) ∧ ¬(d_s(u,t₁) > d_s(c,t₁)) ∧ ¬(d_s(u,t₂) > d_s(c,t₂)) ∧ ¬(d_s(u,t₃) > d_s(c,t₃)) ∧ ¬(d_s(u,t₄) > d_s(c,t₄)) ∧ ¬(d_s(u,t₅) > d_s(c,t₅)
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+u(t₁) < c(high) ∧ u(t₂) < c(mid) ∧ u(t₃) 
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:12:11,523 ERROR: response is: u:t_a < s(t_8) > c(low) | u:t_a < s(t_8) > c(high) | e
+error is: No terminal matches ':' in the current parser context, at line 1 col 2
+
+u:t_a < s(t_8) > c(low) | u:t_a < s(t_8) 
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:12:15,135 ERROR: response is: [u:t_a < s(t_8) > c(high) | e]
+error is: No terminal matches '[' in the current parser context, at line 1 col 1
+
+[u:t_a < s(t_8) > c(high) | e]
+^
+Expected one of: 
+	* __ANON_1
+	* D_
+	* F
+	* G
+	* __ANON_6
+
+
+2025-07-23 16:12:17,543 ERROR: response is: [u:t_a < s(t_8) > c(high) | e],
+[e | [0-9]+],
+[c(mid)],
+[d_s(t_8) > d_c | d_s(t_14) < d_c | phi]
+error is: No terminal matches '[' in the current parser context, at line 1 col 1
+
+[u:t_a < s(t_8) > c(high) | e],
+^
+Expected one of: 
+	* __ANON_1
+	* D_
+	* F
+	* G
+	* __ANON_6
+
+
+2025-07-23 16:12:21,250 ERROR: response is: u : s(t) > c(high) | s(t) > c(mid) | d_s(t) < d_c(high) | e
+error is: No terminal matches ':' in the current parser context, at line 1 col 3
+
+u : s(t) > c(high) | s(t) > c(mid) | d_s(t
+  ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:12:23,565 ERROR: response is: u : s(t) > c(high) | d_s(t) < d_c(high) | e
+error is: No terminal matches ':' in the current parser context, at line 1 col 3
+
+u : s(t) > c(high) | d_s(t) < d_c(high) | 
+  ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:12:25,737 ERROR: response is: u : s(t) > c(high) | d_s(t) < d_c(high) | e
+error is: No terminal matches ':' in the current parser context, at line 1 col 3
+
+u : s(t) > c(high) | d_s(t) < d_c(high) | 
+  ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:12:28,126 ERROR: response is: u(t) > c for t in {1–7, 8–14} and u(t) < c for t > 14; d_s(u)(t) > 0 for all t.
+error is: No terminal matches 'f' in the current parser context, at line 1 col 10
+
+u(t) > c for t in {1–7, 8–14} and u(t) < c for t 
+         ^
+Expected one of: 
+	* LPAR
+
+
+2025-07-23 16:12:30,722 ERROR: response is: u(t) > c for t in {1–7, 8–14} and u(t) < c for t > 14; d_s(u)(t) > 0 for all t.
+error is: No terminal matches 'f' in the current parser context, at line 1 col 10
+
+u(t) > c for t in {1–7, 8–14} and u(t) < c for t 
+         ^
+Expected one of: 
+	* LPAR
+
+
+2025-07-23 16:12:33,206 ERROR: response is: u(t) > c for t in {1–7, 8–14} and u(t) < c for t > 14; d_s(u)(t) > 0 for all t
+error is: No terminal matches 'f' in the current parser context, at line 1 col 10
+
+u(t) > c for t in {1–7, 8–14} and u(t) < c for t 
+         ^
+Expected one of: 
+	* LPAR
+
+
+2025-07-23 16:12:37,118 ERROR: response is: { "type": "signal", "value": { "name": "s", "time_unit": "t_a" } },
+  "explanation": "The input statement describes that TNF-α levels are elevated during specific intervals (days 1–7 and 8–14) and then decrease after those intervals. Using the provided rules, we need to translate this into an STL statement. The signal s represents the level of TNF-α over time (t_a). The values indicate whether the signal is above or below certain thresholds. The first part of the input states that the signal is elevated (e) during those intervals. The second part indicates that after the specified intervals, the signal is low (l). Therefore, the STL uses the 'e' and 'l' operators appropriately to capture the described behavior. The result accurately reflects the changes in TNF-α levels as per the input statement.
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{ "type": "signal", "value": { "name": "
+^
+Expected one of: 
+	* __ANON_1
+	* D_
+	* F
+	* G
+	* __ANON_6
+
+
+2025-07-23 16:12:41,375 ERROR: response is: { "type": "signal", "value": { "name": "s", "time_unit": "t_a" }, "explanation": "The input statement describes that TNF-α levels are elevated during specific intervals (days 1–7 and 8–14) and then decrease after those intervals. Using the provided rules, we need to translate this into an STL statement. The signal s represents the level of TNF-α over time (t_a). The values indicate whether the signal is above or below certain thresholds. The first part of the input states that the signal is elevated (e) during those intervals. The second part indicates that after the specified intervals, the signal is low (l). Therefore, the STL uses the 'e' and 'l' operators appropriately to capture the described behavior. The result accurately reflects the changes in TNF-α levels as per the input statement. "}, 
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{ "type": "signal", "value": { "name": "
+^
+Expected one of: 
+	* __ANON_1
+	* D_
+	* F
+	* G
+	* __ANON_6
+
+
+2025-07-23 16:12:45,137 ERROR: response is: { "type": "signal", "value": { "name": "s", "time_unit": "t_a" }, "explanation": "The input statement describes that TNF-α levels are elevated during specific intervals (days 1–7 and 8–14) and then decrease after those intervals. Using the provided rules, we need to translate this into an STL statement. The signal s represents the level of TNF-α over time (t_a). The values indicate whether the signal is above or below certain thresholds. The first part of the input states that the signal is elevated (e) during those intervals. The second part indicates that after the specified intervals, the signal is low (l). Therefore, the STL uses the 'e' and 'l' operators appropriately to capture the described behavior. The result accurately reflects the changes in TNF-α levels as per the input statement. "},
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{ "type": "signal", "value": { "name": "
+^
+Expected one of: 
+	* __ANON_1
+	* D_
+	* F
+	* G
+	* __ANON_6
+
+
+2025-07-23 16:12:47,293 ERROR: response is: u(s(t_a) < c(
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+u(s(t_a) < c(
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:12:49,335 ERROR: response is: u(s(t_a) < c(0.5 | [0-9]+)) & u(s(t_a) > c(0.5 | [0-9])) & u(s(t_a) < c(0.5 | [0-9])) & u(s(t_a) > c(0.5 | [0-9])) & u(s(t_a) < c(0.5 | [0-9]))
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+u(s(t_a) < c(0.5 | [0-9]+)) & u(s(t_a) > 
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:12:51,874 ERROR: response is: u(s(t_a) < c(0.5 | [0-9]+)) & u(s(t_a) > c(0.5 | [0-9])) & u(s(t_a) < c(0.5 | [0-9])) & u(s(t_a) > c(0.5 | [0-9])) & u(s(t_a) < c(0.5 | [0-9]))
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+u(s(t_a) < c(0.5 | [0-9]+)) & u(s(t_a) > 
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:12:53,748 ERROR: response is: s(t_a) > c(low)
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(t_a) > c(low)
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:12:55,664 ERROR: response is: { s(t_a) > c(high) }
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{ s(t_a) > c(high) }
+^
+Expected one of: 
+	* __ANON_1
+	* D_
+	* F
+	* G
+	* __ANON_6
+
+
+2025-07-23 16:12:57,471 ERROR: response is: { s(t_a) > c(high) }
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{ s(t_a) > c(high) }
+^
+Expected one of: 
+	* __ANON_1
+	* D_
+	* F
+	* G
+	* __ANON_6
+
+
+2025-07-23 16:12:59,709 ERROR: response is: s(t) > c
+error is: Unexpected end-of-input. Expected one of: 
+	* LPAR
+
+
+2025-07-23 16:13:01,700 ERROR: response is: s(t) > c for t in [3,6] as observed by u
+error is: No terminal matches 'f' in the current parser context, at line 1 col 10
+
+s(t) > c for t in [3,6] as observed by u
+         ^
+Expected one of: 
+	* LPAR
+
+
+2025-07-23 16:13:03,205 ERROR: response is: u(t) > c for t in [3,6] as observed by u
+error is: No terminal matches 'f' in the current parser context, at line 1 col 10
+
+u(t) > c for t in [3,6] as observed by u
+         ^
+Expected one of: 
+	* LPAR
+
+
+2025-07-23 16:13:05,490 ERROR: response is: d_sIFN-β(t) > d_sIFN-β(0) for t_a in [0-9]+
+error is: No terminal matches '-' in the current parser context, at line 1 col 7
+
+d_sIFN-β(t) > d_sIFN-β(0) for t_a in [0-9]+
+      ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:13:06,897 ERROR: response is: ∀t_a ∈ [0,∞). d_sIFN-β(t_a) > d_sIFN-β(0)
+error is: No terminal matches '∀' in the current parser context, at line 1 col 1
+
+∀t_a ∈ [0,∞). d_sIFN-β(t_a) > d_sIFN-β(0
+^
+Expected one of: 
+	* __ANON_1
+	* D_
+	* F
+	* G
+	* __ANON_6
+
+
+2025-07-23 16:13:08,985 ERROR: response is: ∀t_a ∈ [0,∞). d_sIFN-β(t_a) > d_sIFN-β(0)
+error is: No terminal matches '∀' in the current parser context, at line 1 col 1
+
+∀t_a ∈ [0,∞). d_sIFN-β(t_a) > d_sIFN-β(0
+^
+Expected one of: 
+	* __ANON_1
+	* D_
+	* F
+	* G
+	* __ANON_6
+
+
+2025-07-23 16:13:12,369 ERROR: response is: s(t_a) < c(low) ∧ s(t_a) < c(mid) ∧ s(t_a) < c(high) ∧ s(8–14) > d_c(low) ∧ s(8–14) > d_c(mid) ∧ s(8–14) > d_c(high) ∧ s(>14) > d_c(low) ∧ s(>14) > d_c(mid) ∧ s(>14) > d_c(high)
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(t_a) < c(low) ∧ s(t_a) < c(mid) ∧ s(t_a
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:13:14,911 ERROR: response is: s(t_a) < c(low) ∧ s(t_a) < c(mid) ∧ s(t_a) < c(high) ∧ s(8–14) > d_c(low) ∧ s(8–14) > d_c(mid) ∧ s(8–14) > d_c(high) ∧ s(>14) > d_c(low) ∧ s(>14) > d_c(mid) ∧ s(>14) > d_c(high)
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(t_a) < c(low) ∧ s(t_a) < c(mid) ∧ s(t_a
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:13:17,949 ERROR: response is: s(t_a) < c(low) ∧ s(t_a) < c(mid) ∧ s(t_a) < c(high) ∧ s(8–14) > d_c(low) ∧ s(8–14) > d_c(mid) ∧ s(8–14) > d_c(high) ∧ s(>14) > d_c(low) ∧ s(>14) > d_c(mid) ∧ s(>14) > d_c(high)
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(t_a) < c(low) ∧ s(t_a) < c(mid) ∧ s(t_a
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:13:20,022 ERROR: response is: u(t_day) > c(high) ∧ d_s(t_day) = 0
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+u(t_day) > c(high) ∧ d_s(t_day) = 0
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:13:21,749 ERROR: response is: u(t_day) > c(high) ∧ d_s(t_day) = 0
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+u(t_day) > c(high) ∧ d_s(t_day) = 0
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:13:23,261 ERROR: response is: u(t_day > 14) ∧ d_s(t_day > 14) = 0
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+u(t_day > 14) ∧ d_s(t_day > 14) = 0
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:13:25,322 ERROR: response is: s(t_a) > c(low) ∧ s(t_a) < c(high) ∧ s(t_a) > c(low) ∧ s(t_a) < c(high) ∧ d_s(t_a) < e
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(t_a) > c(low) ∧ s(t_a) < c(high) ∧ s(t_
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:13:27,912 ERROR: response is: s(t_a) > c(low) ∧ s(t_a) < c(high) ∧ s(t_a) > c(low) ∧ s(t_a) < c(high) ∧ d_s(t_a) < e
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(t_a) > c(low) ∧ s(t_a) < c(high) ∧ s(t_
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:13:30,268 ERROR: response is: s(t_a) > c(low) ∧ s(t_a) < c(high) ∧ s(t_a) > c(low) ∧ s(t_a) < c(high) ∧ d_s(t_a) < e
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(t_a) > c(low) ∧ s(t_a) < c(high) ∧ s(t_
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:13:34,733 ERROR: response is: {s(t_a) > 0 | s(t_a +1) > 0 | s(t_a +2) > 0 | s(t_a +3) > 0 | s(t_a +4) > 0 | s(t_a +5) > 0 | s(t_a +6) > 0 | s(t_a +7) > 0 | s(t_a +8) > 0 | s(t_a +9) > 0 | phi < t_a +1 | phi < t_a +2 | phi < t_a +3 | phi < t_a +4 | phi < t_a +5 | phi < t_a +6 | phi < t_a +7 | phi < t_a +8 | phi < t_a +9 | c(low) | c(mid) | c(high) | d_c(low) | d_c(high) | -d_c(low) | -d_c(high) | phi ^ phi | phi -> phi | phi ^ phi | omega ^ omega | omega
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{s(t_a) > 0 | s(t_a +1) > 0 | s(t_a +2) 
+^
+Expected one of: 
+	* __ANON_1
+	* D_
+	* F
+	* G
+	* __ANON_6
+
+
+2025-07-23 16:13:38,581 ERROR: response is: {s(t_a) > 0 | s(t_a +1) > 0 | s(t_a +2) > 0 | s(t_a +3) > 0 | s(t_a +4) > 0 | s(t_a +5) > 0 | s(t_a +6) > 0 | s(t_a +7) > 0 | s(t_a +8) > 0 | s(t_a +9) > 0 | phi < t_a +1 | phi < t_a +2 | phi < t_a +3 | phi < t_a +4 | phi < t_a +5 | phi < t_a +6 | phi < t_a +7 | phi < t_a +8 | phi < t_a +9 | c(low) | c(mid) | c(high) | d_c(low) | d_c(high) | -d_c(low) | -d_c(high) | phi ^ phi | omega ^ omega | omega | phi -> phi | omega
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{s(t_a) > 0 | s(t_a +1) > 0 | s(t_a +2) 
+^
+Expected one of: 
+	* __ANON_1
+	* D_
+	* F
+	* G
+	* __ANON_6
+
+
+2025-07-23 16:13:41,309 ERROR: response is: s(t_a) > 0 | s(t_a +1) > 0 | s(t_a +2) > 0 | s(t_a +3) > 0 | s(t_a +4) > 0 | s(t_a +5) > 0 | s(t_a +6) > 0 | s(t_a +7) > 0 | s(t_a +8) > 0 | s(t_a +9) > 0 | phi < t_a +1 | phi < t_a +2 | phi < t_a +3 | phi < t_a +4 | phi < t_a +5 | phi < t_a +6 | phi < t_a +7 | phi < t_a +8 | phi < t_a +9 | c(low) | c(mid) | c(high) | d_c(low) | d_c(high) | -d_c(low) | -d_c(high) | phi ^ phi | omega ^ omega | omega | phi -> phi | omega
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(t_a) > 0 | s(t_a +1) > 0 | s(t_a +2) > 
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:13:43,619 ERROR: response is: {
+  "time_unit": "days",
+  "信号描述": 
+    "s(t_a)": "0" | 
+    "c"
+  }
+
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{
+^
+Expected one of: 
+	* __ANON_1
+	* D_
+	* F
+	* G
+	* __ANON_6
+
+
+2025-07-23 16:13:46,130 ERROR: response is: s(t_a) < 0 | c
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(t_a) < 0 | c
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:13:48,682 ERROR: response is: s(t_a) < 0 | c
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(t_a) < 0 | c
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:13:58,922 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 16:13:58,923 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 16:13:59,019 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 16:13:59,025 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 16:13:59,106 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 16:13:59,111 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 16:13:59,193 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 16:13:59,199 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 16:13:59,281 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 16:13:59,287 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 16:13:59,369 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 16:13:59,376 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 16:13:59,458 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 16:13:59,464 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 16:13:59,547 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 16:13:59,630 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 16:13:59,637 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 16:14:00,041 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 16:14:00,046 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 16:14:00,128 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 16:14:00,232 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 16:14:00,241 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 16:14:00,331 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 16:14:00,694 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 16:14:00,703 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/config.json HTTP/1.1" 200 0
+2025-07-23 16:14:00,788 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 16:14:00,794 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/config.json HTTP/1.1" 200 0
+2025-07-23 16:14:00,881 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1313
+2025-07-23 16:14:00,963 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 16:14:05,515 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1313
+2025-07-23 16:14:05,702 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 16:14:05,708 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 16:14:05,799 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 16:14:06,181 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-23 16:14:06,187 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/generation_config.json HTTP/1.1" 200 0
+2025-07-23 16:14:07,202 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 16:14:07,297 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B HTTP/1.1" 200 8302
+2025-07-23 16:14:07,364 DEBUG: Starting new HTTPS connection (1): stats.vllm.ai:443
+2025-07-23 16:14:07,381 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main?recursive=False&expand=False HTTP/1.1" 200 1313
+2025-07-23 16:14:07,382 DEBUG: Attempting to acquire lock 139781776787936 on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 16:14:07,382 DEBUG: Lock 139781776787936 acquired on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 16:14:07,473 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/revision/main HTTP/1.1" 200 8302
+2025-07-23 16:14:07,475 DEBUG: Attempting to release lock 139781776787936 on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 16:14:07,475 DEBUG: Lock 139781776787936 released on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 16:14:07,475 DEBUG: Attempting to acquire lock 139781929014704 on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 16:14:07,475 DEBUG: Lock 139781929014704 acquired on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 16:14:07,500 DEBUG: https://stats.vllm.ai:443 "POST / HTTP/1.1" 200 None
+2025-07-23 16:14:07,557 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/model.safetensors.index.json HTTP/1.1" 404 0
+2025-07-23 16:14:07,558 DEBUG: Attempting to release lock 139781929014704 on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 16:14:07,558 DEBUG: Lock 139781929014704 released on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 16:14:35,649 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 16:14:35,654 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 16:14:35,742 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 16:14:36,094 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/processor_config.json HTTP/1.1" 404 0
+2025-07-23 16:14:36,181 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 16:14:36,300 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/video_preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 16:14:36,386 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 16:14:36,466 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 16:14:36,472 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 16:14:36,569 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 16:14:36,576 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/config.json HTTP/1.1" 200 0
+2025-07-23 16:14:36,665 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 16:14:36,671 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 16:14:36,756 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 16:14:38,777 ERROR: response is: s(T=1) c(high)
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(T=1) c(high)
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:14:40,103 ERROR: response is: d_s(T=1) c(mid)
+error is: No terminal matches '(' in the current parser context, at line 1 col 4
+
+d_s(T=1) c(mid)
+   ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:14:40,816 ERROR: response is: d_s(T=1) c(mid) > d_s(T=1) c(high)
+error is: No terminal matches '(' in the current parser context, at line 1 col 4
+
+d_s(T=1) c(mid) > d_s(T=1) c(high)
+   ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:14:41,641 ERROR: response is: s("d_s(T=1)" "c(high)") < "e", s("d_s(T=2)" "c(low)") < "e"
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s("d_s(T=1)" "c(high)") < "e", s("d_s(T=2
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:14:42,218 ERROR: response is: s(
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:14:43,715 ERROR: response is: { "thinking": "The user requested to translate a natural language statement into a signal temporal logic (STL) statement. However, when trying to parse the response, the parser returned an exception for the '(', which suggests that the input might not be well-formed in the STL syntax. The original statement provided was: 'In the mild and moderate groups, IL-6 concentrations were at their highest level in the first week after the symptom onset and then exhibited a decreasing trend.'"}
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{ "thinking": "The user requested to tra
+^
+Expected one of: 
+	* F
+	* D_
+	* __ANON_6
+	* G
+	* __ANON_1
+
+
+2025-07-23 16:14:44,565 ERROR: response is: d_s(T=1) > d_s(T=2) < d_s(T=3)
+error is: No terminal matches '(' in the current parser context, at line 1 col 4
+
+d_s(T=1) > d_s(T=2) < d_s(T=3)
+   ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:14:45,668 ERROR: response is: d_s(T=1) > d_s(T=2) < d_s(T=3)
+error is: No terminal matches '(' in the current parser context, at line 1 col 4
+
+d_s(T=1) > d_s(T=2) < d_s(T=3)
+   ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:14:46,576 ERROR: response is: d_s(T=1) > d_s(T=2) < d_s(T=3)
+error is: No terminal matches '(' in the current parser context, at line 1 col 4
+
+d_s(T=1) > d_s(T=2) < d_s(T=3)
+   ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:14:47,370 ERROR: response is: d_s(1-7) > d_s(8-14) < d_s(-14+)
+error is: No terminal matches '(' in the current parser context, at line 1 col 4
+
+d_s(1-7) > d_s(8-14) < d_s(-14+)
+   ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:14:48,479 ERROR: response is: d_s(1-7) > d_s(8-14) < d_s(-14+)
+error is: No terminal matches '(' in the current parser context, at line 1 col 4
+
+d_s(1-7) > d_s(8-14) < d_s(-14+)
+   ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:14:49,379 ERROR: response is: d_s(1-7) > d_s(8-14) < d_s(-14+)
+error is: No terminal matches '(' in the current parser context, at line 1 col 4
+
+d_s(1-7) > d_s(8-14) < d_s(-14+)
+   ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:14:50,680 ERROR: response is: d_s('d_1','T') < 'c(low)' | d_s('d_2','T') < 'c(mid)' | d_s('d_3','T') < 'c(high)' | d_s('d_8','T') > 'c(mid)' | d_s('d_14','T') > 'c(high)' | d_s('d_15','T') < 'c(low)'
+error is: No terminal matches '(' in the current parser context, at line 1 col 4
+
+d_s('d_1','T') < 'c(low)' | d_s('d_2','T') 
+   ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:14:57,003 ERROR: response is: {
+  "t_a": "T",
+  "s": "c(IL-1β,IL-1Ra)",
+  "d_s": ["d_8, d_14", "d_14"]
+}
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{
+^
+Expected one of: 
+	* F
+	* D_
+	* __ANON_6
+	* G
+	* __ANON_1
+
+
+2025-07-23 16:14:57,713 ERROR: response is: d_s('T') > d_s('0') < d_s('T')
+error is: No terminal matches '(' in the current parser context, at line 1 col 4
+
+d_s('T') > d_s('0') < d_s('T')
+   ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:14:58,782 ERROR: response is: d_s('T') > d_s('0') < d_s('T')
+error is: No terminal matches '(' in the current parser context, at line 1 col 4
+
+d_s('T') > d_s('0') < d_s('T')
+   ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:14:59,626 ERROR: response is: d_s('T') > d_s('0') < d_s('T')
+error is: No terminal matches '(' in the current parser context, at line 1 col 4
+
+d_s('T') > d_s('0') < d_s('T')
+   ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:05,150 ERROR: response is: d_s(1-7) > d_s(8-14) < d_s(15+).
+error is: No terminal matches '(' in the current parser context, at line 1 col 4
+
+d_s(1-7) > d_s(8-14) < d_s(15+).
+   ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:06,126 ERROR: response is: { "s": "d_s(1-7) > d_s(8-14) < d_s(15+)" }
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{ "s": "d_s(1-7) > d_s(8-14) < d_s(15+)"
+^
+Expected one of: 
+	* F
+	* D_
+	* __ANON_6
+	* G
+	* __ANON_1
+
+
+2025-07-23 16:15:06,854 ERROR: response is: s(TD_1) > c(low) | s(TD_2) > c(low) | ... | s(TD_14) > c(low) | d_s(TD_15) < c(low)
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(TD_1) > c(low) | s(TD_2) > c(low) | ...
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:07,848 ERROR: response is: s(TD_1) > c(low) | s(TD_2) > c(low) | ... | s(TD_14) > c(low) | d_s(TD_15) < c(low)
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(TD_1) > c(low) | s(TD_2) > c(low) | ...
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:09,892 ERROR: response is: [BEGIN_RULES]
+
+u : s(TD_1) > c(low) | s(TD_2) > c(low) | ... | s(TD_14) > c(low) | d_s(TD_15) < c(low)
+
+e : [0-9]+
+
+c : c(low)
+c(mid)
+c(high)
+d_c : d_c(low)
+d_c(high)
+
+phi : u | phi^ | 
+
+psi : F[t_a,t_a]G(phi) | G[t_a,t_a](phi) | F[t_a,t_a](phi)
+
+omega : phi | psi | omega^ | omega
+
+t_a : [0-9]+
+s : [a-zA-z0-9]+
+d_s : "d_"[a-zA-z0-9]+
+[END_RULES]
+error is: No terminal matches '[' in the current parser context, at line 1 col 1
+
+[BEGIN_RULES]
+^
+Expected one of: 
+	* F
+	* D_
+	* __ANON_6
+	* G
+	* __ANON_1
+
+
+2025-07-23 16:15:10,716 ERROR: response is: s("T") < "c(low)" | d_s("d_c(low)") > "c(high)"
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s("T") < "c(low)" | d_s("d_c(low)") > "c(
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:11,467 ERROR: response is: s(
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:11,944 ERROR: response is: s(T) > d_s(T)
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(T) > d_s(T)
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:13,756 ERROR: response is: [BEGIN_RULES]
+
+u : s "t" < c | s "t" > c | abs("s" - c) < e | d_s "t" > d_c | d_s "t" < d_c | abs("d_s" - d_c) < e
+
+e : e | [0-9]+
+
+c : s("t_a") | c(low) | c(mid) | c(high)
+
+d_c : 0 | d_c(low) | d_c(high) | -d_c(low) | -d_c(high)
+
+phi : u | phi^ | phi → phi
+
+psi : F["t_a","t_a"]G(phi) | G["t_a","t_a"]("phi") | F["t_a","t_a"]("phi")
+
+omega : phi | psi | omega^ | omega
+
+t_a : [0-9]+ | T
+
+s : [a-zA-z0-9]+
+
+d_s : d_([a-zA-Z0-9])
+
+[END_RULES]
+error is: No terminal matches '[' in the current parser context, at line 1 col 1
+
+[BEGIN_RULES]
+^
+Expected one of: 
+	* F
+	* D_
+	* __ANON_6
+	* G
+	* __ANON_1
+
+
+2025-07-23 16:15:14,283 ERROR: response is: s(
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:14,860 ERROR: response is: s(T(0), T(1), T(2)) F([F(
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(T(0), T(1), T(2)) F([F(
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:16,256 ERROR: response is: s(T=0) < 'c(low)' | s(T=0) > 'c(high') | abs(s(T=0) - c(low)) < 'e' | d_s(T=0) > 'd_c(low)' | d_s(T=0) < 'd_c(low)' | abs(d_s(T=0) - d_c(low)) < 'e'
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(T=0) < 'c(low)' | s(T=0) > 'c(high') | 
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:17,619 ERROR: response is: s(T=0) < 'c(low)' | s(T=0) > 'c(high') | abs(s(T=0) - c(low)) < 'e' | d_s(T=0) > 'd_c(low)' | d_s(T=0) < 'd_c(low)' | abs(d_s(T=0) - d_c(low)) < 'e'
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(T=0) < 'c(low)' | s(T=0) > 'c(high') | 
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:19,053 ERROR: response is: s(T=0) < 'c(low)' | s(T=0) > 'c(high') | abs(s(T=0) - c(low)) < 'e' | d_s(T=0) > 'd_c(low)' | d_s(T=0) < 'd_c(low)' | abs(d_s(T=0) - d_c(low)) < 'e'
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(T=0) < 'c(low)' | s(T=0) > 'c(high') | 
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:20,811 ERROR: response is: {
+  "s": "IFN-β" 
+  "t": "d_s" "d_c" "d_high" "d_low" "d_mid"
+  "e": "0" 
+  "c": "c(mid)"
+  "d_c": "d_c(low)"
+  "phi": "F("t_a","t_a")G("d_high")"
+  "omega": "omega" 
+  "t_a": "d_8"
+  "s": "IFN-β"
+  "d_s": "d_high" 
+  "d_c": "d_c(low)"
+  "d_high": "d_high"
+  "d_low": "d_low"
+  "d_mid": "d_mid"
+}
+error is: No terminal matches '{' in the current parser context, at line 1 col 1
+
+{
+^
+Expected one of: 
+	* F
+	* D_
+	* __ANON_6
+	* G
+	* __ANON_1
+
+
+2025-07-23 16:15:21,676 ERROR: response is: s(IFN-β) d_s(d_8) d_c(d_c(low)) d_high(d_high) d_low(d_low) d_mid(d_mid)
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(IFN-β) d_s(d_8) d_c(d_c(low)) d_high(d_
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:22,539 ERROR: response is: s(IFN-β) d_s(d_8) d_c(d_c(low)) d_high(d_high) d_low(d_low) d_mid(d_mid)
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(IFN-β) d_s(d_8) d_c(d_c(low)) d_high(d_
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:23,297 ERROR: response is: d_s('T') > 'c(high)'
+error is: No terminal matches '(' in the current parser context, at line 1 col 4
+
+d_s('T') > 'c(high)'
+   ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:24,083 ERROR: response is: d_s('T') > 'c(high)
+error is: No terminal matches '(' in the current parser context, at line 1 col 4
+
+d_s('T') > 'c(high)
+   ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:24,879 ERROR: response is: d_s('T') > 'c(high)
+error is: No terminal matches '(' in the current parser context, at line 1 col 4
+
+d_s('T') > 'c(high)
+   ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:26,628 ERROR: response is: t_a: '0' | s: 'T', d_s: 'd_α', d_s: 'd_β', d_c: 'c(low)', e: 'e', c: 'c(mid)', phi: 'phi' → 'phi'
+error is: No terminal matches ':' in the current parser context, at line 1 col 4
+
+t_a: '0' | s: 'T', d_s: 'd_α', d_s: 'd_β', 
+   ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:27,272 ERROR: response is: phi: F[T, T]G(phi)
+error is: No terminal matches ':' in the current parser context, at line 1 col 4
+
+phi: F[T, T]G(phi)
+   ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:27,964 ERROR: response is: F[T, T]G(phi)
+error is: No terminal matches ')' in the current parser context, at line 1 col 13
+
+F[T, T]G(phi)
+            ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:29,174 ERROR: response is: s(T) < c(low) | c(mid) | c(high) > e d_s(d_α) > d_s(d_β) > e d_s(d_α) | d_s(d_β)
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(T) < c(low) | c(mid) | c(high) > e d_s(
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:30,577 ERROR: response is: s(T) < c(low) | c(mid) | c(high) > e d_s(d_α) > e d_s(d_β) > e d_s(d_α) | d_s(d_β)
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(T) < c(low) | c(mid) | c(high) > e d_s(
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:31,802 ERROR: response is: s(T) < c(low) | c(mid) | c(high) > e d_s(d_α) > e d_s(d_β) > e d_s(d_α) | d_s(d_β)
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(T) < c(low) | c(mid) | c(high) > e d_s(
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:33,504 ERROR: response is: s(T=14) < c(SARS-CoV-2) = e, d_s(SARS-CoV-2) = d_c(high), c(IL-6) = c(mid), c(IL1RN/IL1RA) = c(mid), c(MERS) = c(low); d_s(IL-6) = d_c(high), d_s(IL1RN/IL1RA) = d_c(high); d_s(MERS) = d_c(low); d_s(IL-6) = d_c(low), d_s(IL1RN/IL1RA) = d_c(low)
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(T=14) < c(SARS-CoV-2) = e, d_s(SARS-CoV
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:34,757 ERROR: response is: s(T=14) < c(SARS-CoV-2) = e, d_s(SARS-CoV-2) = d_c(high), c(IL-6) = c(mid), c(IL1RN/IL1RA) = c(mid), c(MERS) = c(low); d_s(IL-6) = d_c(high), d_s(IL1RN/IL1RA) = d_c(high); d_s(MERS) = d_c(low); d_s(IL-6) = d_c(low), d_s(IL1RN/IL1RA) = d_c(low)
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(T=14) < c(SARS-CoV-2) = e, d_s(SARS-CoV
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:36,650 ERROR: response is: s(T=14) < c(SARS-CoV-2) = e, d_s(SARS-CoV-2) = d_c(high), c(IL-6) = c(mid), c(IL1RN/IL1RA) = c(mid), c(MERS) = c(low); d_s(IL-6) = d_c(high), d_s(IL1RN/IL1RA) = d_c(high); d_s(MERS) = d_c(low); d_s(IL-6) = d_c(low), d_s(IL1RN/IL1RA) = d_c(low)
+error is: No terminal matches '(' in the current parser context, at line 1 col 2
+
+s(T=14) < c(SARS-CoV-2) = e, d_s(SARS-CoV
+ ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:15:46,840 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 16:15:46,841 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 16:15:46,931 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 16:15:46,936 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 16:15:47,018 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 16:15:47,025 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 16:15:47,112 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 16:15:47,118 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 16:15:47,202 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 16:15:47,208 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 16:15:47,497 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 16:15:47,503 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 16:15:47,585 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 16:15:47,591 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 16:15:47,678 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 16:15:47,761 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 16:15:47,768 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 16:15:48,160 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 16:15:48,166 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 16:15:48,251 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 16:15:48,354 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 16:15:48,359 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 16:15:48,445 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 16:15:48,810 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 16:15:48,817 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/config.json HTTP/1.1" 200 0
+2025-07-23 16:15:48,931 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 16:15:48,936 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/config.json HTTP/1.1" 200 0
+2025-07-23 16:15:49,024 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1761
+2025-07-23 16:15:49,111 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 16:15:53,467 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1761
+2025-07-23 16:15:53,654 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 16:15:53,659 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 16:15:53,743 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 16:15:54,122 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-23 16:15:54,128 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/generation_config.json HTTP/1.1" 200 0
+2025-07-23 16:15:55,149 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 16:15:55,247 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B HTTP/1.1" 200 7421
+2025-07-23 16:15:55,300 DEBUG: Starting new HTTPS connection (1): stats.vllm.ai:443
+2025-07-23 16:15:55,332 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B/tree/main?recursive=False&expand=False HTTP/1.1" 200 1761
+2025-07-23 16:15:55,332 DEBUG: Attempting to acquire lock 140471259940768 on /tmp/29826007d510a11286f0f12641394e24f1339dec6256351c91a1244e68a56a59Qwen-Qwen3-1.7B.lock
+2025-07-23 16:15:55,332 DEBUG: Lock 140471259940768 acquired on /tmp/29826007d510a11286f0f12641394e24f1339dec6256351c91a1244e68a56a59Qwen-Qwen3-1.7B.lock
+2025-07-23 16:15:55,395 DEBUG: https://stats.vllm.ai:443 "POST / HTTP/1.1" 200 None
+2025-07-23 16:15:55,417 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B/revision/main HTTP/1.1" 200 7421
+2025-07-23 16:15:55,419 DEBUG: Attempting to release lock 140471259940768 on /tmp/29826007d510a11286f0f12641394e24f1339dec6256351c91a1244e68a56a59Qwen-Qwen3-1.7B.lock
+2025-07-23 16:15:55,419 DEBUG: Lock 140471259940768 released on /tmp/29826007d510a11286f0f12641394e24f1339dec6256351c91a1244e68a56a59Qwen-Qwen3-1.7B.lock
+2025-07-23 16:15:55,419 DEBUG: Attempting to acquire lock 140473474279296 on /tmp/29826007d510a11286f0f12641394e24f1339dec6256351c91a1244e68a56a59Qwen-Qwen3-1.7B.lock
+2025-07-23 16:15:55,419 DEBUG: Lock 140473474279296 acquired on /tmp/29826007d510a11286f0f12641394e24f1339dec6256351c91a1244e68a56a59Qwen-Qwen3-1.7B.lock
+2025-07-23 16:15:55,503 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/model.safetensors.index.json HTTP/1.1" 307 0
+2025-07-23 16:15:55,510 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/model.safetensors.index.json HTTP/1.1" 200 0
+2025-07-23 16:15:55,510 DEBUG: Attempting to release lock 140473474279296 on /tmp/29826007d510a11286f0f12641394e24f1339dec6256351c91a1244e68a56a59Qwen-Qwen3-1.7B.lock
+2025-07-23 16:15:55,510 DEBUG: Lock 140473474279296 released on /tmp/29826007d510a11286f0f12641394e24f1339dec6256351c91a1244e68a56a59Qwen-Qwen3-1.7B.lock
+2025-07-23 16:16:25,068 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 16:16:25,073 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 16:16:25,179 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 16:16:25,531 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/processor_config.json HTTP/1.1" 404 0
+2025-07-23 16:16:25,625 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 16:16:25,710 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/video_preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 16:16:25,812 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 16:16:25,894 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 16:16:25,901 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 16:16:25,982 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 16:16:25,988 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/config.json HTTP/1.1" 200 0
+2025-07-23 16:16:26,075 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 16:16:26,082 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 16:16:26,167 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 16:16:28,889 ERROR: response is: F[1,7]G( u( d_s(t) < d_c(high) ) ∧ d_s(t) > d_c(mid) ∧ abs(d_s(t) - d_c(high)) < e ∧ d_s(t) < d_c(high) ) )
+error is: No terminal matches '(' in the current parser context, at line 1 col 11
+
+F[1,7]G( u( d_s(t) < d_c(high) ) ∧ d_s(t) > d_c(mi
+          ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:16:31,138 ERROR: response is: F[1,7]G( u( d_s(t) < d_c(high) ) ∧ d_s(t) > d_c(mid) ∧ abs(d_s(t) - d_c(high)) < e ∧ d_s(t) < d_c(high) ) )
+error is: No terminal matches '(' in the current parser context, at line 1 col 11
+
+F[1,7]G( u( d_s(t) < d_c(high) ) ∧ d_s(t) > d_c(mi
+          ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:16:35,161 ERROR: response is: F[1,7]G( u( d_s(t) < d_c(high) ) ∧ d_s(t) > d_c(mid) ∧ abs(d_s(t) - d_c(high)) < e ∧ d_s(t) < d_c(high) ) )
+error is: No terminal matches '(' in the current parser context, at line 1 col 11
+
+F[1,7]G( u( d_s(t) < d_c(high) ) ∧ d_s(t) > d_c(mi
+          ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:16:38,290 ERROR: response is: F[1,7]G(u(F[8,∞)G(¬(s'(t) > c(high)) ∧ (s'(t) < c(mid) ∨ s'(t) < c(low)))))
+error is: No terminal matches '(' in the current parser context, at line 1 col 10
+
+F[1,7]G(u(F[8,∞)G(¬(s'(t) > c(high)) ∧ (s'(t) < c
+         ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:16:41,468 ERROR: response is: F[1,7]G(u(F[8,∞)G(¬(s'(t) > c(high)) ∧ (s'(t) < c(mid) ∨ s'(t) < c(low)))))
+error is: No terminal matches '(' in the current parser context, at line 1 col 10
+
+F[1,7]G(u(F[8,∞)G(¬(s'(t) > c(high)) ∧ (s'(t) < c
+         ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:16:44,102 ERROR: response is: F[1,7]G(u(F[8,∞)G(¬(s'(t) > c(high)) ∧ (s'(t) < c(mid) ∨ s'(t) < c(low)))))
+error is: No terminal matches '(' in the current parser context, at line 1 col 10
+
+F[1,7]G(u(F[8,∞)G(¬(s'(t) > c(high)) ∧ (s'(t) < c
+         ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:16:47,785 ERROR: response is: F[1,7]G(u(s(1)) ∧ d_s(s(1)) > 0 ∧ (s(1) > c(mid) ∧ s(1) > c(low))) ∧ F[7,∞)G(d_s(s(1)) < 0 ∧ s(t) < c(mid) ∨ s(t) < c(low))
+error is: No terminal matches '(' in the current parser context, at line 1 col 10
+
+F[1,7]G(u(s(1)) ∧ d_s(s(1)) > 0 ∧ (s(1) > c(mid) 
+         ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:16:50,039 ERROR: response is: F[1,7]G(u(s(1)) ∧ d_s(s(1)) > 0 ∧ (s(1) > c(mid) ∧ s(1) > c(low))) ∧ F[7,∞)G(d_s(s(1)) < 0 ∧ s(t) < c(mid) ∨ s(t) < c(low))
+error is: No terminal matches '(' in the current parser context, at line 1 col 10
+
+F[1,7]G(u(s(1)) ∧ d_s(s(1)) > 0 ∧ (s(1) > c(mid) 
+         ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:16:53,750 ERROR: response is: F[1,7]G(u(s(1)) ∧ d_s(s(1)) > 0 ∧ (s(1) > c(high) ∧ s(1) > c(mid) ∧ s(1) > c(low))) ∧ F[7,∞)G(d_s(s(1)) < 0 ∧ s(t) < c(mid) ∨ s(t) < c(low))
+error is: No terminal matches '(' in the current parser context, at line 1 col 10
+
+F[1,7]G(u(s(1)) ∧ d_s(s(1)) > 0 ∧ (s(1) > c(high)
+         ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:16:56,777 ERROR: response is: F[G[s'(t) < c(low) | s'(t) > c(low) | abs(s'(t) - c(low)) < e | d_s'(t) > d_c(low) | d_s'(t) < d_c(low) | abs(d_s'(t) - d_c(low)) < e] ]
+error is: No terminal matches 'G' in the current parser context, at line 1 col 3
+
+F[G[s'(t) < c(low) | s'(t) > c(low) | abs(
+  ^
+Expected one of: 
+	* __ANON_2
+	* __ANON_5
+
+
+2025-07-23 16:17:07,944 ERROR: response is: F[1,7]G(u(s(t)) < c(low) | s(t) > c(low) | abs(s(t) - c(low)) < e | d_s(t) > d_c | d_s(t) < d_c | abs(d_s(t) - d_c) < e)
+error is: No terminal matches '(' in the current parser context, at line 1 col 10
+
+F[1,7]G(u(s(t)) < c(low) | s(t) > c(low) | abs(s(
+         ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:17:11,172 ERROR: response is: F[1,7]G(s(t) < c(high)) ∧ F[8,14]G(s(t) > c(high)) ∧ F[15,∞)G(s(t) < c(low))
+error is: No terminal matches '∞' in the current parser context, at line 1 col 59
+
+igh)) ∧ F[8,14]G(s(t) > c(high)) ∧ F[15,∞)G(s(t) < c(low))
+                                        ^
+Expected one of: 
+	* __ANON_2
+	* __ANON_5
+
+
+2025-07-23 16:17:13,445 ERROR: response is: F[1,7]G(s(t) < c(high)) ∧ F[8,14]G(s(t) > c(high)) ∧ F[15,∞)G(s(t) < c(low))
+error is: No terminal matches '∞' in the current parser context, at line 1 col 59
+
+igh)) ∧ F[8,14]G(s(t) > c(high)) ∧ F[15,∞)G(s(t) < c(low))
+                                        ^
+Expected one of: 
+	* __ANON_2
+	* __ANON_5
+
+
+2025-07-23 16:17:15,591 ERROR: response is: F[1,7]G(s(t) < c(high)) ∧ F[8,14]G(s(t) > c(high)) ∧ F[15,∞)G(s(t) < c(low))
+error is: No terminal matches '∞' in the current parser context, at line 1 col 59
+
+igh)) ∧ F[8,14]G(s(t) > c(high)) ∧ F[15,∞)G(s(t) < c(low))
+                                        ^
+Expected one of: 
+	* __ANON_2
+	* __ANON_5
+
+
+2025-07-23 16:17:19,274 ERROR: response is: F[1,7]G(u(s(t)) < c(low) | s(t) > c(high) | abs(s(t) - c(high)) < e | d_s(t) > d_c | d_s(t) < d_c | abs(d_s(t) - d_c) < e)
+error is: No terminal matches '(' in the current parser context, at line 1 col 10
+
+F[1,7]G(u(s(t)) < c(low) | s(t) > c(high) | abs(s
+         ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:17:30,929 ERROR: response is: F[1,7]G(s(d_s) > c(low)) ∧ F[8,14]G(s(d_s) > c(low)) ∧ F[15,∞)G(s(d_s) < c(high))
+error is: No terminal matches '(' in the current parser context, at line 1 col 10
+
+F[1,7]G(s(d_s) > c(low)) ∧ F[8,14]G(s(d_s) > c(lo
+         ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:17:33,572 ERROR: response is: F[1,7]G(u) ∧ F[8,14]G(u) ∧ F[15,∞)G(d_s) → F[15,∞)G(d_s)
+error is: No terminal matches ')' in the current parser context, at line 1 col 10
+
+F[1,7]G(u) ∧ F[8,14]G(u) ∧ F[15,∞)G(d_s) → F[15,∞
+         ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:17:36,554 ERROR: response is: F[1,7]G(u) ∧ F[8,14]G(u) ∧ F[15,∞)G(d_s) ∧ F[15,∞)G(d_s) → F[15,∞)G(d_s)
+error is: No terminal matches ')' in the current parser context, at line 1 col 10
+
+F[1,7]G(u) ∧ F[8,14]G(u) ∧ F[15,∞)G(d_s) ∧ F[15,∞
+         ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:17:38,793 ERROR: response is: F[1,7]G(u) ∧ F[8,14]G(u) ∧ F[15,∞)G(d_s)
+error is: No terminal matches ')' in the current parser context, at line 1 col 10
+
+F[1,7]G(u) ∧ F[8,14]G(u) ∧ F[15,∞)G(d_s)
+         ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:17:42,483 ERROR: response is: F[G[1,7]((s(t) > c) | (s(t) > c)))] & F[G[8,14]((s(t) > c) | (s(t) > c)))] & F[G[15,∞]((s(t) < c))]
+error is: No terminal matches 'G' in the current parser context, at line 1 col 3
+
+F[G[1,7]((s(t) > c) | (s(t) > c)))] & F[G[
+  ^
+Expected one of: 
+	* __ANON_2
+	* __ANON_5
+
+
+2025-07-23 16:17:46,857 ERROR: response is: F[G[1,7]((s(t) > c) | (s(t) > c))] & F[G[8,14]((s(t) > c) | (s(t) > c))] & F[G[15,∞]((s(t) < c)))
+error is: No terminal matches 'G' in the current parser context, at line 1 col 3
+
+F[G[1,7]((s(t) > c) | (s(t) > c))] & F[G[8
+  ^
+Expected one of: 
+	* __ANON_2
+	* __ANON_5
+
+
+2025-07-23 16:17:49,827 ERROR: response is: F[G[1,7]((s(t) > c) | (s(t) > c))] & F[G[8,14]((s(t) > c) | (s(t) > c))] & F[G[15,∞]((s(t) < c)))
+error is: No terminal matches 'G' in the current parser context, at line 1 col 3
+
+F[G[1,7]((s(t) > c) | (s(t) > c))] & F[G[8
+  ^
+Expected one of: 
+	* __ANON_2
+	* __ANON_5
+
+
+2025-07-23 16:17:53,332 ERROR: response is: F["t_a","t_a"]("phi")
+error is: No terminal matches '"' in the current parser context, at line 1 col 3
+
+F["t_a","t_a"]("phi")
+  ^
+Expected one of: 
+	* __ANON_2
+	* __ANON_5
+
+
+2025-07-23 16:18:03,929 ERROR: response is: F[0,3]G(u(s(t) > c(s(t)) ∧ d_s(t) > d_c) ∧ (s(t) > c(s(t)) ∨ s(t) < c(s(t))) ∧ (abs(s(t) - c(s(t))) < e(s(t)) ∧ d_s(t) > d_c(t) ∧ d_s(t) < d_c(t)))
+error is: No terminal matches '(' in the current parser context, at line 1 col 10
+
+F[0,3]G(u(s(t) > c(s(t)) ∧ d_s(t) > d_c) ∧ (s(t) 
+         ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:18:06,668 ERROR: response is: F["t_a","t_a"]("phi")
+error is: No terminal matches '"' in the current parser context, at line 1 col 3
+
+F["t_a","t_a"]("phi")
+  ^
+Expected one of: 
+	* __ANON_2
+	* __ANON_5
+
+
+2025-07-23 16:18:17,395 ERROR: response is: F["t_a","t_a"]("phi")
+error is: No terminal matches '"' in the current parser context, at line 1 col 3
+
+F["t_a","t_a"]("phi")
+  ^
+Expected one of: 
+	* __ANON_2
+	* __ANON_5
+
+
+2025-07-23 16:18:21,509 ERROR: response is: F[1,7]G(¬u(s(t) < c(s(t)) ∧ s(t) > c(s(t)) ∧ abs(s(t) - c(s(t))) < e(s(t))) ∧ F[8,14]G(u(d_s(t) > d_c) ∧ u(d_s(t) < d_c) ∧ u(abs(d_s(t) - d_c) < e(d_s(t))))))
+error is: No terminal matches '¬' in the current parser context, at line 1 col 9
+
+F[1,7]G(¬u(s(t) < c(s(t)) ∧ s(t) > c(s(t)) ∧ abs
+        ^
+Expected one of: 
+	* G
+	* D_
+	* F
+	* __ANON_1
+	* __ANON_6
+
+
+2025-07-23 16:18:24,766 ERROR: response is: F[1,7]G(¬u(s(t) < c(s(t)) ∧ s(t) > c(s(t)) ∧ abs(s(t) - c(s(t))) < e(s(t)))) ∧ F[8,14]G(u(d_s(t) > d_c) ∧ u(d_s(t) < d_c) ∧ u(abs(d_s(t) - d_c) < e(d_s(t))))
+error is: No terminal matches '¬' in the current parser context, at line 1 col 9
+
+F[1,7]G(¬u(s(t) < c(s(t)) ∧ s(t) > c(s(t)) ∧ abs
+        ^
+Expected one of: 
+	* G
+	* D_
+	* F
+	* __ANON_1
+	* __ANON_6
+
+
+2025-07-23 16:18:29,384 ERROR: response is: F[1,7]G(¬u(s(t) < c(s(t)) ∧ s(t) > c(s(t)) ∧ abs(s(t) - c(s(t))) < e(s(t)))) ∧ F[8,14]G(u(d_s(t) > d_c) ∧ u(d_s(t) < d_c) ∧ u(abs(d_s(t) - d_c) < e(d_s(t))))
+error is: No terminal matches '¬' in the current parser context, at line 1 col 9
+
+F[1,7]G(¬u(s(t) < c(s(t)) ∧ s(t) > c(s(t)) ∧ abs
+        ^
+Expected one of: 
+	* G
+	* D_
+	* F
+	* __ANON_1
+	* __ANON_6
+
+
+2025-07-23 16:18:34,159 ERROR: response is: F[1,7]G(¬u(s(t) = c(t)) ∧ (u(s(t) > c(t)) ∨ u(s(t) < c(t)) ∨ u(abs(s(t) - c(t)) < e) ∨ u(d_s(t) > d_c(t) ∨ d_s(t) < d_c(t) ∨ abs(d_s(t) - d_c(t)) < e))) ∧ F[8,14]G(u(s(t) > c(t)) ∨ u(s(t) < c(t)) ∨ u(abs(s(t) - c(t)) < e) ∨ u(d_s(t) > d_c(t) ∨ d_s(t) < d_c(t) ∨ abs(d_s(t) - d_c(t)) < e)))
+error is: No terminal matches '¬' in the current parser context, at line 1 col 9
+
+F[1,7]G(¬u(s(t) = c(t)) ∧ (u(s(t) > c(t)) ∨ u(s(
+        ^
+Expected one of: 
+	* G
+	* D_
+	* F
+	* __ANON_1
+	* __ANON_6
+
+
+2025-07-23 16:18:39,258 ERROR: response is: F[1,7]G(¬u(s(t) = c(t)) ∧ (u(s(t) > c(t)) ∨ u(s(t) < c(t)) ∨ u(abs(s(t) - c(t)) < e) ∨ u(d_s(t) > d_c(t) ∨ d_s(t) < d_c(t) ∨ abs(d_s(t) - d_c(t)) < e))) ∧ F[8,14]G(u(s(t) > c(t)) ∨ u(s(t) < c(t)) ∨ u(abs(s(t) - c(t)) < e) ∨ u(d_s(t) > d_c(t) ∨ d_s(t) < d_c(t) ∨ abs(d_s(t) - d_c(t)) < e)))
+error is: No terminal matches '¬' in the current parser context, at line 1 col 9
+
+F[1,7]G(¬u(s(t) = c(t)) ∧ (u(s(t) > c(t)) ∨ u(s(
+        ^
+Expected one of: 
+	* G
+	* D_
+	* F
+	* __ANON_1
+	* __ANON_6
+
+
+2025-07-23 16:18:43,740 ERROR: response is: F[1,7]G(¬u(s(t) = c(t)) ∧ (u(s(t) > c(t)) ∨ u(s(t) < c(t)) ∨ u(abs(s(t) - c(t)) < e) ∨ u(d_s(t) > d_c(t) ∨ d_s(t) < d_c(t) ∨ abs(d_s(t) - d_c(t)) < e))) ∧ F[8,14]G(u(s(t) > c(t)) ∨ u(s(t) < c(t)) ∨ u(abs(s(t) - c(t)) < e) ∨ u(d_s(t) > d_c(t) ∨ d_s(t) < d_c(t) ∨ abs(d_s(t) - d_c(t)) < e)))
+error is: No terminal matches '¬' in the current parser context, at line 1 col 9
+
+F[1,7]G(¬u(s(t) = c(t)) ∧ (u(s(t) > c(t)) ∨ u(s(
+        ^
+Expected one of: 
+	* G
+	* D_
+	* F
+	* __ANON_1
+	* __ANON_6
+
+
+2025-07-23 16:18:47,396 ERROR: response is: F[G[14, ∞) (u('IL-12') > 'c(high)' | u('IL-12') < 'c(low)'))]
+error is: No terminal matches 'G' in the current parser context, at line 1 col 3
+
+F[G[14, ∞) (u('IL-12') > 'c(high)' | u('IL
+  ^
+Expected one of: 
+	* __ANON_2
+	* __ANON_5
+
+
+2025-07-23 16:18:49,643 ERROR: response is: F[G[14, ∞) (u('IL-12') > 'c(high)' | u('IL-12') < 'c(low)'))]
+error is: No terminal matches 'G' in the current parser context, at line 1 col 3
+
+F[G[14, ∞) (u('IL-12') > 'c(high)' | u('IL
+  ^
+Expected one of: 
+	* __ANON_2
+	* __ANON_5
+
+
+2025-07-23 16:19:00,929 ERROR: response is: F["T","T"]G("phi")
+error is: No terminal matches '"' in the current parser context, at line 1 col 3
+
+F["T","T"]G("phi")
+  ^
+Expected one of: 
+	* __ANON_2
+	* __ANON_5
+
+
+2025-07-23 16:19:02,981 ERROR: response is: F[
+error is: Unexpected end-of-input. Expected one of: 
+	* __ANON_2
+	* __ANON_5
+
+
+2025-07-23 16:19:06,230 ERROR: response is: F[0,1]G(∀t ∈ [0,1] (s(t) > c(low) ∧ s(t) < c(high) ∧ d_s(t) > d_c(low) ∧ d_s(t) < d_c(high)))
+error is: No terminal matches '∀' in the current parser context, at line 1 col 9
+
+F[0,1]G(∀t ∈ [0,1] (s(t) > c(low) ∧ s(t) < c(hig
+        ^
+Expected one of: 
+	* G
+	* D_
+	* F
+	* __ANON_1
+	* __ANON_6
+
+
+2025-07-23 16:19:10,668 ERROR: response is: F[0,1]G(u[0,1] ∧ u[0,1] ∧ d_s[0,1] > e ∧ d_s[0,1] < e)
+error is: No terminal matches '[' in the current parser context, at line 1 col 10
+
+F[0,1]G(u[0,1] ∧ u[0,1] ∧ d_s[0,1] > e ∧ d_s[0,1]
+         ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:19:13,057 ERROR: response is: F[0,1]G(u[0,1] ∧ u[0,1] ∧ d_s[0,1] > e ∧ d_s[0,1] < e)
+error is: No terminal matches '[' in the current parser context, at line 1 col 10
+
+F[0,1]G(u[0,1] ∧ u[0,1] ∧ d_s[0,1] > e ∧ d_s[0,1]
+         ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:19:16,189 ERROR: response is: F[0,1]G(u[0,1] ∧ u[0,1] ∧ d_s[0,1] > e ∧ d_s[0,1] < e)
+error is: No terminal matches '[' in the current parser context, at line 1 col 10
+
+F[0,1]G(u[0,1] ∧ u[0,1] ∧ d_s[0,1] > e ∧ d_s[0,1]
+         ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 16:19:20,185 ERROR: response is: F[14,14]G(¬viral_reads) ∧ F[14,14]G(¬cytokine_levels_return_to_baseline) ∧ (IL-6 ∧ IL1RN ∧ IL1RA) → (IL-6 ∧ IL1RN ∧ IL1RA) > [baseline_level]
+error is: No terminal matches '¬' in the current parser context, at line 1 col 11
+
+F[14,14]G(¬viral_reads) ∧ F[14,14]G(¬cytokine_leve
+          ^
+Expected one of: 
+	* G
+	* D_
+	* F
+	* __ANON_1
+	* __ANON_6
+
+
+2025-07-23 16:19:23,483 ERROR: response is: F[14,14]G(¬viral_reads) ∧ F[14,14]G(¬cytokine_levels_return_to_baseline) ∧ (IL-6 ∧ IL1RN ∧ IL1RA) → (IL-6 ∧ IL1RN ∧ IL1RA) > [baseline_level]
+error is: No terminal matches '¬' in the current parser context, at line 1 col 11
+
+F[14,14]G(¬viral_reads) ∧ F[14,14]G(¬cytokine_leve
+          ^
+Expected one of: 
+	* G
+	* D_
+	* F
+	* __ANON_1
+	* __ANON_6
+
+
