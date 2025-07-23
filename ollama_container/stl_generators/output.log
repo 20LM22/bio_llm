@@ -564,3 +564,1917 @@ Expected one of:
 	* __ANON_0
 
 
+2025-07-23 11:52:02,999 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 11:52:03,000 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 11:52:03,103 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 11:52:03,110 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 11:52:03,199 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 11:52:03,204 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 11:52:03,288 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 11:52:03,296 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 11:52:03,379 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 11:52:03,384 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 11:52:03,496 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 11:52:03,501 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 11:52:03,581 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 11:52:03,587 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 11:52:03,665 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 11:52:03,745 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 11:52:03,751 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 11:52:04,149 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 11:52:04,155 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 11:52:04,239 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 11:52:04,347 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 11:52:04,352 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 11:52:04,438 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 11:52:04,801 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 11:52:04,807 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 11:52:04,889 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 11:52:04,894 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 11:52:04,986 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1220
+2025-07-23 11:52:05,067 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 11:52:09,523 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1220
+2025-07-23 11:52:09,714 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 11:52:09,720 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 11:52:09,812 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 11:52:10,195 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-23 11:52:10,201 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/generation_config.json HTTP/1.1" 200 0
+2025-07-23 11:52:11,099 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 11:52:11,196 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B HTTP/1.1" 200 7874
+2025-07-23 11:52:11,260 DEBUG: Starting new HTTPS connection (1): stats.vllm.ai:443
+2025-07-23 11:52:11,281 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=False&expand=False HTTP/1.1" 200 1110
+2025-07-23 11:52:11,282 DEBUG: Attempting to acquire lock 140325442109360 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 11:52:11,282 DEBUG: Lock 140325442109360 acquired on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 11:52:11,372 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/revision/main HTTP/1.1" 200 7874
+2025-07-23 11:52:11,374 DEBUG: Attempting to release lock 140325442109360 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 11:52:11,374 DEBUG: Lock 140325442109360 released on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 11:52:11,374 DEBUG: Attempting to acquire lock 140323357162192 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 11:52:11,374 DEBUG: Lock 140323357162192 acquired on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 11:52:11,404 DEBUG: https://stats.vllm.ai:443 "POST / HTTP/1.1" 200 None
+2025-07-23 11:52:11,488 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/model.safetensors.index.json HTTP/1.1" 404 0
+2025-07-23 11:52:11,488 DEBUG: Attempting to release lock 140323357162192 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 11:52:11,488 DEBUG: Lock 140323357162192 released on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 11:52:40,134 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 11:52:40,140 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 11:52:40,230 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 11:52:40,597 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/processor_config.json HTTP/1.1" 404 0
+2025-07-23 11:52:40,686 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 11:52:40,986 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/video_preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 11:52:41,089 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 11:52:41,172 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 11:52:41,180 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 11:52:41,262 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 11:52:41,268 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 11:52:41,351 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 11:52:41,356 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 11:52:41,441 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 11:53:23,675 ERROR: response is: G[1,7] (TNF(t) > c(high)) ^ G[8,14] (TNF(t) > c(high)) ^ F[T] (d_TNF(t) < 0)
+error is: No terminal matches ']' in the current parser context, at line 1 col 61
+
+igh)) ^ G[8,14] (TNF(t) > c(high)) ^ F[T] (d_TNF(t) < 0)
+                                        ^
+Expected one of: 
+	* COMMA
+
+
+2025-07-23 11:53:32,398 ERROR: response is: G[1,7] (TNF_alpha(t) > c(high)) ^ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+error is: No terminal matches '>' in the current parser context, at line 1 col 74
+
+ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+                                        ^
+Expected one of: 
+	* COMMA
+
+
+2025-07-23 11:53:34,751 ERROR: response is: G[1,7] (TNF_alpha(t) > c(high)) ^ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+error is: No terminal matches '>' in the current parser context, at line 1 col 74
+
+ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+                                        ^
+Expected one of: 
+	* COMMA
+
+
+2025-07-23 11:53:36,728 ERROR: response is: G[1,7] (TNF_alpha(t) > c(high)) ^ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+error is: No terminal matches '>' in the current parser context, at line 1 col 74
+
+ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+                                        ^
+Expected one of: 
+	* COMMA
+
+
+2025-07-23 11:54:01,313 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 11:54:01,314 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 11:54:01,412 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 11:54:01,418 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 11:54:01,502 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 11:54:01,509 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 11:54:01,590 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 11:54:01,596 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 11:54:01,684 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 11:54:01,692 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 11:54:01,774 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 11:54:01,782 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 11:54:01,882 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 11:54:01,889 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 11:54:01,984 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 11:54:02,207 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 11:54:02,213 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 11:54:02,600 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 11:54:02,607 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 11:54:02,694 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 11:54:02,803 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 11:54:02,810 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 11:54:02,896 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 11:54:03,259 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 11:54:03,266 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/config.json HTTP/1.1" 200 0
+2025-07-23 11:54:03,348 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 11:54:03,355 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/config.json HTTP/1.1" 200 0
+2025-07-23 11:54:03,445 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1313
+2025-07-23 11:54:03,540 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 11:54:07,837 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1313
+2025-07-23 11:54:08,021 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 11:54:08,028 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 11:54:08,113 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 11:54:08,507 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-23 11:54:08,513 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/generation_config.json HTTP/1.1" 200 0
+2025-07-23 11:54:09,435 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 11:54:09,562 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B HTTP/1.1" 200 8272
+2025-07-23 11:54:09,579 DEBUG: Starting new HTTPS connection (1): stats.vllm.ai:443
+2025-07-23 11:54:09,675 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main?recursive=False&expand=False HTTP/1.1" 200 1313
+2025-07-23 11:54:09,676 DEBUG: Attempting to acquire lock 140672802899776 on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 11:54:09,676 DEBUG: Lock 140672802899776 acquired on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 11:54:09,705 DEBUG: https://stats.vllm.ai:443 "POST / HTTP/1.1" 200 None
+2025-07-23 11:54:09,762 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/revision/main HTTP/1.1" 200 8272
+2025-07-23 11:54:09,764 DEBUG: Attempting to release lock 140672802899776 on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 11:54:09,764 DEBUG: Lock 140672802899776 released on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 11:54:09,764 DEBUG: Attempting to acquire lock 140672804814000 on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 11:54:09,764 DEBUG: Lock 140672804814000 acquired on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 11:54:09,844 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/model.safetensors.index.json HTTP/1.1" 404 0
+2025-07-23 11:54:09,845 DEBUG: Attempting to release lock 140672804814000 on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 11:54:09,845 DEBUG: Lock 140672804814000 released on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 11:55:06,173 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 11:55:06,173 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 11:55:06,265 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 11:55:06,271 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 11:55:06,351 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 11:55:06,359 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 11:55:06,444 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 11:55:06,449 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 11:55:06,531 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 11:55:06,540 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 11:55:06,623 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 11:55:06,631 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 11:55:06,716 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 11:55:06,721 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 11:55:06,811 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 11:55:06,930 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 11:55:06,936 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 11:55:07,331 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 11:55:07,336 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 11:55:07,422 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 11:55:07,526 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 11:55:07,532 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 11:55:07,621 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 11:55:07,985 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 11:55:07,991 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 11:55:08,079 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 11:55:08,085 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 11:55:08,169 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1220
+2025-07-23 11:55:08,257 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 11:55:12,722 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1220
+2025-07-23 11:55:12,931 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 11:55:12,936 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 11:55:13,023 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 11:55:13,395 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-23 11:55:13,402 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/generation_config.json HTTP/1.1" 200 0
+2025-07-23 11:55:14,314 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 11:55:14,409 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B HTTP/1.1" 200 7874
+2025-07-23 11:55:14,459 DEBUG: Starting new HTTPS connection (1): stats.vllm.ai:443
+2025-07-23 11:55:14,493 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=False&expand=False HTTP/1.1" 200 1110
+2025-07-23 11:55:14,494 DEBUG: Attempting to acquire lock 139668400865744 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 11:55:14,494 DEBUG: Lock 139668400865744 acquired on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 11:55:14,578 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/revision/main HTTP/1.1" 200 7874
+2025-07-23 11:55:14,580 DEBUG: Attempting to release lock 139668400865744 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 11:55:14,580 DEBUG: Lock 139668400865744 released on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 11:55:14,580 DEBUG: https://stats.vllm.ai:443 "POST / HTTP/1.1" 200 None
+2025-07-23 11:55:14,580 DEBUG: Attempting to acquire lock 139670487895552 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 11:55:14,580 DEBUG: Lock 139670487895552 acquired on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 11:55:14,663 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/model.safetensors.index.json HTTP/1.1" 404 0
+2025-07-23 11:55:14,663 DEBUG: Attempting to release lock 139670487895552 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 11:55:14,663 DEBUG: Lock 139670487895552 released on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 11:55:42,639 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 11:55:42,644 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 11:55:42,728 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 11:55:43,070 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/processor_config.json HTTP/1.1" 404 0
+2025-07-23 11:55:43,202 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 11:55:43,287 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/video_preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 11:55:43,373 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 11:55:43,455 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 11:55:43,465 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 11:55:43,547 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 11:55:43,553 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 11:55:43,639 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 11:55:43,645 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 11:55:43,726 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 11:56:25,887 ERROR: response is: G[1,7] (TNF(t) > c(high)) ^ G[8,14] (TNF(t) > c(high)) ^ F[T] (d_TNF(t) < 0)
+error is: No terminal matches ']' in the current parser context, at line 1 col 61
+
+igh)) ^ G[8,14] (TNF(t) > c(high)) ^ F[T] (d_TNF(t) < 0)
+                                        ^
+Expected one of: 
+	* COMMA
+
+
+2025-07-23 11:56:34,620 ERROR: response is: G[1,7] (TNF_alpha(t) > c(high)) ^ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+error is: No terminal matches '>' in the current parser context, at line 1 col 74
+
+ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+                                        ^
+Expected one of: 
+	* COMMA
+
+
+2025-07-23 11:56:36,959 ERROR: response is: G[1,7] (TNF_alpha(t) > c(high)) ^ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+error is: No terminal matches '>' in the current parser context, at line 1 col 74
+
+ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+                                        ^
+Expected one of: 
+	* COMMA
+
+
+2025-07-23 11:56:38,937 ERROR: response is: G[1,7] (TNF_alpha(t) > c(high)) ^ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+error is: No terminal matches '>' in the current parser context, at line 1 col 74
+
+ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+                                        ^
+Expected one of: 
+	* COMMA
+
+
+2025-07-23 12:01:45,599 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 12:01:45,600 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 12:01:45,699 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:01:45,704 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:01:45,835 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:01:45,841 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:01:45,922 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:01:45,927 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:01:46,010 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 12:01:46,016 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 12:01:46,101 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:01:46,107 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:01:46,188 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 12:01:46,193 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 12:01:46,276 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 12:01:46,359 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:01:46,365 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 12:01:46,758 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:01:46,763 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:01:46,934 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:01:47,040 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 12:01:47,045 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 12:01:47,135 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 12:01:47,502 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:01:47,508 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 12:01:47,591 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:01:47,596 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 12:01:47,680 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1220
+2025-07-23 12:01:47,775 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 12:01:52,305 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1220
+2025-07-23 12:01:52,488 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:01:52,493 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:01:52,579 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:01:52,953 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-23 12:01:52,958 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/generation_config.json HTTP/1.1" 200 0
+2025-07-23 12:01:53,868 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 12:01:53,960 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B HTTP/1.1" 200 7874
+2025-07-23 12:01:54,025 DEBUG: Starting new HTTPS connection (1): stats.vllm.ai:443
+2025-07-23 12:01:54,081 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=False&expand=False HTTP/1.1" 200 1110
+2025-07-23 12:01:54,082 DEBUG: Attempting to acquire lock 140347516920960 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 12:01:54,082 DEBUG: Lock 140347516920960 acquired on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 12:01:54,140 DEBUG: https://stats.vllm.ai:443 "POST / HTTP/1.1" 200 None
+2025-07-23 12:01:54,170 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/revision/main HTTP/1.1" 200 7874
+2025-07-23 12:01:54,171 DEBUG: Attempting to release lock 140347516920960 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 12:01:54,171 DEBUG: Lock 140347516920960 released on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 12:01:54,171 DEBUG: Attempting to acquire lock 140347516233792 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 12:01:54,171 DEBUG: Lock 140347516233792 acquired on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 12:01:54,255 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/model.safetensors.index.json HTTP/1.1" 404 0
+2025-07-23 12:01:54,256 DEBUG: Attempting to release lock 140347516233792 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 12:01:54,256 DEBUG: Lock 140347516233792 released on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 12:02:21,868 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:02:21,875 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:02:21,961 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:02:22,344 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/processor_config.json HTTP/1.1" 404 0
+2025-07-23 12:02:22,456 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 12:02:22,541 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/video_preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 12:02:22,625 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 12:02:22,707 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:02:22,713 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:02:22,793 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:02:22,799 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 12:02:22,882 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:02:22,888 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:02:22,976 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:03:05,054 ERROR: response is: G[1,7] (TNF(t) > c(high)) ^ G[8,14] (TNF(t) > c(high)) ^ F[T] (d_TNF(t) < 0)
+error is: No terminal matches ']' in the current parser context, at line 1 col 61
+
+igh)) ^ G[8,14] (TNF(t) > c(high)) ^ F[T] (d_TNF(t) < 0)
+                                        ^
+Expected one of: 
+	* COMMA
+
+
+2025-07-23 12:03:13,796 ERROR: response is: G[1,7] (TNF_alpha(t) > c(high)) ^ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+error is: No terminal matches '>' in the current parser context, at line 1 col 74
+
+ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+                                        ^
+Expected one of: 
+	* COMMA
+
+
+2025-07-23 12:03:16,133 ERROR: response is: G[1,7] (TNF_alpha(t) > c(high)) ^ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+error is: No terminal matches '>' in the current parser context, at line 1 col 74
+
+ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+                                        ^
+Expected one of: 
+	* COMMA
+
+
+2025-07-23 12:03:18,108 ERROR: response is: G[1,7] (TNF_alpha(t) > c(high)) ^ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+error is: No terminal matches '>' in the current parser context, at line 1 col 74
+
+ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+                                        ^
+Expected one of: 
+	* COMMA
+
+
+2025-07-23 12:03:44,177 ERROR: response is: G[1,7] (IFN6(t) = c(high)) ^ G[8,T] (d_IFN6(t) < 0)
+error is: No terminal matches '=' in the current parser context, at line 1 col 17
+
+G[1,7] (IFN6(t) = c(high)) ^ G[8,T] (d_IFN6(t) < 0)
+                ^
+Expected one of: 
+	* LESSTHAN
+	* MORETHAN
+
+
+2025-07-23 12:03:46,972 ERROR: response is: G[1,7] (IFN6(t) = c(high)) ^ G[8,T] (d_IFN6(t) < 0)
+error is: No terminal matches '=' in the current parser context, at line 1 col 17
+
+G[1,7] (IFN6(t) = c(high)) ^ G[8,T] (d_IFN6(t) < 0)
+                ^
+Expected one of: 
+	* LESSTHAN
+	* MORETHAN
+
+
+2025-07-23 12:03:49,176 ERROR: response is: G[1,7] (IFN6(t) = c(high)) ^ G[8,T] (d_IFN6(t) < 0)
+error is: No terminal matches '=' in the current parser context, at line 1 col 17
+
+G[1,7] (IFN6(t) = c(high)) ^ G[8,T] (d_IFN6(t) < 0)
+                ^
+Expected one of: 
+	* LESSTHAN
+	* MORETHAN
+
+
+2025-07-23 12:03:50,589 ERROR: response is: G[day>14] (IL12(t) > c(high))
+error is: No terminal matches 'd' in the current parser context, at line 1 col 3
+
+G[day>14] (IL12(t) > c(high))
+  ^
+Expected one of: 
+	* __ANON_5
+	* __ANON_2
+
+
+2025-07-23 12:03:52,280 ERROR: response is: G[day>14] (IL12(t) > c(high))
+error is: No terminal matches 'd' in the current parser context, at line 1 col 3
+
+G[day>14] (IL12(t) > c(high))
+  ^
+Expected one of: 
+	* __ANON_5
+	* __ANON_2
+
+
+2025-07-23 12:03:55,036 ERROR: response is: G[day>14] (IL12(t) > c(high))
+error is: No terminal matches 'd' in the current parser context, at line 1 col 3
+
+G[day>14] (IL12(t) > c(high))
+  ^
+Expected one of: 
+	* __ANON_5
+	* __ANON_2
+
+
+2025-07-23 12:04:11,837 ERROR: response is: G[0,14] (s(t_a) < c(low)) ^ G[0,14] (s(t_a) > c(high)) ^ G[0,14] (IL6(t) < c(low)) ^ F[0,14]G( IL12(t) > IL12(0) )
+error is: No terminal matches '(' in the current parser context, at line 1 col 11
+
+G[0,14] (s(t_a) < c(low)) ^ G[0,14] (s(t_a) > c(hi
+          ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 12:04:13,928 ERROR: response is: G[0,14] (s(t_a) < c(low)) ^ G[0,14] (s(t_a) > c(high)) ^ G[0,14] (IL6(t) < c(low)) ^ F[0,14]G( IL12(t) > IL12(0) )
+error is: No terminal matches '(' in the current parser context, at line 1 col 11
+
+G[0,14] (s(t_a) < c(low)) ^ G[0,14] (s(t_a) > c(hi
+          ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 12:04:16,910 ERROR: response is: G[0,14] (s(t_a) < c(low)) ^ G[0,14] (s(t_a) > c(high)) ^ G[0,14] (IL6(t) < c(low)) ^ F[0,14]G( IL12(t) > IL12(0) )
+error is: No terminal matches '(' in the current parser context, at line 1 col 11
+
+G[0,14] (s(t_a) < c(low)) ^ G[0,14] (s(t_a) > c(hi
+          ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 12:04:27,082 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 12:04:27,083 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 12:04:27,174 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:04:27,179 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:04:27,263 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:04:27,268 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:04:27,358 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:04:27,363 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:04:27,447 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 12:04:27,453 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 12:04:27,534 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:04:27,539 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:04:27,627 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 12:04:27,632 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 12:04:27,721 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 12:04:27,805 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:04:27,810 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 12:04:28,340 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:04:28,346 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:04:28,434 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:04:28,537 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 12:04:28,543 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 12:04:28,631 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 12:04:29,001 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:04:29,006 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/config.json HTTP/1.1" 200 0
+2025-07-23 12:04:29,087 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:04:29,093 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/config.json HTTP/1.1" 200 0
+2025-07-23 12:04:29,180 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1313
+2025-07-23 12:04:29,272 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 12:04:33,632 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1313
+2025-07-23 12:04:33,803 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:04:33,808 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:04:33,905 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:04:34,295 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-23 12:04:34,301 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/generation_config.json HTTP/1.1" 200 0
+2025-07-23 12:04:35,225 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 12:04:35,318 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B HTTP/1.1" 200 8272
+2025-07-23 12:04:35,375 DEBUG: Starting new HTTPS connection (1): stats.vllm.ai:443
+2025-07-23 12:04:35,405 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main?recursive=False&expand=False HTTP/1.1" 200 1313
+2025-07-23 12:04:35,406 DEBUG: Attempting to acquire lock 139800179636992 on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 12:04:35,406 DEBUG: Lock 139800179636992 acquired on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 12:04:35,469 DEBUG: https://stats.vllm.ai:443 "POST / HTTP/1.1" 200 None
+2025-07-23 12:04:35,508 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/revision/main HTTP/1.1" 200 8272
+2025-07-23 12:04:35,510 DEBUG: Attempting to release lock 139800179636992 on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 12:04:35,510 DEBUG: Lock 139800179636992 released on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 12:04:35,510 DEBUG: Attempting to acquire lock 139799652079840 on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 12:04:35,510 DEBUG: Lock 139799652079840 acquired on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 12:04:35,593 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/model.safetensors.index.json HTTP/1.1" 404 0
+2025-07-23 12:04:35,593 DEBUG: Attempting to release lock 139799652079840 on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 12:04:35,593 DEBUG: Lock 139799652079840 released on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 12:11:37,892 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 12:11:37,893 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 12:11:37,999 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:11:38,005 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:11:38,086 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:11:38,093 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:11:38,175 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:11:38,180 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:11:38,262 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 12:11:38,269 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 12:11:38,352 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:11:38,358 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:11:38,440 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 12:11:38,446 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 12:11:38,530 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 12:11:38,613 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:11:38,620 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 12:11:39,022 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:11:39,029 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:11:39,124 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:11:39,228 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 12:11:39,234 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 12:11:39,320 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 12:11:39,680 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:11:39,685 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 12:11:39,768 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:11:39,773 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 12:11:39,859 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1220
+2025-07-23 12:11:39,949 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 12:11:44,433 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1220
+2025-07-23 12:11:44,608 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:11:44,613 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:11:44,697 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:11:45,067 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-23 12:11:45,071 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/generation_config.json HTTP/1.1" 200 0
+2025-07-23 12:11:45,983 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 12:11:46,075 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B HTTP/1.1" 200 7874
+2025-07-23 12:11:46,136 DEBUG: Starting new HTTPS connection (1): stats.vllm.ai:443
+2025-07-23 12:11:46,164 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=False&expand=False HTTP/1.1" 200 1110
+2025-07-23 12:11:46,164 DEBUG: Attempting to acquire lock 140579618913168 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 12:11:46,165 DEBUG: Lock 140579618913168 acquired on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 12:11:46,252 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/revision/main HTTP/1.1" 200 7874
+2025-07-23 12:11:46,253 DEBUG: Attempting to release lock 140579618913168 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 12:11:46,253 DEBUG: Lock 140579618913168 released on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 12:11:46,254 DEBUG: Attempting to acquire lock 140579623832896 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 12:11:46,254 DEBUG: Lock 140579623832896 acquired on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 12:11:46,272 DEBUG: https://stats.vllm.ai:443 "POST / HTTP/1.1" 200 None
+2025-07-23 12:11:46,334 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/model.safetensors.index.json HTTP/1.1" 404 0
+2025-07-23 12:11:46,334 DEBUG: Attempting to release lock 140579623832896 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 12:11:46,334 DEBUG: Lock 140579623832896 released on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 12:12:14,055 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:12:14,061 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:12:14,153 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:12:14,540 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/processor_config.json HTTP/1.1" 404 0
+2025-07-23 12:12:14,657 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 12:12:14,826 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/video_preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 12:12:14,909 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 12:12:14,990 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:12:14,995 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:12:15,081 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:12:15,086 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 12:12:15,171 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:12:15,176 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:12:15,262 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:12:57,342 ERROR: response is: G[1,7] (TNF(t) > c(high)) ^ G[8,14] (TNF(t) > c(high)) ^ F[T] (d_TNF(t) < 0)
+error is: No terminal matches ']' in the current parser context, at line 1 col 61
+
+igh)) ^ G[8,14] (TNF(t) > c(high)) ^ F[T] (d_TNF(t) < 0)
+                                        ^
+Expected one of: 
+	* COMMA
+
+
+2025-07-23 12:13:06,103 ERROR: response is: G[1,7] (TNF_alpha(t) > c(high)) ^ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+error is: No terminal matches '>' in the current parser context, at line 1 col 74
+
+ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+                                        ^
+Expected one of: 
+	* COMMA
+
+
+2025-07-23 12:13:08,463 ERROR: response is: G[1,7] (TNF_alpha(t) > c(high)) ^ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+error is: No terminal matches '>' in the current parser context, at line 1 col 74
+
+ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+                                        ^
+Expected one of: 
+	* COMMA
+
+
+2025-07-23 12:13:10,454 ERROR: response is: G[1,7] (TNF_alpha(t) > c(high)) ^ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+error is: No terminal matches '>' in the current parser context, at line 1 col 74
+
+ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+                                        ^
+Expected one of: 
+	* COMMA
+
+
+2025-07-23 12:13:36,569 ERROR: response is: G[1,7] (IFN6(t) = c(high)) ^ G[8,T] (d_IFN6(t) < 0)
+error is: No terminal matches '=' in the current parser context, at line 1 col 17
+
+G[1,7] (IFN6(t) = c(high)) ^ G[8,T] (d_IFN6(t) < 0)
+                ^
+Expected one of: 
+	* LESSTHAN
+	* MORETHAN
+
+
+2025-07-23 12:13:39,361 ERROR: response is: G[1,7] (IFN6(t) = c(high)) ^ G[8,T] (d_IFN6(t) < 0)
+error is: No terminal matches '=' in the current parser context, at line 1 col 17
+
+G[1,7] (IFN6(t) = c(high)) ^ G[8,T] (d_IFN6(t) < 0)
+                ^
+Expected one of: 
+	* LESSTHAN
+	* MORETHAN
+
+
+2025-07-23 12:13:41,563 ERROR: response is: G[1,7] (IFN6(t) = c(high)) ^ G[8,T] (d_IFN6(t) < 0)
+error is: No terminal matches '=' in the current parser context, at line 1 col 17
+
+G[1,7] (IFN6(t) = c(high)) ^ G[8,T] (d_IFN6(t) < 0)
+                ^
+Expected one of: 
+	* LESSTHAN
+	* MORETHAN
+
+
+2025-07-23 12:13:42,984 ERROR: response is: G[day>14] (IL12(t) > c(high))
+error is: No terminal matches 'd' in the current parser context, at line 1 col 3
+
+G[day>14] (IL12(t) > c(high))
+  ^
+Expected one of: 
+	* __ANON_5
+	* __ANON_2
+
+
+2025-07-23 12:13:44,671 ERROR: response is: G[day>14] (IL12(t) > c(high))
+error is: No terminal matches 'd' in the current parser context, at line 1 col 3
+
+G[day>14] (IL12(t) > c(high))
+  ^
+Expected one of: 
+	* __ANON_5
+	* __ANON_2
+
+
+2025-07-23 12:13:47,413 ERROR: response is: G[day>14] (IL12(t) > c(high))
+error is: No terminal matches 'd' in the current parser context, at line 1 col 3
+
+G[day>14] (IL12(t) > c(high))
+  ^
+Expected one of: 
+	* __ANON_5
+	* __ANON_2
+
+
+2025-07-23 12:14:04,269 ERROR: response is: G[0,14] (s(t_a) < c(low)) ^ G[0,14] (s(t_a) > c(high)) ^ G[0,14] (IL6(t) < c(low)) ^ F[0,14]G( IL12(t) > IL12(0) )
+error is: No terminal matches '(' in the current parser context, at line 1 col 11
+
+G[0,14] (s(t_a) < c(low)) ^ G[0,14] (s(t_a) > c(hi
+          ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 12:14:06,374 ERROR: response is: G[0,14] (s(t_a) < c(low)) ^ G[0,14] (s(t_a) > c(high)) ^ G[0,14] (IL6(t) < c(low)) ^ F[0,14]G( IL12(t) > IL12(0) )
+error is: No terminal matches '(' in the current parser context, at line 1 col 11
+
+G[0,14] (s(t_a) < c(low)) ^ G[0,14] (s(t_a) > c(hi
+          ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 12:14:09,384 ERROR: response is: G[0,14] (s(t_a) < c(low)) ^ G[0,14] (s(t_a) > c(high)) ^ G[0,14] (IL6(t) < c(low)) ^ F[0,14]G( IL12(t) > IL12(0) )
+error is: No terminal matches '(' in the current parser context, at line 1 col 11
+
+G[0,14] (s(t_a) < c(low)) ^ G[0,14] (s(t_a) > c(hi
+          ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 12:14:20,201 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 12:14:20,202 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 12:14:20,313 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:14:20,318 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:14:20,400 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:14:20,407 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:14:20,490 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:14:20,496 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:14:20,578 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 12:14:20,586 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 12:14:20,668 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:14:20,674 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:15:02,326 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 12:15:02,327 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 12:15:02,435 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:15:02,441 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:15:02,524 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:15:02,530 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:15:02,629 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:15:02,635 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:15:02,717 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 12:15:02,724 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 12:15:02,804 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:15:02,809 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:15:02,893 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 12:15:02,898 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 12:15:02,983 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 12:15:03,071 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:15:03,204 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 12:15:03,590 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:15:03,597 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:15:03,700 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:15:03,809 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 12:15:03,817 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 12:15:03,900 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 12:15:04,293 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:15:04,319 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 12:15:04,420 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:15:04,426 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 12:15:04,520 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1220
+2025-07-23 12:15:04,611 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 12:15:09,426 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1220
+2025-07-23 12:15:09,624 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:15:09,630 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:15:09,975 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:15:10,501 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-23 12:15:10,507 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/generation_config.json HTTP/1.1" 200 0
+2025-07-23 12:15:11,563 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 12:15:11,655 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B HTTP/1.1" 200 7874
+2025-07-23 12:15:11,734 DEBUG: Starting new HTTPS connection (1): stats.vllm.ai:443
+2025-07-23 12:15:11,743 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=False&expand=False HTTP/1.1" 200 1110
+2025-07-23 12:15:11,744 DEBUG: Attempting to acquire lock 140506400536768 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 12:15:11,744 DEBUG: Lock 140506400536768 acquired on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 12:15:11,831 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/revision/main HTTP/1.1" 200 7874
+2025-07-23 12:15:11,833 DEBUG: Attempting to release lock 140506400536768 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 12:15:11,833 DEBUG: Lock 140506400536768 released on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 12:15:11,833 DEBUG: Attempting to acquire lock 140508619193520 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 12:15:11,834 DEBUG: Lock 140508619193520 acquired on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 12:15:11,891 DEBUG: https://stats.vllm.ai:443 "POST / HTTP/1.1" 200 None
+2025-07-23 12:15:11,920 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/model.safetensors.index.json HTTP/1.1" 404 0
+2025-07-23 12:15:11,921 DEBUG: Attempting to release lock 140508619193520 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 12:15:11,921 DEBUG: Lock 140508619193520 released on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 12:15:43,305 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:15:43,311 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:15:43,395 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:15:43,814 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/processor_config.json HTTP/1.1" 404 0
+2025-07-23 12:15:43,903 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 12:15:43,995 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/video_preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 12:15:44,117 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 12:15:44,198 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:15:44,205 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:15:44,293 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:15:44,300 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 12:15:44,393 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:15:44,399 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:15:44,488 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:16:27,095 ERROR: response is: G[1,7] (TNF(t) > c(high)) ^ G[8,14] (TNF(t) > c(high)) ^ F[T] (d_TNF(t) < 0)
+error is: No terminal matches ']' in the current parser context, at line 1 col 61
+
+igh)) ^ G[8,14] (TNF(t) > c(high)) ^ F[T] (d_TNF(t) < 0)
+                                        ^
+Expected one of: 
+	* COMMA
+
+
+2025-07-23 12:16:35,915 ERROR: response is: G[1,7] (TNF_alpha(t) > c(high)) ^ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+error is: No terminal matches '>' in the current parser context, at line 1 col 74
+
+ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+                                        ^
+Expected one of: 
+	* COMMA
+
+
+2025-07-23 12:16:38,298 ERROR: response is: G[1,7] (TNF_alpha(t) > c(high)) ^ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+error is: No terminal matches '>' in the current parser context, at line 1 col 74
+
+ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+                                        ^
+Expected one of: 
+	* COMMA
+
+
+2025-07-23 12:16:40,304 ERROR: response is: G[1,7] (TNF_alpha(t) > c(high)) ^ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+error is: No terminal matches '>' in the current parser context, at line 1 col 74
+
+ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+                                        ^
+Expected one of: 
+	* COMMA
+
+
+2025-07-23 12:17:06,457 ERROR: response is: G[1,7] (IFN6(t) = c(high)) ^ G[8,T] (d_IFN6(t) < 0)
+error is: No terminal matches '=' in the current parser context, at line 1 col 17
+
+G[1,7] (IFN6(t) = c(high)) ^ G[8,T] (d_IFN6(t) < 0)
+                ^
+Expected one of: 
+	* MORETHAN
+	* LESSTHAN
+
+
+2025-07-23 12:17:09,223 ERROR: response is: G[1,7] (IFN6(t) = c(high)) ^ G[8,T] (d_IFN6(t) < 0)
+error is: No terminal matches '=' in the current parser context, at line 1 col 17
+
+G[1,7] (IFN6(t) = c(high)) ^ G[8,T] (d_IFN6(t) < 0)
+                ^
+Expected one of: 
+	* MORETHAN
+	* LESSTHAN
+
+
+2025-07-23 12:17:11,421 ERROR: response is: G[1,7] (IFN6(t) = c(high)) ^ G[8,T] (d_IFN6(t) < 0)
+error is: No terminal matches '=' in the current parser context, at line 1 col 17
+
+G[1,7] (IFN6(t) = c(high)) ^ G[8,T] (d_IFN6(t) < 0)
+                ^
+Expected one of: 
+	* MORETHAN
+	* LESSTHAN
+
+
+2025-07-23 12:17:12,846 ERROR: response is: G[day>14] (IL12(t) > c(high))
+error is: No terminal matches 'd' in the current parser context, at line 1 col 3
+
+G[day>14] (IL12(t) > c(high))
+  ^
+Expected one of: 
+	* __ANON_2
+	* __ANON_5
+
+
+2025-07-23 12:17:14,539 ERROR: response is: G[day>14] (IL12(t) > c(high))
+error is: No terminal matches 'd' in the current parser context, at line 1 col 3
+
+G[day>14] (IL12(t) > c(high))
+  ^
+Expected one of: 
+	* __ANON_2
+	* __ANON_5
+
+
+2025-07-23 12:17:17,294 ERROR: response is: G[day>14] (IL12(t) > c(high))
+error is: No terminal matches 'd' in the current parser context, at line 1 col 3
+
+G[day>14] (IL12(t) > c(high))
+  ^
+Expected one of: 
+	* __ANON_2
+	* __ANON_5
+
+
+2025-07-23 12:17:34,163 ERROR: response is: G[0,14] (s(t_a) < c(low)) ^ G[0,14] (s(t_a) > c(high)) ^ G[0,14] (IL6(t) < c(low)) ^ F[0,14]G( IL12(t) > IL12(0) )
+error is: No terminal matches '(' in the current parser context, at line 1 col 11
+
+G[0,14] (s(t_a) < c(low)) ^ G[0,14] (s(t_a) > c(hi
+          ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 12:17:36,247 ERROR: response is: G[0,14] (s(t_a) < c(low)) ^ G[0,14] (s(t_a) > c(high)) ^ G[0,14] (IL6(t) < c(low)) ^ F[0,14]G( IL12(t) > IL12(0) )
+error is: No terminal matches '(' in the current parser context, at line 1 col 11
+
+G[0,14] (s(t_a) < c(low)) ^ G[0,14] (s(t_a) > c(hi
+          ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 12:17:39,227 ERROR: response is: G[0,14] (s(t_a) < c(low)) ^ G[0,14] (s(t_a) > c(high)) ^ G[0,14] (IL6(t) < c(low)) ^ F[0,14]G( IL12(t) > IL12(0) )
+error is: No terminal matches '(' in the current parser context, at line 1 col 11
+
+G[0,14] (s(t_a) < c(low)) ^ G[0,14] (s(t_a) > c(hi
+          ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 12:17:53,724 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 12:17:53,725 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 12:17:53,817 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:17:53,822 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:17:53,904 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:17:53,909 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:17:53,994 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:17:53,999 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:17:54,081 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 12:17:54,086 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 12:17:54,164 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:17:54,170 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:17:54,250 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 12:17:54,257 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 12:17:54,344 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 12:17:54,425 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:17:54,430 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 12:17:54,830 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:17:54,836 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:17:54,923 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:17:55,031 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 12:17:55,040 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 12:17:55,126 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 12:17:55,504 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:17:55,509 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/config.json HTTP/1.1" 200 0
+2025-07-23 12:17:55,593 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:17:55,597 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/config.json HTTP/1.1" 200 0
+2025-07-23 12:17:55,683 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1313
+2025-07-23 12:17:55,777 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 12:18:00,295 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1313
+2025-07-23 12:18:00,530 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:18:00,536 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:18:00,628 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:18:01,021 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-23 12:18:01,031 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/generation_config.json HTTP/1.1" 200 0
+2025-07-23 12:18:02,000 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 12:18:02,094 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B HTTP/1.1" 200 8272
+2025-07-23 12:18:02,151 DEBUG: Starting new HTTPS connection (1): stats.vllm.ai:443
+2025-07-23 12:18:02,178 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main?recursive=False&expand=False HTTP/1.1" 200 1313
+2025-07-23 12:18:02,179 DEBUG: Attempting to acquire lock 140077892376272 on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 12:18:02,179 DEBUG: Lock 140077892376272 acquired on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 12:18:02,260 DEBUG: https://stats.vllm.ai:443 "POST / HTTP/1.1" 200 None
+2025-07-23 12:18:02,274 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/revision/main HTTP/1.1" 200 8272
+2025-07-23 12:18:02,282 DEBUG: Attempting to release lock 140077892376272 on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 12:18:02,282 DEBUG: Lock 140077892376272 released on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 12:18:02,283 DEBUG: Attempting to acquire lock 140077892380256 on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 12:18:02,283 DEBUG: Lock 140077892380256 acquired on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 12:18:02,375 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/model.safetensors.index.json HTTP/1.1" 404 0
+2025-07-23 12:18:02,375 DEBUG: Attempting to release lock 140077892380256 on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 12:18:02,375 DEBUG: Lock 140077892380256 released on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 12:18:32,023 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:18:32,029 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:18:32,116 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:18:32,502 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/processor_config.json HTTP/1.1" 404 0
+2025-07-23 12:18:32,592 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 12:18:32,695 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/video_preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 12:18:32,778 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 12:18:32,859 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:18:32,864 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:18:32,947 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:18:32,953 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/config.json HTTP/1.1" 200 0
+2025-07-23 12:18:33,037 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:18:33,044 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:18:33,128 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:18:46,730 ERROR: response is: G[1,7] (IL1Beta(t) > c(high)) ^ G[8,14] (IL1Ra(t) > c(high)) ^ abs( (d_s_IL1Beta(t) - d_c(high)) < e ) ^ G[14,T] (d_s_IL1Ra(t) < 0)
+error is: No terminal matches '(' in the current parser context, at line 1 col 69
+
+) ^ G[8,14] (IL1Ra(t) > c(high)) ^ abs( (d_s_IL1Beta(t) - d_c(high)) < e ) ^ G[1
+                                        ^
+Expected one of: 
+	* __ANON_6
+	* D_
+
+
+2025-07-23 12:18:48,692 ERROR: response is: G[1,7] (IL1Beta(t) > c(high)) ^ G[8,14] (IL1Ra(t) > c(high)) ^ abs( (d_s_IL1Beta(t) - d_c(high)) < e ) ^ G[14,T] (d_s_IL1Ra(t) < 0)
+error is: No terminal matches '(' in the current parser context, at line 1 col 69
+
+) ^ G[8,14] (IL1Ra(t) > c(high)) ^ abs( (d_s_IL1Beta(t) - d_c(high)) < e ) ^ G[1
+                                        ^
+Expected one of: 
+	* __ANON_6
+	* D_
+
+
+2025-07-23 12:19:12,035 ERROR: response is: abs(IFNbeta(t) - c(high)) < e → G[0,2]G( IFNbeta(t) > c(low))
+error is: No terminal matches 'G' in the current parser context, at line 1 col 39
+
+abs(IFNbeta(t) - c(high)) < e → G[0,2]G( IFNbeta(t) > c(low))
+                                      ^
+Expected one of: 
+	* LPAR
+
+
+2025-07-23 12:19:13,130 ERROR: response is: abs(IFNbeta(t) - c(high)) < e → G[0,2]G( IFNbeta(t) > c(low))
+error is: No terminal matches 'G' in the current parser context, at line 1 col 39
+
+abs(IFNbeta(t) - c(high)) < e → G[0,2]G( IFNbeta(t) > c(low))
+                                      ^
+Expected one of: 
+	* LPAR
+
+
+2025-07-23 12:19:14,118 ERROR: response is: abs(IFNbeta(t) - c(high)) < e → G[0,2]G( IFNbeta(t) > c(low))
+error is: No terminal matches 'G' in the current parser context, at line 1 col 39
+
+abs(IFNbeta(t) - c(high)) < e → G[0,2]G( IFNbeta(t) > c(low))
+                                      ^
+Expected one of: 
+	* LPAR
+
+
+2025-07-23 12:19:18,389 ERROR: response is: G[4,T] (d_IFN(t) < e) ^ G[8,T] (IFN(t) > c(high))
+error is: No terminal matches ')' in the current parser context, at line 1 col 21
+
+G[4,T] (d_IFN(t) < e) ^ G[8,T] (IFN(t) > c(high))
+                    ^
+Expected one of: 
+	* LPAR
+
+
+2025-07-23 12:19:19,134 ERROR: response is: G[4,T] (d_IFN(t) < e) ^ G[8,T] (IFN(t) > c(high))
+error is: No terminal matches ')' in the current parser context, at line 1 col 21
+
+G[4,T] (d_IFN(t) < e) ^ G[8,T] (IFN(t) > c(high))
+                    ^
+Expected one of: 
+	* LPAR
+
+
+2025-07-23 12:19:20,080 ERROR: response is: G[4,T] (d_IFN(t) < e) ^ G[8,T] (IFN(t) > c(high))
+error is: No terminal matches ')' in the current parser context, at line 1 col 21
+
+G[4,T] (d_IFN(t) < e) ^ G[8,T] (IFN(t) > c(high))
+                    ^
+Expected one of: 
+	* LPAR
+
+
+2025-07-23 12:19:21,370 ERROR: response is: G[0,T] (IFN(α(t)) > c(high)) ^ G[8,T] (d_IFN(α(t)) < 0)
+error is: No terminal matches '(' in the current parser context, at line 1 col 12
+
+G[0,T] (IFN(α(t)) > c(high)) ^ G[8,T] (d_IFN(α(t)) 
+           ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 12:19:22,220 ERROR: response is: G[0,T] (IFN(α(t)) > c(high)) ^ G[8,T] (d_IFN(α(t)) < 0)
+error is: No terminal matches '(' in the current parser context, at line 1 col 12
+
+G[0,T] (IFN(α(t)) > c(high)) ^ G[8,T] (d_IFN(α(t)) 
+           ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 12:19:23,187 ERROR: response is: G[0,T] (IFN(α(t)) > c(high)) ^ G[8,T] (d_IFN(α(t)) < 0)
+error is: No terminal matches '(' in the current parser context, at line 1 col 12
+
+G[0,T] (IFN(α(t)) > c(high)) ^ G[8,T] (d_IFN(α(t)) 
+           ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 12:19:26,695 ERROR: response is: G[14,T] (abs(SARS-CoV-2(t) - c(low)) < e) ^ G[14,T] (d_SARS-CoV-2(t) < 0)
+error is: No terminal matches '-' in the current parser context, at line 1 col 18
+
+G[14,T] (abs(SARS-CoV-2(t) - c(low)) < e) ^ G[14,T] (d_SA
+                 ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 12:19:41,598 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 12:19:41,599 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 12:19:41,701 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:19:41,706 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:19:41,789 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:19:41,798 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:19:41,882 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:19:41,889 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:19:41,971 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 12:19:41,976 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 12:19:42,059 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:19:42,065 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:19:42,149 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 12:19:42,155 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 12:19:42,240 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 12:19:42,322 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:19:42,328 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 12:19:42,732 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:19:42,738 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:19:43,343 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:19:43,446 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 12:19:43,451 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 12:19:43,539 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 12:19:43,904 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:19:43,911 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/config.json HTTP/1.1" 200 0
+2025-07-23 12:19:43,997 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:19:44,002 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/config.json HTTP/1.1" 200 0
+2025-07-23 12:19:44,093 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1761
+2025-07-23 12:19:44,178 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 12:19:48,706 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1761
+2025-07-23 12:19:48,901 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:19:48,908 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:19:49,002 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:19:49,391 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-23 12:19:49,397 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/generation_config.json HTTP/1.1" 200 0
+2025-07-23 12:19:50,354 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 12:19:50,447 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B HTTP/1.1" 200 7421
+2025-07-23 12:19:50,512 DEBUG: Starting new HTTPS connection (1): stats.vllm.ai:443
+2025-07-23 12:19:50,535 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B/tree/main?recursive=False&expand=False HTTP/1.1" 200 1761
+2025-07-23 12:19:50,536 DEBUG: Attempting to acquire lock 140103773268224 on /tmp/29826007d510a11286f0f12641394e24f1339dec6256351c91a1244e68a56a59Qwen-Qwen3-1.7B.lock
+2025-07-23 12:19:50,536 DEBUG: Lock 140103773268224 acquired on /tmp/29826007d510a11286f0f12641394e24f1339dec6256351c91a1244e68a56a59Qwen-Qwen3-1.7B.lock
+2025-07-23 12:19:50,634 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B/revision/main HTTP/1.1" 200 7421
+2025-07-23 12:19:50,636 DEBUG: Attempting to release lock 140103773268224 on /tmp/29826007d510a11286f0f12641394e24f1339dec6256351c91a1244e68a56a59Qwen-Qwen3-1.7B.lock
+2025-07-23 12:19:50,636 DEBUG: Lock 140103773268224 released on /tmp/29826007d510a11286f0f12641394e24f1339dec6256351c91a1244e68a56a59Qwen-Qwen3-1.7B.lock
+2025-07-23 12:19:50,636 DEBUG: Attempting to acquire lock 140103802055488 on /tmp/29826007d510a11286f0f12641394e24f1339dec6256351c91a1244e68a56a59Qwen-Qwen3-1.7B.lock
+2025-07-23 12:19:50,636 DEBUG: Lock 140103802055488 acquired on /tmp/29826007d510a11286f0f12641394e24f1339dec6256351c91a1244e68a56a59Qwen-Qwen3-1.7B.lock
+2025-07-23 12:19:50,660 DEBUG: https://stats.vllm.ai:443 "POST / HTTP/1.1" 200 None
+2025-07-23 12:19:50,747 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/model.safetensors.index.json HTTP/1.1" 307 0
+2025-07-23 12:19:50,755 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/model.safetensors.index.json HTTP/1.1" 200 0
+2025-07-23 12:19:50,756 DEBUG: Attempting to release lock 140103802055488 on /tmp/29826007d510a11286f0f12641394e24f1339dec6256351c91a1244e68a56a59Qwen-Qwen3-1.7B.lock
+2025-07-23 12:19:50,756 DEBUG: Lock 140103802055488 released on /tmp/29826007d510a11286f0f12641394e24f1339dec6256351c91a1244e68a56a59Qwen-Qwen3-1.7B.lock
+2025-07-23 12:25:27,085 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 12:25:27,086 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 12:25:27,178 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:25:27,188 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:25:27,280 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:25:27,286 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:25:27,368 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:25:27,374 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:25:27,456 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 12:25:27,462 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 12:25:27,545 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:25:27,550 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:25:27,632 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 12:25:27,639 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 12:25:27,725 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 12:25:27,810 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:25:27,816 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 12:25:28,204 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:25:28,210 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:25:28,297 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:25:28,419 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 12:25:28,426 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 12:25:28,514 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 12:25:28,878 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:25:28,885 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 12:25:28,970 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:25:28,979 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 12:25:29,068 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1220
+2025-07-23 12:25:29,155 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 12:25:33,681 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1220
+2025-07-23 12:25:33,872 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:25:33,878 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:25:33,963 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:25:34,332 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-23 12:25:34,340 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/generation_config.json HTTP/1.1" 200 0
+2025-07-23 12:25:49,011 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 12:25:49,012 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 12:25:49,103 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:25:49,110 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:25:49,194 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:25:49,201 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:25:49,304 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:25:49,310 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:25:49,395 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 12:25:49,403 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 12:25:49,483 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:25:49,492 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:25:49,577 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 12:25:49,583 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 12:25:49,666 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 12:25:49,746 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:25:49,754 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 12:25:50,156 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:25:50,163 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:25:50,252 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:25:50,357 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 12:25:50,365 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 12:25:50,452 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 12:25:50,821 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:25:50,827 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/config.json HTTP/1.1" 200 0
+2025-07-23 12:25:50,928 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:25:50,934 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/config.json HTTP/1.1" 200 0
+2025-07-23 12:25:51,021 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1313
+2025-07-23 12:25:51,112 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 12:25:55,605 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1313
+2025-07-23 12:25:55,792 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:25:55,798 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:25:55,894 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:25:56,282 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-23 12:25:56,290 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/generation_config.json HTTP/1.1" 200 0
+2025-07-23 12:26:10,387 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 12:26:10,388 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 12:26:10,485 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:26:10,491 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:26:10,575 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:26:10,581 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:26:10,664 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:26:10,670 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:26:10,754 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 12:26:10,760 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 12:26:10,841 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:26:10,847 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:26:10,928 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 12:26:10,933 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 12:26:11,015 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 12:26:11,096 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:26:11,103 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 12:26:11,517 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:26:11,524 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:26:11,611 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:26:11,718 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 12:26:11,725 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 12:26:11,809 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 12:26:12,214 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:26:12,220 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/config.json HTTP/1.1" 200 0
+2025-07-23 12:26:12,305 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:26:12,311 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/config.json HTTP/1.1" 200 0
+2025-07-23 12:26:12,400 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1761
+2025-07-23 12:26:12,516 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 12:26:17,049 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1761
+2025-07-23 12:26:17,233 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:26:17,239 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:26:17,326 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:26:17,724 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-23 12:26:17,731 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/generation_config.json HTTP/1.1" 200 0
+2025-07-23 12:28:08,662 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 12:28:08,663 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 12:28:08,762 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:28:08,775 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:28:08,856 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:28:08,862 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:28:08,947 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:28:08,954 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:28:09,043 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 12:28:09,053 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 12:28:09,137 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:28:09,143 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:28:09,364 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 12:28:09,371 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 12:28:09,459 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 12:28:09,544 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:28:09,554 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 12:28:09,954 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:28:09,965 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:28:10,053 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:28:10,158 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 12:28:10,165 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 12:28:10,252 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 12:28:10,613 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:28:10,620 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 12:28:10,708 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:28:10,714 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 12:28:10,809 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1220
+2025-07-23 12:28:10,895 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 12:28:15,229 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1220
+2025-07-23 12:28:15,404 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:28:15,410 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:28:15,498 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:28:15,878 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-23 12:28:15,883 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/generation_config.json HTTP/1.1" 200 0
+2025-07-23 12:28:30,291 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 12:28:30,292 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 12:28:30,392 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:28:30,400 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:28:30,484 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:28:30,493 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:28:30,582 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:28:30,589 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:28:30,675 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 12:28:30,682 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 12:28:30,772 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:28:30,786 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:28:30,878 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 12:28:30,890 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 12:28:30,979 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 12:28:31,060 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:28:31,067 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 12:28:31,471 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:28:31,477 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:28:31,563 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:28:31,669 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 12:28:31,696 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 12:28:31,790 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 12:28:32,153 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:28:32,160 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/config.json HTTP/1.1" 200 0
+2025-07-23 12:28:32,242 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:28:32,248 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/config.json HTTP/1.1" 200 0
+2025-07-23 12:28:32,341 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1313
+2025-07-23 12:28:32,424 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 12:28:36,797 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1313
+2025-07-23 12:28:36,984 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:28:36,991 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:28:37,083 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:28:37,470 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-23 12:28:37,477 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/generation_config.json HTTP/1.1" 200 0
+2025-07-23 12:28:51,743 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 12:28:51,744 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 12:28:51,869 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:28:51,875 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:28:51,966 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:28:51,973 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:28:52,081 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:28:52,088 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:28:52,171 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 12:28:52,178 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 12:28:52,273 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:28:52,281 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:28:52,367 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 12:28:52,383 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 12:28:52,470 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 12:28:52,554 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:28:52,561 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 12:28:52,951 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:28:52,958 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:28:53,045 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:28:53,149 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 12:28:53,156 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 12:28:53,241 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 12:28:53,605 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:28:53,610 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/config.json HTTP/1.1" 200 0
+2025-07-23 12:28:53,698 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:28:53,704 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/config.json HTTP/1.1" 200 0
+2025-07-23 12:28:53,791 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1761
+2025-07-23 12:28:53,874 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 12:28:58,323 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1761
+2025-07-23 12:28:58,727 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:28:58,735 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:28:58,823 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:28:59,210 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-23 12:28:59,216 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/generation_config.json HTTP/1.1" 200 0
+2025-07-23 12:30:49,346 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 12:30:49,346 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 12:30:49,448 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:30:49,454 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:30:49,533 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:30:49,539 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:30:49,621 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:30:49,626 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:30:49,711 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 12:30:49,721 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 12:30:49,805 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:30:49,811 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:30:49,895 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 12:30:49,901 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 12:30:50,010 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 12:30:50,095 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:30:50,101 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 12:30:50,499 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:30:50,505 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:30:50,588 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:30:50,695 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 12:30:50,700 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 12:30:50,793 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 12:30:51,158 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:30:51,164 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 12:30:51,250 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:30:51,255 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 12:30:51,342 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1220
+2025-07-23 12:30:51,428 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 12:30:55,838 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1220
+2025-07-23 12:30:56,039 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:30:56,046 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:30:56,133 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:30:56,513 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-23 12:30:56,519 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/generation_config.json HTTP/1.1" 200 0
+2025-07-23 12:30:58,361 DEBUG: Starting new HTTPS connection (1): stats.vllm.ai:443
+2025-07-23 12:31:12,324 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 12:31:12,325 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 12:31:12,415 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:31:12,421 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:31:12,505 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:31:12,511 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:31:12,599 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 12:31:12,606 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 12:31:12,688 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 12:31:12,694 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 12:31:12,777 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 12:31:12,783 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 12:31:12,868 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 12:31:12,874 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 12:31:12,957 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 12:31:13,040 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:31:13,046 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 12:31:13,445 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 12:31:13,451 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 12:31:13,544 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 12:31:13,651 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 12:31:13,656 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 12:31:14,206 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 12:31:14,577 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:31:14,585 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/config.json HTTP/1.1" 200 0
+2025-07-23 12:31:14,671 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 12:31:14,676 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/config.json HTTP/1.1" 200 0
+2025-07-23 12:31:14,765 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1313
+2025-07-23 12:31:14,850 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 13:03:45,055 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 13:03:45,056 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 13:03:45,159 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 13:03:45,169 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 13:03:45,260 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 13:03:45,267 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 13:03:45,358 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 13:03:45,365 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 13:03:45,448 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 13:03:45,455 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 13:03:45,538 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 13:03:45,546 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 13:03:45,628 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 13:03:45,634 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 13:03:45,720 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 13:03:45,803 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 13:03:45,809 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 13:03:46,209 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 13:03:46,215 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 13:03:46,302 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 13:03:46,406 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 13:03:46,411 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 13:03:46,498 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 13:03:46,863 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 13:03:46,870 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 13:03:46,951 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 13:03:46,957 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 13:03:47,046 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1220
+2025-07-23 13:03:47,131 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 13:03:51,448 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1220
+2025-07-23 13:03:51,631 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 13:03:51,637 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 13:03:51,728 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 13:03:52,108 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-23 13:03:52,113 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/generation_config.json HTTP/1.1" 200 0
+2025-07-23 13:03:53,139 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 13:03:53,238 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B HTTP/1.1" 200 7874
+2025-07-23 13:03:53,294 DEBUG: Starting new HTTPS connection (1): stats.vllm.ai:443
+2025-07-23 13:03:53,325 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main?recursive=False&expand=False HTTP/1.1" 200 1110
+2025-07-23 13:03:53,326 DEBUG: Attempting to acquire lock 139842056499568 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 13:03:53,326 DEBUG: Lock 139842056499568 acquired on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 13:03:53,416 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/revision/main HTTP/1.1" 200 7874
+2025-07-23 13:03:53,426 DEBUG: Attempting to release lock 139842056499568 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 13:03:53,426 DEBUG: Lock 139842056499568 released on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 13:03:53,426 DEBUG: Attempting to acquire lock 139839908255680 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 13:03:53,426 DEBUG: Lock 139839908255680 acquired on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 13:03:53,448 DEBUG: https://stats.vllm.ai:443 "POST / HTTP/1.1" 200 None
+2025-07-23 13:03:53,520 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/model.safetensors.index.json HTTP/1.1" 404 0
+2025-07-23 13:03:53,521 DEBUG: Attempting to release lock 139839908255680 on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 13:03:53,521 DEBUG: Lock 139839908255680 released on /tmp/535db599332a8bfabcbb4ed8acf2a04f310829066512c4dfa42deff41a70658adeepseek-ai-DeepSeek-R1-Distill-Qwen-1.5B.lock
+2025-07-23 13:04:42,022 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 13:04:42,028 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 13:04:42,117 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 13:04:42,613 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/processor_config.json HTTP/1.1" 404 0
+2025-07-23 13:04:42,696 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 13:04:42,810 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/video_preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 13:04:42,893 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 13:04:42,992 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 13:04:42,998 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 13:04:43,081 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 13:04:43,089 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json HTTP/1.1" 200 0
+2025-07-23 13:04:43,173 DEBUG: https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 13:04:43,180 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 13:04:43,266 DEBUG: https://huggingface.co:443 "GET /api/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 13:05:25,750 ERROR: response is: G[1,7] (TNF(t) > c(high)) ^ G[8,14] (TNF(t) > c(high)) ^ F[T] (d_TNF(t) < 0)
+error is: No terminal matches ']' in the current parser context, at line 1 col 61
+
+igh)) ^ G[8,14] (TNF(t) > c(high)) ^ F[T] (d_TNF(t) < 0)
+                                        ^
+Expected one of: 
+	* COMMA
+
+
+2025-07-23 13:05:34,481 ERROR: response is: G[1,7] (TNF_alpha(t) > c(high)) ^ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+error is: No terminal matches '>' in the current parser context, at line 1 col 74
+
+ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+                                        ^
+Expected one of: 
+	* COMMA
+
+
+2025-07-23 13:05:36,839 ERROR: response is: G[1,7] (TNF_alpha(t) > c(high)) ^ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+error is: No terminal matches '>' in the current parser context, at line 1 col 74
+
+ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+                                        ^
+Expected one of: 
+	* COMMA
+
+
+2025-07-23 13:05:38,810 ERROR: response is: G[1,7] (TNF_alpha(t) > c(high)) ^ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+error is: No terminal matches '>' in the current parser context, at line 1 col 74
+
+ G[8,14] (TNF_alpha(t) > c(high)) → G[T > 14] (TNF_alpha(t) < c(low))
+                                        ^
+Expected one of: 
+	* COMMA
+
+
+2025-07-23 13:06:04,893 ERROR: response is: G[1,7] (IFN6(t) = c(high)) ^ G[8,T] (d_IFN6(t) < 0)
+error is: No terminal matches '=' in the current parser context, at line 1 col 17
+
+G[1,7] (IFN6(t) = c(high)) ^ G[8,T] (d_IFN6(t) < 0)
+                ^
+Expected one of: 
+	* LESSTHAN
+	* MORETHAN
+
+
+2025-07-23 13:06:07,684 ERROR: response is: G[1,7] (IFN6(t) = c(high)) ^ G[8,T] (d_IFN6(t) < 0)
+error is: No terminal matches '=' in the current parser context, at line 1 col 17
+
+G[1,7] (IFN6(t) = c(high)) ^ G[8,T] (d_IFN6(t) < 0)
+                ^
+Expected one of: 
+	* LESSTHAN
+	* MORETHAN
+
+
+2025-07-23 13:06:09,872 ERROR: response is: G[1,7] (IFN6(t) = c(high)) ^ G[8,T] (d_IFN6(t) < 0)
+error is: No terminal matches '=' in the current parser context, at line 1 col 17
+
+G[1,7] (IFN6(t) = c(high)) ^ G[8,T] (d_IFN6(t) < 0)
+                ^
+Expected one of: 
+	* LESSTHAN
+	* MORETHAN
+
+
+2025-07-23 13:06:11,297 ERROR: response is: G[day>14] (IL12(t) > c(high))
+error is: No terminal matches 'd' in the current parser context, at line 1 col 3
+
+G[day>14] (IL12(t) > c(high))
+  ^
+Expected one of: 
+	* __ANON_2
+	* __ANON_5
+
+
+2025-07-23 13:06:12,974 ERROR: response is: G[day>14] (IL12(t) > c(high))
+error is: No terminal matches 'd' in the current parser context, at line 1 col 3
+
+G[day>14] (IL12(t) > c(high))
+  ^
+Expected one of: 
+	* __ANON_2
+	* __ANON_5
+
+
+2025-07-23 13:06:15,705 ERROR: response is: G[day>14] (IL12(t) > c(high))
+error is: No terminal matches 'd' in the current parser context, at line 1 col 3
+
+G[day>14] (IL12(t) > c(high))
+  ^
+Expected one of: 
+	* __ANON_2
+	* __ANON_5
+
+
+2025-07-23 13:06:32,494 ERROR: response is: G[0,14] (s(t_a) < c(low)) ^ G[0,14] (s(t_a) > c(high)) ^ G[0,14] (IL6(t) < c(low)) ^ F[0,14]G( IL12(t) > IL12(0) )
+error is: No terminal matches '(' in the current parser context, at line 1 col 11
+
+G[0,14] (s(t_a) < c(low)) ^ G[0,14] (s(t_a) > c(hi
+          ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 13:06:34,591 ERROR: response is: G[0,14] (s(t_a) < c(low)) ^ G[0,14] (s(t_a) > c(high)) ^ G[0,14] (IL6(t) < c(low)) ^ F[0,14]G( IL12(t) > IL12(0) )
+error is: No terminal matches '(' in the current parser context, at line 1 col 11
+
+G[0,14] (s(t_a) < c(low)) ^ G[0,14] (s(t_a) > c(hi
+          ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 13:06:37,586 ERROR: response is: G[0,14] (s(t_a) < c(low)) ^ G[0,14] (s(t_a) > c(high)) ^ G[0,14] (IL6(t) < c(low)) ^ F[0,14]G( IL12(t) > IL12(0) )
+error is: No terminal matches '(' in the current parser context, at line 1 col 11
+
+G[0,14] (s(t_a) < c(low)) ^ G[0,14] (s(t_a) > c(hi
+          ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 13:06:51,405 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 13:06:51,406 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 13:06:51,510 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 13:06:51,517 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 13:06:51,615 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 13:06:51,621 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 13:06:51,710 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 13:06:51,717 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 13:06:51,800 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 13:06:51,806 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 13:06:51,894 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 13:06:51,900 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 13:06:51,984 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 13:06:51,990 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 13:06:52,079 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 13:06:52,172 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 13:06:52,179 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 13:06:52,574 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 13:06:52,579 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 13:06:52,674 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 13:06:52,778 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 13:06:52,783 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 13:06:52,868 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 13:06:53,229 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 13:06:53,235 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/config.json HTTP/1.1" 200 0
+2025-07-23 13:06:53,319 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 13:06:53,324 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/config.json HTTP/1.1" 200 0
+2025-07-23 13:06:53,415 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1313
+2025-07-23 13:06:53,499 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 13:06:57,948 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1313
+2025-07-23 13:06:58,133 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 13:06:58,138 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 13:06:58,220 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 13:06:58,608 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-23 13:06:58,615 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/generation_config.json HTTP/1.1" 200 0
+2025-07-23 13:06:59,643 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 13:06:59,735 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B HTTP/1.1" 200 8302
+2025-07-23 13:06:59,789 DEBUG: Starting new HTTPS connection (1): stats.vllm.ai:443
+2025-07-23 13:06:59,827 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main?recursive=False&expand=False HTTP/1.1" 200 1313
+2025-07-23 13:06:59,827 DEBUG: Attempting to acquire lock 140136129971168 on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 13:06:59,827 DEBUG: Lock 140136129971168 acquired on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 13:06:59,908 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/revision/main HTTP/1.1" 200 8302
+2025-07-23 13:06:59,916 DEBUG: https://stats.vllm.ai:443 "POST / HTTP/1.1" 200 None
+2025-07-23 13:06:59,917 DEBUG: Attempting to release lock 140136129971168 on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 13:06:59,917 DEBUG: Lock 140136129971168 released on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 13:06:59,917 DEBUG: Attempting to acquire lock 140138189448656 on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 13:06:59,917 DEBUG: Lock 140138189448656 acquired on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 13:07:00,021 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/model.safetensors.index.json HTTP/1.1" 404 0
+2025-07-23 13:07:00,022 DEBUG: Attempting to release lock 140138189448656 on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 13:07:00,022 DEBUG: Lock 140138189448656 released on /tmp/17f38bced1ab54b1066efe9c3f16bc48eb94eba3671f79537f6dc96fd508e76cQwen-Qwen3-0.6B.lock
+2025-07-23 13:07:56,784 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 13:07:56,791 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 13:07:56,878 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 13:07:57,229 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/processor_config.json HTTP/1.1" 404 0
+2025-07-23 13:07:57,312 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 13:07:57,397 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/video_preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 13:07:57,483 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 13:07:57,565 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 13:07:57,571 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 13:07:57,657 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 13:07:57,664 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/config.json HTTP/1.1" 200 0
+2025-07-23 13:07:57,749 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-0.6B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 13:07:57,755 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-0.6B/e6de91484c29aa9480d55605af694f39b081c455/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 13:07:57,841 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-0.6B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 13:08:11,511 ERROR: response is: G[1,7] (IL1Beta(t) > c(high)) ^ G[8,14] (IL1Ra(t) > c(high)) ^ abs( (d_s_IL1Beta(t) - d_c(high)) < e ) ^ G[14,T] (d_s_IL1Ra(t) < 0)
+error is: No terminal matches '(' in the current parser context, at line 1 col 69
+
+) ^ G[8,14] (IL1Ra(t) > c(high)) ^ abs( (d_s_IL1Beta(t) - d_c(high)) < e ) ^ G[1
+                                        ^
+Expected one of: 
+	* D_
+	* __ANON_6
+
+
+2025-07-23 13:08:13,453 ERROR: response is: G[1,7] (IL1Beta(t) > c(high)) ^ G[8,14] (IL1Ra(t) > c(high)) ^ abs( (d_s_IL1Beta(t) - d_c(high)) < e ) ^ G[14,T] (d_s_IL1Ra(t) < 0)
+error is: No terminal matches '(' in the current parser context, at line 1 col 69
+
+) ^ G[8,14] (IL1Ra(t) > c(high)) ^ abs( (d_s_IL1Beta(t) - d_c(high)) < e ) ^ G[1
+                                        ^
+Expected one of: 
+	* D_
+	* __ANON_6
+
+
+2025-07-23 13:08:36,532 ERROR: response is: abs(IFNbeta(t) - c(high)) < e → G[0,2]G( IFNbeta(t) > c(low))
+error is: No terminal matches 'G' in the current parser context, at line 1 col 39
+
+abs(IFNbeta(t) - c(high)) < e → G[0,2]G( IFNbeta(t) > c(low))
+                                      ^
+Expected one of: 
+	* LPAR
+
+
+2025-07-23 13:08:37,556 ERROR: response is: abs(IFNbeta(t) - c(high)) < e → G[0,2]G( IFNbeta(t) > c(low))
+error is: No terminal matches 'G' in the current parser context, at line 1 col 39
+
+abs(IFNbeta(t) - c(high)) < e → G[0,2]G( IFNbeta(t) > c(low))
+                                      ^
+Expected one of: 
+	* LPAR
+
+
+2025-07-23 13:08:38,554 ERROR: response is: abs(IFNbeta(t) - c(high)) < e → G[0,2]G( IFNbeta(t) > c(low))
+error is: No terminal matches 'G' in the current parser context, at line 1 col 39
+
+abs(IFNbeta(t) - c(high)) < e → G[0,2]G( IFNbeta(t) > c(low))
+                                      ^
+Expected one of: 
+	* LPAR
+
+
+2025-07-23 13:08:42,813 ERROR: response is: G[4,T] (d_IFN(t) < e) ^ G[8,T] (IFN(t) > c(high))
+error is: No terminal matches ')' in the current parser context, at line 1 col 21
+
+G[4,T] (d_IFN(t) < e) ^ G[8,T] (IFN(t) > c(high))
+                    ^
+Expected one of: 
+	* LPAR
+
+
+2025-07-23 13:08:43,558 ERROR: response is: G[4,T] (d_IFN(t) < e) ^ G[8,T] (IFN(t) > c(high))
+error is: No terminal matches ')' in the current parser context, at line 1 col 21
+
+G[4,T] (d_IFN(t) < e) ^ G[8,T] (IFN(t) > c(high))
+                    ^
+Expected one of: 
+	* LPAR
+
+
+2025-07-23 13:08:44,505 ERROR: response is: G[4,T] (d_IFN(t) < e) ^ G[8,T] (IFN(t) > c(high))
+error is: No terminal matches ')' in the current parser context, at line 1 col 21
+
+G[4,T] (d_IFN(t) < e) ^ G[8,T] (IFN(t) > c(high))
+                    ^
+Expected one of: 
+	* LPAR
+
+
+2025-07-23 13:08:45,768 ERROR: response is: G[0,T] (IFN(α(t)) > c(high)) ^ G[8,T] (d_IFN(α(t)) < 0)
+error is: No terminal matches '(' in the current parser context, at line 1 col 12
+
+G[0,T] (IFN(α(t)) > c(high)) ^ G[8,T] (d_IFN(α(t)) 
+           ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 13:08:46,603 ERROR: response is: G[0,T] (IFN(α(t)) > c(high)) ^ G[8,T] (d_IFN(α(t)) < 0)
+error is: No terminal matches '(' in the current parser context, at line 1 col 12
+
+G[0,T] (IFN(α(t)) > c(high)) ^ G[8,T] (d_IFN(α(t)) 
+           ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 13:08:47,557 ERROR: response is: G[0,T] (IFN(α(t)) > c(high)) ^ G[8,T] (d_IFN(α(t)) < 0)
+error is: No terminal matches '(' in the current parser context, at line 1 col 12
+
+G[0,T] (IFN(α(t)) > c(high)) ^ G[8,T] (d_IFN(α(t)) 
+           ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 13:08:50,921 ERROR: response is: G[14,T] (abs(SARS-CoV-2(t) - c(low)) < e) ^ G[14,T] (d_SARS-CoV-2(t) < 0)
+error is: No terminal matches '-' in the current parser context, at line 1 col 18
+
+G[14,T] (abs(SARS-CoV-2(t) - c(low)) < e) ^ G[14,T] (d_SA
+                 ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 13:09:04,675 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-23 13:09:04,675 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 13:09:04,772 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 13:09:04,777 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 13:09:04,861 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 13:09:04,865 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 13:09:04,947 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-23 13:09:04,953 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-23 13:09:05,037 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-23 13:09:05,043 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-23 13:09:05,126 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-23 13:09:05,132 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-23 13:09:05,214 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-23 13:09:05,220 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-23 13:09:05,305 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-23 13:09:05,390 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 13:09:05,396 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-23 13:09:05,794 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 13:09:05,800 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 13:09:05,885 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 13:09:06,016 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-23 13:09:06,023 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-23 13:09:06,509 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-23 13:09:06,868 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 13:09:06,876 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/config.json HTTP/1.1" 200 0
+2025-07-23 13:09:06,958 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 13:09:06,964 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/config.json HTTP/1.1" 200 0
+2025-07-23 13:09:07,053 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1761
+2025-07-23 13:09:07,141 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 13:09:11,631 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B/tree/main?recursive=True&expand=False HTTP/1.1" 200 1761
+2025-07-23 13:09:11,813 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 13:09:11,819 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 13:09:11,905 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 13:09:12,292 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-23 13:09:12,297 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/generation_config.json HTTP/1.1" 200 0
+2025-07-23 13:09:13,330 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-23 13:09:13,426 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B HTTP/1.1" 200 7421
+2025-07-23 13:09:13,487 DEBUG: Starting new HTTPS connection (1): stats.vllm.ai:443
+2025-07-23 13:09:13,514 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B/tree/main?recursive=False&expand=False HTTP/1.1" 200 1761
+2025-07-23 13:09:13,515 DEBUG: Attempting to acquire lock 139950966426368 on /tmp/29826007d510a11286f0f12641394e24f1339dec6256351c91a1244e68a56a59Qwen-Qwen3-1.7B.lock
+2025-07-23 13:09:13,515 DEBUG: Lock 139950966426368 acquired on /tmp/29826007d510a11286f0f12641394e24f1339dec6256351c91a1244e68a56a59Qwen-Qwen3-1.7B.lock
+2025-07-23 13:09:13,613 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B/revision/main HTTP/1.1" 200 7421
+2025-07-23 13:09:13,615 DEBUG: Attempting to release lock 139950966426368 on /tmp/29826007d510a11286f0f12641394e24f1339dec6256351c91a1244e68a56a59Qwen-Qwen3-1.7B.lock
+2025-07-23 13:09:13,615 DEBUG: Lock 139950966426368 released on /tmp/29826007d510a11286f0f12641394e24f1339dec6256351c91a1244e68a56a59Qwen-Qwen3-1.7B.lock
+2025-07-23 13:09:13,615 DEBUG: Attempting to acquire lock 139950965510784 on /tmp/29826007d510a11286f0f12641394e24f1339dec6256351c91a1244e68a56a59Qwen-Qwen3-1.7B.lock
+2025-07-23 13:09:13,615 DEBUG: Lock 139950965510784 acquired on /tmp/29826007d510a11286f0f12641394e24f1339dec6256351c91a1244e68a56a59Qwen-Qwen3-1.7B.lock
+2025-07-23 13:09:13,623 DEBUG: https://stats.vllm.ai:443 "POST / HTTP/1.1" 200 None
+2025-07-23 13:09:13,696 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/model.safetensors.index.json HTTP/1.1" 307 0
+2025-07-23 13:09:13,704 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/model.safetensors.index.json HTTP/1.1" 200 0
+2025-07-23 13:09:13,704 DEBUG: Attempting to release lock 139950965510784 on /tmp/29826007d510a11286f0f12641394e24f1339dec6256351c91a1244e68a56a59Qwen-Qwen3-1.7B.lock
+2025-07-23 13:09:13,704 DEBUG: Lock 139950965510784 released on /tmp/29826007d510a11286f0f12641394e24f1339dec6256351c91a1244e68a56a59Qwen-Qwen3-1.7B.lock
+2025-07-23 13:10:12,241 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 13:10:12,258 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 13:10:12,343 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 13:10:12,919 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/processor_config.json HTTP/1.1" 404 0
+2025-07-23 13:10:13,008 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 13:10:13,100 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/video_preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 13:10:13,183 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-23 13:10:13,270 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 13:10:13,278 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 13:10:13,362 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-23 13:10:13,371 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/config.json HTTP/1.1" 200 0
+2025-07-23 13:10:13,462 DEBUG: https://huggingface.co:443 "HEAD /Qwen/Qwen3-1.7B/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-23 13:10:13,468 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/Qwen/Qwen3-1.7B/0060bc56d46589041c1048efd1a397421b1142b5/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-23 13:10:13,554 DEBUG: https://huggingface.co:443 "GET /api/models/Qwen/Qwen3-1.7B/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-23 13:11:29,195 ERROR: response is: G[1,7] (TNF(t) > c(high)) ^ G[8,14] (TNF(t) > c(high)) ^ F[14,T] (TNF(t) < c(low)) ^ d_s(TNF(t)) < 0
+error is: No terminal matches '(' in the current parser context, at line 1 col 89
+
+high)) ^ F[14,T] (TNF(t) < c(low)) ^ d_s(TNF(t)) < 0
+                                        ^
+Expected one of: 
+	* __ANON_0
+
+
+2025-07-23 13:11:41,829 ERROR: response is: G[1,7] (TNF(t) > c(high)) ^ G[8,14] (TNF(t) > c(high)) ^ F[14,∞) G( TNF(t) < c(low) )
+error is: No terminal matches '∞' in the current parser context, at line 1 col 63
+
+h)) ^ G[8,14] (TNF(t) > c(high)) ^ F[14,∞) G( TNF(t) < c(low) )
+                                        ^
+Expected one of: 
+	* __ANON_5
+	* __ANON_2
+
+
+2025-07-23 13:11:44,312 ERROR: response is: G[1,7] (TNF(t) > c(high)) ^ G[8,14] (TNF(t) > c(high)) ^ F[14,∞) G( TNF(t) < c(low) )
+error is: No terminal matches '∞' in the current parser context, at line 1 col 63
+
+h)) ^ G[8,14] (TNF(t) > c(high)) ^ F[14,∞) G( TNF(t) < c(low) )
+                                        ^
+Expected one of: 
+	* __ANON_5
+	* __ANON_2
+
+
+2025-07-23 13:11:46,506 ERROR: response is: G[1,7] (TNF(t) > c(high)) ^ G[8,14] (TNF(t) > c(high)) ^ F[14,∞) G( TNF(t) < c(low) )
+error is: No terminal matches '∞' in the current parser context, at line 1 col 63
+
+h)) ^ G[8,14] (TNF(t) > c(high)) ^ F[14,∞) G( TNF(t) < c(low) )
+                                        ^
+Expected one of: 
+	* __ANON_5
+	* __ANON_2
+
+
+2025-07-23 13:12:25,710 ERROR: response is: F[1,7] (IFNβ(t) = c(low)) ^ F[8,14] (IFNβ(t) > c(high)) ^ F[15,T] (IFNβ(t) > c(high))
+error is: No terminal matches '=' in the current parser context, at line 1 col 17
+
+F[1,7] (IFNβ(t) = c(low)) ^ F[8,14] (IFNβ(t) > c(high)) 
+                ^
+Expected one of: 
+	* MORETHAN
+	* LESSTHAN
+
+
+2025-07-23 13:12:37,440 ERROR: response is: G[1,7] (IFNbeta(t) = c(low)) ^ G[8,14] (IFNbeta(t) > c(high)) ^ G[15,T] (IFNbeta(t) > c(high))
+error is: No terminal matches '=' in the current parser context, at line 1 col 20
+
+G[1,7] (IFNbeta(t) = c(low)) ^ G[8,14] (IFNbeta(t) > c(high
+                   ^
+Expected one of: 
+	* MORETHAN
+	* LESSTHAN
+
+
+2025-07-23 13:12:41,034 ERROR: response is: G[1,7] (IFNbeta(t) = c(low)) ^ G[8,14] (IFNbeta(t) > c(high)) ^ G[14,T] (IFNbeta(t) > c(high))
+error is: No terminal matches '=' in the current parser context, at line 1 col 20
+
+G[1,7] (IFNbeta(t) = c(low)) ^ G[8,14] (IFNbeta(t) > c(high
+                   ^
+Expected one of: 
+	* MORETHAN
+	* LESSTHAN
+
+
+2025-07-23 13:12:43,495 ERROR: response is: G[1,7] (IFNbeta(t) = c(low)) ^ G[8,14] (IFNbeta(t) > c(high)) ^ G[14,T] (IFNbeta(t) > c(high))
+error is: No terminal matches '=' in the current parser context, at line 1 col 20
+
+G[1,7] (IFNbeta(t) = c(low)) ^ G[8,14] (IFNbeta(t) > c(high
+                   ^
+Expected one of: 
+	* MORETHAN
+	* LESSTHAN
+
+
+2025-07-23 13:13:22,996 ERROR: response is: F[0,1] G( (alpha_IFN(t) > c(high)) ∧ (beta_IFN(t) > c(high)) )
+error is: No terminal matches '(' in the current parser context, at line 1 col 11
+
+F[0,1] G( (alpha_IFN(t) > c(high)) ∧ (beta_IFN(t) 
+          ^
+Expected one of: 
+	* F
+	* __ANON_6
+	* D_
+	* G
+	* __ANON_1
+
+
+2025-07-23 13:13:43,220 ERROR: response is: F[0,2]G( (alpha_IFN(t) > c(high)) ∧ (beta_IFN(t) > c(high)) )
+error is: No terminal matches '(' in the current parser context, at line 1 col 10
+
+F[0,2]G( (alpha_IFN(t) > c(high)) ∧ (beta_IFN(t) 
+         ^
+Expected one of: 
+	* F
+	* __ANON_6
+	* D_
+	* G
+	* __ANON_1
+
+
+2025-07-23 13:13:56,136 ERROR: response is: G[14,T] (d_SARS_COV_2(t) = 0) ^ G[14,T] (abs(d_SARS_COV_2(t) - 0) < e) ^ G[14,T] (IL6(t) = c(low) | IL6(t) = c(mid) | IL6(t) = c(high)) ^ G[14,T] (IL1RN(t) = c(low) | IL1RN(t) = c(mid) | IL1RN(t) = c(high) | IL1RA(t) = c(low) | IL1RA(t) = c(mid) | IL1RA(t) = c(high))
+error is: No terminal matches '=' in the current parser context, at line 1 col 26
+
+G[14,T] (d_SARS_COV_2(t) = 0) ^ G[14,T] (abs(d_SARS_COV_2(t) - 0)
+                         ^
+Expected one of: 
+	* MORETHAN
+	* LESSTHAN
+
+

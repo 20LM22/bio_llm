@@ -100,7 +100,7 @@ for sentence_index, sentence in sentences['input statement'].items():
             translations.at[sentence_index, f'STL-{i}'] = extracted_response
         except Exception as e:
             translations.at[sentence_index, f'STL-{i}'] = "STL could not be extracted"
-            feedback = feedback_dict['extraction error']
+            feedback = feedback_dict['extraction_error']
             continue
             
         # parse STL, if unsuccessful, put None into translations dataframe entry

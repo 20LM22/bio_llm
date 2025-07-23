@@ -2,8 +2,7 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 import seaborn as sns
 import matplotlib.pyplot as plt
-import pickle, sys
-import pandas
+import pickle, sys, os, pandas
 from thefuzz import fuzz
 from sentence_transformers import SentenceTransformer
 from matplotlib.patches import Rectangle
@@ -11,7 +10,7 @@ from matplotlib.patches import Rectangle
 embedding_model_name = 'all-MiniLM-L6-v2'
 embedding_model = SentenceTransformer(embedding_model_name, device='cpu')
 
-model_name = sys.argv[1].split('/')[0]
+model_name = sys.argv[1].split('/')[1]
 
 try:
     with open(f'../pkl/{sys.argv[2]}', 'rb') as f:
@@ -76,7 +75,9 @@ total_sentences_success_rate_table['STL Parsing Success Rate'] = np.where(num_to
 total_sentences_success_rate_table['Literal Translation Success Rate'] = np.where(num_total_passed_parsing==0, 0, 1-(total_sentences_success_rate_table['Literal Translation Success Rate'] / num_total_passed_parsing))
 
 stats = pandas.concat([per_sentence_success_rate_table, total_sentences_success_rate_table], ignore_index=True)
-stats.to_csv('stats_{model_name}.csv', index=False)
+os.makedirs(f'../stats/{model_name}', exist_ok=True)
+stats.to_csv(f'../stats/{model_name}/stats.csv', index=False)
+print("stats exported")
 
 # Produce similarity heatmaps
 
@@ -113,7 +114,8 @@ ax.set_xticks(range(len(literal_sentences_clean)))
 ax.set_yticklabels(nl_sentences, rotation=0)
 ax.set_xticklabels(literal_sentences_clean, rotation=45)
 plt.tight_layout()
-plt.savefig(f'../images/produced_literal_vs_original_nl_{model_name}.png')
+os.makedirs(f'../images/{model_name}', exist_ok=True)
+plt.savefig(f'../images/{model_name}/produced_literal_vs_original_nl.png')
 
 # compute similarity for the stl against the reference stl using fuzzy matching
 stl_ref_statements = np.array(translations['reference STL']) # need to fix these names
@@ -141,7 +143,7 @@ ax.set_xticks(range(len(stl_produced_clean_labels)))
 ax.set_yticklabels(stl_ref_statements, rotation=0)
 ax.set_xticklabels(stl_produced_clean_labels, rotation=45)
 plt.tight_layout()
-plt.savefig(f'../images/produced_vs_ref_stl_{model_name}.png')
+plt.savefig(f'../images/{model_name}/produced_vs_ref_stl.png')
 
 #######################################################################################################################
 #
@@ -212,7 +214,7 @@ for _id, ax in enumerate(axs):
     ax.set_yticklabels(stl_ref_labels_arr[_id], rotation=0)
     ax.set_xticklabels(stl_produced_labels_arr[_id], rotation=45)
 fig.tight_layout()
-plt.savefig(f'../images/per_sentence_translation_heatmaps_{model_name}.png')
+plt.savefig(f'../images/{model_name}/per_sentence_translation_heatmaps.png')
 
 
 """
