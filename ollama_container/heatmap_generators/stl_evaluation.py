@@ -20,6 +20,10 @@ except Exception as e:
     print("there was an exception")
     print(e)
 
+# Output the translation table as a csv file
+os.makedirs(f'../stats/{model_name}', exist_ok=True)
+translations.to_csv(f'../stats/{model_name}/translations.csv')
+
 # No final sentence for now
 """
 try:
@@ -75,9 +79,7 @@ total_sentences_success_rate_table['STL Parsing Success Rate'] = np.where(num_to
 total_sentences_success_rate_table['Literal Translation Success Rate'] = np.where(num_total_passed_parsing==0, 0, 1-(total_sentences_success_rate_table['Literal Translation Success Rate'] / num_total_passed_parsing))
 
 stats = pandas.concat([per_sentence_success_rate_table, total_sentences_success_rate_table], ignore_index=True)
-os.makedirs(f'../stats/{model_name}', exist_ok=True)
 stats.to_csv(f'../stats/{model_name}/stats.csv', index=False)
-print("stats exported")
 
 # Produce similarity heatmaps
 
