@@ -123,7 +123,7 @@ for sentence_index, sentence in sentences['input statement'].items():
                 error_message_less_descriptive = str(e).split('\n')[0].split(',')[0] 
                 error_char = str(e).split('\n')[0].split(',')[1].split(' ')[5]
                 error_message_more_descriptive = str(e).split('Expected')[0]
-                feedback = feedback_dict['prev_response_setup'] + extracted_response + feedback_dict['parsing_error_0'] + error_char + feedback_dict['parsing_error_1'] + error_message_more_descriptive
+                feedback = feedback_dict['prev_response_setup'] + extracted_response + feedback_dict['parsing_error_0'] + error_char + feedback_dict['parsing_error_1'] + error_message_less_descriptive
             except:
                 feedback = 'This response had at least one syntax error.'
             continue

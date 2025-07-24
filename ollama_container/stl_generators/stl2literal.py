@@ -498,10 +498,28 @@ class Test(Interpreter):
 
 # fastpunct = FastPunct() # TODO: might have to be moved into the function def?
 
+species_dict = {
+'IL-6': 'IL6',
+'IL-12': 'IL12',
+'IL-1β': 'IL1β',
+'IL-1Ra': 'IL1Ra',
+'TNF-α': 'TNFα',
+'IL-8': 'IL8',
+'IFN-α': 'IFNα',
+'IFN-β': 'IFNβ',
+'SARS-CoV-2': 'SARSCoV2',
+'IL1RN': 'IL1RN',
+'IL1RA': 'IL1Ra'
+}
+
 def STL2literal(input_sentence, grammar):
     p = Lark(grammar) # TODO: this is also slow, improve if possible
     tree = p.parse(input_sentence)
     tester = Test() # TODO: this is redundant, see if this can be improved
     tester.visit(tree)
     # return fastpunct.punct(" ".join(tester.sentence))
-    return ' '.join(tester.sentence)
+    # now process the species in the sentence
+    tester.sentence = ' '.join(tester.sentence)
+    for key in species_dict:
+        tester.sentence.replace(species_dict[key], key)
+    return tester_sentence
