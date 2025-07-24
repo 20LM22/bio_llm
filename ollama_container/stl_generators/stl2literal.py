@@ -520,6 +520,8 @@ def STL2literal(input_sentence, grammar):
     # return fastpunct.punct(" ".join(tester.sentence))
     # now process the species in the sentence
     tester.sentence = ' '.join(tester.sentence)
+
     for key in species_dict:
-        tester.sentence.replace(species_dict[key], key)
-    return tester_sentence
+        tester.sentence = tester.sentence.replace(species_dict[key], key)
+
+    return tester.sentence

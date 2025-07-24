@@ -138,11 +138,15 @@ for sentence_index, sentence in sentences['input statement'].items():
         if stl[0] != 'STL could not be extracted' and stl[0] != 'STL could not be parsed':
             try:
                 label1 = 'Literal-'+ str(stl[2])
+                print("RIGHT BEFORE CALLING STL2LITERAL")
                 literal_translation = STL2literal(stl[0], grammar)
-
+                print(literal_translation)
+                
+    
                 translations.at[sentence_index, label1] = literal_translation
                 literal_translations.append(literal_translation)
             except Exception as e:
+                print(e)
                 label1 = 'Literal-'+ str(stl[2])
                 translations.at[sentence_index, label1] = "STL to literal failed"
         else:
