@@ -1,3 +1,2 @@
-Loaded <_io.BufferedReader name='../pkl/../pkl/translations_Qwen3-0.6B.pkl'>
-there was an exception
-[Errno 2] No such file or directory: '../pkl/u_../pkl/translations_Qwen3-0.6B.pkl'
+Loaded <_io.BufferedReader name='../pkl/translations_Qwen3-0.6B.pkl'>
+Loaded <_io.BufferedReader name='../pkl/u_translations_Qwen3-0.6B.pkl'>
