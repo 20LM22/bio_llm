@@ -21,7 +21,7 @@
 		"extraction_error": "\nWe were not able to extract the STL from your previous response to this prompt. Make sure to format your response according to the JSON format described above.",
 		"parsing_error_0": "\nThe response was correct up until character ",
 		"parsing_error_1": ".\nWhen trying to parse the response, the parser returned this exception:\n",
-		"syntactically_correct": "\nThe response did not have syntax errors. Are there any other similar, valid translations?"
+		"syntactically_correct": "\nThis response was syntactically correct."
 	}
 
 }

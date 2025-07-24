@@ -121,8 +121,11 @@ for sentence_index, sentence in sentences['input statement'].items():
             error_feedback = ''
             try:
                 error_subsets = str(e).split('\n')[0].split(',')
-                error_char = error_subsets[1].split(' ')[4] # 'at line x col x'
+                print(f"error_subsets: {error_subsets}")
+                # print(f"the error char is: {error_char}")
+                error_char = error_subsets[1].split(' ')[5] # ' at line x col x'
                 feedback = feedback_dict['prev_response_setup'] + extracted_response + feedback_dict['parsing_error_0'] + error_char + feedback_dict['parsing_error_1'] + error_subsets[0]
+                print(f"the feedback is: {feedback}")
             except:
                 feedback = 'This response had at least one syntax error.'
             continue
