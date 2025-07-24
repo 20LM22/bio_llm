@@ -1,4 +1,3 @@
 Loaded <_io.BufferedReader name='../pkl/../pkl/translations_Qwen3-1.7B.pkl'>
-literal sentence embeddings clean was empty
-stl produced clean labels was empty
-there were no per-sentence matrices
+there was an exception
+[Errno 2] No such file or directory: '../pkl/u_../pkl/translations_Qwen3-1.7B.pkl'

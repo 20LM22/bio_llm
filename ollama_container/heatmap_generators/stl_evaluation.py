@@ -20,9 +20,18 @@ except Exception as e:
     print("there was an exception")
     print(e)
 
+try:
+    with open(f'../pkl/u_{sys.argv[2]}', 'rb') as f:
+        u_translations = pickle.load(f)
+        print(f'Loaded {f}')
+except Exception as e:
+    print("there wasopiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii an exception")
+    print(e)
+
 # Output the translation table as a csv file
 os.makedirs(f'../stats/{model_name}', exist_ok=True)
 translations.to_csv(f'../stats/{model_name}/translations.csv')
+u_translations.to_csv(f'../stats/{model_name}/u_translations.csv')
 
 # No final sentence for now
 """

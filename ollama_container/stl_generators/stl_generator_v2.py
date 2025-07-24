@@ -63,6 +63,8 @@ for i in range(num_translations_per_input_sentence):
     translations[f'STL-{i}'] = None
     translations[f'Literal-{i}'] = None
 
+u_translations = translations.copy()
+
 # Create the LLM for this model
 llm = LLM(model=model_name,
     dtype=model_dtype,
@@ -92,6 +94,7 @@ for sentence_index, sentence in sentences['input statement'].items():
     # do the m shots
     for i in range(num_translations_per_input_sentence):
         response = llm.chat([{"role": "user", "content": prompt+feedback}], sampling_params)[0].outputs[0].text
+        u_translations.at[sentence_index, f'STL-{i}'] = response
 
         # extract STL, if unsuccessful, put None into translations dataframe entry
         try:
@@ -181,6 +184,12 @@ except Exception as e:
 try:
     with open(f'../pkl/translations_{model_name}.pkl', 'wb') as results:
         pickle.dump(translations, results)
+except Exception as e:
+    print(e)
+
+try:
+    with open(f'../pkl/u_translations_{model_name}.pkl', 'wb') as results:
+        pickle.dump(u_translations, results)
 except Exception as e:
     print(e)
 
