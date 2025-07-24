@@ -120,10 +120,10 @@ for sentence_index, sentence in sentences['input statement'].items():
             # FORMAT THE ERROR MESSAGE IN A USEFUL WAY
             error_feedback = ''
             try:
-                error_subsets = str(e).split('\n')[0].split(',')
-                print(f"error_subsets: {error_subsets}")
+                error_char = str(e).split('\n')[0].split(',')[1].split(' ')[5]
                 # print(f"the error char is: {error_char}")
-                error_char = error_subsets[1].split(' ')[5] # ' at line x col x'
+                error_message = str(e).split('Expected')[0]
+                print(f"error_message: {error_message}")
                 feedback = feedback_dict['prev_response_setup'] + extracted_response + feedback_dict['parsing_error_0'] + error_char + feedback_dict['parsing_error_1'] + error_subsets[0]
                 print(f"the feedback is: {feedback}")
             except:
