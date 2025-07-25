@@ -99,10 +99,19 @@ for sentence_index, sentence in sentences['input statement'].items():
     # do the m shots
     for i in range(num_translations_per_input_sentence):
         # get random examples (2)
-        sample1 = stl_base_instance.sample(stl_base_instance, 'omega')
-        sample2 = stl_base_instance.sample(stl_base_instance, 'omega')
-        literal_translation1 = STL2literal(sample1, grammar)  
-        literal_translation1 = STL2literal(sample2, grammar)  
+        sample1 = stl_base_instance.sample('omega')
+        sample2 = stl_base_instance.sample('omega')
+        literal_translation1=''
+        literal_translation2=''
+        try:
+            literal_translation1 = STL2literal(sample1, grammar)  
+            literal_translation1 = STL2literal(sample2, grammar)  
+        except Exception as e:
+            print("sfsdfddsfdfsdkjsdflkdsjfdsljffdlskjfsl")
+            print(sample1)
+            print()
+            print(sample2)
+            print()
 
         example = f'Input example 1: {literal_translation1}, corresponding STL example 1: {sample1}\nInput example 2: {literal_translation2}, STL example 2: {sample2}\n'
         print(f"the prompt is: {prompt+example+feedback}")
