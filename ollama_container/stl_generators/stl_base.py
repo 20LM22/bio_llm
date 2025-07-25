@@ -11,14 +11,13 @@ grammar = """
     d_c : "0" | "d_c(low)" | "d_c(high)" | "-d_c(low)" | "-d_c(high)"
 
     ?phi: u | u "^" phi | u "∧" phi
-    ?nu : u | u "→" u | psi "→" psi | psi "→" u | u "→" psi | u "^" phi | u "∧" phi
-
+    ?nu : u | u "→" u | u "^" phi | u "∧" phi
     ?psi: temp_op_f | temp_op_g | temp_op_f_g
     temp_op_f_g: "F" "[" t_a "," t_a "]" "G" "(" nu ")"
     temp_op_f: "F" "[" t_a "," t_a "]" "(" nu ")"
     temp_op_g: "G" "[" t_a "," t_a "]" "(" nu ")"
-    ?omega: nu | psi | omega "^" omega | omega "∧" omega
-
+    ?omega: nu | psi | omega "^" omega | omega "∧" omega | psi "→" psi 
+    
     t_a: /[0-9]+/ | "infinity" | /∞/
     s: "IL6" | "IL12" | "IL1β" | "IL1Ra" | "TNFα" | "IL8" | "IFNα" | "IFNβ" | "SARSCoV2" | "IL1RN"
 
@@ -52,7 +51,7 @@ def compute_min_depth(sym, rule_map, min_depth_map, visited):
         min_depth = min(min_depth, depth + 1)
 
     visited.remove(sym)
-    min_depth_map[sym] = min_depth
+    min_depth_map[str(sym)] = min_depth
     return min_depth
 
 class STLBase(ABC):
@@ -95,15 +94,17 @@ class STLBase(ABC):
                 anon_map[term.name] = literal
 
         self.anon_map = anon_map
+        # print(self.sample('omega'))
 
     def sample(self, sym, depth=0, max_depth=3):
+        print("--------------------------------------------------------------inside of SAMPLE---------------------------------------------------------------")
         ids = ["IL6", "IL12", "IL1β", "IL1Ra", "TNFα", "IL8", "IFNα", "IFNβ", "SARSCoV2", "IL1RN"]
 
         parts = []
         t_a_str = "t_a"
 
         if sym == "t_a":
-            parts.append(random.choice(["∞", str(random.randint(0, 20))]))
+            parts.append(str(random.randint(0, 20)))
         elif sym == "s":
             parts.append(random.choice(ids))
         elif sym == "d_s":
@@ -145,7 +146,7 @@ class STLBase(ABC):
                 for t in expansion:
                     if not t.is_term:
                         if t.name == "t_a":
-                            parts.append(random.choice(["∞", str(random.randint(0, 20))]))
+                            parts.append(str(random.randint(0, 20)))
                         elif t.name == "s":
                             parts.append(random.choice(ids))
                         elif t.name == "d_s":
@@ -160,7 +161,9 @@ class STLBase(ABC):
                             parts.append(self.sample(t.name, depth + 1))
                     else:
                         parts.append(self.anon_map[t.name])  # Use literal if available
-        return ''.join(parts)
+
+            # print(self.parser.parse(''.join(parts))) 
+            return ''.join(parts)
 
 if __name__ == "__main__":
     stl = STLBase()

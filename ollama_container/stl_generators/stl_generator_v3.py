@@ -99,19 +99,43 @@ for sentence_index, sentence in sentences['input statement'].items():
     # do the m shots
     for i in range(num_translations_per_input_sentence):
         # get random examples (2)
-        sample1 = stl_base_instance.sample('omega')
-        sample2 = stl_base_instance.sample('omega')
+        sample1 = ''
+        sample2 = ''
+        print("trying sample 1")        
+        while sample1 == '':
+            try:
+                sample1 = stl_base_instance.sample('omega')
+                if len(sample1) > 75: # too long
+                    sample1 = ''
+            except Exception as e:
+                sample1 = ''
+        print("done with sample 1")
+        print(f"sample 1 is: {sample1}")
+
+        print("trying sample 2")
+        while sample2 == '':
+            try:
+                sample2 = stl_base_instance.sample('omega')
+                if len(sample2) > 75: # too long
+                    sample2 = ''
+            except Exception as e:
+                sample2 = ''
+        print("done with sample 2")
+        print(f"sample 2 is: {sample2}")
+
         literal_translation1=''
         literal_translation2=''
         try:
             literal_translation1 = STL2literal(sample1, grammar)  
-            literal_translation1 = STL2literal(sample2, grammar)  
         except Exception as e:
-            print("sfsdfddsfdfsdkjsdflkdsjfdsljffdlskjfsl")
-            print(sample1)
-            print()
-            print(sample2)
-            print()
+            print("ran into problem trying to translate 1 to literal")
+            print(e)
+
+        try:
+            literal_translation2 = STL2literal(sample2, grammar)  
+        except Exception as e:
+            print("ran into problem trying to translate 2 to literal")
+            print(e)
 
         example = f'Input example 1: {literal_translation1}, corresponding STL example 1: {sample1}\nInput example 2: {literal_translation2}, STL example 2: {sample2}\n'
         print(f"the prompt is: {prompt+example+feedback}")
