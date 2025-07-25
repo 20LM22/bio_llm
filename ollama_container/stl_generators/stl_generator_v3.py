@@ -101,7 +101,11 @@ for sentence_index, sentence in sentences['input statement'].items():
         # get random examples (2)
         sample1 = stl_base_instance.sample(stl_base_instance, 'omega')
         sample2 = stl_base_instance.sample(stl_base_instance, 'omega')
-        example = f'STL example 1: {sample1}\nSTL example 2: {sample2}\n'
+        literal_translation1 = STL2literal(sample1, grammar)  
+        literal_translation1 = STL2literal(sample2, grammar)  
+
+        example = f'Input example 1: {literal_translation1}, corresponding STL example 1: {sample1}\nInput example 2: {literal_translation2}, STL example 2: {sample2}\n'
+        print(f"the prompt is: {prompt+example+feedback}")
 
         response = llm.chat([{"role": "user", "content": prompt+example+feedback}], sampling_params)[0].outputs[0].text
         u_translations.at[sentence_index, f'STL-{i}'] = response
@@ -146,10 +150,7 @@ for sentence_index, sentence in sentences['input statement'].items():
         if stl[0] != 'STL could not be extracted' and stl[0] != 'STL could not be parsed':
             try:
                 label1 = 'Literal-'+ str(stl[2])
-                print("RIGHT BEFORE CALLING STL2LITERAL")
-                literal_translation = STL2literal(stl[0], grammar)
-                print(literal_translation)
-                
+                literal_translation = STL2literal(stl[0], grammar)  
     
                 translations.at[sentence_index, label1] = literal_translation
                 literal_translations.append(literal_translation)

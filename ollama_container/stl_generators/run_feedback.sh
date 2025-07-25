@@ -8,6 +8,10 @@ elif [ "$1" = "1" ]; then
 elif [ "$1" = "2" ]; then
 	python stl_generator_v2.py 'Qwen/Qwen3-1.7B'
 	python ../heatmap_generators/stl_evaluation.py 'Qwen/Qwen3-1.7B' 'translations_Qwen3-1.7B.pkl'
+elif [ "$1" = "3" ]; then
+	python stl_generator_v3.py 'TheBloke/Mistral-7B-Instruct-v0.2-GPTQ'
+	python ../heatmap_generators/stl_evaluation.py 'TheBloke/Mistral-7B-Instruct-v0.2-GPTQ' 'translations_Mistral-7B-Instruct-v0.2-GPTQ.pkl'
 else
 	echo "Must specify numbered arg for model name"
 fi
+

@@ -2,47 +2,42 @@ from abc import ABC
 from lark import Lark
 import random
 
-# u
-# removed "t_a"
-# t_a:
-#        | "t"
-# omega
-#        | omega" → "omega
-# c
-#         | "s("t_a")"
+grammar: """
+    ?start: omega
+    ?u: gt | lt | err_bnd | d_gt | d_lt | d_err_bnd
+    gt: s "(t)" ">" c
+    lt: s "(t)" "<" c
+    err_bnd: "abs(" s "(t)" "-" c ")" "<" e
+    d_gt: "d_" s "(t)" ">" D_C
+    d_lt: "d_" s "(t)" "<" D_C
+    d_err_bnd: "abs(" "d_" s "(t)" "-" D_C ")" "<" e
+    
+    ?e: ERROR | /[0-9]+/
+    ERROR: "e"
+    c: s "(" t_a ")" | C_LOW | C_MID | C_HIGH
+    C_LOW: "c(low)"
+    C_MID: "c(mid)"
+    C_HIGH: "c(high)"
+    D_C : "0" | "d_c(low)" | "d_c(high)" | "-d_c(low)" | "-d_c(high)"
 
-grammar = """
-    u : s"(t) < "c
-        | s"(t) > "c 
-        | "abs("s"(t) - "c") < "e
-        | d_s"(t) > "d_c
-        | d_s"(t) < "d_c
-        | "abs("d_s"(t) - "d_c") < "e
-    e : "e"
-        | /[0-9]+/
-    c : "c(low)"
-        | "c(mid)"
-        | "c(high)"
-    d_c : "0" 
-        | "d_c(low)"
-        | "d_c(high)" 
-        | "-d_c(low)" 
-        | "-d_c(high)"
-    phi : u
-        | phi" ^ "phi
-        | "( "phi" → "phi" )"
-    psi : "F["t_a","t_a"]G("phi")"
-        | "G["t_a","t_a"]("phi")"
-        | "F["t_a","t_a"]("phi")"
-    omega : phi
-        | psi
-        | omega" ^ "omega
-        | "( "omega" → "omega" )"
-    t_a : /[0-9]+/
-        | "T"
-    s : /[a-zA-z0-9]+/
-    d_s : "d_"/[a-zA-z0-9]+/
-    """
+    ?phi: u | u_and_phi
+    ?nu : u | u_implies_u | u_and_phi
+    u_implies_u: u "→" u | psi "→" psi | psi "→" u | u "→" psi
+    u_and_phi: u "^" phi | u "∧" phi
+    ?psi: temp_op_fg | temp_op_g | temp_op_f
+    temp_op_fg: "F" "[" t_a "," t_a "]" "G" "(" nu ")"
+    temp_op_f: "F" "[" t_a "," t_a "]" "(" nu ")"
+    temp_op_g: "G" "[" t_a "," t_a "]" "(" nu ")"
+    ?omega: nu | psi| omega "^" omega | omega "∧" omega
+
+    t_a: /[0-9]+/ | INFINITY
+    INFINITY: "infinity" | /∞/
+    s: "IL6" | "IL12" | "IL1β" | "IL1Ra" | "TNFα" | "IL8" | "IFNα" | "IFNβ" | "SARSCoV2" | "IL1RN"
+
+    d_s: "d_" s
+    %import common.WS
+    %ignore WS"
+"""
 
 def compute_min_depth(sym, rule_map, min_depth_map, visited):
     if sym in min_depth_map:
@@ -60,7 +55,7 @@ def compute_min_depth(sym, rule_map, min_depth_map, visited):
     visited.add(sym)
 
     min_depth = float('inf')
-    for expansion in rule_map[sym]:
+    for expansion in rule_map[sym]:n
         depth = 0
         for t in expansion:
             if not t.is_term:
@@ -108,26 +103,28 @@ class STLBase(ABC):
 
         self.anon_map = anon_map
 
-        #print(self.sample("omega"))
-        #print(self.sample("omega"))
-        #print(self.sample("omega"))
-        #pass
+        print(self.sample("omega"))
+        print(self.sample("omega"))
+        print(self.sample("omega"))
+        pass
 
     def sample(self, sym, depth=0, max_depth=3):
-        ids = [0, 1, 2,3,4]
+        ids = ["IL6", "IL12", "IL1β", "IL1Ra", "TNFα", "IL8", "IFNα", "IFNβ", "SARSCoV2", "IL1RN"]
+
         parts = []
         t_a_str = "t_a"
 
         if sym == "t_a":
-            parts.append(random.choice(["T", str(random.randint(0, 10))]))
+            parts.append(random.choice(["∞", str(random.randint(0, 20))]))
         elif sym == "s":
-            parts.append("s" + str(random.choice(ids)))
+            parts.append(random.choice(ids))
         elif sym == "d_s":
-            parts.append("d_s" + str(random.choice(ids)))
+            parts.append("d_" + random.choice(ids))
         elif sym == "e":
-            parts.append(str(random.randint(1, 20) / 20))
+            parts.append(random.choice([str(random.randint(1, 20) / 20), "e"]))
         elif sym == "c":
-            parts.append(random.choice([f"s({self.sample(t_a_str)})", "c(low)", "c(mid)", "c(high)"]))
+            signal = random.choice(ids)
+            parts.append(random.choice([f"{signal}_{self.sample(t_a_str)}", "c(low)", "c(mid)", "c(high)"]))
         elif sym == "d_c":
             parts.append(random.choice(["0", "d_c(low)", "d_c(high)", "-d_c(low)", "-d_c(high)"]))
         else:
@@ -159,13 +156,13 @@ class STLBase(ABC):
                 for t in expansion:
                     if not t.is_term:
                         if t.name == "t_a":
-                            parts.append(random.choice(["T", str(random.randint(0, 10))]))
+                            parts.append(random.choice(["∞", str(random.randint(0, 20))]))
                         elif t.name == "s":
-                            parts.append("s" + str(random.choice(ids)))
+                            parts.append(random.choice(ids))
                         elif t.name == "d_s":
-                            parts.append("d_s" + str(random.choice(ids)))
+                            parts.append("d_" + str(random.choice(ids))
                         elif t.name == "e":
-                            parts.append(str(random.randint(1, 20) / 20))
+                            parts.append(random.choice([str(random.randint(1, 20) / 20), "e"]))
                         elif t.name == "c":
                             parts.append(random.choice(["c(low)", "c(mid)", "c(high)"]))
                         elif t.name == "d_c":
