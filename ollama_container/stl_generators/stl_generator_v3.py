@@ -5,6 +5,7 @@ from collections import defaultdict
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 from stl2literal import STL2literal
+from stl_base import STLBase
 from vllm.sampling_params import GuidedDecodingParams
 from pydantic import BaseModel
 import json, csv, sys, traceback, re, logging, pickle, pandas, os
@@ -20,6 +21,8 @@ logging.basicConfig(filename='output.log', level=logging.DEBUG,
 ####################################################################################
 # Set up structures, parameters
 ####################################################################################
+
+stl_base_instance = STLBase()
 
 class STLResponse(BaseModel):
      thinking: str
@@ -95,7 +98,12 @@ for sentence_index, sentence in sentences['input statement'].items():
 
     # do the m shots
     for i in range(num_translations_per_input_sentence):
-        response = llm.chat([{"role": "user", "content": prompt+feedback}], sampling_params)[0].outputs[0].text
+        # get random examples (2)
+        sample1 = stl_base_instance.sample(stl_base_instance, 'omega')
+        sample2 = stl_base_instance.sample(stl_base_instance, 'omega')
+        example = f'STL example 1: {sample1}\nSTL example 2: {sample2}\n'
+
+        response = llm.chat([{"role": "user", "content": prompt+example+feedback}], sampling_params)[0].outputs[0].text
         u_translations.at[sentence_index, f'STL-{i}'] = response
 
         # extract STL, if unsuccessful, put None into translations dataframe entry
