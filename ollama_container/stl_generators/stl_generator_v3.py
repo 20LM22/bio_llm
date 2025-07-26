@@ -137,7 +137,7 @@ for sentence_index, sentence in sentences['input statement'].items():
             print("ran into problem trying to translate 2 to literal")
             print(e)
 
-        example = f'Input example 1: {literal_translation1}, corresponding STL example 1: {sample1}\nInput example 2: {literal_translation2}, STL example 2: {sample2}\n'
+        example = f'\nInput example 1: {literal_translation1}\nOutput STL example 1: {sample1}\nInput example 2: {literal_translation2}\nOutput STL example 2: {sample2}\n'
         print(f"the prompt is: {prompt+example+feedback}")
 
         response = llm.chat([{"role": "user", "content": prompt+example+feedback}], sampling_params)[0].outputs[0].text
@@ -168,7 +168,7 @@ for sentence_index, sentence in sentences['input statement'].items():
                 error_message_less_descriptive = str(e).split('\n')[0].split(',')[0] 
                 error_char = str(e).split('\n')[0].split(',')[1].split(' ')[5]
                 error_message_more_descriptive = str(e).split('Expected')[0]
-                feedback = feedback_dict['prev_response_setup'] + extracted_response + feedback_dict['parsing_error_0'] + error_char + feedback_dict['parsing_error_1'] + error_message_more_descriptive
+                feedback = "Your previous STL response had a syntax error. You must accept this feedback and amend your new response." + feedback_dict['prev_response_setup'] + extracted_response + feedback_dict['parsing_error_0'] + error_char + feedback_dict['parsing_error_1'] + error_message_more_descriptive
             except:
                 feedback = 'This response had at least one syntax error.'
             continue

@@ -14390,3 +14390,195 @@ Expected one of:
 2025-07-25 15:18:12,672 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
 2025-07-25 15:18:12,679 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/7532d6bc89ef9300fb39d2d94ed4414ec534b72a/tokenizer_config.json HTTP/1.1" 200 0
 2025-07-25 15:18:12,765 DEBUG: https://huggingface.co:443 "GET /api/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-25 15:37:27,597 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-25 15:37:27,598 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-25 15:37:27,699 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-25 15:37:27,704 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-25 15:37:27,786 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-25 15:37:27,791 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-25 15:37:27,875 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-25 15:37:27,881 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-25 15:37:27,965 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-25 15:37:27,972 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-25 15:37:28,056 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-25 15:37:28,063 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-25 15:37:28,153 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-25 15:37:28,160 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-25 15:37:28,246 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-25 15:37:28,331 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-25 15:37:28,337 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-25 15:37:28,896 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-25 15:37:28,901 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-25 15:37:28,986 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-25 15:37:29,096 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-25 15:37:29,101 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-25 15:37:29,186 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-25 15:37:29,297 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-25 15:37:29,302 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/7532d6bc89ef9300fb39d2d94ed4414ec534b72a/config.json HTTP/1.1" 200 0
+2025-07-25 15:37:29,385 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-25 15:37:29,393 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/7532d6bc89ef9300fb39d2d94ed4414ec534b72a/config.json HTTP/1.1" 200 0
+2025-07-25 15:37:29,507 DEBUG: https://huggingface.co:443 "GET /api/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/tree/main?recursive=True&expand=False HTTP/1.1" 200 1429
+2025-07-25 15:37:29,591 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-25 15:37:34,047 DEBUG: https://huggingface.co:443 "GET /api/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/tree/main?recursive=True&expand=False HTTP/1.1" 200 1429
+2025-07-25 15:37:34,282 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-25 15:37:34,288 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/7532d6bc89ef9300fb39d2d94ed4414ec534b72a/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-25 15:37:34,372 DEBUG: https://huggingface.co:443 "GET /api/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-25 15:37:34,505 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-25 15:37:34,511 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/7532d6bc89ef9300fb39d2d94ed4414ec534b72a/generation_config.json HTTP/1.1" 200 0
+2025-07-25 15:37:35,540 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-25 15:37:35,633 DEBUG: https://huggingface.co:443 "GET /api/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ HTTP/1.1" 200 2944
+2025-07-25 15:37:35,661 DEBUG: Starting new HTTPS connection (1): stats.vllm.ai:443
+2025-07-25 15:37:35,729 DEBUG: https://huggingface.co:443 "GET /api/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/tree/main?recursive=False&expand=False HTTP/1.1" 200 1429
+2025-07-25 15:37:35,730 DEBUG: Attempting to acquire lock 139786892573392 on /tmp/32fe111c2603c552593e79506ea304445e93aac2b586cada22346c696e146237TheBloke-Mistral-7B-Instruct-v0.2-GPTQ.lock
+2025-07-25 15:37:35,730 DEBUG: Lock 139786892573392 acquired on /tmp/32fe111c2603c552593e79506ea304445e93aac2b586cada22346c696e146237TheBloke-Mistral-7B-Instruct-v0.2-GPTQ.lock
+2025-07-25 15:37:35,772 DEBUG: https://stats.vllm.ai:443 "POST / HTTP/1.1" 200 None
+2025-07-25 15:37:35,820 DEBUG: https://huggingface.co:443 "GET /api/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/revision/main HTTP/1.1" 200 2944
+2025-07-25 15:37:35,822 DEBUG: Attempting to release lock 139786892573392 on /tmp/32fe111c2603c552593e79506ea304445e93aac2b586cada22346c696e146237TheBloke-Mistral-7B-Instruct-v0.2-GPTQ.lock
+2025-07-25 15:37:35,822 DEBUG: Lock 139786892573392 released on /tmp/32fe111c2603c552593e79506ea304445e93aac2b586cada22346c696e146237TheBloke-Mistral-7B-Instruct-v0.2-GPTQ.lock
+2025-07-25 15:37:35,822 DEBUG: Attempting to acquire lock 139786095308592 on /tmp/32fe111c2603c552593e79506ea304445e93aac2b586cada22346c696e146237TheBloke-Mistral-7B-Instruct-v0.2-GPTQ.lock
+2025-07-25 15:37:35,822 DEBUG: Lock 139786095308592 acquired on /tmp/32fe111c2603c552593e79506ea304445e93aac2b586cada22346c696e146237TheBloke-Mistral-7B-Instruct-v0.2-GPTQ.lock
+2025-07-25 15:37:35,918 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/model.safetensors.index.json HTTP/1.1" 404 0
+2025-07-25 15:37:35,918 DEBUG: Attempting to release lock 139786095308592 on /tmp/32fe111c2603c552593e79506ea304445e93aac2b586cada22346c696e146237TheBloke-Mistral-7B-Instruct-v0.2-GPTQ.lock
+2025-07-25 15:37:35,918 DEBUG: Lock 139786095308592 released on /tmp/32fe111c2603c552593e79506ea304445e93aac2b586cada22346c696e146237TheBloke-Mistral-7B-Instruct-v0.2-GPTQ.lock
+2025-07-25 15:38:15,175 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-25 15:38:15,180 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/7532d6bc89ef9300fb39d2d94ed4414ec534b72a/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-25 15:38:15,271 DEBUG: https://huggingface.co:443 "GET /api/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-25 15:38:15,475 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/processor_config.json HTTP/1.1" 404 0
+2025-07-25 15:38:15,562 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-25 15:38:15,723 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/video_preprocessor_config.json HTTP/1.1" 404 0
+2025-07-25 15:38:15,808 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-25 15:38:15,892 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-25 15:38:15,898 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/7532d6bc89ef9300fb39d2d94ed4414ec534b72a/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-25 15:38:15,985 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-25 15:38:15,993 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/7532d6bc89ef9300fb39d2d94ed4414ec534b72a/config.json HTTP/1.1" 200 0
+2025-07-25 15:38:16,078 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-25 15:38:16,084 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/7532d6bc89ef9300fb39d2d94ed4414ec534b72a/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-25 15:38:16,171 DEBUG: https://huggingface.co:443 "GET /api/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-25 15:46:12,238 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-25 15:46:12,239 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-25 15:46:12,332 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-25 15:46:12,337 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-25 15:46:12,418 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-25 15:46:12,429 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-25 15:46:12,521 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-25 15:46:12,527 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-25 15:46:12,614 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-25 15:46:12,620 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-25 15:46:12,703 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-25 15:46:12,709 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-25 15:46:12,789 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-25 15:46:12,795 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-25 15:46:12,885 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-25 15:46:12,970 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-25 15:46:12,976 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-25 15:46:13,544 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-25 15:46:13,549 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-25 15:46:13,636 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-25 15:46:13,747 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-25 15:46:13,753 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-25 15:46:13,840 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-25 15:46:13,947 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-25 15:46:13,952 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/7532d6bc89ef9300fb39d2d94ed4414ec534b72a/config.json HTTP/1.1" 200 0
+2025-07-25 15:46:14,043 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-25 15:46:14,050 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/7532d6bc89ef9300fb39d2d94ed4414ec534b72a/config.json HTTP/1.1" 200 0
+2025-07-25 15:46:14,140 DEBUG: https://huggingface.co:443 "GET /api/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/tree/main?recursive=True&expand=False HTTP/1.1" 200 1429
+2025-07-25 15:46:14,223 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-25 15:46:18,594 DEBUG: https://huggingface.co:443 "GET /api/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/tree/main?recursive=True&expand=False HTTP/1.1" 200 1429
+2025-07-25 15:46:18,837 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-25 15:46:18,844 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/7532d6bc89ef9300fb39d2d94ed4414ec534b72a/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-25 15:46:18,928 DEBUG: https://huggingface.co:443 "GET /api/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-25 15:46:19,065 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-25 15:46:19,070 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/7532d6bc89ef9300fb39d2d94ed4414ec534b72a/generation_config.json HTTP/1.1" 200 0
+2025-07-25 15:46:20,097 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-25 15:46:20,199 DEBUG: https://huggingface.co:443 "GET /api/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ HTTP/1.1" 200 2944
+2025-07-25 15:46:20,233 DEBUG: Starting new HTTPS connection (1): stats.vllm.ai:443
+2025-07-25 15:46:20,319 DEBUG: https://huggingface.co:443 "GET /api/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/tree/main?recursive=False&expand=False HTTP/1.1" 200 1429
+2025-07-25 15:46:20,319 DEBUG: Attempting to acquire lock 140668672117696 on /tmp/32fe111c2603c552593e79506ea304445e93aac2b586cada22346c696e146237TheBloke-Mistral-7B-Instruct-v0.2-GPTQ.lock
+2025-07-25 15:46:20,319 DEBUG: Lock 140668672117696 acquired on /tmp/32fe111c2603c552593e79506ea304445e93aac2b586cada22346c696e146237TheBloke-Mistral-7B-Instruct-v0.2-GPTQ.lock
+2025-07-25 15:46:20,348 DEBUG: https://stats.vllm.ai:443 "POST / HTTP/1.1" 200 None
+2025-07-25 15:46:20,403 DEBUG: https://huggingface.co:443 "GET /api/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/revision/main HTTP/1.1" 200 2944
+2025-07-25 15:46:20,405 DEBUG: Attempting to release lock 140668672117696 on /tmp/32fe111c2603c552593e79506ea304445e93aac2b586cada22346c696e146237TheBloke-Mistral-7B-Instruct-v0.2-GPTQ.lock
+2025-07-25 15:46:20,405 DEBUG: Lock 140668672117696 released on /tmp/32fe111c2603c552593e79506ea304445e93aac2b586cada22346c696e146237TheBloke-Mistral-7B-Instruct-v0.2-GPTQ.lock
+2025-07-25 15:46:20,405 DEBUG: Attempting to acquire lock 140668797800704 on /tmp/32fe111c2603c552593e79506ea304445e93aac2b586cada22346c696e146237TheBloke-Mistral-7B-Instruct-v0.2-GPTQ.lock
+2025-07-25 15:46:20,405 DEBUG: Lock 140668797800704 acquired on /tmp/32fe111c2603c552593e79506ea304445e93aac2b586cada22346c696e146237TheBloke-Mistral-7B-Instruct-v0.2-GPTQ.lock
+2025-07-25 15:46:20,497 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/model.safetensors.index.json HTTP/1.1" 404 0
+2025-07-25 15:46:20,497 DEBUG: Attempting to release lock 140668797800704 on /tmp/32fe111c2603c552593e79506ea304445e93aac2b586cada22346c696e146237TheBloke-Mistral-7B-Instruct-v0.2-GPTQ.lock
+2025-07-25 15:46:20,497 DEBUG: Lock 140668797800704 released on /tmp/32fe111c2603c552593e79506ea304445e93aac2b586cada22346c696e146237TheBloke-Mistral-7B-Instruct-v0.2-GPTQ.lock
+2025-07-25 15:46:59,629 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-25 15:46:59,635 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/7532d6bc89ef9300fb39d2d94ed4414ec534b72a/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-25 15:46:59,720 DEBUG: https://huggingface.co:443 "GET /api/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-25 15:46:59,885 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/processor_config.json HTTP/1.1" 404 0
+2025-07-25 15:46:59,968 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-25 15:47:00,056 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/video_preprocessor_config.json HTTP/1.1" 404 0
+2025-07-25 15:47:00,140 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-25 15:47:00,223 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-25 15:47:00,230 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/7532d6bc89ef9300fb39d2d94ed4414ec534b72a/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-25 15:47:00,315 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-25 15:47:00,323 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/7532d6bc89ef9300fb39d2d94ed4414ec534b72a/config.json HTTP/1.1" 200 0
+2025-07-25 15:47:00,406 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-25 15:47:00,412 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/7532d6bc89ef9300fb39d2d94ed4414ec534b72a/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-25 15:47:00,498 DEBUG: https://huggingface.co:443 "GET /api/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-25 16:56:53,608 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-07-25 16:56:53,609 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-25 16:56:53,716 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-25 16:56:53,722 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-25 16:56:53,801 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-25 16:56:53,807 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-25 16:56:53,891 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json HTTP/1.1" 307 0
+2025-07-25 16:56:53,898 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json HTTP/1.1" 200 0
+2025-07-25 16:56:53,978 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md HTTP/1.1" 307 0
+2025-07-25 16:56:53,984 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md HTTP/1.1" 200 0
+2025-07-25 16:56:54,067 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json HTTP/1.1" 307 0
+2025-07-25 16:56:54,072 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json HTTP/1.1" 200 0
+2025-07-25 16:56:54,161 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json HTTP/1.1" 307 0
+2025-07-25 16:56:54,168 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json HTTP/1.1" 200 0
+2025-07-25 16:56:54,257 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json HTTP/1.1" 404 0
+2025-07-25 16:56:54,340 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-25 16:56:54,346 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json HTTP/1.1" 200 0
+2025-07-25 16:56:54,911 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-25 16:56:54,916 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-25 16:56:55,002 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-25 16:56:55,106 DEBUG: https://huggingface.co:443 "HEAD /sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json HTTP/1.1" 307 0
+2025-07-25 16:56:55,111 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json HTTP/1.1" 200 0
+2025-07-25 16:56:55,197 DEBUG: https://huggingface.co:443 "GET /api/models/sentence-transformers/all-MiniLM-L6-v2 HTTP/1.1" 200 6849
+2025-07-25 16:56:55,307 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-25 16:56:55,312 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/7532d6bc89ef9300fb39d2d94ed4414ec534b72a/config.json HTTP/1.1" 200 0
+2025-07-25 16:56:55,394 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-25 16:56:55,400 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/7532d6bc89ef9300fb39d2d94ed4414ec534b72a/config.json HTTP/1.1" 200 0
+2025-07-25 16:56:55,519 DEBUG: https://huggingface.co:443 "GET /api/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/tree/main?recursive=True&expand=False HTTP/1.1" 200 1429
+2025-07-25 16:56:55,645 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-25 16:57:00,028 DEBUG: https://huggingface.co:443 "GET /api/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/tree/main?recursive=True&expand=False HTTP/1.1" 200 1429
+2025-07-25 16:57:00,250 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-25 16:57:00,256 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/7532d6bc89ef9300fb39d2d94ed4414ec534b72a/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-25 16:57:00,346 DEBUG: https://huggingface.co:443 "GET /api/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-25 16:57:00,479 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/generation_config.json HTTP/1.1" 307 0
+2025-07-25 16:57:00,484 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/7532d6bc89ef9300fb39d2d94ed4414ec534b72a/generation_config.json HTTP/1.1" 200 0
+2025-07-25 16:57:02,136 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2025-07-25 16:57:02,229 DEBUG: https://huggingface.co:443 "GET /api/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ HTTP/1.1" 200 2944
+2025-07-25 16:57:02,260 DEBUG: Starting new HTTPS connection (1): stats.vllm.ai:443
+2025-07-25 16:57:02,325 DEBUG: https://huggingface.co:443 "GET /api/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/tree/main?recursive=False&expand=False HTTP/1.1" 200 1429
+2025-07-25 16:57:02,326 DEBUG: Attempting to acquire lock 140193608615840 on /tmp/32fe111c2603c552593e79506ea304445e93aac2b586cada22346c696e146237TheBloke-Mistral-7B-Instruct-v0.2-GPTQ.lock
+2025-07-25 16:57:02,326 DEBUG: Lock 140193608615840 acquired on /tmp/32fe111c2603c552593e79506ea304445e93aac2b586cada22346c696e146237TheBloke-Mistral-7B-Instruct-v0.2-GPTQ.lock
+2025-07-25 16:57:02,374 DEBUG: https://stats.vllm.ai:443 "POST / HTTP/1.1" 200 None
+2025-07-25 16:57:02,425 DEBUG: https://huggingface.co:443 "GET /api/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/revision/main HTTP/1.1" 200 2944
+2025-07-25 16:57:02,426 DEBUG: Attempting to release lock 140193608615840 on /tmp/32fe111c2603c552593e79506ea304445e93aac2b586cada22346c696e146237TheBloke-Mistral-7B-Instruct-v0.2-GPTQ.lock
+2025-07-25 16:57:02,426 DEBUG: Lock 140193608615840 released on /tmp/32fe111c2603c552593e79506ea304445e93aac2b586cada22346c696e146237TheBloke-Mistral-7B-Instruct-v0.2-GPTQ.lock
+2025-07-25 16:57:02,427 DEBUG: Attempting to acquire lock 140194898234400 on /tmp/32fe111c2603c552593e79506ea304445e93aac2b586cada22346c696e146237TheBloke-Mistral-7B-Instruct-v0.2-GPTQ.lock
+2025-07-25 16:57:02,427 DEBUG: Lock 140194898234400 acquired on /tmp/32fe111c2603c552593e79506ea304445e93aac2b586cada22346c696e146237TheBloke-Mistral-7B-Instruct-v0.2-GPTQ.lock
+2025-07-25 16:57:02,567 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/model.safetensors.index.json HTTP/1.1" 404 0
+2025-07-25 16:57:02,567 DEBUG: Attempting to release lock 140194898234400 on /tmp/32fe111c2603c552593e79506ea304445e93aac2b586cada22346c696e146237TheBloke-Mistral-7B-Instruct-v0.2-GPTQ.lock
+2025-07-25 16:57:02,567 DEBUG: Lock 140194898234400 released on /tmp/32fe111c2603c552593e79506ea304445e93aac2b586cada22346c696e146237TheBloke-Mistral-7B-Instruct-v0.2-GPTQ.lock
+2025-07-25 16:57:41,668 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-25 16:57:41,675 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/7532d6bc89ef9300fb39d2d94ed4414ec534b72a/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-25 16:57:41,760 DEBUG: https://huggingface.co:443 "GET /api/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-07-25 16:57:41,969 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/processor_config.json HTTP/1.1" 404 0
+2025-07-25 16:57:42,057 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-25 16:57:42,145 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/video_preprocessor_config.json HTTP/1.1" 404 0
+2025-07-25 16:57:42,229 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/preprocessor_config.json HTTP/1.1" 404 0
+2025-07-25 16:57:42,313 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-25 16:57:42,319 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/7532d6bc89ef9300fb39d2d94ed4414ec534b72a/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-25 16:57:42,402 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/config.json HTTP/1.1" 307 0
+2025-07-25 16:57:42,409 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/7532d6bc89ef9300fb39d2d94ed4414ec534b72a/config.json HTTP/1.1" 200 0
+2025-07-25 16:57:42,498 DEBUG: https://huggingface.co:443 "HEAD /TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2025-07-25 16:57:42,504 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/7532d6bc89ef9300fb39d2d94ed4414ec534b72a/tokenizer_config.json HTTP/1.1" 200 0
+2025-07-25 16:57:42,591 DEBUG: https://huggingface.co:443 "GET /api/models/TheBloke/Mistral-7B-Instruct-v0.2-GPTQ/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64

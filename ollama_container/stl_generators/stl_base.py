@@ -163,7 +163,7 @@ class STLBase(ABC):
                         parts.append(self.anon_map[t.name])  # Use literal if available
 
             # print(self.parser.parse(''.join(parts))) 
-            return ''.join(parts)
+            return ' '.join(parts)
 
 if __name__ == "__main__":
     stl = STLBase()
