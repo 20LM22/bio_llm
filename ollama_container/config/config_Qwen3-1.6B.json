@@ -5,7 +5,7 @@
 		"top_k": 40,
 		"min_p": 0,
 		"presence_penalty": 1.5,
-		"max_tokens": 2048,
+		"max_tokens": 1024,
 		"model_dtype": "half",
 		"max_model_len": 13000,
 		"gpu_memory_utilization": 0.95

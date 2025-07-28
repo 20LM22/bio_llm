@@ -32,7 +32,9 @@ class STLResponse(BaseModel):
 guided_decoding_params = GuidedDecodingParams(json=STLResponse.model_json_schema())
 stl_response_json = STLResponse.model_json_schema()
 
-with open('../config/stl_generator_config.json') as f:
+file_name = f'../config/{sys.argv[3].json}'
+
+with open(file_name, 'r') as f:
     params = json.load(f)
 
 sampling_params = SamplingParams(
@@ -74,6 +76,7 @@ u_translations = translations.copy()
 llm = LLM(model=model_name,
     dtype=model_dtype,
     max_model_len=max_model_len,
+    max_num_seqs=1,
     gpu_memory_utilization=gpu_memory_utilization)
 
 # storage for output sentences
@@ -163,14 +166,22 @@ for sentence_index, sentence in sentences['input statement'].items():
         for _id, sample in enumerate(samples):
             literal_translations[_id] = STL2literal(sample, grammar)
 
-        examples = "\nHere are reference examples of STL, but don't copy them. Instead, make sure the STL statements you produce are specific to the input statement that you are currently being asked to translate:\n"
+        # temporary thing to try: replacing F with eventually, G with globally
+        for _id, sample in enumerate(samples):
+            sample = sample.replace('F[','eventually[')
+            sample = sample.replace(']G(',']globally(')
+            sample = sample.replace('G[','globally[')
+            samples[_id] = sample
+
+        examples = "\n[BEGIN EXAMPLES]\nHere are reference examples of STL, but don't copy them. Instead, make sure the STL statements you produce are specific to the input statement that you are currently being asked to translate:\n"
         for _id, sample in enumerate(samples):
             examples += (f"\n{{'thinking': '<thinking>I need to translate the natural language into STL...',\n'input_sentence:' '{literal_translations[_id]}',\n'output_STL': '{sample}'}}\n")
         
-        print(f"the prompt is: {prompt1+'\n\n'+feedback+core_prompt_2+examples}")
+        print(f"the prompt is: {prompt1+'\n\n'+feedback+core_prompt_2+examples+'[END EXAMPLES]'}")
 
-        response = llm.chat([{"role": "user", "content": prompt1+feedback+core_prompt_2+examples}], sampling_params)[0].outputs[0].text
+        response = llm.chat([{"role": "user", "content": prompt1+feedback+core_prompt_2+examples+'[END EXAMPLES]'}], sampling_params)[0].outputs[0].text
         u_translations.at[sentence_index, f'STL-{i}'] = response
+        print(f"the response is: {response}")
 
         # extract STL, if unsuccessful, put None into translations dataframe entry
         try:
@@ -183,7 +194,11 @@ for sentence_index, sentence in sentences['input statement'].items():
             continue
             
         # parse STL, if unsuccessful, put None into translations dataframe entry
+        pre_extracted_response = extracted_response
         try:
+            extracted_response = extracted_response.replace('eventually[','F[')
+            extracted_response = extracted_response.replace(']globally(',']G(')
+            extracted_response = extracted_response.replace('globally[','G[')
             parsed_STL = parser.parse(extracted_response)
             syntactically_correct_responses.append((extracted_response, sentence_index, i))
             translations.at[sentence_index, f'STL-{i}'] = extracted_response
@@ -197,13 +212,13 @@ for sentence_index, sentence in sentences['input statement'].items():
                 error_message_less_descriptive = str(e).split('\n')[0].split(',')[0] 
                 error_char = str(e).split('\n')[0].split(',')[1].split(' ')[5]
                 error_message_more_descriptive = str(e).split('Expected')[0]
-                feedback = "Your previous STL response had a syntax error. You must accept this feedback and amend your new response." + feedback_dict['prev_response_setup'] + extracted_response + feedback_dict['parsing_error_0'] + error_char + feedback_dict['parsing_error_1'] + error_message_more_descriptive
+                feedback = "Your previous STL response had a syntax error. You must accept this feedback and amend your new response." + feedback_dict['prev_response_setup'] + pre_extracted_response + feedback_dict['parsing_error_0'] + error_char + feedback_dict['parsing_error_1'] + error_message_more_descriptive
             except:
                 feedback = 'This response had at least one syntax error.'
             continue
 
         # at this point, parsing and extraction should have gone well, so the feedback can be positive
-        feedback = feedback_dict['prev_response_setup'] + extracted_response + feedback_dict['syntactically_correct']
+        feedback = feedback_dict['prev_response_setup'] + pre_extracted_response + feedback_dict['syntactically_correct']
 
 
     # at this point syntactically_correct_responses should be filled with responses and STL columns of 'translations' should also be full

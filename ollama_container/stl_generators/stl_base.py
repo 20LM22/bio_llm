@@ -10,8 +10,7 @@ grammar = """
     c: s "(" t_a ")" | "c(low)" | "c(mid)" | "c(high)"
     d_c : "0" | "d_c(low)" | "d_c(high)"
 
-    ?phi: u | u "∧" phi
-    ?nu : u | u "→" u | u "∧" phi
+    ?nu : u | u "→" u | u "∧" u
     ?psi: temp_op_f | temp_op_g | temp_op_f_g
     temp_op_f_g: "F" "[" t_a "," t_a "]" "G" "(" nu ")"
     temp_op_f: "F" "[" t_a "," t_a "]" "(" nu ")"
