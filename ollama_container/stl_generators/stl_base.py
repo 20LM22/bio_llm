@@ -8,15 +8,15 @@ grammar = """
     
     ?e: "e" | /[0-9]+.[0-9]+/ | /[0-9]+/
     c: s "(" t_a ")" | "c(low)" | "c(mid)" | "c(high)"
-    d_c : "0" | "d_c(low)" | "d_c(high)" | "-d_c(low)" | "-d_c(high)"
+    d_c : "0" | "d_c(low)" | "d_c(high)"
 
-    ?phi: u | u "^" phi | u "∧" phi
-    ?nu : u | u "→" u | u "^" phi | u "∧" phi
+    ?phi: u | u "∧" phi
+    ?nu : u | u "→" u | u "∧" phi
     ?psi: temp_op_f | temp_op_g | temp_op_f_g
     temp_op_f_g: "F" "[" t_a "," t_a "]" "G" "(" nu ")"
     temp_op_f: "F" "[" t_a "," t_a "]" "(" nu ")"
     temp_op_g: "G" "[" t_a "," t_a "]" "(" nu ")"
-    ?omega: nu | psi | omega "^" omega | omega "∧" omega | psi "→" psi 
+    ?omega: nu | psi | omega "∧" omega | psi "→" psi 
     
     t_a: /[0-9]+/ | "infinity" | /∞/
     s: "IL6" | "IL12" | "IL1β" | "IL1Ra" | "TNFα" | "IL8" | "IFNα" | "IFNβ" | "SARSCoV2" | "IL1RN"
@@ -63,7 +63,7 @@ class STLBase(ABC):
         # Build map from nonterminal name to list of expansions (each expansion is a list of symbols)
         
         for rule in self.parser.rules:
-            print(f"rule is: {rule.origin.name}")
+#            print(f"rule is: {rule.origin.name}")
             lhs = rule.origin.name
             if lhs not in rule_map:
                 rule_map[lhs] = []
@@ -74,7 +74,7 @@ class STLBase(ABC):
             rule_map[lhs].append(rule.expansion)
         self.rule_map = rule_map
 
-        print(f'rule map: {self.rule_map}')
+ #       print(f'rule map: {self.rule_map}')
 
         min_depth_map = {}
         visited = set()
@@ -83,8 +83,8 @@ class STLBase(ABC):
             compute_min_depth(rule, self.rule_map, min_depth_map, visited)
 
         self.rule_depth_map = min_depth_map
-        print("depth map:")
-        print(self.rule_depth_map)
+  #      print("depth map:")
+   #     print(self.rule_depth_map)
 
         anon_map = {}
         for term in self.parser.terminals:
@@ -96,15 +96,15 @@ class STLBase(ABC):
         self.anon_map = anon_map
         # print(self.sample('omega'))
 
-    def sample(self, sym, depth=0, max_depth=3):
-        print("--------------------------------------------------------------inside of SAMPLE---------------------------------------------------------------")
+    def sample(self, sym, depth=0, max_depth=2):
+    #    print("--------------------------------------------------------------inside of SAMPLE---------------------------------------------------------------")
         ids = ["IL6", "IL12", "IL1β", "IL1Ra", "TNFα", "IL8", "IFNα", "IFNβ", "SARSCoV2", "IL1RN"]
 
         parts = []
         t_a_str = "t_a"
 
         if sym == "t_a":
-            parts.append(str(random.randint(0, 20)))
+            parts.append(random.choices([str(random.randint(0, 20)), '∞'], weights=[0.7, 0.3])[0])
         elif sym == "s":
             parts.append(random.choice(ids))
         elif sym == "d_s":
@@ -115,7 +115,7 @@ class STLBase(ABC):
             signal = random.choice(ids)
             parts.append(random.choice([f"{signal}_{self.sample(t_a_str)}", "c(low)", "c(mid)", "c(high)"]))
         elif sym == "d_c":
-            parts.append(random.choice(["0", "d_c(low)", "d_c(high)", "-d_c(low)", "-d_c(high)"]))
+            parts.append(random.choice(["0", "d_c(low)", "d_c(high)"]))
         else:
 
 
@@ -146,7 +146,7 @@ class STLBase(ABC):
                 for t in expansion:
                     if not t.is_term:
                         if t.name == "t_a":
-                            parts.append(str(random.randint(0, 20)))
+                            parts.append(random.choices([str(random.randint(0, 20)), '∞'], weights=[0.7, 0.3])[0])
                         elif t.name == "s":
                             parts.append(random.choice(ids))
                         elif t.name == "d_s":
@@ -156,14 +156,14 @@ class STLBase(ABC):
                         elif t.name == "c":
                             parts.append(random.choice(["c(low)", "c(mid)", "c(high)"]))
                         elif t.name == "d_c":
-                            parts.append(random.choice(["0", "d_c(low)", "d_c(high)", "-d_c(low)", "-d_c(high)"]))
+                            parts.append(random.choice(["0", "d_c(low)", "d_c(high)"]))
                         else:
                             parts.append(self.sample(t.name, depth + 1))
                     else:
                         parts.append(self.anon_map[t.name])  # Use literal if available
 
             # print(self.parser.parse(''.join(parts))) 
-            return ' '.join(parts)
+            return ''.join(parts)
 
 if __name__ == "__main__":
     stl = STLBase()

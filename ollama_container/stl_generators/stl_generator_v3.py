@@ -88,7 +88,7 @@ feedback_dict=params['feedback']
 
 # do translations of each sentence
 for sentence_index, sentence in sentences['input statement'].items():
-    prompt = core_prompt_1 + sentence + core_prompt_2
+    prompt1 = core_prompt_1 + sentence
 
     # accumulate syntactically valid responses
     syntactically_correct_responses = []
@@ -98,49 +98,78 @@ for sentence_index, sentence in sentences['input statement'].items():
 
     # do the m shots
     for i in range(num_translations_per_input_sentence):
+        # change the sampling so that we check over all 3 of the designs to see at least one instance of: (1) F (2) G (3) abs (4) d_ and (5) c(
+        # then post-process the output by adding spaces before and after ^, <, > <-- possibly others check that too
         # get random examples (2)
-        sample1 = ''
-        sample2 = ''
-        print("trying sample 1")        
-        while sample1 == '':
-            try:
-                sample1 = stl_base_instance.sample('omega')
-                if len(sample1) > 75: # too long
-                    sample1 = ''
-            except Exception as e:
-                sample1 = ''
-        print("done with sample 1")
-        print(f"sample 1 is: {sample1}")
+        satisfied = False
+        samples = ["","",""]
+ 
+        while not satisfied:
+            satisfied = True
+            g_missing = False
+            f_missing = False
+            abs_missing = False
+            d_missing = False
+            c_missing = False
+            for _id, val in enumerate(samples):
+                samples[_id] = stl_base_instance.sample('omega')
+            if len(samples[0]) > 80 or len(samples[1]) > 80 or len(samples[2]) > 80:
+                satisfied = False
+            if ('G' not in samples[0] and 'G' not in samples[1] and 'G' not in samples[2]):
+                g_missing = True
+            if ('F' not in samples[0] and 'F' not in samples[1] and 'F' not in samples[2]):
+                f_missing = True
+            if ('abs' not in samples[0] and 'abs' not in samples[1] and 'abs' not in samples[2]):
+                abs_missing = True
+            if ('d_' not in samples[0] and 'd_' not in samples[1] and 'd_' not in samples[2]):
+                d_missing = True
+            if ('c(' not in samples[0] and 'c(' not in samples[1] and 'c(' not in samples[2]):
+                c_missing = True
+            if g_missing or f_missing or abs_missing or d_missing or c_missing:
+                satisfied = False
+            # also check for ranges time interval
+            time_interval_num_num = r'\[\d+,\d+\]'
+            time_interval_inf_num = r'\[∞,\d+\]'
+            time_interval_inf_inf = r'\[∞,∞\]'
 
-        print("trying sample 2")
-        while sample2 == '':
-            try:
-                sample2 = stl_base_instance.sample('omega')
-                if len(sample2) > 75: # too long
-                    sample2 = ''
-            except Exception as e:
-                sample2 = ''
-        print("done with sample 2")
-        print(f"sample 2 is: {sample2}")
+            for sample in samples:
+                sample_flagged = False
+                if len(re.findall(time_interval_inf_inf, sample)) > 0 or len(re.findall(time_interval_inf_num, sample)) > 0:
+                    # print("there's a problem with the interval")
+                    satisfied = False
+                    break
+                intervals = re.findall(time_interval_num_num, sample)
+        
+                if intervals is not None:
+                    for interval in intervals:
+                        t_a = interval.split(',')[1:]
+                        t_b = interval.split(',')[:-1]
+                        if t_b <= t_a:
+                            sample_flagged = True
+                            satisfied = False
+                            break
+                if sample_flagged:
+                    break
 
-        literal_translation1=''
-        literal_translation2=''
-        try:
-            literal_translation1 = STL2literal(sample1, grammar)  
-        except Exception as e:
-            print("ran into problem trying to translate 1 to literal")
-            print(e)
+        for _id, sample in enumerate(samples):
+            sample = sample.replace('∧',' ∧ ')
+            sample = sample.replace('<',' < ')
+            sample = sample.replace('>',' > ')
+            sample = sample.replace('-',' - ')
+            sample = sample.replace('→',' → ')
+            samples[_id] = sample
 
-        try:
-            literal_translation2 = STL2literal(sample2, grammar)  
-        except Exception as e:
-            print("ran into problem trying to translate 2 to literal")
-            print(e)
+        literal_translations = ["","",""]
+        for _id, sample in enumerate(samples):
+            literal_translations[_id] = STL2literal(sample, grammar)
 
-        example = f'\nInput example 1: {literal_translation1}\nOutput STL example 1: {sample1}\nInput example 2: {literal_translation2}\nOutput STL example 2: {sample2}\n'
-        print(f"the prompt is: {prompt+example+feedback}")
+        examples = "\nHere are reference examples of STL, but don't copy them. Instead, make sure the STL statements you produce are specific to the input statement that you are currently being asked to translate:\n"
+        for _id, sample in enumerate(samples):
+            examples += (f"\n{{'thinking': '<thinking>I need to translate the natural language into STL...',\n'input_sentence:' '{literal_translations[_id]}',\n'output_STL': '{sample}'}}\n")
+        
+        print(f"the prompt is: {prompt1+'\n\n'+feedback+core_prompt_2+examples}")
 
-        response = llm.chat([{"role": "user", "content": prompt+example+feedback}], sampling_params)[0].outputs[0].text
+        response = llm.chat([{"role": "user", "content": prompt1+feedback+core_prompt_2+examples}], sampling_params)[0].outputs[0].text
         u_translations.at[sentence_index, f'STL-{i}'] = response
 
         # extract STL, if unsuccessful, put None into translations dataframe entry

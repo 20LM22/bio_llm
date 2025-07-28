@@ -50,7 +50,7 @@ class Test(Interpreter):
     def gt(self, node): # need a repeat of the info from the temporal operators section
         if self.FG_flag:
             self.sentence.append("eventually")
-        self.sentence.append("the concentration of")
+        # self.sentence.append("the concentration of")
         self.sentence.append(node.children[0].children[0].value) # name of species --> would need to find and replace using the LLM's dictionary
         self.sentence.append("was")
         if self.G_flag or self.FG_flag:
@@ -60,11 +60,11 @@ class Test(Interpreter):
         self.sentence.append("above")
         if isinstance(node.children[1].children[0], Tree): # len > 1 means further signals to break down for c-threshold
             time = node.children[1].children[1].children[0] # TODO: may be wrong
-            if time == 'T':
-                self.sentence.append('the final concentration of')
+            if time == '∞':
+                self.sentence.append('the final level of')
                 self.sentence.append(node.children[1].children[0].children[0]) # TODO: may be wrong, supposed to be comparison SPECIES
             else:
-                self.sentence.append('the concentration of')
+                # self.sentence.append('the concentration of')
                 self.sentence.append(node.children[1].children[0].children[0]) # TODO: may be wrong, comparison SPECIES
                 self.sentence.append('at day') # TODO: might want to replace day with dictionary item
                 self.sentence.append(time)
@@ -75,23 +75,26 @@ class Test(Interpreter):
 
         
     def lt(self, node):
-        self.sentence.append("the concentration of")
+        # self.sentence.append("the concentration of")
         self.sentence.append(node.children[0].children[0]) # name of species --> would need to find and replace using the LLM's dictionary
         self.sentence.append("was below its")
         self.sentence.append(nl_to_literal_dict[node.children[1].children[0]]) # TODO: c-threshold --> take into account c vs. s
         self.sentence.append("levels")
         
     def err_bnd(self, node):
-        self.sentence.append("the concentration of")
+        # self.sentence.append("the concentration of")
         self.sentence.append(node.children[0].children[0]) # SPECIES
-        self.sentence.append("was within")
-        self.sentence.append(node.children[2]) # EPSILON
-        self.sentence.append("units of its")
+        self.sentence.append("was close to")
+        # self.sentence.append("was within")
+        # self.sentence.append(node.children[2]) # EPSILON
+        # self.sentence.append("units of its")
+        self.sentence.append("its")
         self.sentence.append(nl_to_literal_dict[node.children[1].children[0]]) # c-threshold --> also needs to take into account the difference between s and c
         self.sentence.append("levels")  
 
     def d_gt(self, node):
-        self.sentence.append('the rate of change of the concentration of')
+        self.sentence.append("the rate of change of")
+        # self.sentence.append('the rate of change of the concentration of')
         self.sentence.append(node.children[0].children[0].value) # SPECIES
         match node.children[1]:
             case 'd_c(low)':
@@ -106,7 +109,8 @@ class Test(Interpreter):
                 self.sentence.append('was increasing')
         
     def d_lt(self, node):
-        self.sentence.append('the rate of change of the concentration of')
+        # self.sentence.append('the rate of change of the concentration of')
+        self.sentence.append('the rate of change of')
         self.sentence.append(node.children[0].children[0].value) # SPECIES
         match node.children[1]:
             case 'd_c(low)':
@@ -121,7 +125,8 @@ class Test(Interpreter):
                 self.sentence.append('was decreasing')
         
     def d_err_bnd(self, node):
-        self.sentence.append('the rate of change of the concentration of')
+        # self.sentence.append('the rate of change of the concentration of')
+        self.sentence.append('the rate of change of')
         self.sentence.append(node.children[0].children[0].value) # SPECIES
         self.sentence.append('was close to') # Maybe don't put in the value of epsilon because it's assumed to be small?
         match node.children[1]:
@@ -139,7 +144,7 @@ class Test(Interpreter):
     def temp_op_g(self, node): # TODO: parametrize this entire thing to do F, G, FG at the same time
         self.sentence.append('from day') # TODO: change this to an input we get from the LLM's dictionary so it can be adaptable for [days], [was]
         self.sentence.append(node.children[0].children[0].value) # start time interval
-        if node.children[1].children[0].value == 'T':
+        if node.children[1].children[0].value == '∞':
             self.sentence.append('onward')
         else:
             self.sentence.append('to')
@@ -159,16 +164,16 @@ class Test(Interpreter):
                 self.sentence.append('implies')
                 self.visit(node.children[1])
             case "gt" :
-                self.sentence.append("the concentration of")
+                # self.sentence.append("the concentration of")
                 self.sentence.append(node.children[2].children[0].children[0].value) # name of species --> would need to find and replace using the LLM's dictionary
                 self.sentence.append("was always above")
                 if len(node.children[2].children[1].children) > 1: # length > 1 means there's further signals to break down 
                     time = node.children[2].children[1].children[1].children[0]
-                    if time == 'T':
-                        self.sentence.append('the final concentration of')
+                    if time == '∞':
+                        self.sentence.append('the final level of')
                         self.sentence.append(node.children[2].children[1].children[0].children[0]) # comparison SPECIES
                     else:    
-                        self.sentence.append('the concentration of')
+                        # self.sentence.append('the concentration of')
                         self.sentence.append(node.children[2].children[1].children[0].children[0]) # comparison SPECIES
                         self.sentence.append('at day') # TODO: might want to replace day with dictionary item
                         self.sentence.append(time)
@@ -177,16 +182,16 @@ class Test(Interpreter):
                     self.sentence.append(nl_to_literal_dict[node.children[2].children[1].children[0]])
                     self.sentence.append("levels")
             case "lt" :
-                self.sentence.append("the concentration of")
+                # self.sentence.append("the concentration of")
                 self.sentence.append(node.children[2].children[0].children[0].value) # name of species --> would need to find and replace using the LLM's dictionary
                 self.sentence.append("was always below")
                 if len(node.children[2].children[1].children) > 1: # length > 1 means there's further signals to break down 
                     time = node.children[2].children[1].children[1].children[0]
-                    if time == 'T':
-                        self.sentence.append('the final concentration of')
+                    if time == '∞':
+                        self.sentence.append('the final level of')
                         self.sentence.append(node.children[2].children[1].children[0].children[0]) # comparison SPECIES
                     else:    
-                        self.sentence.append('the concentration of')
+                        # self.sentence.append('the concentration of')
                         self.sentence.append(node.children[2].children[1].children[0].children[0]) # comparison SPECIES
                         self.sentence.append('at day') # TODO: might want to replace day with dictionary item
                         self.sentence.append(time)
@@ -195,16 +200,16 @@ class Test(Interpreter):
                     self.sentence.append(nl_to_literal_dict[node.children[2].children[1].children[0]])
                     self.sentence.append("levels")
             case "err_bnd" :
-                self.sentence.append("the concentration of")
+                # self.sentence.append("the concentration of")
                 self.sentence.append(node.children[2].children[0].children[0].value) # name of species --> would need to find and replace using the LLM's dictionary
                 self.sentence.append("was always close to")
                 if len(node.children[2].children[1].children) > 1: # length > 1 means there's further signals to break down 
                     time = node.children[2].children[1].children[1].children[0]
-                    if time == 'T':
-                        self.sentence.append('the final concentration of')
+                    if time == '∞':
+                        self.sentence.append('the final level of')
                         self.sentence.append(node.children[2].children[1].children[0].children[0]) # comparison SPECIES
                     else:    
-                        self.sentence.append('the concentration of')
+                        # self.sentence.append('the concentration of')
                         self.sentence.append(node.children[2].children[1].children[0].children[0]) # comparison SPECIES
                         self.sentence.append('at day') # TODO: might want to replace day with dictionary item
                         self.sentence.append(time)
@@ -213,7 +218,7 @@ class Test(Interpreter):
                     self.sentence.append(nl_to_literal_dict[node.children[2].children[1].children[0]])
                     self.sentence.append("levels")
             case "d_gt" : # s and D_C
-                self.sentence.append('the rate of change of the concentration of')
+                self.sentence.append('the rate of change of')
                 self.sentence.append(node.children[2].children[0].children[0].value) # SPECIES
                 match node.children[2].children[1]: # D_C
                     case 'd_c(low)':
@@ -227,7 +232,7 @@ class Test(Interpreter):
                     case '0':
                         self.sentence.append('was always increasing')
             case "d_lt" :
-                self.sentence.append('the rate of change of the concentration of')
+                self.sentence.append('the rate of change of')
                 self.sentence.append(node.children[2].children[0].children[0].value) # SPECIES
                 match node.children[2].children[1]: # D_C
                     case 'd_c(low)':
@@ -241,7 +246,7 @@ class Test(Interpreter):
                     case '0':
                         self.sentence.append('was always decreasing')
             case "d_err_bnd" : # s, D_C, e
-                self.sentence.append('the rate of change of the concentration of')
+                self.sentence.append('the rate of change of')
                 self.sentence.append(node.children[2].children[0].children[0].value) # SPECIES
                 self.sentence.append('was always close to') # Maybe don't put in the value of epsilon because it's assumed to be small?
                 match node.children[2].children[1]: # D_C
@@ -259,7 +264,7 @@ class Test(Interpreter):
     def temp_op_f(self, node): # TODO: parametrize this entire thing to do F, G, FG at the same time
         self.sentence.append('from day') # TODO: change this to an input we get from the LLM's dictionary so it can be adaptable for [days], [was]
         self.sentence.append(node.children[0].children[0].value) # start time interval
-        if node.children[1].children[0].value == 'T':
+        if node.children[1].children[0].value == '∞':
             self.sentence.append('onward')
         else:
             self.sentence.append('to')
@@ -279,16 +284,16 @@ class Test(Interpreter):
                 self.sentence.append('implies')
                 self.visit(node.children[1])
             case "gt" :
-                self.sentence.append("the concentration of")
+                # self.sentence.append("the concentration of")
                 self.sentence.append(node.children[2].children[0].children[0].value) # name of species --> would need to find and replace using the LLM's dictionary
                 self.sentence.append("was eventually above")
                 if len(node.children[2].children[1].children) > 1: # length > 1 means there's further signals to break down 
                     time = node.children[2].children[1].children[1].children[0]
-                    if time == 'T':
-                        self.sentence.append('the final concentration of')
+                    if time == '∞':
+                        self.sentence.append('the final level of')
                         self.sentence.append(node.children[2].children[1].children[0].children[0]) # comparison SPECIES
                     else:    
-                        self.sentence.append('the concentration of')
+                        # self.sentence.append('the concentration of')
                         self.sentence.append(node.children[2].children[1].children[0].children[0]) # comparison SPECIES
                         self.sentence.append('at day') # TODO: might want to replace day with dictionary item
                         self.sentence.append(time)
@@ -297,16 +302,16 @@ class Test(Interpreter):
                     self.sentence.append(nl_to_literal_dict[node.children[2].children[1].children[0]])
                     self.sentence.append("levels")
             case "lt" :
-                self.sentence.append("the concentration of")
+                # self.sentence.append("the concentration of")
                 self.sentence.append(node.children[2].children[0].children[0].value) # name of species --> would need to find and replace using the LLM's dictionary
                 self.sentence.append("was eventually below")
                 if len(node.children[2].children[1].children) > 1: # length > 1 means there's further signals to break down 
                     time = node.children[2].children[1].children[1].children[0]
-                    if time == 'T':
-                        self.sentence.append('the final concentration of')
+                    if time == '∞':
+                        self.sentence.append('the final level of')
                         self.sentence.append(node.children[2].children[1].children[0].children[0]) # comparison SPECIES
                     else:    
-                        self.sentence.append('the concentration of')
+                        # self.sentence.append('the concentration of')
                         self.sentence.append(node.children[2].children[1].children[0].children[0]) # comparison SPECIES
                         self.sentence.append('at day') # TODO: might want to replace day with dictionary item
                         self.sentence.append(time)
@@ -315,16 +320,16 @@ class Test(Interpreter):
                     self.sentence.append(nl_to_literal_dict[node.children[2].children[1].children[0]])
                     self.sentence.append("levels")
             case "err_bnd" :
-                self.sentence.append("the concentration of")
+                # self.sentence.append("the concentration of")
                 self.sentence.append(node.children[2].children[0].children[0].value) # name of species --> would need to find and replace using the LLM's dictionary
                 self.sentence.append("was eventually close to")
                 if len(node.children[2].children[1].children) > 1: # length > 1 means there's further signals to break down 
                     time = node.children[2].children[1].children[1].children[0]
-                    if time == 'T':
-                        self.sentence.append('the final concentration of')
+                    if time == '∞':
+                        self.sentence.append('the final level of')
                         self.sentence.append(node.children[2].children[1].children[0].children[0]) # comparison SPECIES
                     else:    
-                        self.sentence.append('the concentration of')
+                        # self.sentence.append('the concentration of')
                         self.sentence.append(node.children[2].children[1].children[0].children[0]) # comparison SPECIES
                         self.sentence.append('at day') # TODO: might want to replace day with dictionary item
                         self.sentence.append(time)
@@ -333,7 +338,7 @@ class Test(Interpreter):
                     self.sentence.append(nl_to_literal_dict[node.children[2].children[1].children[0]])
                     self.sentence.append("levels")
             case "d_gt" : # s and D_C
-                self.sentence.append('the rate of change of the concentration of')
+                self.sentence.append('the rate of change of')
                 self.sentence.append(node.children[2].children[0].children[0].value) # SPECIES
                 match node.children[2].children[1]: # D_C
                     case 'd_c(low)':
@@ -347,7 +352,7 @@ class Test(Interpreter):
                     case '0':
                         self.sentence.append('was eventually increasing')
             case "d_lt" :
-                self.sentence.append('the rate of change of the concentration of')
+                self.sentence.append('the rate of change of')
                 self.sentence.append(node.children[2].children[0].children[0].value) # SPECIES
                 match node.children[2].children[1]: # D_C
                     case 'd_c(low)':
@@ -361,7 +366,7 @@ class Test(Interpreter):
                     case '0':
                         self.sentence.append('was eventually decreasing')
             case "d_err_bnd" : # s, D_C, e
-                self.sentence.append('the rate of change of the concentration of')
+                self.sentence.append('the rate of change of')
                 self.sentence.append(node.children[2].children[0].children[0].value) # SPECIES
                 self.sentence.append('was eventually close to') # Maybe don't put in the value of epsilon because it's assumed to be small?
                 match node.children[2].children[1]: # D_C
@@ -379,7 +384,7 @@ class Test(Interpreter):
     def temp_op_fg(self, node): # TODO: parametrize this entire thing to do F, G, FG at the same time
         self.sentence.append('from day') # TODO: change this to an input we get from the LLM's dictionary so it can be adaptable for [days], [was]
         self.sentence.append(node.children[0].children[0].value) # start time interval
-        if node.children[1].children[0].value == 'T':
+        if node.children[1].children[0].value == '∞':
             self.sentence.append('onward')
         else:
             self.sentence.append('to')
@@ -399,16 +404,16 @@ class Test(Interpreter):
                 self.sentence.append('implies')
                 self.visit(node.children[1])
             case "gt" :
-                self.sentence.append("eventually the concentration of")
+                self.sentence.append("eventually")
                 self.sentence.append(node.children[2].children[0].children[0].value) # name of species --> would need to find and replace using the LLM's dictionary
                 self.sentence.append("was always above")
                 if len(node.children[2].children[1].children) > 1: # length > 1 means there's further signals to break down 
                     time = node.children[2].children[1].children[1].children[0]
-                    if time == 'T':
-                        self.sentence.append('the final concentration of')
+                    if time == '∞':
+                        self.sentence.append('the final level of')
                         self.sentence.append(node.children[2].children[1].children[0].children[0]) # comparison SPECIES
                     else:    
-                        self.sentence.append('the concentration of')
+                        # self.sentence.append('the concentration of')
                         self.sentence.append(node.children[2].children[1].children[0].children[0]) # comparison SPECIES
                         self.sentence.append('at day') # TODO: might want to replace day with dictionary item
                         self.sentence.append(time)
@@ -417,16 +422,16 @@ class Test(Interpreter):
                     self.sentence.append(nl_to_literal_dict[node.children[2].children[1].children[0]])
                     self.sentence.append("levels")
             case "lt" :
-                self.sentence.append("eventually the concentration of")
+                self.sentence.append("eventually")
                 self.sentence.append(node.children[2].children[0].children[0].value) # name of species --> would need to find and replace using the LLM's dictionary
                 self.sentence.append("was always below")
                 if len(node.children[2].children[1].children) > 1: # length > 1 means there's further signals to break down 
                     time = node.children[2].children[1].children[1].children[0]
-                    if time == 'T':
-                        self.sentence.append('the final concentration of')
+                    if time == '∞':
+                        self.sentence.append('the final level of')
                         self.sentence.append(node.children[2].children[1].children[0].children[0]) # comparison SPECIES
                     else:    
-                        self.sentence.append('the concentration of')
+                        # self.sentence.append('the concentration of')
                         self.sentence.append(node.children[2].children[1].children[0].children[0]) # comparison SPECIES
                         self.sentence.append('at day') # TODO: might want to replace day with dictionary item
                         self.sentence.append(time)
@@ -435,16 +440,16 @@ class Test(Interpreter):
                     self.sentence.append(nl_to_literal_dict[node.children[2].children[1].children[0]])
                     self.sentence.append("levels")
             case "err_bnd" :
-                self.sentence.append("eventually the concentration of")
+                self.sentence.append("eventually")
                 self.sentence.append(node.children[2].children[0].children[0].value) # name of species --> would need to find and replace using the LLM's dictionary
                 self.sentence.append("was always close to")
                 if len(node.children[2].children[1].children) > 1: # length > 1 means there's further signals to break down 
                     time = node.children[2].children[1].children[1].children[0]
-                    if time == 'T':
-                        self.sentence.append('the final concentration of')
+                    if time == '∞':
+                        self.sentence.append('the final level of')
                         self.sentence.append(node.children[2].children[1].children[0].children[0]) # comparison SPECIES
                     else:    
-                        self.sentence.append('the concentration of')
+                        # self.sentence.append('the concentration of')
                         self.sentence.append(node.children[2].children[1].children[0].children[0]) # comparison SPECIES
                         self.sentence.append('at day') # TODO: might want to replace day with dictionary item
                         self.sentence.append(time)
@@ -453,7 +458,7 @@ class Test(Interpreter):
                     self.sentence.append(nl_to_literal_dict[node.children[2].children[1].children[0]])
                     self.sentence.append("levels")
             case "d_gt" : # s and D_C
-                self.sentence.append('eventually the rate of change of the concentration of')
+                self.sentence.append('eventually the rate of change of')
                 self.sentence.append(node.children[2].children[0].children[0].value) # SPECIES
                 match node.children[2].children[1]: # D_C
                     case 'd_c(low)':
@@ -467,7 +472,7 @@ class Test(Interpreter):
                     case '0':
                         self.sentence.append('was always increasing')
             case "d_lt" :
-                self.sentence.append('eventually the rate of change of the concentration of')
+                self.sentence.append('eventually the rate of change of')
                 self.sentence.append(node.children[2].children[0].children[0].value) # SPECIES
                 match node.children[2].children[1]: # D_C
                     case 'd_c(low)':
@@ -481,7 +486,7 @@ class Test(Interpreter):
                     case '0':
                         self.sentence.append('was always decreasing')
             case "d_err_bnd" : # s, D_C, e
-                self.sentence.append('eventually the rate of change of the concentration of')
+                self.sentence.append('eventually the rate of change of')
                 self.sentence.append(node.children[2].children[0].children[0].value) # SPECIES
                 self.sentence.append('was always close to') # Maybe don't put in the value of epsilon because it's assumed to be small?
                 match node.children[2].children[1]: # D_C
@@ -523,5 +528,9 @@ def STL2literal(input_sentence, grammar):
 
     for key in species_dict:
         tester.sentence = tester.sentence.replace(species_dict[key], key)
+
+    tester.sentence = tester.sentence.replace(' ,',',')
+    tester.sentence += '.'
+    tester.sentence = tester.sentence.capitalize()
 
     return tester.sentence
