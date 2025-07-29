@@ -4,20 +4,19 @@ import random
 
 grammar = """
     ?start: omega
-    ?u: s "(t)" ">" c | s "(t)" "<" c | "abs(" s "(t)" "-" c ")" "<" e | "d_" s "(t)" ">" d_c | "d_" s "(t)" "<" d_c | "abs(" "d_" s "(t)" "-" d_c ")" "<" e
+    ?u: s "(t)" ">" c | s "(t)" "<" c | s "(t)" "=" c | "d_" s "(t)" ">" d_c | "d_" s "(t)" "<" d_c | "d_" s "(t)" "=" d_c
     
-    ?e: "e" | /[0-9]+.[0-9]+/ | /[0-9]+/
     c: s "(" t_a ")" | "c(low)" | "c(mid)" | "c(high)"
     d_c : "0" | "d_c(low)" | "d_c(high)"
 
-    ?nu : u | u "→" u | u "∧" u
+    ?nu : u | u "implies" u | u "and" u
     ?psi: temp_op_f | temp_op_g | temp_op_f_g
-    temp_op_f_g: "F" "[" t_a "," t_a "]" "G" "(" nu ")"
-    temp_op_f: "F" "[" t_a "," t_a "]" "(" nu ")"
-    temp_op_g: "G" "[" t_a "," t_a "]" "(" nu ")"
-    ?omega: nu | psi | omega "∧" omega | psi "→" psi 
+    temp_op_f_g: "eventually" "[" t_a "," t_a "]" "globally" "(" nu ")"
+    temp_op_f: "eventually" "[" t_a "," t_a "]" "(" nu ")"
+    temp_op_g: "globally" "[" t_a "," t_a "]" "(" nu ")"
+    ?omega: nu | psi | omega "and" omega | psi "implies" psi 
     
-    t_a: /[0-9]+/ | "infinity" | /∞/
+    t_a: /[0-9]+/ | "inf" | /∞/
     s: "IL6" | "IL12" | "IL1β" | "IL1Ra" | "TNFα" | "IL8" | "IFNα" | "IFNβ" | "SARSCoV2" | "IL1RN"
 
     %import common.WS
@@ -83,7 +82,7 @@ class STLBase(ABC):
 
         self.rule_depth_map = min_depth_map
   #      print("depth map:")
-   #     print(self.rule_depth_map)
+        # print(self.rule_depth_map)
 
         anon_map = {}
         for term in self.parser.terminals:
@@ -108,8 +107,8 @@ class STLBase(ABC):
             parts.append(random.choice(ids))
         elif sym == "d_s":
             parts.append("d_" + random.choice(ids))
-        elif sym == "e":
-            parts.append(random.choice([str(random.randint(1, 20) / 20), "e"]))
+        # elif sym == "e":
+        #    parts.append(random.choice([str(random.randint(1, 20) / 20), "e"]))
         elif sym == "c":
             signal = random.choice(ids)
             parts.append(random.choice([f"{signal}_{self.sample(t_a_str)}", "c(low)", "c(mid)", "c(high)"]))
@@ -144,14 +143,15 @@ class STLBase(ABC):
                 parts = []
                 for t in expansion:
                     if not t.is_term:
+                        # print(f"t.name is: {t.name}")
                         if t.name == "t_a":
                             parts.append(random.choices([str(random.randint(0, 20)), '∞'], weights=[0.7, 0.3])[0])
                         elif t.name == "s":
                             parts.append(random.choice(ids))
                         elif t.name == "d_s":
                             parts.append("d_" + str(random.choice(ids)))
-                        elif t.name == "e":
-                            parts.append(random.choice([str(random.randint(1, 20) / 20), "e"]))
+                        # elif t.name == "e":
+                        #    parts.append(random.choice([str(random.randint(1, 20) / 20), "e"]))
                         elif t.name == "c":
                             parts.append(random.choice(["c(low)", "c(mid)", "c(high)"]))
                         elif t.name == "d_c":

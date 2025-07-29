@@ -32,7 +32,7 @@ class STLResponse(BaseModel):
 guided_decoding_params = GuidedDecodingParams(json=STLResponse.model_json_schema())
 stl_response_json = STLResponse.model_json_schema()
 
-file_name = f'../config/{sys.argv[3].json}'
+file_name = f'../config/{sys.argv[2]}.json'
 
 with open(file_name, 'r') as f:
     params = json.load(f)
@@ -76,8 +76,10 @@ u_translations = translations.copy()
 llm = LLM(model=model_name,
     dtype=model_dtype,
     max_model_len=max_model_len,
-    max_num_seqs=1,
     gpu_memory_utilization=gpu_memory_utilization)
+
+# print(f"max_model_len is: {max_model_len}")
+# print(f"max_tokens: {params['model_parameters']['max_tokens']}")
 
 # storage for output sentences
 final_sentences = []
@@ -118,17 +120,15 @@ for sentence_index, sentence in sentences['input statement'].items():
                 samples[_id] = stl_base_instance.sample('omega')
             if len(samples[0]) > 80 or len(samples[1]) > 80 or len(samples[2]) > 80:
                 satisfied = False
-            if ('G' not in samples[0] and 'G' not in samples[1] and 'G' not in samples[2]):
+            if ('globally' not in samples[0] and 'globally' not in samples[1] and 'globally' not in samples[2]):
                 g_missing = True
-            if ('F' not in samples[0] and 'F' not in samples[1] and 'F' not in samples[2]):
+            if ('eventually' not in samples[0] and 'eventually' not in samples[1] and 'eventually' not in samples[2]):
                 f_missing = True
-            if ('abs' not in samples[0] and 'abs' not in samples[1] and 'abs' not in samples[2]):
-                abs_missing = True
             if ('d_' not in samples[0] and 'd_' not in samples[1] and 'd_' not in samples[2]):
                 d_missing = True
             if ('c(' not in samples[0] and 'c(' not in samples[1] and 'c(' not in samples[2]):
                 c_missing = True
-            if g_missing or f_missing or abs_missing or d_missing or c_missing:
+            if g_missing or f_missing or d_missing or c_missing:
                 satisfied = False
             # also check for ranges time interval
             time_interval_num_num = r'\[\d+,\d+\]'
@@ -155,23 +155,26 @@ for sentence_index, sentence in sentences['input statement'].items():
                     break
 
         for _id, sample in enumerate(samples):
-            sample = sample.replace('∧',' ∧ ')
+            sample = sample.replace('and',' and ')
             sample = sample.replace('<',' < ')
             sample = sample.replace('>',' > ')
             sample = sample.replace('-',' - ')
-            sample = sample.replace('→',' → ')
+            sample = sample.replace('implies',' implies ')
             samples[_id] = sample
 
         literal_translations = ["","",""]
         for _id, sample in enumerate(samples):
+
             literal_translations[_id] = STL2literal(sample, grammar)
 
         # temporary thing to try: replacing F with eventually, G with globally
+        """
         for _id, sample in enumerate(samples):
             sample = sample.replace('F[','eventually[')
             sample = sample.replace(']G(',']globally(')
             sample = sample.replace('G[','globally[')
             samples[_id] = sample
+        """
 
         examples = "\n[BEGIN EXAMPLES]\nHere are reference examples of STL, but don't copy them. Instead, make sure the STL statements you produce are specific to the input statement that you are currently being asked to translate:\n"
         for _id, sample in enumerate(samples):
@@ -181,7 +184,7 @@ for sentence_index, sentence in sentences['input statement'].items():
 
         response = llm.chat([{"role": "user", "content": prompt1+feedback+core_prompt_2+examples+'[END EXAMPLES]'}], sampling_params)[0].outputs[0].text
         u_translations.at[sentence_index, f'STL-{i}'] = response
-        print(f"the response is: {response}")
+        # print(f"the response is: {response}")
 
         # extract STL, if unsuccessful, put None into translations dataframe entry
         try:
@@ -196,9 +199,11 @@ for sentence_index, sentence in sentences['input statement'].items():
         # parse STL, if unsuccessful, put None into translations dataframe entry
         pre_extracted_response = extracted_response
         try:
+            """
             extracted_response = extracted_response.replace('eventually[','F[')
             extracted_response = extracted_response.replace(']globally(',']G(')
             extracted_response = extracted_response.replace('globally[','G[')
+            """
             parsed_STL = parser.parse(extracted_response)
             syntactically_correct_responses.append((extracted_response, sentence_index, i))
             translations.at[sentence_index, f'STL-{i}'] = extracted_response
@@ -212,13 +217,13 @@ for sentence_index, sentence in sentences['input statement'].items():
                 error_message_less_descriptive = str(e).split('\n')[0].split(',')[0] 
                 error_char = str(e).split('\n')[0].split(',')[1].split(' ')[5]
                 error_message_more_descriptive = str(e).split('Expected')[0]
-                feedback = "Your previous STL response had a syntax error. You must accept this feedback and amend your new response." + feedback_dict['prev_response_setup'] + pre_extracted_response + feedback_dict['parsing_error_0'] + error_char + feedback_dict['parsing_error_1'] + error_message_more_descriptive
+                feedback = "[START FEEDBACK]\nYour previous STL response had a syntax error. You must accept this feedback and amend your new response." + feedback_dict['prev_response_setup'] + pre_extracted_response + feedback_dict['parsing_error_0'] + error_char + feedback_dict['parsing_error_1'] + error_message_more_descriptive + '\n[END FEEDBACK]'
             except:
-                feedback = 'This response had at least one syntax error.'
+                feedback = '[START FEEDBACK]\nThis response had at least one syntax error.\n[END FEEDBACK]'
             continue
 
         # at this point, parsing and extraction should have gone well, so the feedback can be positive
-        feedback = feedback_dict['prev_response_setup'] + pre_extracted_response + feedback_dict['syntactically_correct']
+        feedback = '[START FEEDBACK]\n' + feedback_dict['prev_response_setup'] + extracted_response + feedback_dict['syntactically_correct'] + '\n[END FEEDBACK]'
 
 
     # at this point syntactically_correct_responses should be filled with responses and STL columns of 'translations' should also be full
