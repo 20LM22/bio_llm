@@ -109,7 +109,6 @@ def print_stats(samples, name):
 
     print(name)
     print(f'FG: {fg_count/s}')
-    print(f'G: {g_count/s}')
     print(f'F: {f_count/s}')
     print(f'>: {gt_count/s}')
     print(f'<: {lt_count/s}')
@@ -156,6 +155,8 @@ while not curated:
     for i in range(curated_size):
         curated_arr.append(stl_base_instance.sample('omega'))
 
+
+    print('starting next iteration')
     fg_count = 0
     g_count = 0
     f_count = 0
@@ -163,7 +164,7 @@ while not curated:
     lt_count = 0
     eq_count = 0
     d_gt_count = 0
-     d_lt_count = 0
+    d_lt_count = 0
     d_eq_count = 0
     c_hi_count = 0
     c_mid_count = 0
@@ -172,6 +173,7 @@ while not curated:
     and_count = 0
     temporal_count = 0
     der_count = 0
+    print('all counts reset, right before sample iteration')
 
     # evaluate whether sizes are met
     for sample in curated_arr:
@@ -243,7 +245,21 @@ while not curated:
         and_count += 1 if and_found else 0
         temporal_count += 1 if fg_count or g_count or f_count else 0
         der_count += 1 if d_gt_found or d_lt_found or d_eq_found else 0
+    
+    print('just finished sample iteration')
 
+    print(f'fg_count dksfjslkdjsdljflsdjfl: {fg_count}')
+    print(f'g_count dksfjslkdjsdljflsdjfl: {g_count}')
+    print(f'f_count dksfjslkdjsdljflsdjfl: {f_count}')
+    print(f'gt_count dksfjslkdjsdljflsdjfl: {gt_count}')
+    print(f'lt_count dksfjslkdjsdljflsdjfl: {lt_count}')
+    print(f'eq_count dksfjslkdjsdljflsdjfl: {eq_count}')
+    print(f'd_gt_count dksfjslkdjsdljflsdjfl: {d_gt_count}')
+    print(f'd_lt_count dksfjslkdjsdljflsdjfl: {d_lt_count}')
+    print(f'd_eq_count dksfjslkdjsdljflsdjfl: {d_eq_count}')
+
+    print(f'curated size is: {curated_size}')
+    
     # done looping through samples
 
     # temporal should be split evenly between the 3
@@ -253,16 +269,44 @@ while not curated:
 
     temporal_split_s = True if abs(fg_per - f_per) < 0.02 and abs(fg_per - g_per) < 0.02 and abs(g_per - f_per) < 0.02 else False
     temporal_s = True if abs(temporal_count/curated_size - 0.70) < 0.02 else False
+    """
+    print(f'temporal_count/curated_size: {temporal_count/curated_size}')
+    print(f'fg_per: {fg_per}')
+    print(f'g_per: {g_per}')
+    print(f'f_per: {f_per}')
+    """
 
     # and, implies, u-split
     and_s = True if abs(and_count/curated_size - 0.5) < 0.02 else False
     implies_s = True if abs(implies_count/curated_size - 0.4) < 0.02 else False
-    
+    # print(f'implies_count/curated_size: {implies_count/curated_size}')
+    # print(f'and_count/curated_size: {and_count/curated_size}')
+
     u_split_s = True if abs(gt_count/curated_size - 1/6) < 0.02 and abs(lt_count/curated_size - 1/6) < 0.02 and abs(eq_count/curated_size - 1/6) < 0.02 and abs(d_gt_count/curated_size - 1/6) < 0.02 and abs(d_lt_count/curated_size - 1/6) < 0.02 and abs(d_eq_count/curated_size - 1/6) < 0.02 else False
+    """
+    print(f'gt_count/curated_size: {gt_count/curated_size}')
+    print(f'lt_count/curated_size: {lt_count/curated_size}')
+    print(f'eq_count/curated_size: {eq_count/curated_size}')
+    print(f'd_gt_count/curated_size: {d_gt_count/curated_size}')
+    print(f'd_lt_count/curated_size: {d_lt_count/curated_size}')
+    print(f'd_eq_count/curated_size: {d_eq_count/curated_size}')
+    """
 
     # derivative split
     der_s = True if abs(der_count/curated_size - 0.5) < 0.02 else False
-    
+    """
+    print(f'der_count/curated_size: {der_count/curated_size}')
+    print('no good')
+    print(f'temporal_split_s: {temporal_split_s}')
+    print(f'temporal_s: {temporal_s}')
+    print(f'u_split_s: {u_split_s}')
+    print(f'and_s: {and_s}')
+    print(f'implies_s: {implies_s}')
+    print(f'der_s: {der_s}')
+    """
+
+    print('done with one iteration')
+
     if temporal_split_s and temporal_s and u_split_s and and_s and implies_s and der_s:
         curated = True
 
