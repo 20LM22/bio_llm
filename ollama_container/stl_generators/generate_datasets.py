@@ -135,4 +135,134 @@ df.insert(0, 'Char cutoff', ['90', '85', '80', '75', '70'])
 df.to_csv('cutoff_comparison.csv')
 
 # Now sample from this set to get curated 500-entry dataset
+large_dataset
+
+# requirements
+percent_temporal = 0.7
+percent_nontemporal = 1 - percent_temporal
+
+percent_and = 0.5
+percent_implies = 0.3
+
+percent_u = 1/6
+
+curated_size = 500
+curated_arr = []
+
+curated = False
+
+while not curated:
+    # sample 500
+    for i in range(curated_size):
+        curated_arr.append(stl_base_instance.sample('omega'))
+
+    fg_count = 0
+    g_count = 0
+    f_count = 0
+    gt_count = 0
+    lt_count = 0
+    eq_count = 0
+    d_gt_count = 0
+     d_lt_count = 0
+    d_eq_count = 0
+    c_hi_count = 0
+    c_mid_count = 0
+    c_lo_count = 0
+    implies_count = 0
+    and_count = 0
+    temporal_count = 0
+    der_count = 0
+
+    # evaluate whether sizes are met
+    for sample in curated_arr:
+
+        fg_found = True if len(re.findall(r'eventually\[\d+,\d+\]globally\(',sample)) + len(re.findall(r'eventually\[\d+,∞\]globally\(', sample)) + len(re.findall(r'eventually\[∞,\d+\]globally\(', sample)) + len(re.findall(r'eventually\[∞,∞\]globally\(', sample)) > 0 else False
+        f_found = True if len(re.findall(r'eventually\[\d+,\d+\]\(',sample)) + len(re.findall(r'eventually\[\d+,∞\]\(', sample)) + len(re.findall(r'eventually\[∞,\d+\]\(', sample)) + len(re.findall(r'eventually\[∞,∞\]\(', sample)) > 0 else False
+        g_found = True if len(re.findall(r'globally\[\d+,\d+\]\(',sample)) + len(re.findall(r'globally\[\d+,∞\]\(', sample)) + len(re.findall(r'globally\[∞,\d+\]\(', sample)) + len(re.findall(r'globally\[∞,∞\]\(', sample)) > 0 else False
+
+        c_hi_found = True if len(re.findall(r'c\(high\)', sample)) > 0 else False
+        c_mid_found = True if len(re.findall(r'c\(mid\)', sample)) > 0 else False
+        c_lo_found = True if len(re.findall(r'c\(low\)', sample)) > 0 else False
+
+        implies_found = True if len(re.findall(r'implies', sample)) > 0 else False
+        and_found = True if len(re.findall(r'and', sample)) > 0 else False
+
+        gt_count_f = 0
+        lt_count_f = 0
+        eq_count_f = 0
+        d_gt_count_f = 0
+        d_lt_count_f = 0
+        d_eq_count_f = 0
+
+        for signal in signals:
+            gt_count_f += len(re.findall(rf'\({re.escape(signal)}\(t\)>',sample))
+            lt_count_f += len(re.findall(rf'\({re.escape(signal)}\(t\)<',sample))
+            eq_count_f += len(re.findall(rf'\({re.escape(signal)}\(t\)=',sample))
+            d_gt_count_f += len(re.findall(rf'd_{re.escape(signal)}\(t\)>',sample))
+            d_lt_count_f += len(re.findall(rf'd_{re.escape(signal)}\(t\)<',sample))
+            d_eq_count_f += len(re.findall(rf'd_{re.escape(signal)}\(t\)=',sample))
+
+        gt_found = True if gt_count_f > 0 else False
+        lt_found = True if lt_count_f > 0 else False
+        eq_found = True if eq_count_f > 0 else False
+        d_gt_found = True if d_gt_count_f > 0 else False
+        d_lt_found = True if d_lt_count_f > 0 else False
+        d_eq_found = True if d_eq_count_f > 0 else False
+
+        """
+        print(f"sample is: {sample}")
+        print(f'FG: {fg_found}')
+        print(f'G: {g_found}')
+        print(f'F: {f_found}')
+        print(f'>: {gt_found}')
+        print(f'<: {lt_found}')
+        print(f'=: {eq_found}')
+        print(f'd >: {d_gt_found}')
+        print(f'd <: {d_lt_found}')
+        print(f'd =: {d_eq_found}')
+        print(f'c(high): {c_hi_found}')
+        print(f'c(mid): {c_mid_found}')
+        print(f'c(low): {c_lo_found}')
+        print(f'implies: {implies_found}')
+        print(f'and: {and_found}\n')
+        """
+
+        fg_count += 1 if fg_found else 0
+        g_count += 1 if g_found else 0
+        f_count += 1 if f_found else 0
+        gt_count += 1 if gt_found else 0
+        lt_count += 1 if lt_found else 0
+        eq_count += 1 if eq_found else 0
+        d_gt_count += 1 if d_gt_found else 0
+        d_lt_count += 1 if d_lt_found else 0
+        d_eq_count += 1 if d_eq_found else 0
+        c_hi_count += 1 if c_hi_found else 0
+        c_mid_count += 1 if c_mid_found else 0
+        c_lo_count += 1 if c_lo_found else 0
+        implies_count += 1 if implies_found else 0
+        and_count += 1 if and_found else 0
+        temporal_count += 1 if fg_count or g_count or f_count else 0
+        der_count += 1 if d_gt_found or d_lt_found or d_eq_found else 0
+
+    # done looping through samples
+
+    # temporal should be split evenly between the 3
+    fg_per = fg_count/curated_size
+    f_per = f_count/curated_size
+    g_per = g_count/curated_size
+
+    temporal_split_s = True if abs(fg_per - f_per) < 0.02 and abs(fg_per - g_per) < 0.02 and abs(g_per - f_per) < 0.02 else False
+    temporal_s = True if abs(temporal_count/curated_size - 0.70) < 0.02 else False
+
+    # and, implies, u-split
+    and_s = True if abs(and_count/curated_size - 0.5) < 0.02 else False
+    implies_s = True if abs(implies_count/curated_size - 0.4) < 0.02 else False
+    
+    u_split_s = True if abs(gt_count/curated_size - 1/6) < 0.02 and abs(lt_count/curated_size - 1/6) < 0.02 and abs(eq_count/curated_size - 1/6) < 0.02 and abs(d_gt_count/curated_size - 1/6) < 0.02 and abs(d_lt_count/curated_size - 1/6) < 0.02 and abs(d_eq_count/curated_size - 1/6) < 0.02 else False
+
+    # derivative split
+    der_s = True if abs(der_count/curated_size - 0.5) < 0.02 else False
+    
+    if temporal_split_s and temporal_s and u_split_s and and_s and implies_s and der_s:
+        curated = True
 
