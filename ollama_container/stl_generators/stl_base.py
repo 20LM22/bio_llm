@@ -93,7 +93,7 @@ class STLBase(ABC):
 
         self.anon_map = anon_map
         # print(self.sample('omega'))
-        # s = 'IL6(t)>c(high)andIL8(t)>c(high)'
+        # s = 'd_IL6(t)>d_c(high)andIL8(t)>c(high)'
         # print(f'parse tree: {str(self.parser.parse(s))}')
 
 

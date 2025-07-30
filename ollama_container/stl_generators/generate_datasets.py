@@ -35,13 +35,31 @@ print("lkj")
 c = 5/0
 """
 
+def check_time_intervals(sample):
+    # also check for ranges time interval
+    time_interval_num_num = r'\[\d+,\d+\]'
+    time_interval_inf_num = r'\[∞,\d+\]'
+    time_interval_inf_inf = r'\[∞,∞\]'
+
+    if len(re.findall(time_interval_inf_inf, sample)) > 0 or len(re.findall(time_interval_inf_num, sample)) > 0:
+        return False
+    
+    intervals = re.findall(time_interval_num_num, sample)    
+    if intervals is not None:
+        for interval in intervals:
+            t_a = interval.split(',')[1:]
+            t_b = interval.split(',')[:-1]
+            if t_b <= t_a:
+                return False
+    return True
+
 # Large 5K dataset
 large_dataset = []
 
 # Obtain 5K samples
 for i in range(5000):
     a = stl_base_instance.sample('omega')
-    while len(a) > 90:
+    while len(a) > 90 and check_time_intervals(a) is False:
         a = stl_base_instance.sample('omega')
     large_dataset.append(a)
 
@@ -186,24 +204,6 @@ print(f'temporal psi g u: {t_psi_g_u}\n')
 
 p = 5/0
 """
-
-def check_time_intervals(sample):
-    # also check for ranges time interval
-    time_interval_num_num = r'\[\d+,\d+\]'
-    time_interval_inf_num = r'\[∞,\d+\]'
-    time_interval_inf_inf = r'\[∞,∞\]'
-
-    if len(re.findall(time_interval_inf_inf, sample)) > 0 or len(re.findall(time_interval_inf_num, sample)) > 0:
-        return False
-    
-    intervals = re.findall(time_interval_num_num, sample)    
-    if intervals is not None:
-        for interval in intervals:
-            t_a = interval.split(',')[1:]
-            t_b = interval.split(',')[:-1]
-            if t_b <= t_a:
-                return False
-    return True
 
 #  - - - - -- - - - -  - - -  - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - -- - 
 
