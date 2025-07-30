@@ -70,6 +70,10 @@ class Test(Interpreter):
         
     def lt(self, node):
         # self.sentence.append("the concentration of")
+        # print("inside lt")
+        # print(f'node.children[0]: {node.children[0]}')
+        # print(f'node.children[0].children: {node.children[0].children}')
+
         self.sentence.append(node.children[0].children[0]) # name of species --> would need to find and replace using the LLM's dictionary
         self.sentence.append("was below its")
         self.sentence.append(nl_to_literal_dict[node.children[1].children[0]]) # TODO: c-threshold --> take into account c vs. s
@@ -229,6 +233,7 @@ species_dict = {
 def STL2literal(input_sentence, grammar):
     p = Lark(grammar) # TODO: this is also slow, improve if possible
     tree = p.parse(input_sentence)
+    print(f"the resulting parse tree: {tree}")
     tester = Test() # TODO: this is redundant, see if this can be improved
     tester.visit(tree)
     # return fastpunct.punct(" ".join(tester.sentence))

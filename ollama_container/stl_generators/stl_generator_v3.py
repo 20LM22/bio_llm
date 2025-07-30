@@ -8,7 +8,7 @@ from stl2literal import STL2literal
 from stl_base import STLBase
 from vllm.sampling_params import GuidedDecodingParams
 from pydantic import BaseModel
-import json, csv, sys, traceback, re, logging, pickle, pandas, os
+import json, csv, sys, traceback, re, logging, pickle, pandas, os, random
 
 ####################################################################################
 # Debugging logging
@@ -60,6 +60,14 @@ parser = Lark(grammar)
 core_prompt_1 = params['core_prompt_1']
 core_prompt_2 = params['core_prompt_2']
 
+curated_dataset = []
+try:
+    with open(f'../pkl/curated_dataset.pkl', 'rb') as f:
+        curated_dataset = pickle.load(f)
+        print(f'Loaded curated dataset')
+except Exception as e:
+    print(e)
+
 # Create a file which contains all the relevant output related to this model
 # Augment the input file with correct number of stl and literal rows
 translations = sentences.copy()
@@ -107,8 +115,9 @@ for sentence_index, sentence in sentences['input statement'].items():
         # then post-process the output by adding spaces before and after ^, <, > <-- possibly others check that too
         # get random examples (2)
         satisfied = False
-        samples = ["","",""]
- 
+        samples = []
+        
+        """
         while not satisfied:
             satisfied = True
             g_missing = False
@@ -153,6 +162,14 @@ for sentence_index, sentence in sentences['input statement'].items():
                             break
                 if sample_flagged:
                     break
+        """
+        ####################################################################
+        #
+        # Sample from curated dataset
+        #
+        ####################################################################
+        for i in range(3):
+            samples.append(random.choice(curated_dataset))
 
         for _id, sample in enumerate(samples):
             sample = sample.replace('and',' and ')
@@ -164,7 +181,9 @@ for sentence_index, sentence in sentences['input statement'].items():
 
         literal_translations = ["","",""]
         for _id, sample in enumerate(samples):
-
+            # print(f'inside sample literal generation')
+            # print(f'sample: {sample}')
+            sample = 'IL1RN(t) < c(low) and IL1RN(t) = c(low)'
             literal_translations[_id] = STL2literal(sample, grammar)
 
         # temporary thing to try: replacing F with eventually, G with globally
@@ -180,7 +199,7 @@ for sentence_index, sentence in sentences['input statement'].items():
         for _id, sample in enumerate(samples):
             examples += (f"\n{{'thinking': '<thinking>I need to translate the natural language into STL...',\n'input_sentence:' '{literal_translations[_id]}',\n'output_STL': '{sample}'}}\n")
         
-        print(f"the prompt is: {prompt1+'\n\n'+feedback+core_prompt_2+examples+'[END EXAMPLES]'}")
+        # print(f"the prompt is: {prompt1+'\n\n'+feedback+core_prompt_2+examples+'[END EXAMPLES]'}")
 
         response = llm.chat([{"role": "user", "content": prompt1+feedback+core_prompt_2+examples+'[END EXAMPLES]'}], sampling_params)[0].outputs[0].text
         u_translations.at[sentence_index, f'STL-{i}'] = response
@@ -199,12 +218,37 @@ for sentence_index, sentence in sentences['input statement'].items():
         # parse STL, if unsuccessful, put None into translations dataframe entry
         pre_extracted_response = extracted_response
         try:
+            print("trying to parse response")
+            print(f'extracted_response: {extracted_response}')
+        
             """
             extracted_response = extracted_response.replace('eventually[','F[')
             extracted_response = extracted_response.replace(']globally(',']G(')
             extracted_response = extracted_response.replace('globally[','G[')
             """
+            
             parsed_STL = parser.parse(extracted_response)
+            print(f'parsed STL: {parsed_STL}') 
+            print('-----mmmmmmmmmm------------------------------------------------------------------------------------------')
+            # need to add manual layer for checking the signal name
+            # review tree: parsed_STL
+            print('-----llll------------------------------------------------------------------------------------------')
+            signals = re.findall(r"Tree\(Token\('RULE', 's'\), \[Token\('\w+', '\w+'\)\]", parsed_STL)  
+            print('-----kkkkk------------------------------------------------------------------------------------------')
+            d_signals = re.findall(r"Tree\(Token\('RULE', 'd_s'\), \[Token\('\w+', '\w+'\)\]", parsed_STL)
+            print(f'signals: {signals}')
+            print(f'd_signals: {d_signals}')
+            print('---------oooooooooooo--------------------------------------------------------------------------------------')
+            for s in signals:
+                print("inside singals")
+                s = s.split("Tree(Token('RULE', 's'), [Token(")
+                print(s)
+            for d in d_signals:
+                d = d.split("Tree(Token('RULE', 'd_s'), [Token(")
+                print(d)
+
+            # need to add manual layer for checking the signal name
+
             syntactically_correct_responses.append((extracted_response, sentence_index, i))
             translations.at[sentence_index, f'STL-{i}'] = extracted_response
         except Exception as e:
