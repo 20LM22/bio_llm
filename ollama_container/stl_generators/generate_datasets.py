@@ -186,6 +186,25 @@ print(f'temporal psi g u: {t_psi_g_u}\n')
 
 p = 5/0
 """
+
+def check_time_intervals(sample):
+    # also check for ranges time interval
+    time_interval_num_num = r'\[\d+,\d+\]'
+    time_interval_inf_num = r'\[∞,\d+\]'
+    time_interval_inf_inf = r'\[∞,∞\]'
+
+    if len(re.findall(time_interval_inf_inf, sample)) > 0 or len(re.findall(time_interval_inf_num, sample)) > 0:
+        return False
+    
+    intervals = re.findall(time_interval_num_num, sample)    
+    if intervals is not None:
+        for interval in intervals:
+            t_a = interval.split(',')[1:]
+            t_b = interval.split(',')[:-1]
+            if t_b <= t_a:
+                return False
+    return True
+
 #  - - - - -- - - - -  - - -  - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - -- - 
 
 # Each of those 9 categories for the 4 types needs to be split into 6 ways for each of the operators --> Break each into all 6 operators, just do this in the generation

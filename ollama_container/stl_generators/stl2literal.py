@@ -162,7 +162,7 @@ class Test(Interpreter):
                 self.sentence.append('implies')
                 self.visit(node.children[1])
             case _:
-                self.visit(node.children[0])
+                self.visit(node.children[2])
     
     def temp_op_f(self, node): # TODO: parametrize this entire thing to do F, G, FG at the same time
         self.sentence.append('from day') # TODO: change this to an input we get from the LLM's dictionary so it can be adaptable for [days], [was]
@@ -187,7 +187,7 @@ class Test(Interpreter):
                 self.sentence.append('implies')
                 self.visit(node.children[1])
             case _:
-                self.visit(node.children[0])
+                self.visit(node.children[2])
  
     def temp_op_fg(self, node): # TODO: parametrize this entire thing to do F, G, FG at the same time
         self.sentence.append('from day') # TODO: change this to an input we get from the LLM's dictionary so it can be adaptable for [days], [was]
@@ -212,9 +212,7 @@ class Test(Interpreter):
                 self.sentence.append('implies')
                 self.visit(node.children[1])
             case _:
-                self.visit(node.children[0])
-
-# fastpunct = FastPunct() # TODO: might have to be moved into the function def?
+                self.visit(node.children[2])
 
 species_dict = {
 'IL-6': 'IL6',
@@ -232,12 +230,16 @@ species_dict = {
 
 def STL2literal(input_sentence, grammar):
     p = Lark(grammar) # TODO: this is also slow, improve if possible
+    
+    # TODO: remove this once done testing
+    input_sentence = 'globally[16,1](IL1β(t)=c(mid))'
+
     tree = p.parse(input_sentence)
-    print(f"the resulting parse tree: {tree}")
     tester = Test() # TODO: this is redundant, see if this can be improved
     tester.visit(tree)
-    # return fastpunct.punct(" ".join(tester.sentence))
-    # now process the species in the sentence
+
+    print(f'the tree is: {tree}')
+
     tester.sentence = ' '.join(tester.sentence)
 
     for key in species_dict:

@@ -181,9 +181,8 @@ for sentence_index, sentence in sentences['input statement'].items():
 
         literal_translations = ["","",""]
         for _id, sample in enumerate(samples):
-            # print(f'inside sample literal generation')
-            # print(f'sample: {sample}')
-            sample = 'IL1RN(t) < c(low) and IL1RN(t) = c(low)'
+            print(f'inside sample literal generation')
+            print(f'sample: {sample}')
             literal_translations[_id] = STL2literal(sample, grammar)
 
         # temporary thing to try: replacing F with eventually, G with globally
@@ -195,15 +194,15 @@ for sentence_index, sentence in sentences['input statement'].items():
             samples[_id] = sample
         """
 
-        examples = "\n[BEGIN EXAMPLES]\nHere are reference examples of STL, but don't copy them. Instead, make sure the STL statements you produce are specific to the input statement that you are currently being asked to translate:\n"
+        examples = "\n\n[BEGIN EXAMPLES]\nHere are reference examples of STL, but don't copy them. Instead, make sure the STL statements you produce are specific to the input statement that you are currently being asked to translate:\n"
         for _id, sample in enumerate(samples):
             examples += (f"\n{{'thinking': '<thinking>I need to translate the natural language into STL...',\n'input_sentence:' '{literal_translations[_id]}',\n'output_STL': '{sample}'}}\n")
         
-        # print(f"the prompt is: {prompt1+'\n\n'+feedback+core_prompt_2+examples+'[END EXAMPLES]'}")
+        print(f"the prompt is: {prompt1+'\n\n'+feedback+core_prompt_2+examples+'[END EXAMPLES]'}")
 
         response = llm.chat([{"role": "user", "content": prompt1+feedback+core_prompt_2+examples+'[END EXAMPLES]'}], sampling_params)[0].outputs[0].text
         u_translations.at[sentence_index, f'STL-{i}'] = response
-        # print(f"the response is: {response}")
+        print(f"the response is: {response}")
 
         # extract STL, if unsuccessful, put None into translations dataframe entry
         try:
