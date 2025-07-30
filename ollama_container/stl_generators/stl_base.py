@@ -93,8 +93,13 @@ class STLBase(ABC):
 
         self.anon_map = anon_map
         # print(self.sample('omega'))
+        s = 'IL6(t)>c(high)andIL8(t)>c(high)'
+        print(f'parse tree: {str(self.parser.parse(s))}')
+
 
     def sample(self, sym, depth=0, max_depth=2):
+        d_select = 0
+        s_select = 0
     #    print("--------------------------------------------------------------inside of SAMPLE---------------------------------------------------------------")
         ids = ["IL6", "IL12", "IL1β", "IL1Ra", "TNFα", "IL8", "IFNα", "IFNβ", "SARSCoV2", "IL1RN"]
 
@@ -142,13 +147,16 @@ class STLBase(ABC):
                 
                 parts = []
                 for t in expansion:
+                    # print(f'the expansion is: {expansion}')
                     if not t.is_term:
                         # print(f"t.name is: {t.name}")
                         if t.name == "t_a":
                             parts.append(random.choices([str(random.randint(0, 20)), '∞'], weights=[0.7, 0.3])[0])
                         elif t.name == "s":
+                            s_select += 1
                             parts.append(random.choice(ids))
                         elif t.name == "d_s":
+                            d_select += 1
                             parts.append("d_" + str(random.choice(ids)))
                         # elif t.name == "e":
                         #    parts.append(random.choice([str(random.randint(1, 20) / 20), "e"]))
@@ -162,6 +170,9 @@ class STLBase(ABC):
                         parts.append(self.anon_map[t.name])  # Use literal if available
 
             # print(self.parser.parse(''.join(parts))) 
+            # print('--------------------------------------------------------------------------------')
+            # print(f'd: {d_select}\ns: {s_select}')
+            # print('--------------------------------------------------------------------------------')
             return ''.join(parts)
 
 if __name__ == "__main__":

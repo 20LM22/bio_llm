@@ -2,7 +2,7 @@ from lark import Lark
 import numpy as np
 from stl2literal import STL2literal
 from stl_base import STLBase
-import json, csv, sys, traceback, re, logging, pickle, pandas, os
+import json, csv, sys, traceback, re, logging, pickle, pandas, os, math, random
 
 ####################################################################################
 # Debugging logging
@@ -23,290 +23,1748 @@ with open(file_name, 'r') as f:
 
 stl_base_instance = STLBase()
 
-signals = ["IL6", "IL12", "IL1β", "IL1Ra", "TNFα", "IL8", "IFNα", "IFNβ", "SARSCoV2", "IL1RN"]
 
 grammar = params['grammar']
 parser = Lark(grammar)
+
+"""
+s = 'globally[3,4](IL6(t)>c(high)impliesIL6(t)>c(low))andglobally[4,4](IL8(t)>c(high))'
+print("lkj")
+print(str(parser.parse(s)))
+print("lkj")
+c = 5/0
+"""
 
 # Large 5K dataset
 large_dataset = []
 
 # Obtain 5K samples
 for i in range(5000):
-    large_dataset.append(stl_base_instance.sample('omega'))
+    a = stl_base_instance.sample('omega')
+    while len(a) > 90:
+        a = stl_base_instance.sample('omega')
+    large_dataset.append(a)
 
-# for large dataset do some analysis: filter out just the smaller ones
-less_than_90 = []
-less_than_85 = []
-less_than_80 = []
-less_than_75 = []
-less_than_70 = []
+# From the 5K samples, create curated dataset with desired percentages
 
-for i in large_dataset:
-    if len(i) < 90:
-        less_than_90.append(i)
-    if len(i) < 85:
-        less_than_85.append(i)
-    if len(i) < 80:
-        less_than_80.append(i)
-    if len(i) < 75:
-        less_than_75.append(i)
-    if len(i) < 70:
-        less_than_70.append(i)
-                        
-def print_stats(samples, name):
-    s = len(samples)
-
-    fg_count = 0
-    g_count = 0
-    f_count = 0
-    gt_count = 0
-    lt_count = 0
-    eq_count = 0
-    d_gt_count = 0
-    d_lt_count = 0
-    d_eq_count = 0
-    c_hi = 0
-    c_mid = 0
-    c_lo = 0
-    implies_count = 0
-    and_count = 0
-
-    for sample in samples:
-
-        fg_count += 1 if len(re.findall(r'eventually\[\d+,\d+\]globally\(',sample)) + len(re.findall(r'eventually\[\d+,∞\]globally\(', sample)) + len(re.findall(r'eventually\[∞,\d+\]globally\(', sample)) + len(re.findall(r'eventually\[∞,∞\]globally\(', sample)) > 0 else 0
-        f_count += 1 if len(re.findall(r'eventually\[\d+,\d+\]\(',sample)) + len(re.findall(r'eventually\[\d+,∞\]\(', sample)) + len(re.findall(r'eventually\[∞,\d+\]\(', sample)) + len(re.findall(r'eventually\[∞,∞\]\(', sample)) > 0 else 0
-        g_count += 1 if len(re.findall(r'globally\[\d+,\d+\]\(',sample)) + len(re.findall(r'globally\[\d+,∞\]\(', sample)) + len(re.findall(r'globally\[∞,\d+\]\(', sample)) + len(re.findall(r'globally\[∞,∞\]\(', sample)) > 0 else 0
-
-        c_hi += 1 if len(re.findall(r'c\(high\)', sample)) > 0 else 0
-        c_mid += 1 if len(re.findall(r'c\(mid\)', sample)) > 0 else 0
-        c_lo += 1 if len(re.findall(r'c\(low\)', sample)) > 0 else 0
-
-        implies_count += 1 if len(re.findall(r'implies', sample)) > 0 else 0
-        and_count += 1 if len(re.findall(r'and', sample)) > 0 else 0
-
-        gt_count_f = 0
-        lt_count_f = 0
-        eq_count_f = 0
-        d_gt_count_f = 0
-        d_lt_count_f = 0
-        d_eq_count_f = 0
-
-        for signal in signals:
-            gt_count_f += len(re.findall(rf'\({re.escape(signal)}\(t\)>',sample))
-            lt_count_f += len(re.findall(rf'\({re.escape(signal)}\(t\)<',sample))
-            eq_count_f += len(re.findall(rf'\({re.escape(signal)}\(t\)=',sample))
-            d_gt_count_f += len(re.findall(rf'd_{re.escape(signal)}\(t\)>',sample))
-            d_lt_count_f += len(re.findall(rf'd_{re.escape(signal)}\(t\)<',sample))
-            d_eq_count_f += len(re.findall(rf'd_{re.escape(signal)}\(t\)=',sample))
-
-        gt_count += 1 if gt_count_f > 0 else 0
-        lt_count += 1 if lt_count_f > 0 else 0
-        eq_count += 1 if eq_count_f > 0 else 0
-        d_gt_count += 1 if d_gt_count_f > 0 else 0
-        d_lt_count += 1 if d_lt_count_f > 0 else 0
-        d_eq_count += 1 if d_eq_count_f > 0 else 0
-
-    print(name)
-    print(f'FG: {fg_count/s}')
-    print(f'F: {f_count/s}')
-    print(f'>: {gt_count/s}')
-    print(f'<: {lt_count/s}')
-    print(f'=: {eq_count/s}')
-    print(f'd >: {d_gt_count/s}')
-    print(f'd <: {d_lt_count/s}')
-    print(f'd =: {d_eq_count/s}')
-    print(f'c(high): {c_hi/s}')
-    print(f'c(mid): {c_mid/s}')
-    print(f'c(low): {c_lo/s}')
-    print(f'implies: {implies_count/s}')
-    print(f'and: {and_count/s}\n')
-    return [fg_count/s, g_count/s, f_count/s, gt_count/s, lt_count/s, eq_count/s, d_gt_count/s, d_lt_count/s, d_eq_count/s, c_hi/s, c_mid/s, c_lo/s, implies_count/s, and_count/s]
-
-data = [print_stats(less_than_90, "less than 90"),
-print_stats(less_than_85, "less than 85"),
-print_stats(less_than_80, "less than 80"),
-print_stats(less_than_75, "less than 75"),
-print_stats(less_than_70, 'less than 70')]
-
-df = pandas.DataFrame(data, columns=['FG', 'G', 'F', '>', '<', '=', 'd >','d <','d =', 'c(high)', 'c(mid)', 'c(low)', 'implies', 'and'])
-df.insert(0, 'Char cutoff', ['90', '85', '80', '75', '70'])
-df.to_csv('cutoff_comparison.csv')
-
-# Now sample from this set to get curated 500-entry dataset
-large_dataset
-
-# requirements
-percent_temporal = 0.7
-percent_nontemporal = 1 - percent_temporal
-
-percent_and = 0.5
-percent_implies = 0.3
-
-percent_u = 1/6
-
-curated_size = 500
+curated_size = 300 # could put this small exercise into the paper - sampling w/ or w/o replacement
 curated_arr = []
-
 curated = False
 
-while not curated:
-    # sample 500
-    for i in range(curated_size):
-        curated_arr.append(stl_base_instance.sample('omega'))
+# First determine the size of each bucket
+non_temporal_samples = int(math.floor(0.3 * curated_size))
+
+# print(f'non_temporal_samples: {non_temporal_samples}')
+
+non_temporal_u = math.floor(0.2 * non_temporal_samples)
+# print(f'non_temporal_u: {non_temporal_u}')
+
+# print(f'non temporal u: {non_temporal_u}')
+non_temporal_u_and_u = int(math.floor(0.3 * non_temporal_samples))
+# print(f'non temporal u and u: {non_temporal_u_and_u}')
+non_temporal_u_implies_u = non_temporal_samples - non_temporal_u - non_temporal_u_and_u
+# print(f'non temporal u implies u: {non_temporal_u_implies_u}')
+
+# These are the smallest non-temporal buckets
+non_temporal_u_gt = non_temporal_u_lt = non_temporal_u_eq = non_temporal_u_d_gt = non_temporal_u_d_lt = non_temporal_u_d_eq = int(non_temporal_u / 6)
+non_temporal_u_and_u_gt = non_temporal_u_and_u_lt = non_temporal_u_and_u_eq = non_temporal_u_and_u_d_gt = non_temporal_u_and_u_d_lt = non_temporal_u_and_u_d_eq = int(non_temporal_u_and_u / 6)
+non_temporal_u_implies_u_gt = non_temporal_u_implies_u_lt = non_temporal_u_implies_u_eq = non_temporal_u_implies_u_d_gt = non_temporal_u_implies_u_d_lt = non_temporal_u_implies_u_d_eq = int(non_temporal_u_implies_u / 6)
+
+# Create temporal buckets
+temporal_samples = curated_size - non_temporal_samples
+#print(f'temporal samples: {temporal_samples}')
+
+t_psi_implies_psi = int(math.floor(0.15 * temporal_samples))
+t_omega_and_omega = int(math.floor(0.30 * temporal_samples))
+t_psi = temporal_samples - t_psi_implies_psi - t_omega_and_omega
+
+# Each one with the psi's should have equal number of temporal operators
+t_psi_implies_psi_fg = t_psi_implies_psi_f = t_psi_implies_psi_g = int(t_psi_implies_psi / 3)
+t_omega_and_omega_fg = t_omega_and_omega_f = t_omega_and_omega_g = int(t_omega_and_omega / 3)
+t_psi_fg = t_psi_f = t_psi_g = int(t_psi / 3)
+
+# Need to break into a u implies u, u and u, regular u
+t_psi_implies_psi_fg_u_implies_u = int(math.floor(0.25 * t_psi_implies_psi_fg))
+t_psi_implies_psi_fg_u_and_u = int(math.floor(0.25 * t_psi_implies_psi_fg))
+t_psi_implies_psi_fg_u = t_psi_implies_psi_fg - t_psi_implies_psi_fg_u_implies_u - t_psi_implies_psi_fg_u_and_u
+
+t_psi_implies_psi_f_u_implies_u = int(math.floor(0.25 * t_psi_implies_psi_f))
+t_psi_implies_psi_f_u_and_u = int(math.floor(0.25 * t_psi_implies_psi_f))
+t_psi_implies_psi_f_u = t_psi_implies_psi_f - t_psi_implies_psi_f_u_implies_u - t_psi_implies_psi_f_u_and_u
+
+t_psi_implies_psi_g_u_implies_u = int(math.floor(0.25 * t_psi_implies_psi_g))
+t_psi_implies_psi_g_u_and_u = int(math.floor(0.25 * t_psi_implies_psi_g))
+t_psi_implies_psi_g_u = t_psi_implies_psi_g - t_psi_implies_psi_g_u_implies_u - t_psi_implies_psi_g_u_and_u
+
+#--
+
+t_omega_and_omega_fg_u_implies_u = int(math.floor(0.25 * t_omega_and_omega_fg))
+t_omega_and_omega_fg_u_and_u = int(math.floor(0.25 * t_omega_and_omega_fg))
+t_omega_and_omega_fg_u = t_omega_and_omega_fg - t_omega_and_omega_fg_u_implies_u - t_omega_and_omega_fg_u_and_u
+
+t_omega_and_omega_f_u_implies_u = int(math.floor(0.25 * t_omega_and_omega_f))
+t_omega_and_omega_f_u_and_u = int(math.floor(0.25 * t_omega_and_omega_f))
+t_omega_and_omega_f_u = t_omega_and_omega_f - t_omega_and_omega_f_u_implies_u - t_omega_and_omega_f_u_and_u
+
+t_omega_and_omega_g_u_implies_u = int(math.floor(0.25 * t_omega_and_omega_g))
+t_omega_and_omega_g_u_and_u = int(math.floor(0.25 * t_omega_and_omega_g))
+t_omega_and_omega_g_u = t_omega_and_omega_g - t_omega_and_omega_g_u_implies_u - t_omega_and_omega_g_u_and_u
+
+#--
+# print(f'fljsdkldkfjslkj t_psi_fg: {t_psi_fg}')
+
+t_psi_fg_u_implies_u = int(math.floor(0.25 * t_psi_fg))
+t_psi_fg_u_and_u = int(math.floor(0.25 * t_psi_fg))
+t_psi_fg_u = t_psi_fg - t_psi_fg_u_implies_u - t_psi_fg_u_and_u
+
+t_psi_f_u_implies_u = int(math.floor(0.25 * t_psi_f))
+t_psi_f_u_and_u = int(math.floor(0.25 * t_psi_f))
+t_psi_f_u = t_psi_f - t_psi_f_u_implies_u - t_psi_f_u_and_u
+
+t_psi_g_u_implies_u = int(math.floor(0.25 * t_psi_g))
+t_psi_g_u_and_u = int(math.floor(0.25 * t_psi_g))
+t_psi_g_u = t_psi_g - t_psi_g_u_implies_u - t_psi_g_u_and_u
+
+# - - - - - - - - - - -- - - -  - --- - - -  - - - - -- - - - - - - - -  -- - - - - - - - - - 
+"""
+print(f'non temporal u gt: {non_temporal_u_gt}')
+print(f'non temporal u lt: {non_temporal_u_lt}')
+print(f'non temporal u eq: {non_temporal_u_eq}')
+print(f'non temporal u d_gt: {non_temporal_u_d_gt}')
+print(f'non temporal u d_lt: {non_temporal_u_d_lt}')
+print(f'non temporal u d_eq: {non_temporal_u_d_eq}\n')
+
+print(f'non temporal u and u gt: {non_temporal_u_and_u_gt}')
+print(f'non temporal u and u lt: {non_temporal_u_and_u_lt}')
+print(f'non temporal u and u eq: {non_temporal_u_and_u_eq}')
+print(f'non temporal u and u d_gt: {non_temporal_u_and_u_d_gt}')
+print(f'non temporal u and u d_lt: {non_temporal_u_and_u_d_lt}')
+print(f'non temporal u and u d_eq: {non_temporal_u_and_u_d_eq}\n')
+
+print(f'non temporal u implies u gt: {non_temporal_u_implies_u_gt}')
+print(f'non temporal u implies u lt: {non_temporal_u_implies_u_lt}')
+print(f'non temporal u implies u eq: {non_temporal_u_implies_u_eq}')
+print(f'non temporal u implies u d_gt: {non_temporal_u_implies_u_d_gt}')
+print(f'non temporal u implies u d_lt: {non_temporal_u_implies_u_d_lt}')
+print(f'non temporal u implies u d_eq: {non_temporal_u_implies_u_d_eq}\n')
+
+print(f'temporal psi implies psi fg u implies u: {t_psi_implies_psi_fg_u_implies_u}')
+print(f'temporal psi implies psi fg u and u: {t_psi_implies_psi_fg_u_and_u}')
+print(f'temporal psi implies psi fg u: {t_psi_implies_psi_fg_u}\n')
+
+print(f'temporal psi implies psi f u implies u: {t_psi_implies_psi_f_u_implies_u}')
+print(f'temporal psi implies psi f u and u: {t_psi_implies_psi_f_u_and_u}')
+print(f'temporal psi implies psi f u: {t_psi_implies_psi_f_u}\n')
+
+print(f'temporal psi implies psi g u implies u: {t_psi_implies_psi_g_u_implies_u}')
+print(f'temporal psi implies psi g u and u: {t_psi_implies_psi_g_u_and_u}')
+print(f'temporal psi implies psi g u: {t_psi_implies_psi_g_u}\n')
+
+print(f'temporal omega and omega fg u implies u: {t_omega_and_omega_fg_u_implies_u}')
+print(f'temporal omega and omega fg u and u: {t_omega_and_omega_fg_u_and_u}')
+print(f'temporal omega and omega fg u: {t_omega_and_omega_fg_u}\n')
+
+print(f'temporal omega and omega f u implies u: {t_omega_and_omega_f_u_implies_u}')
+print(f'temporal omega and omega f u and u: {t_omega_and_omega_f_u_and_u}')
+print(f'temporal omega and omega f u: {t_omega_and_omega_f_u}\n')
+
+print(f'temporal omega and omega g u implies u: {t_omega_and_omega_g_u_implies_u}')
+print(f'temporal omega and omega g u and u: {t_omega_and_omega_g_u_and_u}')
+print(f'temporal omega and omega g u: {t_omega_and_omega_g_u}\n')
+
+print(f'temporal psi fg u implies u: {t_psi_fg_u_implies_u}')
+print(f'temporal psi fg u and u: {t_psi_fg_u_and_u}')
+print(f'temporal psi fg u: {t_psi_fg_u}\n')
+
+print(f'temporal psi f u implies u: {t_psi_f_u_implies_u}')
+print(f'temporal psi f u and u: {t_psi_f_u_and_u}')
+print(f'temporal psi f u: {t_psi_f_u}\n')
+
+print(f'temporal psi g u implies u: {t_psi_g_u_implies_u}')
+print(f'temporal psi g u and u: {t_psi_g_u_and_u}')
+print(f'temporal psi g u: {t_psi_g_u}\n')
+
+p = 5/0
+"""
+#  - - - - -- - - - -  - - -  - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - -- - 
+
+# Each of those 9 categories for the 4 types needs to be split into 6 ways for each of the operators --> Break each into all 6 operators, just do this in the generation
+
+# Then sample to fill each bucket, checking that the samples fulfill the bucket requirements before adding them
+curated = False
+for i in range(non_temporal_u_gt):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if (len(re.findall(r'temp_op_fg',tree))==0 and len(re.findall(r'temp_op_f',tree))==0 and len(re.findall(r'temp_op_g',tree))==0) and len(re.findall(r"'RULE', 'gt'",tree))>0:
+            # count it
+            curated_arr.append(res)
+            curated = True
+
+for i in range(non_temporal_u_lt):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if (len(re.findall(r'temp_op_fg',tree))==0 and len(re.findall(r'temp_op_f',tree))==0 and len(re.findall(r'temp_op_g',tree))==0) and len(re.findall(r"'RULE', 'lt'",tree))>0:
+            # count it
+            curated_arr.append(res)
+            curated = True
+
+for i in range(non_temporal_u_eq):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if (len(re.findall(r'temp_op_fg',tree))==0 and len(re.findall(r'temp_op_f',tree))==0 and len(re.findall(r'temp_op_g',tree))==0) and len(re.findall(r"'RULE', 'eq'",tree))>0:
+            # count it
+            curated_arr.append(res)
+            curated = True
+
+for i in range(non_temporal_u_d_gt):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if (len(re.findall(r'temp_op_fg',tree))==0 and len(re.findall(r'temp_op_f',tree))==0 and len(re.findall(r'temp_op_g',tree))==0) and len(re.findall(r"'RULE', 'd_gt'",tree))>0:
+            # count it
+            curated_arr.append(res)
+            curated = True
+
+for i in range(non_temporal_u_d_lt):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if (len(re.findall(r'temp_op_fg',tree))==0 and len(re.findall(r'temp_op_f',tree))==0 and len(re.findall(r'temp_op_g',tree))==0) and len(re.findall(r"'RULE', 'd_lt'",tree))>0:
+            # count it
+            curated_arr.append(res)
+            curated = True
+
+for i in range(non_temporal_u_d_eq):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if (len(re.findall(r'temp_op_fg',tree))==0 and len(re.findall(r'temp_op_f',tree))==0 and len(re.findall(r'temp_op_g',tree))==0) and len(re.findall(r"'RULE', 'd_eq'",tree))>0:
+            # count it
+            curated_arr.append(res)
+            curated = True
+
+#--
+
+for i in range(non_temporal_u_and_u_gt):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if (len(re.findall(r'temp_op_fg',tree))==0 and len(re.findall(r'temp_op_f',tree))==0 and len(re.findall(r'temp_op_g',tree))==0) and len(re.findall(r"'RULE', 'gt'",tree))>0 and len(re.findall(r"u_and_u",tree))>0:
+            # count it
+            curated_arr.append(res)
+            curated = True
+
+for i in range(non_temporal_u_and_u_lt):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if (len(re.findall(r'temp_op_fg',tree))==0 and len(re.findall(r'temp_op_f',tree))==0 and len(re.findall(r'temp_op_g',tree))==0) and len(re.findall(r"'RULE', 'lt'",tree))>0 and len(re.findall(r"u_and_u",tree))>0:
+            # count it
+            curated_arr.append(res)
+            curated = True
+
+for i in range(non_temporal_u_and_u_eq):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if (len(re.findall(r'temp_op_fg',tree))==0 and len(re.findall(r'temp_op_f',tree))==0 and len(re.findall(r'temp_op_g',tree))==0) and len(re.findall(r"'RULE', 'eq'",tree))>0 and len(re.findall(r"u_and_u",tree))>0:
+            # count it
+            curated_arr.append(res)
+            curated = True
+
+for i in range(non_temporal_u_and_u_d_gt):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if (len(re.findall(r'temp_op_fg',tree))==0 and len(re.findall(r'temp_op_f',tree))==0 and len(re.findall(r'temp_op_g',tree))==0) and len(re.findall(r"'RULE', 'd_gt'",tree))>0 and len(re.findall(r"u_and_u",tree))>0:
+            # count it
+            curated_arr.append(res)
+            curated = True
+
+for i in range(non_temporal_u_and_u_d_lt):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if (len(re.findall(r'temp_op_fg',tree))==0 and len(re.findall(r'temp_op_f',tree))==0 and len(re.findall(r'temp_op_g',tree))==0) and len(re.findall(r"'RULE', 'd_lt'",tree))>0 and len(re.findall(r"u_and_u",tree))>0:
+            # count it
+            curated_arr.append(res)
+            curated = True
+
+for i in range(non_temporal_u_and_u_d_eq):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if (len(re.findall(r'temp_op_fg',tree))==0 and len(re.findall(r'temp_op_f',tree))==0 and len(re.findall(r'temp_op_g',tree))==0) and len(re.findall(r"'RULE', 'd_eq'",tree))>0 and len(re.findall(r"u_and_u",tree))>0:
+            # count it
+            curated_arr.append(res)
+            curated = True
+
+# -- 
+
+for i in range(non_temporal_u_implies_u_gt):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if (len(re.findall(r'temp_op_fg',tree))==0 and len(re.findall(r'temp_op_f',tree))==0 and len(re.findall(r'temp_op_g',tree))==0) and len(re.findall(r"'RULE', 'gt'",tree))>0 and len(re.findall(r"u_implies_u",tree))>0:
+            # count it
+            curated_arr.append(res)
+            curated = True
+
+for i in range(non_temporal_u_implies_u_lt):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if (len(re.findall(r'temp_op_fg',tree))==0 and len(re.findall(r'temp_op_f',tree))==0 and len(re.findall(r'temp_op_g',tree))==0) and len(re.findall(r"'RULE', 'lt'",tree))>0 and len(re.findall(r"u_implies_u",tree))>0:
+            # count it
+            curated_arr.append(res)
+            curated = True
+
+for i in range(non_temporal_u_implies_u_eq):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if (len(re.findall(r'temp_op_fg',tree))==0 and len(re.findall(r'temp_op_f',tree))==0 and len(re.findall(r'temp_op_g',tree))==0) and len(re.findall(r"'RULE', 'eq'",tree))>0 and len(re.findall(r"u_implies_u",tree))>0:
+            # count it
+            curated_arr.append(res)
+            curated = True
+
+for i in range(non_temporal_u_implies_u_d_gt):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if (len(re.findall(r'temp_op_fg',tree))==0 and len(re.findall(r'temp_op_f',tree))==0 and len(re.findall(r'temp_op_g',tree))==0) and len(re.findall(r"'RULE', 'd_gt'",tree))>0 and len(re.findall(r"u_implies_u",tree))>0:
+            # count it
+            curated_arr.append(res)
+            curated = True
+
+for i in range(non_temporal_u_implies_u_d_lt):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if (len(re.findall(r'temp_op_fg',tree))==0 and len(re.findall(r'temp_op_f',tree))==0 and len(re.findall(r'temp_op_g',tree))==0) and len(re.findall(r"'RULE', 'd_lt'",tree))>0 and len(re.findall(r"u_implies_u",tree))>0:
+            # count it
+            curated_arr.append(res)
+            curated = True
+
+for i in range(non_temporal_u_implies_u_d_eq):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if (len(re.findall(r'temp_op_fg',tree))==0 and len(re.findall(r'temp_op_f',tree))==0 and len(re.findall(r'temp_op_g',tree))==0) and len(re.findall(r"'RULE', 'd_eq'",tree))>0 and len(re.findall(r"u_implies_u",tree))>0:
+            # count it
+            curated_arr.append(res)
+            curated = True
+
+#-- done with non-temporal
+#-- beginning of singular temporal psi
+
+# fg
+for i in range(t_psi_fg_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"omega_and_omega",tree))==0 and len(re.findall(r"psi_implies_psi",tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_fg_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"omega_and_omega", tree))==0 and len(re.findall(r"psi_implies_psi", tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_fg_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_fg_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_fg_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_fg_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+# now f
+
+for i in range(t_psi_f_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"omega_and_omega",tree))==0 and len(re.findall(r"psi_implies_psi",tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_f_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"omega_and_omega", tree))==0 and len(re.findall(r"psi_implies_psi", tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_f_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_f_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_f_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_f_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+
+# g
+for i in range(t_psi_g_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"omega_and_omega",tree))==0 and len(re.findall(r"psi_implies_psi",tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_g_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"omega_and_omega", tree))==0 and len(re.findall(r"psi_implies_psi", tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_g_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_g_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_g_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_g_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+#-------------------------------------------------------------------------------------
+
+# fg
+for i in range(t_psi_fg_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"omega_and_omega",tree))==0 and len(re.findall(r"psi_implies_psi",tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_fg_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"omega_and_omega", tree))==0 and len(re.findall(r"psi_implies_psi", tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_fg_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_fg_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_fg_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_fg_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+# now f
+
+for i in range(t_psi_f_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"omega_and_omega",tree))==0 and len(re.findall(r"psi_implies_psi",tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_f_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"omega_and_omega", tree))==0 and len(re.findall(r"psi_implies_psi", tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_f_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_f_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_f_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_f_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+
+# g
+for i in range(t_psi_g_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"omega_and_omega",tree))==0 and len(re.findall(r"psi_implies_psi",tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_g_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"omega_and_omega", tree))==0 and len(re.findall(r"psi_implies_psi", tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_g_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_g_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_g_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_g_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+
+#-------------------------------------------------------------------------------------
+
+# fg
+for i in range(t_psi_fg_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r"u_implies_u",tree))==0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"omega_and_omega",tree))==0 and len(re.findall(r"psi_implies_psi",tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_fg_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r"u_implies_u",tree))==0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"omega_and_omega", tree))==0 and len(re.findall(r"psi_implies_psi", tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_fg_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r"u_implies_u",tree))==0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_fg_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r"u_implies_u",tree))==0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_fg_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_fg_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+# now f
+
+for i in range(t_psi_f_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"omega_and_omega",tree))==0 and len(re.findall(r"psi_implies_psi",tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_f_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"omega_and_omega", tree))==0 and len(re.findall(r"psi_implies_psi", tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_f_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_f_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_f_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_f_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+
+# g
+for i in range(t_psi_g_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"omega_and_omega",tree))==0 and len(re.findall(r"psi_implies_psi",tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_g_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"omega_and_omega", tree))==0 and len(re.findall(r"psi_implies_psi", tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_g_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_g_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_g_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_g_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'omega_and_omega', tree))==0 and len(re.findall(r'psi_implies_psi', tree))==0:
+            curated_arr.append(res)
+            curated = True
 
 
-    print('starting next iteration')
-    fg_count = 0
-    g_count = 0
-    f_count = 0
-    gt_count = 0
-    lt_count = 0
-    eq_count = 0
-    d_gt_count = 0
-    d_lt_count = 0
-    d_eq_count = 0
-    c_hi_count = 0
-    c_mid_count = 0
-    c_lo_count = 0
-    implies_count = 0
-    and_count = 0
-    temporal_count = 0
-    der_count = 0
-    print('all counts reset, right before sample iteration')
+#------------------------------------------------------------------------------------- psi_implies_psi
 
-    # evaluate whether sizes are met
-    for sample in curated_arr:
+# fg
+for i in range(t_psi_implies_psi_fg_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"psi_implies_psi",tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_fg_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"psi_implies_psi", tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_fg_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_fg_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_fg_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_fg_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True ################################################################################################################
+# now f
 
-        fg_found = True if len(re.findall(r'eventually\[\d+,\d+\]globally\(',sample)) + len(re.findall(r'eventually\[\d+,∞\]globally\(', sample)) + len(re.findall(r'eventually\[∞,\d+\]globally\(', sample)) + len(re.findall(r'eventually\[∞,∞\]globally\(', sample)) > 0 else False
-        f_found = True if len(re.findall(r'eventually\[\d+,\d+\]\(',sample)) + len(re.findall(r'eventually\[\d+,∞\]\(', sample)) + len(re.findall(r'eventually\[∞,\d+\]\(', sample)) + len(re.findall(r'eventually\[∞,∞\]\(', sample)) > 0 else False
-        g_found = True if len(re.findall(r'globally\[\d+,\d+\]\(',sample)) + len(re.findall(r'globally\[\d+,∞\]\(', sample)) + len(re.findall(r'globally\[∞,\d+\]\(', sample)) + len(re.findall(r'globally\[∞,∞\]\(', sample)) > 0 else False
+for i in range(t_psi_implies_psi_f_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"psi_implies_psi",tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_f_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"psi_implies_psi", tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_f_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_f_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_f_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_f_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
 
-        c_hi_found = True if len(re.findall(r'c\(high\)', sample)) > 0 else False
-        c_mid_found = True if len(re.findall(r'c\(mid\)', sample)) > 0 else False
-        c_lo_found = True if len(re.findall(r'c\(low\)', sample)) > 0 else False
+# g
+for i in range(t_psi_implies_psi_g_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"psi_implies_psi",tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_g_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"psi_implies_psi", tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_g_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_g_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_g_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_g_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+#-------------------------------------------------------------------------------------
+
+# fg
+for i in range(t_psi_implies_psi_fg_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"psi_implies_psi",tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_fg_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"psi_implies_psi", tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_fg_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_fg_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_fg_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_fg_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res) #####################################################################skdfjdlskfjsdlkfsjlkfjlsj3#########################
+            curated = True
+# now f
+
+for i in range(t_psi_implies_psi_f_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"psi_implies_psi",tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_f_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"psi_implies_psi", tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_f_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_f_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_f_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_f_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+
+# g
+for i in range(t_psi_implies_psi_g_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"psi_implies_psi",tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_g_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"psi_implies_psi", tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_g_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_g_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_g_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_g_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+
+#-------------------------------------------------------------------------------------
+
+# fg
+for i in range(t_psi_implies_psi_fg_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r"u_implies_u",tree))==0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"psi_implies_psi",tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_fg_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r"u_implies_u",tree))==0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"psi_implies_psi", tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_fg_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r"u_implies_u",tree))==0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_fg_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r"u_implies_u",tree))==0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_fg_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_fg_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+# now f
+
+for i in range(t_psi_implies_psi_f_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"psi_implies_psi",tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_f_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"psi_implies_psi", tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_f_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_f_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_f_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_f_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+
+# g
+for i in range(t_psi_implies_psi_g_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"psi_implies_psi",tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_g_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"psi_implies_psi", tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_g_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_g_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_g_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_implies_psi_g_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'psi_implies_psi', tree))>0:
+            curated_arr.append(res)
+            curated = True
+# LEFT OFF HERE LEFT OFF HERE LEFT OFF HERE LEFT OFF HERE
+                                                                                                                                                                        
+                                                                                                                                                                          #--------------------------------------------------------------------------------------
+
+# fg
+for i in range(t_omega_and_omega_fg_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"omega_and_omega",tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_fg_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"omega_and_omega", tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_fg_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_fg_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_fg_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_fg_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True ################################################################################################################
+# now f
+
+for i in range(t_omega_and_omega_f_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"omega_and_omega",tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_f_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"omega_and_omega", tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_f_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_f_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_f_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_f_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+
+# g
+for i in range(t_omega_and_omega_g_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"omega_and_omega",tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_g_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"omega_and_omega", tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_g_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_g_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_g_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_g_u_implies_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_implies_u",tree))>0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+#-------------------------------------------------------------------------------------
+
+# fg
+for i in range(t_omega_and_omega_fg_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"omega_and_omega",tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_fg_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"omega_and_omega", tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_fg_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_fg_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_fg_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_fg_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+# now f
+
+for i in range(t_omega_and_omega_f_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"omega_and_omega",tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_f_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"omega_and_omega", tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_f_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_f_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_psi_omega_and_omega_f_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_f_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+
+# g
+for i in range(t_omega_and_omega_g_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"omega_and_omega",tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_g_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"omega_and_omega", tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_g_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_g_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_g_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_g_u_and_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))>0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+
+#-------------------------------------------------------------------------------------
+
+# fg
+for i in range(t_omega_and_omega_fg_u/6): ######################################################################ooooooooooooooooooooooooooooooooooooooooooo
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r"u_implies_u",tree))==0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"omega_and_omega",tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_fg_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r"u_implies_u",tree))==0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"omega_and_omega", tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_fg_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r"u_implies_u",tree))==0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_fg_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r"u_implies_u",tree))==0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_fg_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_fg_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_fg',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+# now f
+
+for i in range(t_omega_and_omega_f_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"omega_and_omega",tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_f_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"omega_and_omega", tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_f_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_f_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_f_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_f_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_f',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+
+# g
+for i in range(t_omega_and_omega_g_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'gt'",tree)) and len(re.findall(r"omega_and_omega",tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_g_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'lt'",tree)) and len(re.findall(r"omega_and_omega", tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_g_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'eq'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_g_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'd_gt'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_g_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'd_lt'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+for i in range(t_omega_and_omega_g_u/6):
+    curated = False
+    while not curated:
+        res = random.choice(large_dataset)
+        tree = str(parser.parse(res))
+        if len(re.findall(r'temp_op_g',tree))>0 and len(re.findall(r"u_and_u",tree))==0 and len(re.findall(r'u_implies_u',tree))==0 and len(re.findall(r"'RULE', 'd_eq'",tree)) and len(re.findall(r'omega_and_omega', tree))>0:
+            curated_arr.append(res)
+            curated = True
+                                                                                                                                                                        
+
+#--------------------------------------------------------------------------------------
+        fg_found = True if len(re.findall(r'temp_op_fg',tree)) > 0 else False
+        f_found = True if len(re.findall(r'temp_op_f',tree)) > 0 else False
+        g_found = True if len(re.findall(r'temp_op_g',tree)) > 0 else False
+
+        c_hi_found = True if len(re.findall(r'C_HIGH', tree)) > 0 else False
+        c_mid_found = True if len(re.findall(r'C_MID', tree)) > 0 else False
+        c_lo_found = True if len(re.findall(r'C_LOW', tree)) > 0 else False
 
         implies_found = True if len(re.findall(r'implies', sample)) > 0 else False
         and_found = True if len(re.findall(r'and', sample)) > 0 else False
 
-        gt_count_f = 0
-        lt_count_f = 0
-        eq_count_f = 0
-        d_gt_count_f = 0
-        d_lt_count_f = 0
-        d_eq_count_f = 0
+        # for s in signals:
+        gt_found = True if len(re.findall(r"'RULE', 'gt'",tree)) > 0 else False
+        lt_found = True if len(re.findall(r"'RULE', 'lt'",tree)) > 0 else False
+        eq_found = True if len(re.findall(r"'RULE', 'eq'",tree)) > 0 else False
+        d_gt_found = True if len(re.findall(r"'RULE', 'd_gt'",tree)) > 0 else False
+        d_lt_found = True if len(re.findall(r"'RULE', 'd_lt'",tree)) > 0 else False
+        d_eq_found = True if len(re.findall(r"'RULE', 'd_eq'",tree)) > 0 else False
 
-        for signal in signals:
-            gt_count_f += len(re.findall(rf'\({re.escape(signal)}\(t\)>',sample))
-            lt_count_f += len(re.findall(rf'\({re.escape(signal)}\(t\)<',sample))
-            eq_count_f += len(re.findall(rf'\({re.escape(signal)}\(t\)=',sample))
-            d_gt_count_f += len(re.findall(rf'd_{re.escape(signal)}\(t\)>',sample))
-            d_lt_count_f += len(re.findall(rf'd_{re.escape(signal)}\(t\)<',sample))
-            d_eq_count_f += len(re.findall(rf'd_{re.escape(signal)}\(t\)=',sample))
 
-        gt_found = True if gt_count_f > 0 else False
-        lt_found = True if lt_count_f > 0 else False
-        eq_found = True if eq_count_f > 0 else False
-        d_gt_found = True if d_gt_count_f > 0 else False
-        d_lt_found = True if d_lt_count_f > 0 else False
-        d_eq_found = True if d_eq_count_f > 0 else False
-
-        """
-        print(f"sample is: {sample}")
-        print(f'FG: {fg_found}')
-        print(f'G: {g_found}')
-        print(f'F: {f_found}')
-        print(f'>: {gt_found}')
-        print(f'<: {lt_found}')
-        print(f'=: {eq_found}')
-        print(f'd >: {d_gt_found}')
-        print(f'd <: {d_lt_found}')
-        print(f'd =: {d_eq_found}')
-        print(f'c(high): {c_hi_found}')
-        print(f'c(mid): {c_mid_found}')
-        print(f'c(low): {c_lo_found}')
-        print(f'implies: {implies_found}')
-        print(f'and: {and_found}\n')
-        """
-
-        fg_count += 1 if fg_found else 0
-        g_count += 1 if g_found else 0
-        f_count += 1 if f_found else 0
-        gt_count += 1 if gt_found else 0
-        lt_count += 1 if lt_found else 0
-        eq_count += 1 if eq_found else 0
-        d_gt_count += 1 if d_gt_found else 0
-        d_lt_count += 1 if d_lt_found else 0
-        d_eq_count += 1 if d_eq_found else 0
-        c_hi_count += 1 if c_hi_found else 0
-        c_mid_count += 1 if c_mid_found else 0
-        c_lo_count += 1 if c_lo_found else 0
-        implies_count += 1 if implies_found else 0
-        and_count += 1 if and_found else 0
-        temporal_count += 1 if fg_count or g_count or f_count else 0
-        der_count += 1 if d_gt_found or d_lt_found or d_eq_found else 0
-    
-    print('just finished sample iteration')
-
-    print(f'fg_count dksfjslkdjsdljflsdjfl: {fg_count}')
-    print(f'g_count dksfjslkdjsdljflsdjfl: {g_count}')
-    print(f'f_count dksfjslkdjsdljflsdjfl: {f_count}')
-    print(f'gt_count dksfjslkdjsdljflsdjfl: {gt_count}')
-    print(f'lt_count dksfjslkdjsdljflsdjfl: {lt_count}')
-    print(f'eq_count dksfjslkdjsdljflsdjfl: {eq_count}')
-    print(f'd_gt_count dksfjslkdjsdljflsdjfl: {d_gt_count}')
-    print(f'd_lt_count dksfjslkdjsdljflsdjfl: {d_lt_count}')
-    print(f'd_eq_count dksfjslkdjsdljflsdjfl: {d_eq_count}')
-
-    print(f'curated size is: {curated_size}')
-    
-    # done looping through samples
-
-    # temporal should be split evenly between the 3
-    fg_per = fg_count/curated_size
-    f_per = f_count/curated_size
-    g_per = g_count/curated_size
-
-    temporal_split_s = True if abs(fg_per - f_per) < 0.02 and abs(fg_per - g_per) < 0.02 and abs(g_per - f_per) < 0.02 else False
-    temporal_s = True if abs(temporal_count/curated_size - 0.70) < 0.02 else False
-    """
-    print(f'temporal_count/curated_size: {temporal_count/curated_size}')
-    print(f'fg_per: {fg_per}')
-    print(f'g_per: {g_per}')
-    print(f'f_per: {f_per}')
-    """
-
-    # and, implies, u-split
-    and_s = True if abs(and_count/curated_size - 0.5) < 0.02 else False
-    implies_s = True if abs(implies_count/curated_size - 0.4) < 0.02 else False
-    # print(f'implies_count/curated_size: {implies_count/curated_size}')
-    # print(f'and_count/curated_size: {and_count/curated_size}')
-
-    u_split_s = True if abs(gt_count/curated_size - 1/6) < 0.02 and abs(lt_count/curated_size - 1/6) < 0.02 and abs(eq_count/curated_size - 1/6) < 0.02 and abs(d_gt_count/curated_size - 1/6) < 0.02 and abs(d_lt_count/curated_size - 1/6) < 0.02 and abs(d_eq_count/curated_size - 1/6) < 0.02 else False
-    """
-    print(f'gt_count/curated_size: {gt_count/curated_size}')
-    print(f'lt_count/curated_size: {lt_count/curated_size}')
-    print(f'eq_count/curated_size: {eq_count/curated_size}')
-    print(f'd_gt_count/curated_size: {d_gt_count/curated_size}')
-    print(f'd_lt_count/curated_size: {d_lt_count/curated_size}')
-    print(f'd_eq_count/curated_size: {d_eq_count/curated_size}')
-    """
-
-    # derivative split
-    der_s = True if abs(der_count/curated_size - 0.5) < 0.02 else False
-    """
-    print(f'der_count/curated_size: {der_count/curated_size}')
-    print('no good')
-    print(f'temporal_split_s: {temporal_split_s}')
-    print(f'temporal_s: {temporal_s}')
-    print(f'u_split_s: {u_split_s}')
-    print(f'and_s: {and_s}')
-    print(f'implies_s: {implies_s}')
-    print(f'der_s: {der_s}')
-    """
-
-    print('done with one iteration')
-
-    if temporal_split_s and temporal_s and u_split_s and and_s and implies_s and der_s:
-        curated = True
+# Evaluate final statistics of the dataset
 
