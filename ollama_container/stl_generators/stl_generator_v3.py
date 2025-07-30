@@ -229,23 +229,24 @@ for sentence_index, sentence in sentences['input statement'].items():
             
             parsed_STL = parser.parse(extracted_response)
             print(f'parsed STL: {parsed_STL}') 
-            print('-----mmmmmmmmmm------------------------------------------------------------------------------------------')
+          
             # need to add manual layer for checking the signal name
-            # review tree: parsed_STL
-            print('-----llll------------------------------------------------------------------------------------------')
-            signals = re.findall(r"Tree\(Token\('RULE', 's'\), \[Token\('\w+', '\w+'\)\]", parsed_STL)  
-            print('-----kkkkk------------------------------------------------------------------------------------------')
-            d_signals = re.findall(r"Tree\(Token\('RULE', 'd_s'\), \[Token\('\w+', '\w+'\)\]", parsed_STL)
-            print(f'signals: {signals}')
-            print(f'd_signals: {d_signals}')
-            print('---------oooooooooooo--------------------------------------------------------------------------------------')
+            signals = re.findall(r"Tree\(Token\('RULE', 's'\), \[Token\('\w+', '\w+'\)\]\)", str(parsed_STL))  
             for s in signals:
-                print("inside singals")
-                s = s.split("Tree(Token('RULE', 's'), [Token(")
-                print(s)
+                s = s.split("Tree(Token('RULE', 's'), [Token('__ANON_3',")
+                s = re.findall(r"'.*'", s)[0]
+                if s not in signal_names:
+                    raise Exception(f"{s} is not an allowed signal name.")
+
+            d_signals = re.findall(r"Tree\(Token\('RULE', 'd_s'\), \[Token\('\w+', '\w+'\)\]\)", str(parsed_STL))  
             for d in d_signals:
-                d = d.split("Tree(Token('RULE', 'd_s'), [Token(")
-                print(d)
+                if len(d_signals) > 0:
+                    raise Exception(f'THIS IS A D_ TERM: {str(parsed_STL)}')
+
+                d = d.split("Tree(Token('RULE', 'd_s'), [Token('__ANON_3',")
+                d = re.findall(r"'.*'", d)[0]
+                if d not in signal_names:
+                    raise Exception(f"{d} is not an allowed signal name.")
 
             # need to add manual layer for checking the signal name
 
