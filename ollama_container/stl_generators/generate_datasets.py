@@ -53,7 +53,7 @@ def check_time_intervals(sample):
             t_b = interval.split(',')[1][:-1]
             print(f't_a: {t_a}')
             print(f't_b: {t_b}')
-            if t_b <= t_a:
+            if int(t_b) <= int(t_a):
                 return False
     return True
 

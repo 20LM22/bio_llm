@@ -98,7 +98,6 @@ feedback_dict=params['old_prompt_feedback']
 
 ####################################################################################
 # Translation
-# Translation
 ####################################################################################
 
 # do translations of each sentence
@@ -113,7 +112,10 @@ for sentence_index, sentence in sentences['input statement'].items():
     # start the current feedback as nothing at the beginning of each shot
     feedback = ""
 
-    # take m shots at producing a syntactically valid response
+    ####################################################################
+    # M shots at producing valid STL
+    ####################################################################
+
     for i in range(num_shots_per_input_sentence):
         # Each shot ends once max attempts reached or a syntactically correct statement has been reached
         syntax_passed = True
@@ -127,13 +129,6 @@ for sentence_index, sentence in sentences['input statement'].items():
         full_translations.append(thinking_prompt)
         full_translations.append(response)
         
-        """
-        print('------------------------------------------------------------')
-        print(thinking_prompt)
-        print('------------------------------------------------------------')
-        print(response)
-        """
-
         ####################################################################
         # 2a) Produce examples for the STL prompt
         ####################################################################
@@ -168,14 +163,6 @@ for sentence_index, sentence in sentences['input statement'].items():
         response = llm.chat([{"role": "user", "content": stl_prompt}], sampling_params)[0].outputs[0].text
         full_translations.append(stl_prompt)
         full_translations.append(response)
-
-        # print('------------------------------------------------------------')
-        # print(stl_prompt)
-        # print('------------------------------------------------------------')
-        # print(response)
-
-        print('------------------------------------------------------------')
-        print('right after stl response')
 
         ####################################################################
         # 2c) process the stl response
@@ -393,6 +380,27 @@ for sentence_index, sentence in sentences['input statement'].items():
                 except Exception as e:
                     feedback = params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error_message_more_descriptive + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] 
 
+    ## figure out exactly where to put this
+    nl_embedding = embedding_model.encode(sentence, normalize_embeddings=True)
+    stl_embedding = embedding_model.encode(STL2literal(extracted_response, grammar), normalize_embeddings=True)
+    current_sim = cosine_similarity(np.array(literal_embeddings), np.array(nl_embedding))
+
+    # thresholds of similarity
+    if sim > 0.7:
+        f
+    elif sim > 0.5:
+    else:
+        'Your STL response is not very similar to first one
+
+    semantic_prompt = 'You were asked to translate this sentence into STL:\n' + sentence + '\n\nYour best STL translation so far was:\n' + best_stl + '\nExpressed in natural language, it means:\n' + best_literal + '\n\nYour most recent STL translation so far was:\n' + last_stl + '\nExpressed in natural language, it means:\n' + last_literal + '\nGiven this knowledge, can you produce an STL translation that is closer is meaning to the original sentence than your previous translations?\n\n' + 'stl rules' + 'stl examples'
+
+    You responded with this STL:\n' + extracted_response + 'The cosine similarity between the natural language sentence and your STL is ' + sim + '. Can you . '
+
+    latest_translation = ''
+    best_translation = ''
+
+
+    print(nl_embedding)
 
     ####################################################################
     # 4) Translate syntactically correct responses to literal
