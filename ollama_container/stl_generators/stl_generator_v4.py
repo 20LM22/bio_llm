@@ -25,14 +25,13 @@ logging.basicConfig(filename='output.log', level=logging.DEBUG,
 stl_base_instance = STLBase()
 
 class STLResponse(BaseModel):
-     thinking: str
-     input_statement: str
-     output_STL: str
-     explanation: str
+    thinking: str
+    input_statement: str
+    output_STL: str
 guided_decoding_params = GuidedDecodingParams(json=STLResponse.model_json_schema())
 stl_response_json = STLResponse.model_json_schema()
 
-file_name = f'../config/{sys.argv[2]}.json'
+file_name = f'../config/{sys.argv[2]}'
 
 with open(file_name, 'r') as f:
     params = json.load(f)
@@ -46,10 +45,18 @@ sampling_params = SamplingParams(
         max_tokens=params['model_parameters']['max_tokens'],
         guided_decoding=guided_decoding_params)
 
+sampling_params_thinking = SamplingParams(
+        temperature=params['model_parameters']['temperature'],
+        top_p=params['model_parameters']['top_p'],
+        top_k=params['model_parameters']['top_k'],
+        min_p=params['model_parameters']['min_p'],
+        presence_penalty=params['model_parameters']['presence_penalty'],
+        max_tokens=params['model_parameters']['max_tokens'])
+
 model_dtype=params['model_parameters']['model_dtype']
 max_model_len=params['model_parameters']['max_model_len']
 gpu_memory_utilization=params['model_parameters']['gpu_memory_utilization']
-num_translations_per_input_sentence=params['num_translations_per_input_sentence']
+num_shots_per_input_sentence=params['num_shots_per_input_sentence']
 
 model_name = sys.argv[1]
 sentences = pandas.read_csv(params['sentences_csv'])
@@ -69,10 +76,10 @@ except Exception as e:
 # Augment the input file with correct number of stl and literal rows
 translations = sentences.copy()
 
-for i in range(num_translations_per_input_sentence):
+for i in range(num_shots_per_input_sentence):
     translations[f'STL-{i}'] = None
 
-for i in range(num_translations_per_input_sentence):
+for i in range(num_shots_per_input_sentence):
     translations[f'Literal-{i}'] = None
 
 full_translations = []
@@ -87,9 +94,10 @@ llm = LLM(model=model_name,
 final_sentences = []
 
 # feedback dictionary
-feedback_dict=params['feedback']
+feedback_dict=params['old_prompt_feedback']
 
 ####################################################################################
+# Translation
 # Translation
 ####################################################################################
 
@@ -106,7 +114,7 @@ for sentence_index, sentence in sentences['input statement'].items():
     feedback = ""
 
     # take m shots at producing a syntactically valid response
-    for i in range(num_translations_per_input_sentence):
+    for i in range(num_shots_per_input_sentence):
         # Each shot ends once max attempts reached or a syntactically correct statement has been reached
         syntax_passed = True
 
@@ -114,18 +122,23 @@ for sentence_index, sentence in sentences['input statement'].items():
         # 1) Thinking prompt
         ####################################################################
 
-        thinking_prompt = params['thinking_prompt']['prompt_1'] + '\n' + sentence + '\n' + params['thinking_prompt']['prompt_2']
-        response = llm.chat([{"role": "user", "content": thinking_prompt}])[0].outputs[0].text
+        thinking_prompt = params['thinking_prompt']['prompt_1'] + '\n' + sentence + '\n\n' + params['thinking_prompt']['prompt_2']
+        response = llm.chat([{"role": "user", "content": thinking_prompt}], sampling_params_thinking)[0].outputs[0].text
         full_translations.append(thinking_prompt)
         full_translations.append(response)
         
+        """
+        print('------------------------------------------------------------')
         print(thinking_prompt)
+        print('------------------------------------------------------------')
         print(response)
+        """
 
         ####################################################################
         # 2a) Produce examples for the STL prompt
         ####################################################################
 
+        samples = []
         for i in range(params['num_examples']):
             samples.append(random.choice(curated_dataset))
 
@@ -143,7 +156,7 @@ for sentence_index, sentence in sentences['input statement'].items():
 
         examples = ""
         for _id, sample in enumerate(samples):
-            examples += (f"\n{{'thinking': '<thinking>I need to translate the natural language into STL...',\n'input_sentence:' '{literal_translations[_id]}',\n'output_STL': '{sample}'}}\n")
+            examples += (f"\n{{'thinking:' 'I need to translate this natural language into STL...',\n'input_sentence:' '{literal_translations[_id]}',\n'output_STL': '{sample}'}}\n")
 
         examples = params['example_prompt']['prompt_1'] + examples + params['example_prompt']['prompt_2']
 
@@ -151,13 +164,18 @@ for sentence_index, sentence in sentences['input statement'].items():
         # 2b) STL Prompt
         ####################################################################
 
-        stl_prompt = params['stl_prompt']['prompt_1'] + "\n\n" + examples
+        stl_prompt = params['stl_prompt']['prompt_1'] + '\n' + sentence + '\n\n' + params['stl_prompt']['prompt_2'] + "\n\n" + examples
         response = llm.chat([{"role": "user", "content": stl_prompt}], sampling_params)[0].outputs[0].text
         full_translations.append(stl_prompt)
         full_translations.append(response)
 
-        print(stl_prompt)
-        print(response)
+        # print('------------------------------------------------------------')
+        # print(stl_prompt)
+        # print('------------------------------------------------------------')
+        # print(response)
+
+        print('------------------------------------------------------------')
+        print('right after stl response')
 
         ####################################################################
         # 2c) process the stl response
@@ -166,10 +184,15 @@ for sentence_index, sentence in sentences['input statement'].items():
         # extract stl, if unsuccessful, put none into translations dataframe entry
         try:
             output_dict = json.loads(response)
-            extracted_response = output_dict["output_stl"]
+            # print(f'output_dict: {output_dict}')
+            extracted_response = output_dict["output_STL"]
             translations.at[sentence_index, f'stl-{i}'] = extracted_response
-        except exception as e:
+            print('------------------------------------------------------------')
+            print('successfully extracted')
+        except Exception as e:
             translations.at[sentence_index, f'stl-{i}'] = "stl could not be extracted"
+            print('------------------------------------------------------------')
+            print('extraction failed')
             continue # if no stl can be extracted, then just go to the next shot
             
         # parse stl, if unsuccessful, put none into translations dataframe entry
@@ -184,6 +207,9 @@ for sentence_index, sentence in sentences['input statement'].items():
                 if s not in signal_names:
                     raise Exception(f"{s} is not an allowed signal name.")
 
+            print('------------------------------------------------------------')
+            print('successfully parsed')
+            
             syntactically_correct_responses.append((extracted_response, sentence_index, i))
             translations.at[sentence_index, f'STL-{i}'] = extracted_response
         except Exception as e:
@@ -194,6 +220,9 @@ for sentence_index, sentence in sentences['input statement'].items():
                 translations.at[sentence_index, f'STL-{i}'] = "STL could not be parsed"
             syntactically_correct_responses.append(("STL could not be parsed", sentence_index, i))
             
+            print('------------------------------------------------------------')
+            print('parsing failed')
+            
             error_feedback = ''
             try:
                 # The response ends up here if it there is a syntax problem --> thus feedback should be constructed at this stage
@@ -202,16 +231,20 @@ for sentence_index, sentence in sentences['input statement'].items():
                 error_char = str(e).split('\n')[0].split(',')[1].split(' ')[5]
                 error_message_more_descriptive = str(e).split('Expected')[0]
                 feedback = feedback_dict['parsing_error_0'] + error_char + feedback_dict['parsing_error_1'] + error_message_more_descriptive + '\n[END FEEDBACK]'
-            except:
+            except Exception as e:
                 pass
-
+        
         ####################################################################
         # 3) Feedback prompts for this shot if necessary
         ####################################################################
 
-	    feedback_attempts_remaining = params["num_correction_attempts_per_shot"]
-
+        feedback_attempts_remaining = params["num_correction_attempts_per_shot"]
+        
         while not syntax_passed and feedback_attempts_remaining > 0:
+            
+            print('------------------------------------------------------------')
+            print('retrying with feedback')
+            
             feedback_attempts_remaining -= 1
             syntax_passed = True
 
@@ -221,7 +254,9 @@ for sentence_index, sentence in sentences['input statement'].items():
             full_translations.append(feedback_prompt)
             full_translations.append(response)
 
+            print('------------------------------------------------------------')
             print(feedback_prompt)
+            print('------------------------------------------------------------')
             print(response)
             
             # extract stl, if unsuccessful, put none into translations dataframe entry
@@ -229,7 +264,7 @@ for sentence_index, sentence in sentences['input statement'].items():
                 output_dict = json.loads(response)
                 extracted_response = output_dict["output_stl"]
                 translations.at[sentence_index, f'stl-{i}'] = extracted_response
-            except exception as e:
+            except Exception as e:
                 translations.at[sentence_index, f'stl-{i}'] = "stl could not be extracted"
                 continue # if no stl can be extracted, then just go to the next shot
             
@@ -245,9 +280,9 @@ for sentence_index, sentence in sentences['input statement'].items():
                     if s not in signal_names:
                         raise Exception(f"{s} is not an allowed signal name.")
 
-              syntactically_correct_responses.append((extracted_response, sentence_index, i))
-              translations.at[sentence_index, f'STL-{i}'] = extracted_response
-           except Exception as e:
+                syntactically_correct_responses.append((extracted_response, sentence_index, i))
+                translations.at[sentence_index, f'STL-{i}'] = extracted_response
+            except Exception as e:
                 # Syntax check failed
                 syntax_passed = False
 
@@ -264,7 +299,7 @@ for sentence_index, sentence in sentences['input statement'].items():
                     error_char = str(e).split('\n')[0].split(',')[1].split(' ')[5]
                     error_message_more_descriptive = str(e).split('Expected')[0]
                     feedback = feedback_dict['parsing_error_0'] + error_char + feedback_dict['parsing_error_1'] + error_message_more_descriptive + '\n[END FEEDBACK]'
-                except:
+                except Exception as e:
                     feedback = ''
 
     ####################################################################
@@ -272,7 +307,7 @@ for sentence_index, sentence in sentences['input statement'].items():
     ####################################################################
 
     print('####################################################################')
-    print('# 4) Translate syntactically correct responses to literal')
+    print('# Sentence Done')
     print('####################################################################')
     print(f'syntactically_correct_responses: {syntactically_correct_responses}')
 
@@ -294,7 +329,6 @@ for sentence_index, sentence in sentences['input statement'].items():
             label1 = 'Literal-'+ str(stl[2])
             translations.at[sentence_index, label1] = "Literal could not be generated"
 
-    # these literal translations need to be evaluated for semantic integrity
     # obtain embeddings of the original sentence and all of the literal translations
     literal_embeddings = []
     nl_embedding = embedding_model.encode(sentence, normalize_embeddings=True)

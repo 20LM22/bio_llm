@@ -232,13 +232,13 @@ def STL2literal(input_sentence, grammar):
     p = Lark(grammar) # TODO: this is also slow, improve if possible
     
     # TODO: remove this once done testing
-    input_sentence = 'd_IL6(t)>d_c(high)andIL8(t)>c(high)'
+    # input_sentence = 'd_IL6(t)>d_c(high)andIL8(t)>c(high)'
 
     tree = p.parse(input_sentence)
     tester = Test() # TODO: this is redundant, see if this can be improved
     tester.visit(tree)
 
-    print(f'the tree is: {tree}')
+    # print(f'the tree is: {tree}')
 
     tester.sentence = ' '.join(tester.sentence)
 
