@@ -76,11 +76,12 @@ except Exception as e:
 # Augment the input file with correct number of stl and literal rows
 translations = sentences.copy()
 
-for i in range(num_shots_per_input_sentence):
-    translations[f'STL-{i}'] = None
+# columns needed: STL-shot{number of shots per sentence}-S{number of semantic attempts per shot+1}-F{number of feedback attempts during each semantic attempt+1}
 
 for i in range(num_shots_per_input_sentence):
-    translations[f'Literal-{i}'] = None
+    for j in range(params['num_semantic_checks']+1):
+        for k in range(params['num_correction_attempts_per_shot']+1):
+            translations[f'STL-shot{i}-S{j}-F{k}'] = None
 
 # Create the LLM for this model
 llm = LLM(model=model_name,
@@ -92,7 +93,7 @@ llm = LLM(model=model_name,
 feedback_dict=params['old_prompt_feedback']
 
 # final output dictionary
-results = defaultdict(str)
+results = defaultdict(list)
 
 ####################################################################################
 # Helper function: generate examples
@@ -126,46 +127,49 @@ def generate_example_prompt(num_examples):
 ####################################################################################
 
 def get_hole_feedback(e):
-    error_char = int(str(e).split('\n')[0].split(',')[1].split(' ')[5]) - 1
-    left_bound_found = False
-    right_bound_found = False
-    left_bound = 0
-    right_bound = 0
-
-    print(f'error char: {error_char}')
-    print(f'extracted_response[error_char]: {extracted_response[error_char]}')
-
-    # search to left and right for nearest } ) ]
-    if extracted_response[error_char] == '(' or extracted_response[error_char] == '[' or extracted_response[error_char] == '{':
-        left_bound_found = True
-        left_bound = error_char
-    else:
-        left_bound = error_char - 1
+    try:
+        error_char = re.findall(r'at line \d+ col \d+', e)[0].split(' ')[4] - 1
+        # error_char = int(str(e).split('\n')[0].split(',')[1].split(' ')[5]) - 1
         left_bound_found = False
-        while left_bound >= 0:
-            if extracted_response[left_bound] == '{' or extracted_response[left_bound] == '[' or extracted_response[left_bound] == '(':
-                left_bound_found = True
-                break
-            left_bound -= 1
-
-    if extracted_response[error_char] == ')' or extracted_response[error_char] == ']' or extracted_response[error_char] == '}':
-        right_bound_found = True
-        right_bound = error_char
-    else:
         right_bound_found = False
-        right_bound = error_char + 1
-    while right_bound < len(extracted_response):
-        if extracted_response[right_bound] == '}' or extracted_response[right_bound] == ']' or extracted_response[right_bound] == ')':
+        left_bound = 0
+        right_bound = 0
+
+        print(f'error char: {error_char}')
+        print(f'extracted_response[error_char]: {extracted_response[error_char]}')
+
+        # search to left and right for nearest } ) ]
+        if extracted_response[error_char] == '(' or extracted_response[error_char] == '[' or extracted_response[error_char] == '{':
+            left_bound_found = True
+            left_bound = error_char
+        else:
+            left_bound = error_char - 1
+            left_bound_found = False
+            while left_bound >= 0:
+                if extracted_response[left_bound] == '{' or extracted_response[left_bound] == '[' or extracted_response[left_bound] == '(':
+                    left_bound_found = True
+                    break
+                left_bound -= 1
+
+        if extracted_response[error_char] == ')' or extracted_response[error_char] == ']' or extracted_response[error_char] == '}':
             right_bound_found = True
-            break
-            right_bound += 1
+            right_bound = error_char
+        else:
+            right_bound_found = False
+            right_bound = error_char + 1
+        while right_bound < len(extracted_response):
+            if extracted_response[right_bound] == '}' or extracted_response[right_bound] == ']' or extracted_response[right_bound] == ')':
+                right_bound_found = True
+                break
+                right_bound += 1
 
-    if left_bound_found and right_bound_found:
-        end_response = extracted_response[right_bound+1:] if right_bound < len(extracted_response)-1 else ''
-        extracted_response = extracted_response[:left_bound] + '<??>' + end_response
-        return params['feedback_prompt']['hole_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['hole_prompt_2'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['hole_prompt_3']
-
-    return None
+        if left_bound_found and right_bound_found:
+            end_response = extracted_response[right_bound+1:] if right_bound < len(extracted_response)-1 else ''
+            extracted_response = extracted_response[:left_bound] + '<??>' + end_response
+            return params['feedback_prompt']['hole_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['hole_prompt_2'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['hole_prompt_3']
+        return None
+    except Exception as e:
+        return None
 
 ####################################################################################
 # Helper function: check signal names
@@ -236,12 +240,19 @@ def check_json(extracted_response):
 
 def default_feedback(e):
     try:
-        error_char = str(e).split('\n')[0].split(',')[1].split(' ')[5]
+        error_char = re.findall(r'at line \d+ col \d+', e)[0].split(' ')[4] - 1
+        # error_char = str(e).split('\n')[0].split(',')[1].split(' ')[5]
         error_message_more_descriptive = str(e).split('Expected')[0]
         return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error_message_more_descriptive + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] 
     except Exception as e:
         return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2a'] + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] 
         
+"""
+# Minimal example
+input_json = 
+
+print(f'error response: {check_json(input_json)}')
+"""
 
 ####################################################################################
 # Translation of each sentence
@@ -298,8 +309,10 @@ for sentence_index, sentence in sentences['input statement'].items():
         try:
             extracted_response = json.loads(response)["output_STL"]
             print('stl extracted')
+            translations.at[sentence_index, f'STL-shot{i}-S0-F0'] = extracted_response
         except Exception as e:
             print('extraction failed')
+            translations.at[sentence_index, f'STL-shot{i}-S0-F0'] = "STL could not be extracted"
             continue # if no stl can be extracted, then just go to the next shot
             
         # Try parsing
@@ -308,7 +321,10 @@ for sentence_index, sentence in sentences['input statement'].items():
             parsed_stl = parser.parse(extracted_response)
             syntax_passed = True
             print('stl parsed')
+            translations.at[sentence_index, f'STL-shot{i}-S0-F0'] = extracted_response
         except Exception as e:
+            if translations.at[sentence_index, f'STL-shot{i}-S0-F0'] != 'STL could not be extracted':
+                translations.at[sentence_index, f'STL-shot{i}-S0-F0'] = "STL could not be parsed"
             syntax_passed = False 
             print('parsing failed')
 
@@ -320,6 +336,8 @@ for sentence_index, sentence in sentences['input statement'].items():
             # (3) Bad signal names
             # (4) Fill in hole
             # (5) None of the above --> just give it the parsing error message
+
+            print(f'extracted_response: {extracted_response}')
 
             if check_json(extracted_response) is not None:
                 print('feedback is check json')
@@ -342,9 +360,11 @@ for sentence_index, sentence in sentences['input statement'].items():
         ####################################################################
 
         feedback_attempts_remaining = params["num_correction_attempts_per_shot"]
+        count = 0
         
         while not syntax_passed and feedback_attempts_remaining > 0:
-             
+            count += 1
+
             feedback_attempts_remaining -= 1
             syntax_passed = False
 
@@ -354,8 +374,10 @@ for sentence_index, sentence in sentences['input statement'].items():
             # Try extraction
             try:
                 extracted_response = json.loads(response)["output_STL"]
+                translations.at[sentence_index, f'STL-shot{i}-S0-F{count}'] = extracted_response
                 print('stl extracted')
             except Exception as e:
+                translations.at[sentence_index, f'STL-shot{i}-S0-F{count}'] = "STL could not be extracted"
                 print('extraction failed')
                 syntax_passed =  False
                 break # if no stl can be extracted, then just go to the next shot
@@ -366,7 +388,10 @@ for sentence_index, sentence in sentences['input statement'].items():
                 parsed_stl = parser.parse(extracted_response)    
                 print('stl parsed')
                 syntax_passed = True
+                translations.at[sentence_index, f'STL-shot{i}-S0-F{count}'] = extracted_response
             except Exception as e:
+                if translations.at[sentence_index, f'STL-shot{i}-S0-F{count}'] != 'STL could not be extracted':
+                    translations.at[sentence_index, f'STL-shot{i}-S0-F{count}'] = "STL could not be parsed"
                 syntax_passed = False 
                 print('parsing failed')
 
@@ -416,10 +441,12 @@ for sentence_index, sentence in sentences['input statement'].items():
 
             # extract STL
             try:
-                extracted_response = json.loads(response)["output_stl"]
+                extracted_response = json.loads(response)["output_STL"]
                 print('STL extracted')
+                translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F0'] = extracted_response
             except Exception as e:
                 print('extraction failed')
+                translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F0'] = "STL could not be extracted"
                 continue # if no stl can be extracted, then no need to update the best/most recent stl --> just go to next iteration
 
             # parse STL
@@ -427,8 +454,11 @@ for sentence_index, sentence in sentences['input statement'].items():
             try:            
                 parsed_stl = parser.parse(extracted_response)    
                 print('STL parsed')
+                translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F0'] = extracted_response
                 syntax_passed = True
             except Exception as e:
+                if translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F0'] != 'STL could not be extracted':
+                    translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F0'] = "STL could not be parsed"
                 syntax_passed = False 
                 print('parsing failed')
 
@@ -450,8 +480,10 @@ for sentence_index, sentence in sentences['input statement'].items():
 
             feedback_attempts_remaining = params["num_correction_attempts_per_shot"]
  
+            count = 0
             while not syntax_passed and feedback_attempts_remaining > 0:
-            
+                count += 1
+
                 feedback_attempts_remaining -= 1
                 syntax_passed = False
 
@@ -462,8 +494,10 @@ for sentence_index, sentence in sentences['input statement'].items():
                 try:
                     extracted_response = json.loads(response)["output_stl"]
                     print('STL extracted')
+                    translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F{count}'] = extracted_response
                 except Exception as e:
                     print('extraction failed')
+                    translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F{count}'] = "STL could not be extracted"
                     continue # if no stl can be extracted, then no need to update the best/most recent stl --> just go to next iteration
 
                 # parse STL
@@ -472,8 +506,11 @@ for sentence_index, sentence in sentences['input statement'].items():
                     parsed_stl = parser.parse(extracted_response)    
                     print('STL parsed')
                     syntax_passed = True
+                    translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F{count}'] = extracted_response
                 except Exception as e:
                     syntax_passed = False 
+                    if translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F{count}'] != 'STL could not be extracted':
+                        translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F{count}'] = "STL could not be parsed"
                     print('parsing failed')
 
                     if check_json(extracted_response) is not None:
@@ -514,7 +551,7 @@ for sentence_index, sentence in sentences['input statement'].items():
                 print(f'out of attempts at feedback but still wrong, moving onto next shot')
 
         # Done with the semantic checks - record the best response as the one to take for this shot
-        results[sentence].append(extracted_response)
+        # results[sentence].append(extracted_response) # at this point, extracted_response is the best response
 
         all_responses_this_sentence.append(responses_this_shot)
         print('####################################################################')
@@ -523,7 +560,7 @@ for sentence_index, sentence in sentences['input statement'].items():
         print(f"all results for this shot: {responses_this_shot}")
         print(f'results: {results}')
 
-    all_responses_all_sentences.append(all_responses_this_shot)
+    all_responses_all_sentences.append(all_responses_this_sentence)
     print('####################################################################')
     print(f'# All Shots Done for sentence: {sentence}')
     print('####################################################################')
@@ -532,9 +569,12 @@ model_name = model_name.split('/')[1]
 
 # writing to pkl
 try:
-    with open(f'../pkl/results_{model_name}.pkl', 'wb') as results:
-        pickle.dump(results, results)
-    with open(f'../pkl/all_responses_all_sentences_{model_name}.pkl', 'wb') as results:
-        pickle.dump(responses_this_shot, results)
+    # with open(f'../pkl/results_{model_name}.pkl', 'wb') as r:
+    #     pickle.dump(results, r)
+    with open(f'../pkl/all_responses_all_sentences_{model_name}.pkl', 'wb') as r:
+        pickle.dump(all_responses_all_sentences, r)
+    with open(f'../pkl/translations_{model_name}.pkl', 'wb') as r:
+        pickle.dump(translations, r)
 except Exception as e:
+    print("there was a pickle problem")
     print(e)
