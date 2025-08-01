@@ -154,7 +154,7 @@ for (index, row) in translations.iterrows():
     table_arr.append(shot_x_semantic_comparisons)
 
 res = pandas.concat(table_arr, ignore_index=False)
-res.to_csv(f'../stats/{model_name}/sim_diff_across_attempts.csv', index=False)
+res.to_csv(f'../stats/{model_name}/sim_diff_across_semantic_attempts.csv', index=False)
 
 #######################################################################################################################
 # Table for each shot: report the best cosine sim.
@@ -206,7 +206,7 @@ for index, row in translations.iterrows():
             row[f'shot{i} sim'] = max(sim)
             row[f'shot{i}'] = row_subset_filtered[np.argmax(sim)]
 
-best_resp.to_csv(f'../stats/{model_name}/sim_diff_across_attempts.csv', index=False)
+best_resp.to_csv(f'../stats/{model_name}/best_response_across_shots.csv', index=False)
 
 #######################################################################################################################
 # Produce similarity heatmaps
