@@ -82,32 +82,169 @@ for i in range(num_shots_per_input_sentence):
 for i in range(num_shots_per_input_sentence):
     translations[f'Literal-{i}'] = None
 
-full_translations = []
-
 # Create the LLM for this model
 llm = LLM(model=model_name,
     dtype=model_dtype,
     max_model_len=max_model_len,
     gpu_memory_utilization=gpu_memory_utilization)
 
-# storage for output sentences
-final_sentences = []
-
 # feedback dictionary
 feedback_dict=params['old_prompt_feedback']
 
+# final output dictionary
+results = {}
+
 ####################################################################################
-# Translation
+# Helper function: generate examples
 ####################################################################################
 
-# do translations of each sentence
+def generate_example_prompt(num_examples):
+    samples = []
+    for i in range(num_examples):
+        samples.append(random.choice(curated_dataset))
+
+    for _id, sample in enumerate(samples):
+        sample = sample.replace('and',' and ')
+        sample = sample.replace('<',' < ')
+        sample = sample.replace('>',' > ')
+        sample = sample.replace('-',' - ')
+        sample = sample.replace('implies',' implies ')
+        samples[_id] = sample
+
+    literal_translations = []
+    for _id, sample in enumerate(samples):
+        literal_translations.append(STL2literal(sample, grammar))
+
+    examples = ""
+    for _id, sample in enumerate(samples):
+        examples += (f"\n{{'thinking:' 'I need to translate this natural language into STL...',\n'input_sentence:' '{literal_translations[_id]}',\n'output_STL': '{sample}'}}\n")
+
+    return params['example_prompt']['prompt_1'] + examples + params['example_prompt']['prompt_2']
+
+####################################################################################
+# Helper function: get hole feedback
+####################################################################################
+
+def get_hole_feedback(e):
+    error_char = int(str(e).split('\n')[0].split(',')[1].split(' ')[5]) - 1
+    left_bound_found = False
+    right_bound_found = False
+    left_bound = 0
+    right_bound = 0
+
+    print(f'error char: {error_char}')
+    print(f'extracted_response[error_char]: {extracted_response[error_char]}')
+
+    # search to left and right for nearest } ) ]
+    if extracted_response[error_char] == '(' or extracted_response[error_char] == '[' or extracted_response[error_char] == '{':
+        left_bound_found = True
+        left_bound = error_char
+    else:
+        left_bound = error_char - 1
+        left_bound_found = False
+        while left_bound >= 0:
+            if extracted_response[left_bound] == '{' or extracted_response[left_bound] == '[' or extracted_response[left_bound] == '(':
+                left_bound_found = True
+                break
+            left_bound -= 1
+
+    if extracted_response[error_char] == ')' or extracted_response[error_char] == ']' or extracted_response[error_char] == '}':
+        right_bound_found = True
+        right_bound = error_char
+    else:
+        right_bound_found = False
+        right_bound = error_char + 1
+    while right_bound < len(extracted_response):
+        if extracted_response[right_bound] == '}' or extracted_response[right_bound] == ']' or extracted_response[right_bound] == ')':
+            right_bound_found = True
+            break
+            right_bound += 1
+
+    if left_bound_found and right_bound_found:
+        end_response = extracted_response[right_bound+1:] if right_bound < len(extracted_response)-1 else ''
+        extracted_response = extracted_response[:left_bound] + '<??>' + end_response
+        return params['feedback_prompt']['hole_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['hole_prompt_2'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['hole_prompt_3']
+
+    return None
+
+####################################################################################
+# Helper function: check signal names
+####################################################################################
+
+def check_signal_names(parsed_stl):
+    signals = re.findall(r"tree\(token\('rule', 's'\), \[token\('\w+', '\w+'\)\]\)", str(parsed_stl))  
+    for s in signals:
+        s = s.split("tree(token('rule', 's'), [token('__anon_3',")
+        s = re.findall(r"'.*'", s)[0]
+        if s not in signal_names:
+            response = f"{s} is not an allowed signal name." # TODO: expand into feedback prompt
+            return response
+    return None
+
+####################################################################################
+# Helper function: check parentheses
+####################################################################################
+
+def check_parentheses(extracted_response):
+    left_count = re.findall(r"\(", extracted_response)
+    right_count = re.findall(r"\)", extracted_response)
+    if left_count != right_count:
+        response = f'Your response has an unmatched number of parentheses. There are {left_count} left parentheses and {right_count} right parentheses. Fix this.'
+        return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + response + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] 
+
+    left_count = re.findall(r"\{", extracted_response)
+    right_count = re.findall(r"\}", extracted_response)
+    if left_count != right_count:
+        response = f'Unmatched number of curly brackets. There are {left_count} left curly brackets and {right_count} right curly brackets.'
+        return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + response + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] 
+
+    left_count = re.findall(r"\[", extracted_response)
+    right_count = re.findall(r"\]", extracted_response)
+    if left_count != right_count:
+        response = f'Unmatched number of square brackets. There are {left_count} left square brackets and {right_count} right square brackets.'
+        return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + response + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] 
+
+    return None
+
+####################################################################################
+# Helper function: check json
+####################################################################################
+
+def check_json(extracted_response):
+    try:
+        json.loads(extracted_response)
+        if extracted_response in '{' and extracted_response in '}' and extracted_response in ':':
+            error = 'It looks like you formatted the output STL incorrectly. The JSON format should have three fields: (1) your thinking, (2) the input sentence, and (3) your output STL. However, the output STL field should not contain JSON, it should be a single string. Here is an example of correct formatting:\n' + generate_example_prompt(1)
+
+            return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] 
+
+        return None
+    except Exception as e:
+        return None
+
+####################################################################################
+# Helper function: produce default error feedback
+####################################################################################
+
+def default_feedback(e):
+    try:
+        error_char = str(e).split('\n')[0].split(',')[1].split(' ')[5]
+        error_message_more_descriptive = str(e).split('Expected')[0]
+        return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error_message_more_descriptive + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] 
+    except Exception as e:
+        return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2a'] + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] 
+        
+
+####################################################################################
+# Translation of each sentence
+####################################################################################
+
 for sentence_index, sentence in sentences['input statement'].items():
-    # Under new scheme, each sentence still gets m shots at translation, but each 'shot' can have up to n attempts at correction
+    # Under new scheme, each sentence gets m shots at translation, but each 'shot' can have up to n attempts at correction
     # Prompt order:
-    # Thinking --> STL --> Feedback --> Feedback --> Feedback 
+    # Thinking --> STL --> Feedback --> Feedback --> Feedback --> Semantic --> Feedback --> Feedback --> Feedback --> Semantic --> etc.
 
-    # accumulate syntactically valid responses across each shot (so max size of syntactically correct responses is m)
-    syntactically_correct_responses = []
+    nl_embedding = embedding_model.encode(sentence, normalize_embeddings=True)
 
     # start the current feedback as nothing at the beginning of each shot
     feedback = ""
@@ -118,7 +255,7 @@ for sentence_index, sentence in sentences['input statement'].items():
 
     for i in range(num_shots_per_input_sentence):
         # Each shot ends once max attempts reached or a syntactically correct statement has been reached
-        syntax_passed = True
+        syntax_passed = False
 
         ####################################################################
         # 1) Thinking prompt
@@ -126,150 +263,54 @@ for sentence_index, sentence in sentences['input statement'].items():
 
         thinking_prompt = params['thinking_prompt']['prompt_1'] + '\n' + sentence + '\n\n' + params['thinking_prompt']['prompt_2']
         response = llm.chat([{"role": "user", "content": thinking_prompt}], sampling_params_thinking)[0].outputs[0].text
-        full_translations.append(thinking_prompt)
-        full_translations.append(response)
         
         ####################################################################
-        # 2a) Produce examples for the STL prompt
+        # 2a) STL Prompt
         ####################################################################
 
-        samples = []
-        for i in range(params['num_examples']):
-            samples.append(random.choice(curated_dataset))
-
-        for _id, sample in enumerate(samples):
-            sample = sample.replace('and',' and ')
-            sample = sample.replace('<',' < ')
-            sample = sample.replace('>',' > ')
-            sample = sample.replace('-',' - ')
-            sample = sample.replace('implies',' implies ')
-            samples[_id] = sample
-
-        literal_translations = []
-        for _id, sample in enumerate(samples):
-            literal_translations.append(STL2literal(sample, grammar))
-
-        examples = ""
-        for _id, sample in enumerate(samples):
-            examples += (f"\n{{'thinking:' 'I need to translate this natural language into STL...',\n'input_sentence:' '{literal_translations[_id]}',\n'output_STL': '{sample}'}}\n")
-
-        examples = params['example_prompt']['prompt_1'] + examples + params['example_prompt']['prompt_2']
-
-        ####################################################################
-        # 2b) STL Prompt
-        ####################################################################
-
-        stl_prompt = params['stl_prompt']['prompt_1'] + '\n' + sentence + '\n\n' + params['stl_prompt']['prompt_2'] + "\n\n" + examples
+        stl_prompt = params['stl_prompt']['prompt_1'] + '\n' + sentence + '\n\n' + params['stl_prompt']['prompt_2'] + "\n\n" + generate_example_prompt(params['num_examples'])
         response = llm.chat([{"role": "user", "content": stl_prompt}], sampling_params)[0].outputs[0].text
-        full_translations.append(stl_prompt)
-        full_translations.append(response)
 
         ####################################################################
-        # 2c) process the stl response
+        # 2b) Process the STL response
         ####################################################################
-        
-        # extract stl, if unsuccessful, put none into translations dataframe entry
+       
+        # Try extraction
         try:
-            output_dict = json.loads(response)
-            # print(f'output_dict: {output_dict}')
-            extracted_response = output_dict["output_STL"]
-            translations.at[sentence_index, f'stl-{i}'] = extracted_response
-            print('------------------------------------------------------------')
+            extracted_response = json.loads(response)["output_STL"]
             print('successfully extracted')
         except Exception as e:
-            translations.at[sentence_index, f'stl-{i}'] = "stl could not be extracted"
-            print('------------------------------------------------------------')
             print('extraction failed')
             continue # if no stl can be extracted, then just go to the next shot
             
-        # parse stl, if unsuccessful, put none into translations dataframe entry
+        # Try parsing
+        parsed_stl = ''
         try:            
-            parsed_stl = parser.parse(extracted_response)
-          
-            # need to add manual layer for checking the signals name
-            signals = re.findall(r"tree\(token\('rule', 's'\), \[token\('\w+', '\w+'\)\]\)", str(parsed_stl))  
-            for s in signals:
-                s = s.split("tree(token('rule', 's'), [token('__anon_3',")
-                s = re.findall(r"'.*'", s)[0]
-                if s not in signal_names:
-                    raise Exception(f"{s} is not an allowed signal name.")
-
-            print('------------------------------------------------------------')
+            parsed_stl = parser.parse(extracted_response)    
             print('successfully parsed')
-            
-            syntactically_correct_responses.append((extracted_response, sentence_index, i))
-            translations.at[sentence_index, f'STL-{i}'] = extracted_response
         except Exception as e:
-            # Syntax check failed
-            syntax_passed = False
-
-            if translations.at[sentence_index, f'STL-{i}'] != 'STL could not be extracted':
-                translations.at[sentence_index, f'STL-{i}'] = "STL could not be parsed"
-            syntactically_correct_responses.append(("STL could not be parsed", sentence_index, i))
-            
-            print('------------------------------------------------------------')
+            syntax_passed = False 
             print('parsing failed')
-            
+
             error_feedback = ''
-            try:
-                # The response ends up here if it there is a syntax problem --> thus feedback should be constructed at this stage 
-                # TODO: THIS IS WHERE MORE COMPLEX FEEDBACK CAN BE CONSTRUCTED
-                    
-                print(f"extracted response: {extracted_response}")
-                
-                # locate hole
-                error_char = int(str(e).split('\n')[0].split(',')[1].split(' ')[5]) - 1
-                left_bound_found = False
-                right_bound_found = False
-                left_bound = 0
-                right_bound = 0
+                   
+            # Types of feedback:
+            # (1) JSON-like
+            # (2) Wrong parentheses
+            # (3) Bad signal names
+            # (4) Fill in hole
+            # (5) None of the above --> just give it the parsing error message
 
-                print(f'error char: {error_char}')
-                print(f'extracted_response[error_char]: {extracted_response[error_char]}')
-
-                # search to left and right for nearest } ) ]
-                if extracted_response[error_char] == '(' or extracted_response[error_char] == '[' or extracted_response[error_char] == '{':
-                    print("error was a left bound")
-                    left_bound_found = True
-                    left_bound = error_char
-                else:
-                    left_bound = error_char - 1
-                    left_bound_found = False
-                    while left_bound >= 0:
-                        print(f"extracted_response[left_bound]: {extracted_response[left_bound]}")
-                        if extracted_response[left_bound] == '{' or extracted_response[left_bound] == '[' or extracted_response[left_bound] == '(':
-                            left_bound_found = True
-                            break
-                        left_bound -= 1
-
-                if extracted_response[error_char] == ')' or extracted_response[error_char] == ']' or extracted_response[error_char] == '}':
-                    print("error was a right bound")
-                    right_bound_found = True
-                    right_bound = error_char
-                else:
-                    right_bound_found = False
-                    right_bound = error_char + 1
-                    while right_bound < len(extracted_response):
-                        print(f'extracted_response[right_bound]: {extracted_response[right_bound]}')
-                        print(f'right_bound: {right_bound}')
-                        if extracted_response[right_bound] == '}' or extracted_response[right_bound] == ']' or extracted_response[right_bound] == ')':
-                            right_bound_found = True
-                            break
-                        right_bound += 1
-
-                if left_bound_found and right_bound_found:
-                    print("left and right bounds identified")
-                    end_response = extracted_response[right_bound+1:] if right_bound < len(extracted_response)-1 else ''
-                    extracted_response = extracted_response[:left_bound] + '<??>' + end_response
-                    feedback = params['feedback_prompt']['hole_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['hole_prompt_2'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['hole_prompt_3']
-                else:
-                    error_message_less_descriptive = str(e).split('\n')[0].split(',')[0] 
-                    error_char = str(e).split('\n')[0].split(',')[1].split(' ')[5]
-                    error_message_more_descriptive = str(e).split('Expected')[0]
-                    feedback = params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error_message_more_descriptive + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] 
-
-            except Exception as e:
-                feedback = params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error_message_more_descriptive + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] 
+            if check_json(extracted_response) is not None:
+                feedback = check_json(extracted_response)
+            elif check_parentheses(extracted_response) is not None:
+                feedback = check_parentheses(extracted_response)
+            elif parsed_stl is not '' and check_signal_names(parsed_stl) is not None:
+                feedback = check_signal_names(parsed_stl)
+            elif get_hole_feedback(extracted_response) is not None:
+                feedback = get_hole_feedback(extracted_response)
+            else:
+                feedback = default_feedback(extracted_response)
         
         ####################################################################
         # 3) Feedback prompts for this shot if necessary
@@ -279,32 +320,81 @@ for sentence_index, sentence in sentences['input statement'].items():
         
         while not syntax_passed and feedback_attempts_remaining > 0:
             
-            print('------------------------------------------------------------')
             print('retrying with feedback')
             
             feedback_attempts_remaining -= 1
-            syntax_passed = True
+            syntax_passed = False
 
-            feedback_prompt = feedback # params['feedback_prompt']['prompt_1'] + '\n' + feedback + '\n' + params['feedback_prompt']['prompt_2']            
+            response = llm.chat([{"role": "user", "content": feedback}], sampling_params)[0].outputs[0].text
 
-            response = llm.chat([{"role": "user", "content": feedback_prompt}], sampling_params)[0].outputs[0].text
+            # Try extraction
+            try:
+                extracted_response = json.loads(response)["output_STL"]
+                print('successfully extracted')
+            except Exception as e:
+                print('extraction failed')
+                syntax_passed =  False
+                break # if no stl can be extracted, then just go to the next shot
+
+            # Try parsing
+            parsed_stl = ''
+            try:            
+                parsed_stl = parser.parse(extracted_response)    
+                print('successfully parsed')
+                syntax_passed = True
+            except Exception as e:
+                syntax_passed = False 
+                print('parsing failed')
+
+                error_feedback = ''
+                   
+                if check_json(extracted_response) is not None:
+                    feedback = check_json(extracted_response)
+                elif check_parentheses(extracted_response) is not None:
+                    feedback = check_parentheses(extracted_response)
+                elif parsed_stl is not '' and check_signal_names(parsed_stl) is not None:
+                    feedback = check_signal_names(parsed_stl)
+                elif get_hole_feedback(extracted_response) is not None:
+                    feedback = get_hole_feedback(extracted_response)
+                else:
+                    feedback = default_feedback(extracted_response)
+
+        ####################################################################
+        # 4) Perform semantic checks
+        ####################################################################
+
+        # After you obtain a good syntax statement, do semantic checks
+        num_semantic_checks = params['num_semantic_checks']
+
+        last_stl = extracted_response
+        best_stl = extracted_response
+
+        if not syntax_passed: # go to next shot - semantic is only meaningful with a good syntax statement
+            continue
+
+        for i in range(num_semantic_checks):
+            # first get the embedding of the stl that was just produced 
+            stl_embedding = embedding_model.encode(STL2literal(extracted_response, grammar), normalize_embeddings=True)
+            current_sim = cosine_similarity(np.array(stl_embedding).reshape(1,-1), np.array(nl_embedding).reshape(1,-1))
+
+            # need to update last_stl and best_stl accordingly
+            # TODO: update them LEFT OFF HERE
+
+            semantic_prompt = params['semantic_prompt']['prompt_1'] + '\n' + sentence + '\n\n' + params['semantic_prompt']['prompt_2'] + '\n' + last_stl + '\n' + params['semantic_prompt']['prompt_3'] + '\n' + last_literal + '\n\n' + params['semantic_prompt']['prompt_4'] + '\n' + best_stl + '\n' + params['semantic_prompt']['prompt_3'] + '\n' + best_literal + '\n\n' + params['semantic_prompt']['prompt_5'] + '\n\n' + params['semantic_prompt']['prompt_6']
+
+            response = llm.chat([{"role": "user", "content": semantic_prompt}], sampling_params)[0].outputs[0].text
             full_translations.append(feedback_prompt)
             full_translations.append(response)
 
-            print('------------------------------------------------------------')
-            print(feedback_prompt)
-            print('------------------------------------------------------------')
-            print(response)
-            
-            # extract stl, if unsuccessful, put none into translations dataframe entry
+            # get the semantic response
             try:
                 output_dict = json.loads(response)
                 extracted_response = output_dict["output_stl"]
                 translations.at[sentence_index, f'stl-{i}'] = extracted_response
             except Exception as e:
                 translations.at[sentence_index, f'stl-{i}'] = "stl could not be extracted"
-                continue # if no stl can be extracted, then just go to the next shot
-            
+                continue # if no stl can be extracted, then no need to update the best/most recent stl --> just go to next iteration
+
             # parse stl, if unsuccessful, put none into translations dataframe entry
             try:            
                 parsed_stl = parser.parse(extracted_response)
@@ -380,36 +470,143 @@ for sentence_index, sentence in sentences['input statement'].items():
                 except Exception as e:
                     feedback = params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error_message_more_descriptive + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] 
 
-    ## figure out exactly where to put this
-    nl_embedding = embedding_model.encode(sentence, normalize_embeddings=True)
-    stl_embedding = embedding_model.encode(STL2literal(extracted_response, grammar), normalize_embeddings=True)
-    current_sim = cosine_similarity(np.array(literal_embeddings), np.array(nl_embedding))
+            # Done attempting to parse and construct feedback, at this point feedback should be ready and syntax_passed should be set up
+        
+            feedback_attempts_remaining = params["num_correction_attempts_per_shot"]
 
-    # thresholds of similarity
-    if sim > 0.7:
-        f
-    elif sim > 0.5:
-    else:
-        'Your STL response is not very similar to first one
+            print("right before asking for feedback on the response to the first semantic ask")
+            print(f'syntax_passed: {syntax_passed}')
+            print(f'extracted reponse: {extracted_response}')
+       
+            while not syntax_passed and feedback_attempts_remaining > 0:
+            
+                print('------------------------------------------------------------')
+                print('retrying with feedback')
+            
+                feedback_attempts_remaining -= 1
+                syntax_passed = True
 
-    semantic_prompt = 'You were asked to translate this sentence into STL:\n' + sentence + '\n\nYour best STL translation so far was:\n' + best_stl + '\nExpressed in natural language, it means:\n' + best_literal + '\n\nYour most recent STL translation so far was:\n' + last_stl + '\nExpressed in natural language, it means:\n' + last_literal + '\nGiven this knowledge, can you produce an STL translation that is closer is meaning to the original sentence than your previous translations?\n\n' + 'stl rules' + 'stl examples'
+                feedback_prompt = feedback # params['feedback_prompt']['prompt_1'] + '\n' + feedback + '\n' + params['feedback_prompt']['prompt_2']            
 
-    You responded with this STL:\n' + extracted_response + 'The cosine similarity between the natural language sentence and your STL is ' + sim + '. Can you . '
+                response = llm.chat([{"role": "user", "content": feedback_prompt}], sampling_params)[0].outputs[0].text
+                full_translations.append(feedback_prompt)
+                full_translations.append(response)
 
-    latest_translation = ''
-    best_translation = ''
+                print('------------------------------------------------------------')
+                print(feedback_prompt)
+                print('------------------------------------------------------------')
+                print(response)
+            
+                # extract stl, if unsuccessful, put none into translations dataframe entry
+                try:
+                    output_dict = json.loads(response)
+                    extracted_response = output_dict["output_stl"]
+                    translations.at[sentence_index, f'stl-{i}'] = extracted_response
+                except Exception as e:
+                    translations.at[sentence_index, f'stl-{i}'] = "stl could not be extracted"
+                    continue # if no stl can be extracted, then just go to the next shot
+            
+                # parse stl, if unsuccessful, put none into translations dataframe entry
+                try:            
+                    parsed_stl = parser.parse(extracted_response)
+            
+                    # need to add manual layer for checking the signals name
+                    signals = re.findall(r"tree\(token\('rule', 's'\), \[token\('\w+', '\w+'\)\]\)", str(parsed_stl))  
+                    for s in signals:
+                        s = s.split("tree(token('rule', 's'), [token('__anon_3',")
+                        s = re.findall(r"'.*'", s)[0]
+                        if s not in signal_names:
+                            raise Exception(f"{s} is not an allowed signal name.")
 
+                    syntactically_correct_responses.append((extracted_response, sentence_index, i))
+                    translations.at[sentence_index, f'STL-{i}'] = extracted_response
+                except Exception as e:
+                    # Syntax check failed
+                    syntax_passed = False
 
-    print(nl_embedding)
+                    if translations.at[sentence_index, f'STL-{i}'] != 'STL could not be extracted':
+                        translations.at[sentence_index, f'STL-{i}'] = "STL could not be parsed"
+                    syntactically_correct_responses.append(("STL could not be parsed", sentence_index, i))
+            
+                    error_feedback = ''
+                    try:
+                        # The response ends up here if it there is a syntax problem --> thus feedback should be constructed at this stage
+                        # TODO: THIS IS WHERE MORE COMPLEX FEEDBACK CAN BE CONSTRUCTED
 
-    ####################################################################
-    # 4) Translate syntactically correct responses to literal
-    ####################################################################
+                        # locate hole
+                        error_char = int(str(e).split('\n')[0].split(',')[1].split(' ')[5]) - 1
+                        left_bound_found = False
+                        right_bound_found = False
+                        left_bound = 0
+                        right_bound = 0
+
+                        print(f"here is the extracted response: {extracted_response}")
+
+                        # search to left and right for nearest } ) ]
+                        if extracted_response[error_char] == '(' or extracted_response[error_char] == '[' or extracted_response[error_char] == '{':
+                            left_bound_found = True
+                            left_bound = error_char
+                        else:
+                            left_bound = error_char - 1
+                            left_bound_found = False
+                            while left_bound >= 0:
+                                if extracted_response[left_bound] == '{' or extracted_response[left_bound] == '[' or extracted_response[left_bound] == '(':
+                                    left_bound_found = True
+                                    break
+                                left_bound -= 1
+
+                        if extracted_response[error_char] == ')' or extracted_response[error_char] == ']' or extracted_response[error_char] == '}':
+                            right_bound_found = True
+                            right_bound = error_char
+                        else:
+                            right_bound_found = False
+                            right_bound = error_char + 1
+                            while right_bound < len(extracted_response): 
+                                if extracted_response[right_bound] == '}' or extracted_response[right_bound] == ']' or extracted_response[right_bound] == ')':
+                                    right_bound_found = True
+                                    break
+                                right_bound += 1
+
+                        if left_bound_found and right_bound_found:
+                            end_response = extracted_response[right_bound+1:] if right_bound < len(extracted_response)-1 else ''
+                            extracted_response = extracted_response[:left_bound] + '<??>' + end_response
+                            print("left and right bounds identified")
+                        
+                            feedback = params['feedback_prompt']['hole_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['hole_prompt_2'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['hole_prompt_3']
+                        else:
+                            error_message_less_descriptive = str(e).split('\n')[0].split(',')[0] 
+                            error_char = str(e).split('\n')[0].split(',')[1].split(' ')[5]
+                            error_message_more_descriptive = str(e).split('Expected')[0]
+                            feedback = params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error_message_more_descriptive + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] 
+                    except Exception as e:
+                        feedback = params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error_message_more_descriptive + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] 
+
+            # TODO: make sure syntax problems that occur on last attempt are discarded of
+            if syntax_passed:
+                results[sentence].append(extracted_response)
+            
+                # At this point, feedback has been exhausted on the statement        
+                nl_embedding = embedding_model.encode(sentence, normalize_embeddings=True)
+                stl_embedding = embedding_model.encode(STL2literal(extracted_response, grammar), normalize_embeddings=True)
+                current_sim = cosine_similarity(np.array(stl_embedding).reshape(1,-1), np.array(nl_embedding).reshape(1,-1))
+                best_sim = cosine_similarity(np.array(nl_embedding).reshape(1,-1), np.array(best_embedding).reshape(1,-1))
+
+                last_stl = extracted_response
+                last_literal = STL2literal(last_stl, grammar)
+                if current_sim > best_sim:
+                    best_stl = last_stl
+                    best_literal = last_literal
+
 
     print('####################################################################')
     print('# Sentence Done')
     print('####################################################################')
-    print(f'syntactically_correct_responses: {syntactically_correct_responses}')
+    print(f'results: {results}')
+
+    """
+    ####################################################################
+    # 4) Translate syntactically correct responses to literal
+    ####################################################################
 
     # at this point syntactically_correct_responses should be filled with responses and STL columns of 'translations' should also be full
     literal_translations = [] 
@@ -452,6 +649,7 @@ for sentence_index, sentence in sentences['input statement'].items():
         # the final output is in the form [['nl', 'stl'],['nl', 'stl']]
         # if sim_matrix[best_stl_id] >= 0.7: # semantic_threshold:
         final_sentences.append({stl: best_stl, sentence_index: best_input_sentence_index})
+    """
 
 # For now, no selection of best result
 
@@ -465,6 +663,12 @@ except Exception as e:
 """
 
 # writing to pkl
+try:
+    with open(f'../pkl/results_{model_name}.pkl', 'wb') as results: # this is the main useful one
+        pickle.dump(translations, results)
+except Exception as e:
+    print(e)
+
 try:
     with open(f'../pkl/translations_{model_name}.pkl', 'wb') as results:
         pickle.dump(translations, results)
