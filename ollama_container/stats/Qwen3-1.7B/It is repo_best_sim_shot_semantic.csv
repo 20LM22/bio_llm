@@ -1,25 +1,7 @@
 Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Semantic attempt 3,Semantic attempt 3 sim,Semantic attempt 4,Semantic attempt 4 sim
-,,"eventually[0,∞](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.5586824,,,,,,
-,,,,"eventually[0,∞](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.5586824,,,,
-,,,,,,"eventually[0,∞](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.5586824,,
-,,,,,,,,"eventually[0,∞](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.558682382106781
-,,"eventually[0,1](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.5662922,,,,,,
-,,,,"eventually[0,3](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.57206,,,,
-,,,,,,"eventually[0,3](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.57206,,
-,,,,,,,,"eventually[0,3](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.5720599889755249
-,,N/A,N/A,,,,,,
-,,,,N/A,N/A,,,,
-,,,,,,N/A,N/A,,
-,,,,,,,,N/A,N/A
-,,N/A,N/A,,,,,,
-,,,,N/A,N/A,,,,
-,,,,,,N/A,N/A,,
-,,,,,,,,N/A,N/A
-,,"eventually[0,1]globally(IL1β(t) > c(high) and IFNβ(t) > c(high))",0.49179086,,,,,,
-,,,,"eventually[0,1]globally(IL1β(t) > c(high) and IFNβ(t) > c(high))",0.49179086,,,,
-,,,,,,"eventually[0,1]globally(IL1β(t) > c(high) and IFNβ(t) > c(high))",0.49179086,,
-,,,,,,,,"eventually[0,1]globally(IL1β(t) > c(high) and IFNβ(t) > c(high))",0.49179086089134216
-,,"globally[0,∞](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.51190317,,,,,,
-,,,,"globally[0,∞](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.51190317,,,,
-,,,,,,"globally[0,∞](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.51190317,,
-,,,,,,,,"globally[0,∞](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.5119031667709351
+,,"eventually[0,∞](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.5586824,"eventually[0,∞](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.5586824,"eventually[0,∞](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.5586824,"eventually[0,∞](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.558682382106781
+,,"eventually[0,1](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.5662922,"eventually[0,3](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.57206,"eventually[0,3](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.57206,"eventually[0,3](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.5720599889755249
+,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+,,"eventually[0,1]globally(IL1β(t) > c(high) and IFNβ(t) > c(high))",0.49179086,"eventually[0,1]globally(IL1β(t) > c(high) and IFNβ(t) > c(high))",0.49179086,"eventually[0,1]globally(IL1β(t) > c(high) and IFNβ(t) > c(high))",0.49179086,"eventually[0,1]globally(IL1β(t) > c(high) and IFNβ(t) > c(high))",0.49179086089134216
+,,"globally[0,∞](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.51190317,"globally[0,∞](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.51190317,"globally[0,∞](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.51190317,"globally[0,∞](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.5119031667709351

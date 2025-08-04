@@ -159,8 +159,8 @@ for (index, row) in translations.iterrows():
                 # done with semantic attempt, need to process this as an entry for this new row
                 print(f'trying to assign stl: {r_stl}')
 
-                new_row.loc[_id, f'Semantic attempt {count_semantic_attempts}'] = r_stl
-                new_row.loc[_id, f'Semantic attempt {count_semantic_attempts} sim'] = r_sim
+                new_row.loc[i, f'Semantic attempt {count_semantic_attempts}'] = r_stl
+                new_row.loc[i, f'Semantic attempt {count_semantic_attempts} sim'] = r_sim
                 print(f'at the end of semantic attempt, new row is: {new_row}')
 
         print(f'at the end new row is: {new_row}')
