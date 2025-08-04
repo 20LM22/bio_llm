@@ -369,7 +369,7 @@ for sentence_index, sentence in sentences['input statement'].items():
             syntax_passed = False
 
             print('now prompting with the feedback')
-            response = llm.chat([{"role": "user", "content": feedback}], sampling_params)[0].outputs[0].text
+            response = llm.chat([{"role": "user", "content": feedback + '\n\n' + generate_example_prompt(params['num_examples'])}], sampling_params)[0].outputs[0].text
 
             # Try extraction
             try:
@@ -434,7 +434,11 @@ for sentence_index, sentence in sentences['input statement'].items():
             last_literal = STL2literal(last_stl, grammar)
             best_literal = STL2literal(best_stl, grammar)
 
-            semantic_prompt = params['semantic_prompt']['prompt_1'] + '\n' + sentence + '\n\n' + params['semantic_prompt']['prompt_2'] + '\n' + last_stl + '\n' + params['semantic_prompt']['prompt_3'] + '\n' + last_literal + '\n\n' + params['semantic_prompt']['prompt_4'] + '\n' + best_stl + '\n' + params['semantic_prompt']['prompt_3'] + '\n' + best_literal + '\n\n' + params['semantic_prompt']['prompt_5'] + '\n\n' + params['semantic_prompt']['prompt_6']
+            if last_literal == best_literal:
+                semantic_prompt = params['semantic_prompt']['prompt_1'] + '\n' + sentence + '\n\n' + params['semantic_prompt']['prompt_4'] + '\n' + best_stl + '\n' + params['semantic_prompt']['prompt_3'] + '\n' + best_literal + '\n\n' + params['semantic_prompt']['prompt_5'] + '\n\n' + params['semantic_prompt']['prompt_6'] + '\n\n' + generate_example_prompt(params['num_examples'])
+            else:
+                semantic_prompt = params['semantic_prompt']['prompt_1'] + '\n' + sentence + '\n\n' + params['semantic_prompt']['prompt_2'] + '\n' + last_stl + '\n' + params['semantic_prompt']['prompt_3'] + '\n' + last_literal + '\n\n' + params['semantic_prompt']['prompt_4'] + '\n' + best_stl + '\n' + params['semantic_prompt']['prompt_3'] + '\n' + best_literal + '\n\n' + params['semantic_prompt']['prompt_5'] + '\n\n' + params['semantic_prompt']['prompt_6'] + '\n\n' + generate_example_prompt(params['num_examples'])
+
             print(f'semantic prompt is: {semantic_prompt}')
             response = llm.chat([{"role": "user", "content": semantic_prompt}], sampling_params)[0].outputs[0].text
             print(f'semantic response is: {response}')
@@ -488,7 +492,7 @@ for sentence_index, sentence in sentences['input statement'].items():
                 syntax_passed = False
 
                 print('prompting with feedback')
-                response = llm.chat([{"role": "user", "content": feedback}], sampling_params)[0].outputs[0].text
+                response = llm.chat([{"role": "user", "content": feedback + '\n\n' + generate_example_prompt(params['num_examples'])}], sampling_params)[0].outputs[0].text
             
                 # extract STL
                 try:
