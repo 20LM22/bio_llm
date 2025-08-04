@@ -64,6 +64,8 @@ embedding_model = SentenceTransformer(params['embedding_model_name'], device='cp
 grammar = params['grammar']
 parser = Lark(grammar)
 
+signal_names = params['signal_names']
+
 curated_dataset = []
 try:
     with open(f'../pkl/curated_dataset.pkl', 'rb') as f:
@@ -176,10 +178,11 @@ def get_hole_feedback(e):
 ####################################################################################
 
 def check_signal_names(parsed_stl):
-    signals = re.findall(r"tree\(token\('rule', 's'\), \[token\('\w+', '\w+'\)\]\)", str(parsed_stl))  
+    signals = re.findall(r"Tree\(Token\('RULE', 's'\), \[Token\('\w+', '\w+'\)\]\)", str(parsed_stl))  
     for s in signals:
-        s = s.split("tree(token('rule', 's'), [token('__anon_3',")
-        s = re.findall(r"'.*'", s)[0]
+        s = s.split("Tree(Token('RULE', 's'), [Token('__ANON_3',")
+        print(f"after split: {s}")
+        s = re.findall(r"'.*'", s[1])[0]
         if s not in signal_names:
             response = f"{s} is not an allowed signal name." # TODO: expand into feedback prompt
             return response
@@ -319,6 +322,8 @@ for sentence_index, sentence in sentences['input statement'].items():
         parsed_stl = ''
         try:            
             parsed_stl = parser.parse(extracted_response)
+            if check_signal_names(parsed_stl) is not None:
+                raise Error("bad signal name")
             syntax_passed = True
             print('stl parsed')
             translations.at[sentence_index, f'STL-shot{i}-S0-F0'] = extracted_response
@@ -374,6 +379,8 @@ for sentence_index, sentence in sentences['input statement'].items():
             # Try extraction
             try:
                 extracted_response = json.loads(response)["output_STL"]
+                if check_signal_names(parsed_stl) is not None:
+                    raise Error("bad signal name")
                 translations.at[sentence_index, f'STL-shot{i}-S0-F{count}'] = extracted_response
                 print('stl extracted')
             except Exception as e:
@@ -457,6 +464,8 @@ for sentence_index, sentence in sentences['input statement'].items():
             parsed_stl = ''
             try:            
                 parsed_stl = parser.parse(extracted_response)    
+                if check_signal_names(parsed_stl) is not None:
+                    raise Error("bad signal name")
                 print('STL parsed')
                 translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F0'] = extracted_response
                 syntax_passed = True
@@ -497,6 +506,8 @@ for sentence_index, sentence in sentences['input statement'].items():
                 # extract STL
                 try:
                     extracted_response = json.loads(response)["output_stl"]
+                    if check_signal_names(parsed_stl) is not None:
+                        raise Error("bad signal name")
                     print('STL extracted')
                     translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F{count}'] = extracted_response
                 except Exception as e:

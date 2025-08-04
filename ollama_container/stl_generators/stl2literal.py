@@ -64,10 +64,12 @@ class Test(Interpreter):
                 self.sentence.append(time)
         else:
             self.sentence.append('its')
+            print(f'node: {node}')
+            print(f'node.children[1].children[0]: {node.children[1].children[0]}')
             try:
-                self.sentence.append(nl_to_literal_dict[node.children[1].children[0].children[0]])
+                self.sentence.append(nl_to_literal_dict[node.children[1].children[0]])
             except Exception as e:
-                self.sentence.append(nl_to_literal_dict[node.children[1].children[0]]) # TODO: c-threshold --> take into account c vs. s
+                self.sentence.append(nl_to_literal_dict[node.children[1].children[0].children[0]]) # TODO: c-threshold --> take into account c vs. s
             self.sentence.append("levels")
 
         
@@ -79,24 +81,28 @@ class Test(Interpreter):
 
         self.sentence.append(node.children[0].children[0]) # name of species --> would need to find and replace using the LLM's dictionary
         self.sentence.append("was below its")
+        print(f'node: {node}')
+        print(f'node.children[1].children[0]: {node.children[1].children[0]}')
         try:
-            self.sentence.append(nl_to_literal_dict[node.children[1].children[0].children[0]])
+            self.sentence.append(nl_to_literal_dict[node.children[1].children[0]])
         except Exception as e:
-            self.sentence.append(nl_to_literal_dict[node.children[1].children[0]]) # TODO: c-threshold --> take into account c vs. s
+            self.sentence.append(nl_to_literal_dict[node.children[1].children[0].children[0]]) # TODO: c-threshold --> take into account c vs. s
         self.sentence.append("levels")
         
     def eq(self, node):
         # self.sentence.append("the concentration of")
         self.sentence.append(node.children[0].children[0]) # SPECIES
         self.sentence.append("was close to")
+        print(f'node: {node}')
+        print(f'node.children[1].children[0]: {node.children[1].children[0]}')
         # self.sentence.append("was within")
         # self.sentence.append(node.children[2]) # EPSILON
         # self.sentence.append("units of its")
         self.sentence.append("its")
         try:
-            self.sentence.append(nl_to_literal_dict[node.children[1].children[0].children[0]])
+            self.sentence.append(nl_to_literal_dict[node.children[1].children[0]])
         except Exception as e:
-            self.sentence.append(nl_to_literal_dict[node.children[1].children[0]]) # TODO: c-threshold --> take into account c vs. s
+            self.sentence.append(nl_to_literal_dict[node.children[1].children[0].children[0]]) # TODO: c-threshold --> take into account c vs. s
         self.sentence.append("levels")  
 
     def d_gt(self, node):

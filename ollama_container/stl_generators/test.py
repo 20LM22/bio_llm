@@ -19,10 +19,11 @@ class Test(Interpreter):
         self.F_flag = False
         self.G_flag = False
         self.FG_flag = False
-        STL2literal('','')
+        print("NEW CALL TO INIT")
+        # STL2literal('','')
 
     def omega(self, node):
-        print(f'node.children: {node.children}')
+        print(f'node.children[0].value: {node.children[0].value}')
         if node.children[0] == psi_and_psi:
             print("psi and psi")
         elif node.children[0] == nu:
@@ -33,15 +34,18 @@ class Test(Interpreter):
             print("omega and omega")
         else:
             print("wrong")
+        
         """
         for i, child in enumerate(node.children):
             if i != 0:
                 self.sentence.append(', and')
             self.visit(child) # visit each child predicate and add 'and' between each one
         """
-    
+
+    """
     def start(self, node):
         print("start located")
+    """
 
     def u_implies_u(self, node):
         self.sentence.append('if')
@@ -252,10 +256,10 @@ def STL2literal(input_sentence, grammar):
     p = Lark(grammar) # TODO: this is also slow, improve if possible
 
     # TODO: remove this once done testing
-    input_sentence = 'globally[1,2](d_IL6(t)>d_c(high))implieseventually[3,4](IL8(t)>c(high))'
+    input_sentence = 'IL8(t)=IL8(9)'
     
     tree = p.parse(input_sentence)
-    # print(f'this is what the tree looks like: {tree}')
+    print(f'this is what the tree looks like: {tree}')
     tester = Test() # TODO: this is redundant, see if this can be improved
     tester.visit(tree)
 
@@ -272,6 +276,6 @@ def STL2literal(input_sentence, grammar):
 
     return tester.sentence
 
-if __name__ == "__main__":
-    m = Test()
+#if __name__ == "__main__":
+#    m = Test()
 

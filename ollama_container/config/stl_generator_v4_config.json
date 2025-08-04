@@ -8,8 +8,9 @@
 		"max_tokens": 1024,
 		"model_dtype": "half",
 		"max_model_len": 13000,
-		"gpu_memory_utilization": 0.95
+		"gpu_memory_utilization": 0.8
 	},
+	"signal_names": ["IL6", "IL12", "IL1β", "IL1Ra", "TNFα", "IL8", "IFNα", "IFNβ", "SARSCoV2", "IL1RN"],
 	"num_shots_per_input_sentence": 6,
 	"num_correction_attempts_per_shot": 3,
 	"num_examples": 3,
