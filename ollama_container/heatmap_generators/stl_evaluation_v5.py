@@ -121,33 +121,49 @@ for (index, row) in translations.iterrows():
         best_stl = None
         best_sim = None
         done_with_semantic_attempt = False
+        first_time = True
+        
+        print(f'row subset is: {row_subset}')
         
         for _id, entry in enumerate(row_subset):
+            # print(f'entry is: {entry}')
+            # print(f'count inside semantic attempt: {count_inside_semantic_attempt}')
+            # print(f'semantic attempts: {count_semantic_attempts}')
             # just keep counting by multiples of semantic attempts
             if count_inside_semantic_attempt < semantic_count:
+                # print(f'should be inside this 4 times')
                 # get the embedding of each entry
                 if entry is None or entry == 'STL could not be parsed' or entry == 'STL could not be extracted':
                     # handle this problem
                     count_inside_semantic_attempt += 1
+
                 else:
                     literal = STL2literal(entry, grammar)
                     literal_embedding = ( np.array(model.encode(literal, normalize_embeddings=True)) )
                     sim = cosine_similarity(np.array(literal_embedding).reshape(1,-1), np.array(nl_embedding).reshape(1,-1))[0][0]
                     
-                    if best_sim is None or sim > best_sim:
+                    if first_time or sim > best_sim:
+                        # print(f'REAPLCES BEST SIMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM')
+                        first_time = False
                         best_sim = sim
                         best_stl = entry
 
                     count_inside_semantic_attempt += 1
 
             if count_inside_semantic_attempt == semantic_count:
+                # print(f'then should be here once')
+                count_inside_semantic_attempt = 0
                 count_semantic_attempts += 1
+                r_stl = 'N/A' if first_time else best_stl
+                r_sim = 'N/A' if first_time else best_sim
                 # done with semantic attempt, need to process this as an entry for this new row
-                new_row[f'Semantic attempt {count_semantic_attempts}'] = best_stl
-                new_row[f'Semantic attempt {count_semantic_attempts} sim'] = best_sim
+                new_row[f'Semantic attempt {count_semantic_attempts}'] = r_stl
+                new_row[f'Semantic attempt {count_semantic_attempts} sim'] = r_sim
+                print(f'at the end of semantic attempt, new row is: {new_row}')
 
-
+        print(f'at the end new row is: {new_row}')
         sentence_table = pandas.concat([sentence_table, new_row], ignore_index=False)
+        # print(f'sentence_table is: {sentence_table}')
     
     short_sentence_name = row['input statement'][:10]
     sentence_table.to_csv(f'../stats/{model_name}/{short_sentence_name}_best_sim_shot_semantic.csv', index=False)
