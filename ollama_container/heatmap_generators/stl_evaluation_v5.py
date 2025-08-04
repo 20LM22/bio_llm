@@ -73,94 +73,88 @@ stats = pandas.concat([success_rate, total_success_rate], ignore_index=True)
 stats.to_csv(f'../stats/{model_name}/stats.csv', index=False)
 
 #######################################################################################################################
-# Table for each shot: analyze the diff. in cosine sim. between each semantic attempt
+# TODO: Table where rows are shots and each table belongs to one sentence: report cosine sim. and stl of ALL attempts
+#######################################################################################################################
+
+#######################################################################################################################
+# Table where rows are shots and each table belongs to one sentence: report best cosine sim. and stl of each semantic attempt
 #######################################################################################################################
 
 shot_count = params['num_shots_per_input_sentence']
-semantic_count = params['num_semantic_checks']
-syntax_count = params['num_correction_attempts_per_shot']
+semantic_count = params['num_semantic_checks']+1
+syntax_count = params['num_correction_attempts_per_shot']+1
 
 # construct outer table
-table_arr = []
+# table_arr = []
 
 # print(f"col names: translations.columns")
 
-# for each row in the df
+# print(translations)
+translations.to_csv(f'../stats/{model_name}/translations.csv', index=False)
+
+# for each row - sentence in the df
 for (index, row) in translations.iterrows():
     # first construct shot x semantic attempt table
     col_names = []
     for i in range(semantic_count):
-        col_names.append(f'S{i}')
-    row_names = []
-    for i in range(shot_count):
-        row_names.append(f'shot{i}')
-    shot_x_semantic = pandas.DataFrame(index=row_names, columns=col_names)
-
-    print(f"row names: {row}")
+        col_names.append(f'Semantic attempt {i}')
+        col_names.append(f'Semantic attempt {i} sim')
 
     nl_embedding = np.array(model.encode(row['input statement'], normalize_embeddings=True))
+    # make the df that will hold all info for this sentence
+    sentence_table = pandas.DataFrame(columns=col_names)
 
-    # go the shot x semantic table and fill it in by searching this row of the translations table for columns with the same name
-    for sub_index, sub_row in shot_x_semantic.iterrows():
-        for col in shot_x_semantic.columns:
-            # sub_index = 'shot1'
-            # col = 'S1'
-            # get all columns with both shot1 and S1 in the column name
-            relevant_translations_cols = []
-            for sub_col in translations.columns:
-                if sub_index in sub_col and col in sub_col:
-                    relevant_translations_cols.append(sub_col)
-            row_subset = row[relevant_translations_cols] # row_subset = ['shot1-S1-F{all}']
-            # need to reduce this row_subset to the entry that has the highest cosine similarity
-            row_subset_filtered = [x for x in row_subset if x != 'STL could not be parsed' and x != 'STL could not be extracted' and x is not None]
-            literal_embeddings = []
-            for stl in row_subset_filtered:
-                # get the literal translation, then the embedding that goes with the literal
-                literal = STL2literal(stl, grammar)
-                literal_embeddings.append( np.array(model.encode(literal, normalize_embeddings=True)) )
-
-            if len(literal_embeddings) == 0:
-                sub_row[col] = -1 # TODO: maybe handle this case differently?
-            elif len(literal_embeddings) == 1:
-                sim = cosine_similarity(np.array(literal_embeddings).reshape(1,-1), np.array(nl_embedding).reshape(1,-1))
-                sub_row[col] = max(sim)
-            else:
-                sim = cosine_similarity(np.array(literal_embeddings), np.array(nl_embedding).reshape(1,-1))
-                sub_row[col] = max(sim)
-    
-    # now construct the comparison table
-    col_names = ['Input Sentence']
-    for i in range(semantic_count-1):
-        col_names.append(f'S{i}/{i+1}')
-    row_names = []
     for i in range(shot_count):
-        row_names.append(f'shot{i}')
-    shot_x_semantic_comparisons = pandas.DataFrame(index=row_names, columns=col_names)
+        new_row = pandas.DataFrame(columns=col_names)
+        # fill in new row
+
+        relevant_translations_cols = []
+        for col in translations.columns:
+            if f'shot{i}' in col:
+                relevant_translations_cols.append(col)
+        row_subset = row[relevant_translations_cols] # row subset has everything with shot-i in the column name
+        
+        # now we need to loop through the semantic attempts and separate them
+        # shot0-s1-f2, shot0-s1-f3
+        count_semantic_attempts = 0
+        count_inside_semantic_attempt = 0
+        best_stl = None
+        best_sim = None
+        done_with_semantic_attempt = False
+        
+        for _id, entry in enumerate(row_subset):
+            # just keep counting by multiples of semantic attempts
+            if count_inside_semantic_attempt < semantic_count:
+                # get the embedding of each entry
+                if entry is None or entry == 'STL could not be parsed' or entry == 'STL could not be extracted':
+                    # handle this problem
+                    count_inside_semantic_attempt += 1
+                else:
+                    literal = STL2literal(entry, grammar)
+                    literal_embedding = ( np.array(model.encode(literal, normalize_embeddings=True)) )
+                    sim = cosine_similarity(np.array(literal_embedding).reshape(1,-1), np.array(nl_embedding).reshape(1,-1))[0][0]
+                    
+                    if best_sim is None or sim > best_sim:
+                        best_sim = sim
+                        best_stl = entry
+
+                    count_inside_semantic_attempt += 1
+
+            if count_inside_semantic_attempt == semantic_count:
+                count_semantic_attempts += 1
+                # done with semantic attempt, need to process this as an entry for this new row
+                new_row[f'Semantic attempt {count_semantic_attempts}'] = best_stl
+                new_row[f'Semantic attempt {count_semantic_attempts} sim'] = best_sim
+
+
+        sentence_table = pandas.concat([sentence_table, new_row], ignore_index=False)
     
-    # fill in the table
-    for _id, col in enumerate(shot_x_semantic_comparisons.columns):
-        if _id == 0:
-            continue
-        split = col.split('/')
-        print(f'split: {split}')
-        col1 = split[0]
-        col2 = 'S' + split[1]
-        shot_x_semantic_comparisons[col] = shot_x_semantic[col2] - shot_x_semantic[col1] 
-
-    # add total column
-    shot_x_semantic_comparisons['Total'] = shot_x_semantic_comparisons.sum(axis=1)
-
-    # append this table (for this sentence) to the overall table
-    table_arr.append(shot_x_semantic_comparisons)
-
-res = pandas.concat(table_arr, ignore_index=False)
-res.to_csv(f'../stats/{model_name}/sim_diff_across_semantic_attempts.csv', index=False)
-
+    short_sentence_name = row['input statement'][:10]
+    sentence_table.to_csv(f'../stats/{model_name}/{short_sentence_name}_best_sim_shot_semantic.csv', index=False)
+    
 #######################################################################################################################
-# Table for each shot: report the best cosine sim.
+# Table where sentences are rows: report the best cosine sim. for each shot and the corresponding STL
 #######################################################################################################################
-
-## Not done
 
 shot_count = params['num_shots_per_input_sentence']
 semantic_count = params['num_semantic_checks']
@@ -187,7 +181,7 @@ for index, row in translations.iterrows():
         # need to reduce this row_subset to the entry that has the highest cosine similarity
         row_subset_filtered = [x for x in row_subset if x != 'STL could not be parsed' and x != 'STL could not be extracted' and x is not None]
 
-        print(f'the row subset filtered is: {row_subset_filtered}')
+        # print(f'the row subset filtered is: {row_subset_filtered}')
         literal_embeddings = []
         for stl in row_subset_filtered:
             # get the literal translation, then the embedding that goes with the literal
@@ -195,18 +189,18 @@ for index, row in translations.iterrows():
             literal_embeddings.append( np.array(model.encode(literal, normalize_embeddings=True)) )
 
         if len(literal_embeddings) == 0:
-            row[f'shot{i}'] = None
-            row[f'shot{i} sim'] = None
+            best_resp.at[index, f'shot{i}'] = None
+            best_resp.at[index, f'shot{i} sim'] = None
         elif len(literal_embeddings) == 1:
             sim = cosine_similarity(np.array(literal_embeddings).reshape(1,-1), np.array(nl_embedding).reshape(1,-1))
-            row[f'shot{i}'] = row_subset_filtered[0]
-            row[f'shot{i} sim'] = max(sim)
+            best_resp.at[index, f'shot{i}'] = row_subset_filtered[0]
+            best_resp.at[index, f'shot{i} sim'] = max(sim)
         else:
             sim = cosine_similarity(np.array(literal_embeddings), np.array(nl_embedding).reshape(1,-1))
-            row[f'shot{i} sim'] = max(sim)
-            row[f'shot{i}'] = row_subset_filtered[np.argmax(sim)]
+            best_resp.at[index, f'shot{i} sim'] = max(sim)
+            best_resp.at[index, f'shot{i}'] = row_subset_filtered[np.argmax(sim)]
 
-best_resp.to_csv(f'../stats/{model_name}/best_response_across_shots.csv', index=False)
+best_resp.to_csv(f'../stats/{model_name}/best_sim_shot.csv', index=False)
 
 #######################################################################################################################
 # Produce similarity heatmaps
