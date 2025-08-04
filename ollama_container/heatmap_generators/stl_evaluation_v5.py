@@ -153,7 +153,6 @@ for (index, row) in translations.iterrows():
             if count_inside_semantic_attempt == semantic_count:
                 # print(f'then should be here once')
                 count_inside_semantic_attempt = 0
-                count_semantic_attempts += 1
                 r_stl = 'N/A' if first_time else best_stl
                 r_sim = 'N/A' if first_time else best_sim
                 # done with semantic attempt, need to process this as an entry for this new row
@@ -162,13 +161,14 @@ for (index, row) in translations.iterrows():
                 new_row.loc[i, f'Semantic attempt {count_semantic_attempts}'] = r_stl
                 new_row.loc[i, f'Semantic attempt {count_semantic_attempts} sim'] = r_sim
                 print(f'at the end of semantic attempt, new row is: {new_row}')
+                count_semantic_attempts += 1
 
         print(f'at the end new row is: {new_row}')
         sentence_table = pandas.concat([sentence_table, new_row], ignore_index=False)
         # print(f'sentence_table is: {sentence_table}')
     
     short_sentence_name = row['input statement'][:10]
-    sentence_table.to_csv(f'../stats/{model_name}/{short_sentence_name}_best_sim_shot_semantic.csv', index=False)
+    sentence_table.to_csv(f'../stats/{model_name}/{short_sentence_name}_{index}_best_sim_shot_semantic.csv', index=False)
     
 #######################################################################################################################
 # Table where sentences are rows: report the best cosine sim. for each shot and the corresponding STL
