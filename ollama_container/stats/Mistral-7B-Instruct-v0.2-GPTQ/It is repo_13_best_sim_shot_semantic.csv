@@ -1,0 +1,7 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Semantic attempt 3,Semantic attempt 3 sim
+N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+"eventually[0,∞](d_IFNα(t)>d_c(high) and d_IFNβ(t)>d_c(high))",0.50071037,"eventually[0,3](d_IFNα(t)>d_c(high) and d_IFNβ(t)>d_c(high)) and eventually[3,∞](IFNα(t)=c(high) and IFNβ(t)=c(high))",0.5077348,"eventually[0,3](d_IFNα(t)>d_c(high) and d_IFNβ(t)>d_c(high)) and eventually[3,∞](IFNα(t)=c(high) and IFNβ(t)=c(high))",0.5077348,"eventually[0,3](d_IFNα(t)>d_c(high) and d_IFNβ(t)>d_c(high)) and eventually[3,∞](IFNα(t)=c(high) and IFNβ(t)=c(high))",0.5077348

@@ -76,6 +76,60 @@ stats.to_csv(f'../stats/{model_name}/stats.csv', index=False)
 # TODO: Table where rows are shots and each table belongs to one sentence: report cosine sim. and stl of ALL attempts
 #######################################################################################################################
 
+shot_count = params['num_shots_per_input_sentence']
+semantic_count = params['num_semantic_checks']+1
+syntax_count = params['num_correction_attempts_per_shot']+1
+
+translations.to_csv(f'../stats/{model_name}/translations.csv', index=False)
+
+# for each row - sentence in the df
+for (index, row) in translations.iterrows():
+    # first construct shot x semantic attempt table
+    col_names = []
+    for i in range(semantic_count):
+        for j in range(syntax_count):
+            col_names.append(f'S{i}-F{j}')
+            col_names.append(f'S{i}-F{j} sim')
+
+    nl_embedding = np.array(model.encode(row['input statement'], normalize_embeddings=True))
+    # make the df that will hold all info for this sentence
+    sentence_table = pandas.DataFrame(columns=col_names)
+
+    for i in range(shot_count):
+        new_row = pandas.DataFrame(columns=col_names)
+        # fill in new row
+
+        relevant_translations_cols = []
+        for col in translations.columns:
+            if f'shot{i}' in col:
+                relevant_translations_cols.append(col)
+        row_subset = row[relevant_translations_cols] # row subset has everything with shot-i in the column name
+        
+        best_stl = None
+        best_sim = None
+        m = 0
+        k = 0
+               
+        for _id, entry in enumerate(row_subset):
+            if entry is None or entry == 'STL could not be parsed' or entry == 'STL could not be extracted':
+                new_row.loc[i, f'S{k}-F{m}'] = 'N/A' 
+                new_row.loc[i, f'S{k}-F{m} sim'] = 'N/A'
+            else:
+                literal = STL2literal(entry, grammar)
+                literal_embedding = ( np.array(model.encode(literal, normalize_embeddings=True)) )
+                sim = cosine_similarity(np.array(literal_embedding).reshape(1,-1), np.array(nl_embedding).reshape(1,-1))[0][0]
+                new_row.loc[i, f'S{k}-F{m}'] = sim 
+                new_row.loc[i, f'S{k}-F{m} sim'] = entry
+            
+            if m == syntax_count-1:
+                k += 1
+            m = (m+1) % syntax_count
+            
+        sentence_table = pandas.concat([sentence_table, new_row], ignore_index=False)
+    
+    short_sentence_name = row['input statement'][:10]
+    sentence_table.to_csv(f'../stats/{model_name}/{short_sentence_name}_{index}_all_sim_shot_semantic_syntax.csv', index=False)
+
 #######################################################################################################################
 # Table where rows are shots and each table belongs to one sentence: report best cosine sim. and stl of each semantic attempt
 #######################################################################################################################
@@ -84,12 +138,6 @@ shot_count = params['num_shots_per_input_sentence']
 semantic_count = params['num_semantic_checks']+1
 syntax_count = params['num_correction_attempts_per_shot']+1
 
-# construct outer table
-# table_arr = []
-
-# print(f"col names: translations.columns")
-
-# print(translations)
 translations.to_csv(f'../stats/{model_name}/translations.csv', index=False)
 
 # for each row - sentence in the df
@@ -126,12 +174,8 @@ for (index, row) in translations.iterrows():
         # print(f'row subset is: {row_subset}')
         
         for _id, entry in enumerate(row_subset):
-            # print(f'entry is: {entry}')
-            # print(f'count inside semantic attempt: {count_inside_semantic_attempt}')
-            # print(f'semantic attempts: {count_semantic_attempts}')
             # just keep counting by multiples of semantic attempts
             if count_inside_semantic_attempt < semantic_count:
-                # print(f'should be inside this 4 times')
                 # get the embedding of each entry
                 if entry is None or entry == 'STL could not be parsed' or entry == 'STL could not be extracted':
                     # handle this problem
@@ -143,7 +187,6 @@ for (index, row) in translations.iterrows():
                     sim = cosine_similarity(np.array(literal_embedding).reshape(1,-1), np.array(nl_embedding).reshape(1,-1))[0][0]
                     
                     if first_time or sim > best_sim:
-                        # print(f'REAPLCES BEST SIMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM')
                         first_time = False
                         best_sim = sim
                         best_stl = entry
@@ -151,21 +194,16 @@ for (index, row) in translations.iterrows():
                     count_inside_semantic_attempt += 1
 
             if count_inside_semantic_attempt == semantic_count:
-                # print(f'then should be here once')
                 count_inside_semantic_attempt = 0
                 r_stl = 'N/A' if first_time else best_stl
                 r_sim = 'N/A' if first_time else best_sim
                 # done with semantic attempt, need to process this as an entry for this new row
-                # print(f'trying to assign stl: {r_stl}')
 
                 new_row.loc[i, f'Semantic attempt {count_semantic_attempts}'] = r_stl
                 new_row.loc[i, f'Semantic attempt {count_semantic_attempts} sim'] = r_sim
-                # print(f'at the end of semantic attempt, new row is: {new_row}')
                 count_semantic_attempts += 1
 
-        # print(f'at the end new row is: {new_row}')
         sentence_table = pandas.concat([sentence_table, new_row], ignore_index=False)
-        # print(f'sentence_table is: {sentence_table}')
     
     short_sentence_name = row['input statement'][:10]
     sentence_table.to_csv(f'../stats/{model_name}/{short_sentence_name}_{index}_best_sim_shot_semantic.csv', index=False)

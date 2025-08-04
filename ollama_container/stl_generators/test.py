@@ -20,7 +20,7 @@ class Test(Interpreter):
         self.G_flag = False
         self.FG_flag = False
         STL2literal('','')
-    
+
     def omega(self, node):
         print(f'node.children: {node.children}')
         if node.children[0] == psi_and_psi:
@@ -39,6 +39,9 @@ class Test(Interpreter):
                 self.sentence.append(', and')
             self.visit(child) # visit each child predicate and add 'and' between each one
         """
+    
+    def start(self, node):
+        print("start located")
 
     def u_implies_u(self, node):
         self.sentence.append('if')

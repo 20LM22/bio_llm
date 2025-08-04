@@ -1,0 +1,17 @@
+shot0,shot0 sim,shot1,shot1 sim,shot2,shot2 sim,shot3,shot3 sim,shot4,shot4 sim,shot5,shot5 sim
+,,,,,,,,,,"eventually[0,7](IL6(t) > c(high)) and globally[8,∞](d_IL6(t) < 0)",0.69939744
+"eventually[0,7](IL6(t) > c(high)) and globally[8,∞](IL6(t) < c(high))",0.65125763,,,,,,,,,,
+,,,,"eventually[0,7](IL6(t)> c(high)) and globally[8,∞](d_IL6(t) < 0)",0.6993975,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+"eventually[1,7](TNFα(t) > c(high)) and globally[8,14](TNFα(t) > c(high)) and eventually[15,∞](TNFα(t) < c(low))",0.8915981,,,,,"eventually[1,7]globally(TNFα(t)>c(high)) and eventually[8,14]globally(TNFα(t)>c(high)) and globally[14,∞](TNFα(t)<c(low))",0.8884256,,,,
+,,,,,,,,"eventually[1,7](TNFα(t) > c(high)) and eventually[8,14](TNFα(t) > c(high)) and globally[15,∞](TNFα(t) < c(high))",0.8888161,,
+,,,,,,,,"eventually[1,7](TNFα(t) > c(mid)) and eventually[8,14](TNFα(t) > c(mid)) and globally[14,∞](TNFα(t) < c(mid))",0.90918076,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+"eventually[14,∞](IL12(t) > c(high))",0.7264421,"eventually[14,∞](IL12(t) > c(high))",0.7264421,,,,,"eventually[14,∞](IL12(t) > c(high))",0.7264421,,
+,,,,,,,,,,"eventually[0,3](d_IFNα(t)>d_c(high) and d_IFNβ(t)>d_c(high)) and eventually[3,∞](IFNα(t)=c(high) and IFNβ(t)=c(high))",0.5077348
+,,"eventually[0,1](IFNα(t) > c(mid) and IFNβ(t) > c(mid)) and globally[1,∞](d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high))",0.50030136,,,,,,,,
+,,,,,,,,,,,

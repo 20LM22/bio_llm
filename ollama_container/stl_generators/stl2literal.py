@@ -64,7 +64,10 @@ class Test(Interpreter):
                 self.sentence.append(time)
         else:
             self.sentence.append('its')
-            self.sentence.append(nl_to_literal_dict[node.children[1].children[0]]) # TODO: c-threshold --> take into account c vs. s
+            try:
+                self.sentence.append(nl_to_literal_dict[node.children[1].children[0].children[0]])
+            except Exception as e:
+                self.sentence.append(nl_to_literal_dict[node.children[1].children[0]]) # TODO: c-threshold --> take into account c vs. s
             self.sentence.append("levels")
 
         
@@ -76,7 +79,10 @@ class Test(Interpreter):
 
         self.sentence.append(node.children[0].children[0]) # name of species --> would need to find and replace using the LLM's dictionary
         self.sentence.append("was below its")
-        self.sentence.append(nl_to_literal_dict[node.children[1].children[0]]) # TODO: c-threshold --> take into account c vs. s
+        try:
+            self.sentence.append(nl_to_literal_dict[node.children[1].children[0].children[0]])
+        except Exception as e:
+            self.sentence.append(nl_to_literal_dict[node.children[1].children[0]]) # TODO: c-threshold --> take into account c vs. s
         self.sentence.append("levels")
         
     def eq(self, node):
@@ -87,7 +93,10 @@ class Test(Interpreter):
         # self.sentence.append(node.children[2]) # EPSILON
         # self.sentence.append("units of its")
         self.sentence.append("its")
-        self.sentence.append(nl_to_literal_dict[node.children[1].children[0]]) # c-threshold --> also needs to take into account the difference between s and c
+        try:
+            self.sentence.append(nl_to_literal_dict[node.children[1].children[0].children[0]])
+        except Exception as e:
+            self.sentence.append(nl_to_literal_dict[node.children[1].children[0]]) # TODO: c-threshold --> take into account c vs. s
         self.sentence.append("levels")  
 
     def d_gt(self, node):
