@@ -1,6 +1,6 @@
 #!/bin/bash
 if [ "$1" = "0" ]; then 
-	python stl_generator_v5.py 'deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'stl_generator_v4_config.json'
+	python stl_generator_v5.py 'deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'stl_generator_v4_config.json' > deepseek_convo.txt
 	python ../heatmap_generators/stl_evaluation_v5.py 'deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'translations_DeepSeek-R1-Distill-Qwen-1.5B.pkl' 'stl_generator_v4_config.json'
 elif [ "$1" = "1" ]; then
 	python stl_generator_v5.py 'Qwen/Qwen3-0.6B' 'stl_generator_v4_config.json'
