@@ -21,7 +21,7 @@ except Exception as e:
 for i in range(100):
     print("aa")
 
-print(STL2literal('',grammar))
+STL2literal('',grammar)
 
 """
 for c in curated_dataset:
@@ -29,3 +29,4 @@ for c in curated_dataset:
     STL2literal(c, grammar)
     print('---------------------------------------------------------------------------------------------------------------')
 """
+

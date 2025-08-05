@@ -49,6 +49,14 @@ class Test(Interpreter):
             self.visit(node.children[0].children[0])
             self.sentence.append(', and')
             self.visit(node.children[0].children[1])
+      #  elif node.children[0].data == 'temp_op_f':
+            
+
+
+       # elif node.children[0].data == 'temp_op_g':
+            
+        #elif node.children[0].data == 'temp_op_fg':
+
         else:
             self.visit(node.children[0])
             # raise Exception("Error in translation")
@@ -252,7 +260,13 @@ class Test(Interpreter):
             self.sentence.append(node.children[1].children[0].value) # end time interval
 
         self.G_flag = True
-        self.visit(node.children[2])
+ 
+        if node.children[2].data == 'u_implies_u' or node.children[2].data == 'u_and_u':
+            self.visit(node.children[2])
+        else:
+            self.sentence.append('at every point in that interval')
+            self.visit(node.children[2])
+
         self.G_flag = False
          
     def temp_op_f(self, node): # TODO: parametrize this entire thing to do F, G, FG at the same time
@@ -265,11 +279,15 @@ class Test(Interpreter):
         else:
             self.sentence.append('to')
             self.sentence.append(node.children[1].children[0].value) # end time interval
-
-        self.visit(node.children[2])
-        
+ 
         self.F_flag = True
-        self.visit(node.children[2])
+        
+        if node.children[2].data == 'u_implies_u' or node.children[2].data == 'u_and_u':
+            self.visit(node.children[2])
+        else:
+            self.sentence.append('eventually in that interval')
+            self.visit(node.children[2])
+
         self.F_flag = False
 
     def temp_op_fg(self, node): # TODO: parametrize this entire thing to do F, G, FG at the same time
@@ -277,7 +295,7 @@ class Test(Interpreter):
 
         self.sentence.append('from day') # TODO: change this to an input we get from the LLM's dictionary so it can be adaptable for [days], [was]
         self.sentence.append(node.children[0].children[0].value) # start time interval
-        
+
         if node.children[1].children[0].value == '∞' or node.children[1].children[0].value == 'inf':
             self.sentence.append('onward')
         else:
@@ -285,7 +303,13 @@ class Test(Interpreter):
             self.sentence.append(node.children[1].children[0].value) # end time interval
         
         self.FG_flag = True
-        self.visit(node.children[2])
+        
+        if node.children[2].data == 'u_implies_u' or node.children[2].data == 'u_and_u':
+            self.visit(node.children[2])
+        else:
+            self.sentence.append('eventually at every point in that interval')
+            self.visit(node.children[2])
+
         self.FG_flag = False
         
 
@@ -296,11 +320,14 @@ def STL2literal(input_sentence, grammar):
     p = Lark(grammar) # TODO: this is also slow, improve if possible
 
     # TODO: remove this once done testing
-    input_sentence = "eventually[0,14](d_IFNα(t)<0impliesIL1Ra(t)<c(low))"
-    
+    # input_sentence = "eventually[0,14](d_IFNα(t)<0impliesIL1Ra(t)<c(low))"
+   
+    # input_sentence = 'eventually[11,12]globally(IL1Ra(t)>c(high))'
+    #'eventually[11,12]globally(IL1Ra(t)>c(high) implies IL1Ra(t)>c(high) )'
+
     tree = p.parse(input_sentence)
-    print(f'input sentence: {input_sentence}')
-    print(f'input tree: {tree}')
+    #print(f'input sentence: {input_sentence}')
+    #print(f'input tree: {tree}')
     tester = Test() # TODO: this is redundant, see if this can be improved
     tester.visit(tree)
 
@@ -313,7 +340,7 @@ def STL2literal(input_sentence, grammar):
     first_word = '' if len(split[0]) < 2 else split[0][1:]
     tester.sentence = first_letter.capitalize() + first_word + ' ' + ' '.join(split[1:])
     
-    print(f'translation: {tester.sentence}')
+    # print(f'translation: {tester.sentence}')
 
     return tester.sentence
 
