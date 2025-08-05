@@ -1,7 +1,7 @@
 Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Semantic attempt 3,Semantic attempt 3 sim
 N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
 N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+IL1RN(t)=c(low) and d_IL1β(t) < d_c(low),0.33339286,IL1RN(t)=c(low) and d_IL1β(t) < d_c(low),0.33339286,IL1RN(t)=c(low) and d_IL1β(t) < d_c(low),0.33339286,IL1RN(t)=c(low) and d_IL1β(t) < d_c(low),0.33339286
+"globally[1,∞](IFNα(t) > c(high)) implies eventually[1,∞](IL1Ra(t) < c(mid) and IL1RN(t) > c(high))",0.38912576,"globally[1,∞](IFNα(t) > c(high)) implies eventually[1,∞](IL1Ra(t) < c(mid) and IL1RN(t) > c(high))",0.38912576,"globally[1,∞](IFNα(t) > c(high)) implies eventually[1,∞](IL1Ra(t) < c(mid) and IL1RN(t) > c(high))",0.38912576,"globally[1,∞](IFNα(t) > c(high)) implies eventually[1,∞](IL1Ra(t) < c(mid) and IL1RN(t) > c(high))",0.38912576
+"IL6(t) > c(mid) and eventually[0,∞]globally(d_IFNβ(t) < d_c(high) and IL8(t)=c(low))",0.52892005,"IL6(t) > c(mid) and eventually[0,∞]globally(d_IFNβ(t) < d_c(high) and IL8(t)=c(low))",0.52892005,"IL6(t) > c(mid) and eventually[0,∞]globally(d_IFNβ(t) < d_c(high) and IL8(t)=c(low))",0.52892005,"IL6(t) > c(mid) and eventually[0,∞]globally(d_IFNβ(t) < d_c(high) and IL8(t)=c(low))",0.52892005
+"IFNβ(t)=c(low) and eventually[8,14] (SARSCoV2(t) > c(high) implies IFNβ(t) < c(high))",0.57880604,"IFNβ(t)=c(low) and eventually[8,14] (SARSCoV2(t) > c(high) implies IFNβ(t) < c(high))",0.57880604,"IFNβ(t)=c(low) and eventually[8,14] (SARSCoV2(t) > c(high) implies IFNβ(t) < c(high))",0.57880604,"IFNβ(t)=c(low) and eventually[8,14] (SARSCoV2(t) > c(high) implies IFNβ(t) < c(high))",0.57880604

@@ -322,7 +322,8 @@ def STL2literal(input_sentence, grammar):
     # TODO: remove this once done testing
     # input_sentence = "eventually[0,14](d_IFNα(t)<0impliesIL1Ra(t)<c(low))"
    
-    # input_sentence = 'eventually[11,12]globally(IL1Ra(t)>c(high))'
+
+    # 'eventually[11,12]globally(IL1Ra(t)>c(high))'
     #'eventually[11,12]globally(IL1Ra(t)>c(high) implies IL1Ra(t)>c(high) )'
 
     tree = p.parse(input_sentence)

@@ -33,7 +33,7 @@ guided_decoding_params = GuidedDecodingParams(json=STLResponse.model_json_schema
 stl_response_json = STLResponse.model_json_schema()
 """
 
-file_name = f'../config/{sys.argv[2]}'
+file_name = f'../config/{sys.argv[1]}'
 
 with open(file_name, 'r') as f:
     params = json.load(f)
@@ -192,14 +192,23 @@ def get_hole_feedback(e):
 ####################################################################################
 
 def check_signal_names(parsed_stl):
-    signals = re.findall(r"Tree\(Token\('RULE', 's'\), \[Token\('\w+', '\w+'\)\]\)", str(parsed_stl))  
+    print(" ")
+    signals = re.findall(r"Tree\(Token\('RULE', 's'\), \[Token\('\w+', '\w+'\)\]\)", str(parsed_stl)) 
+    # print(f'signals is: {signals}')
     for s in signals:
         s = s.split("Tree(Token('RULE', 's'), [Token('__ANON_3',")
-        print(f"after split: {s}")
+        # print(f"after split: {s}")
         s = re.findall(r"'.*'", s[1])[0]
-        if s not in signal_names:
-            response = f"{s} is not an allowed signal name." # TODO: expand into feedback prompt
+        try:
+            s = s[1:-1]
+            if s not in signal_names:
+                # TODO: try a hole approach, could do all bad names at once
+                response = 'You are trying to translate this sentence to STL:\n' + input_sentence + '\n\n' + 'Your previous response was:\n' + extracted_response + '\n\n' + 'However, you used ' + s + ' as a species name in your response, which is not allowed. Fix your response so it uses the allowed species names.\n\n' + "Format your response in JSON. Include (1) your thinking process, (2) the input statement, and (3) your STL response.\nYour STL response must conform to the following rules\n:[BEGIN RULES]\nu : less_than | greater_than | is | derivative_greater_than | derivative_less_than | derivative_is\nless_than : s(t) < c # Species s is less than c\ngreater_than : s(t) > c # Species s is greater than c\nis : s(t) = c # Species s is close to c\nderivative_greater_than : d_s(t) > d_c # The rate of change of species s is greater than d_c\nderivative_less_than : d_s(t) < d_c # The rate of change of species s is less than d_c\nderivative_is : d_s(t) = d_c # The rate of change species s is close to d_c\nc : s(t_a) | \"c(low)\" | \"c(mid)\" | \"c(high)\" # c is the level of a species, it can be a specific value or generally just low, moderate, or high\nd_c : 0 # Rate of change is 0\n\t| \"d_c(low)\" # Species is slowly increasing\n\t| \"d_c(high)\" # Species is rapidly increasing\n\t| \"-d_c(low)\" # Species is slowly decreasing\n\t| \"-d_c(high)\" # Species is quickly decreasing\npredicate : u | u1 and u2 | u1 implies u2 # You can combine predicates with Boolean operators\ntemporal_operator : eventually[t_a,t_b]globally(predicate) # This means that between day t_a and t_b, there is a point when the predicate becomes true for the rest of the interval\n\t| globally[t_a,t_b](phi) # This means the predicate is true over the entire interval from day t_a to t_b\n\t| eventually[t_a,t_b](phi) # This means there is at least 1 time between days t_a and t_b that the predicate is true\nt_a : number | ∞ # Time in days\ns : IL6 | IL12 | IL1β | IL1Ra | TNFα | IL8 | IFNα | IFNβ | SARSCoV2 | IL1RN # Species names you can use\nd_IL6 | d_IL12 | d_IL1β | d_IL1Ra | d_TNFα | d_IL8 | d_IFNα | d_IFNβ | d_SARSCoV2 | d_IL1RN # Names for derivatives of the species\n[END RULES]\n\nThe d_s terms represent the derivative of a signal, so you may find those terms helpful for describing how signals increase or decrease. For general statements describing the levels of some species as \"high\" or \"low\" for example, you may find comparison statements helpful."
+                return response
+        except Exception as e:
+            response = 'You are trying to translate this sentence to STL:\n' + input_sentence + '\n\n' + 'Your previous response was:\n' + extracted_response + '\n\n' + 'However, you used ' + s + ' as a species name in your response, which is not allowed. Fix your response so it uses the allowed species names.\n\n' + "Format your response in JSON. Include (1) your thinking process, (2) the input statement, and (3) your STL response.\nYour STL response must conform to the following rules\n:[BEGIN RULES]\nu : less_than | greater_than | is | derivative_greater_than | derivative_less_than | derivative_is\nless_than : s(t) < c # Species s is less than c\ngreater_than : s(t) > c # Species s is greater than c\nis : s(t) = c # Species s is close to c\nderivative_greater_than : d_s(t) > d_c # The rate of change of species s is greater than d_c\nderivative_less_than : d_s(t) < d_c # The rate of change of species s is less than d_c\nderivative_is : d_s(t) = d_c # The rate of change species s is close to d_c\nc : s(t_a) | \"c(low)\" | \"c(mid)\" | \"c(high)\" # c is the level of a species, it can be a specific value or generally just low, moderate, or high\nd_c : 0 # Rate of change is 0\n\t| \"d_c(low)\" # Species is slowly increasing\n\t| \"d_c(high)\" # Species is rapidly increasing\n\t| \"-d_c(low)\" # Species is slowly decreasing\n\t| \"-d_c(high)\" # Species is quickly decreasing\npredicate : u | u1 and u2 | u1 implies u2 # You can combine predicates with Boolean operators\ntemporal_operator : eventually[t_a,t_b]globally(predicate) # This means that between day t_a and t_b, there is a point when the predicate becomes true for the rest of the interval\n\t| globally[t_a,t_b](phi) # This means the predicate is true over the entire interval from day t_a to t_b\n\t| eventually[t_a,t_b](phi) # This means there is at least 1 time between days t_a and t_b that the predicate is true\nt_a : number | ∞ # Time in days\ns : IL6 | IL12 | IL1β | IL1Ra | TNFα | IL8 | IFNα | IFNβ | SARSCoV2 | IL1RN # Species names you can use\nd_IL6 | d_IL12 | d_IL1β | d_IL1Ra | d_TNFα | d_IL8 | d_IFNα | d_IFNβ | d_SARSCoV2 | d_IL1RN # Names for derivatives of the species\n[END RULES]\n\nThe d_s terms represent the derivative of a signal, so you may find those terms helpful for describing how signals increase or decrease. For general statements describing the levels of some species as \"high\" or \"low\" for example, you may find comparison statements helpful."
             return response
+
     return None
 
 ####################################################################################
@@ -281,16 +290,18 @@ extracted_response = 'globally[14,∞](d_SARSCoV2(t)=0) and globally[14,∞](d_I
 try:            
     print("trying to parse")
     parsed_stl = parser.parse(extracted_response)
+    print("parsing failed bc of parser")
     if check_signal_names(parsed_stl) is not None:
-        raise Error("bad signal name")
-    syntax_passed = True
-    print('stl parsed')
-    translations.at[sentence_index, f'STL-shot{i}-S0-F0'] = extracted_response
+        print("parsing failed because of signal names")
+        raise Exception("bad signal name")
+   #  syntax_passed = True
+    # print('stl parsed')
+    # translations.at[sentence_index, f'STL-shot{i}-S0-F0'] = extracted_response
 except Exception as e:
-    if translations.at[sentence_index, f'STL-shot{i}-S0-F0'] != 'STL could not be extracted':
-        translations.at[sentence_index, f'STL-shot{i}-S0-F0'] = "STL could not be parsed"
-    syntax_passed = False 
-    print('parsing failed')
+    # if translations.at[sentence_index, f'STL-shot{i}-S0-F0'] != 'STL could not be extracted':
+      #  translations.at[sentence_index, f'STL-shot{i}-S0-F0'] = "STL could not be parsed"
+    # syntax_passed = False 
+    # print('parsing failed')
 
     error_feedback = ''
                    
@@ -301,7 +312,7 @@ except Exception as e:
     # (4) Fill in hole
     # (5) None of the above --> just give it the parsing error message
 
-    print(f'extracted_response: {extracted_response}')
+    print(f'extracted_response being processed for an exception: {extracted_response}')
 
     if check_json(extracted_response) is not None:
         print('feedback is check json')
@@ -319,11 +330,9 @@ except Exception as e:
         feedback = default_feedback(extracted_response)
         print('feedback is default')
 
-m = 5/0
 
 
-
-
+"""
 
 all_responses_all_sentences = []
 
@@ -670,3 +679,4 @@ try:
 except Exception as e:
     print("there was a pickle problem")
     print(e)
+"""
