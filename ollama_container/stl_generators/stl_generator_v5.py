@@ -54,7 +54,7 @@ sampling_params_thinking = SamplingParams(
         max_tokens=params['model_parameters']['max_tokens'])
 
 sampling_params_semantic = SamplingParams(
-        temperature=0.7,
+        temperature=0.6,
         top_p=params['model_parameters']['top_p'],
         top_k=params['model_parameters']['top_k'],
         min_p=params['model_parameters']['min_p'],
