@@ -18,8 +18,14 @@ try:
 except Exception as e:
     print(e)
 
-for c in curated_dataset:
-    print(c)
-    print(STL2literal(c, grammar))
-    print('---------------------------------------------------------------------------------------------------------------')
+for i in range(100):
+    print("aa")
 
+print(STL2literal('',grammar))
+
+"""
+for c in curated_dataset:
+    # print(c)
+    STL2literal(c, grammar)
+    print('---------------------------------------------------------------------------------------------------------------')
+"""

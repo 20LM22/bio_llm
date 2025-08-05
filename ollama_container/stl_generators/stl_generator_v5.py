@@ -401,6 +401,8 @@ for sentence_index, sentence in sentences['input statement'].items():
             parsed_stl = ''
             try:            
                 parsed_stl = parser.parse(extracted_response)    
+                if check_signal_names(parsed_stl) is not None:
+                    raise Error("bad signal name")
                 print('stl parsed')
                 syntax_passed = True
                 translations.at[sentence_index, f'STL-shot{i}-S0-F{count}'] = extracted_response
@@ -446,6 +448,8 @@ for sentence_index, sentence in sentences['input statement'].items():
         for j in range(num_semantic_checks):
             print(f'prompting semantic iteration {j}')
 
+            print(f'last_stl: {last_stl}')
+            print(f'best_stl: {best_stl}')
             last_literal = STL2literal(last_stl, grammar)
             best_literal = STL2literal(best_stl, grammar)
 
