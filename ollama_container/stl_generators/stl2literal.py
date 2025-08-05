@@ -36,16 +36,16 @@ class Test(Interpreter):
     def omega(self, node):
 
         if node.children[0].data == 'psi_implies_psi':
-            print("psi and psi")
+           # print("psi and psi")
             self.sentence.append('if')
             self.visit(node.children[0].children[0])
             self.sentence.append(', then')
             self.visit(node.children[0].children[1])
         elif node.children[0].data == 'nu' or node.children[0].data == 'psi':
-            print("nu")
+            #print("nu")
             self.visit(node.children[0].children[0])
         elif node.children[0].data == "omega_and_omega":
-            print("omega and omega")
+            #print("omega and omega")
             self.visit(node.children[0].children[0])
             self.sentence.append(', and')
             self.visit(node.children[0].children[1])
@@ -62,7 +62,7 @@ class Test(Interpreter):
             # raise Exception("Error in translation")
         
     def u_implies_u(self, node):
-        print('located in u implies u')
+       # print('located in u implies u')
         
         if self.FG_flag:
             self.sentence.append('if')
@@ -70,27 +70,27 @@ class Test(Interpreter):
             self.sentence.append('then eventually at every point in that interval')
             self.visit(node.children[1])
         elif self.F_flag:
-            print('located in F flag')
+          #  print('located in F flag')
             self.sentence.append('if')
             self.visit(node.children[0])
-            print('back from child 0')
+        #    print('back from child 0')
             self.sentence.append('then eventually')
             self.visit(node.children[1])
-            print('back from child 1')
+        #    print('back from child 1')
         elif self.G_flag:
             self.sentence.append('if')
             self.visit(node.children[0])
             self.sentence.append('then at every point in that interval')
             self.visit(node.children[1])
         else:
-            print('located in no flag')
+         #   print('located in no flag')
             self.sentence.append('if')
             self.visit(node.children[0])
             self.sentence.append('then')
             self.visit(node.children[1])
     
     def u(self, node):
-        print('located in u')
+      #  print('located in u')
 
         if self.FG_flag:
             self.sentence.append('eventually at every point in that interval')
@@ -105,7 +105,7 @@ class Test(Interpreter):
             self.visit(node.children[0])
     
     def u_and_u(self, node):
-        print('located in u and u')
+       # print('located in u and u')
 
         if self.FG_flag:
             self.sentence.append('eventually at every point in that interval')

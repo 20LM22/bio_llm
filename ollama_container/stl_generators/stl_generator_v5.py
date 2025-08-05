@@ -302,7 +302,9 @@ for sentence_index, sentence in sentences['input statement'].items():
 
         print('thinking prompt')
         thinking_prompt = params['thinking_prompt']['prompt_1'] + '\n' + sentence + '\n\n' + params['thinking_prompt']['prompt_2']
+        print(f'thinking prompt: {thinking_prompt}')
         response = llm.chat([{"role": "user", "content": thinking_prompt}], sampling_params_thinking)[0].outputs[0].text
+        print(f'response: {response}')
         
         ####################################################################
         # 2a) STL Prompt
@@ -310,7 +312,9 @@ for sentence_index, sentence in sentences['input statement'].items():
 
         print('stl prompt')
         stl_prompt = params['stl_prompt']['prompt_1'] + '\n' + sentence + '\n\n' + params['stl_prompt']['prompt_2'] + "\n\n" + generate_example_prompt(params['num_examples'])
+        print(f'stl prompt: {stl_prompt}')
         response = llm.chat([{"role": "user", "content": stl_prompt}], sampling_params)[0].outputs[0].text
+        print(f'response: {response}')
 
         ####################################################################
         # 2b) Process the STL response
@@ -382,7 +386,11 @@ for sentence_index, sentence in sentences['input statement'].items():
             syntax_passed = False
 
             print('now prompting with the feedback')
-            response = llm.chat([{"role": "user", "content": feedback + '\n\n' + generate_example_prompt(params['num_examples'])}], sampling_params)[0].outputs[0].text
+            m = feedback + '\n\n' + generate_example_prompt(params['num_examples'])
+            print(f'feedback prompt: {m}')
+
+            response = llm.chat([{"role": "user", "content": m }], sampling_params)[0].outputs[0].text
+            print(f'response: {response}')
 
             # Try extraction
             try:
@@ -448,8 +456,6 @@ for sentence_index, sentence in sentences['input statement'].items():
         for j in range(num_semantic_checks):
             print(f'prompting semantic iteration {j}')
 
-            print(f'last_stl: {last_stl}')
-            print(f'best_stl: {best_stl}')
             last_literal = STL2literal(last_stl, grammar)
             best_literal = STL2literal(best_stl, grammar)
 
@@ -512,8 +518,11 @@ for sentence_index, sentence in sentences['input statement'].items():
                 feedback_attempts_remaining -= 1
                 syntax_passed = False
 
+                m = feedback + '\n\n' + generate_example_prompt(params['num_examples'])
+                print(f'feedback prompt: {m}')
+
                 print('prompting with feedback')
-                response = llm.chat([{"role": "user", "content": feedback + '\n\n' + generate_example_prompt(params['num_examples'])}], sampling_params)[0].outputs[0].text
+                response = llm.chat([{"role": "user", "content": m }], sampling_params)[0].outputs[0].text
             
                 # extract STL
                 try:
