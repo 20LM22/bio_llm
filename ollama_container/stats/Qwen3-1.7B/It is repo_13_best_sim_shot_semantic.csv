@@ -1,7 +1,7 @@
 Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Semantic attempt 3,Semantic attempt 3 sim
 N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-"eventually[0,∞]globally(d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high)) and IL1β(t) = c(mid) and IL1Ra(t) = c(mid)",0.48899215,"eventually[0,∞]globally(d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high)) and IL1β(t) = c(mid) and IL1Ra(t) = c(mid)",0.48899215,"eventually[0,∞]globally(d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high)) and IL1β(t) = c(mid) and IL1Ra(t) = c(mid)",0.48899215,"eventually[0,∞]globally(d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high)) and IL1β(t) = c(mid) and IL1Ra(t) = c(mid)",0.48899215
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-"eventually[0,∞]globally(d_IFNα(t)=d_c(high) and d_IFNβ(t)=d_c(high))",0.47459844,"eventually[0,∞]globally(d_IFNα(t)=d_c(high) and d_IFNβ(t)=d_c(high))",0.47459844,"eventually[0,∞]globally(d_IFNα(t)=d_c(high) and d_IFNβ(t)=d_c(high))",0.47459844,"eventually[0,∞]globally(d_IFNα(t)=d_c(high) and d_IFNβ(t)=d_c(high))",0.47459844
-"eventually[0,1]globally(d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high)) implies eventually[0,1]globally(IL6(t) = c(mid))",0.52879345,"eventually[0,1]globally(d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high)) implies eventually[0,1]globally(IL6(t) = c(mid))",0.52879345,"eventually[0,1]globally(d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high)) implies eventually[0,1]globally(IL6(t) = c(mid))",0.52879345,"eventually[0,1]globally(d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high)) implies eventually[0,1]globally(IL6(t) = c(mid))",0.52879345
 "eventually[0,∞]globally(IFNα(t) > c(high) and IFNβ(t) > c(high))",0.54248816,"eventually[0,∞]globally(IFNα(t) > c(high) and IFNβ(t) > c(high))",0.54248816,"eventually[0,∞]globally(IFNα(t) > c(high) and IFNβ(t) > c(high))",0.54248816,"eventually[0,∞]globally(IFNα(t) > c(high) and IFNβ(t) > c(high))",0.54248816
+N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A

@@ -53,6 +53,14 @@ sampling_params_thinking = SamplingParams(
         presence_penalty=params['model_parameters']['presence_penalty'],
         max_tokens=params['model_parameters']['max_tokens'])
 
+sampling_params_semantic = SamplingParams(
+        temperature=0.7,
+        top_p=params['model_parameters']['top_p'],
+        top_k=params['model_parameters']['top_k'],
+        min_p=params['model_parameters']['min_p'],
+        presence_penalty=params['model_parameters']['presence_penalty'],
+        max_tokens=params['model_parameters']['max_tokens'])
+
 model_dtype=params['model_parameters']['model_dtype']
 max_model_len=params['model_parameters']['max_model_len']
 gpu_memory_utilization=params['model_parameters']['gpu_memory_utilization']
@@ -447,7 +455,7 @@ for sentence_index, sentence in sentences['input statement'].items():
                 semantic_prompt = params['semantic_prompt']['prompt_1'] + '\n' + sentence + '\n\n' + params['semantic_prompt']['prompt_2'] + '\n' + last_stl + '\n' + params['semantic_prompt']['prompt_3'] + '\n' + last_literal + '\n\n' + params['semantic_prompt']['prompt_4'] + '\n' + best_stl + '\n' + params['semantic_prompt']['prompt_3'] + '\n' + best_literal + '\n\n' + params['semantic_prompt']['prompt_5'] + '\n\n' + params['semantic_prompt']['prompt_6'] + '\n\n' + generate_example_prompt(params['num_examples'])
 
             print(f'semantic prompt is: {semantic_prompt}')
-            response = llm.chat([{"role": "user", "content": semantic_prompt}], sampling_params)[0].outputs[0].text
+            response = llm.chat([{"role": "user", "content": semantic_prompt}], sampling_params_semantic)[0].outputs[0].text
             print(f'semantic response is: {response}')
 
             # extract STL
