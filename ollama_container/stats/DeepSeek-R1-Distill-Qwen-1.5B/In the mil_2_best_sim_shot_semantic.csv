@@ -1,7 +1,7 @@
 Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Semantic attempt 3,Semantic attempt 3 sim
-"globally[4,19](d_IFNα(t)=d_c(low) and IL1Ra(t) > c(mid))",0.52358913,"globally[4,19](d_IFNα(t)=d_c(low) and IL1Ra(t) > c(mid))",0.52358913,"globally[4,19](d_IFNα(t)=d_c(low) and IL1Ra(t) > c(mid))",0.52358913,"globally[4,19](d_IFNα(t)=d_c(low) and IL1Ra(t) > c(mid))",0.52358913
-IL6(t)=c(high) and d_IL6(t) < c(high),0.66458935,IL6(t)=c(high) and d_IL6(t) < c(high),0.66458935,IL6(t)=c(high) and d_IL6(t) < c(high),0.66458935,IL6(t)=c(high) and d_IL6(t) < c(high),0.66458935
-"globally[1,∞](d_IL6(t) < d_c(high))",0.61278147,"globally[1,∞](d_IL6(t) < d_c(high))",0.61278147,"globally[1,∞](d_IL6(t) < d_c(high))",0.61278147,"globally[1,∞](d_IL6(t) < d_c(high))",0.61278147
-IL6(t)=c(high) implies IL6(t) < c(mid),0.70856786,IL6(t)=c(high) implies IL6(t) < c(mid),0.70856786,IL6(t)=c(high) implies IL6(t) < c(mid),0.70856786,IL6(t)=c(high) implies IL6(t) < c(mid),0.70856786
+N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
 N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
 N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A

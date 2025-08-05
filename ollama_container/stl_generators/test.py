@@ -62,16 +62,20 @@ class Test(Interpreter):
             self.sentence.append('then eventually at every point in that interval')
             self.visit(node.children[1])
         elif self.F_flag:
+            print('located in F flag')
             self.sentence.append('if')
             self.visit(node.children[0])
+            print('back from child 0')
             self.sentence.append('then eventually')
             self.visit(node.children[1])
+            print('back from child 1')
         elif self.G_flag:
             self.sentence.append('if')
             self.visit(node.children[0])
             self.sentence.append('then at every point in that interval')
             self.visit(node.children[1])
         else:
+            print('located in no flag')
             self.sentence.append('if')
             self.visit(node.children[0])
             self.sentence.append('then')
