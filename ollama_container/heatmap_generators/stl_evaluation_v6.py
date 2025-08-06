@@ -42,24 +42,47 @@ success_rate['STL Extraction Success Rate'] = 0
 success_rate['STL Parsing Success Rate'] = 0
 success_rate['Number of Translations'] = 0
 success_rate['Number of Syntactically Correct Translations'] = 0
+success_rate['Semantic Passes'] = 0
 success_rate['Semantic Success Rate'] = 0
 
 total_success_rate = pandas.DataFrame(index=[0])
 total_success_rate['Input Sentence'] = 'Overall'
 
 # success_rate['All valid STL'] = []
+shot_count = params['num_shots_per_input_sentence']
 
 for col in translations.columns:
     if 'STL-shot' in col:
         success_rate['STL Extraction Success Rate'] += np.where(translations[col] == 'STL could not be extracted', 1, 0)
         success_rate['STL Parsing Success Rate'] += np.where(translations[col] == 'STL could not be parsed', 1, 0)
         success_rate['Number of Translations'] += np.where(translations[col].isnull(), 0, 1)
-        success_rate['All valid STL'].append(np.where(translations[col] != 'STL could not be extracted' and translations[col] != 'STL could not be parsed' and not translations[col].isnull(), translations[col], None))
 
+# fill in semantic successes
 for index, row in translations.iterrows():
-    for entry in row:
+    
+    nl_embedding = np.array(model.encode(row['input statement'], normalize_embeddings=True))
+    row_subset = pandas.DataFrame()
+    row_counter = 0
 
+    for i in range(shot_count):
+        relevant_translations_cols = []
+        for col in translations.columns:
+            if f'shot{i}' in col:
+                relevant_translations_cols.append(col)
+        row_subset = row[relevant_translations_cols] # row subset has everything with shot-i in the column name
+    
+    for entry in row_subset:
+        if entry != 'STL could not be extracted' and entry != 'STL could not be parsed' and not entry.isnull():
+            # add this entry
+            literal = STL2literal(entry, grammar)
+            literal_embedding = ( np.array(model.encode(literal, normalize_embeddings=True)) )
+            sim = cosine_similarity(np.array(literal_embedding).reshape(1,-1), np.array(nl_embedding).reshape(1,-1))[0][0]
+            if sim > sim_threshold:
+                row_counter += 1
 
+    success_rate.loc[index, 'Semantic Passes'] = row_counter
+
+success_rate['Semantic Success Rate'] = success_rate['Semantic Passes'] / success_rate['Number of Syntactically Correct Translations']
 
 total_success_rate['STL Extraction Success Rate'] = success_rate['STL Extraction Success Rate'].sum()
 total_success_rate['STL Parsing Success Rate'] = success_rate['STL Parsing Success Rate'].sum()
@@ -79,7 +102,9 @@ success_rate['Number of Syntactically Correct Translations'] = success_rate['STL
 
 total_success_rate['STL Extraction Success Rate'] = np.where(num_total_translations==0, 0, 1-(total_success_rate['STL Extraction Success Rate'] / num_total_translations))
 total_success_rate['STL Parsing Success Rate'] = np.where(num_total_passed_extraction==0, 0, 1-(total_success_rate['STL Parsing Success Rate'] / num_total_passed_extraction))
-total_success_rate['Number of Syntactically Correct Translations'] = total_success_rate['STL Extraction Success Rate'] * total_success_rate['STL Parsing Success Rate'] * total_success_rate['Number of Translations']
+total_success_rate['Number of Translations'] = success_rate['Number of Translations'].sum()
+total_success_rate['Number of Syntactically Correct Translations'] = total_success_rate['STL Extraction Success Rate'] * total_success_rate['STL Parsing Success Rate'] * total_success_rate['Semantic Passes'] = success_rate['Semantic Passes'].sum()
+total_success_rate['Semantic Success Rate'] = total_success_rate['Semantic Passes'] / total_success_rate['Number of Syntactically Correct Translations']
 
 stats = pandas.concat([success_rate, total_success_rate], ignore_index=True)
 stats.to_csv(f'../stats/{model_name}/stats.csv', index=False)
