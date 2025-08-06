@@ -18,7 +18,17 @@ signal_names_dict = {
     "IFNα": "IFN-α",
     "IFNβ": "IFN-β",
     "SARSCoV2": "SARS-CoV-2",
-    "IL1RN": "IL1RN"
+    "IL1RN": "IL1RN",
+    "d_IL6": "IL-6",
+    "d_IL12": "IL-12",
+    "d_IL1β": "IL-1β",
+    "d_IL1Ra": "IL-1Ra",
+    "d_TNFα": "TNF-α",
+    "d_IL8": "IL-8",
+    "d_IFNα": "IFN-α",
+    "d_IFNβ": "IFN-β",
+    "d_SARSCoV2": "SARS-CoV-2",
+    "d_IL1RN": "IL1RN"
 }
 
 class Test(Interpreter):
@@ -36,16 +46,16 @@ class Test(Interpreter):
     def omega(self, node):
 
         if node.children[0].data == 'psi_implies_psi':
-            print("psi and psi")
+           # print("psi and psi")
             self.sentence.append('if')
             self.visit(node.children[0].children[0])
             self.sentence.append(', then')
             self.visit(node.children[0].children[1])
         elif node.children[0].data == 'nu' or node.children[0].data == 'psi':
-            print("nu")
+            #print("nu")
             self.visit(node.children[0].children[0])
         elif node.children[0].data == "omega_and_omega":
-            print("omega and omega")
+            #print("omega and omega")
             self.visit(node.children[0].children[0])
             self.sentence.append(', and')
             self.visit(node.children[0].children[1])
@@ -62,7 +72,7 @@ class Test(Interpreter):
             # raise Exception("Error in translation")
         
     def u_implies_u(self, node):
-        print('located in u implies u')
+       # print('located in u implies u')
         
         if self.FG_flag:
             self.sentence.append('if')
@@ -70,27 +80,27 @@ class Test(Interpreter):
             self.sentence.append('then eventually at every point in that interval')
             self.visit(node.children[1])
         elif self.F_flag:
-            print('located in F flag')
+          #  print('located in F flag')
             self.sentence.append('if')
             self.visit(node.children[0])
-            print('back from child 0')
+        #    print('back from child 0')
             self.sentence.append('then eventually')
             self.visit(node.children[1])
-            print('back from child 1')
+        #    print('back from child 1')
         elif self.G_flag:
             self.sentence.append('if')
             self.visit(node.children[0])
             self.sentence.append('then at every point in that interval')
             self.visit(node.children[1])
         else:
-            print('located in no flag')
+         #   print('located in no flag')
             self.sentence.append('if')
             self.visit(node.children[0])
             self.sentence.append('then')
             self.visit(node.children[1])
     
     def u(self, node):
-        print('located in u')
+      #  print('located in u')
 
         if self.FG_flag:
             self.sentence.append('eventually at every point in that interval')
@@ -105,7 +115,7 @@ class Test(Interpreter):
             self.visit(node.children[0])
     
     def u_and_u(self, node):
-        print('located in u and u')
+       # print('located in u and u')
 
         if self.FG_flag:
             self.sentence.append('eventually at every point in that interval')
@@ -249,7 +259,7 @@ class Test(Interpreter):
                 self.sentence.append('0')
          
     def temp_op_g(self, node): # TODO: parametrize this entire thing to do F, G, FG at the same time
-        print('located in temp op g')
+        # print('located in temp op g')
 
         self.sentence.append('from day') # TODO: change this to an input we get from the LLM's dictionary so it can be adaptable for [days], [was]
         self.sentence.append(node.children[0].children[0].value) # start time interval
@@ -270,7 +280,7 @@ class Test(Interpreter):
         self.G_flag = False
          
     def temp_op_f(self, node): # TODO: parametrize this entire thing to do F, G, FG at the same time
-        print('located in temp op f')
+        # print('located in temp op f')
 
         self.sentence.append('from day') # TODO: change this to an input we get from the LLM's dictionary so it can be adaptable for [days], [was]
         self.sentence.append(node.children[0].children[0].value) # start time interval
@@ -291,7 +301,7 @@ class Test(Interpreter):
         self.F_flag = False
 
     def temp_op_fg(self, node): # TODO: parametrize this entire thing to do F, G, FG at the same time
-        print('located in temp op fg')
+        # print('located in temp op fg')
 
         self.sentence.append('from day') # TODO: change this to an input we get from the LLM's dictionary so it can be adaptable for [days], [was]
         self.sentence.append(node.children[0].children[0].value) # start time interval
@@ -316,18 +326,10 @@ class Test(Interpreter):
 def STL2literal(input_sentence, grammar):
     # TODO: remove this grammar
     grammar = "?start: omega\n?u: gt | lt | eq | d_gt | d_lt | d_eq\ngt: s \"(t)\" \">\" c\nlt: s \"(t)\" \"<\" c\neq: s \"(t)\" \"=\" c\nd_gt: \"d_\" s \"(t)\" \">\" D_C\nd_lt: \"d_\" s \"(t)\" \"<\" D_C\nd_eq: \"d_\" s \"(t)\" \"=\" D_C\nc: s \"(\" t_a \")\" | C_LOW | C_MID | C_HIGH\nC_LOW: \"c(low)\"\nC_MID: \"c(mid)\"\nC_HIGH: \"c(high)\"\nD_C : \"0\" | \"d_c(low)\" | \"d_c(high)\" | \"-d_c(low)\" | \"-d_c(high)\"\n?nu : u | u_implies_u | u_and_u\nu_implies_u: u \"implies\" u\nu_and_u: u \"and\" u\n?psi: temp_op_fg | temp_op_g | temp_op_f\ntemp_op_fg: \"eventually\" \"[\" t_a \",\" t_a \"]\" \"globally\" \"(\" nu \")\"\ntemp_op_f: \"eventually\" \"[\" t_a \",\" t_a \"]\" \"(\" nu \")\"\ntemp_op_g: \"globally\" \"[\" t_a \",\" t_a \"]\" \"(\" nu \")\"\nomega: nu | psi | omega_and_omega | psi_implies_psi\nomega_and_omega: omega \"and\" omega\npsi_implies_psi: psi \"implies\" psi\nt_a: /[0-9]+/ | \"inf\" | /∞/\ns: /[\\w]+/\nd_s: /d_[\\w]+/\n%import common.WS\n%ignore WS"
-
+    # print('inside stl2literal')
     p = Lark(grammar) # TODO: this is also slow, improve if possible
 
-    # TODO: remove this once done testing
-    # input_sentence = "eventually[0,14](d_IFNα(t)<0impliesIL1Ra(t)<c(low))"
-   
-    # input_sentence = 'eventually[11,12]globally(IL1Ra(t)>c(high))'
-    #'eventually[11,12]globally(IL1Ra(t)>c(high) implies IL1Ra(t)>c(high) )'
-
     tree = p.parse(input_sentence)
-    #print(f'input sentence: {input_sentence}')
-    #print(f'input tree: {tree}')
     tester = Test() # TODO: this is redundant, see if this can be improved
     tester.visit(tree)
 
@@ -340,7 +342,6 @@ def STL2literal(input_sentence, grammar):
     first_word = '' if len(split[0]) < 2 else split[0][1:]
     tester.sentence = first_letter.capitalize() + first_word + ' ' + ' '.join(split[1:])
     
-    # print(f'translation: {tester.sentence}')
 
     return tester.sentence
 

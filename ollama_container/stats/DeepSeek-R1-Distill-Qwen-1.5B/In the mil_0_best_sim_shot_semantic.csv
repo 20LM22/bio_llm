@@ -1,7 +1,7 @@
 Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Semantic attempt 3,Semantic attempt 3 sim
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+IL6(t) < c(high),0.6672562,IL6(t) < c(high),0.6672562,IL6(t) < c(high),0.6672562,IL6(t) < c(high),0.6672562
+IL6(t) < c(high) and d_IL6(t) < 0,0.72069025,IL6(t) < c(high) and d_IL6(t) < 0,0.72069025,IL6(t) < c(high) and d_IL6(t) < 0,0.72069025,IL6(t) < c(high) and d_IL6(t) < 0,0.72069025
+d_IL6(t) < c(high),0.6672562,d_IL6(t) < c(high),0.6672562,d_IL6(t) < c(high),0.6672562,d_IL6(t) < c(high),0.6672562
+"globally[1,∞](IL6(t) < c(high))",0.6857874,"globally[1,∞](IL6(t) < c(high))",0.6857874,"globally[1,∞](IL6(t) < c(high))",0.6857874,"globally[1,∞](IL6(t) < c(high))",0.6857874
+"IL6(t)=c(high) and globally[0,∞](d_IL6(t)<0)",0.72952944,"IL6(t)=c(high) and globally[0,∞](d_IL6(t)<0)",0.72952944,"IL6(t)=c(high) and globally[0,∞](d_IL6(t)<0)",0.72952944,"IL6(t)=c(high) and globally[0,∞](d_IL6(t)<0)",0.72952944
+"eventually[1,∞](IL6(t) = c(mid))",0.6926789,"eventually[1,∞](IL6(t) = c(mid))",0.6926789,"eventually[1,∞](IL6(t) = c(mid))",0.6926789,"eventually[1,∞](IL6(t) = c(mid))",0.6926789

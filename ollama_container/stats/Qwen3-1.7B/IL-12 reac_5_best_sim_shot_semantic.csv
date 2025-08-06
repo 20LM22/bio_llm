@@ -1,7 +1,7 @@
 Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Semantic attempt 3,Semantic attempt 3 sim
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+"globally[14,∞](d_IL12(t) > d_c(high))",0.6261506,"globally[14,∞](d_IL12(t) > d_c(high))",0.6261506,"globally[14,∞](d_IL12(t) > d_c(high))",0.6261506,"globally[14,∞](d_IL12(t) > d_c(high))",0.6261506
+"globally[14,∞](d_IL12(t) > 0)",0.6507726,"globally[14,∞](d_IL12(t) > 0)",0.6507726,"globally[14,∞](d_IL12(t) > 0)",0.6507726,"globally[14,∞](d_IL12(t) > 0)",0.6507726
+"globally[14,∞](IL12(t) = c(high))",0.7503511,"globally[14,∞](IL12(t) = c(high))",0.7503511,"globally[14,∞](IL12(t) = c(high))",0.7503511,"globally[14,∞](IL12(t) = c(high))",0.7503511
+"eventually[14,∞]globally(IL12(t)=c(high))",0.75818545,"eventually[14,∞]globally(IL12(t)=c(high))",0.75818545,"eventually[14,∞]globally(IL12(t)=c(high))",0.75818545,"eventually[14,∞]globally(IL12(t)=c(high))",0.75818545
+"globally[14,∞](IL12(t) = c(high))",0.7503511,"globally[14,∞](IL12(t) = c(high))",0.7503511,"globally[14,∞](IL12(t) = c(high))",0.7503511,"globally[14,∞](IL12(t) = c(high))",0.7503511
+"eventually[14,∞](IL12(t) > c(low))",0.7531867,"eventually[14,∞](IL12(t) > c(low))",0.7531867,"eventually[14,∞](IL12(t) > c(low))",0.7531867,"eventually[14,∞](IL12(t) > c(low))",0.7531867

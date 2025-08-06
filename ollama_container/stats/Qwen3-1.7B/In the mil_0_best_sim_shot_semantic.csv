@@ -1,7 +1,7 @@
 Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Semantic attempt 3,Semantic attempt 3 sim
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+"globally[0,7](d_IL6(t) < 0) implies eventually[7,∞](d_IL6(t) < d_c(high))",0.610736,"globally[0,7](d_IL6(t) < 0) implies eventually[7,∞](d_IL6(t) < d_c(high))",0.610736,"globally[0,7](d_IL6(t) < 0) implies eventually[7,∞](d_IL6(t) < d_c(high))",0.610736,"globally[0,7](d_IL6(t) < 0) implies eventually[7,∞](d_IL6(t) < d_c(high))",0.610736
+"globally[1,∞](d_IL6(t) < 0)",0.65201616,"globally[1,∞](d_IL6(t) < 0)",0.65201616,"globally[1,∞](d_IL6(t) < 0)",0.65201616,"globally[1,∞](d_IL6(t) < 0)",0.65201616
+"globally[1,7](IL6(t) > c(mid)) and globally[7,∞](IL6(t) < c(low))",0.7429898,"globally[1,7](IL6(t) > c(mid)) and globally[7,∞](IL6(t) < c(low))",0.7429898,"globally[1,7](IL6(t) > c(mid)) and globally[7,∞](IL6(t) < c(low))",0.7429898,"globally[1,7](IL6(t) > c(mid)) and globally[7,∞](IL6(t) < c(low))",0.7429898
+"eventually[0,7]globally(d_IL6(t) < c(high)) and eventually[7,∞]globally(d_IL6(t) < c(high))",0.71534073,"eventually[0,7]globally(d_IL6(t) < c(high)) and eventually[7,∞]globally(d_IL6(t) < c(high))",0.71534073,"eventually[0,7]globally(d_IL6(t) < c(high)) and eventually[7,∞]globally(d_IL6(t) < c(high))",0.71534073,"eventually[0,7]globally(d_IL6(t) < c(high)) and eventually[7,∞]globally(d_IL6(t) < c(high))",0.71534073
+"globally[0,7](d_IL6(t) < 0) and globally[7,∞](IL6(t) < c(low))",0.7048888,"globally[0,7](d_IL6(t) < 0) and globally[7,∞](IL6(t) < c(low))",0.7048888,"globally[0,7](d_IL6(t) < 0) and globally[7,∞](IL6(t) < c(low))",0.7048888,"globally[0,7](d_IL6(t) < 0) and globally[7,∞](IL6(t) < c(low))",0.7048888
+"globally[1,7](d_IL6(t) < d_c(high)) and globally[7,∞](IL6(t) < c(mid))",0.73069847,"globally[1,7](d_IL6(t) < d_c(high)) and globally[7,∞](IL6(t) < c(mid))",0.73069847,"globally[1,7](d_IL6(t) < d_c(high)) and globally[7,∞](IL6(t) < c(mid))",0.73069847,"globally[1,7](d_IL6(t) < d_c(high)) and globally[7,∞](IL6(t) < c(mid))",0.73069847

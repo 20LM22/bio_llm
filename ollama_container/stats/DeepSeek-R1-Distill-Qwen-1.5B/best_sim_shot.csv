@@ -1,9 +1,9 @@
 shot0,shot0 sim,shot1,shot1 sim,shot2,shot2 sim,shot3,shot3 sim,shot4,shot4 sim,shot5,shot5 sim
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
+IL6(t) < c(high),0.6672562,IL6(t) < c(high) and d_IL6(t) < 0,0.72069025,d_IL6(t) < c(high),0.6672562,"globally[1,∞](IL6(t) < c(high))",0.6857874,"IL6(t)=c(high) and globally[0,∞](d_IL6(t)<0)",0.72952944,"eventually[1,∞](IL6(t) = c(mid))",0.6926789
+"globally[1,∞](d_IL6(t) < c(high))",0.4570635,IL1β(t)=c(mid) implies d_IL1β(t) < d_c(high),0.56441885,"eventually[1,∞]globally(d_IL6(t) > c(mid) and d_IL12(t) > c(mid))",0.5390694,IL6(t)=c(low) implies d_IL6(t) < d_c(high) and d_IFNα(t) > d_c(high) implies d_IFNβ(t)=d_c(high),0.36865628,"globally[1,∞](d_IL6(t) < c(high))",0.4570635,"globally[1,∞](d_IL6(t) < c(high))",0.4570635
+"globally[0,8](IL1Ra(t) > c(low)) implies eventually[1,∞](d_IL1RN(t) < 0)",0.39684173,d_TNFα(t) = c(low) and d_TNFα(t) < 0,0.8103271,"globally[2,∞](d_TNFα(t) < d_c(high))",0.70541775,,,,,"globally[1,∞](d_TNFα(t) < c(high))",0.8546294
+"eventually[6, ∞]globally(d_IL8(t) > c(high))",0.58223695,IL8(t) > c(high) implies IL8(t) < c(low),0.5405235,"globally[1,∞](d_IL6(t) < c(high))",0.48307583,"globally[1,∞](d_IL8(t) < c(low))",0.5353166,"globally[1,∞](d_IL6(t) < c(high))",0.48307583,"eventually[14,∞]globally(d_IL8(t) > c(mid))",0.5796806
+"globally[1,∞](IL1RN(t)=c(mid) and IFNα(t) > c(mid))",0.50871027,"IL1β(t) < c(high) and eventually[15,∞]globally(IL1β(t) = c(low))",0.38650638,"eventually[9,14](IFNβ(t) > c(low))",0.5774233,"globally[1,∞](d_IL6(t) < c(high))",0.29604748,,,"globally[1,∞](d_IL6(t) < c(high))",0.29604748
+,,"globally[1,∞](d_IL6(t) < c(high))",0.6138646,"eventually[7,16](IFNβ(t)=c(mid))",0.38143116,IL12(t) = c(high),0.70859855,"globally[14,∞](d_IL12(t) = d_c(high))",0.6304184,IL6(t) > c(mid) implies SARSCoV2(t) < c(high),0.5205867
+"globally[1,∞](SARSCoV2(t) > c(low))",0.22373301,,,IL6(t) < c(high) and IL12(t) < c(high),0.14564374,,,"globally[20,∞](d_IL8(t) > d_c(high) implies d_IFNβ(t) < 0)",0.44463068,IFNα(t) > c(mid) implies IL1β(t)=c(low),0.4409731
+,,"IL1RN(t) < c(low) and eventually[2,14]globally(d_IL1RN(t)=d_c(low)) and IL6(t)=c(high) and IL1RN(t)=c(high)",0.42784855,"globally[14,∞](d_IL6(t) > c(mid))",0.33542186,"IL6(t) < c(mid) and d_IL6(t) < d_c(low) and globally[14,∞](d_IL6(t) = c(high) implies d_IL6(t) < 0)",0.297886,"globally[1,∞](d_IL6(t) < c(high) and d_IL1RN(t)=c(low))",0.38377154,"d_IL1Ra(t) < d_c(low) and eventually[10,16]globally(SARSCoV2(t)=c(high) implies IL1RN(t) > c(low))",0.6531111

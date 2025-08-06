@@ -1,7 +1,7 @@
 Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Semantic attempt 3,Semantic attempt 3 sim
 N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+"globally[1,∞](d_IL6(t) < c(high))",0.6138646,"globally[1,∞](d_IL6(t) < c(high))",0.6138646,"globally[1,∞](d_IL6(t) < c(high))",0.6138646,"globally[1,∞](d_IL6(t) < c(high))",0.6138646
+"eventually[7,16](IFNβ(t)=c(mid))",0.38143116,"eventually[7,16](IFNβ(t)=c(mid))",0.38143116,"eventually[7,16](IFNβ(t)=c(mid))",0.38143116,"eventually[7,16](IFNβ(t)=c(mid))",0.38143116
+IL12(t) = c(high),0.70859855,IL12(t) = c(high),0.70859855,IL12(t) = c(high),0.70859855,IL12(t) = c(high),0.70859855
+"globally[14,∞](d_IL12(t) = d_c(high))",0.6304184,"globally[14,∞](d_IL12(t) = d_c(high))",0.6304184,"globally[14,∞](d_IL12(t) = d_c(high))",0.6304184,"globally[14,∞](d_IL12(t) = d_c(high))",0.6304184
+IL6(t) > c(mid) implies SARSCoV2(t) < c(high),0.5205867,IL6(t) > c(mid) implies SARSCoV2(t) < c(high),0.5205867,IL6(t) > c(mid) implies SARSCoV2(t) < c(high),0.5205867,IL6(t) > c(mid) implies SARSCoV2(t) < c(high),0.5205867
