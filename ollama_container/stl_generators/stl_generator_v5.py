@@ -180,6 +180,7 @@ def get_hole_feedback(e, extracted_response, sentence):
                 right_bound += 1
 
         if left_bound_found and right_bound_found:
+            print('getting hole feedback')
             end_response = extracted_response[right_bound+1:] if right_bound < len(extracted_response)-1 else ''
             extracted_response = extracted_response[:left_bound] + '<??>' + end_response
             return params['feedback_prompt']['hole_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['hole_prompt_2'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['hole_prompt_3']
@@ -193,10 +194,10 @@ def get_hole_feedback(e, extracted_response, sentence):
 # Helper function: check signal names
 ####################################################################################
 
-def check_signal_names(parsed_stl, extracted_reponse, sentence):
+def check_signal_names(parsed_stl, extracted_response, sentence):
     print(" ")
     signals = re.findall(r"Tree\(Token\('RULE', 's'\), \[Token\('\w+', '\w+'\)\]\)", str(parsed_stl)) 
-    # print(f'signals is: {signals}')
+    print(f'signals is: {signals}')
     for s in signals:
         s = s.split("Tree(Token('RULE', 's'), [Token('__ANON_3',")
         # print(f"after split: {s}")
@@ -204,10 +205,12 @@ def check_signal_names(parsed_stl, extracted_reponse, sentence):
         try:
             s = s[1:-1]
             if s not in signal_names:
+                print('getting species name feedback')
                 # TODO: try a hole approach, could do all bad names at once
                 response = 'You are trying to translate this sentence to STL:\n' + sentence + '\n\n' + 'Your previous response was:\n' + extracted_response + '\n\n' + 'However, you used ' + s + ' as a species name in your response, which is not allowed. Fix your response so it uses the allowed species names.\n\n' + "Format your response in JSON. Include (1) your thinking process, (2) the input statement, and (3) your STL response.\nYour STL response must conform to the following rules\n:[BEGIN RULES]\nu : less_than | greater_than | is | derivative_greater_than | derivative_less_than | derivative_is\nless_than : s(t) < c # Species s is less than c\ngreater_than : s(t) > c # Species s is greater than c\nis : s(t) = c # Species s is close to c\nderivative_greater_than : d_s(t) > d_c # The rate of change of species s is greater than d_c\nderivative_less_than : d_s(t) < d_c # The rate of change of species s is less than d_c\nderivative_is : d_s(t) = d_c # The rate of change species s is close to d_c\nc : s(t_a) | \"c(low)\" | \"c(mid)\" | \"c(high)\" # c is the level of a species, it can be a specific value or generally just low, moderate, or high\nd_c : 0 # Rate of change is 0\n\t| \"d_c(low)\" # Species is slowly increasing\n\t| \"d_c(high)\" # Species is rapidly increasing\n\t| \"-d_c(low)\" # Species is slowly decreasing\n\t| \"-d_c(high)\" # Species is quickly decreasing\npredicate : u | u1 and u2 | u1 implies u2 # You can combine predicates with Boolean operators\ntemporal_operator : eventually[t_a,t_b]globally(predicate) # This means that between day t_a and t_b, there is a point when the predicate becomes true for the rest of the interval\n\t| globally[t_a,t_b](phi) # This means the predicate is true over the entire interval from day t_a to t_b\n\t| eventually[t_a,t_b](phi) # This means there is at least 1 time between days t_a and t_b that the predicate is true\nt_a : number | ∞ # Time in days\ns : IL6 | IL12 | IL1β | IL1Ra | TNFα | IL8 | IFNα | IFNβ | SARSCoV2 | IL1RN # Species names you can use\nd_IL6 | d_IL12 | d_IL1β | d_IL1Ra | d_TNFα | d_IL8 | d_IFNα | d_IFNβ | d_SARSCoV2 | d_IL1RN # Names for derivatives of the species\n[END RULES]\n\nThe d_s terms represent the derivative of a signal, so you may find those terms helpful for describing how signals increase or decrease. For general statements describing the levels of some species as \"high\" or \"low\" for example, you may find comparison statements helpful."
                 return response
         except Exception as e:
+            print('getting species name feedback')
             response = 'You are trying to translate this sentence to STL:\n' + sentence + '\n\n' + 'Your previous response was:\n' + extracted_response + '\n\n' + 'However, you used ' + s + ' as a species name in your response, which is not allowed. Fix your response so it uses the allowed species names.\n\n' + "Format your response in JSON. Include (1) your thinking process, (2) the input statement, and (3) your STL response.\nYour STL response must conform to the following rules\n:[BEGIN RULES]\nu : less_than | greater_than | is | derivative_greater_than | derivative_less_than | derivative_is\nless_than : s(t) < c # Species s is less than c\ngreater_than : s(t) > c # Species s is greater than c\nis : s(t) = c # Species s is close to c\nderivative_greater_than : d_s(t) > d_c # The rate of change of species s is greater than d_c\nderivative_less_than : d_s(t) < d_c # The rate of change of species s is less than d_c\nderivative_is : d_s(t) = d_c # The rate of change species s is close to d_c\nc : s(t_a) | \"c(low)\" | \"c(mid)\" | \"c(high)\" # c is the level of a species, it can be a specific value or generally just low, moderate, or high\nd_c : 0 # Rate of change is 0\n\t| \"d_c(low)\" # Species is slowly increasing\n\t| \"d_c(high)\" # Species is rapidly increasing\n\t| \"-d_c(low)\" # Species is slowly decreasing\n\t| \"-d_c(high)\" # Species is quickly decreasing\npredicate : u | u1 and u2 | u1 implies u2 # You can combine predicates with Boolean operators\ntemporal_operator : eventually[t_a,t_b]globally(predicate) # This means that between day t_a and t_b, there is a point when the predicate becomes true for the rest of the interval\n\t| globally[t_a,t_b](phi) # This means the predicate is true over the entire interval from day t_a to t_b\n\t| eventually[t_a,t_b](phi) # This means there is at least 1 time between days t_a and t_b that the predicate is true\nt_a : number | ∞ # Time in days\ns : IL6 | IL12 | IL1β | IL1Ra | TNFα | IL8 | IFNα | IFNβ | SARSCoV2 | IL1RN # Species names you can use\nd_IL6 | d_IL12 | d_IL1β | d_IL1Ra | d_TNFα | d_IL8 | d_IFNα | d_IFNβ | d_SARSCoV2 | d_IL1RN # Names for derivatives of the species\n[END RULES]\n\nThe d_s terms represent the derivative of a signal, so you may find those terms helpful for describing how signals increase or decrease. For general statements describing the levels of some species as \"high\" or \"low\" for example, you may find comparison statements helpful."
             return response
 
@@ -225,19 +228,22 @@ def check_parentheses(extracted_response, sentence):
     right_count = len(re.findall(r"\)", extracted_response))
     # print(f'right_count: {right_count}')
     if left_count != right_count:
+        print('getting parentheses feedback')
         response = f'Your response has an unmatched number of parentheses. There are {left_count} left parentheses and {right_count} right parentheses. Fix your response so that there are not any unmatched parentheses.'
-        return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + response + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] + "\n\n" + generate_example_prompt(params['num_examples'])
+        return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + response + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4']
 
     left_count = len(re.findall(r"\{", extracted_response))
     right_count = len(re.findall(r"\}", extracted_response))
     if left_count != right_count:
+        print('getting parentheses feedback')
         response = f'Your response has an unmatched number of curly brackets. There are {left_count} left curly brackets and {right_count} right curly brackets. Fix your response so that there are not any unmatched curly brackets.'
-        return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + response + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] + "\n\n" + generate_example_prompt(params['num_examples'])
+        return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + response + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4']
     left_count = len(re.findall(r"\[", extracted_response))
     right_count = len(re.findall(r"\]", extracted_response))
     if left_count != right_count:
+        print('getting parentheses feedback')
         response = f'Your response has an unmatched number of square brackets. There are {left_count} left square brackets and {right_count} right square brackets. Fix your response so that there are not any unmatched square brackets.'
-        return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + response + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] + "\n\n" + generate_example_prompt(params['num_examples'])
+        return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + response + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4']
     print('no problems with parentheses')
     return None
 
@@ -250,7 +256,7 @@ def check_json(extracted_response, sentence):
         json.loads(extracted_response)
         if extracted_response in '{' and extracted_response in '}' and extracted_response in ':':
             error = 'It looks like you formatted the output STL incorrectly. The JSON format should have three fields: (1) your thinking, (2) the input sentence, and (3) your output STL. However, the output STL field should not contain JSON inside of it, but instead it should be a single string. Here is an example of correct formatting:\n' + generate_example_prompt(1)
-
+            print("getting json feedback")
             return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] 
 
         return None
@@ -262,21 +268,18 @@ def check_json(extracted_response, sentence):
 ####################################################################################
 
 def default_feedback(e, extracted_response, sentence):
+    print('inside default feedback')
+    print(f'extracted response: {extracted_response}')
+    print(f'{e}')
     try:
         error_char = int(re.findall(r'at line \d+ col \d+', str(e))[0].split(' ')[4]) - 1
         error_message_more_descriptive = str(e).split('Expected')[0]
 
-        return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error_message_more_descriptive + '\n\n' + params['feedback_prompt']['default_prompt_2a'] + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] + "\n\n" + generate_example_prompt(params['num_examples'])
+        return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error_message_more_descriptive + '\n\n' + params['feedback_prompt']['default_prompt_2a'] + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4']
     
     except Exception as e:
-        return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + str(e) + '\n\n' + params['feedback_prompt']['default_prompt_2a'] + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] + "\n\n" + generate_example_prompt(params['num_examples'])
+        return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + str(e) + '\n\n' + params['feedback_prompt']['default_prompt_2a'] + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4']
 
-"""
-# Minimal example
-input_json = 
-
-print(f'error response: {check_json(input_json)}')
-"""
 
 ####################################################################################
 # Translation of each sentence
@@ -345,9 +348,13 @@ for sentence_index, sentence in sentences['input statement'].items():
             
         # Try parsing
         parsed_stl = ''
-        try:            
+        try:           
+            # TODO: REMOVE THIS WHEN DONE lksdjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+            extracted_response = 'globally[1,∞](d_IL6(t) < c(high))'
             parsed_stl = parser.parse(extracted_response)
+            print('right before checking signal names')
             if check_signal_names(parsed_stl, extracted_reponse, sentence) is not None:
+                print(f'first check of shot, signal name is getting flagged')
                 raise Exception("bad signal name")
             syntax_passed = True
             print('stl parsed')
@@ -418,9 +425,12 @@ for sentence_index, sentence in sentences['input statement'].items():
 
             # Try parsing
             parsed_stl = ''
-            try:            
+            
+            try:
+                print('right before trying to parse')
                 parsed_stl = parser.parse(extracted_response)    
-                if check_signal_names(parsed_stl) is not None:
+                print('right before checking signal names')
+                if check_signal_names(parsed_stl, extracted_response, sentence) is not None:
                     raise Exception("bad signal name")
                 print('stl parsed')
                 syntax_passed = True
@@ -494,7 +504,7 @@ for sentence_index, sentence in sentences['input statement'].items():
             parsed_stl = ''
             try:            
                 parsed_stl = parser.parse(extracted_response)    
-                if check_signal_names(parsed_stl) is not None:
+                if check_signal_names(parsed_stl, extracted_response, sentence) is not None:
                     raise Exception("bad signal name")
                 print('STL parsed')
                 translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F0'] = extracted_response
@@ -551,7 +561,7 @@ for sentence_index, sentence in sentences['input statement'].items():
                 parsed_stl = ''
                 try:            
                     parsed_stl = parser.parse(extracted_response)    
-                    if check_signal_names(parsed_stl) is not None:
+                    if check_signal_names(parsed_stl, extracted_response, sentence) is not None:
                         raise Exception("bad signal name")
                     print('STL parsed')
                     syntax_passed = True

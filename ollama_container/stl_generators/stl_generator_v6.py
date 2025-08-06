@@ -296,8 +296,9 @@ print(f'error response: {check_json(input_json)}')
 # Translation of each sentence
 ####################################################################################
 
-response = "{\n\"thinking\": \"I need to translate this natural language into STL.\",\n\"input_statement\": \"... the rate of change of IL-6 was increasing faster than a high rate then IL-1β was below its high levels.\",\n\"output_STL\": \"d_IL6(t) > d_c(high) implies IL1β(t) < c(high)\"\n}"
+# response = "{\n\"thinking\": \"I need to translate this natural language into STL.\",\n\"input_statement\": \"... the rate of change of IL-6 was increasing faster than a high rate then IL-1β was below its high levels.\",\n\"output_STL\": \"d_IL6(t) > d_c(high) implies IL1β(t) < c(high)\"\n}"
 
+"""
 try:
     extracted_response = json.loads(response)["output_STL"]
     print('stl extracted')
@@ -306,6 +307,51 @@ except Exception as e:
     print('extraction failed')
     translations.at[0, f'STL-shot0-S0-F0'] = "STL could not be extracted"
     # continue # if no stl can be extracted, then just go to the next shot
+"""
+
+try:            
+    print("trying to parse")
+    parsed_stl = parser.parse(extracted_response)
+    # print("parsing failed bc of parser")
+    if check_signal_names(parsed_stl) is not None:
+        print("parsing failed because of signal names")
+        raise Exception("bad signal name")
+   #  syntax_passed = True
+    # print('stl parsed')
+    # translations.at[sentence_index, f'STL-shot{i}-S0-F0'] = extracted_response
+except Exception as e:
+    # if translations.at[sentence_index, f'STL-shot{i}-S0-F0'] != 'STL could not be extracted':
+      #  translations.at[sentence_index, f'STL-shot{i}-S0-F0'] = "STL could not be parsed"
+    # syntax_passed = False 
+    # print('parsing failed')
+
+    error_feedback = ''
+                   
+    # Types of feedback:
+    # (1) JSON-like
+    # (2) Wrong parentheses
+    # (3) Bad signal names
+    # (4) Fill in hole
+    # (5) None of the above --> just give it the parsing error message
+
+    print(f'extracted_response being processed for an exception: {extracted_response}')
+
+    if check_json(extracted_response) is not None:
+        print('feedback is check json')
+        feedback = check_json(extracted_response)
+    elif check_parentheses(extracted_response) is not None:
+        print('feedback is parentheses')
+        feedback = check_parentheses(extracted_response)
+    elif parsed_stl != '' and check_signal_names(parsed_stl) is not None:
+        feedback = check_signal_names(parsed_stl)
+        print('feedback is bad signal names')
+    elif get_hole_feedback(extracted_response) is not None:
+        feedback = get_hole_feedback(extracted_response)
+        print('feedback is fix hole')
+    else:
+        feedback = default_feedback(extracted_response)
+        print('feedback is default')
+"""
 
 
 
