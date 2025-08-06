@@ -225,24 +225,19 @@ def check_parentheses(extracted_response, sentence):
     right_count = len(re.findall(r"\)", extracted_response))
     # print(f'right_count: {right_count}')
     if left_count != right_count:
-        # print('parentheses off')
-        response = f'Your response has an unmatched number of parentheses. There are {left_count} left parentheses and {right_count} right parentheses. Fix this.'
-        return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + response + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] 
+        response = f'Your response has an unmatched number of parentheses. There are {left_count} left parentheses and {right_count} right parentheses. Fix your response so that there are not any unmatched parentheses.'
+        return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + response + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] + "\n\n" + generate_example_prompt(params['num_examples'])
 
     left_count = len(re.findall(r"\{", extracted_response))
     right_count = len(re.findall(r"\}", extracted_response))
     if left_count != right_count:
-        # print('brackets off')
-        response = f'Unmatched number of curly brackets. There are {left_count} left curly brackets and {right_count} right curly brackets.'
-        return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + response + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] 
-
+        response = f'Your response has an unmatched number of curly brackets. There are {left_count} left curly brackets and {right_count} right curly brackets. Fix your response so that there are not any unmatched curly brackets.'
+        return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + response + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] + "\n\n" + generate_example_prompt(params['num_examples'])
     left_count = len(re.findall(r"\[", extracted_response))
     right_count = len(re.findall(r"\]", extracted_response))
     if left_count != right_count:
-        # print('[ off')
-        response = f'Unmatched number of square brackets. There are {left_count} left square brackets and {right_count} right square brackets.'
-        return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + response + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] 
-
+        response = f'Your response has an unmatched number of square brackets. There are {left_count} left square brackets and {right_count} right square brackets. Fix your response so that there are not any unmatched square brackets.'
+        return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + response + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] + "\n\n" + generate_example_prompt(params['num_examples'])
     print('no problems with parentheses')
     return None
 
@@ -254,7 +249,7 @@ def check_json(extracted_response, sentence):
     try:
         json.loads(extracted_response)
         if extracted_response in '{' and extracted_response in '}' and extracted_response in ':':
-            error = 'It looks like you formatted the output STL incorrectly. The JSON format should have three fields: (1) your thinking, (2) the input sentence, and (3) your output STL. However, the output STL field should not contain JSON, it should be a single string. Here is an example of correct formatting:\n' + generate_example_prompt(1)
+            error = 'It looks like you formatted the output STL incorrectly. The JSON format should have three fields: (1) your thinking, (2) the input sentence, and (3) your output STL. However, the output STL field should not contain JSON inside of it, but instead it should be a single string. Here is an example of correct formatting:\n' + generate_example_prompt(1)
 
             return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] 
 
@@ -268,14 +263,14 @@ def check_json(extracted_response, sentence):
 
 def default_feedback(e, extracted_response, sentence):
     try:
-        # error_char = re.findall(r'at line \d+ col \d+', e)[0].split(' ')[4] - 1 ### this is bad
         error_char = int(re.findall(r'at line \d+ col \d+', str(e))[0].split(' ')[4]) - 1
-        # error_char = str(e).split('\n')[0].split(',')[1].split(' ')[5]
         error_message_more_descriptive = str(e).split('Expected')[0]
-        return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error_message_more_descriptive + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] 
+
+        return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error_message_more_descriptive + '\n\n' + params['feedback_prompt']['default_prompt_2a'] + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] + "\n\n" + generate_example_prompt(params['num_examples'])
+    
     except Exception as e:
-        return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2a'] + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] 
-        
+        return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + str(e) + '\n\n' + params['feedback_prompt']['default_prompt_2a'] + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] + "\n\n" + generate_example_prompt(params['num_examples'])
+
 """
 # Minimal example
 input_json = 
