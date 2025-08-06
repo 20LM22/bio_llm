@@ -1,7 +1,7 @@
 Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Semantic attempt 3,Semantic attempt 3 sim
-"globally[14,∞](d_SARSCoV2(t) < c(low)) and globally[14,∞](IL6(t) > c(high) and IL1RN(t) > c(high))",0.6964767,"globally[14,∞](d_SARSCoV2(t) < c(low)) and globally[14,∞](IL6(t) > c(high) and IL1RN(t) > c(high))",0.6964767,"globally[14,∞](d_SARSCoV2(t) < c(low)) and globally[14,∞](IL6(t) > c(high) and IL1RN(t) > c(high))",0.6964767,"globally[14,∞](d_SARSCoV2(t) < c(low)) and globally[14,∞](IL6(t) > c(high) and IL1RN(t) > c(high))",0.6964767
 N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
 N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
 N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-"globally[1,14](d_IL6(t) < d_c(high))",0.29850513,"globally[1,14](d_IL6(t) < d_c(high))",0.29850513,"globally[1,14](d_IL6(t) < d_c(high))",0.29850513,"globally[1,14](d_IL6(t) < d_c(high))",0.29850513
 N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+"eventually[14,∞]globally(SARSCoV2(t)=c(low)) and eventually[14,∞]globally(IL6(t)=c(mid) and IL1RN(t)=c(mid)) and eventually[14,∞]globally(d_SARSCoV2(t)=0)",0.69026077,"eventually[14,∞]globally(SARSCoV2(t)=c(low)) and eventually[14,∞]globally(IL6(t)=c(mid) and IL1RN(t)=c(mid)) and eventually[14,∞]globally(d_SARSCoV2(t)=0)",0.69026077,"eventually[14,∞]globally(SARSCoV2(t)=c(low)) and eventually[14,∞]globally(IL6(t)=c(mid) and IL1RN(t)=c(mid)) and eventually[14,∞]globally(d_SARSCoV2(t)=0)",0.69026077,"eventually[14,∞]globally(SARSCoV2(t)=c(low)) and eventually[14,∞]globally(IL6(t)=c(mid) and IL1RN(t)=c(mid)) and eventually[14,∞]globally(d_SARSCoV2(t)=0)",0.69026077

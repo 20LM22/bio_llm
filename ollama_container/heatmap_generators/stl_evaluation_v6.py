@@ -47,11 +47,19 @@ success_rate['Semantic Success Rate'] = 0
 total_success_rate = pandas.DataFrame(index=[0])
 total_success_rate['Input Sentence'] = 'Overall'
 
+# success_rate['All valid STL'] = []
+
 for col in translations.columns:
     if 'STL-shot' in col:
         success_rate['STL Extraction Success Rate'] += np.where(translations[col] == 'STL could not be extracted', 1, 0)
         success_rate['STL Parsing Success Rate'] += np.where(translations[col] == 'STL could not be parsed', 1, 0)
         success_rate['Number of Translations'] += np.where(translations[col].isnull(), 0, 1)
+        success_rate['All valid STL'].append(np.where(translations[col] != 'STL could not be extracted' and translations[col] != 'STL could not be parsed' and not translations[col].isnull(), translations[col], None))
+
+for index, row in translations.iterrows():
+    for entry in row:
+
+
 
 total_success_rate['STL Extraction Success Rate'] = success_rate['STL Extraction Success Rate'].sum()
 total_success_rate['STL Parsing Success Rate'] = success_rate['STL Parsing Success Rate'].sum()
