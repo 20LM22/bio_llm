@@ -31,6 +31,8 @@ model = SentenceTransformer(params['embedding_model_name'], device='cpu')
 
 grammar = params['grammar']
 
+sim_threshold = 0.6
+
 #######################################################################################################################
 # Table for extraction, parsing success rate
 #######################################################################################################################
@@ -72,7 +74,7 @@ for index, row in translations.iterrows():
         row_subset = row[relevant_translations_cols] # row subset has everything with shot-i in the column name
     
     for entry in row_subset:
-        if entry != 'STL could not be extracted' and entry != 'STL could not be parsed' and not entry.isnull():
+        if entry != 'STL could not be extracted' and entry != 'STL could not be parsed' and entry is not None:
             # add this entry
             literal = STL2literal(entry, grammar)
             literal_embedding = ( np.array(model.encode(literal, normalize_embeddings=True)) )
@@ -103,7 +105,8 @@ success_rate['Number of Syntactically Correct Translations'] = success_rate['STL
 total_success_rate['STL Extraction Success Rate'] = np.where(num_total_translations==0, 0, 1-(total_success_rate['STL Extraction Success Rate'] / num_total_translations))
 total_success_rate['STL Parsing Success Rate'] = np.where(num_total_passed_extraction==0, 0, 1-(total_success_rate['STL Parsing Success Rate'] / num_total_passed_extraction))
 total_success_rate['Number of Translations'] = success_rate['Number of Translations'].sum()
-total_success_rate['Number of Syntactically Correct Translations'] = total_success_rate['STL Extraction Success Rate'] * total_success_rate['STL Parsing Success Rate'] * total_success_rate['Semantic Passes'] = success_rate['Semantic Passes'].sum()
+total_success_rate['Semantic Passes'] = success_rate['Semantic Passes'].sum()
+total_success_rate['Number of Syntactically Correct Translations'] = total_success_rate['STL Extraction Success Rate'] * total_success_rate['STL Parsing Success Rate'] * total_success_rate['Number of Translations']
 total_success_rate['Semantic Success Rate'] = total_success_rate['Semantic Passes'] / total_success_rate['Number of Syntactically Correct Translations']
 
 stats = pandas.concat([success_rate, total_success_rate], ignore_index=True)
