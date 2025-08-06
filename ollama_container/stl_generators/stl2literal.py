@@ -18,7 +18,17 @@ signal_names_dict = {
     "IFNα": "IFN-α",
     "IFNβ": "IFN-β",
     "SARSCoV2": "SARS-CoV-2",
-    "IL1RN": "IL1RN"
+    "IL1RN": "IL1RN",
+    "d_IL6": "IL-6",
+    "d_IL12": "IL-12",
+    "d_IL1β": "IL-1β",
+    "d_IL1Ra": "IL-1Ra",
+    "d_TNFα": "TNF-α",
+    "d_IL8": "IL-8",
+    "d_IFNα": "IFN-α",
+    "d_IFNβ": "IFN-β",
+    "d_SARSCoV2": "SARS-CoV-2",
+    "d_IL1RN": "IL1RN"
 }
 
 class Test(Interpreter):
