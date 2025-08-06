@@ -11,10 +11,10 @@
 		"gpu_memory_utilization": 0.8
 	},
 	"signal_names": ["IL6", "IL12", "IL1β", "IL1Ra", "TNFα", "IL8", "IFNα", "IFNβ", "SARSCoV2", "IL1RN", "d_IL6", "d_IL12", "d_IL1β", "d_IL1Ra", "d_TNFα", "d_IL8", "d_IFNα", "d_IFNβ", "d_SARSCoV2", "d_IL1RN"],
-	"num_shots_per_input_sentence": 18,
+	"num_shots_per_input_sentence": 6,
 	"num_correction_attempts_per_shot": 3,
 	"num_examples": 3,
-	"num_semantic_checks": 0,
+	"num_semantic_checks": 3,
 	"embedding_model_name": "all-MiniLM-L6-v2",
 	"sentences_csv": "../csv_inputs/stl_generation_sentences.csv",
 	"grammar": "?start: omega\n?u: gt | lt | eq | d_gt | d_lt | d_eq\ngt: s \"(t)\" \">\" c\nlt: s \"(t)\" \"<\" c\neq: s \"(t)\" \"=\" c\nd_gt: \"d_\" s \"(t)\" \">\" D_C\nd_lt: \"d_\" s \"(t)\" \"<\" D_C\nd_eq: \"d_\" s \"(t)\" \"=\" D_C\nc: s \"(\" t_a \")\" | C_LOW | C_MID | C_HIGH\nC_LOW: \"c(low)\"\nC_MID: \"c(mid)\"\nC_HIGH: \"c(high)\"\nD_C : \"0\" | \"d_c(low)\" | \"d_c(high)\" | \"-d_c(low)\" | \"-d_c(high)\"\n?nu : u | u_implies_u | u_and_u\nu_implies_u: u \"implies\" u\nu_and_u: u \"and\" u\n?psi: temp_op_fg | temp_op_g | temp_op_f\ntemp_op_fg: \"eventually\" \"[\" t_a \",\" t_a \"]\" \"globally\" \"(\" nu \")\"\ntemp_op_f: \"eventually\" \"[\" t_a \",\" t_a \"]\" \"(\" nu \")\"\ntemp_op_g: \"globally\" \"[\" t_a \",\" t_a \"]\" \"(\" nu \")\"\n?omega: nu | psi | omega_and_omega | psi_implies_psi\nomega_and_omega: omega \"and\" omega\npsi_implies_psi: psi \"implies\" psi\nt_a: /[0-9]+/ | \"inf\" | /∞/\ns: /[\\w]+/\nd_s: /d_[\\w]+/\n%import common.WS\n%ignore WS",
