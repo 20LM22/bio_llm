@@ -350,7 +350,7 @@ for sentence_index, sentence in sentences['input statement'].items():
         parsed_stl = ''
         try:           
             # TODO: REMOVE THIS WHEN DONE lksdjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
-            extracted_response = 'globally[1,∞](d_IL6(t) < c(high))'
+            # extracted_response = 'globally[1,∞](d_IL6(t) < c(high))'
             parsed_stl = parser.parse(extracted_response)
             print('right before checking signal names')
             if check_signal_names(parsed_stl, extracted_reponse, sentence) is not None:
