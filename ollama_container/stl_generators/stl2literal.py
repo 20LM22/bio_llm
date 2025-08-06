@@ -249,7 +249,7 @@ class Test(Interpreter):
                 self.sentence.append('0')
          
     def temp_op_g(self, node): # TODO: parametrize this entire thing to do F, G, FG at the same time
-        print('located in temp op g')
+        # print('located in temp op g')
 
         self.sentence.append('from day') # TODO: change this to an input we get from the LLM's dictionary so it can be adaptable for [days], [was]
         self.sentence.append(node.children[0].children[0].value) # start time interval
@@ -270,7 +270,7 @@ class Test(Interpreter):
         self.G_flag = False
          
     def temp_op_f(self, node): # TODO: parametrize this entire thing to do F, G, FG at the same time
-        print('located in temp op f')
+        # print('located in temp op f')
 
         self.sentence.append('from day') # TODO: change this to an input we get from the LLM's dictionary so it can be adaptable for [days], [was]
         self.sentence.append(node.children[0].children[0].value) # start time interval
@@ -291,7 +291,7 @@ class Test(Interpreter):
         self.F_flag = False
 
     def temp_op_fg(self, node): # TODO: parametrize this entire thing to do F, G, FG at the same time
-        print('located in temp op fg')
+        # print('located in temp op fg')
 
         self.sentence.append('from day') # TODO: change this to an input we get from the LLM's dictionary so it can be adaptable for [days], [was]
         self.sentence.append(node.children[0].children[0].value) # start time interval
@@ -319,15 +319,7 @@ def STL2literal(input_sentence, grammar):
 
     p = Lark(grammar) # TODO: this is also slow, improve if possible
 
-    # TODO: remove this once done testing
-    # input_sentence = "eventually[0,14](d_IFNα(t)<0impliesIL1Ra(t)<c(low))"
-   
-    # input_sentence = 'eventually[11,12]globally(IL1Ra(t)>c(high))'
-    #'eventually[11,12]globally(IL1Ra(t)>c(high) implies IL1Ra(t)>c(high) )'
-
     tree = p.parse(input_sentence)
-    #print(f'input sentence: {input_sentence}')
-    #print(f'input tree: {tree}')
     tester = Test() # TODO: this is redundant, see if this can be improved
     tester.visit(tree)
 
@@ -340,7 +332,6 @@ def STL2literal(input_sentence, grammar):
     first_word = '' if len(split[0]) < 2 else split[0][1:]
     tester.sentence = first_letter.capitalize() + first_word + ' ' + ' '.join(split[1:])
     
-    # print(f'translation: {tester.sentence}')
 
     return tester.sentence
 

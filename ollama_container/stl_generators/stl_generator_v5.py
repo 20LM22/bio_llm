@@ -430,10 +430,10 @@ for sentence_index, sentence in sentences['input statement'].items():
                     translations.at[sentence_index, f'STL-shot{i}-S0-F{count}'] = "STL could not be parsed"
                 syntax_passed = False 
                 print('parsing failed')
-            
+
                 if check_json(extracted_response, sentence) is not None:
                     print('feedback is check json')
-                   feedback = check_json(extracted_response, sentence)
+                    feedback = check_json(extracted_response, sentence)
                 elif check_parentheses(extracted_response, sentence) is not None:
                     print('feedback is parentheses')
                     feedback = check_parentheses(extracted_response, sentence)
@@ -442,7 +442,7 @@ for sentence_index, sentence in sentences['input statement'].items():
                     print('feedback is bad signal names')
                 elif get_hole_feedback(e, extracted_response, sentence) is not None:
                     feedback = get_hole_feedback(e, extracted_response, sentence)
-                  print('feedback is fix hole')
+                    print('feedback is fix hole')
                 else:
                     feedback = default_feedback(e, extracted_response, sentence)
                     print('feedback is default')
@@ -507,7 +507,7 @@ for sentence_index, sentence in sentences['input statement'].items():
 
                 if check_json(extracted_response, sentence) is not None:
                     print('feedback is check json')
-                   feedback = check_json(extracted_response, sentence)
+                    feedback = check_json(extracted_response, sentence)
                 elif check_parentheses(extracted_response, sentence) is not None:
                     print('feedback is parentheses')
                     feedback = check_parentheses(extracted_response, sentence)
@@ -516,7 +516,7 @@ for sentence_index, sentence in sentences['input statement'].items():
                     print('feedback is bad signal names')
                 elif get_hole_feedback(e, extracted_response, sentence) is not None:
                     feedback = get_hole_feedback(e, extracted_response, sentence)
-                  print('feedback is fix hole')
+                    print('feedback is fix hole')
                 else:
                     feedback = default_feedback(e, extracted_response, sentence)
                     print('feedback is default')
@@ -565,7 +565,7 @@ for sentence_index, sentence in sentences['input statement'].items():
 
                     if check_json(extracted_response, sentence) is not None:
                         print('feedback is check json')
-                       feedback = check_json(extracted_response, sentence)
+                        feedback = check_json(extracted_response, sentence)
                     elif check_parentheses(extracted_response, sentence) is not None:
                         print('feedback is parentheses')
                         feedback = check_parentheses(extracted_response, sentence)
