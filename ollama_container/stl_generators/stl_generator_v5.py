@@ -353,7 +353,7 @@ for sentence_index, sentence in sentences['input statement'].items():
             # extracted_response = 'globally[1,∞](d_IL6(t) < c(high))'
             parsed_stl = parser.parse(extracted_response)
             print('right before checking signal names')
-            if check_signal_names(parsed_stl, extracted_reponse, sentence) is not None:
+            if check_signal_names(parsed_stl, extracted_response, sentence) is not None:
                 print(f'first check of shot, signal name is getting flagged')
                 raise Exception("bad signal name")
             syntax_passed = True
