@@ -128,7 +128,7 @@ def generate_example_prompt(num_examples):
 
     examples = ""
     for _id, sample in enumerate(samples):
-        examples += (f"\n{{'thinking:' 'I need to translate this natural language into STL...',\n'input_sentence:' '{literal_translations[_id]}',\n'output_STL': '{sample}'}}\n")
+        examples += (f"\n{{'thinking:' 'Hmm, first I should...',\n'input_sentence:' '{literal_translations[_id]}',\n'output_STL': '{sample}'}}\n")
 
     return params['example_prompt']['prompt_1'] + examples + params['example_prompt']['prompt_2']
 
@@ -136,17 +136,20 @@ def generate_example_prompt(num_examples):
 # Helper function: get hole feedback
 ####################################################################################
 
-def get_hole_feedback(e):
+def get_hole_feedback(e, extracted_response, sentence):
     try:
-        error_char = re.findall(r'at line \d+ col \d+', e)[0].split(' ')[4] - 1
-        # error_char = int(str(e).split('\n')[0].split(',')[1].split(' ')[5]) - 1
+   #     print("the original error:")
+    #    print(e)
+     #   print("now we handle the error")
+        error_char = int(re.findall(r'at line \d+ col \d+', str(e))[0].split(' ')[4]) - 1
+
         left_bound_found = False
         right_bound_found = False
         left_bound = 0
         right_bound = 0
 
-        print(f'error char: {error_char}')
-        print(f'extracted_response[error_char]: {extracted_response[error_char]}')
+    #    print(f'error char: {error_char}')
+   #     print(f'extracted_response[error_char]: {extracted_response[error_char]}')
 
         # search to left and right for nearest } ) ]
         if extracted_response[error_char] == '(' or extracted_response[error_char] == '[' or extracted_response[error_char] == '{':
@@ -161,31 +164,36 @@ def get_hole_feedback(e):
                     break
                 left_bound -= 1
 
+   #     print(f'left found: {left_bound_found}')
+    #    print(f'left: {extracted_response[left_bound]}')
+
         if extracted_response[error_char] == ')' or extracted_response[error_char] == ']' or extracted_response[error_char] == '}':
             right_bound_found = True
             right_bound = error_char
         else:
             right_bound_found = False
             right_bound = error_char + 1
-        while right_bound < len(extracted_response):
-            if extracted_response[right_bound] == '}' or extracted_response[right_bound] == ']' or extracted_response[right_bound] == ')':
-                right_bound_found = True
-                break
+            while right_bound < len(extracted_response):
+                if extracted_response[right_bound] == '}' or extracted_response[right_bound] == ']' or extracted_response[right_bound] == ')':
+                    right_bound_found = True
+                    break
                 right_bound += 1
 
         if left_bound_found and right_bound_found:
             end_response = extracted_response[right_bound+1:] if right_bound < len(extracted_response)-1 else ''
             extracted_response = extracted_response[:left_bound] + '<??>' + end_response
             return params['feedback_prompt']['hole_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['hole_prompt_2'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['hole_prompt_3']
+        
         return None
     except Exception as e:
         return None
+
 
 ####################################################################################
 # Helper function: check signal names
 ####################################################################################
 
-def check_signal_names(parsed_stl):
+def check_signal_names(parsed_stl, extracted_reponse, sentence):
     print(" ")
     signals = re.findall(r"Tree\(Token\('RULE', 's'\), \[Token\('\w+', '\w+'\)\]\)", str(parsed_stl)) 
     # print(f'signals is: {signals}')
@@ -209,7 +217,7 @@ def check_signal_names(parsed_stl):
 # Helper function: check parentheses
 ####################################################################################
 
-def check_parentheses(extracted_response):
+def check_parentheses(extracted_response, sentence):
     # print("at start of check parentheses")
     # print(f'extracted_response: {extracted_response}')
     left_count = len(re.findall(r"\(", extracted_response))
@@ -242,7 +250,7 @@ def check_parentheses(extracted_response):
 # Helper function: check json
 ####################################################################################
 
-def check_json(extracted_response):
+def check_json(extracted_response, sentence):
     try:
         json.loads(extracted_response)
         if extracted_response in '{' and extracted_response in '}' and extracted_response in ':':
@@ -258,9 +266,10 @@ def check_json(extracted_response):
 # Helper function: produce default error feedback
 ####################################################################################
 
-def default_feedback(e):
+def default_feedback(e, extracted_response, sentence):
     try:
-        error_char = re.findall(r'at line \d+ col \d+', e)[0].split(' ')[4] - 1
+        # error_char = re.findall(r'at line \d+ col \d+', e)[0].split(' ')[4] - 1 ### this is bad
+        error_char = int(re.findall(r'at line \d+ col \d+', str(e))[0].split(' ')[4]) - 1
         # error_char = str(e).split('\n')[0].split(',')[1].split(' ')[5]
         error_message_more_descriptive = str(e).split('Expected')[0]
         return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error_message_more_descriptive + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] 
@@ -343,8 +352,8 @@ for sentence_index, sentence in sentences['input statement'].items():
         parsed_stl = ''
         try:            
             parsed_stl = parser.parse(extracted_response)
-            if check_signal_names(parsed_stl) is not None:
-                raise Error("bad signal name")
+            if check_signal_names(parsed_stl, extracted_reponse, sentence) is not None:
+                raise Exception("bad signal name")
             syntax_passed = True
             print('stl parsed')
             translations.at[sentence_index, f'STL-shot{i}-S0-F0'] = extracted_response
@@ -365,20 +374,20 @@ for sentence_index, sentence in sentences['input statement'].items():
 
             print(f'extracted_response: {extracted_response}')
 
-            if check_json(extracted_response) is not None:
+            if check_json(extracted_response, sentence) is not None:
                 print('feedback is check json')
-                feedback = check_json(extracted_response)
-            elif check_parentheses(extracted_response) is not None:
+                feedback = check_json(extracted_response, sentence)
+            elif check_parentheses(extracted_response, sentence) is not None:
                 print('feedback is parentheses')
-                feedback = check_parentheses(extracted_response)
-            elif parsed_stl != '' and check_signal_names(parsed_stl) is not None:
-                feedback = check_signal_names(parsed_stl)
+                feedback = check_parentheses(extracted_response, sentence)
+            elif parsed_stl != '' and check_signal_names(parsed_stl, extracted_response, sentence) is not None:
+                feedback = check_signal_names(parsed_stl, extracted_response, sentence)
                 print('feedback is bad signal names')
-            elif get_hole_feedback(extracted_response) is not None:
-                feedback = get_hole_feedback(extracted_response)
+            elif get_hole_feedback(e, extracted_response, sentence) is not None:
+                feedback = get_hole_feedback(e, extracted_response, sentence)
                 print('feedback is fix hole')
             else:
-                feedback = default_feedback(extracted_response)
+                feedback = default_feedback(e, extracted_response, sentence)
                 print('feedback is default')
         
         ####################################################################
@@ -404,8 +413,6 @@ for sentence_index, sentence in sentences['input statement'].items():
             # Try extraction
             try:
                 extracted_response = json.loads(response)["output_STL"]
-                if check_signal_names(parsed_stl) is not None:
-                    raise Error("bad signal name")
                 translations.at[sentence_index, f'STL-shot{i}-S0-F{count}'] = extracted_response
                 print('stl extracted')
             except Exception as e:
@@ -419,7 +426,7 @@ for sentence_index, sentence in sentences['input statement'].items():
             try:            
                 parsed_stl = parser.parse(extracted_response)    
                 if check_signal_names(parsed_stl) is not None:
-                    raise Error("bad signal name")
+                    raise Exception("bad signal name")
                 print('stl parsed')
                 syntax_passed = True
                 translations.at[sentence_index, f'STL-shot{i}-S0-F{count}'] = extracted_response
@@ -428,28 +435,29 @@ for sentence_index, sentence in sentences['input statement'].items():
                     translations.at[sentence_index, f'STL-shot{i}-S0-F{count}'] = "STL could not be parsed"
                 syntax_passed = False 
                 print('parsing failed')
-
-                if check_json(extracted_response) is not None:
+            
+                if check_json(extracted_response, sentence) is not None:
                     print('feedback is check json')
-                    feedback = check_json(extracted_response)
-                elif check_parentheses(extracted_response) is not None:
+                   feedback = check_json(extracted_response, sentence)
+                elif check_parentheses(extracted_response, sentence) is not None:
                     print('feedback is parentheses')
-                    feedback = check_parentheses(extracted_response)
-                elif parsed_stl != '' and check_signal_names(parsed_stl) is not None:
-                    feedback = check_signal_names(parsed_stl)
+                    feedback = check_parentheses(extracted_response, sentence)
+                elif parsed_stl != '' and check_signal_names(parsed_stl, extracted_response, sentence) is not None:
+                    feedback = check_signal_names(parsed_stl, extracted_response, sentence)
                     print('feedback is bad signal names')
-                elif get_hole_feedback(extracted_response) is not None:
-                    feedback = get_hole_feedback(extracted_response)
-                    print('feedback is fix hole')
+                elif get_hole_feedback(e, extracted_response, sentence) is not None:
+                    feedback = get_hole_feedback(e, extracted_response, sentence)
+                  print('feedback is fix hole')
                 else:
-                    feedback = default_feedback(extracted_response)
+                    feedback = default_feedback(e, extracted_response, sentence)
                     print('feedback is default')
 
+
         ####################################################################
-        # 4) Perform semantic checks
+        # 4) perform semantic checks
         ####################################################################
 
-        # After you obtain a good syntax statement, do semantic checks
+        # after you obtain a good syntax statement, do semantic checks
         num_semantic_checks = params['num_semantic_checks']
 
         last_stl = extracted_response
@@ -492,7 +500,7 @@ for sentence_index, sentence in sentences['input statement'].items():
             try:            
                 parsed_stl = parser.parse(extracted_response)    
                 if check_signal_names(parsed_stl) is not None:
-                    raise Error("bad signal name")
+                    raise Exception("bad signal name")
                 print('STL parsed')
                 translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F0'] = extracted_response
                 syntax_passed = True
@@ -502,21 +510,22 @@ for sentence_index, sentence in sentences['input statement'].items():
                 syntax_passed = False 
                 print('parsing failed')
 
-                if check_json(extracted_response) is not None:
+                if check_json(extracted_response, sentence) is not None:
                     print('feedback is check json')
-                    feedback = check_json(extracted_response)
-                elif check_parentheses(extracted_response) is not None:
+                   feedback = check_json(extracted_response, sentence)
+                elif check_parentheses(extracted_response, sentence) is not None:
                     print('feedback is parentheses')
-                    feedback = check_parentheses(extracted_response)
-                elif parsed_stl != '' and check_signal_names(parsed_stl) is not None:
-                    feedback = check_signal_names(parsed_stl)
+                    feedback = check_parentheses(extracted_response, sentence)
+                elif parsed_stl != '' and check_signal_names(parsed_stl, extracted_response, sentence) is not None:
+                    feedback = check_signal_names(parsed_stl, extracted_response, sentence)
                     print('feedback is bad signal names')
-                elif get_hole_feedback(extracted_response) is not None:
-                    feedback = get_hole_feedback(extracted_response)
-                    print('feedback is fix hole')
+                elif get_hole_feedback(e, extracted_response, sentence) is not None:
+                    feedback = get_hole_feedback(e, extracted_response, sentence)
+                  print('feedback is fix hole')
                 else:
-                    feedback = default_feedback(extracted_response)
+                    feedback = default_feedback(e, extracted_response, sentence)
                     print('feedback is default')
+
 
             feedback_attempts_remaining = params["num_correction_attempts_per_shot"]
  
@@ -536,8 +545,6 @@ for sentence_index, sentence in sentences['input statement'].items():
                 # extract STL
                 try:
                     extracted_response = json.loads(response)["output_stl"]
-                    if check_signal_names(parsed_stl) is not None:
-                        raise Error("bad signal name")
                     print('STL extracted')
                     translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F{count}'] = extracted_response
                 except Exception as e:
@@ -549,6 +556,8 @@ for sentence_index, sentence in sentences['input statement'].items():
                 parsed_stl = ''
                 try:            
                     parsed_stl = parser.parse(extracted_response)    
+                    if check_signal_names(parsed_stl) is not None:
+                        raise Exception("bad signal name")
                     print('STL parsed')
                     syntax_passed = True
                     translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F{count}'] = extracted_response
@@ -558,21 +567,23 @@ for sentence_index, sentence in sentences['input statement'].items():
                         translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F{count}'] = "STL could not be parsed"
                     print('parsing failed')
 
-                    if check_json(extracted_response) is not None:
+
+                    if check_json(extracted_response, sentence) is not None:
                         print('feedback is check json')
-                        feedback = check_json(extracted_response)
-                    elif check_parentheses(extracted_response) is not None:
+                       feedback = check_json(extracted_response, sentence)
+                    elif check_parentheses(extracted_response, sentence) is not None:
                         print('feedback is parentheses')
-                        feedback = check_parentheses(extracted_response)
-                    elif parsed_stl != '' and check_signal_names(parsed_stl) is not None:
-                        feedback = check_signal_names(parsed_stl)
+                        feedback = check_parentheses(extracted_response, sentence)
+                    elif parsed_stl != '' and check_signal_names(parsed_stl, extracted_response, sentence) is not None:
+                        feedback = check_signal_names(parsed_stl, extracted_response, sentence)
                         print('feedback is bad signal names')
-                    elif get_hole_feedback(extracted_response) is not None:
-                        feedback = get_hole_feedback(extracted_response)
+                    elif get_hole_feedback(e, extracted_response, sentence) is not None:
+                        feedback = get_hole_feedback(e, extracted_response, sentence)
                         print('feedback is fix hole')
                     else:
-                        feedback = default_feedback(extracted_response)
+                        feedback = default_feedback(e, extracted_response, sentence)
                         print('feedback is default')
+
                  
             if syntax_passed:
                 print(f'feedback was able to correct this semantic attempt')

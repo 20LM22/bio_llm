@@ -22,6 +22,13 @@ logging.basicConfig(filename='output.log', level=logging.DEBUG,
 # Set up structures, parameters
 ####################################################################################
 
+file_name = f'../config/stl_generator_v4_config.json'
+
+with open(file_name, 'r') as f:
+    params = json.load(f)
+sentences = pandas.read_csv(params['sentences_csv'])
+translations = sentences.copy()
+
 """
 stl_base_instance = STLBase()
 
@@ -33,10 +40,12 @@ guided_decoding_params = GuidedDecodingParams(json=STLResponse.model_json_schema
 stl_response_json = STLResponse.model_json_schema()
 """
 
+"""
 file_name = f'../config/{sys.argv[1]}'
 
 with open(file_name, 'r') as f:
     params = json.load(f)
+"""
 
 """
 sampling_params = SamplingParams(
@@ -74,6 +83,7 @@ sentences = pandas.read_csv(params['sentences_csv'])
 embedding_model = SentenceTransformer(params['embedding_model_name'], device='cpu')
 """
 
+"""
 grammar = params['grammar']
 parser = Lark(grammar)
 
@@ -86,6 +96,7 @@ try:
         print(f'Loaded curated dataset')
 except Exception as e:
     print(e)
+"""
 
 # Create a file which contains all the relevant output related to this model
 # Augment the input file with correct number of stl and literal rows
@@ -114,7 +125,7 @@ llm = LLM(model=model_name,
 ####################################################################################
 # Helper function: generate examples
 ####################################################################################
-
+"""
 def generate_example_prompt(num_examples):
     samples = []
     for i in range(num_examples):
@@ -137,11 +148,11 @@ def generate_example_prompt(num_examples):
         examples += (f"\n{{'thinking:' 'I need to translate this natural language into STL...',\n'input_sentence:' '{literal_translations[_id]}',\n'output_STL': '{sample}'}}\n")
 
     return params['example_prompt']['prompt_1'] + examples + params['example_prompt']['prompt_2']
-
+"""
 ####################################################################################
 # Helper function: get hole feedback
 ####################################################################################
-
+"""
 def get_hole_feedback(e):
     try:
         error_char = re.findall(r'at line \d+ col \d+', e)[0].split(' ')[4] - 1
@@ -186,11 +197,11 @@ def get_hole_feedback(e):
         return None
     except Exception as e:
         return None
-
+"""
 ####################################################################################
 # Helper function: check signal names
 ####################################################################################
-
+"""
 def check_signal_names(parsed_stl):
     print(" ")
     signals = re.findall(r"Tree\(Token\('RULE', 's'\), \[Token\('\w+', '\w+'\)\]\)", str(parsed_stl)) 
@@ -210,11 +221,11 @@ def check_signal_names(parsed_stl):
             return response
 
     return None
-
+"""
 ####################################################################################
 # Helper function: check parentheses
 ####################################################################################
-
+"""
 def check_parentheses(extracted_response):
     # print("at start of check parentheses")
     # print(f'extracted_response: {extracted_response}')
@@ -243,11 +254,11 @@ def check_parentheses(extracted_response):
 
     print('no problems with parentheses')
     return None
-
+"""
 ####################################################################################
 # Helper function: check json
 ####################################################################################
-
+"""
 def check_json(extracted_response):
     try:
         json.loads(extracted_response)
@@ -259,11 +270,11 @@ def check_json(extracted_response):
         return None
     except Exception as e:
         return None
-
+"""
 ####################################################################################
 # Helper function: produce default error feedback
 ####################################################################################
-
+"""
 def default_feedback(e):
     try:
         error_char = re.findall(r'at line \d+ col \d+', e)[0].split(' ')[4] - 1
@@ -272,7 +283,8 @@ def default_feedback(e):
         return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error_message_more_descriptive + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] 
     except Exception as e:
         return params['feedback_prompt']['default_prompt_1'] + '\n' + extracted_response + '\n\n' + params['feedback_prompt']['default_prompt_2a'] + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4'] 
-        
+"""
+
 """
 # Minimal example
 input_json = 
@@ -284,6 +296,20 @@ print(f'error response: {check_json(input_json)}')
 # Translation of each sentence
 ####################################################################################
 
+response = "{\n\"thinking\": \"I need to translate this natural language into STL.\",\n\"input_statement\": \"... the rate of change of IL-6 was increasing faster than a high rate then IL-1β was below its high levels.\",\n\"output_STL\": \"d_IL6(t) > d_c(high) implies IL1β(t) < c(high)\"\n}"
+
+try:
+    extracted_response = json.loads(response)["output_STL"]
+    print('stl extracted')
+    translations.at[0, f'STL-shot0-S0-F0'] = extracted_response
+except Exception as e:
+    print('extraction failed')
+    translations.at[0, f'STL-shot0-S0-F0'] = "STL could not be extracted"
+    # continue # if no stl can be extracted, then just go to the next shot
+
+
+
+"""
 # test
 extracted_response = 'globally[14,∞](d_SARSCoV2(t)=0) and globally[14,∞](d_IL6(t)=c(low)) and globally[14,∞](d_IL1RN(t)=c(low)) and globally[14,∞](d_IL1RA(t)=c(low))'
 
@@ -329,7 +355,7 @@ except Exception as e:
     else:
         feedback = default_feedback(extracted_response)
         print('feedback is default')
-
+"""
 
 
 """
