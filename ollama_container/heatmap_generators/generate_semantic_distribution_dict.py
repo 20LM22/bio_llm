@@ -3,12 +3,25 @@ from sklearn.metrics.pairwise import cosine_similarity
 import pickle, sys, os, pandas
 from sentence_transformers import SentenceTransformer
 import json
+from collections import defaultdict
 from stl2literal import STL2literal
+import matplotlib.pyplot as plt
 
-model_name = sys.argv[1].split('/')[1]
+a = b = c = ''
+
+if int(sys.argv[1]) == 1:
+    a = 'deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B'
+    b = 'translations_DeepSeek-R1-Distill-Qwen-1.5B.pkl'
+    c = 'stl_generator_v4_config.json'
+elif int(sys.argv[1]) == 2:
+    a = 'Qwen/Qwen3-1.7B'
+    b = 'translations_Qwen3-1.7B.pkl'
+    c = 'stl_generator_v4_config.json'
+
+model_name = a.split('/')[1]
 
 try:
-    with open(f'../pkl/{sys.argv[2]}', 'rb') as f:
+    with open(f'../pkl/{b}', 'rb') as f:
         translations = pickle.load(f)
         print(f'Loaded {f}')
 except Exception as e:
@@ -20,7 +33,7 @@ os.makedirs(f'../stats/{model_name}', exist_ok=True)
 translations.to_csv(f'../stats/{model_name}/translations.csv')
 
 # load in the config specified by the script
-with open(f'../config/{sys.argv[3]}') as f:
+with open(f'../config/{c}') as f:
     params = json.load(f)
 
 embedding_model_name = 'all-MiniLM-L6-v2'
@@ -62,7 +75,7 @@ for index, row in translations.iterrows():
                 # need to record stl and its similarity
                 syntactically_valid_translations.append((entry, sim))
     
-    res[row] = syntactically_valid_translations
+    res[row['input statement']] = syntactically_valid_translations
 
 # print these out to the user and have them mark whether they think they're good or not
 translations_total = 0
@@ -78,22 +91,18 @@ for key in res.keys():
         translations_count += 1
         # need to ask the user to mark the annotation as a 0 or 1
         print(f"Sentence: {key}")
-        print(f"STL: {stl]}")
+        print(f"STL: {stl}")
         choice = input("1 for yes, 0 for no")
-        while choice != 0 and choice != 1:
-            choice = input("1 for yes, 0 for no")
+        #while choice != 0 and choice != 1:
+        #    choice = input("1 for yes, 0 for no")
         # then need to construct a new array that we will replace the current one in the dictionary with
         # but this array will have the user's annotation
         new_syn_valid_arr.append((stl,sim,choice))
     res[key] = new_syn_valid_arr
 
-
-
-stats.to_csv(f'../stats/{model_name}/stats.csv', index=False)
-
-
-
-
-
-
-
+try:
+    with open(f'../pkl/histogram_distribution_comparison_{model_name}.pkl', 'wb') as r:
+        pickle.dump(res, r)
+except Exception as e:
+    print("there was a pickle problem")
+    print(e)

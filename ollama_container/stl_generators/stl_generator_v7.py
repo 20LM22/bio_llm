@@ -93,6 +93,8 @@ for i in range(num_shots_per_input_sentence):
         for k in range(params['num_correction_attempts_per_shot']+1):
             translations[f'STL-shot{i}-S{j}-F{k}'] = None
 
+print(translations)
+
 # Create the LLM for this model
 llm = LLM(model=model_name,
     dtype=model_dtype,

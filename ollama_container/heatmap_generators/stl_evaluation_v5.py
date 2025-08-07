@@ -118,8 +118,8 @@ for (index, row) in translations.iterrows():
                 literal = STL2literal(entry, grammar)
                 literal_embedding = ( np.array(model.encode(literal, normalize_embeddings=True)) )
                 sim = cosine_similarity(np.array(literal_embedding).reshape(1,-1), np.array(nl_embedding).reshape(1,-1))[0][0]
-                new_row.loc[i, f'S{k}-F{m}'] = sim 
-                new_row.loc[i, f'S{k}-F{m} sim'] = entry
+                new_row.loc[i, f'S{k}-F{m}'] = entry 
+                new_row.loc[i, f'S{k}-F{m} sim'] = sim
             
             if m == syntax_count-1:
                 k += 1

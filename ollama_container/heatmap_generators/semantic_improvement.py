@@ -31,7 +31,25 @@ model = SentenceTransformer(params['embedding_model_name'], device='cpu')
 
 grammar = params['grammar']
 
-sim_threshold = 0.6
+improvements_all_sentences = pandas.DataFrame(columns=['Sentence', 'Improvements'])
+# load in all sentences
+count = 0
+for _id, f in enumerate(glob('../stats/{model_name}/*_best_sim_shot_semantic.csv')):
+    count += 1
+    df = pd.read_csv(f)
+    df['Number of improvements (relative to start)'] = 0
+
+    for i in range(params['semantic attempts']): # TODO: need to get the number of semantic attempts from params
+        condition = (df[f'Semantic attempt 0'] == 'N/A' and df[f'Semantic attempt {i+1}' != 'N/A']) or (df[f'Semantic attempt {i+1} sim'] > df[f'Semantic attempt 0 sim'])
+        df['Number of improvements (relative to start)'] += np.where(condition, 1, 0)
+
+    df.to_csv(f) # update this df
+    improvements_all_sentences.loc[_id, 'Sentence'] = str(f) # TODO: maybe fix this
+    improvements_all_sentences.loc[_id, 'Improvements'] = df['Number of improvements (relative to start)'].sum()
+count += 1
+improvements_all_sentences.loc[count, 'Sentence'] = 'Overall'
+improvements_all_sentences.loc[count, 'Improvements'] = improvements_all_sentences['Improvements'].sum()
+
 
 #######################################################################################################################
 # Table for extraction, parsing success rate
@@ -43,46 +61,15 @@ success_rate['Input Sentence'] = translations['input statement']
 success_rate['STL Extraction Success Rate'] = 0
 success_rate['STL Parsing Success Rate'] = 0
 success_rate['Number of Translations'] = 0
-success_rate['Number of Syntactically Correct Translations'] = 0
-success_rate['Semantic Passes'] = 0
-success_rate['Semantic Success Rate'] = 0
 
 total_success_rate = pandas.DataFrame(index=[0])
 total_success_rate['Input Sentence'] = 'Overall'
-
-# success_rate['All valid STL'] = []
-shot_count = params['num_shots_per_input_sentence']
 
 for col in translations.columns:
     if 'STL-shot' in col:
         success_rate['STL Extraction Success Rate'] += np.where(translations[col] == 'STL could not be extracted', 1, 0)
         success_rate['STL Parsing Success Rate'] += np.where(translations[col] == 'STL could not be parsed', 1, 0)
         success_rate['Number of Translations'] += np.where(translations[col].isnull(), 0, 1)
-
-# fill in semantic successes
-for index, row in translations.iterrows():
-    
-    nl_embedding = np.array(model.encode(row['input statement'], normalize_embeddings=True))
-    row_subset = pandas.DataFrame()
-    row_counter = 0
-
-    for i in range(shot_count):
-        relevant_translations_cols = []
-        for col in translations.columns:
-            if f'shot{i}-' in col:
-                relevant_translations_cols.append(col)
-        row_subset = row[relevant_translations_cols] # row subset has everything with shot-i in the column name
-    
-        for entry in row_subset:
-            if entry != 'STL could not be extracted' and entry != 'STL could not be parsed' and entry is not None:
-                # add this entry
-                literal = STL2literal(entry, grammar)
-                literal_embedding = ( np.array(model.encode(literal, normalize_embeddings=True)) )
-                sim = cosine_similarity(np.array(literal_embedding).reshape(1,-1), np.array(nl_embedding).reshape(1,-1))[0][0]
-                if sim > sim_threshold:
-                    row_counter += 1
-
-    success_rate.loc[index, 'Semantic Passes'] = row_counter
 
 total_success_rate['STL Extraction Success Rate'] = success_rate['STL Extraction Success Rate'].sum()
 total_success_rate['STL Parsing Success Rate'] = success_rate['STL Parsing Success Rate'].sum()
@@ -98,15 +85,9 @@ num_total_passed_parsing = num_total_passed_extraction - success_rate['STL Parsi
 
 success_rate['STL Extraction Success Rate'] = np.where(success_rate['Number of Translations']==0, 0, 1-(success_rate['STL Extraction Success Rate'] / success_rate['Number of Translations']))
 success_rate['STL Parsing Success Rate'] = np.where(num_passed_extraction==0, 0, 1-(success_rate['STL Parsing Success Rate'] / num_passed_extraction))
-success_rate['Number of Syntactically Correct Translations'] = success_rate['STL Extraction Success Rate'] * success_rate['STL Parsing Success Rate'] * success_rate['Number of Translations']
-success_rate['Semantic Success Rate'] = success_rate['Semantic Passes'] / success_rate['Number of Syntactically Correct Translations']
 
 total_success_rate['STL Extraction Success Rate'] = np.where(num_total_translations==0, 0, 1-(total_success_rate['STL Extraction Success Rate'] / num_total_translations))
 total_success_rate['STL Parsing Success Rate'] = np.where(num_total_passed_extraction==0, 0, 1-(total_success_rate['STL Parsing Success Rate'] / num_total_passed_extraction))
-total_success_rate['Number of Translations'] = success_rate['Number of Translations'].sum()
-total_success_rate['Semantic Passes'] = success_rate['Semantic Passes'].sum()
-total_success_rate['Number of Syntactically Correct Translations'] = total_success_rate['STL Extraction Success Rate'] * total_success_rate['STL Parsing Success Rate'] * total_success_rate['Number of Translations']
-total_success_rate['Semantic Success Rate'] = total_success_rate['Semantic Passes'] / total_success_rate['Number of Syntactically Correct Translations']
 
 stats = pandas.concat([success_rate, total_success_rate], ignore_index=True)
 stats.to_csv(f'../stats/{model_name}/stats.csv', index=False)
@@ -157,8 +138,8 @@ for (index, row) in translations.iterrows():
                 literal = STL2literal(entry, grammar)
                 literal_embedding = ( np.array(model.encode(literal, normalize_embeddings=True)) )
                 sim = cosine_similarity(np.array(literal_embedding).reshape(1,-1), np.array(nl_embedding).reshape(1,-1))[0][0]
-                new_row.loc[i, f'S{k}-F{m}'] = sim 
-                new_row.loc[i, f'S{k}-F{m} sim'] = entry
+                new_row.loc[i, f'S{k}-F{m}'] = entry 
+                new_row.loc[i, f'S{k}-F{m} sim'] = sim
             
             if m == syntax_count-1:
                 k += 1
@@ -244,23 +225,8 @@ for (index, row) in translations.iterrows():
 
         sentence_table = pandas.concat([sentence_table, new_row], ignore_index=False)
     
-    sentence_table['Number of improvements (relative to start)'] = 0
-
-    for i in range(params['semantic attempts']): # TODO: need to get the number of semantic attempts from params
-        condition = (sentence_table[f'Semantic attempt 0'] == 'N/A' and sentence_table[f'Semantic attempt {i+1}' != 'N/A']) or (sentence_table[f'Semantic attempt {i+1} sim'] > sentence_table[f'Semantic attempt 0 sim'])
-        sentence_table['Number of improvements (relative to start)'] += np.where(condition, 1, 0)
-
-    short_sentence_name = row['input statement'][:15]
+    short_sentence_name = row['input statement'][:10]
     sentence_table.to_csv(f'../stats/{model_name}/{short_sentence_name}_{index}_best_sim_shot_semantic.csv', index=False)
-    improvements_all_sentences.loc[_id, 'Sentence'] = sentence
-    improvements_all_sentences.loc[_id, 'Improvements'] = df['Number of improvements (relative to start)'].sum()
-
-overall = pandas.DataFrame(columns=['Sentence', 'Improvements'])
-overall.loc[0, 'Sentence'] = 'Overall'
-overall.loc[0, 'Improvements'] = improvements_all_sentences['Improvements'].sum()
-improvements_all_sentences = pandas.concat([improvements_all_sentences, overall], ignore_index=False)
-improvements_all_sentences.to_csv(f'../stats/{model_name}/improvements_all_sentences.csv')
-
     
 #######################################################################################################################
 # Table where sentences are rows: report the best cosine sim. for each shot and the corresponding STL
