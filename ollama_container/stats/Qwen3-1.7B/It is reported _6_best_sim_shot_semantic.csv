@@ -1,19 +1,19 @@
-Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improvements (relative to start)
-"eventually[0,2](IFNα(t) > c(low)) implies eventually[0,2]globally(IL6(t) = c(low))",0.3788742,"eventually[0,24]globally(d_IFNα(t)=d_c(high) and d_IFNβ(t)=d_c(high))",0.5121666,1
-"eventually[0,∞]globally(d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high))",0.5319214,"eventually[0,∞]globally(d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high))",0.5319214,0
-"eventually[0,1]globally(d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high))",0.5269768,"eventually[0,1]globally(d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high))",0.5269768,0
-N/A,N/A,N/A,N/A,0
-"globally[∞,∞](IL1β(t) = c(high) and IL1Ra(t) = c(high)) and d_IFNβ(t) > 0",0.44933063,"globally[∞,∞](IL1β(t) = c(high) and IL1Ra(t) = c(high)) and d_IFNβ(t) > 0",0.44933063,0
-N/A,N/A,N/A,N/A,0
-"eventually[0,∞]globally(IL1β(t) > c(high)) implies eventually[0,∞](IL6(t) < c(high))",0.31705472,"eventually[0,1]globally(d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high)) implies globally[0,∞](IFNα(t)=c(high) and IFNβ(t)=c(high))",0.49601823,1
-N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,0
-"globally[0,2](IFNα(t) > c(mid))",0.45618826,"eventually[0,1](d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high)) and IL1β(t) > c(mid) and IL1Ra(t) > c(mid)",0.50394505,1
-N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,0
-"eventually[0,2]globally(d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high))",0.52777016,"eventually[0,2]globally(d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high))",0.52777016,0
-"eventually[0,∞]globally(IFNα(t) = c(high) and IFNβ(t) = c(high))",0.5456153,"eventually[0,∞]globally(IFNα(t) = c(high) and IFNβ(t) = c(high))",0.5456153,0
-"eventually[0,4](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.54929316,"eventually[0,4](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.54929316,0
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
+"d_IFNα(t) > 0 and d_IFNβ(t) > 0 and eventually[0,3](IFNα(t) = c(high) and IFNβ(t) = c(high)) implies globally[0,∞](IFNα(t) = c(high))",0.4635689,"d_IFNα(t) > 0 and d_IFNβ(t) > 0 and eventually[0,3](IFNα(t) = c(high) and IFNβ(t) = c(high)) implies globally[0,∞](IFNα(t) = c(high))",0.4635689,"d_IFNα(t) > 0 and d_IFNβ(t) > 0 and eventually[0,3](IFNα(t) = c(high) and IFNβ(t) = c(high)) implies globally[0,∞](IFNα(t) = c(high))",0.4635689,0
+"globally[0,∞](d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high)) and eventually[0,∞](IFNα(t) = c(high) and IFNβ(t) = c(high))",0.51059306,"globally[0,∞](d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high)) and eventually[0,∞](IFNα(t) = c(high) and IFNβ(t) = c(high))",0.51059306,"globally[0,∞](d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high)) and eventually[0,∞](IFNα(t) = c(high) and IFNβ(t) = c(high))",0.51059306,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"eventually[0,∞](IL1β(t) > c(high) and IL1Ra(t) > c(high)) and d_IL1β(t) > d_c(high) and d_IL1Ra(t) > d_c(high)",0.32372352,"eventually[0,∞](IL1β(t) > c(high) and IL1Ra(t) > c(high)) and d_IL1β(t) > d_c(high) and d_IL1Ra(t) > d_c(high)",0.32372352,"eventually[0,∞](IL1β(t) > c(high) and IL1Ra(t) > c(high)) and d_IL1β(t) > d_c(high) and d_IL1Ra(t) > d_c(high)",0.32372352,0
+"eventually[0,∞]globally(d_IFNα(t) > 0 and d_IFNβ(t) = c(low))",0.52704,"eventually[0,∞]globally(d_IFNα(t) > 0 and d_IFNβ(t) = c(low))",0.52704,"eventually[0,∞]globally(d_IFNα(t) > 0 and d_IFNβ(t) = c(low))",0.52704,0
+"eventually[0,1]globally(d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high)) and eventually[0,1]globally(IL6(t) = c(low))",0.49321365,"eventually[0,1]globally(d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high)) and eventually[0,1]globally(IL6(t) = c(low))",0.49321365,"eventually[0,1]globally(d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high)) and eventually[0,1]globally(IL6(t) = c(low))",0.49321365,0
+"eventually[0,∞]globally(d_IFNα(t)=d_c(high) and d_IFNβ(t)=d_c(high))",0.5083089,"eventually[0,24](IFNα(t) > c(mid) and IFNβ(t) > c(mid))",0.53472865,"eventually[0,3]globally(d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high))",0.53502345,2
+"eventually[0,1]globally(d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high))",0.5269767,"eventually[0,1]globally(d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high))",0.5269767,"eventually[0,1]globally(d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high))",0.5269767,0
+"globally[0,∞](d_IFNα(t)=d_c(high) and d_IFNβ(t)=d_c(high)) implies eventually[0,∞](IFNα(t) = c(high) and IFNβ(t) = c(high))",0.4890411,"eventually[0,∞]globally(IFNα(t) > c(high) and IFNβ(t) > c(high)) and d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high)",0.5021683,"eventually[0,∞]globally(IFNα(t) > c(high) and IFNβ(t) > c(high)) and d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high)",0.5021683,2
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"eventually[0,2](d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high))",0.5272459,"eventually[0,2](d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high))",0.5272459,"eventually[0,2](d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high))",0.5272459,0
+"globally[0,∞](IFNα(t)=c(high) and IFNβ(t)=c(high)) implies eventually[0,∞](d_IFNα(t) > 0 and d_IFNβ(t) > 0)",0.44940823,"globally[0,∞](IFNα(t)=c(high) and IFNβ(t)=c(high)) implies eventually[0,∞](d_IFNα(t) > 0 and d_IFNβ(t) > 0)",0.44940823,"globally[0,∞](IFNα(t)=c(high) and IFNβ(t)=c(high)) implies eventually[0,∞](d_IFNα(t) > 0 and d_IFNβ(t) > 0)",0.44940823,0
+"eventually[0,∞]globally(IFNα(t) > c(mid))",0.4952246,"eventually[0,∞]globally(IFNα(t) > c(mid))",0.4952246,"eventually[0,1]globally(IFNα(t) > c(high) and IFNβ(t) > c(high))",0.5366559,1
+"eventually[0,3]globally(IL1β(t) = c(high) and IL1Ra(t) = c(low))",0.34096152,"eventually[0,3]globally(IL1β(t) = c(high) and IL1Ra(t) = c(low))",0.34096152,"eventually[0,1](d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high)) and d_IFNα(t) = d_c(high) and d_IFNβ(t) = d_c(high)",0.47246858,1
+"eventually[0,1](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.54612803,"eventually[0,1](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.54612803,"eventually[0,1](IFNα(t) > c(high) and IFNβ(t) > c(high))",0.54612803,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"eventually[0,∞]globally(d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high))",0.5319213,"eventually[0,∞]globally(d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high))",0.5319213,"eventually[0,1]globally(IFNα(t) > c(high) and IFNβ(t) > c(high))",0.5366559,1
+"eventually[0,1]globally(IFNα(t) > c(low) and IFNβ(t) > c(low))",0.5199036,"eventually[0,1]globally(IFNα(t) > c(low) and IFNβ(t) > c(low))",0.5199036,"eventually[0,1]globally(IFNα(t) > c(low) and IFNβ(t) > c(low))",0.5199036,0
