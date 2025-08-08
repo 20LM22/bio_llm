@@ -50,15 +50,15 @@ for _id, sentence in enumerate(res.keys()): # key is sentence
     
     max_sim = 0
     min_sim = 0
-    first_time = True
+    first_time_max = first_time_min = True
 
     for stl, sim, choice in res[sentence]:
-        if first_time or sim > max_sim:
+        if first_time_max or sim > max_sim:
             max_sim = sim
-            first_time = False
-        if first_time or sim < min_sim:
+            first_time_max = False
+        if first_time_min or sim < min_sim:
             min_sim = sim
-            first_time = False
+            first_time_min = False
 
         if choice is None or choice == '':
             continue
