@@ -182,28 +182,21 @@ improvements_all_sentences = pandas.DataFrame(columns=['Sentence','Improvements'
 # for each row - sentence in the df
 for (index, row) in translations.iterrows():
     nl_embedding = np.array(model.encode(row['input statement'], normalize_embeddings=True))
-    # make the df that will hold all info for this sentence
-    sentence_table = pandas.DataFrame(columns=col_names)
-
-    # first construct shot x semantic attempt table
     col_names = []
     for i in range(semantic_count):
         col_names.append(f'Semantic attempt {i}')
         col_names.append(f'Semantic attempt {i} sim')
-
-    print("sjdlskjlksjlsjlkjljljlkjljljlkjkljljljk")
-    print(f"row[input statement]: {row['input statement']}")
+    sentence_table = pandas.DataFrame(columns=col_names)
 
     for i in range(shot_count):
         new_row = pandas.DataFrame(columns=col_names)
         # fill in new row
-
         relevant_translations_cols = []
         for col in translations.columns:
-            if f'shot{i}' in col:
+            if f'shot{i}-' in col:
                 relevant_translations_cols.append(col)
         row_subset = row[relevant_translations_cols] # row subset has everything with shot-i in the column name
-        
+
         # now we need to loop through the semantic attempts and separate them
         # shot0-s1-f2, shot0-s1-f3
         count_semantic_attempts = 0
@@ -216,8 +209,13 @@ for (index, row) in translations.iterrows():
         # print(f'row subset is: {row_subset}')
         
         for _id, entry in enumerate(row_subset):
+            # print(f'len(row_subset): {len(row_subset)}')
+            # print(f'row_subset: {row_subset}')
+            # print(f'count_inside_semantic_attempt: {count_inside_semantic_attempt}')
+            # print(f'syntax_count: {syntax_count}')
+            # count_semantic_attempts = 0
             # just keep counting by multiples of semantic attempts
-            if count_inside_semantic_attempt < semantic_count:
+            if count_inside_semantic_attempt < syntax_count:
                 # get the embedding of each entry
                 if entry is None or entry == 'STL could not be parsed' or entry == 'STL could not be extracted':
                     # handle this problem
@@ -235,21 +233,25 @@ for (index, row) in translations.iterrows():
 
                     count_inside_semantic_attempt += 1
 
-            if count_inside_semantic_attempt == semantic_count:
+            if count_inside_semantic_attempt == syntax_count:
+                # print('inside equals')
                 count_inside_semantic_attempt = 0
                 r_stl = 'N/A' if first_time else best_stl
                 r_sim = 'N/A' if first_time else best_sim
+                # print(f'i: {i}')
+                # print(f'count_semantic_attempts: {count_semantic_attempts}')
                 # done with semantic attempt, need to process this as an entry for this new row
-
                 new_row.loc[i, f'Semantic attempt {count_semantic_attempts}'] = r_stl
                 new_row.loc[i, f'Semantic attempt {count_semantic_attempts} sim'] = r_sim
+                # print(f'new_row: {new_row}')
                 count_semantic_attempts += 1
 
         sentence_table = pandas.concat([sentence_table, new_row], ignore_index=False)
-
-# print(sentence_table)
-
+        # print(f'sentence_table: {sentence_table}')
+    # back at the sentence level
+    # print(f'sentence: {row['input statement']}')
     sentence_table['Number of improvements (relative to start)'] = 0
+    print(f'sentence table: {sentence_table}')
 
     for d, r in sentence_table.iterrows():
         for i in range(params['num_semantic_checks']): # TODO: need to get the number of semantic attempts from params
