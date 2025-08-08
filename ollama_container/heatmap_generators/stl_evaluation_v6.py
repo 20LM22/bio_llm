@@ -1,14 +1,12 @@
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
-import seaborn as sns
-import matplotlib.pyplot as plt
 import pickle, sys, os, pandas
-from thefuzz import fuzz
 from sentence_transformers import SentenceTransformer
 import json
 from stl2literal import STL2literal
 
-model_name = sys.argv[1].split('/')[1]
+model_name = 'DeepSeek-R1-Distill-Qwen-1.5B' if sys.argv[1] == 'deepseek' else 'Qwen3-1.7B'
+print(f'model name: {model_name}')
 
 try:
     with open(f'../pkl/{sys.argv[2]}', 'rb') as f:

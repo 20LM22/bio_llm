@@ -1,14 +1,6 @@
 import numpy as np
-from sklearn.metrics.pairwise import cosine_similarity
 import pickle, sys, os, pandas
-from sentence_transformers import SentenceTransformer
-import json
-from collections import defaultdict
-from stl2literal import STL2literal
 import matplotlib.pyplot as plt
-
-# arg 1 is the model choice
-# arg 2 is the all vs sentence choice
 
 model_name = 'DeepSeek-R1-Distill-Qwen-1.5B' if sys.argv[1] == 'deepseek' else 'Qwen3-1.7B'
 
@@ -20,14 +12,14 @@ try:
 except Exception as e:
     print(e)
 
-# print(res)
-
 # do them all together
 zeroes = [] # list of sim values
 ones = []
 for key in res.keys():
     for stl, sim, choice in res[key]:
-        if int(choice) == 0:
+        if choice is None or choice == '':
+            continue
+        elif int(choice) == 0:
             zeroes.append(sim)
         elif int(choice) == 1:
             ones.append(sim)
@@ -41,7 +33,7 @@ plt.hist(zeroes, bins=bins, alpha=0.5, label='Semantically incorrect', color='fi
 
 plt.xlabel('Similarity')
 plt.ylabel('Frequency')
-plt.title('All Sentences Semantic Pass/Fail Distribution\nmodel: {model_name}')
+plt.title(f'All Sentences Semantic Pass/Fail Distribution\nmodel: {model_name}')
 plt.legend()
 
 plt.savefig(f"../images/{model_name}/histogram_distribution_comparison.png")
@@ -55,7 +47,9 @@ for _id, sentence in enumerate(res.keys()): # key is sentence
     zeroes = []
     ones = []
     for stl, sim, choice in res[sentence]:
-        if int(choice) == 0:
+        if choice is None or choice == '':
+            continue
+        elif int(choice) == 0:
             zeroes.append(sim)
         elif int(choice) == 1:
             ones.append(sim)
@@ -71,5 +65,3 @@ for _id, sentence in enumerate(res.keys()): # key is sentence
 
 fig.tight_layout()
 plt.savefig(f'../images/{model_name}/per_sentence_histogram_distribution_comparison.png')
-
-
