@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 # arg 1 is the model choice
 # arg 2 is the all vs sentence choice
 
-a = 'DeepSeek-R1-Distill-Qwen-1.5B' if int(sys.argv[1]) == 1 else 'Qwen3-1.7B'
+model_name = 'DeepSeek-R1-Distill-Qwen-1.5B' if int(sys.argv[1]) == 1 else 'Qwen3-1.7B'
 
 res = {}
 try:
@@ -19,6 +19,8 @@ try:
         print(f'Loaded histogram distribution')
 except Exception as e:
     print(e)
+
+print(res)
 
 if sys.argv[2] == 1: # do them all together
     zeroes = [] # list of sim values

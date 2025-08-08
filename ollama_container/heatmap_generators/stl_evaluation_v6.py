@@ -179,6 +179,8 @@ syntax_count = params['num_correction_attempts_per_shot']+1
 
 translations.to_csv(f'../stats/{model_name}/translations.csv', index=False)
 
+improvements_all_sentences = pandas.DataFrame(columns=['Sentence','Improvements'])
+
 # for each row - sentence in the df
 for (index, row) in translations.iterrows():
     # first construct shot x semantic attempt table
@@ -186,6 +188,9 @@ for (index, row) in translations.iterrows():
     for i in range(semantic_count):
         col_names.append(f'Semantic attempt {i}')
         col_names.append(f'Semantic attempt {i} sim')
+
+    print("sjdlskjlksjlsjlkjljljlkjljljlkjkljljljk")
+    print(f"row[input statement]: {row['input statement']}")
 
     nl_embedding = np.array(model.encode(row['input statement'], normalize_embeddings=True))
     # make the df that will hold all info for this sentence
@@ -246,21 +251,30 @@ for (index, row) in translations.iterrows():
     
     sentence_table['Number of improvements (relative to start)'] = 0
 
-    for i in range(params['semantic attempts']): # TODO: need to get the number of semantic attempts from params
-        condition = (sentence_table[f'Semantic attempt 0'] == 'N/A' and sentence_table[f'Semantic attempt {i+1}' != 'N/A']) or (sentence_table[f'Semantic attempt {i+1} sim'] > sentence_table[f'Semantic attempt 0 sim'])
-        sentence_table['Number of improvements (relative to start)'] += np.where(condition, 1, 0)
+    for d, r in sentence_table.iterrows():
+        for i in range(params['num_semantic_checks']): # TODO: need to get the number of semantic attempts from params
+            condition = False
+            if sentence_table.loc[d, f'Semantic attempt {i+1}'] == 'N/A' or sentence_table.loc[d, f'Semantic attempt {i+1}'] is None:
+                condition = False
+            elif (sentence_table.loc[d, f'Semantic attempt 0'] == 'N/A' or sentence_table.loc[d, f'Semantic attempt 0'] is None ) and (sentence_table.loc[d, f'Semantic attempt {i+1}'] != 'N/A'):
+                condition = True
+            elif (sentence_table.loc[d, f'Semantic attempt 0'] == 'N/A') and (sentence_table.loc[d, f'Semantic attempt {i+1}'] == 'N/A'):
+                condition = False
+            elif sentence_table.loc[d, f'Semantic attempt {i+1} sim'] > sentence_table.loc[d, f'Semantic attempt 0 sim']:
+                condition = True
+
+            sentence_table.loc[d, 'Number of improvements (relative to start)'] += 1 if condition else 0
 
     short_sentence_name = row['input statement'][:15]
     sentence_table.to_csv(f'../stats/{model_name}/{short_sentence_name}_{index}_best_sim_shot_semantic.csv', index=False)
-    improvements_all_sentences.loc[_id, 'Sentence'] = sentence
-    improvements_all_sentences.loc[_id, 'Improvements'] = df['Number of improvements (relative to start)'].sum()
+    improvements_all_sentences.loc[_id, 'Sentence'] = row['input statement']
+    improvements_all_sentences.loc[_id, 'Improvements'] = sentence_table['Number of improvements (relative to start)'].sum()
 
 overall = pandas.DataFrame(columns=['Sentence', 'Improvements'])
 overall.loc[0, 'Sentence'] = 'Overall'
 overall.loc[0, 'Improvements'] = improvements_all_sentences['Improvements'].sum()
 improvements_all_sentences = pandas.concat([improvements_all_sentences, overall], ignore_index=False)
 improvements_all_sentences.to_csv(f'../stats/{model_name}/improvements_all_sentences.csv')
-
     
 #######################################################################################################################
 # Table where sentences are rows: report the best cosine sim. for each shot and the corresponding STL
