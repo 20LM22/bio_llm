@@ -1,19 +1,19 @@
-Semantic attempt 0,Semantic attempt 0 sim,Number of improvements (relative to start)
-N/A,N/A,0
-N/A,N/A,0
-N/A,N/A,0
-N/A,N/A,0
-"eventually[14,∞](SARSCoV2(t) = c(low)) and globally[14,∞](IL6(t) = c(low) and IL1RN(t) = c(low)) implies eventually[14,∞](d_IL6(t) = d_c(low) and d_IL1RN(t) = d_c(low))",0.6354911,0
-N/A,N/A,0
-SARSCoV2(t) = c(low),0.630635,0
-N/A,N/A,0
-N/A,N/A,0
-N/A,N/A,0
-N/A,N/A,0
-N/A,N/A,0
-"eventually[14,∞]globally(SARSCoV2(t) = c(low)) and eventually[14,∞]globally(IL6(t) > c(low) and IL1RN(t) > c(mid))",0.72483194,0
-N/A,N/A,0
-N/A,N/A,0
-N/A,N/A,0
-N/A,N/A,0
-d_SARSCoV2(t) = 0 and IL6(t) = c(low) and IL1RN(t) = c(mid) and IL1Ra(t) = c(mid),0.66108006,0
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improvements (relative to start)
+d_SARSCoV2(t) < d_c(low),0.53792655,d_SARSCoV2(t) < d_c(low),0.53792655,0
+N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,0
+SARSCoV2(t) < c(low),0.6519765,SARSCoV2(t) < c(low),0.6519765,0
+N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,0
