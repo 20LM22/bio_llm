@@ -1,11 +1,10 @@
 #!/bin/bash
-python stl_generator_v7.py 'deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'stl_generator_v4_config.json' > deepseek_convo.txt
+# python stl_generator_v7.py 'deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'stl_generator_v4_config.json' > deepseek_convo.txt
 # python ../heatmap_generators/stl_evaluation_v6.py 'deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'translations_DeepSeek-R1-Distill-Qwen-1.5B.pkl' 'stl_generator_v4_config.json' # will produce updated info on semantic attempts via sim_shot_semantic.csv files and improvements_all_sentences.csv
-# python ../heatmap_generators/generate_semantic_distribution_dict.py 1 # deepseek, all sentences
-# python ../heatmap_generators/generate_semantic_distribution_plots.py 1 1
+python ../heatmap_generators/generate_semantic_distribution_dict.py 'deepseek'
+python ../heatmap_generators/generate_semantic_distribution_plots.py 'deepseek'
 
-
-python stl_generator_v7.py 'Qwen/Qwen3-1.7B' 'stl_generator_v4_config.json' > qwen_convo.txt
+# python stl_generator_v7.py 'Qwen/Qwen3-1.7B' 'stl_generator_v4_config.json' > qwen_convo.txt
 # python ../heatmap_generators/stl_evaluation_v6.py 'Qwen/Qwen3-1.7B' 'translations_Qwen3-1.7B.pkl' 'stl_generator_v4_config.json'
 # python ../heatmap_generators/generate_semantic_distribution_dict.py 2 # qwen, all sentences
 # python ../heatmap_generators/generate_semantic_distribution_plots.py 2 1

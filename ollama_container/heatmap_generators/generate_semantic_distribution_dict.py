@@ -5,20 +5,19 @@ from sentence_transformers import SentenceTransformer
 import json
 from collections import defaultdict
 from stl2literal import STL2literal
-import matplotlib.pyplot as plt
 
 a = b = c = ''
 
-if int(sys.argv[1]) == 1:
-    a = 'deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B'
+if sys.argv[1] == 'deepseek':
+    a = 'DeepSeek-R1-Distill-Qwen-1.5B'
     b = 'translations_DeepSeek-R1-Distill-Qwen-1.5B.pkl'
     c = 'stl_generator_v4_config.json'
-elif int(sys.argv[1]) == 2:
-    a = 'Qwen/Qwen3-1.7B'
+elif sys.argv[1] == 'qwen':
+    a = 'Qwen3-1.7B'
     b = 'translations_Qwen3-1.7B.pkl'
     c = 'stl_generator_v4_config.json'
 
-model_name = a.split('/')[1]
+model_name = a
 
 try:
     with open(f'../pkl/{b}', 'rb') as f:
