@@ -181,6 +181,10 @@ improvements_all_sentences = pandas.DataFrame(columns=['Sentence','Improvements'
 
 # for each row - sentence in the df
 for (index, row) in translations.iterrows():
+    nl_embedding = np.array(model.encode(row['input statement'], normalize_embeddings=True))
+    # make the df that will hold all info for this sentence
+    sentence_table = pandas.DataFrame(columns=col_names)
+
     # first construct shot x semantic attempt table
     col_names = []
     for i in range(semantic_count):
@@ -189,10 +193,6 @@ for (index, row) in translations.iterrows():
 
     print("sjdlskjlksjlsjlkjljljlkjljljlkjkljljljk")
     print(f"row[input statement]: {row['input statement']}")
-
-    nl_embedding = np.array(model.encode(row['input statement'], normalize_embeddings=True))
-    # make the df that will hold all info for this sentence
-    sentence_table = pandas.DataFrame(columns=col_names)
 
     for i in range(shot_count):
         new_row = pandas.DataFrame(columns=col_names)
@@ -246,7 +246,9 @@ for (index, row) in translations.iterrows():
                 count_semantic_attempts += 1
 
         sentence_table = pandas.concat([sentence_table, new_row], ignore_index=False)
-    
+
+# print(sentence_table)
+
     sentence_table['Number of improvements (relative to start)'] = 0
 
     for d, r in sentence_table.iterrows():
@@ -272,8 +274,9 @@ overall = pandas.DataFrame(columns=['Sentence', 'Improvements'])
 overall.loc[0, 'Sentence'] = 'Overall'
 overall.loc[0, 'Improvements'] = improvements_all_sentences['Improvements'].sum()
 improvements_all_sentences = pandas.concat([improvements_all_sentences, overall], ignore_index=False)
-improvements_all_sentences.to_csv(f'../stats/{model_name}/improvements_all_sentences.csv')
-    
+improvements_all_sentences.to_csv(f'../stats/{model_name}/improvements_all_sentences.csv', index=False)
+
+
 #######################################################################################################################
 # Table where sentences are rows: report the best cosine sim. for each shot and the corresponding STL
 #######################################################################################################################
