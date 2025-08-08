@@ -10,12 +10,12 @@ a = b = c = ''
 
 if sys.argv[1] == 'deepseek':
     a = 'DeepSeek-R1-Distill-Qwen-1.5B'
-    b = 'translations_rollback_DeepSeek-R1-Distill-Qwen-1.5B.pkl'
-    c = 'stl_generator_rollback_config.json'
+    b = 'translations_DeepSeek-R1-Distill-Qwen-1.5B.pkl'
+    c = 'stl_generator_v4_config.json'
 elif sys.argv[1] == 'qwen':
     a = 'Qwen3-1.7B'
-    b = 'translations_rollback_Qwen3-1.7B.pkl'
-    c = 'stl_generator_rollback_config.json'
+    b = 'translations_Qwen3-1.7B.pkl'
+    c = 'stl_generator_v4_config.json'
 
 model_name = a
 
