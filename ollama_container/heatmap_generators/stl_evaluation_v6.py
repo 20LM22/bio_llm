@@ -269,8 +269,8 @@ for (index, row) in translations.iterrows():
 
     short_sentence_name = row['input statement'][:15]
     sentence_table.to_csv(f'../stats/{model_name}/{short_sentence_name}_{index}_best_sim_shot_semantic.csv', index=False)
-    improvements_all_sentences.loc[_id, 'Sentence'] = row['input statement']
-    improvements_all_sentences.loc[_id, 'Improvements'] = sentence_table['Number of improvements (relative to start)'].sum()
+    improvements_all_sentences.loc[index, 'Sentence'] = row['input statement']
+    improvements_all_sentences.loc[index, 'Improvements'] = sentence_table['Number of improvements (relative to start)'].sum()
 
 overall = pandas.DataFrame(columns=['Sentence', 'Improvements'])
 overall.loc[0, 'Sentence'] = 'Overall'
