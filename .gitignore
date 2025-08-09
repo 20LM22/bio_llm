@@ -1,9 +1,6 @@
 # Do not add models
-ollama_container/models/*
-
-# Do not add the sif file
-ollama_container/ollama.sif
+.idea
+*/__pycache__
 
 # Do not add any .tmp files from vim
 *.swp
-
