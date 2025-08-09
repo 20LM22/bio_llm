@@ -14,7 +14,7 @@ semantic_count = params['num_semantic_checks']
 
 res = {}
 try:
-    with open(f'../pkl/histogram_distribution_comparison_{model_name}_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.pkl', 'rb') as f:
+    with open(f'../pkl/{model_name}/histogram_distribution_comparison_{model_name}_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.pkl', 'rb') as f:
         res = pickle.load(f)
         print(f'Loaded histogram distribution')
 except Exception as e:
