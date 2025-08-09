@@ -1,6 +1,7 @@
 # Do not add models
 .idea
 */__pycache__
+__pycache__
 
 # Do not add any .tmp files from vim
 *.swp
