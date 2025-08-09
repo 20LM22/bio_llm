@@ -37,6 +37,7 @@ for key in res.keys():
 # Plot histogram
 # bins = np.linspace(min(res[sentence]), max(res[sentence]), 10)
 bins = np.linspace(0, 1, 10) # change bin count if needed
+plt.figure(figsize=(10,6))
 plt.hist(ones, bins=bins, alpha=0.5, label='Semantically correct', color='forestgreen', edgecolor='black')
 plt.hist(zeroes, bins=bins, alpha=0.5, label='Semantically incorrect', color='firebrick', edgecolor='black')
 
@@ -45,7 +46,6 @@ plt.ylabel('Frequency')
 plt.ylim(0, 50)
 plt.title(f'All Sentences Semantic Pass/Fail Distribution\nmodel: {model_name}\nshots: {shot_count}, syntax: {syntax_count}, semantic: {semantic_count}')
 plt.legend()
-plt.figure(figsize=(10,6))
 
 plt.savefig(f'../images/{model_name}/histogram_distribution_comparison_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.png')
 
