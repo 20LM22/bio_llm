@@ -87,8 +87,7 @@ for _id, sentence in enumerate(res.keys()): # key is sentence
     plt.ylim(0, 15)
     plt.title(f'Semantic Pass/Fail Distribution\nsentence: {sentence}\nmodel: {model_name}\nshots: {shot_count}, syntax: {syntax_count}, semantic: {semantic_count}')
     plt.legend()
-
-plt.savefig(f'../images/{model_name}/histogram_distribution_comparison_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.png')
+    plt.savefig(f'../images/{model_name}/new_histogram_distribution_sentence_{sentence[0:15]}_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.png')
 
 #     axs[_id].hist(ones, bins=bins, alpha=0.5, label='Semantically correct', color='forestgreen', edgecolor='black')
 #     axs[_id].hist(zeroes, bins=bins, alpha=0.5, label='Semantically incorrect', color='firebrick', edgecolor='black')
