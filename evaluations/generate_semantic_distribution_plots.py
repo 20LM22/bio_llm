@@ -86,8 +86,8 @@ for _id, sentence in enumerate(res.keys()): # key is sentence
     plt.xlabel('Similarity')
     plt.ylabel('Frequency')
     plt.ylim(0, 15)
-    if len(sentence) >= 121:
-        m = sentence[:120]
+    if len(sentence) >= 100:
+        m = sentence[:99]
     else:
         m = sentence
     plt.title(f'Semantic Pass/Fail Distribution\nsentence: {m}\nmodel: {model_name}\nshots: {shot_count}, syntax: {syntax_count}, semantic: {semantic_count}')
