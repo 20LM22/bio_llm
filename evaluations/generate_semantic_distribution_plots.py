@@ -56,7 +56,7 @@ plt.close()
 for _id, sentence in enumerate(res.keys()): # key is sentence
     zeroes = []
     ones = []
-    
+
     max_sim = 0
     min_sim = 0
     first_time_max = first_time_min = True
@@ -79,6 +79,7 @@ for _id, sentence in enumerate(res.keys()): # key is sentence
             raise Exception(f'no choice associated with {stl}')
 
     bins = np.linspace(min_sim, max_sim, 10)
+    plt.figure(figsize=(10, 8))
     plt.hist(ones, bins=bins, alpha=0.5, label='Semantically correct', color='forestgreen', edgecolor='black')
     plt.hist(zeroes, bins=bins, alpha=0.5, label='Semantically incorrect', color='firebrick', edgecolor='black')
 
