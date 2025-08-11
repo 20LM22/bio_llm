@@ -18,20 +18,23 @@ except Exception as e:
     print("there was an exception")
     print(e)
 
-# Output the translation table as a csv file
-os.makedirs(f'../stats/{model_name}', exist_ok=True)
-translations.to_csv(f'../stats/{model_name}/translations.csv')
-
 # load in the config specified by the script
 with open(f'../config/{sys.argv[3]}') as f:
     params = json.load(f)
+
+shots = params['num_shots_per_input_sentence']
+semantics = params['num_semantic_checks']
+syntaxs = params['num_correction_attempts_per_shot']
+
+# Output the translation table as a csv file
+os.makedirs(f'../stats/{model_name}', exist_ok=True)
+translations.to_csv(f'../stats/{model_name}/translations_shots_{shots}_syntax_{syntaxs}_semantic_{semantics}.csv')
 
 embedding_model_name = 'all-MiniLM-L6-v2'
 model = SentenceTransformer(params['embedding_model_name'], device='cpu')
 
 grammar = params['grammar']
-
-sim_threshold = 0.6
+sim_threshold = 0.7
 
 #######################################################################################################################
 # Table for extraction, parsing success rate
@@ -109,7 +112,7 @@ total_success_rate['Number of Syntactically Correct Translations'] = total_succe
 total_success_rate['Semantic Success Rate'] = total_success_rate['Semantic Passes'] / total_success_rate['Number of Syntactically Correct Translations']
 
 stats = pandas.concat([success_rate, total_success_rate], ignore_index=True)
-stats.to_csv(f'../stats/{model_name}/stats.csv', index=False)
+stats.to_csv(f'../stats/{model_name}/stats_shots_{shots}_syntax_{syntaxs}_semantic_{semantics}.csv', index=False)
 
 #######################################################################################################################
 # TODO: Table where rows are shots and each table belongs to one sentence: report cosine sim. and stl of ALL attempts
@@ -118,8 +121,6 @@ stats.to_csv(f'../stats/{model_name}/stats.csv', index=False)
 shot_count = params['num_shots_per_input_sentence']
 semantic_count = params['num_semantic_checks']+1
 syntax_count = params['num_correction_attempts_per_shot']+1
-
-translations.to_csv(f'../stats/{model_name}/translations.csv', index=False)
 
 # for each row - sentence in the df
 for (index, row) in translations.iterrows():
@@ -166,8 +167,8 @@ for (index, row) in translations.iterrows():
             
         sentence_table = pandas.concat([sentence_table, new_row], ignore_index=False)
     
-    short_sentence_name = row['input statement'][:10]
-    sentence_table.to_csv(f'../stats/{model_name}/{short_sentence_name}_{index}_all_sim_shot_semantic_syntax.csv', index=False)
+    short_sentence_name = row['input statement'][:15]
+    sentence_table.to_csv(f'../stats/{model_name}/{short_sentence_name}_all_feedback_shots_{shots}_syntax_{syntaxs}_semantic_{semantics}.csv', index=False)
 
 #######################################################################################################################
 # Table where rows are shots and each table belongs to one sentence: report best cosine sim. and stl of each semantic attempt
@@ -176,8 +177,6 @@ for (index, row) in translations.iterrows():
 shot_count = params['num_shots_per_input_sentence']
 semantic_count = params['num_semantic_checks']+1
 syntax_count = params['num_correction_attempts_per_shot']+1
-
-translations.to_csv(f'../stats/{model_name}/translations.csv', index=False)
 
 improvements_all_sentences = pandas.DataFrame(columns=['Sentence','Improvements'])
 
@@ -270,7 +269,8 @@ for (index, row) in translations.iterrows():
             sentence_table.loc[d, 'Number of improvements (relative to start)'] += 1 if condition else 0
 
     short_sentence_name = row['input statement'][:15]
-    sentence_table.to_csv(f'../stats/{model_name}/{short_sentence_name}_{index}_best_sim_shot_semantic.csv', index=False)
+    sentence_table.to_csv(f'../stats/{model_name}/{short_sentence_name}_best_sim_shots_{shots}_syntax_{syntaxs}_semantic_{semantics}.csv', index=False)
+
     improvements_all_sentences.loc[index, 'Sentence'] = row['input statement']
     improvements_all_sentences.loc[index, 'Improvements'] = sentence_table['Number of improvements (relative to start)'].sum()
 
@@ -278,8 +278,7 @@ overall = pandas.DataFrame(columns=['Sentence', 'Improvements'])
 overall.loc[0, 'Sentence'] = 'Overall'
 overall.loc[0, 'Improvements'] = improvements_all_sentences['Improvements'].sum()
 improvements_all_sentences = pandas.concat([improvements_all_sentences, overall], ignore_index=False)
-improvements_all_sentences.to_csv(f'../stats/{model_name}/improvements_all_sentences.csv', index=False)
-
+improvements_all_sentences.to_csv(f'../stats/{model_name}/improvements_all_sentences_shots_{shots}_syntax_{syntaxs}_semantic_{semantics}.csv', index=False)
 
 #######################################################################################################################
 # Table where sentences are rows: report the best cosine sim. for each shot and the corresponding STL
@@ -329,154 +328,5 @@ for index, row in translations.iterrows():
             best_resp.at[index, f'shot{i} sim'] = max(sim)
             best_resp.at[index, f'shot{i}'] = row_subset_filtered[np.argmax(sim)]
 
-best_resp.to_csv(f'../stats/{model_name}/best_sim_shot.csv', index=False)
+best_resp.to_csv(f'../stats/{model_name}/best_sim_shot_shots_{shots}_syntax_{syntaxs}_semantic_{semantics}.csv', index=False)
 
-#######################################################################################################################
-# Produce similarity heatmaps
-#######################################################################################################################
-"""
-# remove all columns from the table that don't correspond to actual translations
-nl_sentence_embeddings = embedding_model.encode(translations['input statement'], normalize_embeddings=True)
-literal_sentence_embeddings = embedding_model.encode(translations.filter(regex='Literal-').copy().to_numpy().flatten(), normalize_embeddings=True)
-
-nl_sentences = np.array(translations['input statement'].str[:10])
-
-literal_sentences = translations.filter(regex='Literal-').copy()
-for col in literal_sentences.columns:
-    literal_sentences[col] = np.where((pandas.isna(literal_sentences[col])) | (literal_sentences[col]=='Literal could not be generated') | (literal_sentences[col]=='STL to literal failed'), literal_sentences[col], "S-" + translations['input statement'].str[:10] + "-A-" + str(col.split('-')[1]))
-literal_sentences = literal_sentences.to_numpy().flatten()
-
-indices_to_remove = []
-for _id,l in enumerate(literal_sentences):
-    if l=='Literal could not be generated' or l=='STL to literal failed' or l==None:
-        indices_to_remove.append(_id)
-literal_sentences_clean = [x for x in literal_sentences if x != "Literal could not be generated" and x != 'STL to literal failed' and x != None ]
-literal_sentence_embeddings_clean = [x for _id, x in enumerate(literal_sentence_embeddings) if _id not in indices_to_remove ]
-
-# compute similarity matrix
-# print("NL embeddings:", len(nl_sentence_embeddings))
-# print("Literal embeddings:", len(literal_sentence_embeddings_clean))
-if len(literal_sentence_embeddings_clean) > 0:
-    sim_matrix = cosine_similarity(np.array(nl_sentence_embeddings), np.array(literal_sentence_embeddings_clean))
-
-    # export heatmap
-    plt.figure(figsize=(30,10))
-    ax = sns.heatmap(sim_matrix, annot=True, vmin=0, vmax=1)
-
-    # NEW BORDER AROUND HEATMAP
-    # ax.add_patch(Rectangle((3,4), 1,1,fill=False, edgecolor='blue', lw=3))
-
-    plt.title(f'Produced Literal STL vs. Original NL Cosine Similarity\nModel:{model_name}')
-    ax.set_xticks(range(len(literal_sentences_clean)))
-    ax.set_yticklabels(nl_sentences, rotation=0)
-    ax.set_xticklabels(literal_sentences_clean, rotation=45)
-    plt.tight_layout()
-    os.makedirs(f'../images/{model_name}', exist_ok=True)
-    plt.savefig(f'../images/{model_name}/produced_literal_vs_original_nl.png')
-else:
-    print("literal sentence embeddings clean was empty")
-
-# compute similarity for the stl against the reference stl using fuzzy matching
-stl_ref_statements = np.array(translations['reference STL']) # need to fix these names
-stl_produced_statements = translations.filter(regex='STL-').copy()
-for col in stl_produced_statements.columns:
-    stl_produced_statements[col] = np.where((stl_produced_statements[col]=='STL could not be extracted') | (stl_produced_statements[col]=='STL could not be parsed'), stl_produced_statements[col], "STL-'" + translations['reference STL'].str[:10] + "'-A-" + str(col.split('-')[1]))
-stl_produced_statements = stl_produced_statements.to_numpy().flatten()
-stl_produced_clean_labels = [x for x in stl_produced_statements if x != "STL could not be extracted" and x != 'STL could not be parsed' ]
-
-if len(stl_produced_clean_labels) > 0:
-    reference_stl = translations['reference STL']
-    produced_stl_subset = [x for x in translations.filter(regex='STL-').copy().to_numpy().flatten() if x != 'STL could not be extracted' and x != 'STL could not be parsed']
-    fuzz_matrix = np.zeros((reference_stl.shape[0], len(produced_stl_subset)))
-
-    for i in range(fuzz_matrix.shape[0]):
-        for j in range(fuzz_matrix.shape[1]):
-            fuzz_matrix[i][j] = fuzz.ratio(produced_stl_subset[j], reference_stl[i])
-
-    fuzz_matrix = fuzz_matrix/100
-
-    # heatmap
-    plt.figure(figsize=(30,10))
-    ax = sns.heatmap(fuzz_matrix, annot=True, vmin=0, vmax=1)
-    plt.title(f'Produced STL vs. Reference STL Similarity\nModel:Test')
-    ax.set_xticks(range(len(stl_produced_clean_labels)))
-    ax.set_yticklabels(stl_ref_statements, rotation=0)
-    ax.set_xticklabels(stl_produced_clean_labels, rotation=45)
-    plt.tight_layout()
-    plt.savefig(f'../images/{model_name}/produced_vs_ref_stl.png')
-else:
-    print("stl produced clean labels was empty")
-"""
-#######################################################################################################################
-# STL heatmaps on a per-sentence basis 
-#######################################################################################################################
-"""
-# Get number of sentences
-sentences = translations['input statement'].unique()
-num_sentences = len(sentences)
-
-# These aggregate the data and labels for all the plots
-stl_matrix_arr = []
-stl_produced_labels_arr = []
-stl_ref_labels_arr = []
-
-# Generate a small heatmap and labels for each sentence
-for _id, sentence in enumerate(sentences):
-    # First, need to take a subset of translations that corresponds only to the rows with this sentence
-    subset = translations[translations['input statement']==sentence]
-
-    # Labels for the reference STL 
-    stl_ref_labels = []
-    for index, val in enumerate(subset['reference STL']):
-        stl_ref_labels.append(f'{index} - {val}')
-    
-    # Labels for produced STL - also needs to be cleaned
-    stl_produced_labels = []
-    stl_produced_cols = subset.filter(regex='STL-').copy()
-    for index, row in stl_produced_cols.iterrows():
-        # for this row, need to get the STL number
-        for j, element in enumerate(row):
-            if element=='STL could not be extracted' or element=='STL could not be parsed':
-                stl_produced_labels.append(element)
-            else:
-                stl_produced_labels.append(str(index) + '-A' + str(stl_produced_cols.columns[j].split('-')[1]))
-    stl_produced_clean_labels = [x for x in stl_produced_labels if x != 'STL could not be extracted' and x != 'STL could not be parsed']
-
-    if len(stl_produced_clean_labels) <= 0:
-        continue
-
-    # Produce the fuzz data matrix
-    
-    # First set up the matrix inputs
-    reference_stl = subset['reference STL'].reset_index(drop=True)
-    produced_stl_subset = [x for x in subset.filter(regex='STL-').copy().to_numpy().flatten() if x != 'STL could not be extracted' and x != 'STL could not be parsed']
-    fuzz_matrix = np.zeros((reference_stl.shape[0], len(produced_stl_subset)))
-
-    for i in range(fuzz_matrix.shape[0]):
-        for j in range(fuzz_matrix.shape[1]):
-            fuzz_matrix[i][j] = fuzz.ratio(produced_stl_subset[j], reference_stl[i])
-    fuzz_matrix = fuzz_matrix/100
-
-    # Add labels and matrix to overall arrays
-    stl_matrix_arr.append(fuzz_matrix)
-    stl_produced_labels_arr.append(stl_produced_clean_labels)
-    stl_ref_labels_arr.append(stl_ref_labels)
-
-
-if len(stl_matrix_arr) > 0:
-    # Export {stl_matrix_arr}-many plots
-    fig, axs = plt.subplots(len(stl_matrix_arr), 1, figsize=(20,60))
-    axs = np.atleast_1d(axs)
-
-    # Print all the heatmaps
-    for _id, ax in enumerate(axs):
-        sns.heatmap(stl_matrix_arr[_id], ax=ax, annot=True, vmin=0, vmax=1)
-        ax.set_title(f'Produced STL vs. Reference STL Similarity\nNL Sentence:\n{sentences[_id]}\nModel:{model_name}')
-        ax.set_xticks(range(len(stl_produced_labels_arr[_id])))
-        ax.set_yticklabels(stl_ref_labels_arr[_id], rotation=0)
-        ax.set_xticklabels(stl_produced_labels_arr[_id], rotation=45)
-    fig.tight_layout()
-    plt.savefig(f'../images/{model_name}/per_sentence_translation_heatmaps.png')
-else:
-    print("there were no per-sentence matrices")
-"""

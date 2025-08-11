@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Number of improvements (relative to start)
+"eventually[1,7](d_IL1β(t) > c(mid)) and eventually[8,14](d_IL1β(t) = d_c(low)) and globally[15,∞](d_IL1β(t) < c(low))",0.7586652,0
+N/A,N/A,0
+"eventually[1, ∞]globally(IL1β(t) > c(high) and IL1Ra(t) > c(high))",0.71693873,0
+N/A,N/A,0
+N/A,N/A,0
+"globally[1, ∞](d_IL1β(t) = d_c(low) and d_IL1Ra(t) = d_c(low))",0.65792406,0
+d_IL1β(t)=d_c(low) implies d_IL6(t) > d_c(high),0.4615266,0
+N/A,N/A,0
+"globally[1,∞](d_IL1β(t) > 0 and d_IL1Ra(t) > 0)",0.7080135,0
+N/A,N/A,0
+N/A,N/A,0
+N/A,N/A,0
+"eventually[1, ∞](d_IL1β(t)=d_c(high) and d_IL1Ra(t)=d_c(high))",0.6747856,0
+N/A,N/A,0
+IL1β(t) < c(low) implies IFNα(t) = c(high),0.4569192,0
+"globally[1,∞](d_IL1β(t)=0 and IL1RN(t) < c(high)) and globally[1,∞](d_IL1Ra(t)=0 and IL1RN(t) < c(high))",0.64732885,0
+"globally[1,7](d_IL1β(t) > c(low) and d_IL1Ra(t) > c(low)) and eventually[8,14]globally(d_IL1β(t) = c(high) and d_IL1Ra(t) = c(high)) and eventually[15,∞]globally(d_IL1β(t) < c(low) and d_IL1Ra(t) < c(low))",0.7043013,0
+"globally[1,∞](d_IL1β(t) > c(high)) implies eventually[8,∞](d_IL1β(t) < c(mid)) and globally[1,∞](d_IL1Ra(t) > d_c(low)) implies eventually[15,∞](d_IL1Ra(t) < c(low))",0.69742817,0

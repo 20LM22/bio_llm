@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Number of improvements (relative to start)
+IL12(t) > c(high),0.714465,0
+"eventually[14,∞](IL12(t) > c(high))",0.7756728,0
+"eventually[14,∞](IL12(t) > c(high))",0.7756728,0
+"eventually[14,∞](IL12(t)=c(high))",0.7609356,0
+"eventually[14,∞](IL12(t) = c(mid))",0.7513056,0
+"eventually[14,∞](IL12(t) = c(high) and d_IL12(t) < d_c(high))",0.68511677,0
+IL12(t) = c(high),0.7085985,0
+IL12(t) > c(high) and IL12(t) > c(low) and IL12(t) > c(mid),0.7116885,0
+"eventually[14,∞]globally(IL12(t) = c(high))",0.7581854,0
+IL12(t) = c(high),0.7085985,0
+"eventually[14,∞](IL12(t)=c(mid)) and IL12(t)=c(mid) and IL12(t)=c(mid)",0.74073505,0
+"eventually[14,∞]globally(IL12(t)=c(high))",0.7581854,0
+"eventually[14,∞]globally(IL12(t) > c(high))",0.7672795,0
+"eventually[14,∞](IL12(t) > c(high)) and d_IL12(t) > d_c(high)",0.70184404,0
+"eventually[14,∞]globally(IL12(t) = c(mid)) and eventually[14,∞](d_IL12(t) = d_c(high))",0.70289135,0
+IL12(t) = c(high),0.7085985,0
+"eventually[14,∞]globally(IL12(t) = c(mid)) and d_IL12(t) < d_c(low)",0.67781556,0
+IL12(t) = c(mid),0.6954911,0

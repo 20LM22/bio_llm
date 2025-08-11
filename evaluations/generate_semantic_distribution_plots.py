@@ -50,8 +50,8 @@ plt.legend()
 plt.savefig(f'../images/{model_name}/histogram_distribution_comparison_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.png')
 
 # do them as sentences
-fig, axs = plt.subplots(len(res.keys()), 1, figsize=(20,60)) # TODO: change fig size if needed
-axs = np.atleast_1d(axs)
+# fig, axs = plt.subplots(len(res.keys()), 1, figsize=(20,60)) # TODO: change fig size if needed
+# axs = np.atleast_1d(axs)
 
 for _id, sentence in enumerate(res.keys()): # key is sentence
     zeroes = []
@@ -79,15 +79,25 @@ for _id, sentence in enumerate(res.keys()): # key is sentence
             raise Exception(f'no choice associated with {stl}')
 
     bins = np.linspace(min_sim, max_sim, 10)
+    plt.hist(ones, bins=bins, alpha=0.5, label='Semantically correct', color='forestgreen', edgecolor='black')
+    plt.hist(zeroes, bins=bins, alpha=0.5, label='Semantically incorrect', color='firebrick', edgecolor='black')
 
-    axs[_id].hist(ones, bins=bins, alpha=0.5, label='Semantically correct', color='forestgreen', edgecolor='black')
-    axs[_id].hist(zeroes, bins=bins, alpha=0.5, label='Semantically incorrect', color='firebrick', edgecolor='black')
+    plt.xlabel('Similarity')
+    plt.ylabel('Frequency')
+    plt.ylim(0, 15)
+    plt.title(f'Semantic Pass/Fail Distribution\nsentence: {sentence}\nmodel: {model_name}\nshots: {shot_count}, syntax: {syntax_count}, semantic: {semantic_count}')
+    plt.legend()
 
-    axs[_id].set_title(f'Semantic Pass/Fail Distribution\nsentence: {sentence}\nmodel: {model_name}\nshots: {shot_count}, syntax: {syntax_count}, semantic: {semantic_count}')
-    axs[_id].set_xlabel('Similarity')
-    axs[_id].set_ylabel('Frequency')
-    axs[_id].set_ylim(0,15)
-    axs[_id].legend()
+plt.savefig(f'../images/{model_name}/histogram_distribution_comparison_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.png')
 
-fig.tight_layout()
-plt.savefig(f'../images/{model_name}/per_sentence_histogram_distribution_comparison_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.png')
+#     axs[_id].hist(ones, bins=bins, alpha=0.5, label='Semantically correct', color='forestgreen', edgecolor='black')
+#     axs[_id].hist(zeroes, bins=bins, alpha=0.5, label='Semantically incorrect', color='firebrick', edgecolor='black')
+#
+#     axs[_id].set_title(f'Semantic Pass/Fail Distribution\nsentence: {sentence}\nmodel: {model_name}\nshots: {shot_count}, syntax: {syntax_count}, semantic: {semantic_count}')
+#     axs[_id].set_xlabel('Similarity')
+#     axs[_id].set_ylabel('Frequency')
+#     axs[_id].set_ylim(0,15)
+#     axs[_id].legend()
+#
+# fig.tight_layout()
+# plt.savefig(f'../images/{model_name}/per_sentence_histogram_distribution_comparison_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.png')

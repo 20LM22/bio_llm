@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Number of improvements (relative to start)
+IL12(t)=c(high),0.7085985,0
+"eventually[1, ∞]globally(d_IL12(t) < d_c(high) implies d_IL12(t) = c(high))",0.64855635,0
+"IL12(t) > c(high) and eventually[14,∞] (d_IL12(t) < d_c(high))",0.6726786,0
+d_IL12(t) = c(mid),0.6954911,0
+d_IL12(t) = c(high),0.7085985,0
+"globally[14,∞](IL12(t) < c(high))",0.7564304,0
+"globally[7,11](TNFα(t) < c(mid))",0.4916116,0
+"globally[14,∞](d_IL12(t) = c(high)) implies eventually[15,∞](IL12(t) < c(high))",0.69332373,0
+d_IL12(t) < c(high),0.72105736,0
+"globally[14,∞](IL12(t) = c(high))",0.750351,0
+N/A,N/A,0
+N/A,N/A,0
+IL12(t) = c(mid),0.6954911,0
+IL12(t) = c(high),0.7085985,0
+N/A,N/A,0
+d_IL12(t) = c(high),0.7085985,0
+IL1Ra(t) = c(high),0.46920073,0
+N/A,N/A,0
