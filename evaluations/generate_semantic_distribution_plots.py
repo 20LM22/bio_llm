@@ -86,9 +86,11 @@ for _id, sentence in enumerate(res.keys()): # key is sentence
             raise Exception(f'no valid value associated with {stl}')
 
     # process choice that corresponded to top sim. stl
-    if max_choice is None or max_choice == '' or max_choice == 0: # then the max sim. stl is not considered to actually be good
+    if max_choice is None or max_choice == '':
+        top_sim_is_correct_all_sentences.append([sentence, 'N/A'])
+    elif max_choice == 0: # then the max sim. stl is not considered to actually be good
         top_sim_is_correct_all_sentences.append([sentence, 0])
-    else:
+    elif max_choice == 1:
         top_sim_is_correct_all_sentences.append([sentence, 1])
 
     bins = np.linspace(min_sim, max_sim, 10) # try 11 instead of 10, gnu-plot
@@ -110,5 +112,5 @@ for _id, sentence in enumerate(res.keys()): # key is sentence
 
 # now convert the "top sim is correct" to a dataframe
 top_sim_is_correct_all_sentences = pandas.DataFrame(data=top_sim_is_correct_all_sentences, columns=['Sentence', 'Top Sim. is Correct'])
-top_sim_is_correct_all_sentences.loc['Total'] = top_sim_is_correct_all_sentences['Top Sim. is Correct'].sum()
+top_sim_is_correct_all_sentences.loc['Total'] = top_sim_is_correct_all_sentences['Top Sim. is Correct'].sum(numeric_only=True)
 top_sim_is_correct_all_sentences.to_csv(f'../stats/{model_name}/top_sim_is_correct_all_sentences_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.csv')
