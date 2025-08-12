@@ -581,9 +581,10 @@ for sentence_index, sentence in sentences['input statement'].items():
 
 # writing to pkl
 try:
-    with open(f'../pkl/{model_name}/all_responses_all_sentences_{model_name}.pkl', 'wb') as r:
+    config = sys.argv[2].split("config_")
+    with open(f'../pkl/{model_name}/all_responses_all_sentences_{model_name}_{config}.pkl', 'wb') as r:
         pickle.dump(all_responses_all_sentences, r)
-    with open(f'../pkl/{model_name}/translations_{model_name}.pkl', 'wb') as r:
+    with open(f'../pkl/{model_name}/translations_{model_name}_{config}.pkl', 'wb') as r:
         pickle.dump(translations, r)
 except Exception as e:
     print("there was a pickle problem")
