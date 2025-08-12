@@ -1,6 +1,7 @@
 import numpy as np
 import pickle, sys, json
 import matplotlib.pyplot as plt
+import pandas
 
 model_name = sys.argv[1]
 
@@ -49,9 +50,13 @@ plt.legend()
 
 plt.savefig(f'../images/{model_name}/histogram_distribution_comparison_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.png')
 plt.close()
+
 # do them as sentences
 # fig, axs = plt.subplots(len(res.keys()), 1, figsize=(20,60)) # TODO: change fig size if needed
 # axs = np.atleast_1d(axs)
+
+# record "top sim. is correct" across all sentence
+top_sim_is_correct_all_sentences = []
 
 for _id, sentence in enumerate(res.keys()): # key is sentence
     zeroes = []
@@ -59,11 +64,13 @@ for _id, sentence in enumerate(res.keys()): # key is sentence
 
     max_sim = 0
     min_sim = 0
+    max_choice = None
     first_time_max = first_time_min = True
 
     for stl, sim, choice in res[sentence]:
         if first_time_max or sim > max_sim:
             max_sim = sim
+            max_choice = choice
             first_time_max = False
         if first_time_min or sim < min_sim:
             min_sim = sim
@@ -76,9 +83,15 @@ for _id, sentence in enumerate(res.keys()): # key is sentence
         elif int(choice) == 1:
             ones.append(sim)
         else:
-            raise Exception(f'no choice associated with {stl}')
+            raise Exception(f'no valid value associated with {stl}')
 
-    bins = np.linspace(min_sim, max_sim, 10)
+    # process choice that corresponded to top sim. stl
+    if max_choice is None or max_choice == '' or max_choice == 0: # then the max sim. stl is not considered to actually be good
+        top_sim_is_correct_all_sentences.append([sentence, 0])
+    else:
+        top_sim_is_correct_all_sentences.append([sentence, 1])
+
+    bins = np.linspace(min_sim, max_sim, 10) # try 11 instead of 10, gnu-plot
     plt.figure(figsize=(10, 8))
     plt.hist(ones, bins=bins, alpha=0.5, label='Semantically correct', color='forestgreen', edgecolor='black')
     plt.hist(zeroes, bins=bins, alpha=0.5, label='Semantically incorrect', color='firebrick', edgecolor='black')
@@ -95,14 +108,7 @@ for _id, sentence in enumerate(res.keys()): # key is sentence
     plt.savefig(f'../images/{model_name}/new_histogram_distribution_sentence_{sentence[0:15]}_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.png')
     plt.close()
 
-#     axs[_id].hist(ones, bins=bins, alpha=0.5, label='Semantically correct', color='forestgreen', edgecolor='black')
-#     axs[_id].hist(zeroes, bins=bins, alpha=0.5, label='Semantically incorrect', color='firebrick', edgecolor='black')
-#
-#     axs[_id].set_title(f'Semantic Pass/Fail Distribution\nsentence: {sentence}\nmodel: {model_name}\nshots: {shot_count}, syntax: {syntax_count}, semantic: {semantic_count}')
-#     axs[_id].set_xlabel('Similarity')
-#     axs[_id].set_ylabel('Frequency')
-#     axs[_id].set_ylim(0,15)
-#     axs[_id].legend()
-#
-# fig.tight_layout()
-# plt.savefig(f'../images/{model_name}/per_sentence_histogram_distribution_comparison_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.png')
+# now convert the "top sim is correct" to a dataframe
+top_sim_is_correct_all_sentences = pandas.DataFrame(data=top_sim_is_correct_all_sentences, columns=['Sentence', 'Top Sim. is Correct'])
+top_sim_is_correct_all_sentences.loc['Total'] = top_sim_is_correct_all_sentences['Top Sim. is Correct'].sum()
+top_sim_is_correct_all_sentences.to_csv(f'../stats/{model_name}/top_sim_is_correct_all_sentences_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.csv')
