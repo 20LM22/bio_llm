@@ -4,9 +4,10 @@ qwen='Qwen3-1.7B'
 
 experiments=("shots_18_syntax_1_semantic_2" "shots_18_syntax_2_semantic_2" "shots_18_syntax_4_semantic_2" "shots_5_syntax_3_semantic_2" "shots_100_syntax_3_semantic_2")
 
-for experiment in experiments
+for experiment in "${experiments[@]}"
 do
   config="config_${experiment}.json"
+  echo $config
   deepseek_convo="../stats/DeepSeek-R1-Distill-Qwen-1.5B/config_${experiment}.txt"
   qwen_convo="../stats/Qwen3-1.7B/config_${experiment}.txt"
   translations_deepseek="translations_${deepseek}_${experiment}.pkl"
