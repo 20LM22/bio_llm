@@ -4,6 +4,8 @@ import pickle, sys, os, pandas
 from sentence_transformers import SentenceTransformer
 import json
 from collections import defaultdict
+
+sys.path.insert(1, '..')
 from stl2literal import STL2literal
 
 model_name = sys.argv[1]
