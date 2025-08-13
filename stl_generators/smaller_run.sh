@@ -2,7 +2,8 @@
 deepseek='DeepSeek-R1-Distill-Qwen-1.5B'
 qwen='Qwen3-1.7B'
 
-experiments=("shots_18_syntax_1_semantic_2" "shots_18_syntax_2_semantic_2" "shots_18_syntax_4_semantic_2" "shots_5_syntax_3_semantic_2" "shots_100_syntax_3_semantic_2")
+experiments=("shots_1_syntax_1_semantic_0")
+# "shots_18_syntax_1_semantic_2" "shots_18_syntax_2_semantic_2" "shots_18_syntax_4_semantic_2" "shots_5_syntax_3_semantic_2" "shots_100_syntax_3_semantic_2")
 
 for experiment in "${experiments[@]}"
 do

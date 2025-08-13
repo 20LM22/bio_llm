@@ -87,6 +87,7 @@ llm = LLM(model=model_name,
 
 # feedback dictionary
 feedback_dict=params['old_prompt_feedback']
+model_name = model_name.split('/')[1]
 
 ####################################################################################
 # Helper function: generate examples
