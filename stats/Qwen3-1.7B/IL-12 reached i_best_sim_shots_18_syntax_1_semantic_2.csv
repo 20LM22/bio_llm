@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
+IL12(t) = c(high),0.70859855,"IL12(t) > c(high) and eventually[14, ∞]globally(IL12(t) = c(high))",0.76682365,"IL12(t) > c(high) and eventually[14, ∞]globally(IL12(t) = c(high))",0.76682365,2
+"eventually[14,∞](IL12(t) = c(high))",0.76093566,"IL12(t) > c(high) and eventually[14,∞](IL12(t) = c(high))",0.7668404,"IL12(t) > c(high) and eventually[14,∞](IL12(t) = c(high))",0.7668404,2
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[14,∞](IL12(t) = c(mid))",0.7355144,"globally[14,∞](IL12(t) = c(mid))",0.7355144,"globally[14,∞](IL12(t) = c(mid))",0.7355144,0
+"IL12(t) = c(mid) and eventually[14,∞]globally(d_IL12(t) > 0)",0.7374902,"IL12(t) = c(mid) and eventually[14,∞]globally(d_IL12(t) > 0)",0.7374902,"eventually[14,∞]globally(IL12(t) > c(mid)) and IL12(t) = c(mid)",0.77467436,1
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"eventually[14,∞](IL12(t) = c(high))",0.76093566,"eventually[14,∞](IL12(t) = c(high))",0.76093566,"eventually[14,∞](IL12(t) = c(high))",0.76093566,0
+"eventually[14,∞]globally(IL12(t) = c(high))",0.75818545,"IL12(t) > c(high) and eventually[14,∞]globally(IL12(t) = c(high))",0.76682365,"IL12(t) > c(high) and eventually[14,∞]globally(IL12(t) = c(high))",0.76682365,2
+"IL12(t) = c(high) and eventually[14,∞]globally(IL12(t) > c(high))",0.7727607,"IL12(t) = c(high) and eventually[14,∞]globally(IL12(t) > c(high))",0.7727607,"IL12(t) = c(high) and eventually[14,∞]globally(IL12(t) > c(high))",0.7727607,0
+IL12(t) = c(mid),0.69549096,IL12(t) = c(mid),0.69549096,"IL12(t) > c(high) and eventually[14,∞](IL12(t) > c(high))",0.7663085,1
+N/A,N/A,N/A,N/A,N/A,N/A,0
+IL12(t) = c(high),0.70859855,"eventually[14,∞]globally(IL12(t) = c(high))",0.75818545,"eventually[14,∞]globally(IL12(t) = c(high))",0.75818545,2
+"eventually[14,∞](IL12(t) = c(high))",0.76093566,"eventually[14,∞](IL12(t) = c(high))",0.76093566,"eventually[14,∞](IL12(t) = c(high))",0.76093566,0
+IL12(t) = c(high),0.70859855,IL12(t) = c(high),0.70859855,IL12(t) > c(mid),0.72791946,1
+"eventually[14,∞](IL12(t) > c(high))",0.77567303,"eventually[14,∞](IL12(t) > c(high))",0.77567303,"eventually[14,∞](IL12(t) > c(high))",0.77567303,0
+"eventually[14,∞]globally(IL12(t) > c(high))",0.7672797,"eventually[14,∞]globally(IL12(t) > c(high))",0.7672797,"eventually[14,∞]globally(IL12(t) > c(high))",0.7672797,0
+"eventually[14,∞](IL12(t) > c(mid))",0.78902733,"eventually[14,∞](IL12(t) > c(mid))",0.78902733,"eventually[14,∞](IL12(t) > c(mid))",0.78902733,0
+"eventually[14,∞]globally(IL12(t) > c(low))",0.7453939,"eventually[14,∞]globally(IL12(t) > c(low))",0.7453939,"eventually[14,∞]globally(IL12(t) > c(low))",0.7453939,0

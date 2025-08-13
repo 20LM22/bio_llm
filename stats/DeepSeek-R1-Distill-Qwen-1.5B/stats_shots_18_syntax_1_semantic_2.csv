@@ -1,0 +1,10 @@
+Input Sentence,STL Extraction Success Rate,STL Parsing Success Rate,Number of Translations,Number of Syntactically Correct Translations,Semantic Passes,Semantic Success Rate
+"In the mild and moderate groups, IL-6 concentrations were at their highest level in the first week after the symptom onset and then exhibited a decreasing trend.",0.7894736842105263,0.5777777777777777,57,26.0,7,0.2692307692307692
+"Remarkably, in the mild group, the amount of these cytokines (IL-1β and IL-1Ra) increased at the day 1–7, reached a peak at the day 8–14, and diminished after >14 days.",0.7857142857142857,0.33333333333333337,42,11.0,3,0.2727272727272727
+"TNF-α levels elevated at the day 1–7 and 8–14 times intervals, then decreased at the day>14.",0.8035714285714286,0.4444444444444444,56,20.0,14,0.7
+We detected that IL-8 was significantly elevated in all COVID-19 subgroups at three studied time intervals compared to the control group.,0.8448275862068966,0.4897959183673469,58,24.0,0,0.0
+"We found that although there was no difference in the production of IFN-β in all patients with COVID-19 compared to the control group at the day 1–7, IFN-β levels were higher in moderate, severe, and critical subjects at the day 8–14 or >14 compared to the healthy control and themselves at the day 1–7.",0.7704918032786885,0.36170212765957444,61,17.0,0,0.0
+IL-12 reached its maximum level at the day>14 in mild patients.,0.7833333333333333,0.3191489361702128,60,15.0,9,0.6
+"It is reported that in recovered cases, within a few hrs of virus entry, both α and β IFNs (at first day of infection) are rapidly produced and an antiviral state is soon reached [23]",0.9111111111111111,0.36585365853658536,45,15.0,0,0.0
+"By day 14, we detected no viral reads for SARS-CoV-2, and the observed cytokines returned to baseline, with the exception of IL-6 and IL1RN or IL1RA, which remained elevated, similar to results observed with MERS (Pascal et al., 2015; Figures 3B and 3C).",0.8297872340425532,0.07692307692307687,47,2.999999999999998,0,0.0
+Overall,0.812206572769953,0.3786127167630058,426,131.0,33,0.25190839694656486
