@@ -1,0 +1,6 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
+"eventually[1,7]globally(d_TNFα(t)=d_c(low) implies d_TNFα(t) < c(high))",0.8040184,"eventually[1,∞](TNFα(t) > c(high)) and eventually[15,∞](TNFα(t) < c(low))",0.8228269,"eventually[1,7]globally(TNFα(t) > c(low)) and eventually[8,14]globally(TNFα(t) > c(low)) implies eventually[15,∞]globally(d_TNFα(t) < 0)",0.8377139,2
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"eventually[2,∞]globally(IL1RN(t) > c(low))",0.40471494,"eventually[2,∞]globally(IL1RN(t) > c(low))",0.40471494,"globally[0,∞](TNFα(t) > c(high))",0.839235,1
+"globally[1,∞](d_TNFα(t) > 0 and TNFα(t) < c(high)) implies eventually[15,∞](d_TNFα(t) < 0)",0.76882195,"globally[1,∞](d_TNFα(t) > 0 and TNFα(t) < c(high)) implies eventually[15,∞](d_TNFα(t) < 0)",0.76882195,"globally[1,∞](d_TNFα(t) > 0 and TNFα(t) < c(high)) implies eventually[15,∞](d_TNFα(t) < 0)",0.76882195,0

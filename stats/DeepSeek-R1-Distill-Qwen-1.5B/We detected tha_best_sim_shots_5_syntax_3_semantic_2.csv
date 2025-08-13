@@ -1,0 +1,6 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
+IL8(t) < c(low) and IL8(t) > c(low),0.53976524,IL6(t) > c(mid) implies SARSCoV2(t) < c(high),0.55537415,IL6(t) > c(mid) implies SARSCoV2(t) < c(high),0.55537415,2
+IL8(t) > c(high) implies IL8(t)=c(mid),0.5707112,IL8(t) > c(low) and d_IFNα(t) > 0,0.5912326,IL8(t) > c(low) and d_IFNα(t) > 0,0.5912326,2
+"globally[0,∞](IL8(t) > c(high))",0.56093335,"globally[0,3](IL8(t) > c(high))",0.5693258,"globally[0,3](IL8(t) > c(high))",0.5693258,2
+"eventually[4,8]globally(d_IL8(t) > 0)",0.51351774,"eventually[4,8]globally(d_IL8(t) > 0)",0.51351774,"d_IL8(t) > c(low) and eventually[0,3]globally(d_IL8(t) = d_c(low))",0.5470017,1
+IL8(t) > c(low),0.5179835,IL8(t) > c(low),0.5179835,IL8(t) = c(high),0.5221932,1

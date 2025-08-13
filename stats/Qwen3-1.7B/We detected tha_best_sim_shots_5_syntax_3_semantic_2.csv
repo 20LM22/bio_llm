@@ -1,0 +1,6 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
+"globally[0,∞](IL8(t) = c(high) implies IL8(t) > c(high))",0.5731787,"globally[0,∞](IL8(t) = c(high) implies IL8(t) > c(high))",0.5731787,"globally[0,3](IL8(t) > c(high) and SARSCoV2(t) > c(high))",0.60337234,1
+"globally[3,17](IL8(t) = c(mid))",0.57020473,"eventually[0,∞]globally(IL8(t) > c(low)) and eventually[0,∞]globally(IL8(t) > c(mid)) and eventually[0,∞]globally(IL8(t) > c(high))",0.5741265,"eventually[0,∞]globally(IL8(t) > c(low)) and eventually[0,∞]globally(IL8(t) > c(mid)) and eventually[0,∞]globally(IL8(t) > c(high))",0.5741265,2
+"globally[0,∞](IL8(t) > c(low))",0.53072387,"globally[0,∞](IL8(t) > c(low))",0.53072387,"globally[0,∞](IL8(t) > c(low))",0.53072387,0
+"eventually[0,∞]globally(IL8(t) = c(high))",0.5386658,"eventually[0,∞]globally(IL8(t) = c(high))",0.5386658,"eventually[0,∞]globally(IL8(t) = c(high))",0.5386658,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
