@@ -1,0 +1,51 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
+IL8(t) > c(low),0.5179835,IL8(t) > c(low),0.5179835,"eventually[0,3](IL8(t) > c(low)) and globally[0,3](IL8(t) = c(low))",0.5632021,1
+"eventually[3,∞]globally(IL8(t) > c(high)) and d_IL8(t) > 0",0.57712746,"eventually[3,∞]globally(IL8(t) > c(high)) and d_IL8(t) > 0",0.57712746,"eventually[3,∞]globally(IL8(t) > c(high)) and d_IL8(t) > 0",0.57712746,0
+"eventually[0,3]globally(IL8(t) > c(low))",0.53635705,"IL8(t) > c(low) and eventually[0,3]globally(IL8(t) = c(low))",0.581077,"IL8(t) > c(low) and eventually[0,3]globally(IL8(t) = c(low))",0.581077,2
+"globally[3,∞](IL8(t) > c(low))",0.5467353,"globally[3,∞](IL8(t) > c(low))",0.5467353,"globally[3,∞](IL8(t) > c(low))",0.5467353,0
+"globally[0,∞](IL8(t) > c(low)) and eventually[0,∞](IL8(t) = c(low))",0.5292599,"globally[0,∞](IL8(t) > c(low)) and eventually[0,∞](IL8(t) = c(low))",0.5292599,"globally[0,∞](IL8(t) > c(low)) and eventually[0,∞](IL8(t) = c(low))",0.5292599,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"eventually[0,3]globally(IL8(t)=c(low)) and globally[0,3](d_IL8(t) < d_c(low))",0.5091602,"eventually[0,3]globally(IL8(t)=c(low)) and globally[0,3](d_IL8(t) < d_c(low))",0.5091602,"eventually[0,∞]globally(IL8(t) > c(low)) and SARSCoV2(t)=c(low) implies d_IL8(t) = 0",0.548964,1
+"eventually[0,3](IL8(t) > c(low)) implies globally[0,∞](IL8(t) = c(low))",0.51574576,"eventually[0,3](IL8(t) > c(low)) implies globally[0,∞](IL8(t) = c(low))",0.51574576,"eventually[0,3](IL8(t) > c(low)) implies globally[0,∞](IL8(t) = c(low))",0.51574576,0
+"eventually[0,∞]globally(IL8(t) > c(mid))",0.5635897,"eventually[0,∞]globally(IL8(t) > c(mid))",0.5635897,"eventually[0,∞]globally(IL8(t) > c(mid))",0.5635897,0
+"eventually[0,3]globally(IFNβ(t)=c(mid) implies IL8(t)=c(mid))",0.565603,"eventually[0,3]globally(IFNβ(t)=c(mid) implies IL8(t)=c(mid))",0.565603,"eventually[0,3]globally(IFNβ(t)=c(mid) implies IL8(t)=c(mid))",0.565603,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[0,3](IL8(t) > c(low)) and eventually[0,3]globally(IL8(t) = c(mid))",0.6003919,"globally[0,3](IL8(t) > c(low)) and eventually[0,3]globally(IL8(t) = c(mid))",0.6003919,"globally[0,3](IL8(t) > c(low)) and eventually[0,3]globally(IL8(t) = c(mid))",0.6003919,0
+"eventually[0,∞](IL8(t) > c(high))",0.5669256,"eventually[0,∞](IL8(t) > c(high))",0.5669256,"eventually[0,∞](IL8(t) > c(high))",0.5669256,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"eventually[0,∞]globally(IL8(t) > c(mid))",0.5635897,"eventually[0,∞]globally(IL8(t) > c(mid))",0.5635897,"eventually[0,∞]globally(IL8(t) > c(mid))",0.5635897,0
+"eventually[0,3]globally(IL8(t) > c(high))",0.5640466,"eventually[0,3]globally(IL8(t) > c(high))",0.5640466,"eventually[0,3]globally(IL8(t) > c(high))",0.5640466,0
+"globally[0,3](IL8(t) > c(low)) and eventually[3,∞]globally(IL8(t) > c(low))",0.55675125,"globally[0,3](IL8(t) > c(low)) and eventually[3,∞]globally(IL8(t) > c(low))",0.55675125,"globally[0,3](IL8(t) > c(low)) and eventually[3,∞]globally(IL8(t) > c(low))",0.55675125,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"eventually[0,∞]globally(IL8(t) > c(low)) and d_IL8(t) > d_c(low)",0.5157677,"eventually[0,∞]globally(IL8(t) > c(low)) and d_IL8(t) > d_c(low)",0.5157677,"eventually[0,∞]globally(IL8(t) > c(low)) and d_IL8(t) > d_c(low)",0.5157677,0
+"eventually[0,3](IL8(t) > c(low))",0.549666,"eventually[0,3](IL8(t) > c(low))",0.549666,"eventually[0,3](IL8(t) > c(low))",0.549666,0
+"eventually[6,∞](IL8(t) > c(low)) and globally[6,∞](IL8(t) > c(low))",0.5721869,"eventually[6,∞](IL8(t) > c(low)) and globally[6,∞](IL8(t) > c(low))",0.5721869,"eventually[6,∞](IL8(t) > c(low)) and globally[6,∞](IL8(t) > c(low))",0.5721869,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"eventually[0,3]globally(IL8(t)=c(high)) and globally[0,3](IL8(t) > c(low))",0.5867641,"eventually[0,3]globally(IL8(t)=c(high)) and globally[0,3](IL8(t) > c(low))",0.5867641,"eventually[0,3]globally(IL8(t)=c(high)) and globally[0,3](IL8(t) > c(low))",0.5867641,0
+"eventually[0,3]globally(IL8(t) = c(low)) and eventually[3,6]globally(IL8(t) = c(low)) and eventually[6,9]globally(IL8(t) = c(low))",0.5854975,"eventually[0,3]globally(IL8(t) = c(low)) and eventually[3,6]globally(IL8(t) = c(low)) and eventually[6,9]globally(IL8(t) = c(low))",0.5854975,"eventually[0,3]globally(IL8(t) = c(low)) and eventually[3,6]globally(IL8(t) = c(low)) and eventually[6,9]globally(IL8(t) = c(low))",0.5854975,0
+"eventually[0,3]globally(IL8(t) > c(low))",0.53635705,"eventually[0,3]globally(IL8(t) > c(low))",0.53635705,"eventually[0,3]globally(IL8(t) > c(low))",0.53635705,0
+"eventually[0,3]globally(IL8(t) > c(low))",0.53635705,"eventually[0,3]globally(IL8(t) > c(low))",0.53635705,"eventually[0,3]globally(IL8(t) > c(low))",0.53635705,0
+"eventually[0,3](IL8(t) > c(low)) implies globally[0,∞](IL8(t)=c(low))",0.51574576,"eventually[0,3](IL8(t) > c(low)) implies globally[0,∞](IL8(t)=c(low))",0.51574576,"eventually[0,3](IL8(t) > c(low)) implies globally[0,∞](IL8(t)=c(low))",0.51574576,0
+"globally[0,∞](IL8(t) > c(low))",0.53072387,"globally[0,∞](IL8(t) > c(low))",0.53072387,"globally[0,∞](IL8(t) > c(low))",0.53072387,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[∞,∞](IL8(t) > c(low))",0.52164567,"globally[∞,∞](IL8(t) > c(low))",0.52164567,"eventually[0,∞](IL8(t)=c(mid))",0.5408746,1
+"globally[0,∞](IL8(t) > c(low))",0.53072387,"eventually[0,3]globally(IL8(t) = c(mid)) and eventually[3,6]globally(IL8(t) = c(mid)) and eventually[6,9]globally(IL8(t) = c(mid)) and globally[0,∞](IL8(t) > c(low))",0.62360644,"eventually[0,3]globally(IL8(t) = c(mid)) and eventually[3,6]globally(IL8(t) = c(mid)) and eventually[6,9]globally(IL8(t) = c(mid)) and globally[0,∞](IL8(t) > c(low))",0.62360644,2
+IL8(t) > c(high),0.5479461,IL8(t) > c(high),0.5479461,IL8(t) > c(high),0.5479461,0
+"globally[0,3](IL8(t) > c(low)) and globally[3,6](IL8(t) > c(low)) and globally[6,9](IL8(t) > c(low))",0.5837815,"globally[0,3](IL8(t) > c(low)) and globally[3,6](IL8(t) > c(low)) and globally[6,9](IL8(t) > c(low))",0.5837815,"globally[0,3](IL8(t) > c(low)) and globally[3,6](IL8(t) > c(low)) and globally[6,9](IL8(t) > c(low))",0.5837815,0
+"globally[0,3](IL8(t) > c(mid)) and globally[0,3](IL8(t) = c(mid)) and globally[0,3](IL8(t) = c(mid))",0.6199144,"eventually[0,3](IL8(t) > c(mid)) and globally[0,3](IL8(t) > c(mid)) and eventually[0,3](IL8(t) > c(mid))",0.6282512,"eventually[0,3](IL8(t) > c(mid)) and globally[0,3](IL8(t) > c(mid)) and eventually[0,3](IL8(t) > c(mid))",0.6282512,2
+IL8(t) > c(mid),0.56856847,IL8(t) > c(mid),0.56856847,IL8(t) > c(mid),0.56856847,0
+"eventually[0,3](IL8(t) > c(mid)) implies globally[0,3](IL8(t) = c(mid) and d_IL8(t) > d_c(high))",0.568394,"eventually[0,3](IL8(t) > c(mid)) implies globally[0,3](IL8(t) = c(mid) and d_IL8(t) > d_c(high))",0.568394,"eventually[0,3](IL8(t) > c(mid)) implies globally[0,3](IL8(t) = c(mid) and d_IL8(t) > d_c(high))",0.568394,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"eventually[0,3]globally(d_IL8(t)=d_c(low))",0.4859288,"eventually[0,3]globally(IL8(t) > c(low)) and eventually[3,6]globally(IL8(t) > c(mid)) and eventually[6,9]globally(IL8(t) > c(high))",0.63198185,"eventually[0,3]globally(IL8(t) > c(low)) and eventually[3,6]globally(IL8(t) > c(mid)) and eventually[6,9]globally(IL8(t) > c(high))",0.63198185,2
+d_IL8(t) > d_c(low) implies IL8(t) = c(low),0.4716695,d_IL8(t) > d_c(low) implies IL8(t) = c(low),0.4716695,"eventually[0,∞](IL8(t) > c(low)) and d_IL8(t) = d_c(low)",0.5312643,1
+"eventually[0,3]globally(IL8(t) > c(mid))",0.578167,"globally[0,3](IL8(t) > c(mid))",0.5818161,"eventually[0,∞]globally(IL8(t) > c(mid)) and SARSCoV2(t)=c(low) implies d_IL8(t) > 0",0.61604935,2
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"eventually[0,3]globally(IL8(t) > c(low) and IL8(t) > c(mid)) and eventually[0,3]globally(IL8(t) > c(low)) and eventually[0,3]globally(IL8(t) > c(mid))",0.62714523,"eventually[0,3]globally(IL8(t) > c(low) and IL8(t) > c(mid)) and eventually[0,3]globally(IL8(t) > c(low)) and eventually[0,3]globally(IL8(t) > c(mid))",0.62714523,"eventually[0,3]globally(IL8(t) > c(low) and IL8(t) > c(mid)) and eventually[0,3]globally(IL8(t) > c(low)) and eventually[0,3]globally(IL8(t) > c(mid))",0.62714523,0
+"globally[0,∞](IL8(t) = c(high))",0.5434675,"globally[0,∞](IL8(t) = c(high))",0.5434675,"eventually[0,3](IL8(t)=c(high)) and globally[3,∞](IL8(t) > c(low))",0.5749574,1
+"globally[0,3](IL8(t) > c(mid)) and eventually[0,∞](IL8(t) = c(mid))",0.5868866,"globally[0,3](IL8(t) > c(mid)) and eventually[0,∞](IL8(t) = c(mid))",0.5868866,"globally[0,3](IL8(t) > c(mid)) and eventually[0,∞](IL8(t) = c(mid))",0.5868866,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"eventually[0,3]globally(IL8(t) > c(low))",0.53635705,"eventually[0,3]globally(IL8(t) > c(low))",0.53635705,"eventually[0,3]globally(IL8(t) > c(low))",0.53635705,0

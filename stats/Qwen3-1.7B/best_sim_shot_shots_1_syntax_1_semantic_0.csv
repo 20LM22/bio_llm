@@ -1,0 +1,9 @@
+shot0,shot0 sim
+"eventually[0,7]globally(IL6(t) > c(high)) and eventually[7,∞]globally(IL6(t) < c(high))",0.71358335
+,
+,
+"eventually[0,3](IL8(t) > c(mid)) and globally[0,3](IL8(t) > c(low))",0.5988915
+,
+,
+,
+,

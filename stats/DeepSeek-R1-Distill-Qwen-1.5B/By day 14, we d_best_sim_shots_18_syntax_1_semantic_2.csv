@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
+"eventually[17,∞]globally(IL1Ra(t) < c(high))",0.3797147,"eventually[17,∞]globally(IL1Ra(t) < c(high))",0.3797147,"eventually[17,∞]globally(IL1Ra(t) < c(high))",0.3797147,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"d_IL6(t) = d_c(low) and eventually[4,5]globally(d_IFNα(t) = d_c(low)) and d_IL12(t) = d_c(low) and d_IL1β(t) = d_c(low) and d_IL1Ra(t) = d_c(low) and eventually[12,15]globally(SARSCoV2(t) = c(high) implies d_IL1RN(t) > d_c(low)) and d_TNFα(t) < d_c(high)",0.56715024,"d_IL6(t) = d_c(low) and eventually[4,5]globally(d_IFNα(t) = d_c(low)) and d_IL12(t) = d_c(low) and d_IL1β(t) = d_c(low) and d_IL1Ra(t) = d_c(low) and eventually[12,15]globally(SARSCoV2(t) = c(high) implies d_IL1RN(t) > d_c(low)) and d_TNFα(t) < d_c(high)",0.56715024,"d_IL6(t) = d_c(low) and eventually[4,5]globally(d_IFNα(t) = d_c(low)) and d_IL12(t) = d_c(low) and d_IL1β(t) = d_c(low) and d_IL1Ra(t) = d_c(low) and eventually[12,15]globally(SARSCoV2(t) = c(high) implies d_IL1RN(t) > d_c(low)) and d_TNFα(t) < d_c(high)",0.56715024,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+IL6(t) < c(mid) implies d_TNFα(t) < d_c(high) and d_IL12(t) < d_c(high),0.3145581,IL6(t) < c(mid) implies d_TNFα(t) < d_c(high) and d_IL12(t) < d_c(high),0.3145581,IL6(t) < c(mid) implies d_TNFα(t) < d_c(high) and d_IL12(t) < d_c(high),0.3145581,0
+N/A,N/A,N/A,N/A,N/A,N/A,0

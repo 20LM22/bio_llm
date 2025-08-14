@@ -1,0 +1,6 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
+IFNα(t) = c(low) implies d_IFNα(t) < d_c(high) and IFNβ(t) = c(high) implies d_IFNβ(t) > d_c(high),0.3995209,IFNα(t) = c(low) implies d_IFNα(t) < d_c(high) and IFNβ(t) = c(high) implies d_IFNβ(t) > d_c(high),0.3995209,IFNα(t) = c(low) implies d_IFNα(t) < d_c(high) and IFNβ(t) = c(high) implies d_IFNβ(t) > d_c(high),0.3995209,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+IL1Ra(t) < c(high) implies IFNβ(t)=c(mid),0.5499262,IFNβ(t) = c(mid) and d_IFNβ(t) < d_c(high),0.55271524,IFNβ(t) = c(mid) and d_IFNβ(t) < d_c(high),0.55271524,2
+"IL6(t) < c(low) and globally[1,7](IL6(t) = c(low)) and eventually[8,14]globally(d_IFNβ(t) < 0) and IL1β(t) > c(mid) and globally[1,7](d_IL1β(t) = d_c(high))",0.5200948,"IL6(t) < c(low) and globally[1,7](IL6(t) = c(low)) and eventually[8,14]globally(d_IFNβ(t) < 0) and IL1β(t) > c(mid) and globally[1,7](d_IL1β(t) = d_c(high))",0.5200948,"IL6(t) < c(low) and globally[1,7](IL6(t) = c(low)) and eventually[8,14]globally(d_IFNβ(t) < 0) and IL1β(t) > c(mid) and globally[1,7](d_IL1β(t) = d_c(high))",0.5200948,0

@@ -1,0 +1,2 @@
+S0-F0,S0-F0 sim,S0-F1,S0-F1 sim
+N/A,N/A,0.5988915,"eventually[0,3](IL8(t) > c(mid)) and globally[0,3](IL8(t) > c(low))"
