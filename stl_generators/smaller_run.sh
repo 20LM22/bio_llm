@@ -2,7 +2,8 @@
 deepseek='DeepSeek-R1-Distill-Qwen-1.5B'
 qwen='Qwen3-1.7B'
 
-experiments=("shots_18_syntax_1_semantic_2" "shots_18_syntax_2_semantic_2" "shots_18_syntax_4_semantic_2" "shots_5_syntax_3_semantic_2" "shots_50_syntax_3_semantic_2")
+experiments=("shots_50_syntax_3_semantic_2")
+# experiments=("shots_18_syntax_1_semantic_2" "shots_18_syntax_2_semantic_2" "shots_18_syntax_4_semantic_2" "shots_5_syntax_3_semantic_2" "shots_50_syntax_3_semantic_2")
 # experiments=("shots_18_syntax_3_semantic_0" "shots_18_syntax_3_semantic_1" "shots_18_syntax_3_semantic_2")
 
 for experiment in "${experiments[@]}"
@@ -25,6 +26,7 @@ do
 #  python ../evaluations/stl_evaluation_v6.py $qwen $translations_qwen $config
   echo "done loading translation results"
   python ../evaluations/generate_semantic_distribution_dict.py $qwen $translations_qwen $config
+  echo "complete"
 #  python ../evaluations/generate_semantic_distribution_plots.py $qwen $config
 
 #  echo "Done generating labels for: ${experiment}"

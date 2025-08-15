@@ -66,12 +66,13 @@ for index, row in translations.iterrows():
     res[row['input statement']] = syntactically_valid_translations
 
 # print these out to the user and have them mark whether they think they're good or not
-translations_total = 0
-for key in res.keys():
-    translations_total += len(res[key])
+# translations_total = 0
+# for key in res.keys():
+#     translations_total += len(res[key])
+#
+# translations_count = 0
 
-translations_count = 0
-
+"""
 for key in res.keys():
     new_syn_valid_arr = []
     for stl, sim in res[key]:
@@ -85,9 +86,10 @@ for key in res.keys():
         # but this array will have the user's annotation
         new_syn_valid_arr.append((stl,sim,choice))
     res[key] = new_syn_valid_arr
+"""
 
 try:
-    with open(f'../pkl/histogram_distribution_comparison_{model_name}_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.pkl', 'wb') as r:
+    with open(f'../pkl/INTERMEDIATE_histogram_distribution_comparison_{model_name}_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.pkl', 'wb') as r:
         pickle.dump(res, r)
 except Exception as e:
     print("there was a pickle problem")
