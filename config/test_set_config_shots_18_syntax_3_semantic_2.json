@@ -10,7 +10,7 @@
       "max_model_len": 13000,
       "gpu_memory_utilization": 0.8
    },
-   "signal_names": ["IL6", "IL12", "IL1β", "IL1Ra", "TNFα", "IL8", "IFNα", "IFNβ", "SARSCoV2", "IL1RN", "IgM", "IgG", "MERSCoV", "SARSCoV", "CpG2216", "IL1α", "CCL2", "CCR2", "IP10", "MCP1", "IFNγ", "IL17", "IL27", "RANTES", "d_IL6", "d_IL12", "d_IL1β", "d_IL1Ra", "d_TNFα", "d_IL8", "d_IFNα", "d_IFNβ", "d_SARSCoV2", "d_IL1RN" "d_IgM", "d_IgG", "d_MERSCoV", "d_SARSCoV", "d_CpG2216", "d_IL1α", "d_CCL2", "d_CCR2", "d_IP10", "d_MCP1", "d_IFNγ", "d_IL17", "d_IL27", "d_RANTES"],
+   "signal_names": ["IL6", "IL12", "IL1β", "IL1Ra", "TNFα", "IL8", "IFNα", "IFNβ", "SARSCoV2", "IL1RN", "IgM", "IgG", "MERSCoV", "SARSCoV", "CpG2216", "IL1α", "CCL2", "CCR2", "IP10", "MCP1", "IFNγ", "IL17", "IL27", "RANTES", "d_IL6", "d_IL12", "d_IL1β", "d_IL1Ra", "d_TNFα", "d_IL8", "d_IFNα", "d_IFNβ", "d_SARSCoV2", "d_IL1RN", "d_IgM", "d_IgG", "d_MERSCoV", "d_SARSCoV", "d_CpG2216", "d_IL1α", "d_CCL2", "d_CCR2", "d_IP10", "d_MCP1", "d_IFNγ", "d_IL17", "d_IL27", "d_RANTES"],
    "num_shots_per_input_sentence": 18,
    "num_correction_attempts_per_shot": 3,
    "num_examples": 3,
