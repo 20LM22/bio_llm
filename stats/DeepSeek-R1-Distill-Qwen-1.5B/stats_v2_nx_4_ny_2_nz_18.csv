@@ -1,0 +1,9 @@
+,Sentence,Median Similarity,Mean Similarity,Variance Similarity,Top Similarity Result Is Correct?,Number Translations Syntactically Correct,Category
+0,"In the mild and moderate groups, IL-6 concentrations were at their highest level in the first week after the symptom onset and then exhibited a decreasing trend.",0.69212437,0.6773095,0.005337939,0,33,medium
+1,"Remarkably, in the mild group, the amount of these cytokines (IL-1β and IL-1Ra) increased at the day 1–7, reached a peak at the day 8–14, and diminished after >14 days.",0.6423212,0.59909105,0.012913329,0,29,easy
+2,"TNF-α levels elevated at the day 1–7 and 8–14 times intervals, then decreased at the day>14.",0.7611697,0.70686865,0.028043969,0,27,easy
+3,We detected that IL-8 was significantly elevated in all COVID-19 subgroups at three studied time intervals compared to the control group.,0.54794604,0.5313808,0.004344248,0,38,medium
+4,"We found that although there was no difference in the production of IFN-β in all patients with COVID-19 compared to the control group at the day 1–7, IFN-β levels were higher in moderate, severe, and critical subjects at the day 8–14 or >14 compared to the healthy control and themselves at the day 1–7.",0.41738817,0.3989624,0.011770321,0,28,hard
+5,IL-12 reached its maximum level at the day>14 in mild patients.,0.7085985,0.6746875,0.007948063,0,18,medium
+6,"It is reported that in recovered cases, within a few hrs of virus entry, both α and β IFNs (at first day of infection) are rapidly produced and an antiviral state is soon reached [23]",0.41089225,0.3658112,0.012949503,0,34,hard
+7,"By day 14, we detected no viral reads for SARS-CoV-2, and the observed cytokines returned to baseline, with the exception of IL-6 and IL1RN or IL1RA, which remained elevated, similar to results observed with MERS (Pascal et al., 2015; Figures 3B and 3C).",0.39215738,0.42414656,0.023273302,0,11,hard

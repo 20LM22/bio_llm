@@ -24,8 +24,10 @@ except Exception as e:
 # do them all together
 zeroes = [] # list of sim values
 ones = []
+ones_and_zeroes = []
 for key in res.keys():
     for stl, sim, choice in res[key]:
+        ones_and_zeroes.append(sim)
         if choice is None or choice == '':
             continue
         elif int(choice) == 0:
@@ -41,14 +43,19 @@ bins = np.linspace(0, 1, 10) # change bin count if needed
 plt.figure(figsize=(10,6))
 plt.hist(ones, bins=bins, alpha=0.5, label='Semantically correct', color='forestgreen', edgecolor='black')
 plt.hist(zeroes, bins=bins, alpha=0.5, label='Semantically incorrect', color='firebrick', edgecolor='black')
+if len(ones_and_zeroes) > 0:
+    plt.axvline(np.average(ones_and_zeroes), color='blue', linestyle='dashed', linewidth=1)
+    plt.axvline(np.median(ones_and_zeroes), color='orange', linestyle='dashed', linewidth=1)
+    plt.axvline(np.percentile(ones_and_zeroes,80), color='purple', linestyle='dashed', linewidth=1)
+    plt.axvline(0.7, color='black', linestyle='solid', linewidth=1)
 
 plt.xlabel('Similarity')
 plt.ylabel('Frequency')
-plt.ylim(0, 50)
-plt.title(f'All Sentences Semantic Pass/Fail Distribution\nmodel: {model_name}\nshots: {shot_count}, syntax: {syntax_count}, semantic: {semantic_count}')
+plt.ylim(0, 160)
+plt.title(f'All Sentences Semantic Pass/Fail Distribution\nmodel: {model_name}\nnx: {syntax_count}, ny: {semantic_count}, nz: {shot_count}')
 plt.legend()
 
-plt.savefig(f'../images/{model_name}/histogram_distribution_comparison_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.png')
+plt.savefig(f'../images/{model_name}/histogram_distribution_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}.png')
 plt.close()
 
 # do them as sentences
@@ -129,17 +136,24 @@ for _id, sentence in enumerate(res.keys()): # key is sentence
     plt.figure(figsize=(10, 8))
     plt.hist(ones, bins=bins, alpha=0.5, label='Semantically correct', color='forestgreen', edgecolor='black')
     plt.hist(zeroes, bins=bins, alpha=0.5, label='Semantically incorrect', color='firebrick', edgecolor='black')
+    # print(f'len(sim_arr): {len(sim_arr)}')
+    if len(sim_arr) > 0:
+        plt.axvline(np.average(sim_arr), color='blue', linestyle='dashed', linewidth=1)
+        plt.axvline(np.median(sim_arr), color='orange', linestyle='dashed', linewidth=1)
+        plt.axvline(np.percentile(sim_arr,80), color='purple', linestyle='dashed', linewidth=1)
+        plt.axvline(0.7, color='black', linestyle='solid', linewidth=1)
 
     plt.xlabel('Similarity')
     plt.ylabel('Frequency')
-    plt.ylim(0, 15)
+    plt.ylim(0, 40)
     if len(sentence) >= 100:
         m = sentence[:99]
     else:
         m = sentence
     plt.title(f'Semantic Pass/Fail Distribution\nsentence: {m}\nmodel: {model_name}\nshots: {shot_count}, syntax: {syntax_count}, semantic: {semantic_count}')
     plt.legend()
-    plt.savefig(f'../images/{model_name}/new_histogram_distribution_sentence_{sentence[0:15]}_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.png')
+
+    plt.savefig(f'../images/{model_name}/histogram_distribution_sentence_{sentence[:15]}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}.png')
     plt.close()
 
 df = pandas.DataFrame(data={
@@ -156,4 +170,4 @@ df = pandas.DataFrame(data={
 # top_sim_is_correct_all_sentences = pandas.DataFrame(data=top_sim_is_correct_all_sentences, columns=['Sentence', 'Top Sim. is Correct'])
 # top_sim_is_correct_all_sentences.loc['Total'] = top_sim_is_correct_all_sentences.apply(pandas.to_numeric, errors='coerce')['Top Sim. is Correct'].sum()
 # top_sim_is_correct_all_sentences.to_csv(f'../stats/{model_name}/top_sim_is_correct_all_sentences_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.csv')
-df.to_csv(f'../stats/{model_name}/stats_v2_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.csv')
+df.to_csv(f'../stats/{model_name}/stats_v2_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}.csv')

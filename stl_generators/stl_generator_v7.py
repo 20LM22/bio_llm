@@ -415,7 +415,6 @@ for sentence_index, sentence in sentences['input statement'].items():
                     feedback = default_feedback(e, extracted_response, sentence)
                     print('feedback is default')
 
-
         ####################################################################
         # 4) perform semantic checks
         ####################################################################
