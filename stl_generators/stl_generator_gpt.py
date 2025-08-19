@@ -1,11 +1,7 @@
-from vllm import LLM, SamplingParams
 from lark import Lark
 import numpy as np
-from collections import defaultdict
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
-from stl_base import STLBase
-from vllm.sampling_params import GuidedDecodingParams
 from pydantic import BaseModel
 import json, sys, re, pickle, pandas, random
 from openai import OpenAI
@@ -26,26 +22,6 @@ file_name = f'../config/{sys.argv[2]}'
 with open(file_name, 'r') as f:
     params = json.load(f)
 
-sampling_params = SamplingParams(
-        temperature=params['model_parameters']['temperature'],
-        top_p=params['model_parameters']['top_p'],
-        top_k=params['model_parameters']['top_k'],
-        min_p=params['model_parameters']['min_p'],
-        presence_penalty=params['model_parameters']['presence_penalty'],
-        max_tokens=params['model_parameters']['max_tokens'],
-        )
-
-sampling_params_thinking = SamplingParams(
-        temperature=params['model_parameters']['temperature'],
-        top_p=params['model_parameters']['top_p'],
-        top_k=params['model_parameters']['top_k'],
-        min_p=params['model_parameters']['min_p'],
-        presence_penalty=params['model_parameters']['presence_penalty'],
-        max_tokens=params['model_parameters']['max_tokens'])
-
-model_dtype=params['model_parameters']['model_dtype']
-max_model_len=params['model_parameters']['max_model_len']
-gpu_memory_utilization=params['model_parameters']['gpu_memory_utilization']
 num_shots_per_input_sentence=params['num_shots_per_input_sentence']
 
 model_name = sys.argv[1]
@@ -76,27 +52,7 @@ for i in range(num_shots_per_input_sentence):
             translations[f'STL-shot{i}-S{j}-F{k}'] = None
 
 # Create the LLM for this model
-# llm = LLM(model=model_name,
-#     dtype=model_dtype,
-#     max_model_len=max_model_len,
-#     gpu_memory_utilization=gpu_memory_utilization)
 client = OpenAI()
-
-response = client.responses.parse(
-    model="gpt-4o-2024-08-06",
-    input=[
-        {
-            "role": "user",
-            "content": "Alice and Bob are going to a science fair on Friday.",
-        },
-    ],
-    text_format=STLResponse,
-)
-event = response.output_parsed
-
-# feedback dictionary
-feedback_dict=params['old_prompt_feedback']
-model_name = model_name.split('/')[1]
 
 ####################################################################################
 # Helper function: generate examples
@@ -253,7 +209,6 @@ def default_feedback(e, res, sentence):
     except Exception as e:
         return params['feedback_prompt']['default_prompt_1'] + '\n' + res + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + str(e) + '\n\n' + params['feedback_prompt']['default_prompt_2a'] + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4']
 
-
 ####################################################################################
 # Translation of each sentence
 ####################################################################################
@@ -288,7 +243,20 @@ for sentence_index, sentence in sentences['input statement'].items():
         print('thinking prompt')
         thinking_prompt = params['thinking_prompt']['prompt_1'] + '\n' + sentence + '\n\n' + params['thinking_prompt']['prompt_2']
         print(f'thinking prompt: {thinking_prompt}')
-        response = llm.chat([{"role": "user", "content": thinking_prompt}], sampling_params_thinking)[0].outputs[0].text
+
+        response = client.responses.create(
+            model=model_name,
+            input=[
+                {"role": "user", "content": thinking_prompt},
+            ],
+            max_tokens = params['model_parameters']['max_tokens'],
+            temperature = params['model_parameters']['temperature'],
+            top_p = params['model_parameters']['top_p'],
+            top_k = params['model_parameters']['top_k'],
+            min_p = params['model_parameters']['min_p'],
+            presence_penalty = params['model_parameters']['presence_penalty']
+        )
+        response = response.output_text
         print(f'response: {response}')
         
         ####################################################################
@@ -298,7 +266,22 @@ for sentence_index, sentence in sentences['input statement'].items():
         print('stl prompt')
         stl_prompt = params['stl_prompt']['prompt_1'] + '\n' + sentence + '\n\n' + params['stl_prompt']['prompt_2'] + "\n\n" + generate_example_prompt(params['num_examples'])
         print(f'stl prompt: {stl_prompt}')
-        response = llm.chat([{"role": "user", "content": stl_prompt}], sampling_params)[0].outputs[0].text
+
+        response = client.responses.parse(
+            model=model_name,
+            input=[
+                {"role": "user", "content": stl_prompt},
+            ],
+            text_format = STLResponse,
+            max_tokens = params['model_parameters']['max_tokens'],
+            temperature = params['model_parameters']['temperature'],
+            top_p = params['model_parameters']['top_p'],
+            top_k = params['model_parameters']['top_k'],
+            min_p = params['model_parameters']['min_p'],
+            presence_penalty = params['model_parameters']['presence_penalty']
+        )
+        response = response.output_parsed
+
         print(f'response: {response}')
 
         ####################################################################
@@ -376,7 +359,20 @@ for sentence_index, sentence in sentences['input statement'].items():
             m = feedback + '\n\n' + generate_example_prompt(params['num_examples'])
             print(f'feedback prompt: {m}')
 
-            response = llm.chat([{"role": "user", "content": m }], sampling_params)[0].outputs[0].text
+            response = client.responses.parse(
+                model=model_name,
+                input=[
+                    {"role": "user", "content": m},
+                ],
+                text_format=STLResponse,
+                max_tokens=params['model_parameters']['max_tokens'],
+                temperature=params['model_parameters']['temperature'],
+                top_p=params['model_parameters']['top_p'],
+                top_k=params['model_parameters']['top_k'],
+                min_p=params['model_parameters']['min_p'],
+                presence_penalty=params['model_parameters']['presence_penalty']
+            )
+            response = response.output_parsed
             print(f'response: {response}')
 
             # Try extraction
@@ -450,12 +446,39 @@ for sentence_index, sentence in sentences['input statement'].items():
             # Think first
             semantic_prompt_thinking = "You were asked to translate the following natural language sentence into STL:\n" + sentence + "\n\nIn response, you produced the following STL statement:\n" + best_stl + "\n\nThis statement means:\n" + best_literal + "\n\nGive an explanation of how you would improve your STL statement so that it is closer in meaning to the natural language sentence you were asked to translate. Your STL response must conform to the following rules:\n[BEGIN RULES]\nu : less_than | greater_than | is | derivative_greater_than | derivative_less_than | derivative_is\nless_than : s(t) < c # Species s is less than c\ngreater_than : s(t) > c # Species s is greater than c\nis : s(t) = c # Species s is close to c\nderivative_greater_than : d_s(t) > d_c # The rate of change of species s is greater than d_c\nderivative_less_than : d_s(t) < d_c # The rate of change of species s is less than d_c\nderivative_is : d_s(t) = d_c # The rate of change species s is close to d_c\nc : s(t_a) | \"c(low)\" | \"c(mid)\" | \"c(high)\" # c is the level of a species, it can be a specific value or generally just low, moderate, or high\nd_c : 0 # Rate of change is 0\n\t| \"d_c(low)\" # Species is slowly increasing\n\t| \"d_c(high)\" # Species is rapidly increasing\n\t| \"-d_c(low)\" # Species is slowly decreasing\n\t| \"-d_c(high)\" # Species is quickly decreasing\npredicate : u | u1 and u2 | u1 implies u2 # You can combine predicates with Boolean operators\ntemporal_operator : eventually[t_a,t_b]globally(predicate) # This means that between day t_a and t_b, there is a point when the predicate becomes true for the rest of the interval\n\t| globally[t_a,t_b](phi) # This means the predicate is true over the entire interval from day t_a to t_b\n\t| eventually[t_a,t_b](phi) # This means there is at least 1 time between days t_a and t_b that the predicate is true\nt_a : number | ∞ # Time in days\ns : IL6 | IL12 | IL1β | IL1Ra | TNFα | IL8 | IFNα | IFNβ | SARSCoV2 | IL1RN # Species names you can use\nd_s : d_IL6 | d_IL12 | d_IL1β | d_IL1Ra | d_TNFα | d_IL8 | d_IFNα | d_IFNβ | d_SARSCoV2 | d_IL1RN # Names for derivatives of the species\n[END RULES]\n\nThe d_s terms represent the derivative of a signal, so you may find those terms helpful for describing how signals increase or decrease. For general statements describing the levels of some species as \"high\" or \"low\" for example, you may find comparison statements helpful."
             print(f'semantic prompt thinking is: {semantic_prompt_thinking}')
-            response = llm.chat([{"role": "user", "content": semantic_prompt_thinking}], sampling_params_thinking)[0].outputs[0].text
+
+            response = client.responses.create(
+                model=model_name,
+                input=[
+                    {"role": "user", "content": semantic_prompt_thinking},
+                ],
+                max_tokens=params['model_parameters']['max_tokens'],
+                temperature=params['model_parameters']['temperature'],
+                top_p=params['model_parameters']['top_p'],
+                top_k=params['model_parameters']['top_k'],
+                min_p=params['model_parameters']['min_p'],
+                presence_penalty=params['model_parameters']['presence_penalty']
+            )
+            response = response.output_text
             print(f'semantic response thinking is: {response}')
 
             semantic_prompt = "Now that you have thought about how you would improve your STL statement, please output your new and improved STL translation.\nAs a reminder, here is the natural language sentence that you are trying to translate:\n" + sentence + "\n\nFormat your response in JSON. Include (1) your thinking process, (2) the input sentence, and (3) your STL response. Your STL response must conform to the following rules:\n[BEGIN RULES]\nu : less_than | greater_than | is | derivative_greater_than | derivative_less_than | derivative_is\nless_than : s(t) < c # Species s is less than c\ngreater_than : s(t) > c # Species s is greater than c\nis : s(t) = c # Species s is close to c\nderivative_greater_than : d_s(t) > d_c # The rate of change of species s is greater than d_c\nderivative_less_than : d_s(t) < d_c # The rate of change of species s is less than d_c\nderivative_is : d_s(t) = d_c # The rate of change species s is close to d_c\nc : s(t_a) | \"c(low)\" | \"c(mid)\" | \"c(high)\" # c is the level of a species, it can be a specific value or generally just low, moderate, or high\nd_c : 0 # Rate of change is 0\n\t| \"d_c(low)\" # Species is slowly increasing\n\t| \"d_c(high)\" # Species is rapidly increasing\n\t| \"-d_c(low)\" # Species is slowly decreasing\n\t| \"-d_c(high)\" # Species is quickly decreasing\npredicate : u | u1 and u2 | u1 implies u2 # You can combine predicates with Boolean operators\ntemporal_operator : eventually[t_a,t_b]globally(predicate) # This means that between day t_a and t_b, there is a point when the predicate becomes true for the rest of the interval\n\t| globally[t_a,t_b](phi) # This means the predicate is true over the entire interval from day t_a to t_b\n\t| eventually[t_a,t_b](phi) # This means there is at least 1 time between days t_a and t_b that the predicate is true\nt_a : number | ∞ # Time in days\ns : IL6 | IL12 | IL1β | IL1Ra | TNFα | IL8 | IFNα | IFNβ | SARSCoV2 | IL1RN # Species names you can use\nd_s : d_IL6 | d_IL12 | d_IL1β | d_IL1Ra | d_TNFα | d_IL8 | d_IFNα | d_IFNβ | d_SARSCoV2 | d_IL1RN # Names for derivatives of the species\n[END RULES]\n\nThe d_s terms represent the derivative of a signal, so you may find those terms helpful for describing how signals increase or decrease. For general statements describing the levels of some species as \"high\" or \"low\" for example, you may find comparison statements helpful." + "\n\n" + generate_example_prompt(params['num_examples'])
             print(f'semantic prompt: {semantic_prompt}')
-            response = llm.chat([{"role": "user", "content": semantic_prompt}], sampling_params)[0].outputs[0].text
+
+            response = client.responses.parse(
+                model=model_name,
+                input=[
+                    {"role": "user", "content": semantic_prompt},
+                ],
+                text_format=STLResponse,
+                max_tokens=params['model_parameters']['max_tokens'],
+                temperature=params['model_parameters']['temperature'],
+                top_p=params['model_parameters']['top_p'],
+                top_k=params['model_parameters']['top_k'],
+                min_p=params['model_parameters']['min_p'],
+                presence_penalty=params['model_parameters']['presence_penalty']
+            )
+            response = response.output_parsed
             print(f'semantic response: {response}')
 
             # extract STL
@@ -512,8 +535,21 @@ for sentence_index, sentence in sentences['input statement'].items():
                 print(f'feedback prompt: {m}')
 
                 print('prompting with feedback')
-                response = llm.chat([{"role": "user", "content": m }], sampling_params)[0].outputs[0].text
-            
+                response = client.responses.parse(
+                    model=model_name,
+                    input=[
+                        {"role": "user", "content": m},
+                    ],
+                    text_format=STLResponse,
+                    max_tokens=params['model_parameters']['max_tokens'],
+                    temperature=params['model_parameters']['temperature'],
+                    top_p=params['model_parameters']['top_p'],
+                    top_k=params['model_parameters']['top_k'],
+                    min_p=params['model_parameters']['min_p'],
+                    presence_penalty=params['model_parameters']['presence_penalty']
+                )
+                response = response.output_parsed
+
                 # extract STL
                 try:
                     extracted_response = json.loads(response)["output_stl"]
@@ -591,9 +627,9 @@ for sentence_index, sentence in sentences['input statement'].items():
 # writing to pkl
 try:
     config = sys.argv[3]
-    with open(f'../pkl/{model_name}/test_set_all_responses_all_sentences_{model_name}_{config}.pkl', 'wb') as r:
+    with open(f'../pkl/{model_name}/all_responses_all_sentences_{model_name}_{config}.pkl', 'wb') as r:
         pickle.dump(all_responses_all_sentences, r)
-    with open(f'../pkl/{model_name}/test_set_translations_{model_name}_{config}.pkl', 'wb') as r:
+    with open(f'../pkl/{model_name}/translations_{model_name}_{config}.pkl', 'wb') as r:
         print("we are dumping the translation file")
         pickle.dump(translations, r)
         print("it was dumped")
