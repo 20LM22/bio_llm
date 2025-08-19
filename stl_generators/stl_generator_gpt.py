@@ -4,7 +4,11 @@ from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 from pydantic import BaseModel
 import json, sys, re, pickle, pandas, random
+import os
+import openai
 from openai import OpenAI
+
+openai.api_key = os.environ["OPENAI_API_KEY"]
 
 sys.path.insert(1, '..')
 from stl2literal import STL2literal
