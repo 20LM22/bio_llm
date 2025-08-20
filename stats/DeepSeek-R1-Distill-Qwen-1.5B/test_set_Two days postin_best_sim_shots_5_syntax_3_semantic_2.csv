@@ -1,0 +1,6 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
+d_MERSCoV(t) > c(high) and d_SARSCoV(t) > c(low),0.41165227,d_MERSCoV(t) > c(high) and d_SARSCoV(t) > c(low),0.41165227,d_MERSCoV(t) > c(high) and d_SARSCoV(t) > c(low),0.41165227,0
+"eventually[5,∞]globally(SARSCoV2(t) > c(mid) implies d_IFNα(t) > d_c(low))",0.47451103,"eventually[5,∞]globally(SARSCoV2(t) > c(mid) implies d_IFNα(t) > d_c(low))",0.47451103,"globally[0,18](d_SARSCoV2(t) > 0 implies IL1Ra(t) < c(low))",0.49251434,1
+"eventually[2, ∞]globally(d_MERSCoV(t) < d_c(high)) and eventually[2, ∞]globally(d_SARSCoV(t) < d_c(high))",0.42679608,"eventually[2, ∞]globally(d_MERSCoV(t) < d_c(high)) and eventually[2, ∞]globally(d_SARSCoV(t) < d_c(high))",0.42679608,"eventually[2, ∞]globally(d_MERSCoV(t) < d_c(high)) and eventually[2, ∞]globally(d_SARSCoV(t) < d_c(high))",0.42679608,0
+d_MERSCoV(t) = c(high) and d_SARSCoV(t) = c(high),0.39706808,d_MERSCoV(t) = c(high) and d_SARSCoV(t) = c(high),0.39706808,d_MERSCoV(t) = c(high) and d_SARSCoV(t) = c(high),0.39706808,0
+N/A,N/A,N/A,N/A,N/A,N/A,0

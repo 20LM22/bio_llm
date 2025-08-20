@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
+"globally[0,∞](d_CCR2(t) = c(high)) implies globally[0,∞](d_IL1β(t) = -d_c(low))",0.42320836,"globally[0,∞](d_CCR2(t) = c(high)) implies globally[0,∞](d_IL1β(t) = -d_c(low))",0.42320836,"globally[0,∞](d_CCR2(t) = c(high)) implies globally[0,∞](d_IL1β(t) = -d_c(low))",0.42320836,0
+IL8(t)=c(mid) and IL12(t)=c(low),0.12974182,"globally[1,∞](d_CCL2(t) > c(high)) and d_CCR2(t)=c(low) and IL6(t) < c(mid)",0.3980252,"globally[1,∞](d_CCL2(t) > c(high)) and d_CCR2(t)=c(low) and IL6(t) < c(mid)",0.3980252,2
+"globally[1, ∞](d_CCL2(t) > d_c(low)) implies eventually[1, ∞](d_CCR2(t) = d_c(low))",0.28388706,"globally[1, ∞](d_CCL2(t) > d_c(low)) implies eventually[1, ∞](d_CCR2(t) = d_c(low))",0.28388706,"globally[1, ∞](d_CCL2(t) > d_c(low)) implies eventually[1, ∞](d_CCR2(t) = d_c(low))",0.28388706,0
+d_CCL2(t) > d_c(low) implies CCR2(t) = c(high),0.3477959,d_CCL2(t) > d_c(low) implies CCR2(t) = c(high),0.3477959,CCL2(t)=c(high) implies d_CCR2(t) = c(low),0.41186082,1
+"eventually[16,∞]globally(IL1Ra(t) < c(mid))",0.14650217,"eventually[16,∞]globally(IL1Ra(t) < c(mid))",0.14650217,"eventually[16,∞]globally(IL1Ra(t) < c(mid))",0.14650217,0
+IFNβ(t) > c(low) implies d_TNFα(t) > d_c(low),0.090989456,IFNβ(t) > c(low) implies d_TNFα(t) > d_c(low),0.090989456,IFNβ(t) > c(low) implies d_TNFα(t) > d_c(low),0.090989456,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[7,∞](IL8(t) > c(low) and d_IL1β(t) < d_c(high))",0.22243062,"globally[7,∞](IL8(t) > c(low) and d_IL1β(t) < d_c(high))",0.22243062,"globally[7,∞](IL8(t) > c(low) and d_IL1β(t) < d_c(high))",0.22243062,0
+"globally[7,∞](d_CCL2(t)=0) implies eventually[15,∞](IL8(t) < c(high))",0.29854676,"globally[7,∞](d_CCL2(t)=0) implies eventually[15,∞](IL8(t) < c(high))",0.29854676,"globally[7,∞](d_CCL2(t)=0) implies eventually[15,∞](IL8(t) < c(high))",0.29854676,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+IL12(t)=c(mid) implies IL1β(t) > c(low),0.26971567,IL12(t)=c(mid) implies IL1β(t) > c(low),0.26971567,IL12(t)=c(mid) implies IL1β(t) > c(low),0.26971567,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[15,∞](d_CCL2(t) > d_c(high)) and IL6(t) < c(mid)",0.30218816,"globally[15,∞](d_CCL2(t) > d_c(high)) and IL6(t) < c(mid)",0.30218816,"globally[15,∞](d_CCL2(t) > d_c(high)) and IL6(t) < c(mid)",0.30218816,0
+"eventually[8,∞]globally(IL1β(t) > c(high))",0.24192071,"eventually[8,10](d_CCL2(t)=d_c(high)) implies globally[0,15](IL8(t) < c(mid))",0.28685248,"eventually[8,10](d_CCL2(t)=d_c(high)) implies globally[0,15](IL8(t) < c(mid))",0.28685248,2
+N/A,N/A,N/A,N/A,N/A,N/A,0

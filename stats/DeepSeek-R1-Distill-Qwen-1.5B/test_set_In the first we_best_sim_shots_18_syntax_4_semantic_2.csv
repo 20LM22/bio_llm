@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[1, ∞](RANTES(t) > c(high)) and d_RANTES(t) < d_c(low)",0.4645047,"globally[1, ∞](RANTES(t) > c(high)) and d_RANTES(t) < d_c(low)",0.4645047,"globally[1, ∞](RANTES(t) > c(high)) and d_RANTES(t) < d_c(low)",0.4645047,0
+"globally[12,13](IL1RN(t)=c(mid)) and IFNα(t) > c(mid)",0.33861393,"globally[12,13](IL1RN(t)=c(mid)) and IFNα(t) > c(mid)",0.33861393,"globally[1,4](d_RANTES(t)=d_c(low) and IL1Ra(t) > c(mid))",0.4654591,1
+"eventually[1,∞]globally(RANTES(t)=c(high))",0.4299772,"eventually[1,∞]globally(RANTES(t)=c(high))",0.4299772,"eventually[1,∞]globally(RANTES(t)=c(high))",0.4299772,0
+"globally[8,20](IFNβ(t) < c(mid)) implies globally[16,∞](d_IL6(t) < 0)",0.2557116,"eventually[1, ∞]globally(d_IL1β(t) > c(high))",0.3016668,"RANTES(t) > c(low) and globally[1,∞](d_RANTES(t) < d_c(high)) and RANTES(t) > c(mid)",0.5568124,2
+"globally[1, ∞](d_RANTES(t) > d_c(high)) implies globally[17, ∞](d_RANTES(t) = c(high))",0.42078537,"globally[1, ∞](d_RANTES(t) > d_c(high)) implies globally[17, ∞](d_RANTES(t) = c(high))",0.42078537,"globally[1, ∞](d_RANTES(t) > d_c(high)) implies globally[17, ∞](d_RANTES(t) = c(high))",0.42078537,0
+"globally[1,4](RANTES(t) > c(low))",0.48695612,"globally[1,3](RANTES(t) > c(mid)) and globally[1,4](RANTES(t) > c(mid))",0.5822421,"globally[1,3](RANTES(t) > c(mid)) and globally[1,4](RANTES(t) > c(mid))",0.5822421,2
+d_RANTES(t) > c(high) and d_RANTES(t) > c(low),0.4555775,d_RANTES(t) > c(high) and d_RANTES(t) > c(low),0.4555775,d_RANTES(t) > c(high) and d_RANTES(t) > c(low),0.4555775,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[1,4](d_RANTES(t) > c(high) implies d_RANTES(t)=c(high))",0.5409746,"globally[1,4](d_RANTES(t) > c(high) implies d_RANTES(t)=c(high))",0.5409746,"globally[1,4](d_RANTES(t) > c(high) implies d_RANTES(t)=c(high))",0.5409746,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"eventually[7,20](IL12(t) > c(low) and SARSCoV2(t) < c(low))",0.25447765,RANTES(t) > c(high) implies SARSCoV2(t) < c(mid),0.47357145,RANTES(t) > c(high) implies SARSCoV2(t) < c(mid),0.47357145,2
+"globally[1,∞](d_RANTES(t) > c(high))",0.43508053,"eventually[1,4](RANTES(t) > c(high))",0.4906596,"eventually[1,4](RANTES(t) > c(high))",0.4906596,2
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"eventually[1,∞]globally(d_RANTES(t)=c(low) implies d_RANTES(t)=d_c(low)) and eventually[4,∞](RANTES(t)=c(high))",0.48584294,"eventually[1,∞]globally(d_RANTES(t)=c(low) implies d_RANTES(t)=d_c(low)) and eventually[4,∞](RANTES(t)=c(high))",0.48584294,"eventually[1,∞]globally(d_RANTES(t)=c(low) implies d_RANTES(t)=d_c(low)) and eventually[4,∞](RANTES(t)=c(high))",0.48584294,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[2,4](IFNα(t)=c(mid) implies d_IFNα(t) < d_c(low))",0.25304726,"globally[1,∞](RANTES(t) < c(high))",0.44901055,"globally[1,∞](RANTES(t) < c(high))",0.44901055,2

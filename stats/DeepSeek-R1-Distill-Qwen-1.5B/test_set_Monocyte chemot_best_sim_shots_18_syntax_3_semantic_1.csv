@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improvements (relative to start)
+N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,0
+"IL6(t) > c(mid) and eventually[0,∞]globally(IL8(t)=c(low))",0.123295486,"IL6(t) > c(mid) and eventually[0,∞]globally(IL8(t)=c(low))",0.123295486,0
+N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,0
+"eventually[15,∞]globally(IL1β(t) > c(low))",0.26070887,"eventually[15,∞]globally(IL1β(t) > c(low))",0.26070887,0
+N/A,N/A,N/A,N/A,0
+IFNβ(t) > c(low) implies d_CCR2(t) = c(mid),0.34960464,IFNβ(t) > c(low) implies d_CCR2(t) = c(mid),0.34960464,0
+N/A,N/A,N/A,N/A,0
+d_CCL2(t) > d_c(high) implies IL1RN(t)=c(mid) and CCR2(t) = c(mid),0.37931395,d_CCL2(t) > d_c(high) implies IL1RN(t)=c(mid) and CCR2(t) = c(mid),0.37931395,0
+"globally[1, ∞](d_CCL2(t)=d_c(low) implies d_CCR2(t) > d_c(low))",0.27376398,"globally[1, ∞](d_CCL2(t)=d_c(low) implies d_CCR2(t) > d_c(low))",0.27376398,0
+d_CCL2(t) < c(high) and d_CCR2(t) < c(low) implies CCR2(t)=c(mid),0.42693406,d_CCL2(t) < c(high) and d_CCR2(t) < c(low) implies CCR2(t)=c(mid),0.42693406,0
+"eventually[15,∞]globally(IL1β(t) > c(low)) implies eventually[7,∞]globally(IL8(t) > c(mid))",0.22726285,"eventually[15,∞]globally(IL1β(t) > c(low)) implies eventually[7,∞]globally(IL8(t) > c(mid))",0.22726285,0
+N/A,N/A,N/A,N/A,0
+d_CCL2(t) = d_c(low) implies d_CCR2(t) = c(high),0.35143396,d_CCL2(t) = d_c(low) implies d_CCR2(t) = c(high),0.35143396,0
+N/A,N/A,N/A,N/A,0
+"globally[15,∞](d_IL8(t) = 0)",0.111500464,"globally[15,∞](d_IL8(t) = 0)",0.111500464,0
+"eventually[1, ∞](d_TNFα(t) < c(mid))",0.1315659,"eventually[1, ∞](d_TNFα(t) < c(mid))",0.1315659,0

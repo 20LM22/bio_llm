@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+IL1Ra(t) < c(high) implies IL6(t) < c(high),0.29155874,IL1Ra(t) < c(high) implies IL6(t) < c(high),0.29155874,IL1Ra(t) < c(high) implies IL6(t) < c(high),0.29155874,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+IL6(t)=c(high) implies IL12(t) > c(high),0.24013773,IL6(t)=c(high) implies IL12(t) > c(high),0.24013773,IL6(t)=c(high) implies IL12(t) > c(high),0.24013773,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[12,13](IL1RN(t)=c(mid) and IL1β(t) > c(low))",0.34758204,"globally[12,13](IL1RN(t)=c(mid) and IL1β(t) > c(low))",0.34758204,"globally[2,∞](d_TNFα(t) = c(high) and d_SARSCoV2(t) = c(high)) and eventually[2,∞](d_TNFα(t) < d_c(low) and d_SARSCoV2(t) < d_c(low))",0.50909424,1
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"d_MERSCoV(t) = d_c(high) and eventually[2,∞]globally(d_IL6(t) < c(high) and d_SARSCoV(t) > c(low))",0.4744457,"d_MERSCoV(t) = d_c(high) and eventually[2,∞]globally(d_IL6(t) < c(high) and d_SARSCoV(t) > c(low))",0.4744457,"d_TNFα(t) < d_c(low) and eventually[6,11](SARSCoV2(t) > c(high) implies TNFα(t) < c(high))",0.50702786,1
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"eventually[2,∞]globally(d_IL6(t)=d_c(low) and d_IL12(t)=d_c(low)) and IL6(t)=c(mid) and IL1RN(t)=c(high)",0.27122286,"eventually[2,∞]globally(d_IL6(t)=d_c(low) and d_IL12(t)=d_c(low)) and IL6(t)=c(mid) and IL1RN(t)=c(high)",0.27122286,IL6(t) > c(mid) and IL1β(t) > c(mid),0.30340225,1
+"eventually[2, ∞]globally(IL1Ra(t) > c(high) and IL1β(t) < c(low))",0.39830434,"eventually[2, ∞]globally(IL1Ra(t) > c(high) and IL1β(t) < c(low))",0.39830434,"eventually[2, ∞]globally(IL1Ra(t) > c(high) and IL1β(t) < c(low))",0.39830434,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+d_MERSCoV(t) = c(high) and d_SARSCoV(t) = c(high),0.39706808,d_MERSCoV(t) = c(high) and d_SARSCoV(t) = c(high),0.39706808,d_MERSCoV(t) = c(high) and d_SARSCoV(t) = c(high),0.39706808,0
+"globally[2,∞](IL12(t)=c(high) and IL1β(t)=c(high))",0.37618434,"globally[2,∞](IL12(t)=c(high) and IL1β(t)=c(high))",0.37618434,"globally[2,∞](d_IL1Ra(t) > d_c(high) implies d_SARSCoV2(t) < d_c(low))",0.40033466,1

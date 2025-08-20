@@ -1,0 +1,22 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[0,∞](RANTES(t) = c(low))",0.5066289,"globally[0,∞](RANTES(t) = c(low))",0.5066289,"globally[0,∞](RANTES(t) = c(low))",0.5066289,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"eventually[∞,∞]globally(d_RANTES(t)=d_c(low))",0.353243,"globally[11,17](RANTES(t) > c(low)) and d_RANTES(t) < d_c(high) implies RANTES(t)=c(low)",0.5386803,"globally[11,17](RANTES(t) > c(low)) and d_RANTES(t) < d_c(high) implies RANTES(t)=c(low)",0.5386803,2
+IL17(t) < c(low) and d_RANTES(t) = d_c(low),0.4003777,IL17(t) < c(low) and d_RANTES(t) = d_c(low),0.4003777,IL17(t) < c(low) and d_RANTES(t) = d_c(low),0.4003777,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+d_IFNβ(t) < d_c(low) implies d_IFNβ(t)=d_c(high),0.03322418,"eventually[14,∞]globally(d_IL1β(t) = d_c(high)) and IL1β(t) > c(mid)",0.25265494,"eventually[14,∞]globally(d_IL1β(t) = d_c(high)) and IL1β(t) > c(mid)",0.25265494,2
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+d_RANTES(t)=0 implies d_IL1Ra(t) < d_c(low) and d_TNFα(t) < d_c(high),0.36021948,d_RANTES(t) = c(low) implies RANTES(t) < c(mid),0.60673314,d_RANTES(t) = c(low) implies RANTES(t) < c(mid),0.60673314,2
+d_RANTES(t) = c(low),0.5778152,d_RANTES(t) = c(low),0.5778152,d_RANTES(t) = c(low),0.5778152,0
+"eventually[6,∞](RANTES(t)=c(mid))",0.54481107,"eventually[6,∞](RANTES(t)=c(mid))",0.54481107,"eventually[6,∞](RANTES(t)=c(mid))",0.54481107,0
+"globally[0,∞](d_RANTES(t) < c(low))",0.50412047,"globally[0,∞](d_RANTES(t) < c(low))",0.50412047,"globally[0,∞](d_RANTES(t) < c(high) implies d_RANTES(t)=c(mid))",0.6027743,1
+"globally[15,∞](RANTES(t)=c(mid))
+",0.48199922,"globally[15,∞](RANTES(t)=c(mid))
+",0.48199922,"globally[15,∞](RANTES(t)=c(mid))
+",0.48199922,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0

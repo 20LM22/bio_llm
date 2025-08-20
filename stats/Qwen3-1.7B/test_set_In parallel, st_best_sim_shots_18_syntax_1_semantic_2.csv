@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
+"eventually[0,∞]globally(d_IFNα(t) < d_c(low))",0.36862558,"eventually[0,∞]globally(d_IFNα(t) < d_c(low))",0.36862558,"eventually[0,∞]globally(d_IFNα(t) < d_c(low))",0.36862558,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"eventually[0,∞]globally(CpG2216(t) > c(low)) and eventually[0,∞]globally(IFNα(t) < c(mid))",0.52726793,"eventually[0,∞]globally(CpG2216(t) > c(low)) and eventually[0,∞]globally(IFNα(t) < c(mid))",0.52726793,"eventually[0,∞]globally(CpG2216(t) > c(low)) and eventually[0,∞]globally(IFNα(t) < c(mid))",0.52726793,0
+"eventually[0,∞]globally(IFNα(t) < c(mid) and IFNβ(t) < c(mid))",0.35991886,"eventually[0,∞]globally(IFNα(t) < c(mid) and IFNβ(t) < c(mid))",0.35991886,"eventually[0,∞]globally(IFNα(t) < c(mid) and IFNβ(t) < c(mid))",0.35991886,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+d_CpG2216(t) < d_c(low) implies IL1β(t) = c(low),0.4954067,d_CpG2216(t) < d_c(low) implies IL1β(t) = c(low),0.4954067,d_CpG2216(t) < d_c(low) implies IL1β(t) = c(low),0.4954067,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+CpG2216(t) < c(low),0.49068326,CpG2216(t) < c(low),0.49068326,CpG2216(t) < c(low),0.49068326,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"eventually[0,∞](d_CpG2216(t) > d_c(low)) and IL6(t) < c(mid) and IL12(t) < c(mid) and IL1β(t) < c(mid)",0.46786982,"eventually[0,∞](d_CpG2216(t) > d_c(low)) and IL6(t) < c(mid) and IL12(t) < c(mid) and IL1β(t) < c(mid)",0.46786982,"eventually[0,∞](d_CpG2216(t) > d_c(low)) and IL6(t) < c(mid) and IL12(t) < c(mid) and IL1β(t) < c(mid)",0.46786982,0
+"eventually[0,∞](CpG2216(t) < c(low))",0.40336353,"eventually[0,∞](CpG2216(t) < c(low))",0.40336353,"eventually[0,∞](CpG2216(t) < c(low))",0.40336353,0
+N/A,N/A,N/A,N/A,N/A,N/A,0

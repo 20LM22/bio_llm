@@ -1,0 +1,6 @@
+S0-F0,S0-F0 sim,S0-F1,S0-F1 sim,S0-F2,S0-F2 sim,S0-F3,S0-F3 sim,S1-F0,S1-F0 sim,S1-F1,S1-F1 sim,S1-F2,S1-F2 sim,S1-F3,S1-F3 sim,S2-F0,S2-F0 sim,S2-F1,S2-F1 sim,S2-F2,S2-F2 sim,S2-F3,S2-F3 sim
+0.46007285,d_IL6(t) = d_c(low) and d_IL8(t) = d_c(low) and d_TNFα(t) = d_c(low),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+N/A,N/A,N/A,N/A,N/A,N/A,0.38811237,"globally[8,18](d_IL6(t) < c(low) and d_IL8(t) < c(mid))",0.47376567,IL6(t)=c(high) implies IFNβ(t)=c(low) and IL8(t)=c(high) implies IFNα(t)=c(low) and TNFα(t)=c(high) implies IL1β(t)=c(low),N/A,N/A,N/A,N/A,N/A,N/A,0.53140503,IL6(t)=c(low) and d_TNFα(t) > d_c(low) and IL8(t)=c(low),N/A,N/A,N/A,N/A,N/A,N/A
+N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+N/A,N/A,N/A,N/A,N/A,N/A,0.3563037,"globally[1,7](IL6(t) > c(low) and IL8(t) > c(low))",0.53305167,IL6(t)=c(high) and IL8(t)=c(high) and d_TNFα(t)=d_c(high),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A

@@ -1,0 +1,53 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
+"eventually[2,4]globally(d_IP10(t) < c(low)) and d_IP10(t)=c(low)",0.68257576,"eventually[2,4]globally(d_IP10(t) < c(low)) and d_IP10(t)=c(low)",0.68257576,"eventually[2,4]globally(d_IP10(t) < c(low)) and d_IP10(t)=c(low)",0.68257576,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"eventually[2,4](IP10(t) > c(low))",0.6742896,"eventually[2,4](IP10(t) > c(low))",0.6742896,"eventually[2,4](IP10(t) > c(low))",0.6742896,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[2,4](IP10(t) < c(low)) implies eventually[0,∞] globally(d_IP10(t) > 0)",0.52658486,"globally[2,4](IP10(t) < c(low)) implies eventually[0,∞] globally(d_IP10(t) > 0)",0.52658486,"globally[2,4](IP10(t) < c(low)) implies eventually[0,∞] globally(d_IP10(t) > 0)",0.52658486,0
+IL12(t)=c(mid) implies d_IFNβ(t)=d_c(high),0.38949257,IL12(t)=c(mid) implies d_IFNβ(t)=d_c(high),0.38949257,IL12(t)=c(mid) implies d_IFNβ(t)=d_c(high),0.38949257,0
+IL6(t) < c(high),0.36959878,IL6(t) < c(high),0.36959878,IL6(t) < c(high),0.36959878,0
+"eventually[2,4](IP10(t) > c(mid))",0.6689005,"eventually[2,4](IP10(t) > c(mid))",0.6689005,"eventually[2,4](IP10(t) > c(mid))",0.6689005,0
+d_IL1Ra(t) < 0 implies SARSCoV2(t) > c(low),0.33606708,"globally[2,4](d_IP10(t) = c(low)) implies eventually[7,∞](IL8(t)=c(mid))",0.61372644,"globally[2,4](d_IP10(t) = c(low)) implies eventually[7,∞](IL8(t)=c(mid))",0.61372644,2
+"eventually[2,4](d_IP10(t) < c(low)) and globally[2,4](d_IP10(t) > d_c(low))",0.56790835,"eventually[2,4](d_IP10(t) < c(low)) and globally[2,4](d_IP10(t) > d_c(low))",0.56790835,"eventually[2,4](d_IP10(t) < c(low)) and globally[2,4](d_IP10(t) > d_c(low))",0.56790835,0
+"eventually[2,4](IP10(t)=c(low))",0.6806438,"eventually[2,4](IP10(t)=c(low))",0.6806438,"eventually[2,4](IP10(t)=c(low))",0.6806438,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[2,4](d_IP10(t) < c(low))",0.67078876,"eventually[2,4](d_IP10(t) < c(low))",0.68806994,"eventually[2,4](d_IP10(t) < c(low))",0.68806994,2
+d_IP10(t)=c(low) implies d_IP10(t)=c(high),0.59419155,d_IP10(t)=c(low) implies d_IP10(t)=c(high),0.59419155,d_IP10(t)=c(low) implies d_IP10(t)=c(high),0.59419155,0
+"eventually[2,4]globally(IL1Ra(t)=c(low))",0.474885,"eventually[2,4]globally(IL1Ra(t)=c(low))",0.474885,"eventually[2,4]globally(IL1Ra(t)=c(low))",0.474885,0
+d_IL12(t) < d_c(low),0.3486879,d_IL12(t) < d_c(low),0.3486879,d_IL12(t) < d_c(low),0.3486879,0
+"globally[2,4](d_IP10(t) < d_c(high))",0.5089773,"globally[2,4](d_IP10(t) < d_c(high))",0.5089773,"globally[2,4](d_IP10(t) < d_c(high))",0.5089773,0
+"globally[2,4](IP10(t) > c(low))",0.65620965,"globally[2,4](IP10(t) > c(low))",0.65620965,"eventually[2,4]globally(d_IP10(t)=c(low) and d_IP10(t)=c(high))",0.66316736,1
+d_IFNα(t) < d_c(high) implies TNFα(t) < c(low),0.36658698,"eventually[2,4]globally(d_IL1Ra(t) < d_c(low))",0.37611753,IL12(t) < c(mid) implies d_IFNβ(t)=d_c(low),0.41022772,2
+"globally[2,∞](d_IL1β(t) < d_c(high))",0.4099337,"globally[2,∞](d_IL1β(t) < d_c(high))",0.4099337,"globally[2,∞](d_IL1β(t) < d_c(high))",0.4099337,0
+IL1RN(t) < c(low) and d_IL1β(t) > 0,0.3932507,IL1RN(t) < c(low) and d_IL1β(t) > 0,0.3932507,IL1RN(t) < c(low) and d_IL1β(t) > 0,0.3932507,0
+"globally[11,17](SARSCoV2(t) > c(mid))",0.42841038,"eventually[8,15]globally(IFNβ(t)=c(high) implies IL1β(t) > c(high))",0.46438798,"eventually[8,15]globally(IFNβ(t)=c(high) implies IL1β(t) > c(high))",0.46438798,2
+"eventually[2,4]globally(d_IP10(t)=c(low))",0.6740235,"eventually[2,4]globally(d_IP10(t)=c(low))",0.6740235,"eventually[2,4]globally(d_IP10(t)=c(low))",0.6740235,0
+"globally[2,4](IP10(t) < c(low))",0.67078876,"globally[2,4](IP10(t) < c(low))",0.67078876,"globally[2,4](IP10(t) < c(low))",0.67078876,0
+"eventually[15,19]globally(d_IL6(t) < 0 and d_SARSCoV2(t) < d_c(low))
+",0.32687575,"eventually[15,19]globally(d_IL6(t) < 0 and d_SARSCoV2(t) < d_c(low))
+",0.32687575,"globally[2,4](d_IP10(t) = 0)",0.5353892,1
+"IL8(t) < c(low) and globally[6,15](d_IL1β(t) > d_c(high)) and IL1β(t) > c(mid)",0.4470681,"IL8(t) < c(low) and globally[6,15](d_IL1β(t) > d_c(high)) and IL1β(t) > c(mid)",0.4470681,"IL8(t) < c(low) and globally[6,15](d_IL1β(t) > d_c(high)) and IL1β(t) > c(mid)",0.4470681,0
+IP10(t) < c(low),0.61472,IP10(t) < c(low),0.61472,IP10(t) < c(low),0.61472,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"eventually[2,4]globally(d_IP10(t) < d_c(low))",0.5328248,"eventually[2,4]globally(d_IP10(t) < d_c(low))",0.5328248,"eventually[2,4]globally(d_IP10(t) < d_c(low))",0.5328248,0
+"eventually[2,4]globally(IL1Ra(t) > c(mid))",0.4918976,"eventually[2,4]globally(IL1Ra(t) > c(mid))",0.4918976,"eventually[2,4]globally(IL1Ra(t) > c(mid))",0.4918976,0
+"eventually[2,4](d_IP10(t) < c(low) implies d_IP10(t)=c(low))",0.68841326,"eventually[2,4](d_IP10(t) < c(low) implies d_IP10(t)=c(low))",0.68841326,"eventually[2,4](d_IP10(t) < c(low) implies d_IP10(t)=c(low))",0.68841326,0
+"globally[2,4](IP10(t) < c(low)) and d_IP10(t) = d_c(low)",0.5950874,"globally[2,4](IP10(t) < c(low)) and d_IP10(t) = d_c(low)",0.5950874,"globally[2,4](IP10(t) < c(low)) and d_IP10(t) = d_c(low)",0.5950874,0
+"globally[2,4](d_IP10(t) < c(low))",0.67078876,"globally[2,4](d_IP10(t) < c(low))",0.67078876,"globally[2,4](d_IP10(t) < c(low))",0.67078876,0
+"eventually[2,4]globally(d_IP10(t)=d_c(high))",0.5229181,"eventually[2,4]globally(d_IP10(t)=d_c(high))",0.5229181,"eventually[2,4]globally(d_IP10(t)=d_c(high))",0.5229181,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"IL6(t) < c(mid) and d_IL6(t) < d_c(low) and globally[15,∞](d_IL1β(t) > d_c(high) implies d_IL1β(t) < 0)",0.4029368,"IL6(t) < c(mid) and d_IL6(t) < d_c(low) and globally[15,∞](d_IL1β(t) > d_c(high) implies d_IL1β(t) < 0)",0.4029368,"IL6(t) < c(mid) and d_IL6(t) < d_c(low) and globally[15,∞](d_IL1β(t) > d_c(high) implies d_IL1β(t) < 0)",0.4029368,0
+"globally[2,∞](d_IP10(t) < d_c(high))",0.499203,"globally[2,∞](d_IP10(t) < d_c(high))",0.499203,"globally[2,∞](d_IP10(t) < d_c(high))",0.499203,0
+"globally[2,∞](IP10(t) < c(low))",0.65335,"globally[2,∞](IP10(t) < c(low))",0.65335,"globally[2,∞](IP10(t) < c(low))",0.65335,0
+"globally[2,4](d_IL12(t) < d_c(low))",0.4035359,"globally[2,∞](d_IP10(t) < d_c(high) and IL1Ra(t)=c(mid))",0.54396486,"globally[2,∞](d_IP10(t) < d_c(high) and IL1Ra(t)=c(mid))",0.54396486,2
+"eventually[2,4](IP10(t)=c(mid))",0.6732741,"eventually[2,4](IP10(t)=c(mid))",0.6732741,"eventually[2,4](IP10(t)=c(mid))",0.6732741,0
+"globally[2,4](d_IP10(t) < c(low))",0.67078876,"globally[2,4](d_IP10(t) < c(low))",0.67078876,"globally[2,4](d_IP10(t) < c(low))",0.67078876,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[7,16](d_IP10(t) < d_c(low) implies IP10(t)=c(high))",0.5645238,"globally[7,16](d_IP10(t) < d_c(low) implies IP10(t)=c(high))",0.5645238,"globally[7,16](d_IP10(t) < d_c(low) implies IP10(t)=c(high))",0.5645238,0
+"eventually[6,11](d_SARSCoV2(t) > 0 and TNFα(t)=c(low))",0.40571916,"globally[2,4](IP10(t) < c(low)) and d_IP10(t) = d_c(low)",0.5950874,"globally[2,4](IP10(t) < c(low)) and d_IP10(t) = d_c(low)",0.5950874,2
+"globally[2,4](IP10(t) < c(low))",0.67078876,"globally[2,4](IP10(t) < c(low))",0.67078876,"globally[2,4](IP10(t) < c(low))",0.67078876,0
+"globally[2,4](d_IP10(t) = c(mid))",0.65194046,"globally[2,4](d_IP10(t) = c(mid))",0.65194046,"globally[2,4](d_IP10(t) = c(mid))",0.65194046,0
+"eventually[2,4](d_IP10(t)=d_c(low)) implies globally[0,∞](IP10(t) < c(mid))",0.56491995,"eventually[2,4](d_IP10(t)=d_c(low)) implies globally[0,∞](IP10(t) < c(mid))",0.56491995,"eventually[2,4](d_IP10(t)=d_c(low)) implies globally[0,∞](IP10(t) < c(mid))",0.56491995,0
+"eventually[3,16]globally(d_SARSCoV2(t)=0)",0.29059333,"eventually[3,16]globally(d_SARSCoV2(t)=0)",0.29059333,"eventually[3,16]globally(d_SARSCoV2(t)=0)",0.29059333,0

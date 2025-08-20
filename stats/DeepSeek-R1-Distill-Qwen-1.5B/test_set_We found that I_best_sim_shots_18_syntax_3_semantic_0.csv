@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Number of improvements (relative to start)
+N/A,N/A,0
+N/A,N/A,0
+N/A,N/A,0
+IL6(t) > c(low) implies d_IL6(t) < d_c(low),0.30539322,0
+IL6(t) > c(mid) implies SARSCoV2(t) < c(high),0.40653083,0
+IL6(t) > c(mid) implies IL8(t) > c(mid) and IL6(t) > c(mid) implies TNFα(t) > c(mid),0.5416653,0
+N/A,N/A,0
+IL6(t)=c(low) and IL8(t)=c(low) and TNFα(t)=c(low),0.5468704,0
+"IL6(t) > c(mid) and eventually[0,∞]globally(d_IFNβ(t) < d_c(high) and IL8(t)=c(low))",0.3738417,0
+IL6(t) > c(high) implies IL1Ra(t)=c(high),0.35115278,0
+"eventually[7,16](IFNβ(t)=c(mid))",0.14767689,0
+"IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high) and globally[0,∞](d_IL6(t)=0) and globally[0,∞](d_IL8(t)=0) and globally[0,∞](d_TNFα(t)=0)",0.5038777,0
+N/A,N/A,0
+N/A,N/A,0
+N/A,N/A,0
+"IL6(t)=c(mid) implies IL1β(t) > c(low) and globally[1,∞](d_IL6(t)=d_c(low) and d_TNFα(t)=d_c(low))",0.47552162,0
+N/A,N/A,0
+IL6(t)=c(high) and IL8(t)=c(high) and TNFα(t)=c(high),0.550159,0

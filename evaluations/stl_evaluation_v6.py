@@ -112,7 +112,7 @@ total_success_rate['Number of Syntactically Correct Translations'] = total_succe
 total_success_rate['Semantic Success Rate'] = total_success_rate['Semantic Passes'] / total_success_rate['Number of Syntactically Correct Translations']
 
 stats = pandas.concat([success_rate, total_success_rate], ignore_index=True)
-stats.to_csv(f'../stats/{model_name}/stats_shots_{shots}_syntax_{syntaxs}_semantic_{semantics}.csv', index=False)
+stats.to_csv(f'../stats/{model_name}/test_set_stats_shots_{shots}_syntax_{syntaxs}_semantic_{semantics}.csv', index=False)
 
 #######################################################################################################################
 # TODO: Table where rows are shots and each table belongs to one sentence: report cosine sim. and stl of ALL attempts
@@ -178,7 +178,7 @@ shot_count = params['num_shots_per_input_sentence']
 semantic_count = params['num_semantic_checks']+1
 syntax_count = params['num_correction_attempts_per_shot']+1
 
-improvements_all_sentences = pandas.DataFrame(columns=['Sentence','Improvements'])
+improvements_all_sentences = pandas.DataFrame(columns=['Sentence'])
 
 # for each row - sentence in the df
 for (index, row) in translations.iterrows():
@@ -206,15 +206,8 @@ for (index, row) in translations.iterrows():
         best_sim = None
         done_with_semantic_attempt = False
         first_time = True
-        
-        # print(f'row subset is: {row_subset}')
-        
+
         for _id, entry in enumerate(row_subset):
-            # print(f'len(row_subset): {len(row_subset)}')
-            # print(f'row_subset: {row_subset}')
-            # print(f'count_inside_semantic_attempt: {count_inside_semantic_attempt}')
-            # print(f'syntax_count: {syntax_count}')
-            # count_semantic_attempts = 0
             # just keep counting by multiples of semantic attempts
             if count_inside_semantic_attempt < syntax_count:
                 # get the embedding of each entry
@@ -239,46 +232,89 @@ for (index, row) in translations.iterrows():
                 count_inside_semantic_attempt = 0
                 r_stl = 'N/A' if first_time else best_stl
                 r_sim = 'N/A' if first_time else best_sim
-                # print(f'i: {i}')
-                # print(f'count_semantic_attempts: {count_semantic_attempts}')
                 # done with semantic attempt, need to process this as an entry for this new row
                 new_row.loc[i, f'Semantic attempt {count_semantic_attempts}'] = r_stl
                 new_row.loc[i, f'Semantic attempt {count_semantic_attempts} sim'] = r_sim
-                # print(f'new_row: {new_row}')
                 count_semantic_attempts += 1
 
         sentence_table = pandas.concat([sentence_table, new_row], ignore_index=False)
-        # print(f'sentence_table: {sentence_table}')
-    # back at the sentence level
-    # print(f'sentence: {row['input statement']}')
-    sentence_table['Number of improvements (relative to start)'] = 0
-    print(f'sentence table: {sentence_table}')
 
+    # back at the sentence level
+    number_of_times_semantic_feedback_portion_reached = 0
+    for col in translations.columns:
+        if f'STL-shot{index}-S1-F0' in col:
+
+            print(f"shot is: {index}")
+            # for these columns, a None indicates that semantic feedback was never even reached
+            if translations.loc[index, col] is not None:  # each row could have a max of nz times that this is true
+                print(f"translation is: {translations.loc[index, col]}")
+                number_of_times_semantic_feedback_portion_reached += 1
+
+    sentence_table['Number of improving translations (relative to initial result)'] = 0
+    sentence_table['Number of worsening translations (relative to initial result)'] = 0
+    sentence_table['Number of consistent translations (relative to initial result)'] = 0
+
+    # print(f'sentence table: {sentence_table}')
     for d, r in sentence_table.iterrows():
         for i in range(params['num_semantic_checks']): # TODO: need to get the number of semantic attempts from params
-            condition = False
-            if sentence_table.loc[d, f'Semantic attempt {i+1}'] == 'N/A' or sentence_table.loc[d, f'Semantic attempt {i+1}'] is None:
-                condition = False
-            elif (sentence_table.loc[d, f'Semantic attempt 0'] == 'N/A' or sentence_table.loc[d, f'Semantic attempt 0'] is None ) and (sentence_table.loc[d, f'Semantic attempt {i+1}'] != 'N/A'):
-                condition = True
-            elif (sentence_table.loc[d, f'Semantic attempt 0'] == 'N/A') and (sentence_table.loc[d, f'Semantic attempt {i+1}'] == 'N/A'):
-                condition = False
+            pos_condition = False
+            neg_condition = False
+            eq_condition = False
+
+            if (sentence_table.loc[d, f'Semantic attempt 0'] == 'N/A' or sentence_table.loc[d, f'Semantic attempt 0'] is None ) and (sentence_table.loc[d, f'Semantic attempt {i+1}'] == 'N/A' or sentence_table.loc[d, f'Semantic attempt {i+1}'] is None ):
+                pos_condition = False
+                neg_condition = False
+                eq_condition = True
+            elif (sentence_table.loc[d, f'Semantic attempt 0'] == 'N/A' or sentence_table.loc[d, f'Semantic attempt 0'] is None ) and (sentence_table.loc[d, f'Semantic attempt {i+1}'] != 'N/A' and sentence_table.loc[d, f'Semantic attempt {i+1}'] is not None):
+                pos_condition = True
+                neg_condition = False
+                eq_condition = False
+            elif (sentence_table.loc[d, f'Semantic attempt {i+1}'] == 'N/A' or sentence_table.loc[d, f'Semantic attempt {i+1}'] is None ) and (sentence_table.loc[d, f'Semantic attempt 0'] != 'N/A' and sentence_table.loc[d, f'Semantic attempt 0'] is not None):
+                pos_condition = False
+                neg_condition = True
+                eq_condition = False
             elif sentence_table.loc[d, f'Semantic attempt {i+1} sim'] > sentence_table.loc[d, f'Semantic attempt 0 sim']:
-                condition = True
+                pos_condition = True
+                neg_condition = False
+                eq_condition = False
+            elif sentence_table.loc[d, f'Semantic attempt {i+1} sim'] < sentence_table.loc[d, f'Semantic attempt 0 sim']:
+                pos_condition = False
+                neg_condition = True
+                eq_condition = False
+            elif sentence_table.loc[d, f'Semantic attempt {i+1} sim'] == sentence_table.loc[d, f'Semantic attempt 0 sim']:
+                pos_condition = False
+                neg_condition = False
+                eq_condition = True
+            else:
+                raise Exception("no cases found")
 
-            sentence_table.loc[d, 'Number of improvements (relative to start)'] += 1 if condition else 0
+            sentence_table.loc[d, 'Number of improving translations (relative to initial result)'] += 1 if pos_condition else 0
+            sentence_table.loc[d, 'Number of worsening translations (relative to initial result)'] += 1 if neg_condition else 0
+            sentence_table.loc[d, 'Number of consistent translations (relative to initial result)'] += 1 if eq_condition else 0
 
+    # print(f'sentence table: {sentence_table}')
     short_sentence_name = row['input statement'][:15]
     sentence_table.to_csv(f'../stats/{model_name}/{short_sentence_name}_best_sim_shots_{shots}_syntax_{syntaxs}_semantic_{semantics}.csv', index=False)
 
-    improvements_all_sentences.loc[index, 'Sentence'] = row['input statement']
-    improvements_all_sentences.loc[index, 'Improvements'] = sentence_table['Number of improvements (relative to start)'].sum()
+    # added bit for times we don't even get a chance at a semantic attempt
+    improvements_all_sentences.loc[index, 'Number of Times Semantic Feedback Portion Reached'] = number_of_times_semantic_feedback_portion_reached
 
-overall = pandas.DataFrame(columns=['Sentence', 'Improvements'])
+    improvements_all_sentences.loc[index, 'Sentence'] = row['input statement']
+    improvements_all_sentences.loc[index, 'Number of improving translations (relative to initial result) across all attempts'] = sentence_table['Number of improving translations (relative to initial result)'].sum()
+    improvements_all_sentences.loc[index, 'Number of worsening translations (relative to initial result) across all attempts'] = sentence_table['Number of worsening translations (relative to initial result)'].sum()
+    improvements_all_sentences.loc[index, 'Number of consistent translations (relative to initial result) across all attempts'] = sentence_table['Number of consistent translations (relative to initial result)'].sum()
+
+overall = pandas.DataFrame(columns=['Sentence', 'Number of improving translations (relative to initial result) across all attempts', 'Number of worsening translations (relative to initial result) across all attempts', 'Number of consistent translations (relative to initial result) across all attempts'])
 overall.loc[0, 'Sentence'] = 'Overall'
-overall.loc[0, 'Improvements'] = improvements_all_sentences['Improvements'].sum()
+overall.loc[0, 'Number of improving translations (relative to initial result) across all attempts'] = improvements_all_sentences['Number of improving translations (relative to initial result) across all attempts'].sum()
+overall.loc[0, 'Number of worsening translations (relative to initial result) across all attempts'] = improvements_all_sentences['Number of worsening translations (relative to initial result) across all attempts'].sum()
+overall.loc[0, 'Number of consistent translations (relative to initial result) across all attempts'] = improvements_all_sentences['Number of consistent translations (relative to initial result) across all attempts'].sum()
+
 improvements_all_sentences = pandas.concat([improvements_all_sentences, overall], ignore_index=False)
 improvements_all_sentences.to_csv(f'../stats/{model_name}/improvements_all_sentences_shots_{shots}_syntax_{syntaxs}_semantic_{semantics}.csv', index=False)
+# print(f'../stats/{model_name}/improvements_all_sentences_shots_{shots}_syntax_{syntaxs}_semantic_{semantics}.csv')
+
+## need to check that these columns add up to number of syntactically correct translations
 
 #######################################################################################################################
 # Table where sentences are rows: report the best cosine sim. for each shot and the corresponding STL

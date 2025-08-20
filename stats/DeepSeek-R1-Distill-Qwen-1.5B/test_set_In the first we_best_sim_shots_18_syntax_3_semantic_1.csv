@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improvements (relative to start)
+"eventually[1,3]globally(d_RANTES(t)=d_c(low)) and eventually[1,4](RANTES(t)=c(high))",0.4812942,"eventually[1,3]globally(d_RANTES(t)=d_c(low)) and eventually[1,4](RANTES(t)=c(high))",0.4812942,0
+"eventually[15,∞]globally(IL1β(t) > c(low))",0.30795392,"eventually[15,∞]globally(IL1β(t) > c(low))",0.30795392,0
+N/A,N/A,N/A,N/A,0
+"globally[1,∞](d_RANTES(t) > c(high))",0.43508053,"globally[1,∞](d_RANTES(t) > c(high))",0.43508053,0
+"globally[1,∞](d_RANTES(t) > c(low))",0.43509632,"globally[1,∞](d_RANTES(t) > c(low))",0.43509632,0
+RANTES(t) > c(low),0.43269897,RANTES(t) > c(low),0.43269897,0
+"globally[9,12](IFNα(t)=c(low))",0.34277174,"globally[9,12](IFNα(t)=c(low))",0.34277174,0
+"globally[1,∞](RANTES(t)=c(high))",0.4336001,"eventually[0,∞]globally(RANTES(t) > c(high)) and d_RANTES(t)=d_c(high)",0.4565454,1
+N/A,N/A,N/A,N/A,0
+SARSCoV2(t) < c(mid) and IL1Ra(t) > c(high) and IL12(t)=c(low) and d_IL12(t) < d_c(low),0.17338674,SARSCoV2(t) < c(mid) and IL1Ra(t) > c(high) and IL12(t)=c(low) and d_IL12(t) < d_c(low),0.17338674,0
+N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,0
+"eventually[0,3]globally(TNFα(t)=c(low)) and eventually[3,4]globally(TNFα(t)=c(low)) and globally[3,4](d_TNFα(t) > 0)",0.33325356,"eventually[0,3]globally(TNFα(t)=c(low)) and eventually[3,4]globally(TNFα(t)=c(low)) and globally[3,4](d_TNFα(t) > 0)",0.33325356,0
+N/A,N/A,N/A,N/A,0
+"eventually[1,∞]globally(d_RANTES(t)=0)",0.34719166,"eventually[1,∞]globally(d_RANTES(t)=0)",0.34719166,0
+N/A,N/A,N/A,N/A,0
+RANTES(t)=c(high),0.42984363,RANTES(t)=c(high),0.42984363,0
+"eventually[1,3]globally(IL1Ra(t) > c(high)) and eventually[1,4]globally(IL1Ra(t) > c(high))",0.24176487,"eventually[1,3]globally(IL1Ra(t) > c(high)) and eventually[1,4]globally(IL1Ra(t) > c(high))",0.24176487,0

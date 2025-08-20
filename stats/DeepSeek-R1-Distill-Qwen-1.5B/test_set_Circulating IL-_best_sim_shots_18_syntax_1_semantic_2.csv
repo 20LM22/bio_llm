@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
+IL1α(t) < c(low),0.674816,IL1α(t) < c(low),0.674816,IL1α(t) < c(low),0.674816,0
+"IL1α(t) < c(mid) and globally[18,∞](d_IL1α(t)=0)",0.61625636,"IL1α(t) < c(mid) and globally[18,∞](d_IL1α(t)=0)",0.61625636,"IL1α(t) < c(mid) and globally[18,∞](d_IL1α(t)=0)",0.61625636,0
+IL1α(t) = c(low),0.6308896,IL1α(t) = c(low),0.6308896,IL1α(t) = c(low),0.6308896,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+IL1α(t) = c(low),0.6308896,IL1α(t) < c(low),0.674816,IL1α(t) < c(low),0.674816,2
+"globally[0,∞](d_IL1α(t) < d_c(low))",0.5400111,"globally[0,∞](d_IL1α(t) < d_c(low))",0.5400111,d_IL1α(t) = c(low) and IL1α(t) < c(high),0.65621406,1
+d_IL1α(t) < c(low),0.674816,d_IL1α(t) < c(low),0.674816,d_IL1α(t) < c(low),0.674816,0
+IL1α(t) < c(low),0.674816,IL1α(t) < c(low),0.674816,IL1α(t) < c(low),0.674816,0
+IL1α(t)=c(low),0.6308896,IL1α(t)=c(low),0.6308896,IL1α(t)=c(low),0.6308896,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[1,∞](d_IL1α(t) = c(low))",0.5735836,d_IL1α(t) = c(low),0.6308896,d_IL1α(t) = c(low),0.6308896,2
+IL1α(t) < c(mid),0.66837406,IL1α(t) < c(mid),0.66837406,IL1α(t) < c(mid),0.66837406,0
+IL1α(t) < c(low),0.674816,IL1α(t) < c(low),0.674816,IL1α(t) < c(low),0.674816,0
+"globally[9,∞](d_IL1α(t) < c(mid))",0.5759669,"globally[9,∞](d_IL1α(t) < c(mid))",0.5759669,"eventually[0, ∞]globally(d_IL1α(t) < c(low))",0.58977085,1
+IL1α(t) = c(low),0.6308896,IL1α(t) = c(low),0.6308896,IL1α(t) = c(low),0.6308896,0

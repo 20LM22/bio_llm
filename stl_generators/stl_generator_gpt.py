@@ -4,11 +4,7 @@ from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 from pydantic import BaseModel
 import json, sys, re, pickle, pandas, random
-import os
-import openai
 from openai import OpenAI
-
-openai.api_key = os.environ["OPENAI_API_KEY"]
 
 sys.path.insert(1, '..')
 from stl2literal import STL2literal
@@ -209,7 +205,7 @@ def default_feedback(e, res, sentence):
         error_message_more_descriptive = str(e).split('Expected')[0]
 
         return params['feedback_prompt']['default_prompt_1'] + '\n' + res + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error_message_more_descriptive + '\n\n' + params['feedback_prompt']['default_prompt_2a'] + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4']
-    
+
     except Exception as e:
         return params['feedback_prompt']['default_prompt_1'] + '\n' + res + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + str(e) + '\n\n' + params['feedback_prompt']['default_prompt_2a'] + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4']
 
@@ -251,18 +247,19 @@ for sentence_index, sentence in sentences['input statement'].items():
         response = client.responses.create(
             model=model_name,
             input=[
-                {"role": "user", "content": thinking_prompt},
+                {
+                    "role": "user",
+                    "content": thinking_prompt
+                }
             ],
-            max_tokens = params['model_parameters']['max_tokens'],
+            max_output_tokens = params['model_parameters']['max_tokens'],
             temperature = params['model_parameters']['temperature'],
             top_p = params['model_parameters']['top_p'],
-            top_k = params['model_parameters']['top_k'],
-            min_p = params['model_parameters']['min_p'],
-            presence_penalty = params['model_parameters']['presence_penalty']
         )
+
         response = response.output_text
         print(f'response: {response}')
-        
+
         ####################################################################
         # 2a) STL Prompt
         ####################################################################
@@ -277,12 +274,9 @@ for sentence_index, sentence in sentences['input statement'].items():
                 {"role": "user", "content": stl_prompt},
             ],
             text_format = STLResponse,
-            max_tokens = params['model_parameters']['max_tokens'],
+            max_output_tokens = params['model_parameters']['max_tokens'],
             temperature = params['model_parameters']['temperature'],
             top_p = params['model_parameters']['top_p'],
-            top_k = params['model_parameters']['top_k'],
-            min_p = params['model_parameters']['min_p'],
-            presence_penalty = params['model_parameters']['presence_penalty']
         )
         response = response.output_parsed
 
@@ -291,7 +285,7 @@ for sentence_index, sentence in sentences['input statement'].items():
         ####################################################################
         # 2b) Process the STL response
         ####################################################################
-       
+
         # Try extraction
         try:
             extracted_response = json.loads(response)["output_STL"]
@@ -301,10 +295,10 @@ for sentence_index, sentence in sentences['input statement'].items():
             print('extraction failed')
             translations.at[sentence_index, f'STL-shot{i}-S0-F0'] = "STL could not be extracted"
             continue # if no stl can be extracted, then just go to the next shot
-            
+
         # Try parsing
         parsed_stl = ''
-        try:           
+        try:
             parsed_stl = parser.parse(extracted_response)
             print('right before checking signal names')
             if check_signal_names(parsed_stl, extracted_response, sentence) is not None:
@@ -316,11 +310,11 @@ for sentence_index, sentence in sentences['input statement'].items():
         except Exception as e:
             if translations.at[sentence_index, f'STL-shot{i}-S0-F0'] != 'STL could not be extracted':
                 translations.at[sentence_index, f'STL-shot{i}-S0-F0'] = "STL could not be parsed"
-            syntax_passed = False 
+            syntax_passed = False
             print('parsing failed')
 
             error_feedback = ''
-                   
+
             # Types of feedback:
             # (1) JSON-like
             # (2) Wrong parentheses
@@ -345,14 +339,14 @@ for sentence_index, sentence in sentences['input statement'].items():
             else:
                 feedback = default_feedback(e, extracted_response, sentence)
                 print('feedback is default')
-        
+
         ####################################################################
         # 3) Feedback prompts for this shot if necessary
         ####################################################################
 
         feedback_attempts_remaining = params["num_correction_attempts_per_shot"]
         count = 0
-        
+
         while not syntax_passed and feedback_attempts_remaining > 0:
             count += 1
 
@@ -369,12 +363,9 @@ for sentence_index, sentence in sentences['input statement'].items():
                     {"role": "user", "content": m},
                 ],
                 text_format=STLResponse,
-                max_tokens=params['model_parameters']['max_tokens'],
+                max_output_tokens=params['model_parameters']['max_tokens'],
                 temperature=params['model_parameters']['temperature'],
-                top_p=params['model_parameters']['top_p'],
-                top_k=params['model_parameters']['top_k'],
-                min_p=params['model_parameters']['min_p'],
-                presence_penalty=params['model_parameters']['presence_penalty']
+                top_p=params['model_parameters']['top_p']
             )
             response = response.output_parsed
             print(f'response: {response}')
@@ -392,10 +383,10 @@ for sentence_index, sentence in sentences['input statement'].items():
 
             # Try parsing
             parsed_stl = ''
-            
+
             try:
                 print('right before trying to parse')
-                parsed_stl = parser.parse(extracted_response)    
+                parsed_stl = parser.parse(extracted_response)
                 print('right before checking signal names')
                 if check_signal_names(parsed_stl, extracted_response, sentence) is not None:
                     raise Exception("bad signal name")
@@ -405,7 +396,7 @@ for sentence_index, sentence in sentences['input statement'].items():
             except Exception as e:
                 if translations.at[sentence_index, f'STL-shot{i}-S0-F{count}'] != 'STL could not be extracted':
                     translations.at[sentence_index, f'STL-shot{i}-S0-F{count}'] = "STL could not be parsed"
-                syntax_passed = False 
+                syntax_passed = False
                 print('parsing failed')
 
                 if check_json(extracted_response, sentence) is not None:
@@ -456,12 +447,9 @@ for sentence_index, sentence in sentences['input statement'].items():
                 input=[
                     {"role": "user", "content": semantic_prompt_thinking},
                 ],
-                max_tokens=params['model_parameters']['max_tokens'],
+                max_output_tokens=params['model_parameters']['max_tokens'],
                 temperature=params['model_parameters']['temperature'],
                 top_p=params['model_parameters']['top_p'],
-                top_k=params['model_parameters']['top_k'],
-                min_p=params['model_parameters']['min_p'],
-                presence_penalty=params['model_parameters']['presence_penalty']
             )
             response = response.output_text
             print(f'semantic response thinking is: {response}')
@@ -475,12 +463,9 @@ for sentence_index, sentence in sentences['input statement'].items():
                     {"role": "user", "content": semantic_prompt},
                 ],
                 text_format=STLResponse,
-                max_tokens=params['model_parameters']['max_tokens'],
+                max_output_tokens=params['model_parameters']['max_tokens'],
                 temperature=params['model_parameters']['temperature'],
                 top_p=params['model_parameters']['top_p'],
-                top_k=params['model_parameters']['top_k'],
-                min_p=params['model_parameters']['min_p'],
-                presence_penalty=params['model_parameters']['presence_penalty']
             )
             response = response.output_parsed
             print(f'semantic response: {response}')
@@ -497,8 +482,8 @@ for sentence_index, sentence in sentences['input statement'].items():
 
             # parse STL
             parsed_stl = ''
-            try:            
-                parsed_stl = parser.parse(extracted_response)    
+            try:
+                parsed_stl = parser.parse(extracted_response)
                 if check_signal_names(parsed_stl, extracted_response, sentence) is not None:
                     raise Exception("bad signal name")
                 print('STL parsed')
@@ -507,7 +492,7 @@ for sentence_index, sentence in sentences['input statement'].items():
             except Exception as e:
                 if translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F0'] != 'STL could not be extracted':
                     translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F0'] = "STL could not be parsed"
-                syntax_passed = False 
+                syntax_passed = False
                 print('parsing failed')
 
                 if check_json(extracted_response, sentence) is not None:
@@ -527,7 +512,7 @@ for sentence_index, sentence in sentences['input statement'].items():
                     print('feedback is default')
 
             feedback_attempts_remaining = params["num_correction_attempts_per_shot"]
- 
+
             count = 0
             while not syntax_passed and feedback_attempts_remaining > 0:
                 count += 1
@@ -545,12 +530,9 @@ for sentence_index, sentence in sentences['input statement'].items():
                         {"role": "user", "content": m},
                     ],
                     text_format=STLResponse,
-                    max_tokens=params['model_parameters']['max_tokens'],
+                    max_output_tokens=params['model_parameters']['max_tokens'],
                     temperature=params['model_parameters']['temperature'],
                     top_p=params['model_parameters']['top_p'],
-                    top_k=params['model_parameters']['top_k'],
-                    min_p=params['model_parameters']['min_p'],
-                    presence_penalty=params['model_parameters']['presence_penalty']
                 )
                 response = response.output_parsed
 
@@ -566,15 +548,15 @@ for sentence_index, sentence in sentences['input statement'].items():
 
                 # parse STL
                 parsed_stl = ''
-                try:            
-                    parsed_stl = parser.parse(extracted_response)    
+                try:
+                    parsed_stl = parser.parse(extracted_response)
                     if check_signal_names(parsed_stl, extracted_response, sentence) is not None:
                         raise Exception("bad signal name")
                     print('STL parsed')
                     syntax_passed = True
                     translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F{count}'] = extracted_response
                 except Exception as e:
-                    syntax_passed = False 
+                    syntax_passed = False
                     if translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F{count}'] != 'STL could not be extracted':
                         translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F{count}'] = "STL could not be parsed"
                     print('parsing failed')
@@ -599,8 +581,8 @@ for sentence_index, sentence in sentences['input statement'].items():
                 print(f'feedback was able to correct this semantic attempt')
                 # Add this first valid syntax response to the list
                 responses_this_shot[f'shot-{i}'].append(extracted_response)
- 
-                # Update the last/best result        
+
+                # Update the last/best result
                 nl_embedding = embedding_model.encode(sentence, normalize_embeddings=True)
                 stl_embedding = embedding_model.encode(STL2literal(extracted_response, grammar), normalize_embeddings=True)
                 best_embedding = embedding_model.encode(STL2literal(best_stl, grammar), normalize_embeddings=True)

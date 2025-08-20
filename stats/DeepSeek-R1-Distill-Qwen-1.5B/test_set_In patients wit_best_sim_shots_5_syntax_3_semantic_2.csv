@@ -1,0 +1,6 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
+"eventually[7,12]globally(IL12(t) < c(mid))",0.21902394,"eventually[7,12]globally(IL12(t) < c(mid))",0.21902394,"eventually[7,12]globally(IL12(t) < c(mid))",0.21902394,0
+"globally[1,7](IL1Ra(t) < c(high))",0.2049084,"globally[1,7](IL1Ra(t) < c(high))",0.2049084,"globally[1,7](IL1Ra(t) < c(high))",0.2049084,0
+"eventually[7,31](SARSCoV2(t)=c(mid))",0.5274951,"eventually[7,31](SARSCoV2(t)=c(mid))",0.5274951,"eventually[7,31](SARSCoV2(t)=c(mid))",0.5274951,0
+"globally[0,∞](d_SARSCoV2(t) < d_c(high))",0.48195347,"globally[0,∞](d_SARSCoV2(t) < d_c(high))",0.48195347,"globally[0,∞](d_SARSCoV2(t) < d_c(high))",0.48195347,0
+IL1RN(t) < c(mid) and d_IFNβ(t) > 0,0.21410248,"eventually[0,17](IL1Ra(t) > c(mid))",0.24301502,"eventually[0,17](IL1Ra(t) > c(mid))",0.24301502,2

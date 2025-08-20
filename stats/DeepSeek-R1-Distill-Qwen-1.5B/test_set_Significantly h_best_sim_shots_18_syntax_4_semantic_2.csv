@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
+"globally[1,∞](IL1Ra(t) > c(high))",0.28474683,"globally[1,∞](IL1Ra(t) > c(high))",0.28474683,"globally[1,∞](IL1Ra(t) > c(high))",0.28474683,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[1,∞](d_SARSCoV2(t)=c(high) implies d_IL1RN(t) > c(low))",0.33477786,"globally[1,∞](d_SARSCoV2(t)=c(high) implies d_IL1RN(t) > c(low))",0.33477786,"globally[1,∞](d_SARSCoV2(t)=c(high) implies d_IL1RN(t) > c(low))",0.33477786,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[1,∞](MCP1(t) > c(low))",0.5783511,"globally[1,∞](MCP1(t) > c(low))",0.5783511,"globally[1,∞](MCP1(t) > c(low))",0.5783511,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+d_MCP1(t)=c(high) and d_MCP1(t)=c(low),0.5396226,d_MCP1(t)=c(high) and d_MCP1(t)=c(low),0.5396226,d_MCP1(t)=c(high) and d_MCP1(t)=c(low),0.5396226,0
+"eventually[1,2]globally(d_MCP1(t) > c(low)) implies globally[3,∞](d_MCP1(t) < d_c(high))",0.50222826,"eventually[1,2]globally(d_MCP1(t) > c(low)) implies globally[3,∞](d_MCP1(t) < d_c(high))",0.50222826,"eventually[1,2]globally(d_MCP1(t) > c(low)) implies globally[3,∞](d_MCP1(t) < d_c(high))",0.50222826,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[1,2](MCP1(t)=c(low)) and MCP1(t)=c(high)",0.62965995,"globally[1,2](MCP1(t)=c(low)) and MCP1(t)=c(high)",0.62965995,"globally[1,2](MCP1(t)=c(low)) and MCP1(t)=c(high)",0.62965995,0
+N/A,N/A,N/A,N/A,N/A,N/A,0

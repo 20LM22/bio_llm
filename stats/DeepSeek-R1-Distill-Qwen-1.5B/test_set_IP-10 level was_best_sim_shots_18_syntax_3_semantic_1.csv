@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improvements (relative to start)
+"globally[1,∞](d_IP10(t) < d_c(low))",0.4046004,"globally[1,∞](d_IP10(t) < d_c(low))",0.4046004,0
+IP10(t)=c(high) and IP10(t)=c(high),0.51787424,IP10(t)=c(high) and IP10(t)=c(high),0.51787424,0
+"globally[0,8](d_IP10(t) > c(low)) and globally[1,∞](d_IP10(t) = d_c(low)) implies eventually[1,∞](d_IP10(t) > c(high))",0.45217955,"globally[0,8](d_IP10(t) > c(low)) and globally[1,∞](d_IP10(t) = d_c(low)) implies eventually[1,∞](d_IP10(t) > c(high))",0.45217955,0
+IP10(t) > c(low),0.5089637,IP10(t) > c(low),0.5089637,0
+SARSCoV2(t)=c(mid) and IL8(t) > c(high),0.40712857,d_IP10(t) > c(high) and IL6(t) < c(low),0.5055275,1
+d_IL8(t) < d_c(high) implies IL8(t)=c(mid),0.2597506,"eventually[1, ∞]globally(IL1Ra(t) > c(high))",0.27503163,1
+"globally[1,∞](d_IP10(t) > c(high))",0.53764534,"globally[1,∞](d_IP10(t) > c(high))",0.53764534,0
+d_IP10(t) > d_c(low) implies d_IP10(t) > d_c(low),0.33451474,d_IP10(t) > d_c(low) implies d_IP10(t) > d_c(low),0.33451474,0
+N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,0
+"d_IP10(t) > d_c(low) and eventually[1,∞]globally(d_IP10(t)=d_c(low))",0.39067745,"d_IP10(t) > d_c(low) and eventually[1,∞]globally(d_IP10(t)=d_c(low))",0.39067745,0
+N/A,N/A,N/A,N/A,0
+d_IL6(t) < c(high) implies d_IL12(t) < c(high),0.33789584,d_IL6(t) < c(high) implies d_IL12(t) < c(high),0.33789584,0
+d_IP10(t)=c(high),0.51729405,d_IP10(t)=c(high),0.51729405,0
+IP10(t)=c(high) and IP10(t)=c(high),0.51787424,IP10(t)=c(high) and IP10(t)=c(high),0.51787424,0
+"globally[15,∞](IL8(t) > c(low) implies d_IL1Ra(t) > d_c(high)) and IL6(t) < c(mid)",0.35627505,"eventually[1,7](d_IL1β(t) > c(mid))",0.40957028,1
+N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,0

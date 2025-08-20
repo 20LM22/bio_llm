@@ -15,7 +15,7 @@ semantic_count = params['num_semantic_checks']
 
 res = {}
 try:
-    with open(f'../pkl/{model_name}/histogram_distribution_comparison_{model_name}_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.pkl', 'rb') as f:
+    with open(f'../pkl/{model_name}/test_set_histogram_distribution_comparison_{model_name}_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.pkl', 'rb') as f:
         res = pickle.load(f)
         print(f'Loaded histogram distribution')
 except Exception as e:
@@ -55,7 +55,7 @@ plt.ylim(0, 160)
 plt.title(f'All Sentences Semantic Pass/Fail Distribution\nmodel: {model_name}\nnx: {syntax_count}, ny: {semantic_count}, nz: {shot_count}')
 plt.legend()
 
-plt.savefig(f'../images/{model_name}/histogram_distribution_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}.png')
+plt.savefig(f'../images/{model_name}/test_set_histogram_distribution_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}.png')
 plt.close()
 
 # do them as sentences
@@ -65,7 +65,7 @@ mean_sim = []
 variance_sim = []
 top_sim_is_correct = []
 num_syntax_correct = [] # number of semantically correct translations for this sentence
-category = [
+category = [ # THIS LIST NEEDS TO BE UPDATED
     'medium',
     'easy',
     'easy',
@@ -153,7 +153,7 @@ for _id, sentence in enumerate(res.keys()): # key is sentence
     plt.title(f'Semantic Pass/Fail Distribution\nsentence: {m}\nmodel: {model_name}\nshots: {shot_count}, syntax: {syntax_count}, semantic: {semantic_count}')
     plt.legend()
 
-    plt.savefig(f'../images/{model_name}/histogram_distribution_sentence_{sentence[:15]}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}.png')
+    plt.savefig(f'../images/{model_name}/test_set_histogram_distribution_sentence_{sentence[:15]}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}.png')
     plt.close()
 
 df = pandas.DataFrame(data={
@@ -170,4 +170,4 @@ df = pandas.DataFrame(data={
 # top_sim_is_correct_all_sentences = pandas.DataFrame(data=top_sim_is_correct_all_sentences, columns=['Sentence', 'Top Sim. is Correct'])
 # top_sim_is_correct_all_sentences.loc['Total'] = top_sim_is_correct_all_sentences.apply(pandas.to_numeric, errors='coerce')['Top Sim. is Correct'].sum()
 # top_sim_is_correct_all_sentences.to_csv(f'../stats/{model_name}/top_sim_is_correct_all_sentences_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.csv')
-df.to_csv(f'../stats/{model_name}/stats_v2_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}.csv')
+df.to_csv(f'../stats/{model_name}/test_set_stats_v2_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}.csv')

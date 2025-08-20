@@ -1,0 +1,22 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
+"eventually[6,∞](IL1Ra(t) > c(low)) and d_IL8(t) = c(mid)",0.5752927,"eventually[6,∞](IL1Ra(t) > c(low)) and d_IL8(t) = c(mid)",0.5752927,"eventually[6,∞](IL1Ra(t) > c(low)) and d_IL8(t) = c(mid)",0.5752927,0
+d_IL1Ra(t) > c(high) and d_IL1Ra(t) = c(high),0.5853264,d_IL1Ra(t) > c(high) and d_IL1Ra(t) = c(high),0.5853264,d_IL1Ra(t) > c(high) and d_IL1Ra(t) = c(high),0.5853264,0
+d_IL1Ra(t) = d_c(high) and IL1Ra(t) > c(high),0.5763571,d_IL1Ra(t) = d_c(high) and IL1Ra(t) > c(high),0.5763571,d_IL1Ra(t) = d_c(high) and IL1Ra(t) > c(high),0.5763571,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+d_IL1Ra(t) > c(high) implies IL1Ra(t)=c(mid),0.58597356,d_IL1Ra(t) > c(high) implies IL1Ra(t)=c(mid),0.58597356,"eventually[6,∞](d_IL1β(t)=d_c(high) and IL8(t) < c(low))",0.600441,1
+N/A,N/A,N/A,N/A,N/A,N/A,0
+d_IL1Ra(t)=d_c(high) and IL1Ra(t) > c(high),0.5763571,d_IL1Ra(t)=d_c(high) and IL1Ra(t) > c(high),0.5763571,d_IL1Ra(t)=d_c(high) and IL1Ra(t) > c(high),0.5763571,0
+IL1Ra(t) > c(high),0.58223546,IL1Ra(t) > c(high),0.58223546,IL1Ra(t) > c(high),0.58223546,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[19,∞](IL1Ra(t)=c(mid))
+",0.51097393,"globally[19,∞](IL1Ra(t)=c(mid))
+",0.51097393,"globally[19,∞](IL1Ra(t)=c(mid))
+",0.51097393,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[11,16](IFNα(t) > c(mid) implies d_SARSCoV2(t)=0)",0.24890575,d_IL1Ra(t) > c(high),0.58223546,d_IL1Ra(t) > c(high),0.58223546,2
+N/A,N/A,N/A,N/A,N/A,N/A,0
+d_IL1Ra(t) = d_c(high),0.5167562,d_IL1Ra(t) = d_c(high),0.5167562,d_IL1Ra(t) = d_c(high),0.5167562,0
+"eventually[8,15]globally(IL1Ra(t) > c(mid))",0.62596464,"eventually[8,15]globally(IL1Ra(t) > c(mid))",0.62596464,"eventually[8,15]globally(IL1Ra(t) > c(mid))",0.62596464,0
+N/A,N/A,N/A,N/A,N/A,N/A,0

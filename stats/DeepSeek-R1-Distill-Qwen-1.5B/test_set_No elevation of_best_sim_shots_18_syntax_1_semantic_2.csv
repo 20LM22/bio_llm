@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
+d_RANTES(t) < d_c(high),0.40259105,d_RANTES(t) < d_c(high),0.40259105,d_RANTES(t) < d_c(high),0.40259105,0
+IL1Ra(t) < c(high) and d_IL1Ra(t) > d_c(low),0.14956564,IL1Ra(t) < c(high) and d_IL1Ra(t) > d_c(low),0.14956564,IL1Ra(t) < c(high) and d_IL1Ra(t) > d_c(low),0.14956564,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+d_RANTES(t) = d_c(low),0.428679,d_RANTES(t) = d_c(low),0.428679,d_RANTES(t) = d_c(low),0.428679,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+d_RANTES(t) = d_c(low) implies d_IL17(t)=d_c(low),0.30779997,RANTES(t)=c(low) implies d_RANTES(t) < d_c(low),0.52801013,RANTES(t)=c(low) implies d_RANTES(t) < d_c(low),0.52801013,2
+N/A,N/A,N/A,N/A,N/A,N/A,0
+RANTES(t) = c(low),0.5778152,RANTES(t) = c(low),0.5778152,RANTES(t) = c(low),0.5778152,0
+RANTES(t) < c(low),0.5930412,RANTES(t) < c(low),0.5930412,RANTES(t) < c(low),0.5930412,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+d_RANTES(t) = d_c(high) and RANTES(t) > c(high),0.48293844,d_RANTES(t) = d_c(high) and RANTES(t) > c(high),0.48293844,d_RANTES(t) = d_c(high) and RANTES(t) > c(high),0.48293844,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[1,7](IL1Ra(t) < c(high))",0.25458774,"globally[1,7](IL1Ra(t) < c(high))",0.25458774,"globally[1,7](IL1Ra(t) < c(high))",0.25458774,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0

@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[3,4](d_IP10(t) < c(low)) and eventually[4,∞](d_IP10(t) = 0)",0.59984004,"eventually[2,4]globally(d_IP10(t) < c(low))",0.6810145,"eventually[2,4]globally(d_IP10(t) < c(low))",0.6810145,2
+IL6(t)=c(low) implies d_IL6(t) < d_c(high) and d_IFNα(t) > d_c(high) implies d_IFNβ(t)=d_c(high),0.3036971,"globally[2,∞](d_IL6(t) < d_c(low))",0.36121213,"globally[2,∞](d_IL6(t) < d_c(low))",0.36121213,2
+"globally[2,∞](d_IP10(t) < d_c(low)) implies eventually[4,∞](d_IP10(t) = d_c(low))",0.4489749,"globally[2,∞](d_IP10(t) < d_c(low)) implies eventually[4,∞](d_IP10(t) = d_c(low))",0.4489749,"globally[2,∞](d_IP10(t) < d_c(low)) implies eventually[4,∞](d_IP10(t) = d_c(low))",0.4489749,0
+"eventually[0,18]globally(d_IL6(t)=c(low)) and globally[18,23](d_IL6(t) > d_c(low))",0.37661505,"eventually[0,18]globally(d_IL6(t)=c(low)) and globally[18,23](d_IL6(t) > d_c(low))",0.37661505,"eventually[0,18]globally(d_IL6(t)=c(low)) and globally[18,23](d_IL6(t) > d_c(low))",0.37661505,0
+"d_IL6(t) < c(low) and globally[2,4](d_IL6(t) > d_c(low) implies d_IL6(t) = d_c(high))",0.37154043,"d_IL6(t) < c(low) and globally[2,4](d_IL6(t) > d_c(low) implies d_IL6(t) = d_c(high))",0.37154043,"d_IL6(t) < c(low) and globally[2,4](d_IL6(t) > d_c(low) implies d_IL6(t) = d_c(high))",0.37154043,0
+"globally[2,∞](d_IP10(t) < d_c(low) implies d_IP10(t)=c(low))",0.57224524,"globally[2,∞](d_IP10(t) < d_c(low) implies d_IP10(t)=c(low))",0.57224524,"globally[2,∞](d_IP10(t) < d_c(low) implies d_IP10(t)=c(low))",0.57224524,0
+"globally[2,∞](d_IP10(t) < d_c(low))",0.51193506,"globally[2,∞](d_IP10(t) < d_c(low))",0.51193506,"globally[2,∞](d_IP10(t) < d_c(low))",0.51193506,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+d_IP10(t)=0 and IL1Ra(t) > c(high),0.5064133,d_IP10(t)=0 and IL1Ra(t) > c(high),0.5064133,d_IP10(t)=0 and IL1Ra(t) > c(high),0.5064133,0
+"eventually[2,4]globally(d_IP10(t) < d_c(low))",0.5328248,"eventually[2,4]globally(d_IP10(t) < d_c(low))",0.5328248,"eventually[2,4]globally(d_IP10(t) < d_c(low))",0.5328248,0
+"globally[2,4](d_IP10(t) < 0)",0.56170267,"eventually[1,4]globally(d_IP10(t) < c(low))",0.6747364,"eventually[1,4]globally(d_IP10(t) < c(low))",0.6747364,2
+"eventually[2,4]globally(d_IP10(t)=c(high))",0.6378673,"eventually[2,4]globally(d_IP10(t)=c(high))",0.6378673,"eventually[2,4]globally(d_IP10(t)=c(high))",0.6378673,0
+"globally[2,4](IL6(t) < c(low))",0.5011754,"globally[2,4](IL6(t) < c(low))",0.5011754,"eventually[7,20](IL12(t) > c(low) and SARSCoV2(t) < c(low))",0.51654345,1
+"globally[0,∞](d_IP10(t) < c(mid))",0.6372212,"globally[0,∞](d_IP10(t) < c(mid))",0.6372212,"globally[0,∞](d_IP10(t) < c(mid))",0.6372212,0
+"d_IP10(t) < d_c(low) and globally[11,∞](IP10(t)=c(low)) implies eventually[4,11](d_IP10(t) > 0)",0.5430056,"d_IP10(t) < d_c(low) and globally[11,∞](IP10(t)=c(low)) implies eventually[4,11](d_IP10(t) > 0)",0.5430056,"d_IP10(t) < d_c(low) and globally[11,∞](IP10(t)=c(low)) implies eventually[4,11](d_IP10(t) > 0)",0.5430056,0
+"globally[2,4](d_IP10(t) < c(high))",0.6414273,"globally[2,4](d_IP10(t) < c(high))",0.6414273,"globally[2,4](d_IP10(t) < c(high))",0.6414273,0
+"eventually[2,4]globally(d_IP10(t) < c(low))",0.6810145,"eventually[2,4]globally(d_IP10(t) < c(low))",0.6810145,"eventually[2,4]globally(d_IP10(t) < c(low))",0.6810145,0

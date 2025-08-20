@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
+N/A,N/A,N/A,N/A,N/A,N/A,0
+CCL2(t) > c(mid) and CCR2(t) < c(mid),0.4210123,CCL2(t) > c(mid) and CCR2(t) < c(mid),0.4210123,CCL2(t) > c(mid) and CCR2(t) < c(mid),0.4210123,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+CCL2(t) = c(high) and CCR2(t) = c(high),0.41097254,CCL2(t) = c(high) and CCR2(t) = c(high),0.41097254,CCL2(t) = c(high) and CCR2(t) = c(high),0.41097254,0
+"eventually[0,∞](CCL2(t) > c(low) and CCR2(t) = c(low)) and eventually[0,∞](d_CCL2(t) > 0)",0.3258415,"eventually[0,∞](CCL2(t) > c(low) and CCR2(t) = c(low)) and eventually[0,∞](d_CCL2(t) > 0)",0.3258415,"eventually[0,∞](CCL2(t) > c(low) and CCR2(t) = c(low)) and eventually[0,∞](d_CCL2(t) > 0)",0.3258415,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"CCL2(t) > c(mid) and CCR2(t) > c(low) and IL1β(t) < c(low) and globally[0,∞](d_CCL2(t) > d_c(high)) and globally[0,∞](d_CCR2(t) > d_c(high)) and IL1β(t) < c(low) and eventually[0,∞](d_IL1β(t) > d_c(high)) and globally[0,∞](d_IL1β(t) > d_c(high)) and IL1β(t) < c(low) and eventually[0,∞](d_IL1β(t) > d_c(high)) and globally[0,∞](d_IL1β(t) > d_c(high)) and IL1β(t) < c(low)",0.39608577,"CCL2(t) > c(low) and CCR2(t) > c(low) and globally[0,∞](IL6(t) < c(high)) and eventually[0,∞]globally(IL6(t) < c(high))",0.40438062,"CCL2(t) > c(low) and CCR2(t) > c(low) and globally[0,∞](IL6(t) < c(high)) and eventually[0,∞]globally(IL6(t) < c(high))",0.40438062,2
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"CCL2(t) > c(low) implies d_CCL2(t) > d_c(low) and CCR2(t) > c(low) implies d_CCR2(t) > d_c(low) and IL12(t) < c(high) implies d_IL12(t) < d_c(high) and RANTES(t) < c(low) implies d_RANTES(t) < d_c(low) and eventually[15,∞]globally(IL8(t)=c(mid))",0.2913579,"CCL2(t) > c(low) implies d_CCL2(t) > d_c(low) and CCR2(t) > c(low) implies d_CCR2(t) > d_c(low) and IL12(t) < c(high) implies d_IL12(t) < d_c(high) and RANTES(t) < c(low) implies d_RANTES(t) < d_c(low) and eventually[15,∞]globally(IL8(t)=c(mid))",0.2913579,"CCL2(t) > c(low) implies d_CCL2(t) > d_c(low) and CCR2(t) > c(low) implies d_CCR2(t) > d_c(low) and IL12(t) < c(high) implies d_IL12(t) < d_c(high) and RANTES(t) < c(low) implies d_RANTES(t) < d_c(low) and eventually[15,∞]globally(IL8(t)=c(mid))",0.2913579,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"CCL2(t) > c(mid) and CCR2(t) > c(low) and IL1β(t) < c(low) and globally[6,15](d_IL1β(t) > d_c(high)) and IL1β(t) > c(mid)",0.48278058,"CCL2(t) > c(mid) and CCR2(t) > c(low) and IL1β(t) < c(low) and globally[6,15](d_IL1β(t) > d_c(high)) and IL1β(t) > c(mid)",0.48278058,"CCL2(t) > c(mid) and CCR2(t) > c(low) and IL1β(t) < c(low) and globally[6,15](d_IL1β(t) > d_c(high)) and IL1β(t) > c(mid)",0.48278058,0
+"eventually[0,∞]globally(CCL2(t) > c(low) and CCR2(t) > c(low)) and eventually[0,∞]globally(IL12(t) > c(mid) and d_IL12(t)=d_c(low)) and eventually[0,∞]globally(d_CCL2(t)=d_c(low) and d_CCR2(t)=d_c(low))",0.32620972,"eventually[0,∞]globally(CCL2(t) > c(low) and CCR2(t) > c(low)) and eventually[0,∞]globally(IL12(t) > c(mid) and d_IL12(t)=d_c(low)) and eventually[0,∞]globally(d_CCL2(t)=d_c(low) and d_CCR2(t)=d_c(low))",0.32620972,"eventually[0,∞]globally(CCL2(t) > c(low) and CCR2(t) > c(low)) and eventually[0,∞]globally(IL12(t) > c(mid) and d_IL12(t)=d_c(low)) and eventually[0,∞]globally(d_CCL2(t)=d_c(low) and d_CCR2(t)=d_c(low))",0.32620972,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0

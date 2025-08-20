@@ -1,0 +1,20 @@
+Semantic attempt 0,Semantic attempt 0 sim,Number of improvements (relative to start)
+"globally[20,∞](d_IL8(t)=d_c(low)) and d_IFNα(t)=c(mid)",0.28538734,0
+"eventually[17,∞]globally(IL1Ra(t) < c(high))
+",0.29294538,0
+d_IgM(t) > c(high) and d_IgG(t) < c(low),0.53683984,0
+"globally[17,19](IL1RN(t)=c(low))",0.31277108,0
+N/A,N/A,0
+N/A,N/A,0
+"globally[17,19](SARSCoV2(t) > c(mid))",0.3488333,0
+N/A,N/A,0
+N/A,N/A,0
+IL1β(t) > c(high) and SARSCoV2(t) < c(low),0.30735934,0
+"globally[17,∞](d_IgG(t) = c(low))",0.47409844,0
+"globally[1,19](d_IL6(t) = c(mid)) implies eventually[7,∞](IL8(t) > c(high)) and globally[1,19](d_IL12(t) = c(mid)) implies eventually[7,∞](IL1RN(t) > c(high))",0.2718236,0
+N/A,N/A,0
+N/A,N/A,0
+"eventually[0,19]globally(d_IL1Ra(t)=d_c(high) and IL1Ra(t) > c(high))",0.26759106,0
+"eventually[17,19]globally(d_IgG(t) > c(high))",0.4887382,0
+"eventually[17,19]globally(d_IgM(t)=c(high) and d_IgG(t)=d_c(low))",0.604995,0
+"globally[10,16](SARSCoV2(t)=c(high) implies IL1RN(t) > c(low)) and d_IL1Ra(t) > 0 and d_IL1Ra(t) < d_c(low) implies d_IgM(t) > c(low)",0.5062933,0

@@ -1,0 +1,20 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improvements (relative to start)
+d_IL1β(t) = d_c(low) implies d_IL6(t) > d_c(high),0.5149633,"IL1β(t) < c(low) and globally[20,∞](SARSCoV2(t) > c(low))",0.6327673,1
+"eventually[19,20]globally(d_IL1Ra(t) < 0) and d_IFNα(t)=0",0.48484984,"eventually[19,20]globally(d_IL1Ra(t) < 0) and d_IFNα(t)=0",0.48484984,0
+d_IL1β(t)=d_c(high) implies d_IFNα(t) > d_c(low),0.52830726,d_IL1β(t)=d_c(high) implies d_IFNα(t) > d_c(low),0.52830726,0
+d_IL1β(t) = d_c(high),0.70067394,d_IL1β(t) = d_c(high),0.70067394,0
+IL1β(t) < c(low) and d_IL1β(t) > d_c(high),0.72134614,IL1β(t) < c(low) and d_IL1β(t) > d_c(high),0.72134614,0
+"globally[1,∞](IL8(t) < c(mid)) and IL1RN(t) > c(high)",0.46923298,IL1β(t) < c(mid) and d_IL1β(t) = d_c(low),0.7526753,1
+"globally[3,∞](d_IL1β(t) = c(low) implies d_IL6(t) < c(high))",0.61134434,"eventually[8,15]globally(IFNβ(t)=c(high) implies IL1β(t) > c(high))",0.64913213,1
+N/A,N/A,N/A,N/A,0
+IL1β(t)=c(low) implies d_IL1β(t) > d_c(high),0.6614845,IL1β(t)=c(low) implies d_IL1β(t) > d_c(high),0.6614845,0
+N/A,N/A,N/A,N/A,0
+"globally[0,∞](d_TNFα(t) = d_c(high))",0.22659317,"globally[∞,∞](IL1β(t) = c(low))
+",0.66236925,1
+d_IL1β(t) < d_c(low),0.69502264,"eventually[9,14](IL1β(t) > c(low))",0.7111433,1
+"globally[1,∞](IL1β(t) < c(high) and IL1β(t) = c(mid))",0.7003913,"IL1β(t) < c(low) and eventually[2,15]globally( d_IL1β(t) = d_c(high) )",0.7070806,1
+"globally[8,19](IL1β(t) = c(low))",0.7148117,"globally[8,19](IL1β(t) = c(low))",0.7148117,0
+IL1β(t) = c(low) and d_IL1β(t) < d_c(low),0.74219376,IL1β(t) = c(low) and d_IL1β(t) < d_c(low),0.74219376,0
+"globally[∞,∞](IL1β(t) = c(low)) and d_IL1β(t) > d_c(low)",0.61177444,"globally[∞,∞](IL1β(t) = c(low)) and d_IL1β(t) > d_c(low)",0.61177444,0
+IL1β(t) < c(high) implies IFNα(t)=c(high),0.6758598,"IL1β(t) < c(low) and globally[1, ∞](d_IL1β(t) > d_c(high)) and IL1β(t) > c(mid)",0.71459043,1
+"globally[20,∞](d_IL1β(t) < d_c(high))",0.6243801,"globally[20,∞](d_IL1β(t) < d_c(high))",0.6243801,0

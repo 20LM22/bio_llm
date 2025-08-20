@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improvements (relative to start)
+N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,0
+IL1RN(t) < c(low),0.2397415,IL6(t) < c(low) implies IL12(t)=c(high) and IL1β(t) < c(mid) and IFNγ(t)=c(high) and IL17(t) < c(high) and IL27(t)=c(high),0.5610403,1
+"IL6(t) < c(mid) and d_IL6(t) < d_c(low) and globally[15,∞](d_IL1β(t) > d_c(high) implies d_IL1β(t) < 0)",0.53848815,"IL6(t) < c(mid) and d_IL6(t) < d_c(low) and globally[15,∞](d_IL1β(t) > d_c(high) implies d_IL1β(t) < 0)",0.53848815,0
+d_IL6(t) < d_c(low) and d_IL12(t) < d_c(low) and d_IL1β(t) < d_c(low) and d_IFNγ(t) < d_c(low) and d_IL17(t) < d_c(high) and d_IL27(t) < d_c(high) implies d_IL6(t) = d_c(low) and d_IL12(t) = d_c(low) and d_IL1β(t) = d_c(low) and d_IFNγ(t) = d_c(low) and d_IL17(t) = d_c(high) and d_IL27(t) = d_c(high),0.536051,IL6(t)=c(mid) implies IL12(t) > c(low) and IL6(t)=c(mid) implies IL1β(t)=c(high) and IL6(t)=c(mid) implies IFNγ(t)=c(high) and IL6(t)=c(mid) implies IL17(t)=c(high) and IL6(t)=c(mid) implies IL27(t)=c(high),0.54598796,1
+N/A,N/A,N/A,N/A,0
+d_IL6(t)=c(low) and d_IL12(t)=c(low) and d_IL1β(t)=c(low) and d_IFNγ(t)=c(low) and d_IL17(t)=c(low) and d_IL27(t)=c(low),0.5574229,d_IL6(t)=c(low) and d_IL12(t)=c(low) and d_IL1β(t)=c(low) and d_IFNγ(t)=c(low) and d_IL17(t)=c(low) and d_IL27(t)=c(low),0.5574229,0
+IL6(t) < c(high) and IL12(t) < c(high) and IL1β(t) < c(high) and IFNγ(t) < c(high) and IL17(t) < c(high) and IL27(t) < c(high) implies IL8(t) = c(low) and IL12(t) = c(mid) and IL1β(t) = c(mid) and IFNγ(t) = c(high) and IL17(t) = c(high) and IL27(t) = c(high),0.57003987,IL6(t) < c(high) and IL12(t) < c(high) and IL1β(t) < c(high) and IFNγ(t) < c(high) and IL17(t) < c(high) and IL27(t) < c(high) implies IL8(t) = c(low) and IL12(t) = c(mid) and IL1β(t) = c(mid) and IFNγ(t) = c(high) and IL17(t) = c(high) and IL27(t) = c(high),0.57003987,0
+"globally[20,∞](SARSCoV2(t) > c(low))",0.270995,"globally[0, ∞](IL1RN(t) < c(low)) implies eventually[4, ∞]globally(d_IL6(t) > d_c(high))",0.37172028,1
+"globally[4,∞](IL1RN(t)=c(mid)) implies eventually[0,18]globally(d_IL6(t) > 0)",0.4204234,"globally[4,∞](IL1RN(t)=c(mid)) implies eventually[0,18]globally(d_IL6(t) > 0)",0.4204234,0
+N/A,N/A,N/A,N/A,0
+"globally[0,1](IL6(t) < c(high)) and eventually[1,∞]globally(IL6(t) < c(high))",0.39934364,"globally[8,19](IL1β(t) > c(high))",0.5797479,1
+"eventually[4,∞](d_IL6(t)=d_c(high)) and eventually[4,∞](d_IL12(t)=d_c(high)) and eventually[4,∞](d_IL1β(t)=d_c(high)) and eventually[4,∞](d_IFNγ(t)=d_c(high)) and eventually[4,∞](d_IL17(t)=d_c(high)) and eventually[4,∞](d_IL27(t)=d_c(high))",0.54475915,"eventually[4,∞](d_IL6(t)=d_c(high)) and eventually[4,∞](d_IL12(t)=d_c(high)) and eventually[4,∞](d_IL1β(t)=d_c(high)) and eventually[4,∞](d_IFNγ(t)=d_c(high)) and eventually[4,∞](d_IL17(t)=d_c(high)) and eventually[4,∞](d_IL27(t)=d_c(high))",0.54475915,0
+"eventually[4,∞]globally(IL1Ra(t)=c(mid))",0.388337,"eventually[4,∞]globally(IL1Ra(t)=c(mid))",0.388337,0
+N/A,N/A,N/A,N/A,0
+"IL6(t) < c(mid) and d_IL6(t) < d_c(low) and globally[15,∞](d_IL1β(t) > d_c(high) implies d_IL1β(t) < 0)",0.53848815,"IL6(t) < c(mid) and d_IL6(t) < d_c(low) and globally[15,∞](d_IL1β(t) > d_c(high) implies d_IL1β(t) < 0)",0.53848815,0
+N/A,N/A,N/A,N/A,0

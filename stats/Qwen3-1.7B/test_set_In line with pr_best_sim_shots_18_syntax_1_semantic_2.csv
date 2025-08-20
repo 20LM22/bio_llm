@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
+IL1β(t) < c(low),0.8050745,IL1β(t) < c(low),0.8050745,IL1β(t) < c(low),0.8050745,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"eventually[0,∞]globally(IL1β(t)=c(low))",0.70209193,"eventually[0,∞]globally(IL1β(t)=c(low))",0.70209193,"eventually[0,∞]globally(IL1β(t)=c(low))",0.70209193,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"eventually[0,∞](IL1β(t) = c(low))",0.7142064,"eventually[0,∞](IL1β(t) = c(low))",0.7142064,"eventually[0,∞](IL1β(t) = c(low))",0.7142064,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"eventually[0,∞]globally(IL1β(t) < c(low)) and d_IL1β(t) = 0",0.66571045,"eventually[0,∞]globally(IL1β(t) < c(low)) and d_IL1β(t) = 0",0.66571045,"eventually[0,∞]globally(IL1β(t) < c(low)) and d_IL1β(t) = 0",0.66571045,0
+"IL1β(t) = c(low) and eventually[0,∞]globally(IL1β(t) = c(low))",0.74603075,IL1β(t) < c(low),0.8050745,IL1β(t) = c(low),0.82748693,2
+"globally[0,∞](IL1β(t) = c(low))",0.70536095,"globally[0,∞](IL1β(t) = c(low))",0.70536095,"globally[0,∞](IL1β(t) = c(low))",0.70536095,0
+"IL1β(t) > c(low) and globally[0,∞](d_IL1β(t) = 0)",0.7200857,"IL1β(t) > c(low) and globally[0,∞](d_IL1β(t) = 0)",0.7200857,"IL1β(t) > c(low) and globally[0,∞](d_IL1β(t) = 0)",0.7200857,0
+"globally[∞,∞](IL1β(t) = c(low))",0.66236925,"globally[∞,∞](IL1β(t) = c(low))",0.66236925,"globally[∞,∞](IL1β(t) = c(low))",0.66236925,0
+"globally[0,∞](IL1β(t) = c(low)) and globally[0,∞](IL1β(t) < c(low)) and eventually[0,∞]globally(d_IL1β(t) > 0)",0.6234836,"globally[0,∞](IL1β(t) = c(low)) and globally[0,∞](IL1β(t) < c(low)) and eventually[0,∞]globally(d_IL1β(t) > 0)",0.6234836,IL1β(t) = c(low),0.82748693,1
+"globally[0,∞](IL1β(t) = c(low)) and d_IL1β(t) < d_c(low)",0.65597653,IL1β(t) = c(low),0.82748693,IL1β(t) = c(low),0.82748693,2
+IL1β(t) < c(low) and d_IL1β(t) = 0,0.7877809,IL1β(t) < c(low) and d_IL1β(t) = 0,0.7877809,IL1β(t) < c(low) and d_IL1β(t) = 0,0.7877809,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0

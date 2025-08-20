@@ -1,0 +1,65 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
+"eventually[10,16](d_IL1Ra(t) > d_c(high) and IL12(t) > c(high)) and d_IL6(t) > d_c(low) and SARSCoV2(t) > c(low)",0.4537604,"eventually[10,16](d_IL1Ra(t) > d_c(high) and IL12(t) > c(high)) and d_IL6(t) > d_c(low) and SARSCoV2(t) > c(low)",0.4537604,"eventually[10,16](d_IL1Ra(t) > d_c(high) and IL12(t) > c(high)) and d_IL6(t) > d_c(low) and SARSCoV2(t) > c(low)",0.4537604,0
+"globally[12,∞](d_IL8(t) < d_c(low))",0.19056556,"globally[12,∞](d_IL8(t) < d_c(low))",0.19056556,"globally[12,∞](d_IL8(t) < d_c(low))",0.19056556,0
+"globally[0,∞](IL6(t) < c(high))",0.21352647,"eventually[0,7]globally(d_SARSCoV2(t)=d_c(low)) and eventually[28,35](SARSCoV2(t)=c(high))",0.52766037,"eventually[0,7]globally(d_SARSCoV2(t)=d_c(low)) and eventually[28,35](SARSCoV2(t)=c(high))",0.52766037,2
+"d_IL1RN(t) > d_c(high) and eventually[14,15]globally(d_IFNα(t)=d_c(high) and IFNβ(t) > c(low))",0.1871108,"d_IL1RN(t) > d_c(high) and eventually[14,15]globally(d_IFNα(t)=d_c(high) and IFNβ(t) > c(low))",0.1871108,"d_IL1RN(t) > d_c(high) and eventually[14,15]globally(d_IFNα(t)=d_c(high) and IFNβ(t) > c(low))",0.1871108,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+d_IL1Ra(t) > d_c(high) implies IL8(t) > c(high) and d_IFNβ(t)=d_c(low) and d_IL12(t) < d_c(low),0.16269156,"globally[0,∞](IL8(t) < c(high)) and eventually[0,2](IL6(t) > c(low))",0.22061484,"eventually[0,18]globally(IL6(t)=c(high))",0.25331098,2
+IL6(t)=c(low) implies d_IL12(t) < d_c(high),0.21279153,IL6(t)=c(low) implies d_IL12(t) < d_c(high),0.21279153,"d_IL1Ra(t) = c(high) and globally[0,∞](SARSCoV2(t)=c(low) implies d_IL1Ra(t) = d_c(high))",0.44943237,1
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+SARSCoV2(t) < c(low) and SARSCoV2(t) > c(low),0.47694835,SARSCoV2(t) < c(low) and SARSCoV2(t) > c(low),0.47694835,SARSCoV2(t) < c(low) and SARSCoV2(t) > c(low),0.47694835,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+IL1RN(t) < c(mid) and d_IFNβ(t) > 0,0.21410248,"IL8(t) < c(low) and globally[0,7](d_IL1β(t) > d_c(high))",0.28592202,"IL8(t) < c(low) and globally[0,7](d_IL1β(t) > d_c(high))",0.28592202,2
+"eventually[14,∞]globally(d_SARSCoV2(t) > c(low))
+and d_IL6(t)=0
+and IL6(t) > c(mid)",0.52079344,"eventually[14,∞]globally(d_SARSCoV2(t) > c(low))
+and d_IL6(t)=0
+and IL6(t) > c(mid)",0.52079344,"eventually[14,∞]globally(d_SARSCoV2(t) > c(low))
+and d_IL6(t)=0
+and IL6(t) > c(mid)",0.52079344,0
+IL6(t)=c(high),0.19326615,IL6(t)=c(high),0.19326615,IL6(t) > c(mid) implies SARSCoV2(t) < c(high),0.47889334,1
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"d_IL1Ra(t)=c(mid) and eventually[8,12](IL1Ra(t) > c(mid))",0.24671458,"globally[0,7](d_SARSCoV2(t) = c(high) implies d_IL6(t) > c(high))
+
+and globally[7,16](d_IFNβ(t) < d_c(low) implies SARSCoV2(t)=c(high))
+
+and eventually[18,∞](d_IFNβ(t)=d_c(high))",0.4654394,"globally[0,7](d_SARSCoV2(t) = c(high) implies d_IL6(t) > c(high))
+
+and globally[7,16](d_IFNβ(t) < d_c(low) implies SARSCoV2(t)=c(high))
+
+and eventually[18,∞](d_IFNβ(t)=d_c(high))",0.4654394,2
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[0, ∞](d_SARSCoV2(t) < d_c(high))",0.48195347,"globally[27,58](SARSCoV2(t) < c(low))",0.49207327,"globally[27,58](SARSCoV2(t) < c(low))",0.49207327,2
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[0,∞](IL1β(t) > c(low))",0.33374834,"globally[0,∞](IL1β(t) > c(low))",0.33374834,"globally[0,∞](IL1β(t) > c(low))",0.33374834,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[0,1](IL6(t) < c(high)) and eventually[1,∞]globally(IL6(t) < c(high))",0.20581055,IL6(t) < c(mid) and IL12(t) < c(mid) and IL1β(t) < c(mid) and IL1Ra(t) < c(mid) and TNFα(t) < c(mid) and IL8(t) < c(mid) and IFNα(t) < c(mid) and IFNβ(t) < c(mid) and SARSCoV2(t) < c(mid) and IL1RN(t) < c(mid) and d_SARSCoV2(t) = 0 and d_TNFα(t) > d_c(low) and d_IL8(t) > d_c(low) and d_IFNα(t) > d_c(low) and d_IFNβ(t) > d_c(low) and d_SARSCoV2(t) = 0 and d_IL1β(t) > d_c(low) and d_IL1Ra(t) > d_c(low) and d_SARSCoV2(t) = 0 and d_IL1RN(t) = 0,0.4605443,IL6(t) < c(mid) and IL12(t) < c(mid) and IL1β(t) < c(mid) and IL1Ra(t) < c(mid) and TNFα(t) < c(mid) and IL8(t) < c(mid) and IFNα(t) < c(mid) and IFNβ(t) < c(mid) and SARSCoV2(t) < c(mid) and IL1RN(t) < c(mid) and d_SARSCoV2(t) = 0 and d_TNFα(t) > d_c(low) and d_IL8(t) > d_c(low) and d_IFNα(t) > d_c(low) and d_IFNβ(t) > d_c(low) and d_SARSCoV2(t) = 0 and d_IL1β(t) > d_c(low) and d_IL1Ra(t) > d_c(low) and d_SARSCoV2(t) = 0 and d_IL1RN(t) = 0,0.4605443,2
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[9,∞](IL1β(t) < c(low))",0.3358113,"globally[9,∞](IL1β(t) < c(low))",0.3358113,"globally[9,∞](IL1β(t) < c(low))",0.3358113,0
+IL1Ra(t)=c(low),0.18167737,IL1Ra(t)=c(low),0.18167737,"eventually[0,2](d_IL1β(t) < d_c(high)) and IL1β(t) > c(mid)",0.3505442,1
+"eventually[14,∞]globally(d_IL12(t)=0) and d_IL8(t) > d_c(low) and IL8(t) > c(mid)",0.22424118,"globally[0,72](d_SARSCoV2(t) = c(low))",0.4876087,"globally[0,72](d_SARSCoV2(t) = c(low))",0.4876087,2
+"globally[7,11](TNFα(t) < c(mid))",0.27972618,"globally[0,2](IL1β(t)=c(low)) and eventually[31,∞]globally(IL1β(t)=c(low) implies SARSCoV2(t)=c(high))",0.5844069,"globally[0,2](IL1β(t)=c(low)) and eventually[31,∞]globally(IL1β(t)=c(low) implies SARSCoV2(t)=c(high))",0.5844069,2
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"eventually[5,12](d_SARSCoV2(t) > 0 and SARSCoV2(t) < c(high))",0.47790688,"eventually[5,12](d_SARSCoV2(t) > 0 and SARSCoV2(t) < c(high))",0.47790688,"eventually[5,12](d_SARSCoV2(t) > 0 and SARSCoV2(t) < c(high))",0.47790688,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[0,14](IFNβ(t) > c(low))",0.15324192,"IL8(t) < c(low) and globally[6,15](d_IL1β(t) > d_c(high)) and IL1β(t) > c(mid)",0.30089122,"IL8(t) < c(low) and globally[6,15](d_IL1β(t) > d_c(high)) and IL1β(t) > c(mid)",0.30089122,2
+d_IL1RN(t) < d_c(high) implies d_IFNα(t)=d_c(high) and IFNβ(t) > c(low),0.118984744,d_IL1RN(t) < d_c(high) implies d_IFNα(t)=d_c(high) and IFNβ(t) > c(low),0.118984744,"globally[28,∞](d_SARSCoV2(t) < d_c(high) implies d_IL1β(t) = d_c(high))",0.5290379,1
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"IL1Ra(t) = c(low) and globally[0,∞](d_IL1Ra(t) = d_c(low))",0.21307652,"IL1Ra(t) = c(low) and globally[0,∞](d_IL1Ra(t) = d_c(low))",0.21307652,"IL1Ra(t) = c(low) and globally[0,∞](d_IL1Ra(t) = d_c(low))",0.21307652,0
+d_IL6(t) > d_c(high) implies IL1β(t) < c(high),0.27582267,d_IL6(t) > d_c(high) implies IL1β(t) < c(high),0.27582267,d_IL6(t) > d_c(high) implies IL1β(t) < c(high),0.27582267,0
+"eventually[2,∞]globally(IL1Ra(t)=c(mid))",0.26224267,"eventually[2,∞]globally(IL1Ra(t)=c(mid))",0.26224267,"eventually[2,∞]globally(IL1Ra(t)=c(mid))",0.26224267,0
+IL1β(t) > c(high) and SARSCoV2(t) < c(low),0.55858135,IL1β(t) > c(high) and SARSCoV2(t) < c(low),0.55858135,IL1β(t) > c(high) and SARSCoV2(t) < c(low),0.55858135,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"globally[31, ∞](SARSCoV2(t) = c(high))",0.48109868,"globally[31, ∞](SARSCoV2(t) = c(high))",0.48109868,"globally[31, ∞](SARSCoV2(t) = c(high))",0.48109868,0
+"eventually[4,5]globally(d_IFNα(t)=d_c(low)) and eventually[12,15](SARSCoV2(t)=c(high))",0.44269627,"eventually[4,5]globally(d_IFNα(t)=d_c(low)) and eventually[12,15](SARSCoV2(t)=c(high))",0.44269627,"eventually[4,5]globally(d_IFNα(t)=d_c(low)) and eventually[12,15](SARSCoV2(t)=c(high))",0.44269627,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
+"eventually[6,11](d_SARSCoV2(t) > 0 and TNFα(t)=c(low))",0.55124736,"eventually[6,11](d_SARSCoV2(t) > 0 and TNFα(t)=c(low))",0.55124736,"eventually[6,11](d_SARSCoV2(t) > 0 and TNFα(t)=c(low))",0.55124736,0
+"globally[0,14](d_IL6(t) < d_c(high) and d_IL1β(t) > d_c(high))",0.30824828,"globally[0,14](d_IL6(t) < d_c(high) and d_IL1β(t) > d_c(high))",0.30824828,SARSCoV2(t) < c(low) and IL8(t) < c(low) and IL1β(t) < c(low),0.50868934,1
+IL1Ra(t) < c(high) implies IFNβ(t)=c(mid),0.21604623,IL1Ra(t) < c(high) implies IFNβ(t)=c(mid),0.21604623,IL1Ra(t) < c(high) implies IFNβ(t)=c(mid),0.21604623,0
+IL12(t)=c(high) implies d_SARSCoV2(t) > d_c(high),0.4340856,IL12(t)=c(high) implies d_SARSCoV2(t) > d_c(high),0.4340856,IL12(t)=c(high) implies d_SARSCoV2(t) > d_c(high),0.4340856,0
+N/A,N/A,N/A,N/A,N/A,N/A,0
