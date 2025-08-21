@@ -79,6 +79,7 @@ for index, row in translations.iterrows():
         for entry in row_subset:
             if entry != 'STL could not be extracted' and entry != 'STL could not be parsed' and entry is not None:
                 # add this entry
+                entry = entry.replace("∞", "inf")
                 literal = STL2literal(entry, grammar)
                 literal_embedding = ( np.array(model.encode(literal, normalize_embeddings=True)) )
                 sim = cosine_similarity(np.array(literal_embedding).reshape(1,-1), np.array(nl_embedding).reshape(1,-1))[0][0]
@@ -155,6 +156,7 @@ for (index, row) in translations.iterrows():
                 new_row.loc[i, f'S{k}-F{m}'] = 'N/A' 
                 new_row.loc[i, f'S{k}-F{m} sim'] = 'N/A'
             elif entry is not None:
+                entry = entry.replace("∞", "inf")
                 literal = STL2literal(entry, grammar)
                 literal_embedding = ( np.array(model.encode(literal, normalize_embeddings=True)) )
                 sim = cosine_similarity(np.array(literal_embedding).reshape(1,-1), np.array(nl_embedding).reshape(1,-1))[0][0]
@@ -216,6 +218,7 @@ for (index, row) in translations.iterrows():
                     count_inside_semantic_attempt += 1
 
                 else:
+                    entry = entry.replace("∞", "inf")
                     literal = STL2literal(entry, grammar)
                     literal_embedding = ( np.array(model.encode(literal, normalize_embeddings=True)) )
                     sim = cosine_similarity(np.array(literal_embedding).reshape(1,-1), np.array(nl_embedding).reshape(1,-1))[0][0]
@@ -236,24 +239,20 @@ for (index, row) in translations.iterrows():
                 new_row.loc[i, f'Semantic attempt {count_semantic_attempts}'] = r_stl
                 new_row.loc[i, f'Semantic attempt {count_semantic_attempts} sim'] = r_sim
                 count_semantic_attempts += 1
+                first_time = True
 
         sentence_table = pandas.concat([sentence_table, new_row], ignore_index=False)
 
     # back at the sentence level
     number_of_times_semantic_feedback_portion_reached = 0
-    # get nz --> "shots"
     for shot in range(shots):
-        print(f'STL-shot{shot}-S1-F0')
-        # print(f'translations[STL-shot{shot}-S1-F0]: {translations[col]}')
         if translations.loc[index, f'STL-shot{shot}-S1-F0'] is not None:
-            print(f"translation is: {translations.loc[index, f'STL-shot{shot}-S1-F0']}")
             number_of_times_semantic_feedback_portion_reached += 1
 
     sentence_table['Number of improving translations (relative to initial result)'] = 0
     sentence_table['Number of worsening translations (relative to initial result)'] = 0
     sentence_table['Number of consistent translations (relative to initial result)'] = 0
 
-    # print(f'sentence table: {sentence_table}')
     for d, r in sentence_table.iterrows():
         for i in range(params['num_semantic_checks']): # TODO: need to get the number of semantic attempts from params
             pos_condition = False
@@ -261,15 +260,8 @@ for (index, row) in translations.iterrows():
             eq_condition = False
 
             if sentence_table.loc[d, f'Semantic attempt 0'] is not None and sentence_table.loc[d, f'Semantic attempt 0'] != 'N/A':
-                # if (sentence_table.loc[d, f'Semantic attempt 0'] == 'N/A') and (sentence_table.loc[d, f'Semantic attempt {i+1}'] == 'N/A' or sentence_table.loc[d, f'Semantic attempt {i+1}'] is None ):
-                #     pos_condition = False
-                #     neg_condition = False
-                #     eq_condition = True
-                # elif (sentence_table.loc[d, f'Semantic attempt 0'] == 'N/A') and (sentence_table.loc[d, f'Semantic attempt {i+1}'] != 'N/A' and sentence_table.loc[d, f'Semantic attempt {i+1}'] is not None):
-                #     pos_condition = True
-                #     neg_condition = False
-                #     eq_condition = False
-                if (sentence_table.loc[d, f'Semantic attempt {i+1}'] == 'N/A' or sentence_table.loc[d, f'Semantic attempt {i+1}'] is None ) and (sentence_table.loc[d, f'Semantic attempt 0'] != 'N/A' and sentence_table.loc[d, f'Semantic attempt 0'] is not None):
+                # print(f'sentence_table.loc[d, Semantic attempt {i+1}]: {sentence_table.loc[d, f'Semantic attempt {i+1}']}')
+                if sentence_table.loc[d, f'Semantic attempt {i+1}'] == 'N/A' or sentence_table.loc[d, f'Semantic attempt {i+1}'] is None:
                     pos_condition = False
                     neg_condition = True
                     eq_condition = False
@@ -347,6 +339,7 @@ for index, row in translations.iterrows():
         literal_embeddings = []
         for stl in row_subset_filtered:
             # get the literal translation, then the embedding that goes with the literal
+            stl = stl.replace("∞", "inf")
             literal = STL2literal(stl, grammar)
             literal_embeddings.append( np.array(model.encode(literal, normalize_embeddings=True)) )
 

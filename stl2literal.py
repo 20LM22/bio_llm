@@ -287,8 +287,8 @@ class Test(Interpreter):
          
     def temp_op_g(self, node): # TODO: parametrize this entire thing to do F, G, FG at the same time
         # print('located in temp op g')
-        print(node.children[1].children[0])
-        print(type(node.children[1].children[0].value))
+        # print(node.children[1].children[0])
+        # print(type(node.children[1].children[0].value))
         self.sentence.append('from day') # TODO: change this to an input we get from the LLM's dictionary so it can be adaptable for [days], [was]
         self.sentence.append(node.children[0].children[0].value) # start time interval
         # if isinstance(node.children[1].children[0], Tree) and node.children[1].children[0].data == 'inf':
