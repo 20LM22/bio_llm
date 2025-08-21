@@ -1,19 +1,19 @@
-Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improvements (relative to start)
-IL6(t) < c(low) and IL1RN(t)=c(mid) implies d_IL1RN(t) > d_c(high),0.34706134,IL6(t) < c(low) and IL1RN(t)=c(mid) implies d_IL1RN(t) > d_c(high),0.34706134,0
-N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,0
-"IL6(t) < c(mid) and d_IL6(t) < d_c(low) and globally[15,∞](d_IL1β(t) > d_c(high) implies d_IL1β(t) < 0)",0.32838517,"IL6(t) < c(mid) and d_IL6(t) < d_c(low) and globally[15,∞](d_IL1β(t) > d_c(high) implies d_IL1β(t) < 0)",0.32838517,0
-IL8(t)=c(low) implies IL1β(t) < c(low),0.3923712,IL8(t)=c(low) implies IL1β(t) < c(low),0.3923712,0
-N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,0
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+IL6(t) < c(low) and IL1RN(t)=c(mid) implies d_IL1RN(t) > d_c(high),0.34706134,IL6(t) < c(low) and IL1RN(t)=c(mid) implies d_IL1RN(t) > d_c(high),0.34706134,0,0,1
+N/A,N/A,N/A,N/A,0,0,1
+N/A,N/A,N/A,N/A,0,0,1
+"IL6(t) < c(mid) and d_IL6(t) < d_c(low) and globally[15,∞](d_IL1β(t) > d_c(high) implies d_IL1β(t) < 0)",0.32838517,"IL6(t) < c(mid) and d_IL6(t) < d_c(low) and globally[15,∞](d_IL1β(t) > d_c(high) implies d_IL1β(t) < 0)",0.32838517,0,0,1
+IL8(t)=c(low) implies IL1β(t) < c(low),0.3923712,IL8(t)=c(low) implies IL1β(t) < c(low),0.3923712,0,0,1
+N/A,N/A,N/A,N/A,0,0,1
+N/A,N/A,N/A,N/A,0,0,1
+N/A,N/A,N/A,N/A,0,0,1
+N/A,N/A,N/A,N/A,0,0,1
+N/A,N/A,N/A,N/A,0,0,1
+N/A,N/A,N/A,N/A,0,0,1
+N/A,N/A,N/A,N/A,0,0,1
+N/A,N/A,N/A,N/A,0,0,1
+N/A,N/A,N/A,N/A,0,0,1
+N/A,N/A,N/A,N/A,0,0,1
+N/A,N/A,N/A,N/A,0,0,1
+N/A,N/A,N/A,N/A,0,0,1
+N/A,N/A,N/A,N/A,0,0,1

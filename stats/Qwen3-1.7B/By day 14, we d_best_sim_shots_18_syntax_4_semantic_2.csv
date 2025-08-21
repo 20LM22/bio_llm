@@ -1,19 +1,19 @@
-Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
-N/A,N/A,N/A,N/A,N/A,N/A,0
-"globally[14,∞](SARSCoV2(t) = c(low)) and globally[14,∞](IL6(t) = c(low) and IL1RN(t) = c(low))",0.69344896,"globally[14,∞](SARSCoV2(t) = c(low)) and globally[14,∞](IL6(t) = c(low) and IL1RN(t) = c(low))",0.69344896,"globally[14,∞](SARSCoV2(t) = c(low)) and globally[14,∞](IL6(t) = c(low) and IL1RN(t) = c(low))",0.69344896,0
-N/A,N/A,N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,N/A,N/A,0
-SARSCoV2(t) = c(low),0.6306349,SARSCoV2(t) = c(low),0.6306349,SARSCoV2(t) = c(low),0.6306349,0
-N/A,N/A,N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,N/A,N/A,0
-IL6(t) > c(low),0.33518672,IL6(t) > c(low),0.33518672,IL6(t) > c(low),0.33518672,0
-N/A,N/A,N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,N/A,N/A,0
-"eventually[14,∞]globally(SARSCoV2(t) = c(low)) and eventually[14,∞]globally(IL6(t) = c(low) and IL1RN(t) = c(mid)) and eventually[14,∞]globally(IL6(t) > c(low) and IL1RN(t) > c(mid))",0.6943493,"eventually[14,∞]globally(SARSCoV2(t) = c(low)) and eventually[14,∞]globally(IL6(t) = c(low) and IL1RN(t) = c(mid)) and eventually[14,∞]globally(IL6(t) > c(low) and IL1RN(t) > c(mid))",0.6943493,"eventually[14,∞]globally(SARSCoV2(t) = c(low)) and eventually[14,∞]globally(IL6(t) = c(low) and IL1RN(t) = c(mid)) and eventually[14,∞]globally(IL6(t) > c(low) and IL1RN(t) > c(mid))",0.6943493,0
-N/A,N/A,N/A,N/A,N/A,N/A,0
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,2
+"globally[14,∞](SARSCoV2(t) = c(low)) and globally[14,∞](IL6(t) = c(low) and IL1RN(t) = c(low))",0.693449,"globally[14,∞](SARSCoV2(t) = c(low)) and globally[14,∞](IL6(t) = c(low) and IL1RN(t) = c(low))",0.693449,"globally[14,∞](SARSCoV2(t) = c(low)) and globally[14,∞](IL6(t) = c(low) and IL1RN(t) = c(low))",0.693449,0,0,2
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,2
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,2
+SARSCoV2(t) = c(low),0.630635,SARSCoV2(t) = c(low),0.630635,SARSCoV2(t) = c(low),0.630635,0,0,2
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,2
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,2
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,2
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,2
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,2
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,2
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,2
+IL6(t) > c(low),0.33518678,IL6(t) > c(low),0.33518678,IL6(t) > c(low),0.33518678,0,0,2
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,2
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,2
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,2
+"eventually[14,∞]globally(SARSCoV2(t) = c(low)) and eventually[14,∞]globally(IL6(t) = c(low) and IL1RN(t) = c(mid)) and eventually[14,∞]globally(IL6(t) > c(low) and IL1RN(t) > c(mid))",0.69434935,"eventually[14,∞]globally(SARSCoV2(t) = c(low)) and eventually[14,∞]globally(IL6(t) = c(low) and IL1RN(t) = c(mid)) and eventually[14,∞]globally(IL6(t) > c(low) and IL1RN(t) > c(mid))",0.69434935,"eventually[14,∞]globally(SARSCoV2(t) = c(low)) and eventually[14,∞]globally(IL6(t) = c(low) and IL1RN(t) = c(mid)) and eventually[14,∞]globally(IL6(t) > c(low) and IL1RN(t) > c(mid))",0.69434935,0,0,2
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,2

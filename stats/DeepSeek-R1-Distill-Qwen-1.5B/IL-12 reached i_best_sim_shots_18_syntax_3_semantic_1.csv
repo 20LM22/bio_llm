@@ -1,19 +1,19 @@
-Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improvements (relative to start)
-d_IL12(t) = d_c(high),0.59214824,d_IL12(t) = d_c(high),0.59214824,0
-N/A,N/A,N/A,N/A,0
-IL6(t)=c(high) implies IL12(t) > c(high),0.6661206,IL6(t)=c(high) implies IL12(t) > c(high),0.6661206,0
-N/A,N/A,N/A,N/A,0
-"globally[17,∞](IL12(t) = c(mid))",0.72452664,"globally[17,∞](IL12(t) = c(mid))",0.72452664,0
-d_IL12(t)=c(low) and d_IL12(t)=c(high),0.68374693,d_IL12(t) = c(mid),0.6954911,1
-"globally[14,∞](IL1β(t) > c(low) implies d_IL12(t) < 0)",0.66617155,d_IL12(t)=c(high) and IL12(t) > c(high),0.70847535,1
-IL12(t) = c(high),0.7085985,IL12(t) = c(high),0.7085985,0
-N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,0
-d_IL12(t) = c(high),0.7085985,d_IL12(t) = c(high),0.7085985,0
-N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,0
-IL12(t) = c(high),0.7085985,IL12(t) = c(high),0.7085985,0
-N/A,N/A,N/A,N/A,0
-N/A,N/A,N/A,N/A,0
-IL12(t) = c(high),0.7085985,IL12(t) = c(high),0.7085985,0
-"eventually[14,∞]globally(IL12(t) = c(high))",0.7581854,"eventually[14,∞]globally(IL12(t) = c(high))",0.7581854,0
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+d_IL12(t) = d_c(high),0.59214824,d_IL12(t) = d_c(high),0.59214824,0,0,1
+N/A,N/A,N/A,N/A,0,0,1
+IL6(t)=c(high) implies IL12(t) > c(high),0.6661206,IL6(t)=c(high) implies IL12(t) > c(high),0.6661206,0,0,1
+N/A,N/A,N/A,N/A,0,0,1
+"globally[17,∞](IL12(t) = c(mid))",0.72452664,"globally[17,∞](IL12(t) = c(mid))",0.72452664,0,0,1
+d_IL12(t)=c(low) and d_IL12(t)=c(high),0.68374693,d_IL12(t) = c(mid),0.6954911,1,0,0
+"globally[14,∞](IL1β(t) > c(low) implies d_IL12(t) < 0)",0.66617155,d_IL12(t)=c(high) and IL12(t) > c(high),0.70847535,1,0,0
+IL12(t) = c(high),0.7085985,IL12(t) = c(high),0.7085985,0,0,1
+N/A,N/A,N/A,N/A,0,0,1
+N/A,N/A,N/A,N/A,0,0,1
+d_IL12(t) = c(high),0.7085985,d_IL12(t) = c(high),0.7085985,0,0,1
+N/A,N/A,N/A,N/A,0,0,1
+N/A,N/A,N/A,N/A,0,0,1
+IL12(t) = c(high),0.7085985,IL12(t) = c(high),0.7085985,0,0,1
+N/A,N/A,N/A,N/A,0,0,1
+N/A,N/A,N/A,N/A,0,0,1
+IL12(t) = c(high),0.7085985,IL12(t) = c(high),0.7085985,0,0,1
+"eventually[14,∞]globally(IL12(t) = c(high))",0.7581854,"eventually[14,∞]globally(IL12(t) = c(high))",0.7581854,0,0,1

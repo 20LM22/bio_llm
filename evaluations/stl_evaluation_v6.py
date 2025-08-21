@@ -241,14 +241,13 @@ for (index, row) in translations.iterrows():
 
     # back at the sentence level
     number_of_times_semantic_feedback_portion_reached = 0
-    for col in translations.columns:
-        if f'STL-shot{index}-S1-F0' in col:
-
-            print(f"shot is: {index}")
-            # for these columns, a None indicates that semantic feedback was never even reached
-            if translations.loc[index, col] is not None:  # each row could have a max of nz times that this is true
-                print(f"translation is: {translations.loc[index, col]}")
-                number_of_times_semantic_feedback_portion_reached += 1
+    # get nz --> "shots"
+    for shot in range(shots):
+        print(f'STL-shot{shot}-S1-F0')
+        # print(f'translations[STL-shot{shot}-S1-F0]: {translations[col]}')
+        if translations.loc[index, f'STL-shot{shot}-S1-F0'] is not None:
+            print(f"translation is: {translations.loc[index, f'STL-shot{shot}-S1-F0']}")
+            number_of_times_semantic_feedback_portion_reached += 1
 
     sentence_table['Number of improving translations (relative to initial result)'] = 0
     sentence_table['Number of worsening translations (relative to initial result)'] = 0

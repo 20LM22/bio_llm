@@ -1,6 +1,6 @@
-Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
-"IL12(t) > c(high) and eventually[14,∞]globally(d_IL12(t) < d_c(high))",0.67277133,"IL12(t) > c(high) and eventually[14,∞]globally(d_IL12(t) < d_c(high))",0.67277133,"eventually[14,∞]globally(IL12(t) > c(high))",0.7672797,1
-"eventually[14,∞](IL12(t) = c(mid))",0.7513057,"eventually[14,∞](IL12(t) = c(mid))",0.7513057,"eventually[14,∞](IL12(t) = c(mid))",0.7513057,0
-"eventually[14,∞]globally(IL12(t) > c(high))",0.7672797,"eventually[14,∞]globally(IL12(t) > c(high))",0.7672797,"eventually[14,∞]globally(IL12(t) > c(high))",0.7672797,0
-"eventually[14,∞](IL12(t) > c(high))",0.77567303,"eventually[14,∞](IL12(t) > c(high))",0.77567303,"eventually[14,∞](IL12(t) > c(high))",0.77567303,0
-IL12(t) = c(high),0.70859855,IL12(t) = c(high),0.70859855,IL12(t) = c(high),0.70859855,0
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"IL12(t) > c(high) and eventually[14,∞]globally(d_IL12(t) < d_c(high))",0.6727714,"IL12(t) > c(high) and eventually[14,∞]globally(d_IL12(t) < d_c(high))",0.6727714,"eventually[14,∞]globally(IL12(t) > c(high))",0.7672795,1,0,1
+"eventually[14,∞](IL12(t) = c(mid))",0.7513056,"eventually[14,∞](IL12(t) = c(mid))",0.7513056,"eventually[14,∞](IL12(t) = c(mid))",0.7513056,0,0,2
+"eventually[14,∞]globally(IL12(t) > c(high))",0.7672795,"eventually[14,∞]globally(IL12(t) > c(high))",0.7672795,"eventually[14,∞]globally(IL12(t) > c(high))",0.7672795,0,0,2
+"eventually[14,∞](IL12(t) > c(high))",0.7756728,"eventually[14,∞](IL12(t) > c(high))",0.7756728,"eventually[14,∞](IL12(t) > c(high))",0.7756728,0,0,2
+IL12(t) = c(high),0.7085985,IL12(t) = c(high),0.7085985,IL12(t) = c(high),0.7085985,0,0,2
