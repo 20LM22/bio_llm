@@ -1,6 +1,6 @@
 S0-F0,S0-F0 sim,S0-F1,S0-F1 sim,S0-F2,S0-F2 sim,S0-F3,S0-F3 sim,S1-F0,S1-F0 sim,S1-F1,S1-F1 sim,S1-F2,S1-F2 sim,S1-F3,S1-F3 sim,S2-F0,S2-F0 sim,S2-F1,S2-F1 sim,S2-F2,S2-F2 sim,S2-F3,S2-F3 sim
-0.6661206,IL6(t) = c(high) implies IL12(t) > c(high),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,0.66037405,"eventually[14,∞]globally(d_IL12(t)=0) and d_IL8(t) > d_c(low) and IL8(t) > c(mid)",N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,0.7085985,d_IL12(t) = c(high),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,0.750351,"globally[14,∞](d_IL12(t) = c(high))",N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,0.7571626,"eventually[15,∞](IL12(t)=c(high))",N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,0.6497228,"eventually[15, ∞](IL8(t) < c(high))",N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+0.5393065,IL6(t) = c(high) implies IL12(t) > c(high),,,,,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,0.5393065,"eventually[14,∞]globally(d_IL12(t)=0) and d_IL8(t) > d_c(low) and IL8(t) > c(mid)",,,,,,
+N/A,N/A,N/A,N/A,0.5393065,d_IL12(t) = c(high),,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+N/A,N/A,N/A,N/A,N/A,N/A,0.5393065,"globally[14,∞](d_IL12(t) = c(high))",N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+N/A,N/A,N/A,N/A,N/A,N/A,0.5393065,"eventually[15,∞](IL12(t)=c(high))",N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+N/A,N/A,0.5393065,"eventually[15, ∞](IL8(t) < c(high))",,,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A

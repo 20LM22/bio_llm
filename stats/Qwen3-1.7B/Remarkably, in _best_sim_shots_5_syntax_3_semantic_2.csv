@@ -1,14 +1,18 @@
 Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
-N/A,N/A,N/A,N/A,N/A,N/A,0,0,2
-N/A,N/A,N/A,N/A,N/A,N/A,0,0,2
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
 "eventually[1,7]globally(IL1β(t) < c(high) and IL1Ra(t) < c(high))
 and
 eventually[8,14]globally(IL1β(t) = c(high) and IL1Ra(t) = c(high))
 and
-eventually[15,∞]globally(IL1β(t) > c(low) and IL1Ra(t) > c(low))",0.7121111,"eventually[1,7]globally(IL1β(t) < c(high) and IL1Ra(t) < c(high))
+eventually[15,∞]globally(IL1β(t) > c(low) and IL1Ra(t) > c(low))",0.48981822,"eventually[1,7]globally(IL1β(t) < c(high) and IL1Ra(t) < c(high))
 and
 eventually[8,14]globally(IL1β(t) = c(high) and IL1Ra(t) = c(high))
 and
-eventually[15,∞]globally(IL1β(t) > c(low) and IL1Ra(t) > c(low))",0.7121111,"eventually[1,7](IL1β(t) < c(low)) and eventually[1,7](IL1Ra(t) < c(low)) and globally[8,14](IL1β(t) > c(high)) and globally[8,14](IL1Ra(t) > c(high)) and eventually[15,∞](IL1β(t) < c(low)) and eventually[15,∞](IL1Ra(t) < c(low))",0.7151382,1,0,1
-N/A,N/A,N/A,N/A,N/A,N/A,0,0,2
-"IL1β(t) < c(mid) implies d_IL1β(t)=d_c(low) and IL1Ra(t) < c(mid) implies d_IL1Ra(t)=d_c(low) and eventually[1,7]globally(d_IL1β(t) > 0) and eventually[8,14]globally(d_IL1Ra(t) > 0) and eventually[15,∞]globally(d_IL1β(t) < 0) and eventually[15,∞]globally(d_IL1Ra(t) < 0)",0.67499864,"IL1β(t) < c(mid) implies d_IL1β(t)=d_c(low) and IL1Ra(t) < c(mid) implies d_IL1Ra(t)=d_c(low) and eventually[1,7]globally(d_IL1β(t) > 0) and eventually[8,14]globally(d_IL1Ra(t) > 0) and eventually[15,∞]globally(d_IL1β(t) < 0) and eventually[15,∞]globally(d_IL1Ra(t) < 0)",0.67499864,"IL1β(t) < c(mid) implies d_IL1β(t)=d_c(low) and IL1Ra(t) < c(mid) implies d_IL1Ra(t)=d_c(low) and eventually[1,7]globally(d_IL1β(t) > 0) and eventually[8,14]globally(d_IL1Ra(t) > 0) and eventually[15,∞]globally(d_IL1β(t) < 0) and eventually[15,∞]globally(d_IL1Ra(t) < 0)",0.67499864,0,0,2
+eventually[15,∞]globally(IL1β(t) > c(low) and IL1Ra(t) > c(low))",0.48981822,"eventually[1,7]globally(IL1β(t) < c(high) and IL1Ra(t) < c(high))
+and
+eventually[8,14]globally(IL1β(t) = c(high) and IL1Ra(t) = c(high))
+and
+eventually[15,∞]globally(IL1β(t) > c(low) and IL1Ra(t) > c(low))",0.48981822,0,0,2
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"IL1β(t) < c(mid) implies d_IL1β(t)=d_c(low) and IL1Ra(t) < c(mid) implies d_IL1Ra(t)=d_c(low) and eventually[1,7]globally(d_IL1β(t) > 0) and eventually[8,14]globally(d_IL1Ra(t) > 0) and eventually[15,∞]globally(d_IL1β(t) < 0) and eventually[15,∞]globally(d_IL1Ra(t) < 0)",0.48981822,"IL1β(t) < c(mid) implies d_IL1β(t)=d_c(low) and IL1Ra(t) < c(mid) implies d_IL1Ra(t)=d_c(low) and eventually[1,7]globally(d_IL1β(t) > 0) and eventually[8,14]globally(d_IL1Ra(t) > 0) and eventually[15,∞]globally(d_IL1β(t) < 0) and eventually[15,∞]globally(d_IL1Ra(t) < 0)",0.48981822,"IL1β(t) < c(mid) implies d_IL1β(t)=d_c(low) and IL1Ra(t) < c(mid) implies d_IL1Ra(t)=d_c(low) and eventually[1,7]globally(d_IL1β(t) > 0) and eventually[8,14]globally(d_IL1Ra(t) > 0) and eventually[15,∞]globally(d_IL1β(t) < 0) and eventually[15,∞]globally(d_IL1Ra(t) < 0)",0.48981822,0,0,2

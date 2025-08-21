@@ -1,6 +1,6 @@
 S0-F0,S0-F0 sim,S0-F1,S0-F1 sim,S0-F2,S0-F2 sim,S0-F3,S0-F3 sim,S1-F0,S1-F0 sim,S1-F1,S1-F1 sim,S1-F2,S1-F2 sim,S1-F3,S1-F3 sim,S2-F0,S2-F0 sim,S2-F1,S2-F1 sim,S2-F2,S2-F2 sim,S2-F3,S2-F3 sim
-N/A,N/A,0.45557272,"globally[1,∞](d_IL6(t) < c(low)) implies eventually[8,∞]globally(d_IL6(t) < d_c(high)) and globally[1,∞](d_IL12(t) < c(low)) implies eventually[8,∞]globally(d_IL12(t) < d_c(high))",N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,0.7063389,"IL1β(t) < c(mid) and globally[1,∞](d_IL1β(t) = d_c(low)) and IL1Ra(t) < c(high) and eventually[8,14]globally(d_IL1β(t) = d_c(high)) and globally[14,∞](d_IL1Ra(t) < d_c(low))",N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+N/A,N/A,0.48981822,"globally[1,∞](d_IL6(t) < c(low)) implies eventually[8,∞]globally(d_IL6(t) < d_c(high)) and globally[1,∞](d_IL12(t) < c(low)) implies eventually[8,∞]globally(d_IL12(t) < d_c(high))",,,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,0.48981822,"IL1β(t) < c(mid) and globally[1,∞](d_IL1β(t) = d_c(low)) and IL1Ra(t) < c(high) and eventually[8,14]globally(d_IL1β(t) = d_c(high)) and globally[14,∞](d_IL1Ra(t) < d_c(low))",,,,,,
+N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,,,,,,,,,,,,,,,
+N/A,N/A,,,,,,,,,,,,,,,,,,,,,,
+N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,,,,,,,,,,,,,,,
+N/A,N/A,,,,,,,,,,,,,,,,,,,,,,

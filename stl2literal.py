@@ -287,10 +287,12 @@ class Test(Interpreter):
          
     def temp_op_g(self, node): # TODO: parametrize this entire thing to do F, G, FG at the same time
         # print('located in temp op g')
-
+        print(node.children[1].children[0])
+        print(type(node.children[1].children[0].value))
         self.sentence.append('from day') # TODO: change this to an input we get from the LLM's dictionary so it can be adaptable for [days], [was]
         self.sentence.append(node.children[0].children[0].value) # start time interval
-        if node.children[1].children[0].value == '∞':
+        # if isinstance(node.children[1].children[0], Tree) and node.children[1].children[0].data == 'inf':
+        if node.children[1].children[0].value == '∞' or node.children[1].children[0].value == 'inf':
             self.sentence.append('onward')
         else:
             self.sentence.append('to')
@@ -311,7 +313,7 @@ class Test(Interpreter):
 
         self.sentence.append('from day') # TODO: change this to an input we get from the LLM's dictionary so it can be adaptable for [days], [was]
         self.sentence.append(node.children[0].children[0].value) # start time interval
-        if node.children[1].children[0].value == '∞':
+        if node.children[1].children[0].value == '∞' or node.children[1].children[0].value == 'inf':
             self.sentence.append('onward')
         else:
             self.sentence.append('to')
@@ -352,9 +354,11 @@ class Test(Interpreter):
 
 def STL2literal(input_sentence, grammar):
     # TODO: remove this grammar
-    grammar = "?start: omega\n?u: gt | lt | eq | d_gt | d_lt | d_eq\ngt: s \"(t)\" \">\" c\nlt: s \"(t)\" \"<\" c\neq: s \"(t)\" \"=\" c\nd_gt: \"d_\" s \"(t)\" \">\" D_C\nd_lt: \"d_\" s \"(t)\" \"<\" D_C\nd_eq: \"d_\" s \"(t)\" \"=\" D_C\nc: s \"(\" t_a \")\" | C_LOW | C_MID | C_HIGH\nC_LOW: \"c(low)\"\nC_MID: \"c(mid)\"\nC_HIGH: \"c(high)\"\nD_C : \"0\" | \"d_c(low)\" | \"d_c(high)\" | \"-d_c(low)\" | \"-d_c(high)\"\n?nu : u | u_implies_u | u_and_u\nu_implies_u: u \"implies\" u\nu_and_u: u \"and\" u\n?psi: temp_op_fg | temp_op_g | temp_op_f\ntemp_op_fg: \"eventually\" \"[\" t_a \",\" t_a \"]\" \"globally\" \"(\" nu \")\"\ntemp_op_f: \"eventually\" \"[\" t_a \",\" t_a \"]\" \"(\" nu \")\"\ntemp_op_g: \"globally\" \"[\" t_a \",\" t_a \"]\" \"(\" nu \")\"\nomega: nu | psi | omega_and_omega | psi_implies_psi\nomega_and_omega: omega \"and\" omega\npsi_implies_psi: psi \"implies\" psi\nt_a: /[0-9]+/ | \"inf\" | /∞/\ns: /[\\w]+/\nd_s: /d_[\\w]+/\n%import common.WS\n%ignore WS"
+    # grammar = "?start: omega\n?u: gt | lt | eq | d_gt | d_lt | d_eq\ngt: s \"(t)\" \">\" c\nlt: s \"(t)\" \"<\" c\neq: s \"(t)\" \"=\" c\nd_gt: \"d_\" s \"(t)\" \">\" D_C\nd_lt: \"d_\" s \"(t)\" \"<\" D_C\nd_eq: \"d_\" s \"(t)\" \"=\" D_C\nc: s \"(\" t_a \")\" | C_LOW | C_MID | C_HIGH\nC_LOW: \"c(low)\"\nC_MID: \"c(mid)\"\nC_HIGH: \"c(high)\"\nD_C : \"0\" | \"d_c(low)\" | \"d_c(high)\" | \"-d_c(low)\" | \"-d_c(high)\"\n?nu : u | u_implies_u | u_and_u\nu_implies_u: u \"implies\" u\nu_and_u: u \"and\" u\n?psi: temp_op_fg | temp_op_g | temp_op_f\ntemp_op_fg: \"eventually\" \"[\" t_a \",\" t_a \"]\" \"globally\" \"(\" nu \")\"\ntemp_op_f: \"eventually\" \"[\" t_a \",\" t_a \"]\" \"(\" nu \")\"\ntemp_op_g: \"globally\" \"[\" t_a \",\" t_a \"]\" \"(\" nu \")\"\nomega: nu | psi | omega_and_omega | psi_implies_psi\nomega_and_omega: omega \"and\" omega\npsi_implies_psi: psi \"implies\" psi\nTANUM: /[0-9]+/\nINFINITY: \"inf\" | \"∞\"\nt_a: TANUM | INFINITY\ns: /[\\w]+/\nd_s: /d_[\\w]+/\n%import common.WS\n%ignore WS"
     # print('inside stl2literal')
     p = Lark(grammar) # TODO: this is also slow, improve if possible
+
+    # input_sentence = "globally[0,7](IL6(t) = c(high)) and globally[7,∞](d_IL6(t) < 0)"
 
     tree = p.parse(input_sentence)
     tester = Test() # TODO: this is redundant, see if this can be improved
@@ -368,8 +372,16 @@ def STL2literal(input_sentence, grammar):
     first_letter = split[0][0]
     first_word = '' if len(split[0]) < 2 else split[0][1:]
     tester.sentence = first_letter.capitalize() + first_word + ' ' + ' '.join(split[1:])
-    
+
 
     return tester.sentence
+#
+# if __name__ == '__main__':
+#     grammar = "?start: omega\n?u: gt | lt | eq | d_gt | d_lt | d_eq\ngt: s \"(t)\" \">\" c\nlt: s \"(t)\" \"<\" c\neq: s \"(t)\" \"=\" c\nd_gt: \"d_\" s \"(t)\" \">\" D_C\nd_lt: \"d_\" s \"(t)\" \"<\" D_C\nd_eq: \"d_\" s \"(t)\" \"=\" D_C\nc: s \"(\" t_a \")\" | C_LOW | C_MID | C_HIGH\nC_LOW: \"c(low)\"\nC_MID: \"c(mid)\"\nC_HIGH: \"c(high)\"\nD_C : \"0\" | \"d_c(low)\" | \"d_c(high)\" | \"-d_c(low)\" | \"-d_c(high)\"\n?nu : u | u_implies_u | u_and_u\nu_implies_u: u \"implies\" u\nu_and_u: u \"and\" u\n?psi: temp_op_fg | temp_op_g | temp_op_f\ntemp_op_fg: \"eventually\" \"[\" t_a \",\" t_a \"]\" \"globally\" \"(\" nu \")\"\ntemp_op_f: \"eventually\" \"[\" t_a \",\" t_a \"]\" \"(\" nu \")\"\ntemp_op_g: \"globally\" \"[\" t_a \",\" t_a \"]\" \"(\" nu \")\"\nomega: nu | psi | omega_and_omega | psi_implies_psi\nomega_and_omega: omega \"and\" omega\npsi_implies_psi: psi \"implies\" psi\nTANUM: /[0-9]+/\nINFINITY: \"inf\" | \"∞\"\nt_a: TANUM | INFINITY\ns: /[\\w]+/\nd_s: /d_[\\w]+/\n%import common.WS\n%ignore WS"
+#     p = Lark(grammar)
+#     input_sentence = "globally[0,7](IL6(t) = c(high)) and globally[7,∞](d_IL6(t) < 0)"
+#     tree = p.parse(input_sentence)
+#     print(tree)
+
 
 

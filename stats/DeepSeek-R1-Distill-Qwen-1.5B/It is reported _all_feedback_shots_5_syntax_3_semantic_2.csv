@@ -1,6 +1,6 @@
 S0-F0,S0-F0 sim,S0-F1,S0-F1 sim,S0-F2,S0-F2 sim,S0-F3,S0-F3 sim,S1-F0,S1-F0 sim,S1-F1,S1-F1 sim,S1-F2,S1-F2 sim,S1-F3,S1-F3 sim,S2-F0,S2-F0 sim,S2-F1,S2-F1 sim,S2-F2,S2-F2 sim,S2-F3,S2-F3 sim
-N/A,N/A,N/A,N/A,0.50215465,"globally[1,∞](d_IFNα(t) < d_c(low))",N/A,N/A,0.22346355,"eventually[7,18]globally(IL1Ra(t)=c(mid)) implies globally[3,∞](IL6(t) < c(high))",N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,0.49394935,"eventually[1,∞]globally(d_IFNα(t)=0 implies d_IFNβ(t)=d_c(low))",N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-0.4873742,d_IFNα(t) = c(low) and d_IFNβ(t) = c(low),N/A,N/A,N/A,N/A,N/A,N/A,0.42768806,IFNβ(t) > c(low) implies d_TNFα(t) > d_c(low),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,0.54489404,"eventually[18,∞]globally(d_IFNα(t) > d_c(low))",N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,0.22389463,"globally[3,∞](IL6(t) < c(high)) implies eventually[7,18]globally(IL1Ra(t)=c(mid))",N/A,N/A,N/A,N/A,N/A,N/A
+N/A,N/A,N/A,N/A,0.19429182,"globally[1,∞](d_IFNα(t) < d_c(low))",,,0.19429182,"eventually[7,18]globally(IL1Ra(t)=c(mid)) implies globally[3,∞](IL6(t) < c(high))",,,,,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,,,,,,,,,,,,,,,
+N/A,N/A,0.19429182,"eventually[1,∞]globally(d_IFNα(t)=0 implies d_IFNβ(t)=d_c(low))",,,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+0.19429182,d_IFNα(t) = c(low) and d_IFNβ(t) = c(low),,,,,,,0.19429182,IFNβ(t) > c(low) implies d_TNFα(t) > d_c(low),,,,,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+N/A,N/A,0.19429182,"eventually[18,∞]globally(d_IFNα(t) > d_c(low))",,,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,0.19429182,"globally[3,∞](IL6(t) < c(high)) implies eventually[7,18]globally(IL1Ra(t)=c(mid))",,,,,,

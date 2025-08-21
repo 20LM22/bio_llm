@@ -19,7 +19,7 @@ class STLResponse(BaseModel):
     output_STL: str
 
 file_name = f'../config/{sys.argv[2]}'
-with open(file_name, 'r') as f:
+with open(file_name, 'r', encoding='utf-8') as f:
     params = json.load(f)
 
 num_shots_per_input_sentence=params['num_shots_per_input_sentence']
@@ -73,6 +73,9 @@ def generate_example_prompt(num_examples):
 
     literal_translations = []
     for _id, sample in enumerate(samples):
+        sample = sample.replace("âˆž", "∞")
+        sample = sample.replace("∞", "inf")
+        # print(sample)
         literal_translations.append(STL2literal(sample, grammar))
 
     examples = ""
@@ -135,7 +138,8 @@ def get_hole_feedback(error, res, s):
 def check_signal_names(parsed, res, s):
     signals = re.findall(r"Tree\(Token\('RULE', 's'\), \[Token\('\w+', '\w+'\)\]\)", str(parsed))
     for sig in signals:
-        sig = sig.split("Tree(Token('RULE', 's'), [Token('__ANON_3',")
+        print(f'sig: {sig}')
+        sig = sig.split("Tree(Token('RULE', 's'), [Token('__ANON_1',")
         # print(f"after split: {s}")
         sig = re.findall(r"'.*'", sig[1])[0]
         try:
@@ -254,7 +258,6 @@ for sentence_index, sentence in sentences['input statement'].items():
             ],
             max_output_tokens = params['model_parameters']['max_tokens'],
             temperature = params['model_parameters']['temperature'],
-            top_p = params['model_parameters']['top_p'],
         )
 
         response = response.output_text
@@ -276,10 +279,9 @@ for sentence_index, sentence in sentences['input statement'].items():
             text_format = STLResponse,
             max_output_tokens = params['model_parameters']['max_tokens'],
             temperature = params['model_parameters']['temperature'],
-            top_p = params['model_parameters']['top_p'],
         )
-        response = response.output_parsed
 
+        response = response.output_parsed.model_dump_json(indent=2)
         print(f'response: {response}')
 
         ####################################################################
@@ -298,6 +300,10 @@ for sentence_index, sentence in sentences['input statement'].items():
 
         # Try parsing
         parsed_stl = ''
+        extracted_response = extracted_response.replace("âˆž", "∞")
+        # print(repr(extracted_response))  # Check encoding
+        # print([ord(c) for c in extracted_response])  # Should include 8734 for '∞'
+
         try:
             parsed_stl = parser.parse(extracted_response)
             print('right before checking signal names')
@@ -365,9 +371,8 @@ for sentence_index, sentence in sentences['input statement'].items():
                 text_format=STLResponse,
                 max_output_tokens=params['model_parameters']['max_tokens'],
                 temperature=params['model_parameters']['temperature'],
-                top_p=params['model_parameters']['top_p']
             )
-            response = response.output_parsed
+            response = response.output_parsed.dict()
             print(f'response: {response}')
 
             # Try extraction
@@ -449,7 +454,6 @@ for sentence_index, sentence in sentences['input statement'].items():
                 ],
                 max_output_tokens=params['model_parameters']['max_tokens'],
                 temperature=params['model_parameters']['temperature'],
-                top_p=params['model_parameters']['top_p'],
             )
             response = response.output_text
             print(f'semantic response thinking is: {response}')
@@ -465,10 +469,10 @@ for sentence_index, sentence in sentences['input statement'].items():
                 text_format=STLResponse,
                 max_output_tokens=params['model_parameters']['max_tokens'],
                 temperature=params['model_parameters']['temperature'],
-                top_p=params['model_parameters']['top_p'],
             )
             response = response.output_parsed
             print(f'semantic response: {response}')
+
 
             # extract STL
             try:
@@ -532,9 +536,8 @@ for sentence_index, sentence in sentences['input statement'].items():
                     text_format=STLResponse,
                     max_output_tokens=params['model_parameters']['max_tokens'],
                     temperature=params['model_parameters']['temperature'],
-                    top_p=params['model_parameters']['top_p'],
                 )
-                response = response.output_parsed
+                response = response.output_parsed.dict()
 
                 # extract STL
                 try:

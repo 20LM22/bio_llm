@@ -1,10 +1,10 @@
 Input Sentence,STL Extraction Success Rate,STL Parsing Success Rate,Number of Translations,Number of Syntactically Correct Translations,Semantic Passes,Semantic Success Rate
-"In the mild and moderate groups, IL-6 concentrations were at their highest level in the first week after the symptom onset and then exhibited a decreasing trend.",1.0,0.40476190476190477,42,17.0,4,0.23529411764705882
-"Remarkably, in the mild group, the amount of these cytokines (IL-1β and IL-1Ra) increased at the day 1–7, reached a peak at the day 8–14, and diminished after >14 days.",0.9767441860465116,0.23809523809523814,43,10.000000000000002,4,0.3999999999999999
-"TNF-α levels elevated at the day 1–7 and 8–14 times intervals, then decreased at the day>14.",0.9411764705882353,0.4375,34,14.0,12,0.8571428571428571
+"In the mild and moderate groups, IL-6 concentrations were at their highest level in the first week after the symptom onset and then exhibited a decreasing trend.",1.0,0.40476190476190477,42,17.0,17,1.0
+"Remarkably, in the mild group, the amount of these cytokines (IL-1β and IL-1Ra) increased at the day 1–7, reached a peak at the day 8–14, and diminished after >14 days.",0.9767441860465116,0.23809523809523814,43,10.000000000000002,0,0.0
+"TNF-α levels elevated at the day 1–7 and 8–14 times intervals, then decreased at the day>14.",0.9411764705882353,0.4375,34,14.0,0,0.0
 We detected that IL-8 was significantly elevated in all COVID-19 subgroups at three studied time intervals compared to the control group.,0.9166666666666666,0.6818181818181819,24,15.0,0,0.0
 "We found that although there was no difference in the production of IFN-β in all patients with COVID-19 compared to the control group at the day 1–7, IFN-β levels were higher in moderate, severe, and critical subjects at the day 8–14 or >14 compared to the healthy control and themselves at the day 1–7.",1.0,0.5,32,16.0,0,0.0
-IL-12 reached its maximum level at the day>14 in mild patients.,0.9787234042553191,0.30434782608695654,47,14.0,7,0.5
+IL-12 reached its maximum level at the day>14 in mild patients.,0.9787234042553191,0.30434782608695654,47,14.0,0,0.0
 "It is reported that in recovered cases, within a few hrs of virus entry, both α and β IFNs (at first day of infection) are rapidly produced and an antiviral state is soon reached [23]",0.9666666666666667,0.48275862068965514,30,13.999999999999998,0,0.0
 "By day 14, we detected no viral reads for SARS-CoV-2, and the observed cytokines returned to baseline, with the exception of IL-6 and IL1RN or IL1RA, which remained elevated, similar to results observed with MERS (Pascal et al., 2015; Figures 3B and 3C).",0.96875,0.06451612903225812,64,4.0000000000000036,0,0.0
-Overall,0.9715189873417721,0.3387622149837134,316,104.00000000000001,27,0.2596153846153846
+Overall,0.9715189873417721,0.3387622149837134,316,104.00000000000001,17,0.16346153846153844

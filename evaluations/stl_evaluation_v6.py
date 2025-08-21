@@ -151,10 +151,10 @@ for (index, row) in translations.iterrows():
         k = 0
                
         for _id, entry in enumerate(row_subset):
-            if entry is None or entry == 'STL could not be parsed' or entry == 'STL could not be extracted':
+            if entry == 'STL could not be parsed' or entry == 'STL could not be extracted':
                 new_row.loc[i, f'S{k}-F{m}'] = 'N/A' 
                 new_row.loc[i, f'S{k}-F{m} sim'] = 'N/A'
-            else:
+            elif entry is not None:
                 literal = STL2literal(entry, grammar)
                 literal_embedding = ( np.array(model.encode(literal, normalize_embeddings=True)) )
                 sim = cosine_similarity(np.array(literal_embedding).reshape(1,-1), np.array(nl_embedding).reshape(1,-1))[0][0]
@@ -260,36 +260,35 @@ for (index, row) in translations.iterrows():
             neg_condition = False
             eq_condition = False
 
-            if (sentence_table.loc[d, f'Semantic attempt 0'] == 'N/A' or sentence_table.loc[d, f'Semantic attempt 0'] is None ) and (sentence_table.loc[d, f'Semantic attempt {i+1}'] == 'N/A' or sentence_table.loc[d, f'Semantic attempt {i+1}'] is None ):
-                pos_condition = False
-                neg_condition = False
-                eq_condition = True
-            elif (sentence_table.loc[d, f'Semantic attempt 0'] == 'N/A' or sentence_table.loc[d, f'Semantic attempt 0'] is None ) and (sentence_table.loc[d, f'Semantic attempt {i+1}'] != 'N/A' and sentence_table.loc[d, f'Semantic attempt {i+1}'] is not None):
-                pos_condition = True
-                neg_condition = False
-                eq_condition = False
-            elif (sentence_table.loc[d, f'Semantic attempt {i+1}'] == 'N/A' or sentence_table.loc[d, f'Semantic attempt {i+1}'] is None ) and (sentence_table.loc[d, f'Semantic attempt 0'] != 'N/A' and sentence_table.loc[d, f'Semantic attempt 0'] is not None):
-                pos_condition = False
-                neg_condition = True
-                eq_condition = False
-            elif sentence_table.loc[d, f'Semantic attempt {i+1} sim'] > sentence_table.loc[d, f'Semantic attempt 0 sim']:
-                pos_condition = True
-                neg_condition = False
-                eq_condition = False
-            elif sentence_table.loc[d, f'Semantic attempt {i+1} sim'] < sentence_table.loc[d, f'Semantic attempt 0 sim']:
-                pos_condition = False
-                neg_condition = True
-                eq_condition = False
-            elif sentence_table.loc[d, f'Semantic attempt {i+1} sim'] == sentence_table.loc[d, f'Semantic attempt 0 sim']:
-                pos_condition = False
-                neg_condition = False
-                eq_condition = True
-            else:
-                raise Exception("no cases found")
+            if sentence_table.loc[d, f'Semantic attempt 0'] is not None and sentence_table.loc[d, f'Semantic attempt 0'] != 'N/A':
+                # if (sentence_table.loc[d, f'Semantic attempt 0'] == 'N/A') and (sentence_table.loc[d, f'Semantic attempt {i+1}'] == 'N/A' or sentence_table.loc[d, f'Semantic attempt {i+1}'] is None ):
+                #     pos_condition = False
+                #     neg_condition = False
+                #     eq_condition = True
+                # elif (sentence_table.loc[d, f'Semantic attempt 0'] == 'N/A') and (sentence_table.loc[d, f'Semantic attempt {i+1}'] != 'N/A' and sentence_table.loc[d, f'Semantic attempt {i+1}'] is not None):
+                #     pos_condition = True
+                #     neg_condition = False
+                #     eq_condition = False
+                if (sentence_table.loc[d, f'Semantic attempt {i+1}'] == 'N/A' or sentence_table.loc[d, f'Semantic attempt {i+1}'] is None ) and (sentence_table.loc[d, f'Semantic attempt 0'] != 'N/A' and sentence_table.loc[d, f'Semantic attempt 0'] is not None):
+                    pos_condition = False
+                    neg_condition = True
+                    eq_condition = False
+                elif sentence_table.loc[d, f'Semantic attempt {i+1} sim'] > sentence_table.loc[d, f'Semantic attempt 0 sim']:
+                    pos_condition = True
+                    neg_condition = False
+                    eq_condition = False
+                elif sentence_table.loc[d, f'Semantic attempt {i+1} sim'] < sentence_table.loc[d, f'Semantic attempt 0 sim']:
+                    pos_condition = False
+                    neg_condition = True
+                    eq_condition = False
+                elif sentence_table.loc[d, f'Semantic attempt {i+1} sim'] == sentence_table.loc[d, f'Semantic attempt 0 sim']:
+                    pos_condition = False
+                    neg_condition = False
+                    eq_condition = True
 
-            sentence_table.loc[d, 'Number of improving translations (relative to initial result)'] += 1 if pos_condition else 0
-            sentence_table.loc[d, 'Number of worsening translations (relative to initial result)'] += 1 if neg_condition else 0
-            sentence_table.loc[d, 'Number of consistent translations (relative to initial result)'] += 1 if eq_condition else 0
+                sentence_table.loc[d, 'Number of improving translations (relative to initial result)'] += 1 if pos_condition else 0
+                sentence_table.loc[d, 'Number of worsening translations (relative to initial result)'] += 1 if neg_condition else 0
+                sentence_table.loc[d, 'Number of consistent translations (relative to initial result)'] += 1 if eq_condition else 0
 
     # print(f'sentence table: {sentence_table}')
     short_sentence_name = row['input statement'][:15]
