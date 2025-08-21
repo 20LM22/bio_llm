@@ -112,7 +112,7 @@ total_success_rate['Number of Syntactically Correct Translations'] = total_succe
 total_success_rate['Semantic Success Rate'] = total_success_rate['Semantic Passes'] / total_success_rate['Number of Syntactically Correct Translations']
 
 stats = pandas.concat([success_rate, total_success_rate], ignore_index=True)
-stats.to_csv(f'../stats/{model_name}/test_set_stats_shots_{shots}_syntax_{syntaxs}_semantic_{semantics}.csv', index=False)
+stats.to_csv(f'../stats/{model_name}/stats_shots_{shots}_syntax_{syntaxs}_semantic_{semantics}.csv', index=False)
 
 #######################################################################################################################
 # TODO: Table where rows are shots and each table belongs to one sentence: report cosine sim. and stl of ALL attempts
