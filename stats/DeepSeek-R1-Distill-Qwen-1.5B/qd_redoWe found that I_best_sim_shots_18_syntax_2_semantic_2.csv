@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+IL6(t)=c(mid) and IL8(t)=c(mid) and TNFα(t)=c(high) and d_IL1Ra(t) < 0,0.5516075,"IL6(t) > c(mid) and eventually[0,inf]globally(d_TNFα(t) < d_c(high) and IL8(t)=c(low))",0.52657294,N/A,N/A,0,2,0
+"d_IL6(t) > d_c(high) and d_IL8(t) > d_c(high) implies d_TNFα(t) = c(high) and globally[0,10](d_IL6(t)=d_c(high) and d_IL8(t)=d_c(high))",0.46975756,N/A,N/A,N/A,N/A,0,2,0
+IL6(t) > c(mid) implies IL8(t) > c(mid) and TNFα(t) > c(mid),0.55481344,N/A,N/A,IL6(t)=c(high) and IL8(t)=c(high) and TNFα(t)=c(high),0.550159,0,2,0
+IL6(t)=c(mid) and IL8(t)=c(mid) and TNFα(t)=c(mid),0.55138844,N/A,N/A,IL6(t) > c(mid) and IL8(t) = c(mid) and TNFα(t) > c(mid),0.57453835,1,1,0
+d_IL6(t) > d_c(low) and d_IL8(t) > d_c(low) and d_TNFα(t) > d_c(low),0.43652636,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+IL6(t)=c(high) and IL8(t)=c(high) and TNFα(t)=c(high),0.550159,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"IL6(t) = c(mid) and globally[0,inf](d_IL6(t) = d_c(high)) and IL8(t) = c(mid) and globally[0,inf](d_IL8(t) = d_c(high)) and TNFα(t) = c(mid) and globally[0,inf](d_TNFα(t) = d_c(high))",0.49392813,N/A,N/A,"IL6(t) > c(high) and globally[6,inf](d_IL6(t) > 0) and IL8(t) > c(high) and globally[6,inf](d_IL8(t) > 0) and TNFα(t) > c(high) and globally[6,inf](d_TNFα(t) > 0)",0.48536646,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+IL6(t)=c(low) and IL8(t)=c(low) and TNFα(t)=c(low),0.5468704,IL6(t)=c(high) and d_IL6(t) < d_c(high) and IL8(t)=c(high) and d_IL8(t) < d_c(high) and TNFα(t)=c(high) and d_TNFα(t) < d_c(high),0.4881109,IL6(t)=c(low) and IL8(t)=c(low) and TNFα(t)=c(low),0.5468704,0,1,1
+IL6(t) > c(high) implies d_IL8(t) > d_c(low) and IL8(t) > c(high) implies d_TNFα(t) > d_c(low) and TNFα(t) > c(high) implies d_TNFα(t) > d_c(low),0.42515838,d_IL6(t) = d_c(high) and d_IL8(t) = d_c(high) and d_TNFα(t) = d_c(high),0.46812302,"eventually[2,inf]globally(d_IL6(t)=d_c(low)) and d_IL8(t)=d_c(low) and d_TNFα(t)=d_c(low)",0.42673868,2,0,0
+IL6(t) > c(low) and IL8(t) > c(low) and TNFα(t) > c(low),0.5561875,N/A,N/A,N/A,N/A,0,2,0
+IL6(t) < c(high) and IL8(t) < c(high) and TNFα(t) < c(high),0.55914164,N/A,N/A,N/A,N/A,0,2,0
+"IL6(t) > c(high) and globally[0,inf](d_IL6(t) = d_c(high)) and IL8(t) > c(high) and globally[0,inf](d_IL8(t) = d_c(high)) and TNFα(t) > c(high) and globally[0,inf](d_TNFα(t) = d_c(high))",0.47682747,N/A,N/A,N/A,N/A,0,2,0
+IL6(t)=c(high) and IL8(t)=c(high) and TNFα(t)=c(high) implies d_IL6(t) > d_c(low) and d_IL8(t) > d_c(low) and d_TNFα(t) > d_c(low),0.4760291,N/A,N/A,N/A,N/A,0,2,0

@@ -620,9 +620,9 @@ for sentence_index, sentence in sentences['input statement'].items():
 # writing to pkl
 try:
     config = sys.argv[3]
-    with open(f'../pkl/{model_name}/redo_ablation_all_responses_all_sentences_{model_name}_{config}.pkl', 'wb') as r:
+    with open(f'../pkl/{model_name}/redo_gpt_test_all_responses_all_sentences_{model_name}_{config}.pkl', 'wb') as r:
         pickle.dump(all_responses_all_sentences, r)
-    with open(f'../pkl/{model_name}/redo_ablation_translations_{model_name}_{config}.pkl', 'wb') as r:
+    with open(f'../pkl/{model_name}/redo_gpt_test_translations_{model_name}_{config}.pkl', 'wb') as r:
         print("we are dumping the translation file")
         pickle.dump(translations, r)
         print("it was dumped")

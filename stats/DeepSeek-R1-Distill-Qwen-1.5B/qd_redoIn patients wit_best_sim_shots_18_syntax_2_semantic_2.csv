@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"eventually[8,15]globally(IFNβ(t)=c(high) implies IL1β(t) > c(high))",0.29494238,N/A,N/A,N/A,N/A,0,2,0
+d_SARSCoV2(t)=c(high) implies d_IL1Ra(t) < c(low) and d_TNFα(t) < d_c(high),0.5237053,"d_IL8(t) > d_c(low) and globally[18,20](d_IFNα(t) < 0)",0.19097483,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[0,7](IL1β(t)=c(mid)) implies eventually[0,7](d_IL1β(t)=0)",0.27823028,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+IL1β(t) > c(high),0.33388335,"eventually[7,16](IFNβ(t)=c(mid))",0.17047876,N/A,N/A,0,2,0
+"eventually[8,12]globally(d_SARSCoV2(t) > c(mid))",0.52248466,"eventually[31,inf](d_SARSCoV2(t)=c(high))",0.50876117,"eventually[31, inf]globally(d_IL1Ra(t) < d_c(high))",0.25301832,0,2,0
+"d_SARSCoV2(t)=0 and globally[0,7](d_SARSCoV2(t) < c(low)) implies eventually[28,inf](d_SARSCoV2(t) = d_c(low))",0.48267227,N/A,N/A,"globally[20,inf](d_IL1β(t) > c(low))",0.36954054,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+d_IL8(t) < d_c(high) implies IL8(t)=c(mid),0.14736731,IL6(t)=c(high) implies IL12(t) > c(high),0.1793459,"globally[0, inf](IL8(t) < c(low))",0.18275611,2,0,0
+"globally[2,inf](d_IL1β(t) < d_c(high))",0.35810983,N/A,N/A,"eventually[31,inf]globally(IL1Ra(t) > c(low)) and d_IL1β(t) > d_c(low) and IL8(t)=c(mid)",0.30460182,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[3,12](d_IL12(t) < 0) implies eventually[2,16]globally(IL8(t) < c(high))",0.20122522,"eventually[1,2]globally(d_IL1Ra(t) > d_c(high)) implies globally[17,inf](IL1Ra(t)=c(high))",0.2131845,N/A,N/A,1,1,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[1,11](d_IL6(t) < 0) and eventually[6,20]globally(IFNα(t) < c(mid) and TNFα(t)=c(low))",0.33579046,"globally[31,inf](SARSCoV2(t) = c(high))",0.48109868,N/A,N/A,1,1,0

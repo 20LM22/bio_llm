@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+IL1β(t) = c(low) and d_IL1β(t) < 0,0.7710938,IL1β(t) < c(low) and IL1β(t) = c(low) and d_IL1β(t) = 0,0.75224257,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"IL1β(t) = c(low) and eventually[0,inf]globally(d_IL1β(t)=0)",0.73174125,N/A,N/A,"IL1β(t) < c(low) and globally[inf,inf](IL1β(t) = c(low)) and d_IL1β(t) = 0",0.70344305,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+IL1β(t)=c(low),0.82748693,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"IL1β(t) < c(low) and globally[inf,inf](d_IL1β(t) > d_c(low) implies d_IL1β(t) < 0)",0.61359155,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+IL1β(t) < c(low),0.8050745,N/A,N/A,N/A,N/A,0,2,0
+"globally[0,inf](IL1β(t) = c(low)) and d_IL1β(t) = d_c(low)",0.6638857,IL1β(t) = c(low) and IL1β(t) < c(high) and d_IL1β(t) = 0,0.7635529,"eventually[inf,inf](IL1β(t) = c(low)) and d_IL1β(t) = 0 and SARSCoV2(t) = c(mid)",0.6006001,1,1,0
+"globally[inf,inf](IL1β(t) < c(low) and d_IL1β(t) = d_c(low))",0.6301348,"eventually[inf,inf]globally(IL1β(t) < c(low)) and d_IL1β(t) > 0",0.61153436,N/A,N/A,0,2,0
+IL1β(t) = c(low),0.82748693,N/A,N/A,N/A,N/A,0,2,0
+"globally[0,inf](IL1β(t) < c(low)) and eventually[0,inf](IL1β(t) = c(low)) and globally[0,inf](IL1β(t) < c(low)) and eventually[0,inf](IL1β(t) = c(low)) and globally[0,inf](IL1β(t) < c(low)) and eventually[0,inf](IL1β(t) = c(low))",0.6139413,"eventually[0,inf]globally(IL1β(t) < c(low))",0.67913747,N/A,N/A,1,1,0
+IL1β(t) < c(low) and d_IL1β(t) = d_c(low),0.7517507,"eventually[inf,inf]globally(IL1β(t) < c(low)) and d_IL1β(t) = 0 and d_IL1β(t) = 0",0.6420497,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+IL1β(t) < c(low),0.8050745,N/A,N/A,N/A,N/A,0,2,0
+IL1β(t) = c(low) and IL1β(t) < c(low) and d_IL1β(t) = 0,0.7560103,IL1β(t) = c(low),0.82748693,"IL1β(t) < c(low) and eventually[inf,inf]globally(d_IL1β(t) < d_c(low))",0.66875577,1,1,0

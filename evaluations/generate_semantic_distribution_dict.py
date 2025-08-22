@@ -73,51 +73,99 @@ print(len(res.keys()))
 print()
 
 # TODO: comment this back in when you need to do the annotations
-top_sentences = ["Following day 10, IL-6 remains increased whereas IFN-α tapered.", "In line with previous reports, IL-1β levels were mostly low or at the limit of detection of 0.1pg ml−1, even though the assay was able to detect various levels of recombinant control cytokines (Extended Data Fig. 1b).", "Circulating IL-1α also was not detected (fig. S9F)."]
-bottom_sentences = ["Two days postinfection, permissive Vero cells produced high peak titers of 5 x 10^6 TCID_50s/ml and 1 x 10^7 TCID_50s/ml of MERS- and SARS-CoV, respectively (Fig. 1B, panel i)",
-                    "This is the reason that seroconversion (undetectable stage to production of IgM followed by IgG) in 100% of infected people (with positive virus-specific IgG) is achieved 17–19 days after commencement of indications [7].",
-                    "Monocyte chemotactic factor chemokine(C-C motif) ligand 2 (CCL2) was increased in the blood of infected patients as well as the transcripts of its receptor CCR2; this was associated with low counts of circulating inflammatory monocytes (Fig. 4I), suggesting a rolefor the CCL2/CCR2 axis in the monocyte chemo-attraction into the inflamed lungs."]
+# top_sentences = [
+#     "Following day 10, IL-6 remains increased whereas IFN-α tapered.",
+#     "In line with previous reports, IL-1β levels were mostly low or at the limit of detection of 0.1pg ml−1, even though the assay was able to detect various levels of recombinant control cytokines (Extended Data Fig. 1b).",
+#     "We also found that IL-1 receptor antagonist (IL-1RA) levels were elevated in both severe and mild cases and remained at a high level during the 4 weeks of follow-up."
+# ]
+# bottom_sentences = [
+#     "Significantly higher levels of MCP-1 in severe cases were observed when compared with mild cases at early an time point of the infection (week 1 and 2; P = 0.047 and 8.62 × 10–5, respectively) but not at later time points (week 3 and 4; P = 0.136 and 0.030, respectively, Supplemental Table 1 and Figure 2).",
+#     "This is the reason that seroconversion (undetectable stage to production of IgM followed by IgG) in 100% of infected people (with positive virus-specific IgG) is achieved 17–19 days after commencement of indications [7].",
+#     "Monocyte chemotactic factor chemokine(C-C motif) ligand 2 (CCL2) was increased in the blood of infected patients as well as the transcripts of its receptor CCR2; this was associated with low counts of circulating inflammatory monocytes (Fig. 4I), suggesting a rolefor the CCL2/CCR2 axis in the monocyte chemo-attraction into the inflamed lungs."
+# ]
+
+# uncomment for qwen
+# top_sentences = [
+#     "Following day 10, IL-6 remains increased whereas IFN-α tapered.",
+#     "In line with previous reports, IL-1β levels were mostly low or at the limit of detection of 0.1pg ml−1, even though the assay was able to detect various levels of recombinant control cytokines (Extended Data Fig. 1b).",
+#     "Circulating IL-1α also was not detected (fig. S9F)."]
+# bottom_sentences = [
+#     "Two days postinfection, permissive Vero cells produced high peak titers of 5 x 10^6 TCID_50s/ml and 1 x 10^7 TCID_50s/ml of MERS- and SARS-CoV, respectively (Fig. 1B, panel i)",
+#     "This is the reason that seroconversion (undetectable stage to production of IgM followed by IgG) in 100% of infected people (with positive virus-specific IgG) is achieved 17–19 days after commencement of indications [7].",
+#     "Monocyte chemotactic factor chemokine(C-C motif) ligand 2 (CCL2) was increased in the blood of infected patients as well as the transcripts of its receptor CCR2; this was associated with low counts of circulating inflammatory monocytes (Fig. 4I), suggesting a rolefor the CCL2/CCR2 axis in the monocyte chemo-attraction into the inflamed lungs."]
 
 # from res remove keys that aren't in top or bottom
-new_res = {}
-for key in res.keys():
-    for s in top_sentences:
-        if s[:15] == key[:15]:
-            new_res[key] = res[key]
-    for s in bottom_sentences:
-        if s[:15] == key[:15]:
-            new_res[key] = res[key]
-res = new_res
-for key in res.keys():
-    print(key)
-    print(len(res[key]))
-    print()
-print(len(res.keys()))
-
-# print these out to the user and have them mark whether they think they're good or not
-translations_total = 0
-for key in res.keys():
-    translations_total += len(res[key])
-
-translations_count = 0
-
-for key in res.keys():
-    new_syn_valid_arr = []
-    for stl, sim in res[key]:
-        print(f"{translations_count}/{translations_total} annotations completed.")
-        translations_count += 1
-        # need to ask the user to mark the annotation as a 0 or 1
-        print(f"Sentence: {key}")
-        print(f"STL: {stl}")
-        choice = input("1 for yes, 0 for no: ")
-        # then need to construct a new array that we will replace the current one in the dictionary with
-        # but this array will have the user's annotation
-        new_syn_valid_arr.append((stl,sim,choice))
-    res[key] = new_syn_valid_arr
+# res_top = defaultdict(list)
+# res_bottom = defaultdict(list)
+# for key in res.keys():
+#     for s in top_sentences:
+#         if s[:15] == key[:15]:
+#             res_top[key] = res[key]
+#     for s in bottom_sentences:
+#         if s[:15] == key[:15]:
+#             res_bottom[key] = res[key]
+#
+# for key in res_top.keys():
+#     print(key)
+#     print(len(res_top[key]))
+#     print()
+# print(len(res_top.keys()))
+#
+# for key in res_bottom.keys():
+#     print(key)
+#     print(len(res_bottom[key]))
+#     print()
+# print(len(res_bottom.keys()))
+#
+# # print these out to the user and have them mark whether they think they're good or not
+# translations_total = 0
+# for key in res_top.keys():
+#     translations_total += len(res_top[key])
+# for key in res_bottom.keys():
+#     translations_total += len(res_bottom[key])
+#
+# translations_count = 0
+#
+# for key in res_top.keys():
+#     new_syn_valid_arr = []
+#     for stl, sim in res_top[key]:
+#         print(f"{translations_count}/{translations_total} annotations completed.")
+#         translations_count += 1
+#         # need to ask the user to mark the annotation as a 0 or 1
+#         print(f"Sentence: {key}")
+#         print(f"STL: {stl}")
+#         choice = input("1 for yes, 0 for no: ")
+#         # then need to construct a new array that we will replace the current one in the dictionary with
+#         # but this array will have the user's annotation
+#         new_syn_valid_arr.append((stl,sim,choice))
+#     res_top[key] = new_syn_valid_arr
+#
+# for key in res_bottom.keys():
+#     new_syn_valid_arr = []
+#     for stl, sim in res_bottom[key]:
+#         print(f"{translations_count}/{translations_total} annotations completed.")
+#         translations_count += 1
+#         # need to ask the user to mark the annotation as a 0 or 1
+#         print(f"Sentence: {key}")
+#         print(f"STL: {stl}")
+#         choice = input("1 for yes, 0 for no: ")
+#         # then need to construct a new array that we will replace the current one in the dictionary with
+#         # but this array will have the user's annotation
+#         new_syn_valid_arr.append((stl,sim,choice))
+#     res_bottom[key] = new_syn_valid_arr
 
 try:
-    with open(f'../pkl/top_3_bottom_3_test_set_histogram_distribution_comparison_{model_name}_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.pkl', 'wb') as r:
+    with open(f'../pkl/qd_redo_all_test_set_histogram_distribution_comparison_{model_name}_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.pkl', 'wb') as r:
         pickle.dump(res, r)
 except Exception as e:
     print("there was a pickle problem")
     print(e)
+
+# try:
+#     with open(f'../pkl/qd_redo_top_3_test_set_histogram_distribution_comparison_{model_name}_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.pkl', 'wb') as r:
+#         pickle.dump(res_top, r)
+#     with open(f'../pkl/qd_redo_bottom_3_test_set_histogram_distribution_comparison_{model_name}_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.pkl', 'wb') as r:
+#         pickle.dump(res_bottom, r)
+# except Exception as e:
+#     print("there was a pickle problem")
+#     print(e)
