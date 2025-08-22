@@ -1,0 +1,21 @@
+S0-F0,S0-F0 sim,S0-F1,S0-F1 sim,S0-F2,S0-F2 sim,S1-F0,S1-F0 sim,S1-F1,S1-F1 sim,S1-F2,S1-F2 sim,S2-F0,S2-F0 sim,S2-F1,S2-F1 sim,S3-F0,S3-F0 sim,S3-F1,S3-F1 sim,S3-F2,S3-F2 sim,S4-F0,S4-F0 sim,S5-F0,S5-F0 sim,S6-F0,S6-F0 sim,S7-F0,S7-F0 sim,S7-F1,S7-F1 sim,S7-F2,S7-F2 sim,S8-F0,S8-F0 sim,S8-F1,S8-F1 sim,S8-F2,S8-F2 sim,S10-F0,S10-F0 sim,S11-F0,S11-F0 sim,S12-F0,S12-F0 sim,S12-F1,S12-F1 sim,S12-F2,S12-F2 sim,S14-F0,S14-F0 sim,S14-F1,S14-F1 sim,S15-F0,S15-F0 sim,S16-F0,S16-F0 sim,S16-F1,S16-F1 sim
+N/A,N/A,0.47398323,RANTES(t)=c(low) and RANTES(t) > c(low),,,N/A,N/A,N/A,N/A,N/A,N/A,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+0.44182014,"globally[1,3](RANTES(t)=c(high)) implies globally[1,inf](d_RANTES(t) > 0)",,,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,0.23476812,d_IFNα(t) < d_c(low) implies IL1β(t) < c(mid),N/A,N/A,N/A,N/A,N/A,N/A,0.45956686,"eventually[1,inf]globally(RANTES(t) > c(high) implies d_RANTES(t) > d_c(high))",0.60490483,"globally[1,4](d_RANTES(t) > c(high)) and d_RANTES(t) = c(mid)",0.55245256,"eventually[1,3]globally(RANTES(t) > c(high)) implies globally[1,4](RANTES(t) < c(mid))",N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,0.53405595,"RANTES(t) > c(high) and globally[1,4](d_RANTES(t) > d_c(high)) and RANTES(t) < c(low) and RANTES(t) > c(low) and RANTES(t) > c(mid) and RANTES(t) > c(high)",0.10442099,d_IL1RN(t) < 0 implies d_IFNα(t)=d_c(high),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,0.30807537,"globally[11,inf](IL1β(t) > c(high)) implies eventually[9,inf](IL1β(t) < c(mid))",0.11344738,"eventually[1,4]globally(d_SARSCoV2(t)=0)",N/A,N/A,N/A,N/A
+N/A,N/A,N/A,N/A,N/A,N/A,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+N/A,N/A,N/A,N/A,0.40655982,d_RANTES(t)=d_c(high),N/A,N/A,N/A,N/A,N/A,N/A,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+N/A,N/A,N/A,N/A,0.13299182,IL6(t)=c(high) implies IL12(t) > c(high),0.54044616,"globally[1, inf](RANTES(t) > c(mid))
+and eventually[3,4](RANTES(t) > c(high))",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+N/A,N/A,N/A,N/A,N/A,N/A,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+N/A,N/A,N/A,N/A,N/A,N/A,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+N/A,N/A,0.42052007,d_RANTES(t) > c(high),,,N/A,N/A,N/A,N/A,N/A,N/A,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+0.54234684,d_RANTES(t)=c(low) implies d_IL1β(t)=d_c(high) and d_TNFα(t) < c(low),,,,,0.4675417,"globally[1,7](RANTES(t) > c(high)) implies eventually[3,inf](RANTES(t) < c(low))",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+N/A,N/A,0.3782826,"globally[1, inf](d_RANTES(t) = d_c(low))
+and globally[3, 4](d_RANTES(t) = d_c(low))",,,N/A,N/A,N/A,N/A,N/A,N/A,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+N/A,N/A,0.23476812,d_IFNα(t) < d_c(low) implies IL1β(t) < c(mid),,,N/A,N/A,N/A,N/A,N/A,N/A,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+0.45956686,"eventually[1,inf]globally(RANTES(t) > c(high) implies d_RANTES(t) > d_c(high))",,,,,0.60490483,"globally[1,4](d_RANTES(t) > c(high)) and d_RANTES(t) = c(mid)",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+0.55245256,"eventually[1,3]globally(RANTES(t) > c(high)) implies globally[1,4](RANTES(t) < c(mid))",,,,,N/A,N/A,N/A,N/A,N/A,N/A,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+N/A,N/A,N/A,N/A,N/A,N/A,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+0.53405595,"RANTES(t) > c(high) and globally[1,4](d_RANTES(t) > d_c(high)) and RANTES(t) < c(low) and RANTES(t) > c(low) and RANTES(t) > c(mid) and RANTES(t) > c(high)",,,,,0.10442099,d_IL1RN(t) < 0 implies d_IFNα(t)=d_c(high),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+N/A,N/A,N/A,N/A,N/A,N/A,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+N/A,N/A,0.30807537,"globally[11,inf](IL1β(t) > c(high)) implies eventually[9,inf](IL1β(t) < c(mid))",,,0.11344738,"eventually[1,4]globally(d_SARSCoV2(t)=0)",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+N/A,N/A,N/A,N/A,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

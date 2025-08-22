@@ -1,0 +1,14 @@
+INFO 08-21 21:01:27 [__init__.py:244] Automatically detected platform cuda.
+Loaded curated dataset
+ERROR 08-21 21:01:30 [config.py:130] Error retrieving file list: 401 Client Error. (Request ID: Root=1-68a7eb9a-3e21c7ab1f46280671453c4b;327c4481-77ce-4968-b063-2fbc0c56d78d)
+ERROR 08-21 21:01:30 [config.py:130] 
+ERROR 08-21 21:01:30 [config.py:130] Repository Not Found for url: https://huggingface.co/api/models/Qwen3/Qwen3-1.7B/tree/main?recursive=True&expand=False.
+ERROR 08-21 21:01:30 [config.py:130] Please make sure you specified the correct `repo_id` and `repo_type`.
+ERROR 08-21 21:01:30 [config.py:130] If you are trying to access a private or gated repo, make sure you are authenticated. For more details, see https://huggingface.co/docs/huggingface_hub/authentication
+ERROR 08-21 21:01:30 [config.py:130] Invalid username or password., retrying 1 of 2
+ERROR 08-21 21:01:32 [config.py:128] Error retrieving file list: 401 Client Error. (Request ID: Root=1-68a7eb9c-1c6e19902f0133303212c921;864f17e3-22fb-4417-a0b1-5144b7b4541a)
+ERROR 08-21 21:01:32 [config.py:128] 
+ERROR 08-21 21:01:32 [config.py:128] Repository Not Found for url: https://huggingface.co/api/models/Qwen3/Qwen3-1.7B/tree/main?recursive=True&expand=False.
+ERROR 08-21 21:01:32 [config.py:128] Please make sure you specified the correct `repo_id` and `repo_type`.
+ERROR 08-21 21:01:32 [config.py:128] If you are trying to access a private or gated repo, make sure you are authenticated. For more details, see https://huggingface.co/docs/huggingface_hub/authentication
+ERROR 08-21 21:01:32 [config.py:128] Invalid username or password.
