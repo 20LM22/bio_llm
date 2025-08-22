@@ -1,0 +1,4 @@
+Input Sentence,STL Extraction Success Rate,STL Parsing Success Rate,Number of Translations,Number of Syntactically Correct Translations,Semantic Passes,Semantic Success Rate
+"TNF-α levels elevated at the day 1–7 and 8–14 times intervals, then decreased at the day>14.",0.7121212121212122,0.3191489361702128,66,15.000000000000002,6,0.39999999999999997
+"It is reported that in recovered cases, within a few hrs of virus entry, both α and β IFNs (at first day of infection) are rapidly produced and an antiviral state is soon reached [23]",0.7192982456140351,0.41463414634146345,57,17.000000000000004,0,0.0
+Overall,0.7154471544715447,0.36363636363636365,123,32.0,6,0.1875

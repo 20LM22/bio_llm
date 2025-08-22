@@ -170,7 +170,8 @@ def get_hole_feedback(error, res, s):
 def check_signal_names(parsed, res, s):
     signals = re.findall(r"Tree\(Token\('RULE', 's'\), \[Token\('\w+', '\w+'\)\]\)", str(parsed))
     for sig in signals:
-        sig = sig.split("Tree(Token('RULE', 's'), [Token('__ANON_3',")
+        sig = sig.split("Tree(Token('RULE', 's'), [Token('__ANON_1',")
+        # sig = sig.split("Tree(Token('RULE', 's'), [Token('__ANON_3',")
         # print(f"after split: {s}")
         sig = re.findall(r"'.*'", sig[1])[0]
         try:
