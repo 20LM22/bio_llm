@@ -16,12 +16,15 @@ semantic_count = params['num_semantic_checks']
 res = {}
 
 try:
-    with open(f'../pkl/high_low_histogram_distribution_comparison_{model_name}_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.pkl', 'rb') as f:
+    with open(f'../pkl/top_3_bottom_3_test_set_histogram_distribution_comparison_{model_name}_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.pkl', 'rb') as f:
         res = pickle.load(f)
         print(f'Loaded histogram distribution')
 except Exception as e:
     print(e)
 
+print(res.keys())
+
+# TODO: uncomment when you have annotations
 # do them all together
 zeroes = [] # list of sim values
 ones = []
@@ -38,26 +41,27 @@ for key in res.keys():
         else:
             raise Exception(f'no choice associated with {stl}')
 
+# TODO: comment back once the annotations are done
 # # Plot histogram
 # # bins = np.linspace(min(res[sentence]), max(res[sentence]), 10)
-# bins = np.linspace(0, 1, 10) # change bin count if needed
-# plt.figure(figsize=(10,6))
-# plt.hist(ones, bins=bins, alpha=0.5, label='Semantically correct', color='forestgreen', edgecolor='black')
-# plt.hist(zeroes, bins=bins, alpha=0.5, label='Semantically incorrect', color='firebrick', edgecolor='black')
-# if len(ones_and_zeroes) > 0:
-#     plt.axvline(np.average(ones_and_zeroes), color='blue', linestyle='dashed', linewidth=1)
-#     plt.axvline(np.median(ones_and_zeroes), color='orange', linestyle='dashed', linewidth=1)
-#     plt.axvline(np.percentile(ones_and_zeroes,80), color='purple', linestyle='dashed', linewidth=1)
-#     plt.axvline(0.7, color='black', linestyle='solid', linewidth=1)
-#
-# plt.xlabel('Similarity')
-# plt.ylabel('Frequency')
-# plt.ylim(0, 160)
-# plt.title(f'All Sentences Semantic Pass/Fail Distribution\nmodel: {model_name}\nnx: {syntax_count}, ny: {semantic_count}, nz: {shot_count}')
-# plt.legend()
-#
-# plt.savefig(f'../images/{model_name}/test_set_histogram_distribution_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}.png')
-# plt.close()
+bins = np.linspace(0, 1, 10) # change bin count if needed
+plt.figure(figsize=(10,6))
+plt.hist(ones, bins=bins, alpha=0.5, label='Semantically correct', color='forestgreen', edgecolor='black')
+plt.hist(zeroes, bins=bins, alpha=0.5, label='Semantically incorrect', color='firebrick', edgecolor='black')
+if len(ones_and_zeroes) > 0:
+    plt.axvline(np.average(ones_and_zeroes), color='blue', linestyle='dashed', linewidth=1)
+    plt.axvline(np.median(ones_and_zeroes), color='orange', linestyle='dashed', linewidth=1)
+    plt.axvline(np.percentile(ones_and_zeroes,80), color='purple', linestyle='dashed', linewidth=1)
+    plt.axvline(0.7, color='black', linestyle='solid', linewidth=1)
+
+plt.xlabel('Similarity')
+plt.ylabel('Frequency')
+plt.ylim(0, 160)
+plt.title(f'All Sentences Semantic Pass/Fail Distribution\nmodel: {model_name}\nnx: {syntax_count}, ny: {semantic_count}, nz: {shot_count}')
+plt.legend()
+
+plt.savefig(f'../images/{model_name}/test_set_histogram_distribution_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}.png')
+plt.close()
 
 # do them as sentences
 sentences = []
@@ -66,16 +70,6 @@ mean_sim = []
 variance_sim = []
 top_sim_is_correct = []
 num_syntax_correct = [] # number of semantically correct translations for this sentence
-# category = [ # THIS LIST NEEDS TO BE UPDATED
-#     'medium',
-#     'easy',
-#     'easy',
-#     'medium',
-#     'hard',
-#     'medium',
-#     'hard',
-#     'hard'
-# ] # can be filled out ahead of time
 
 for _id, sentence in enumerate(res.keys()): # key is sentence
     zeroes = []
@@ -89,16 +83,17 @@ for _id, sentence in enumerate(res.keys()): # key is sentence
     max_stl = None
     first_time_max = first_time_min = True
     # for stl, sim in res[sentence]:
-    for stl, sim, choice in res[sentence]:
+    for stl, sim, choice in res[sentence]: # TODO: uncomment when annotations ready
         sim_arr.append(sim)
         if first_time_max or sim > max_sim:
             max_sim = sim
-            max_choice = choice
+            max_choice = choice # TODO uncomment when annotations ready
             first_time_max = False
         if first_time_min or sim < min_sim:
             min_sim = sim
             first_time_min = False
 
+        # TODO uncomment when annotations ready
         if choice is None or choice == '':
             continue
         elif int(choice) == 0:
@@ -120,6 +115,7 @@ for _id, sentence in enumerate(res.keys()): # key is sentence
 
     num_syntax_correct.append(len(res[sentence]))
 
+    # TODO uncomment when annotations ready
     # process choice that corresponded to top sim. stl
     # print(type(max_choice))
     if max_choice is None or max_choice == '':
@@ -134,6 +130,7 @@ for _id, sentence in enumerate(res.keys()): # key is sentence
     else:
         raise Exception(f'problem with max choice: {e}')
 
+    # TODO uncomment when annotations ready
     bins = np.linspace(min_sim, max_sim, 10) # try 11 instead of 10, gnu-plot
     plt.figure(figsize=(10, 8))
     plt.hist(ones, bins=bins, alpha=0.5, label='Semantically correct', color='forestgreen', edgecolor='black')
@@ -163,13 +160,12 @@ df = pandas.DataFrame(data={
     'Median Similarity' : median_sim,
     'Mean Similarity' : mean_sim,
     'Variance Similarity' : variance_sim,
-    # 'Top Similarity Result Is Correct?' : top_sim_is_correct,
+    'Top Similarity Result Is Correct?' : top_sim_is_correct,
     'Number Translations Syntactically Correct' : num_syntax_correct,
-    # 'Category' : category
 })
 
 # now convert the "top sim is correct" to a dataframe
 # top_sim_is_correct_all_sentences = pandas.DataFrame(data=top_sim_is_correct_all_sentences, columns=['Sentence', 'Top Sim. is Correct'])
 # top_sim_is_correct_all_sentences.loc['Total'] = top_sim_is_correct_all_sentences.apply(pandas.to_numeric, errors='coerce')['Top Sim. is Correct'].sum()
 # top_sim_is_correct_all_sentences.to_csv(f'../stats/{model_name}/top_sim_is_correct_all_sentences_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.csv')
-df.to_csv(f'../stats/{model_name}/high_low_stats_v2_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}.csv')
+df.to_csv(f'../stats/{model_name}/top_3_bottom_3_test_set_stats_v2_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}.csv')

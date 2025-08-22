@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+IL1α(t) < c(low),0.674816,IL1α(t) < c(low),0.674816,0,0,1
+IL1α(t) < c(low),0.674816,IL1α(t) < c(low),0.674816,0,0,1
+IL1α(t) < c(low),0.674816,IL1β(t) < c(low),0.67473495,0,1,0
+IL1α(t) < c(low),0.674816,IL1α(t) < c(low),0.674816,0,0,1
+IL1α(t) < c(low),0.674816,IL1α(t) < c(low),0.674816,0,0,1
+IL1α(t) < c(low),0.674816,IL1α(t) < c(low),0.674816,0,0,1
+IL1α(t) < c(low),0.674816,IL1β(t) < c(low),0.67473495,0,1,0
+IL1α(t) < c(low),0.674816,IL1Ra(t) < c(low),0.5401024,0,1,0
+IL1α(t) < c(low),0.674816,IL1β(t) < c(low),0.67473495,0,1,0
+IL1α(t) < c(low),0.674816,IL1β(t) < c(low),0.67473495,0,1,0
+IL1α(t) < c(low),0.674816,"globally[0,inf](IL1β(t) < c(low))",0.57316345,0,1,0
+IL1α(t) < c(low),0.674816,IL1α(t) < c(low),0.674816,0,0,1
+IL1α(t) = c(low),0.6308896,IL1α(t) < c(low),0.674816,1,0,0
+IL1α(t) < c(low),0.674816,IL1β(t) < c(low),0.67473495,0,1,0
+IL1α(t) < c(low),0.674816,IL1α(t) < c(low),0.674816,0,0,1
+IL1α(t) < c(low),0.674816,IL1β(t) < c(low),0.67473495,0,1,0
+"globally[0,inf](IL1α(t) < c(low))",0.57373595,IL1β(t) < c(low),0.67473495,1,0,0
+IL1α(t) = c(low),0.6308896,IL1α(t) < c(low),0.674816,1,0,0

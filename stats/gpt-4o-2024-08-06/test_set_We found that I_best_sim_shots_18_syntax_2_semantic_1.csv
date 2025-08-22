@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,0,0,1
+IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,N/A,N/A,0,1,0
+IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,0,0,1
+N/A,N/A,N/A,N/A,0,0,0
+IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,IL6(t) > c(low) and IL8(t) > c(low) and TNFα(t) > c(low),0.5561875,1,0,0
+IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,0,0,1
+IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,0,0,1
+IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,0,0,1
+IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,0,0,1
+IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,0,0,1
+IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,0,0,1
+IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,0,0,1
+IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,0,0,1
+"globally[0,inf](IL6(t) > c(high) and IL8(t) > c(high))",0.33993214,IL6(t) > c(mid) and IL8(t) > c(mid) and TNFα(t) > c(mid),0.5755133,1,0,0
+IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,0,0,1
+N/A,N/A,N/A,N/A,0,0,0
+IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,0,0,1
+IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.5507889,N/A,N/A,0,1,0
