@@ -94,78 +94,80 @@ print()
 #     "This is the reason that seroconversion (undetectable stage to production of IgM followed by IgG) in 100% of infected people (with positive virus-specific IgG) is achieved 17–19 days after commencement of indications [7].",
 #     "Monocyte chemotactic factor chemokine(C-C motif) ligand 2 (CCL2) was increased in the blood of infected patients as well as the transcripts of its receptor CCR2; this was associated with low counts of circulating inflammatory monocytes (Fig. 4I), suggesting a rolefor the CCL2/CCR2 axis in the monocyte chemo-attraction into the inflamed lungs."]
 
+top_sentences = [
+    "Following day 10, IL-6 remains increased whereas IFN-α tapered.",
+    "In line with previous reports, IL-1β levels were mostly low or at the limit of detection of 0.1pg ml−1, even though the assay was able to detect various levels of recombinant control cytokines (Extended Data Fig. 1b).",
+    "Circulating IL-1α also was not detected (fig. S9F)."]
+bottom_sentences = [
+    "In parallel, stimulation with CpG 2216 also resulted in lower, but clearly detectable, amounts of IFNs.",
+    "This is the reason that seroconversion (undetectable stage to production of IgM followed by IgG) in 100% of infected people (with positive virus-specific IgG) is achieved 17–19 days after commencement of indications [7].",
+    "Monocyte chemotactic factor chemokine(C-C motif) ligand 2 (CCL2) was increased in the blood of infected patients as well as the transcripts of its receptor CCR2; this was associated with low counts of circulating inflammatory monocytes (Fig. 4I), suggesting a rolefor the CCL2/CCR2 axis in the monocyte chemo-attraction into the inflamed lungs."]
+
 # from res remove keys that aren't in top or bottom
-# res_top = defaultdict(list)
-# res_bottom = defaultdict(list)
-# for key in res.keys():
-#     for s in top_sentences:
-#         if s[:15] == key[:15]:
-#             res_top[key] = res[key]
-#     for s in bottom_sentences:
-#         if s[:15] == key[:15]:
-#             res_bottom[key] = res[key]
+res_top = defaultdict(list)
+res_bottom = defaultdict(list)
+for key in res.keys():
+    for s in top_sentences:
+        if s[:15] == key[:15]:
+            res_top[key] = res[key]
+    for s in bottom_sentences:
+        if s[:15] == key[:15]:
+            res_bottom[key] = res[key]
 #
-# for key in res_top.keys():
-#     print(key)
-#     print(len(res_top[key]))
-#     print()
-# print(len(res_top.keys()))
-#
-# for key in res_bottom.keys():
-#     print(key)
-#     print(len(res_bottom[key]))
-#     print()
-# print(len(res_bottom.keys()))
+for key in res_top.keys():
+    print(key)
+    print(len(res_top[key]))
+    print()
+print(len(res_top.keys()))
+
+for key in res_bottom.keys():
+    print(key)
+    print(len(res_bottom[key]))
+    print()
+print(len(res_bottom.keys()))
 #
 # # print these out to the user and have them mark whether they think they're good or not
-# translations_total = 0
-# for key in res_top.keys():
-#     translations_total += len(res_top[key])
-# for key in res_bottom.keys():
-#     translations_total += len(res_bottom[key])
-#
-# translations_count = 0
-#
-# for key in res_top.keys():
-#     new_syn_valid_arr = []
-#     for stl, sim in res_top[key]:
-#         print(f"{translations_count}/{translations_total} annotations completed.")
-#         translations_count += 1
-#         # need to ask the user to mark the annotation as a 0 or 1
-#         print(f"Sentence: {key}")
-#         print(f"STL: {stl}")
-#         choice = input("1 for yes, 0 for no: ")
-#         # then need to construct a new array that we will replace the current one in the dictionary with
-#         # but this array will have the user's annotation
-#         new_syn_valid_arr.append((stl,sim,choice))
-#     res_top[key] = new_syn_valid_arr
-#
-# for key in res_bottom.keys():
-#     new_syn_valid_arr = []
-#     for stl, sim in res_bottom[key]:
-#         print(f"{translations_count}/{translations_total} annotations completed.")
-#         translations_count += 1
-#         # need to ask the user to mark the annotation as a 0 or 1
-#         print(f"Sentence: {key}")
-#         print(f"STL: {stl}")
-#         choice = input("1 for yes, 0 for no: ")
-#         # then need to construct a new array that we will replace the current one in the dictionary with
-#         # but this array will have the user's annotation
-#         new_syn_valid_arr.append((stl,sim,choice))
-#     res_bottom[key] = new_syn_valid_arr
+translations_total = 0
+for key in res_top.keys():
+    translations_total += len(res_top[key])
+for key in res_bottom.keys():
+    translations_total += len(res_bottom[key])
+
+translations_count = 0
+
+for key in res_top.keys():
+    new_syn_valid_arr = []
+    for stl, sim in res_top[key]:
+        print(f"{translations_count}/{translations_total} annotations completed.")
+        translations_count += 1
+        # need to ask the user to mark the annotation as a 0 or 1
+        print(f"Sentence: {key}")
+        print(f"STL: {stl}")
+        choice = input("1 for yes, 0 for no: ")
+        # then need to construct a new array that we will replace the current one in the dictionary with
+        # but this array will have the user's annotation
+        new_syn_valid_arr.append((stl,sim,choice))
+    res_top[key] = new_syn_valid_arr
+
+for key in res_bottom.keys():
+    new_syn_valid_arr = []
+    for stl, sim in res_bottom[key]:
+        print(f"{translations_count}/{translations_total} annotations completed.")
+        translations_count += 1
+        # need to ask the user to mark the annotation as a 0 or 1
+        print(f"Sentence: {key}")
+        print(f"STL: {stl}")
+        choice = input("1 for yes, 0 for no: ")
+        # then need to construct a new array that we will replace the current one in the dictionary with
+        # but this array will have the user's annotation
+        new_syn_valid_arr.append((stl,sim,choice))
+    res_bottom[key] = new_syn_valid_arr
 
 try:
-    with open(f'../pkl/qd_redo_all_test_set_histogram_distribution_comparison_{model_name}_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.pkl', 'wb') as r:
-        pickle.dump(res, r)
+    with open(f'../pkl/qd_redo_top_3_test_set_histogram_distribution_comparison_{model_name}_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.pkl', 'wb') as r:
+        pickle.dump(res_top, r)
+    with open(f'../pkl/qd_redo_bottom_3_test_set_histogram_distribution_comparison_{model_name}_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.pkl', 'wb') as r:
+        pickle.dump(res_bottom, r)
 except Exception as e:
     print("there was a pickle problem")
     print(e)
-
-# try:
-#     with open(f'../pkl/qd_redo_top_3_test_set_histogram_distribution_comparison_{model_name}_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.pkl', 'wb') as r:
-#         pickle.dump(res_top, r)
-#     with open(f'../pkl/qd_redo_bottom_3_test_set_histogram_distribution_comparison_{model_name}_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.pkl', 'wb') as r:
-#         pickle.dump(res_bottom, r)
-# except Exception as e:
-#     print("there was a pickle problem")
-#     print(e)

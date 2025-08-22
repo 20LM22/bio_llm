@@ -11,6 +11,6 @@ do
   echo $config
   translations_gpt="redo_gpt_test_translations_${gpt}_${experiment}.pkl"
 
-  python ../evaluations/generate_semantic_distribution_dict.py $gpt $translations_gpt $config
-  python ../evaluations/generate_semantic_distribution_plots.py 'gpt-4o-2024-08-06' "gpt_test_set_config_shots_18_syntax_2_semantic_1.json"
+  # python ../evaluations/generate_semantic_distribution_dict.py $gpt $translations_gpt $config
+  python ../evaluations/generate_semantic_distribution_plots.py 'gpt-4o-2024-08-06' $config
 done
