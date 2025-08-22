@@ -170,7 +170,8 @@ def get_hole_feedback(error, res, s):
 def check_signal_names(parsed, res, s):
     signals = re.findall(r"Tree\(Token\('RULE', 's'\), \[Token\('\w+', '\w+'\)\]\)", str(parsed))
     for sig in signals:
-        sig = sig.split("Tree(Token('RULE', 's'), [Token('__ANON_3',")
+        sig = sig.split("Tree(Token('RULE', 's'), [Token('__ANON_1',")
+        # sig = sig.split("Tree(Token('RULE', 's'), [Token('__ANON_3',")
         # print(f"after split: {s}")
         sig = re.findall(r"'.*'", sig[1])[0]
         try:
@@ -582,9 +583,9 @@ for sentence_index, sentence in sentences['input statement'].items():
 # writing to pkl
 try:
     config = sys.argv[3]
-    with open(f'../pkl/{model_name}/test_set_all_responses_all_sentences_{model_name}_{config}.pkl', 'wb') as r:
+    with open(f'../pkl/{model_name}/all_responses_all_sentences_{model_name}_{config}.pkl', 'wb') as r:
         pickle.dump(all_responses_all_sentences, r)
-    with open(f'../pkl/{model_name}/test_set_translations_{model_name}_{config}.pkl', 'wb') as r:
+    with open(f'../pkl/{model_name}/translations_{model_name}_{config}.pkl', 'wb') as r:
         print("we are dumping the translation file")
         pickle.dump(translations, r)
         print("it was dumped")
