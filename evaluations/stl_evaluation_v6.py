@@ -113,7 +113,7 @@ total_success_rate['Number of Syntactically Correct Translations'] = total_succe
 total_success_rate['Semantic Success Rate'] = total_success_rate['Semantic Passes'] / total_success_rate['Number of Syntactically Correct Translations']
 
 stats = pandas.concat([success_rate, total_success_rate], ignore_index=True)
-stats.to_csv(f'../stats/{model_name}/stats_shots_{shots}_syntax_{syntaxs}_semantic_{semantics}.csv', index=False)
+stats.to_csv(f'../stats/{model_name}/test_set_stats_shots_{shots}_syntax_{syntaxs}_semantic_{semantics}.csv', index=False)
 
 #######################################################################################################################
 # TODO: Table where rows are shots and each table belongs to one sentence: report cosine sim. and stl of ALL attempts
@@ -170,7 +170,7 @@ for (index, row) in translations.iterrows():
         sentence_table = pandas.concat([sentence_table, new_row], ignore_index=False)
     
     short_sentence_name = row['input statement'][:15]
-    sentence_table.to_csv(f'../stats/{model_name}/{short_sentence_name}_all_feedback_shots_{shots}_syntax_{syntaxs}_semantic_{semantics}.csv', index=False)
+    sentence_table.to_csv(f'../stats/{model_name}/test_set_{short_sentence_name}_all_feedback_shots_{shots}_syntax_{syntaxs}_semantic_{semantics}.csv', index=False)
 
 #######################################################################################################################
 # Table where rows are shots and each table belongs to one sentence: report best cosine sim. and stl of each semantic attempt
@@ -284,7 +284,7 @@ for (index, row) in translations.iterrows():
 
     # print(f'sentence table: {sentence_table}')
     short_sentence_name = row['input statement'][:15]
-    sentence_table.to_csv(f'../stats/{model_name}/{short_sentence_name}_best_sim_shots_{shots}_syntax_{syntaxs}_semantic_{semantics}.csv', index=False)
+    sentence_table.to_csv(f'../stats/{model_name}/test_set_{short_sentence_name}_best_sim_shots_{shots}_syntax_{syntaxs}_semantic_{semantics}.csv', index=False)
 
     # added bit for times we don't even get a chance at a semantic attempt
     improvements_all_sentences.loc[index, 'Number of Times Semantic Feedback Portion Reached'] = number_of_times_semantic_feedback_portion_reached
@@ -301,7 +301,7 @@ overall.loc[0, 'Number of worsening translations (relative to initial result) ac
 overall.loc[0, 'Number of consistent translations (relative to initial result) across all attempts'] = improvements_all_sentences['Number of consistent translations (relative to initial result) across all attempts'].sum()
 
 improvements_all_sentences = pandas.concat([improvements_all_sentences, overall], ignore_index=False)
-improvements_all_sentences.to_csv(f'../stats/{model_name}/improvements_all_sentences_shots_{shots}_syntax_{syntaxs}_semantic_{semantics}.csv', index=False)
+improvements_all_sentences.to_csv(f'../stats/{model_name}/test_set_improvements_all_sentences_shots_{shots}_syntax_{syntaxs}_semantic_{semantics}.csv', index=False)
 # print(f'../stats/{model_name}/improvements_all_sentences_shots_{shots}_syntax_{syntaxs}_semantic_{semantics}.csv')
 
 ## need to check that these columns add up to number of syntactically correct translations
@@ -355,5 +355,5 @@ for index, row in translations.iterrows():
             best_resp.at[index, f'shot{i} sim'] = max(sim)
             best_resp.at[index, f'shot{i}'] = row_subset_filtered[np.argmax(sim)]
 
-best_resp.to_csv(f'../stats/{model_name}/best_sim_shot_shots_{shots}_syntax_{syntaxs}_semantic_{semantics}.csv', index=False)
+best_resp.to_csv(f'../stats/{model_name}/test_set_best_sim_shot_shots_{shots}_syntax_{syntaxs}_semantic_{semantics}.csv', index=False)
 

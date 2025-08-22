@@ -1,0 +1,4 @@
+Sentence,Number of Times Semantic Feedback Portion Reached,Number of improving translations (relative to initial result) across all attempts,Number of worsening translations (relative to initial result) across all attempts,Number of consistent translations (relative to initial result) across all attempts
+"TNF-α levels elevated at the day 1–7 and 8–14 times intervals, then decreased at the day>14.",18.0,8.0,6.0,4.0
+"It is reported that in recovered cases, within a few hrs of virus entry, both α and β IFNs (at first day of infection) are rapidly produced and an antiviral state is soon reached [23]",17.0,2.0,10.0,5.0
+Overall,,10.0,16.0,9.0

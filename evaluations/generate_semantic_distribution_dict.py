@@ -57,6 +57,7 @@ for index, row in translations.iterrows():
         for entry in row_subset:
             if entry != 'STL could not be extracted' and entry != 'STL could not be parsed' and entry is not None:
                 # add this entry
+                entry = entry.replace("∞", "inf")
                 literal = STL2literal(entry, grammar)
                 literal_embedding = ( np.array(model.encode(literal, normalize_embeddings=True)) )
                 sim = cosine_similarity(np.array(literal_embedding).reshape(1,-1), np.array(nl_embedding).reshape(1,-1))[0][0]
@@ -87,10 +88,8 @@ for key in res.keys():
     res[key] = new_syn_valid_arr
 
 try:
-    with open(f'../pkl/test_set_histogram_distribution_comparison_{model_name}_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.pkl', 'wb') as r:
+    with open(f'../pkl/high_low_histogram_distribution_comparison_{model_name}_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.pkl', 'wb') as r:
         pickle.dump(res, r)
 except Exception as e:
     print("there was a pickle problem")
     print(e)
-
-

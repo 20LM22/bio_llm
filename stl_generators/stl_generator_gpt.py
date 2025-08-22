@@ -5,6 +5,10 @@ from sklearn.metrics.pairwise import cosine_similarity
 from pydantic import BaseModel
 import json, sys, re, pickle, pandas, random
 from openai import OpenAI
+import sys
+import io
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 sys.path.insert(1, '..')
 from stl2literal import STL2literal
@@ -372,7 +376,7 @@ for sentence_index, sentence in sentences['input statement'].items():
                 max_output_tokens=params['model_parameters']['max_tokens'],
                 temperature=params['model_parameters']['temperature'],
             )
-            response = response.output_parsed.dict()
+            response = response.output_parsed.model_dump_json(indent=2)
             print(f'response: {response}')
 
             # Try extraction
@@ -470,7 +474,7 @@ for sentence_index, sentence in sentences['input statement'].items():
                 max_output_tokens=params['model_parameters']['max_tokens'],
                 temperature=params['model_parameters']['temperature'],
             )
-            response = response.output_parsed
+            response = response.output_parsed.model_dump_json(indent=2)
             print(f'semantic response: {response}')
 
 
@@ -537,7 +541,7 @@ for sentence_index, sentence in sentences['input statement'].items():
                     max_output_tokens=params['model_parameters']['max_tokens'],
                     temperature=params['model_parameters']['temperature'],
                 )
-                response = response.output_parsed.dict()
+                response = response.output_parsed.model_dump_json(indent=2)
 
                 # extract STL
                 try:
@@ -616,9 +620,9 @@ for sentence_index, sentence in sentences['input statement'].items():
 # writing to pkl
 try:
     config = sys.argv[3]
-    with open(f'../pkl/{model_name}/all_responses_all_sentences_{model_name}_{config}.pkl', 'wb') as r:
+    with open(f'../pkl/{model_name}/test_set_all_responses_all_sentences_{model_name}_{config}.pkl', 'wb') as r:
         pickle.dump(all_responses_all_sentences, r)
-    with open(f'../pkl/{model_name}/translations_{model_name}_{config}.pkl', 'wb') as r:
+    with open(f'../pkl/{model_name}/test_set_translations_{model_name}_{config}.pkl', 'wb') as r:
         print("we are dumping the translation file")
         pickle.dump(translations, r)
         print("it was dumped")
