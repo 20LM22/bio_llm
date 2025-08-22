@@ -22,7 +22,10 @@ try:
 except Exception as e:
     print(e)
 
-print(res.keys())
+for key in res.keys():
+    print(key)
+    print()
+print(len(res.keys()))
 
 # TODO: uncomment when you have annotations
 # do them all together
@@ -160,7 +163,7 @@ df = pandas.DataFrame(data={
     'Median Similarity' : median_sim,
     'Mean Similarity' : mean_sim,
     'Variance Similarity' : variance_sim,
-    'Top Similarity Result Is Correct?' : top_sim_is_correct,
+     'Top Similarity Result Is Correct?' : top_sim_is_correct,
     'Number Translations Syntactically Correct' : num_syntax_correct,
 })
 

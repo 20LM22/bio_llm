@@ -8,7 +8,7 @@ do
   config="gpt_config_${experiment}.json"
   gpt_convo="../stats/${gpt}/redo_ablation_convo_${experiment}.txt"
   echo $config
-  translations_gpt="translations_${gpt}_${experiment}.pkl"
+  translations_gpt="test_set_translations_${gpt}_${experiment}.pkl"
   python stl_generator_gpt.py $gpt $config $experiment >| $gpt_convo
   python ../evaluations/stl_evaluation_v6.py $gpt $translations_gpt $config
 done

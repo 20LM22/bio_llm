@@ -1,19 +1,19 @@
 Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"globally[14,inf](SARSCoV2(t) < c(low) and IL6(t) > c(mid))",0.6864191,N/A,N/A,"globally[14,inf](SARSCoV2(t) = c(low)) and globally[14,inf](IL6(t) > c(mid) and IL1RN(t) > c(mid))",0.7164583,1,1,0
+"globally[0,14](SARSCoV2(t) < c(low) and IL6(t) > c(mid))",0.6868943,"globally[14,inf](SARSCoV2(t)=c(low)) and eventually[14,14](IL6(t)>c(mid) and IL1RN(t)>c(mid))",0.72942996,N/A,N/A,1,1,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[0,14](SARSCoV2(t) < c(low) and IL6(t) > c(mid))",0.6868943,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[14,inf](SARSCoV2(t) = c(low) and IL6(t) > c(mid))",0.6778728,N/A,N/A,N/A,N/A,0,2,0
+"globally[0,14](SARSCoV2(t) = c(low) and IL6(t) > c(mid))",0.6823391,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[0,14](SARSCoV2(t) < c(low) and IL1RN(t) > c(mid))",0.75205547,N/A,N/A,"SARSCoV2(t) = c(low) and globally[14,inf](IL6(t) > c(mid) and IL1RN(t) > c(mid))",0.73734903,0,2,0
+"globally[14,inf](SARSCoV2(t) = c(low) and IL6(t) > c(mid))",0.6778728,N/A,N/A,N/A,N/A,0,2,0
 N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
 N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
 N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
 N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
-N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
-"eventually[0,14](SARSCoV2(t) = c(low)) and globally[14,inf](IL6(t) > c(mid) and IL1RN(t) > c(mid))",0.7323768,N/A,N/A,N/A,N/A,0,2,0
-N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
-N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
-N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
-N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
-N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
-"globally[0,14](SARSCoV2(t) < c(low)) and globally[0,14](IL6(t) > c(mid) and IL1RN(t) > c(mid))",0.7286707,N/A,N/A,N/A,N/A,0,2,0
-N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
-N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
-N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
-N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
-N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
-N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[14,inf](SARSCoV2(t) < c(low) and IL6(t) > c(mid))",0.6864191,N/A,N/A,N/A,N/A,0,2,0
+"eventually[0,14](SARSCoV2(t) < c(low) and IL6(t) > c(mid))",0.70864105,N/A,N/A,N/A,N/A,0,2,0

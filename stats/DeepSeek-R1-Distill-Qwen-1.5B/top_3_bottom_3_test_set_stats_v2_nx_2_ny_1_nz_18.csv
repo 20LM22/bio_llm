@@ -1,0 +1,7 @@
+,Sentence,Median Similarity,Mean Similarity,Variance Similarity,Top Similarity Result Is Correct?,Number Translations Syntactically Correct
+0,"In patients with COVID-19, SARS-CoV-2-specific T-cells appear in peripheral blood within two weeks of symptom onset (31).",0.30222672,0.35486162,0.014519172,0,18
+1,This is the reason that seroconversion (undetectable stage to production of IgM followed by IgG) in 100% of infected people (with positive virus-specific IgG) is achieved 17–19 days after commencement of indications [7].,0.2852414,0.32108125,0.014458947,0,16
+2,"Following day 10, IL-6 remains increased whereas IFN-α tapered.",0.66562116,0.65617156,0.019382024,0,15
+3,Circulating IL-1α also was not detected (fig. S9F).,0.6308896,0.600216,0.008224725,1,13
+4,"Monocyte chemotactic factor chemokine(C-C motif) ligand 2 (CCL2) was increased in the blood of infected patients as well as the transcripts of its receptor CCR2; this was associated with low counts of circulating inflammatory monocytes (Fig. 4I), suggesting a rolefor the CCL2/CCR2 axis in the monocyte chemo-attraction into the inflamed lungs.",0.19037262,0.22029194,0.008626251,0,15
+5,"In line with previous reports, IL-1β levels were mostly low or at the limit of detection of 0.1pg ml−1, even though the assay was able to detect various levels of recombinant control cytokines (Extended Data Fig. 1b).",0.61658686,0.5793393,0.021857444,1,21

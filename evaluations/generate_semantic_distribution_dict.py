@@ -74,7 +74,9 @@ print()
 
 # TODO: comment this back in when you need to do the annotations
 top_sentences = ["Following day 10, IL-6 remains increased whereas IFN-α tapered.", "In line with previous reports, IL-1β levels were mostly low or at the limit of detection of 0.1pg ml−1, even though the assay was able to detect various levels of recombinant control cytokines (Extended Data Fig. 1b).", "Circulating IL-1α also was not detected (fig. S9F)."]
-bottom_sentences = ["No elevation of RANTES was observed in the severe group during the disease progression, suggesting that RANTES may play an important role in protecting COVID-19 patients from developing severe illness (Supplemental Table 1 and Figure 5A).", "In parallel, stimulation with CpG 2216 also resulted in lower, but clearly detectable, amounts of IFNs.", "Monocyte chemotactic factor chemokine(C-C motif) ligand 2 (CCL2) was increased in the blood of infected patients as well as the transcripts of its receptor CCR2; this was associated with low counts of circulating inflammatory monocytes (Fig. 4I), suggesting a rolefor the CCL2/CCR2 axis in the monocyte chemo-attraction into the inflamed lungs."]
+bottom_sentences = ["Two days postinfection, permissive Vero cells produced high peak titers of 5 x 10^6 TCID_50s/ml and 1 x 10^7 TCID_50s/ml of MERS- and SARS-CoV, respectively (Fig. 1B, panel i)",
+                    "This is the reason that seroconversion (undetectable stage to production of IgM followed by IgG) in 100% of infected people (with positive virus-specific IgG) is achieved 17–19 days after commencement of indications [7].",
+                    "Monocyte chemotactic factor chemokine(C-C motif) ligand 2 (CCL2) was increased in the blood of infected patients as well as the transcripts of its receptor CCR2; this was associated with low counts of circulating inflammatory monocytes (Fig. 4I), suggesting a rolefor the CCL2/CCR2 axis in the monocyte chemo-attraction into the inflamed lungs."]
 
 # from res remove keys that aren't in top or bottom
 new_res = {}
@@ -85,7 +87,6 @@ for key in res.keys():
     for s in bottom_sentences:
         if s[:15] == key[:15]:
             new_res[key] = res[key]
-
 res = new_res
 for key in res.keys():
     print(key)
