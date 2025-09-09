@@ -4,19 +4,17 @@ import numpy as np
 from collections import defaultdict
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
-from stl_base import STLBase
+from stl_example_generator import STLBase
 from vllm.sampling_params import GuidedDecodingParams
 from pydantic import BaseModel
 import json, sys, re, pickle, pandas, random
 
 sys.path.insert(1, '..')
-from stl2literal import STL2literal
+from stl2literal import STL2literal, check_derivative_STL2literal
 
 ####################################################################################
 # Set up structures, parameters
 ####################################################################################
-
-stl_base_instance = STLBase()
 
 class STLResponse(BaseModel):
     thinking: str
@@ -25,10 +23,12 @@ class STLResponse(BaseModel):
 guided_decoding_params = GuidedDecodingParams(json=STLResponse.model_json_schema())
 stl_response_json = STLResponse.model_json_schema()
 
-file_name = f'../config/{sys.argv[2]}'
-
-with open(file_name, 'r') as f:
+with open(f'../config/{sys.argv[2]}', 'r') as f:
     params = json.load(f)
+
+stl_base_instance = STLBase(grammar=params['grammar'],ids=params['ids'])
+set_name = params['set_name']
+time = sys.argv[4]
 
 sampling_params = SamplingParams(
         temperature=params['model_parameters']['temperature'],
@@ -62,7 +62,7 @@ signal_names = params['signal_names']
 
 curated_dataset = []
 try:
-    with open(f'../pkl/curated_dataset.pkl', 'rb') as f:
+    with open(f'{params['curated_dataset']}', 'rb') as f:
         curated_dataset = pickle.load(f)
         print(f'Loaded curated dataset')
 except Exception as e:
@@ -71,8 +71,6 @@ except Exception as e:
 # Create a file which contains all the relevant output related to this model
 # Augment the input file with correct number of stl and literal rows
 translations = sentences.copy()
-
-# columns needed: STL-shot{number of shots per sentence}-S{number of semantic attempts per shot+1}-F{number of feedback attempts during each semantic attempt+1}
 
 for i in range(num_shots_per_input_sentence):
     for j in range(params['num_semantic_checks']+1):
@@ -85,8 +83,6 @@ llm = LLM(model=model_name,
     max_model_len=max_model_len,
     gpu_memory_utilization=gpu_memory_utilization)
 
-# feedback dictionary
-feedback_dict=params['old_prompt_feedback']
 model_name = model_name.split('/')[1]
 
 ####################################################################################
@@ -171,14 +167,11 @@ def check_signal_names(parsed, res, s):
     signals = re.findall(r"Tree\(Token\('RULE', 's'\), \[Token\('\w+', '\w+'\)\]\)", str(parsed))
     for sig in signals:
         sig = sig.split("Tree(Token('RULE', 's'), [Token('__ANON_1',")
-        # sig = sig.split("Tree(Token('RULE', 's'), [Token('__ANON_3',")
-        # print(f"after split: {s}")
         sig = re.findall(r"'.*'", sig[1])[0]
         try:
             sig = sig[1:-1]
             if sig not in signal_names:
                 print('getting species name feedback')
-                # TODO: try a hole approach, could do all bad names at once
                 return 'You are trying to translate this sentence to STL:\n' + s + '\n\n' + 'Your previous response was:\n' + res + '\n\n' + 'However, you used ' + s + ' as a species name in your response, which is not allowed. Fix your response so it uses the allowed species names.\n\n' + "Format your response in JSON. Include (1) your thinking process, (2) the input statement, and (3) your STL response.\nYour STL response must conform to the following rules\n:[BEGIN RULES]\nu : less_than | greater_than | is | derivative_greater_than | derivative_less_than | derivative_is\nless_than : s(t) < c # Species s is less than c\ngreater_than : s(t) > c # Species s is greater than c\nis : s(t) = c # Species s is close to c\nderivative_greater_than : d_s(t) > d_c # The rate of change of species s is greater than d_c\nderivative_less_than : d_s(t) < d_c # The rate of change of species s is less than d_c\nderivative_is : d_s(t) = d_c # The rate of change species s is close to d_c\nc : s(t_a) | \"c(low)\" | \"c(mid)\" | \"c(high)\" # c is the level of a species, it can be a specific value or generally just low, moderate, or high\nd_c : 0 # Rate of change is 0\n\t| \"d_c(low)\" # Species is slowly increasing\n\t| \"d_c(high)\" # Species is rapidly increasing\n\t| \"-d_c(low)\" # Species is slowly decreasing\n\t| \"-d_c(high)\" # Species is quickly decreasing\npredicate : u | u1 and u2 | u1 implies u2 # You can combine predicates with Boolean operators\ntemporal_operator : eventually[t_a,t_b]globally(predicate) # This means that between day t_a and t_b, there is a point when the predicate becomes true for the rest of the interval\n\t| globally[t_a,t_b](phi) # This means the predicate is true over the entire interval from day t_a to t_b\n\t| eventually[t_a,t_b](phi) # This means there is at least 1 time between days t_a and t_b that the predicate is true\nt_a : number | ∞ # Time in days\ns : IL6 | IL12 | IL1β | IL1Ra | TNFα | IL8 | IFNα | IFNβ | SARSCoV2 | IL1RN | IgM | IgG | MERSCoV | SARSCoV | CpG2216 | IL1α | CCL2 | CCR2 | IP10 | MCP1 | IFNγ | IL17 | IL27 | RANTES # Species names you can use\nd_s : d_IL6 | d_IL12 | d_IL1β | d_IL1Ra | d_TNFα | d_IL8 | d_IFNα | d_IFNβ | d_SARSCoV2 | d_IL1RN | d_IgM | d_IgG | d_MERSCoV | d_SARSCoV | d_CpG2216 | d_IL1α | d_CCL2 | d_CCR2 | d_IP10 | d_MCP1 | d_IFNγ | d_IL17 | d_IL27 | d_RANTES # Names for derivatives of the species\n[END RULES]\n\nThe d_s terms represent the derivative of a signal, so you may find those terms helpful for describing how signals increase or decrease. For general statements describing the levels of some species as \"high\" or \"low\" for example, you may find comparison statements helpful."
         except Exception as error:
             print('getting species name feedback')
@@ -196,7 +189,6 @@ def check_parentheses(res, s):
         print('getting parentheses feedback')
         response = f'Your response has an unmatched number of parentheses. There are {left_count} left parentheses and {right_count} right parentheses. Fix your response so that there are not any unmatched parentheses.'
         return params['feedback_prompt']['default_prompt_1'] + '\n' + res + '\n\n' + response + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + s + '\n\n' + params['feedback_prompt']['default_prompt_4']
-
     left_count = len(re.findall(r"\{", res))
     right_count = len(re.findall(r"\}", res))
     if left_count != right_count:
@@ -216,14 +208,13 @@ def check_parentheses(res, s):
 # Helper function: check json
 ####################################################################################
 
-def check_json(res, sentence):
+def check_json(res, s):
     try:
         json.loads(res)
-        if res in '{' and res in '}' and res in ':':
+        if '{' in res and '}' in res and ':' in res:
             error = 'It looks like you formatted the output STL incorrectly. The JSON format should have three fields: (1) your thinking, (2) the input sentence, and (3) your output STL. However, the output STL field should not contain JSON inside of it, but instead it should be a single string. Here is an example of correct formatting:\n' + generate_example_prompt(1)
             print("getting json feedback")
-            return params['feedback_prompt']['default_prompt_1'] + '\n' + res + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4']
-
+            return params['feedback_prompt']['default_prompt_1'] + '\n' + res + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + s + '\n\n' + params['feedback_prompt']['default_prompt_4']
         return None
     except Exception as e:
         return None
@@ -232,19 +223,15 @@ def check_json(res, sentence):
 # Helper function: produce default error feedback
 ####################################################################################
 
-def default_feedback(e, res, sentence):
+def default_feedback(ex, res, s):
     print('inside default feedback')
     print(f'extracted response: {res}')
-    print(f'{e}')
+    print(f'{ex}')
     try:
-        error_char = int(re.findall(r'at line \d+ col \d+', str(e))[0].split(' ')[4]) - 1
-        error_message_more_descriptive = str(e).split('Expected')[0]
-
-        return params['feedback_prompt']['default_prompt_1'] + '\n' + res + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error_message_more_descriptive + '\n\n' + params['feedback_prompt']['default_prompt_2a'] + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4']
-    
-    except Exception as e:
-        return params['feedback_prompt']['default_prompt_1'] + '\n' + res + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + str(e) + '\n\n' + params['feedback_prompt']['default_prompt_2a'] + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4']
-
+        error_message_more_descriptive = str(ex).split('Expected')[0]
+        return params['feedback_prompt']['default_prompt_1'] + '\n' + res + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error_message_more_descriptive + '\n\n' + params['feedback_prompt']['default_prompt_2a'] + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + s + '\n\n' + params['feedback_prompt']['default_prompt_4']
+    except Exception as exx:
+        return params['feedback_prompt']['default_prompt_1'] + '\n' + res + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + str(exx) + '\n\n' + params['feedback_prompt']['default_prompt_2a'] + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + s + '\n\n' + params['feedback_prompt']['default_prompt_4']
 
 ####################################################################################
 # Translation of each sentence
@@ -309,12 +296,15 @@ for sentence_index, sentence in sentences['input statement'].items():
             
         # Try parsing
         parsed_stl = ''
-        try:           
+        try:
             parsed_stl = parser.parse(extracted_response)
             print('right before checking signal names')
             if check_signal_names(parsed_stl, extracted_response, sentence) is not None:
                 print(f'first check of shot, signal name is getting flagged')
                 raise Exception("bad signal name")
+            if check_derivative_STL2literal(parsed_stl):  # if true
+                print('mismatched d_s and c')
+                raise Exception("mismatched d_s and c")
             syntax_passed = True
             print('stl parsed')
             translations.at[sentence_index, f'STL-shot{i}-S0-F0'] = extracted_response
@@ -386,13 +376,16 @@ for sentence_index, sentence in sentences['input statement'].items():
             parsed_stl = ''
             
             try:
-                print('right before trying to parse')
-                parsed_stl = parser.parse(extracted_response)    
+                parsed_stl = parser.parse(extracted_response)
                 print('right before checking signal names')
                 if check_signal_names(parsed_stl, extracted_response, sentence) is not None:
+                    print(f'first check of shot, signal name is getting flagged')
                     raise Exception("bad signal name")
-                print('stl parsed')
+                if check_derivative_STL2literal(parsed_stl):  # if true
+                    print('mismatched d_s and c')
+                    raise Exception("mismatched d_s and c")
                 syntax_passed = True
+                print('stl parsed')
                 translations.at[sentence_index, f'STL-shot{i}-S0-F{count}'] = extracted_response
             except Exception as e:
                 if translations.at[sentence_index, f'STL-shot{i}-S0-F{count}'] != 'STL could not be extracted':
@@ -463,12 +456,17 @@ for sentence_index, sentence in sentences['input statement'].items():
             # parse STL
             parsed_stl = ''
             try:            
-                parsed_stl = parser.parse(extracted_response)    
+                parsed_stl = parser.parse(extracted_response)
+                print('right before checking signal names')
                 if check_signal_names(parsed_stl, extracted_response, sentence) is not None:
+                    print(f'first check of shot, signal name is getting flagged')
                     raise Exception("bad signal name")
-                print('STL parsed')
-                translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F0'] = extracted_response
+                if check_derivative_STL2literal(parsed_stl):  # if true
+                    print('mismatched d_s and c')
+                    raise Exception("mismatched d_s and c")
                 syntax_passed = True
+                print('stl parsed')
+                translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F0'] = extracted_response
             except Exception as e:
                 if translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F0'] != 'STL could not be extracted':
                     translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F0'] = "STL could not be parsed"
@@ -518,12 +516,17 @@ for sentence_index, sentence in sentences['input statement'].items():
 
                 # parse STL
                 parsed_stl = ''
-                try:            
-                    parsed_stl = parser.parse(extracted_response)    
+                try:
+                    parsed_stl = parser.parse(extracted_response)
+                    print('right before checking signal names')
                     if check_signal_names(parsed_stl, extracted_response, sentence) is not None:
+                        print(f'first check of shot, signal name is getting flagged')
                         raise Exception("bad signal name")
-                    print('STL parsed')
+                    if check_derivative_STL2literal(parsed_stl):  # if true
+                        print('mismatched d_s and c')
+                        raise Exception("mismatched d_s and c")
                     syntax_passed = True
+                    print('stl parsed')
                     translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F{count}'] = extracted_response
                 except Exception as e:
                     syntax_passed = False 
@@ -583,9 +586,9 @@ for sentence_index, sentence in sentences['input statement'].items():
 # writing to pkl
 try:
     config = sys.argv[3]
-    with open(f'../pkl/{model_name}/test_set_all_responses_all_sentences_{model_name}_{config}.pkl', 'wb') as r:
+    with open(f'../pkl/{model_name}/{set_name}_all_responses_all_sentences_{model_name}_{config}_{time}.pkl', 'wb') as r:
         pickle.dump(all_responses_all_sentences, r)
-    with open(f'../pkl/{model_name}/test_set_translations_{model_name}_{config}.pkl', 'wb') as r:
+    with open(f'../pkl/{model_name}/{set_name}_translations_{model_name}_{config}_{time}.pkl', 'wb') as r:
         print("we are dumping the translation file")
         pickle.dump(translations, r)
         print("it was dumped")

@@ -4,7 +4,7 @@ import pickle, sys, os, pandas
 from sentence_transformers import SentenceTransformer
 import json
 
-sys.path.insert(1, '..')
+sys.path.insert(1, '../..')
 from stl2literal import STL2literal
 
 model_name = sys.argv[1]

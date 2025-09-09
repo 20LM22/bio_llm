@@ -1,5 +1,5 @@
 from lark import Lark
-from stl_base import STLBase
+from stl_example_generator import STLBase
 import json, re, pickle, math, random
 
 ####################################################################################

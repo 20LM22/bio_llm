@@ -12,21 +12,22 @@ with open(f'../config/{sys.argv[2]}') as f:
 shot_count = params['num_shots_per_input_sentence']
 syntax_count = params['num_correction_attempts_per_shot']
 semantic_count = params['num_semantic_checks']
+time = sys.argv[3]
+set_name = params['set_name']
 
 res_top = {}
 res_bottom = {}
 try:
-    with open(f'../pkl/qd_redo_top_3_test_set_histogram_distribution_comparison_{model_name}_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.pkl', 'rb') as f:
+    with open(f'../pkl/{set_name}_top_3_histogram_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pkl', 'rb') as f:
         res_top = pickle.load(f)
         print(f'Loaded histogram distribution')
-    with open(f'../pkl/qd_redo_bottom_3_test_set_histogram_distribution_comparison_{model_name}_shots_{shot_count}_syntax_{syntax_count}_semantic_{semantic_count}.pkl', 'rb') as f:
+    with open(f'../pkl/{set_name}_bottom_3_histogram_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pkl', 'rb') as f:
         res_bottom = pickle.load(f)
         print(f'Loaded histogram distribution')
 except Exception as e:
     print(e)
 
 # TODO: uncomment when you have annotations for top3/bottom3
-# # do them all together
 zeroes_top = [] # list of sim values
 ones_top = []
 ones_and_zeroes_top = []
@@ -36,7 +37,6 @@ ones_bottom = []
 ones_and_zeroes_bottom = []
 
 for key in res_top.keys():
-    print("tadda")
     for stl, sim, choice in res_top[key]:
         ones_and_zeroes_top.append(sim)
         if choice is None or choice == '':
@@ -60,8 +60,7 @@ for key in res_bottom.keys():
         else:
             raise Exception(f'no choice associated with {stl}')
 
-# TODO: comment back once the annotations are done
-# # Top histogram
+# Top histogram
 plt.rcParams['font.size'] = 14
 plt.rcParams['axes.titlesize'] = 10
 
@@ -86,11 +85,13 @@ if len(ones_and_zeroes_top) > 0:
     plt.axvline(np.median(ones_and_zeroes_top), color='orange', linestyle='dashed', linewidth=1)
     plt.axvline(np.percentile(ones_and_zeroes_top,80), color='purple', linestyle='dashed', linewidth=1)
 
+top_median = np.median(ones_and_zeroes_top)
+
 plt.xlabel('Similarity')
 plt.ylabel('Frequency')
-plt.ylim(0, 70) # TODO: CHANGE THIS
-plt.title(f'Top Sentences Semantic Pass/Fail Distribution\nmodel: {model_name}\nnx: {syntax_count}, ny: {semantic_count}, nz: {shot_count}\n')
-plt.savefig(f'../images/{model_name}/qd_redo_top_histogram_distribution_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}.pdf')
+plt.ylim(0, 70)
+plt.title(f'Top Sentences Semantic Pass/Fail Distribution\nmodel: {model_name}\nnx: {syntax_count}, ny: {semantic_count}, nz: {shot_count}, median: {top_median}\n')
+plt.savefig(f'../images/{model_name}/{set_name}_top_histogram_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}.pdf')
 plt.close()
 
 # Bottom histogram
@@ -118,11 +119,13 @@ if len(ones_and_zeroes_bottom) > 0:
     plt.axvline(np.median(ones_and_zeroes_bottom), color='orange', linestyle='dashed', linewidth=1)
     plt.axvline(np.percentile(ones_and_zeroes_bottom,80), color='purple', linestyle='dashed', linewidth=1)
 
+bottom_median = np.median(ones_and_zeroes_bottom)
+
 plt.xlabel('Similarity')
 plt.ylabel('Frequency')
-plt.ylim(0, 70) # TODO: CHANGE THIS
-plt.title(f'Bottom Sentences Semantic Pass/Fail Distribution\nmodel: {model_name}\nnx: {syntax_count}, ny: {semantic_count}, nz: {shot_count}\n')
-plt.savefig(f'../images/{model_name}/qd_redo_bottom_histogram_distribution_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}.pdf')
+plt.ylim(0, 70)
+plt.title(f'Bottom Sentences Semantic Pass/Fail Distribution\nmodel: {model_name}\nnx: {syntax_count}, ny: {semantic_count}, nz: {shot_count}, median: {bottom_median}\n')
+plt.savefig(f'../images/{model_name}/{set_name}_bottom_histogram_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}.pdf')
 plt.close()
 
 #

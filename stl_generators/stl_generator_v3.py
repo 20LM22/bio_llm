@@ -5,7 +5,7 @@ from collections import defaultdict
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 from stl2literal import STL2literal
-from stl_base import STLBase
+from stl_example_generator import STLBase
 from vllm.sampling_params import GuidedDecodingParams
 from pydantic import BaseModel
 import json, csv, sys, traceback, re, logging, pickle, pandas, os, random

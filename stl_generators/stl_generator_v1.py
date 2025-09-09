@@ -45,7 +45,7 @@ embedding_model_name = 'all-MiniLM-L6-v2'
 
 # Input paths
 # model_names_csv = '../csv_inputs/stl_generation_model_names.csv'
-sentences_csv = '../csv_inputs/input_sentences.csv'
+sentences_csv = '../csv_inputs/validation_sentences.csv'
 
 # Load from input files
 model_name = sys.argv[1]

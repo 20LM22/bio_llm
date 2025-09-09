@@ -26,6 +26,10 @@ file_name = f'../config/{sys.argv[2]}'
 with open(file_name, 'r', encoding='utf-8') as f:
     params = json.load(f)
 
+stl_base_instance = STLBase(grammar=params['grammar'], ids=params['ids'])
+set_name = params['set_name']
+time = sys.argv[4]
+
 num_shots_per_input_sentence=params['num_shots_per_input_sentence']
 
 model_name = sys.argv[1]
@@ -38,7 +42,7 @@ signal_names = params['signal_names']
 
 curated_dataset = []
 try:
-    with open(f'../pkl/curated_dataset.pkl', 'rb') as f:
+    with open(f'{params['curated_dataset']}', 'rb') as f:
         curated_dataset = pickle.load(f)
         print(f'Loaded curated dataset')
 except Exception as e:
@@ -144,7 +148,6 @@ def check_signal_names(parsed, res, s):
     for sig in signals:
         print(f'sig: {sig}')
         sig = sig.split("Tree(Token('RULE', 's'), [Token('__ANON_1',")
-        # print(f"after split: {s}")
         sig = re.findall(r"'.*'", sig[1])[0]
         try:
             sig = sig[1:-1]
@@ -188,15 +191,15 @@ def check_parentheses(res, s):
 # Helper function: check json
 ####################################################################################
 
-def check_json(res, sentence):
+def check_json(res, s):
     try:
         json.loads(res)
-        if res in '{' and res in '}' and res in ':':
+        if '{' in res and '}' in res and ':' in res:
             error = 'It looks like you formatted the output STL incorrectly. The JSON format should have three fields: (1) your thinking, (2) the input sentence, and (3) your output STL. However, the output STL field should not contain JSON inside of it, but instead it should be a single string. Here is an example of correct formatting:\n' + generate_example_prompt(1)
             print("getting json feedback")
-            return params['feedback_prompt']['default_prompt_1'] + '\n' + res + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4']
-
+            return params['feedback_prompt']['default_prompt_1'] + '\n' + res + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + s + '\n\n' + params['feedback_prompt']['default_prompt_4']
         return None
+
     except Exception as e:
         return None
 
@@ -204,18 +207,15 @@ def check_json(res, sentence):
 # Helper function: produce default error feedback
 ####################################################################################
 
-def default_feedback(e, res, sentence):
+def default_feedback(e, res, s):
     print('inside default feedback')
     print(f'extracted response: {res}')
     print(f'{e}')
     try:
-        error_char = int(re.findall(r'at line \d+ col \d+', str(e))[0].split(' ')[4]) - 1
         error_message_more_descriptive = str(e).split('Expected')[0]
-
-        return params['feedback_prompt']['default_prompt_1'] + '\n' + res + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error_message_more_descriptive + '\n\n' + params['feedback_prompt']['default_prompt_2a'] + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4']
-
+        return params['feedback_prompt']['default_prompt_1'] + '\n' + res + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error_message_more_descriptive + '\n\n' + params['feedback_prompt']['default_prompt_2a'] + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + s + '\n\n' + params['feedback_prompt']['default_prompt_4']
     except Exception as e:
-        return params['feedback_prompt']['default_prompt_1'] + '\n' + res + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + str(e) + '\n\n' + params['feedback_prompt']['default_prompt_2a'] + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + sentence + '\n\n' + params['feedback_prompt']['default_prompt_4']
+        return params['feedback_prompt']['default_prompt_1'] + '\n' + res + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + str(e) + '\n\n' + params['feedback_prompt']['default_prompt_2a'] + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + s + '\n\n' + params['feedback_prompt']['default_prompt_4']
 
 ####################################################################################
 # Translation of each sentence
@@ -314,6 +314,9 @@ for sentence_index, sentence in sentences['input statement'].items():
             if check_signal_names(parsed_stl, extracted_response, sentence) is not None:
                 print(f'first check of shot, signal name is getting flagged')
                 raise Exception("bad signal name")
+            if check_derivative_STL2literal(parsed_stl):  # if true
+                print('mismatched d_s and c')
+                raise Exception("mismatched d_s and c")
             syntax_passed = True
             print('stl parsed')
             translations.at[sentence_index, f'STL-shot{i}-S0-F0'] = extracted_response
@@ -399,6 +402,9 @@ for sentence_index, sentence in sentences['input statement'].items():
                 print('right before checking signal names')
                 if check_signal_names(parsed_stl, extracted_response, sentence) is not None:
                     raise Exception("bad signal name")
+                if check_derivative_STL2literal(parsed_stl):  # if true
+                    print('mismatched d_s and c')
+                    raise Exception("mismatched d_s and c")
                 print('stl parsed')
                 syntax_passed = True
                 translations.at[sentence_index, f'STL-shot{i}-S0-F{count}'] = extracted_response
@@ -494,6 +500,9 @@ for sentence_index, sentence in sentences['input statement'].items():
                 parsed_stl = parser.parse(extracted_response)
                 if check_signal_names(parsed_stl, extracted_response, sentence) is not None:
                     raise Exception("bad signal name")
+                if check_derivative_STL2literal(parsed_stl):  # if true
+                    print('mismatched d_s and c')
+                    raise Exception("mismatched d_s and c")
                 print('STL parsed')
                 translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F0'] = extracted_response
                 syntax_passed = True
@@ -559,6 +568,9 @@ for sentence_index, sentence in sentences['input statement'].items():
                     parsed_stl = parser.parse(extracted_response)
                     if check_signal_names(parsed_stl, extracted_response, sentence) is not None:
                         raise Exception("bad signal name")
+                    if check_derivative_STL2literal(parsed_stl):  # if true
+                        print('mismatched d_s and c')
+                        raise Exception("mismatched d_s and c")
                     print('STL parsed')
                     syntax_passed = True
                     translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F{count}'] = extracted_response
@@ -620,12 +632,13 @@ for sentence_index, sentence in sentences['input statement'].items():
 # writing to pkl
 try:
     config = sys.argv[3]
-    with open(f'../pkl/{model_name}/redo_gpt_test_all_responses_all_sentences_{model_name}_{config}.pkl', 'wb') as r:
+    with open(f'../pkl/{model_name}/{set_name}_all_responses_all_sentences_{model_name}_{config}_{time}.pkl', 'wb') as r:
         pickle.dump(all_responses_all_sentences, r)
-    with open(f'../pkl/{model_name}/redo_gpt_test_translations_{model_name}_{config}.pkl', 'wb') as r:
+    with open(f'../pkl/{model_name}/{set_name}_translations_{model_name}_{config}_{time}.pkl', 'wb') as r:
         print("we are dumping the translation file")
         pickle.dump(translations, r)
         print("it was dumped")
 except Exception as e:
     print("there was a pickle problem")
     print(e)
+

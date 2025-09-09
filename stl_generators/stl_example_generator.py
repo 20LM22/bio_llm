@@ -2,27 +2,6 @@ from abc import ABC
 from lark import Lark
 import random
 
-grammar = """
-    ?start: omega
-    ?u: s "(t)" ">" c | s "(t)" "<" c | s "(t)" "=" c | "d_" s "(t)" ">" d_c | "d_" s "(t)" "<" d_c | "d_" s "(t)" "=" d_c
-    
-    c: s "(" t_a ")" | "c(low)" | "c(mid)" | "c(high)"
-    d_c : "0" | "d_c(low)" | "d_c(high)"
-
-    ?nu : u | u "implies" u | u "and" u
-    ?psi: temp_op_f | temp_op_g | temp_op_f_g
-    temp_op_f_g: "eventually" "[" t_a "," t_a "]" "globally" "(" nu ")"
-    temp_op_f: "eventually" "[" t_a "," t_a "]" "(" nu ")"
-    temp_op_g: "globally" "[" t_a "," t_a "]" "(" nu ")"
-    ?omega: nu | psi | omega "and" omega | psi "implies" psi 
-    
-    t_a: /[0-9]+/ | "inf" | /∞/
-    s: "IL6" | "IL12" | "IL1β" | "IL1Ra" | "TNFα" | "IL8" | "IFNα" | "IFNβ" | "SARSCoV2" | "IL1RN"
-
-    %import common.WS
-    %ignore WS
-"""
-
 def compute_min_depth(sym, rule_map, min_depth_map, visited):
     if sym in min_depth_map:
         return min_depth_map[sym]
@@ -53,7 +32,8 @@ def compute_min_depth(sym, rule_map, min_depth_map, visited):
     return min_depth
 
 class STLBase(ABC):
-    def __init__(self):
+    def __init__(self, grammar, ids):
+        self.ids = ids
 
         self.parser = Lark(grammar, start='omega', parser='lalr')
 
@@ -61,7 +41,6 @@ class STLBase(ABC):
         # Build map from nonterminal name to list of expansions (each expansion is a list of symbols)
         
         for rule in self.parser.rules:
-#            print(f"rule is: {rule.origin.name}")
             lhs = rule.origin.name
             if lhs not in rule_map:
                 rule_map[lhs] = []
@@ -72,7 +51,6 @@ class STLBase(ABC):
             rule_map[lhs].append(rule.expansion)
         self.rule_map = rule_map
 
- #       print(f'rule map: {self.rule_map}')
 
         min_depth_map = {}
         visited = set()
@@ -81,8 +59,6 @@ class STLBase(ABC):
             compute_min_depth(rule, self.rule_map, min_depth_map, visited)
 
         self.rule_depth_map = min_depth_map
-  #      print("depth map:")
-        # print(self.rule_depth_map)
 
         anon_map = {}
         for term in self.parser.terminals:
@@ -92,16 +68,11 @@ class STLBase(ABC):
                 anon_map[term.name] = literal
 
         self.anon_map = anon_map
-        # print(self.sample('omega'))
-        # s = 'd_IL6(t)>d_c(high)andIL8(t)>c(high)'
-        # print(f'parse tree: {str(self.parser.parse(s))}')
 
 
     def sample(self, sym, depth=0, max_depth=2):
         d_select = 0
         s_select = 0
-    #    print("--------------------------------------------------------------inside of SAMPLE---------------------------------------------------------------")
-        ids = ["IL6", "IL12", "IL1β", "IL1Ra", "TNFα", "IL8", "IFNα", "IFNβ", "SARSCoV2", "IL1RN"]
 
         parts = []
         t_a_str = "t_a"
@@ -109,19 +80,15 @@ class STLBase(ABC):
         if sym == "t_a":
             parts.append(random.choices([str(random.randint(0, 20)), '∞'], weights=[0.7, 0.3])[0])
         elif sym == "s":
-            parts.append(random.choice(ids))
+            parts.append(random.choice(self.ids))
         elif sym == "d_s":
-            parts.append("d_" + random.choice(ids))
-        # elif sym == "e":
-        #    parts.append(random.choice([str(random.randint(1, 20) / 20), "e"]))
+            parts.append("d_" + random.choice(self.ids))
         elif sym == "c":
-            signal = random.choice(ids)
+            signal = random.choice(self.ids)
             parts.append(random.choice([f"{signal}_{self.sample(t_a_str)}", "c(low)", "c(mid)", "c(high)"]))
         elif sym == "d_c":
             parts.append(random.choice(["0", "d_c(low)", "d_c(high)"]))
         else:
-
-
             if sym in self.rule_map:
                 if depth > max_depth:
                     # Try only fully terminal expansions
@@ -147,19 +114,15 @@ class STLBase(ABC):
                 
                 parts = []
                 for t in expansion:
-                    # print(f'the expansion is: {expansion}')
                     if not t.is_term:
-                        # print(f"t.name is: {t.name}")
                         if t.name == "t_a":
                             parts.append(random.choices([str(random.randint(0, 20)), '∞'], weights=[0.7, 0.3])[0])
                         elif t.name == "s":
                             s_select += 1
-                            parts.append(random.choice(ids))
+                            parts.append(random.choice(self.ids))
                         elif t.name == "d_s":
                             d_select += 1
-                            parts.append("d_" + str(random.choice(ids)))
-                        # elif t.name == "e":
-                        #    parts.append(random.choice([str(random.randint(1, 20) / 20), "e"]))
+                            parts.append("d_" + str(random.choice(self.ids)))
                         elif t.name == "c":
                             parts.append(random.choice(["c(low)", "c(mid)", "c(high)"]))
                         elif t.name == "d_c":
@@ -169,10 +132,6 @@ class STLBase(ABC):
                     else:
                         parts.append(self.anon_map[t.name])  # Use literal if available
 
-            # print(self.parser.parse(''.join(parts))) 
-            # print('--------------------------------------------------------------------------------')
-            # print(f'd: {d_select}\ns: {s_select}')
-            # print('--------------------------------------------------------------------------------')
             return ''.join(parts)
 
 if __name__ == "__main__":
