@@ -1,4 +1,4 @@
-Overview of the filesystem: # not done yet
+Overview of the filesystem:
 
 1) Config. Specifies all model, feedback, etc. parameters. There are many versions, but the newest is [config_nx_0_ny_0_nz_0_test_set.json](https://github.com/hannakrasowski/bio_llm/blob/main/config/config_nx_0_ny_0_nz_0_test_set.json), and new experiments will use copies of this version with the nx (num_correction_attempts_per_shot), ny (num_semantic_checks), nz (num_shots_per_input_sentence), and "set_name" (test set vs. val set) updated.
 2) CSV_inputs. ``input_sentences.csv`` contains the input sentences. There are two versions, test and val.
