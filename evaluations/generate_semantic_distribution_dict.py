@@ -69,6 +69,7 @@ for key in res.keys():
 print(len(res.keys()))
 print()
 
+"""
 # Need to be filled each time
 top_sentences = [
     "Following day 10, IL-6 remains increased whereas IFN-α tapered.",
@@ -101,21 +102,26 @@ for key in res_bottom.keys():
     print(len(res_bottom[key]))
     print()
 print(len(res_bottom.keys()))
+"""
 
 # # print these out to the user and have them mark whether they think they're good or not
 translations_total = 0
+for key in res.keys():
+    translations_total += len(res[key])
+"""
 for key in res_top.keys():
     translations_total += len(res_top[key])
 for key in res_bottom.keys():
     translations_total += len(res_bottom[key])
+"""
 
 translations_count = 0
 correct = 0
 incorrect = 0
 
-for key in res_top.keys():
+for key in res.keys(): # res_top.keys():
     new_syn_valid_arr = []
-    for stl, sim in res_top[key]:
+    for stl, sim in res[key]: # res_top[key]:
         print(f"{translations_count}/{translations_total} annotations completed.")
         translations_count += 1
         # need to ask the user to mark the annotation as a 0 or 1
@@ -129,8 +135,9 @@ for key in res_top.keys():
         # then need to construct a new array that we will replace the current one in the dictionary with
         # but this array will have the user's annotation
         new_syn_valid_arr.append((stl,sim,choice))
-    res_top[key] = new_syn_valid_arr
+    res[key] = new_syn_valid_arr # res_top[key] = new_syn_valid_arr
 
+"""
 for key in res_bottom.keys():
     new_syn_valid_arr = []
     for stl, sim in res_bottom[key]:
@@ -148,15 +155,20 @@ for key in res_bottom.keys():
         # but this array will have the user's annotation
         new_syn_valid_arr.append((stl,sim,choice))
     res_bottom[key] = new_syn_valid_arr
+"""
 
 p = pandas.DataFrame(data=[[correct, incorrect, translations_total]], columns=["correct", "incorrect", "total"]) # deepseek has 17/347 correct
 p.to_csv(f'../stats/{model_name}/{set_name}_semantic_correct_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.csv', index=False)
 
 try:
+    with open(f'../pkl/{set_name}_full_set_histogram_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pkl', 'wb') as r:
+        pickle.dump(res, r)
+    """
     with open(f'../pkl/{set_name}_top_3_histogram_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pkl', 'wb') as r:
         pickle.dump(res_top, r)
     with open(f'../pkl/{set_name}_bottom_3_histogram_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pkl', 'wb') as r:
         pickle.dump(res_bottom, r)
+    """
 except Exception as e:
     print("there was a pickle problem")
     print(e)

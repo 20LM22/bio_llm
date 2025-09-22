@@ -19,8 +19,8 @@ do
       translations="${set_name}_translations_${model}_${experiment}_${time}.pkl"
       echo $config
 #      python stl_generator_v7.py ${official_model_names[i]} $config $experiment $time >| $convo
-       python ../evaluations/stl_evaluation_v6.py $model $translations $config $time
-#      python ../evaluations/generate_semantic_distribution_dict.py $model $translations $config $time
+#       python ../evaluations/stl_evaluation_v6.py $model $translations $config $time
+      python ../evaluations/generate_semantic_distribution_dict.py $model $translations $config $time
 #      python ../evaluations/generate_semantic_distribution_plots.py $model $config $time
       ((i++))
     done
