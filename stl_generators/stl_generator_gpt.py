@@ -7,6 +7,7 @@ import json, sys, re, pickle, pandas, random
 from openai import OpenAI
 import sys
 import io
+from stl_example_generator import STLBase
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 

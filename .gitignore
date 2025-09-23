@@ -2,6 +2,7 @@
 .idea
 */__pycache__
 __pycache__
+dreal4
 
 # Do not add any .tmp files from vim
 *.swp
