@@ -1,0 +1,20 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[7,18](IL1Ra(t)=c(mid)) implies globally[3,inf](IL6(t) < c(high))",0.99641454,"eventually[7,18]globally(IL1Ra(t) = c(mid)) implies eventually[3,inf]globally(IL6(t) < c(high))",0.99767935,"eventually[7,18]globally(d_IL1Ra(t)=c(mid)) implies globally[3,inf](d_IL6(t) < d_c(high))
+",0.8489213,1,1,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[3,inf](d_IL6(t) < d_c(high))",0.71612656,N/A,N/A,"eventually[7,18]globally(IL1Ra(t) < c(mid)) implies globally[3,inf](IL6(t) < c(high))",0.99592954,1,1,0
+"eventually[7,18]globally(IL1Ra(t)=c(mid)) implies globally[3,inf](IL6(t) < c(high))",1.0000002,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[7,18](IL1Ra(t)=c(low) implies IL6(t) < c(high))",0.96903646,"globally[7,18](IL1Ra(t) = c(mid)) implies globally[3,inf](IL6(t) < c(high))",0.99641454,"eventually[7,18](d_IL1Ra(t)=c(mid) and IL6(t) < c(high))",0.95058715,1,1,0
+"eventually[7,18](IL1Ra(t)=c(mid)) implies globally[3,inf](IL6(t) < c(high))",0.9976951,"eventually[7,18](IL1Ra(t) = c(mid)) implies globally[3,inf](IL6(t) < c(high))",0.9976951,N/A,N/A,0,1,1
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[7,inf](d_IL1Ra(t)=d_c(low)) implies globally[3,inf](IL6(t) < c(high))",0.9033655,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[11,16](IFNα(t) > c(low) implies d_SARSCoV2(t)=0)",0.42756954,"globally[7,18](IL1Ra(t) = c(mid) implies d_IL6(t) < d_c(high))",0.82708347,"eventually[7,18]globally(d_IL1Ra(t) > c(mid)) implies eventually[3,inf]globally(IL6(t) < c(high))",0.99381423,2,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0

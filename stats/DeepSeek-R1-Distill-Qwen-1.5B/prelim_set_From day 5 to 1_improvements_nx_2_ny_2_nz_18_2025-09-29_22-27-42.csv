@@ -1,0 +1,20 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"globally[5,11](SARSCoV2(t) < c(mid))",0.9861922,N/A,N/A,"eventually[5,inf]globally(SARSCoV2(t) < c(mid))",0.9818721,0,2,0
+"eventually[5,11]globally(SARSCoV2(t) < c(mid))",1.0000002,N/A,N/A,N/A,N/A,0,2,0
+"eventually[5,11](SARSCoV2(t) < c(mid))",0.99130726,N/A,N/A,N/A,N/A,0,2,0
+IL6(t) < c(mid) and SARSCoV2(t) < c(mid),0.7205044,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+SARSCoV2(t) < c(mid) implies d_SARSCoV2(t) > d_c(high),0.6554434,N/A,N/A,N/A,N/A,0,2,0
+IL8(t) > c(mid) implies d_IL8(t) = d_c(low),0.3537218,N/A,N/A,"eventually[5,11](SARSCoV2(t) < c(mid))",0.99130726,1,1,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[5,11]globally(SARSCoV2(t)=c(mid))",0.9804423,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[5,11](SARSCoV2(t)=c(low))",0.9560844,"eventually[5,inf]globally(SARSCoV2(t) < c(mid))",0.9818721,N/A,N/A,1,1,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[5,11]globally(SARSCoV2(t)=c(mid))",0.9804423,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[5,11](SARSCoV2(t)=c(mid))",0.97443086,N/A,N/A,"globally[5,11](IL8(t) < c(mid))
+",0.6071468,0,2,0
+"eventually[5,11]globally(SARSCoV2(t) < c(mid))",1.0000002,"eventually[5,11]globally(IL1RN(t)=c(mid) implies d_IL1RN(t) < 0)",0.51457596,N/A,N/A,0,2,0

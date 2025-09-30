@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+d_IL1Ra(t) < d_c(low) implies IL6(t)=c(low),0.7903547,N/A,N/A,N/A,N/A,0,2,0
+"IL1Ra(t)=c(low) implies IL1Ra(t) > c(low) and globally[0,inf](d_IL1Ra(t) = d_c(low) implies IL6(t) > c(low)) and eventually[0,inf]globally(IL6(t) > c(low))",0.7631744,N/A,N/A,N/A,N/A,0,2,0
+d_IL1Ra(t) = d_c(low) implies d_IL6(t) > d_c(low),0.7596161,N/A,N/A,N/A,N/A,0,2,0
+IL1Ra(t)=c(low) and d_IL6(t)=c(high),0.6788405,"eventually[18,inf]globally(d_IL12(t) < d_c(low))",0.6318018,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+IL6(t)=c(low) implies d_IL6(t) < d_c(high),0.7702545,N/A,N/A,N/A,N/A,0,2,0
+"d_IL1Ra(t) < d_c(low) and eventually[10,16]globally(SARSCoV2(t)=c(high) implies IL1RN(t) > c(low))",0.63486075,N/A,N/A,N/A,N/A,0,2,0
+"eventually[16,inf]globally(IL1Ra(t)=c(mid))",0.49221888,d_IFNβ(t) < d_c(low) implies d_IFNβ(t)=d_c(high),0.4332476,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"IL6(t) > c(mid) and eventually[0,inf]globally(d_IFNβ(t) < d_c(high) and IL8(t)=c(low))",0.75001305,N/A,N/A,N/A,N/A,0,2,0
+"eventually[2,inf]globally(d_IL1RN(t) > c(low)) and d_IL8(t) > d_c(low) and IL8(t) > c(mid)",0.6960882,IL1RN(t)=c(low) implies IL1Ra(t) > c(mid),0.6346114,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+IL1Ra(t) = c(low) implies d_IL6(t) > d_c(low),0.7974231,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+IL1Ra(t) < c(low) implies d_IL6(t) = d_c(low),0.80584323,d_IL1Ra(t) > d_c(low) implies IL6(t) > c(low),0.78684795,N/A,N/A,0,2,0

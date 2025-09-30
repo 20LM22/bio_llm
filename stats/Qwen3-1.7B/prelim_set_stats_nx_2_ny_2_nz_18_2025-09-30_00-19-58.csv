@@ -1,0 +1,18 @@
+Input Sentence,STL Extraction Success Rate,STL Parsing Success Rate,Number of Translations,Number of Syntactically Correct Translations,Semantic Passes,Semantic Success Rate
+"From day 8 to 18 eventually at every point in that interval the rate of change of IL1RN was close to a fast, increasing rate.",0.7837837837837838,0.7413793103448276,74,43.00000000000001,43,0.9999999999999999
+From day 12 onward if IL-1β was above its low levels then eventually at every point in that interval the rate of change of IL1RN was decreasing.,0.6363636363636364,0.2857142857142857,99,17.999999999999996,18,1.0000000000000002
+From day 20 onward at every point in that interval SARS-CoV-2 was above its low levels.,0.8709677419354839,0.9259259259259259,62,50.00000000000001,50,0.9999999999999999
+If IL-1β was below its low levels then IL-6 was close to its low levels.,0.759493670886076,0.7333333333333334,79,44.00000000000001,44,0.9999999999999999
+"If from day 8 to 10 eventually in that interval the rate of change of IFN-α was close to a fast, increasing rate, then from day 0 to 15 at every point in that interval IL-8 was below its moderate levels.",0.632183908045977,0.49090909090909096,87,27.0,27,1.0
+If IFN-β was close to its low levels then IL-6 was below its high levels.,0.6666666666666667,0.6071428571428572,84,34.00000000000001,34,0.9999999999999998
+"The rate of change of IL-1Ra was increasing and the rate of change of IL-1Ra was increasing slower than a low rate, and if TNF-α was close to its low levels then IL-6 was above its low levels.",0.6224489795918368,0.16393442622950816,98,9.999999999999998,10,1.0000000000000002
+From day 17 onward eventually at every point in that interval IL-1Ra was below its high levels.,0.8484848484848485,0.875,66,49.0,49,1.0
+If the rate of change of IFN-α was increasing then IL1RN was below its moderate levels.,0.6481481481481481,0.37142857142857144,108,26.0,26,1.0
+From day 5 to 11 eventually at every point in that interval SARS-CoV-2 was below its moderate levels.,0.8840579710144928,0.819672131147541,69,50.0,50,1.0
+If the rate of change of IL-12 was increasing then IL-8 was close to its moderate levels.,0.6105263157894737,0.4655172413793104,95,27.000000000000004,27,0.9999999999999999
+From day 6 to 18 eventually at every point in that interval the rate of change of IL-6 was increasing.,0.7209302325581395,0.6774193548387097,86,42.0,42,1.0
+"If from day 7 to 18 eventually at every point in that interval IL-1Ra was close to its moderate levels, then from day 3 onward at every point in that interval IL-6 was below its high levels.",0.9076923076923077,0.6610169491525424,65,39.0,39,1.0
+From day 0 to 18 eventually at every point in that interval IL-6 was close to its high levels.,0.9310344827586207,0.962962962962963,58,52.0,52,1.0
+From day 9 to 12 at every point in that interval IFN-α was close to its low levels.,0.8026315789473684,0.7049180327868853,76,43.0,43,1.0
+"If from day 3 to 12 eventually in that interval the rate of change of IL-12 was decreasing, then from day 2 to 16 eventually at every point in that interval IL-8 was below its high levels.",0.6333333333333333,0.5614035087719298,90,31.999999999999996,32,1.0000000000000002
+Overall,0.7291666666666667,0.62010582010582,1296,586.0,586,1.0
