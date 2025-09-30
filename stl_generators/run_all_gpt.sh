@@ -14,7 +14,7 @@ do
   i=0
   for model in "${models[@]}"
     do
-      time=2025-09-22_11:13:43 #$(date +%F_%T)
+      time=$(/usr/bin/date +%F_%H-%M-%S)
       convo="../stats/${model}/config_${experiment}_${time}.txt"
       translations="${set_name}_translations_${model}_${experiment}_${time}.pkl"
 #      python stl_generator_gpt.py ${official_model_names[i]} $config $experiment $time >| $convo
