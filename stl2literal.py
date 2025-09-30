@@ -326,14 +326,14 @@ class DerivativeChecker(Interpreter):
     error = False
 
     def eq(self, node):
-        if 'd_' in node.children[0].value and node.children[1] == 'c':
-            error = True
+        if 'd_' in node.children[0].children[0] and node.children[1] == 'c':
+            self.error = True
     def lt(self, node):
-        if 'd_' in node.children[0].value and node.children[1] == 'c':
-            error = True
+        if 'd_' in node.children[0].children[0] and node.children[1].data == 'c':
+            self.error = True
     def gt(self, node):
-        if 'd_' in node.children[0].value and node.children[1] == 'c':
-            error = True
+        if 'd_' in node.children[0].children[0] and node.children[1] == 'c':
+            self.error = True
 
 def STL2literal(input_sentence, grammar):
     p = Lark(grammar)
@@ -359,15 +359,12 @@ def check_derivative_STL2literal(parsed_input):
 if __name__ == '__main__':
     grammar = "?start: omega\n?u: gt | lt | eq | d_gt | d_lt | d_eq\ngt: s \"(t)\" \">\" c\nlt: s \"(t)\" \"<\" c\neq: s \"(t)\" \"=\" c\nd_gt: \"d_\" s \"(t)\" \">\" D_C\nd_lt: \"d_\" s \"(t)\" \"<\" D_C\nd_eq: \"d_\" s \"(t)\" \"=\" D_C\nc: s \"(\" t_a \")\" | C_LOW | C_MID | C_HIGH\nC_LOW: \"c(low)\"\nC_MID: \"c(mid)\"\nC_HIGH: \"c(high)\"\nD_C : \"0\" | \"d_c(low)\" | \"d_c(high)\" | \"-d_c(low)\" | \"-d_c(high)\"\n?nu : u | u_implies_u | u_and_u\nu_implies_u: u \"implies\" u\nu_and_u: u \"and\" u\n?psi: temp_op_fg | temp_op_g | temp_op_f\ntemp_op_fg: \"eventually\" \"[\" t_a \",\" t_a \"]\" \"globally\" \"(\" nu \")\"\ntemp_op_f: \"eventually\" \"[\" t_a \",\" t_a \"]\" \"(\" nu \")\"\ntemp_op_g: \"globally\" \"[\" t_a \",\" t_a \"]\" \"(\" nu \")\"\nomega: nu | psi | omega_and_omega | psi_implies_psi\nomega_and_omega: omega \"and\" omega\npsi_implies_psi: psi \"implies\" psi\nTANUM: /[0-9]+/\nINFINITY: \"inf\" | \"∞\"\nt_a: TANUM | INFINITY\ns: /[\\w]+/\nd_s: /d_[\\w]+/\n%import common.WS\n%ignore WS"
     p = Lark(grammar)
-    input_sentence = "globally[0,0](d_IL6(t)<c(low))"
-    print()
+    input_sentence = "globally[0,0](d_IL6(t)<d_c(low))"
+
     tree = p.parse(input_sentence)
-    print(tree)
-    # print()
-    # input_sentence = "globally[0,0](IL6(t)=d_c(low))"
-    # tree = p.parse(input_sentence)
-    # print(tree)
-    # print()
+
+    if check_derivative_STL2literal(tree):
+            print("error")
 
 #  Tree(Token('RULE', 'd_lt')
 #   [Tree(Token('RULE', 's')

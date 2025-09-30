@@ -302,7 +302,7 @@ for sentence_index, sentence in sentences['input statement'].items():
             if check_signal_names(parsed_stl, extracted_response, sentence) is not None:
                 print(f'first check of shot, signal name is getting flagged')
                 raise Exception("bad signal name")
-            if check_derivative_STL2literal(parsed_stl):  # if true
+            if check_derivative_STL2literal(parsed_stl):  # if true --> error
                 print('mismatched d_s and c')
                 raise Exception("mismatched d_s and c")
             syntax_passed = True
