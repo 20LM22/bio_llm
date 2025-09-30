@@ -23,6 +23,9 @@ class STLResponse(BaseModel):
 guided_decoding_params = GuidedDecodingParams(json=STLResponse.model_json_schema())
 stl_response_json = STLResponse.model_json_schema()
 
+print("sys argv 2")
+print(f'../config/{sys.argv[2]}')
+
 with open(f'../config/{sys.argv[2]}', 'r') as f:
     params = json.load(f)
 
