@@ -1,6 +1,9 @@
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
+
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
-import pickle, sys, os, pandas
+import pickle, os, pandas
 from sentence_transformers import SentenceTransformer
 import json
 from collections import defaultdict
@@ -9,6 +12,10 @@ sys.path.insert(1, '..')
 from stl2literal import STL2literal
 
 model_name = sys.argv[1]
+
+for i in range(0,4):
+    print(f'{i}: {sys.argv[i]}')
+
 
 try:
     with open(f'../pkl/{model_name}/{sys.argv[2]}', 'rb') as f:
@@ -63,63 +70,19 @@ for index, row in translations.iterrows():
 
     res[row['input statement']] = syntactically_valid_translations
 
-for key in res.keys():
-    print(key)
-    print()
-print(len(res.keys()))
-print()
-
-"""
-# Need to be filled each time
-top_sentences = [
-    "Following day 10, IL-6 remains increased whereas IFN-α tapered.",
-    "In line with previous reports, IL-1β levels were mostly low or at the limit of detection of 0.1pg ml−1, even though the assay was able to detect various levels of recombinant control cytokines (Extended Data Fig. 1b).",
-    "Circulating IL-1α also was not detected (fig. S9F)."]
-bottom_sentences = [
-    "In parallel, stimulation with CpG 2216 also resulted in lower, but clearly detectable, amounts of IFNs.",
-    "This is the reason that seroconversion (undetectable stage to production of IgM followed by IgG) in 100% of infected people (with positive virus-specific IgG) is achieved 17–19 days after commencement of indications [7].",
-    "Monocyte chemotactic factor chemokine(C-C motif) ligand 2 (CCL2) was increased in the blood of infected patients as well as the transcripts of its receptor CCR2; this was associated with low counts of circulating inflammatory monocytes (Fig. 4I), suggesting a rolefor the CCL2/CCR2 axis in the monocyte chemo-attraction into the inflamed lungs."]
-
-# from res remove keys that aren't in top or bottom
-res_top = defaultdict(list)
-res_bottom = defaultdict(list)
-for key in res.keys():
-    for s in top_sentences:
-        if s[:15] == key[:15]:
-            res_top[key] = res[key]
-    for s in bottom_sentences:
-        if s[:15] == key[:15]:
-            res_bottom[key] = res[key]
-
-for key in res_top.keys():
-    print(key)
-    print(len(res_top[key]))
-    print()
-print(len(res_top.keys()))
-
-for key in res_bottom.keys():
-    print(key)
-    print(len(res_bottom[key]))
-    print()
-print(len(res_bottom.keys()))
-"""
-
 # # print these out to the user and have them mark whether they think they're good or not
 translations_total = 0
+
 for key in res.keys():
     translations_total += len(res[key])
-"""
-for key in res_top.keys():
-    translations_total += len(res_top[key])
-for key in res_bottom.keys():
-    translations_total += len(res_bottom[key])
-"""
 
 translations_count = 0
 correct = 0
 incorrect = 0
 
 for key in res.keys(): # res_top.keys():
+    print(f"key is: {key}")
+    print(f"res[key]: {res[key]}")
     new_syn_valid_arr = []
     for stl, sim in res[key]: # res_top[key]:
         print(f"{translations_count}/{translations_total} annotations completed.")

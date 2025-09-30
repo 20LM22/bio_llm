@@ -12,7 +12,7 @@ from stl_example_generator import STLBase
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 sys.path.insert(1, '..')
-from stl2literal import STL2literal
+from stl2literal import STL2literal, check_derivative_STL2literal
 
 ####################################################################################
 # Set up structures, parameters
