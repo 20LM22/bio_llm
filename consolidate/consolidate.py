@@ -11,6 +11,7 @@
                 I think for now take the more specific element
             continue this until the bin only has 1 element or the size of the bin stops changing between iterations **need the SAT solver thing for this
 
+Run with:
 python consolidate.py 'gpt-4o-2024-08-06' "prelim_set_translations_gpt-4o-2024-08-06_nx_2_ny_2_nz_18_2025-10-05_20-07-09.pkl" "config_nx_2_ny_2_nz_18_prelim_set.json" '2025-10-05_20-07-09'
 """
 
@@ -28,6 +29,7 @@ from stl2literal import get_species_list_STL2literal, get_smt
 
 with open(f'../config/{sys.argv[3]}') as f:
     params = json.load(f)
+print("done with that")
 
 model_name = sys.argv[1]
 model = SentenceTransformer(params['embedding_model_name'], device='cpu')
@@ -100,6 +102,9 @@ for index, input_sentence in enumerate(res.keys()):
 
             # pairwise comparisons
             for i in range(0, len(bin_dict[key])-1):
+                if i in remove_items:
+                    continue
+
                 stl1 = parser.parse(bin_dict[key][i])
                 result_1 = get_smt(stl1)
 
@@ -112,32 +117,50 @@ for index, input_sentence in enumerate(res.keys()):
 
                     s = Solver()
 
-                    # # stl2 --> stl1 so stl2 can be removed --> keeping the more specific subset
+                    # Keep GENERAL:
+                    # # Check if stl1 => stl2 (stl2 redundant and remove)
+                    # s.push()
                     # s.add(Not(Implies(result_1, result_2)))
                     # if s.check() == z3.unsat:
-                    #     print("stl2 is redundant and will be dropped")
                     #     remove_items.add(j)
+                    #     s.pop()
+                    #     continue
+                    # s.pop()
+                    # # Check if stl2 => stl1 (stl1 redundant and remove)
+                    # s.push()
+                    # s.add(Not(Implies(result_2, result_1)))
+                    # if s.check() == z3.unsat:
+                    #     remove_items.add(i)
+                    #     s.pop()
+                    #     break
+                    # s.pop()
 
-                    # stl1 --> stl2 so stl2 can be removed --> keeping the more general superset
-                    s.add(Not(Implies(result_1, result_2)))
-
-                    if bin_dict[key][i]=='eventually[3,12](d_IL12(t) < -d_c(low)) implies eventually[2,16]globally(IL8(t) < c(high))' and bin_dict[key][j]=='eventually[3,12](d_IL12(t) < 0) implies eventually[2,16]globally(IL8(t) < c(high))':
-                        print("stl1 is more specific, stl2 is more general")
-                        print(result_1)
-                        print(result_2)
-                    elif bin_dict[key][j]=='eventually[3,12](d_IL12(t) < -d_c(low)) implies eventually[2,16]globally(IL8(t) < c(high))' and bin_dict[key][i]=='eventually[3,12](d_IL12(t) < 0) implies eventually[2,16]globally(IL8(t) < c(high))':
-                        print("stl2 is more specific, stl1 is more general")
-                        print(result_1)
-                        print(result_2)
-
-                    if s.check() == z3.unsat:
-                        print("stl2 is redundant and will be dropped")
-                        remove_items.add(j)
-
-                    # # stl1 == stl2 so stl2 can be removed
-                    # s.add(Not(result_1 == result_2))
-                    # if s.check() == unsat:
+                    # # Keep SPECIFIC:
+                    # # Check if stl1 => stl2 (stl1 redundant and remove)
+                    # s.push()
+                    # s.add(Not(Implies(result_1, result_2)))
+                    # if s.check() == z3.unsat:
+                    #     remove_items.add(i)
+                    #     s.pop()
+                    #     break
+                    # s.pop()
+                    # # Check if stl2 => stl1 (stl2 redundant and remove)
+                    # s.push()
+                    # s.add(Not(Implies(result_2, result_1)))
+                    # if s.check() == z3.unsat:
                     #     remove_items.add(j)
+                    #     s.pop()
+                    #     continue
+                    # s.pop()
+
+                    # # Keep only UNIQUE statements:
+                    # s.push()
+                    # s.add(Not(result_2 == result_1))
+                    # if s.check() == z3.unsat:
+                    #     remove_items.add(j)
+                    #     s.pop()
+                    #     continue
+                    # s.pop()
 
             bin_dict[key] = [stl for i, stl in enumerate(bin_dict[key]) if i not in remove_items]
 

@@ -385,6 +385,30 @@ class SMTSolver(Interpreter):
             self.signal_vars[key] = Real(f"{name}_{t}")
         return self.signal_vars[key]
 
+    def get_derivative_threshold(self, value):
+        if value == 'd_c(low)':
+            return RealVal(1)
+        elif value == 'd_c(high)':
+            return RealVal(2)
+        elif value == '-d_c(low)':
+            return RealVal(-1)
+        elif value == '-d_c(high)':
+            return RealVal(-2)
+        elif value == '0':
+            return RealVal(0)
+        else:
+            raise Exception("Unknown derivative c-value")
+
+    def get_signal_threshold(self, value):
+        if value == 'c(high)':
+            return RealVal(3)
+        elif value == 'c(mid)':
+            return RealVal(2)
+        elif value == 'c(low)':
+            return RealVal(1)
+        else:
+            raise Exception("Unknown c-value")
+
     def omega(self, node):
         if node.children[0].data == 'psi_implies_psi':
             r1 = self.visit(node.children[0].children[0])
@@ -413,36 +437,11 @@ class SMTSolver(Interpreter):
         return And(r1,r2)
 
     def gt(self, node):
-        t_a = self.current_t_a if self.time_flag else 0
-        t_b = self.current_t_b if self.time_flag else self.T
-        reqs = []
-        for t in range(t_a, t_b + 1):
-            var = self.get_signal_var(node.children[0].children[0].value,t)
-            if node.children[1].children[0] == 'c(high)':
-                reqs.append(var > RealVal(3))
-            elif node.children[1].children[0] == 'c(mid)':
-                reqs.append(var > RealVal(2))
-            elif node.children[1].children[0] == 'c(low)':
-                reqs.append(var > RealVal(1))
-            else:
-                raise Exception("Unknown c-value")
-        return And(reqs)
+        threshold = self.get_signal_threshold(node.children[1].children[0])
 
-    def gt(self, node):
-        const = node.children[1].children[0]
-        if const == 'c(high)':
-            threshold = RealVal(3)
-        elif const == 'c(mid)':
-            threshold = RealVal(2)
-        elif const == 'c(low)':
-            threshold = RealVal(1)
-        else:
-            raise Exception("Unknown c-value")
-
-        if self.in_temporal_scope:
+        if self.time_flag:
             t = self.current_time
-            var = self.get_signal_var(node.children[0].children[0].value, t)
-            return var > threshold
+            return self.get_signal_var(node.children[0].children[0].value, t) > threshold
         else:
             reqs = []
             for t in range(0, self.T + 1):
@@ -451,133 +450,97 @@ class SMTSolver(Interpreter):
             return And(reqs)
 
     def lt(self, node):
-        t_a = self.current_t_a if self.time_flag else 0
-        t_b = self.current_t_b if self.time_flag else self.T
-        reqs = []
-        for t in range(t_a, t_b + 1):
-            var = self.get_signal_var(node.children[0].children[0].value,t)
-            if node.children[1].children[0] == 'c(high)':
-                reqs.append(var < RealVal(3))
-            elif node.children[1].children[0] == 'c(mid)':
-                reqs.append(var < RealVal(2))
-            elif node.children[1].children[0] == 'c(low)':
-                reqs.append(var < RealVal(1))
-            else:
-                raise Exception("Unknown c-value")
-        return And(reqs)
+        threshold = self.get_signal_threshold(node.children[1].children[0])
+
+        if self.time_flag:
+            t = self.current_time
+            return self.get_signal_var(node.children[0].children[0].value, t) < threshold
+        else:
+            reqs = []
+            for t in range(0, self.T + 1):
+                var = self.get_signal_var(node.children[0].children[0].value, t)
+                reqs.append(var < threshold)
+            return And(reqs)
 
     def eq(self, node):
-        t_a = self.current_t_a if self.time_flag else 0
-        t_b = self.current_t_b if self.time_flag else self.T
-        reqs = []
-        for t in range(t_a, t_b + 1):
-            var = self.get_signal_var(node.children[0].children[0].value, t)
-            if node.children[1].children[0] == 'c(high)':
-                reqs.append(var == RealVal(3))
-            elif node.children[1].children[0] == 'c(mid)':
-                reqs.append(var == RealVal(2))
-            elif node.children[1].children[0] == 'c(low)':
-                reqs.append(var == RealVal(1))
-            else:
-                raise Exception("Unknown c-value")
-        return And(reqs)
+        threshold = self.get_signal_threshold(node.children[1].children[0])
+
+        if self.time_flag:
+            t = self.current_time
+            return self.get_signal_var(node.children[0].children[0].value, t) == threshold
+        else:
+            reqs = []
+            for t in range(0, self.T + 1):
+                var = self.get_signal_var(node.children[0].children[0].value, t)
+                reqs.append(var == threshold)
+            return And(reqs)
 
     def d_gt(self, node):
-        t_a = self.current_t_a if self.time_flag else 0
-        t_b = self.current_t_b if self.time_flag else self.T
-
-        # print("yoyoyo")
-        # print(node.children[1].value)
-        if node.children[1].value == 'd_c(low)':
-            threshold = RealVal(1)
-        elif node.children[1].value == 'd_c(high)':
-            threshold = RealVal(2)
-        elif node.children[1].value == '-d_c(low)':
-            threshold = RealVal(-1)
-        elif node.children[1].value == '-d_c(high)':
-            threshold = RealVal(-2)
-        elif node.children[1].value == '0':
-            threshold = RealVal(0)
-        else:
-            raise Exception("Unknown derivative c-value")
-
+        threshold = self.get_derivative_threshold(node.children[1].value)
         var_name = node.children[0].children[0].value
 
-        reqs = []
-        for t in range(t_a, t_b):
+        if self.time_flag:
+            t = self.current_time
             x_t = self.get_signal_var(var_name, t)
-            x_t1 = self.get_signal_var(var_name, t+1)
+            x_t1 = self.get_signal_var(var_name, t + 1)
             derivative = x_t1 - x_t
-            reqs.append(derivative > threshold)
-        return And(reqs)
+            return derivative > threshold
+        else:
+            reqs = []
+            for t in range(0, self.T):
+                x_t = self.get_signal_var(var_name, t)
+                x_t1 = self.get_signal_var(var_name, t+1)
+                derivative = x_t1 - x_t
+                reqs.append(derivative > threshold)
+            return And(reqs)
 
     def d_lt(self, node):
-        t_a = self.current_t_a if self.time_flag else 0
-        t_b = self.current_t_b if self.time_flag else self.T
-
-        if node.children[1].value == 'd_c(low)':
-            threshold = RealVal(1)
-        elif node.children[1].value == 'd_c(high)':
-            threshold = RealVal(2)
-        elif node.children[1].value == '-d_c(low)':
-            threshold = RealVal(-1)
-        elif node.children[1].value == '-d_c(high)':
-            threshold = RealVal(-2)
-        elif node.children[1].value == '0':
-            threshold = RealVal(0)
-        else:
-            raise Exception("Unknown derivative c-value")
-
+        threshold = self.get_derivative_threshold(node.children[1].value)
         var_name = node.children[0].children[0].value
 
-        reqs = []
-        for t in range(t_a, t_b):
+        if self.time_flag:
+            t = self.current_time
             x_t = self.get_signal_var(var_name, t)
-            x_t1 = self.get_signal_var(var_name, t+1)
+            x_t1 = self.get_signal_var(var_name, t + 1)
             derivative = x_t1 - x_t
-            reqs.append(derivative < threshold)
-        return And(reqs)
+            return derivative < threshold
+        else:
+            reqs = []
+            for t in range(0, self.T):
+                x_t = self.get_signal_var(var_name, t)
+                x_t1 = self.get_signal_var(var_name, t+1)
+                derivative = x_t1 - x_t
+                reqs.append(derivative < threshold)
+            return And(reqs)
 
     def d_eq(self, node):
-        t_a = self.current_t_a if self.time_flag else 0
-        t_b = self.current_t_b if self.time_flag else self.T
-
-        if node.children[1].value == 'd_c(low)':
-            threshold = RealVal(1)
-        elif node.children[1].value == 'd_c(high)':
-            threshold = RealVal(2)
-        elif node.children[1].value == '-d_c(low)':
-            threshold = RealVal(-1)
-        elif node.children[1].value == '-d_c(high)':
-            threshold = RealVal(-2)
-        elif node.children[1].value == '0':
-            threshold = RealVal(0)
-        else:
-            raise Exception("Unknown derivative c-value")
-
+        threshold = self.get_derivative_threshold(node.children[1].value)
         var_name = node.children[0].children[0].value
 
-        reqs = []
-        for t in range(t_a, t_b):
+        if self.time_flag:
+            t = self.current_time
             x_t = self.get_signal_var(var_name, t)
-            x_t1 = self.get_signal_var(var_name, t+1)
+            x_t1 = self.get_signal_var(var_name, t + 1)
             derivative = x_t1 - x_t
-            reqs.append(derivative == threshold)
-        return And(reqs)
+            return derivative == threshold
+        else:
+            reqs = []
+            for t in range(0, self.T):
+                x_t = self.get_signal_var(var_name, t)
+                x_t1 = self.get_signal_var(var_name, t+1)
+                derivative = x_t1 - x_t
+                reqs.append(derivative == threshold)
+            return And(reqs)
 
     def temp_op_g(self, node):
         t_a = int(node.children[0].children[0].value)
         t_b = self.T if (node.children[1].children[0].value == '∞' or node.children[1].children[0].value == 'inf') else int(node.children[1].children[0].value)
 
-        self.current_t_a = t_a
-        self.current_t_b = t_b
-
         self.time_flag = True
         reqs = []
         for t in range(t_a, t_b + 1):
             self.current_time = t
-            r = self.visit(node.children[2])  # This should use current_time
-            reqs.append(r)
+            reqs.append(self.visit(node.children[2]))
         self.time_flag = False
         return And(reqs)
 
@@ -585,15 +548,11 @@ class SMTSolver(Interpreter):
         t_a = int(node.children[0].children[0].value)
         t_b = self.T if (node.children[1].children[0].value == '∞' or node.children[1].children[0].value == 'inf') else int(node.children[1].children[0].value)
 
-        self.current_t_a = t_a
-        self.current_t_b = t_b
-
         self.time_flag = True
         reqs = []
         for t in range(t_a, t_b + 1):
             self.current_time = t
-            r = self.visit(node.children[2])  # This should use current_time
-            reqs.append(r)
+            reqs.append(self.visit(node.children[2]))
         self.time_flag = False
         return Or(reqs)
 
@@ -601,21 +560,18 @@ class SMTSolver(Interpreter):
         t_a = int(node.children[0].children[0].value)
         t_b = self.T if (node.children[1].children[0].value == '∞' or node.children[1].children[0].value == 'inf') else int(node.children[1].children[0].value)
 
-        self.current_t_a = t_a
-        self.current_t_b = t_b
-
-        t_prime = Int(f't{self.fg_counter}')
         self.fg_counter += 1
 
         self.time_flag = True
         reqs = []
-        for t in range(t_a, t_b + 1):
-            self.current_time = t
-            r = self.visit(node.children[2])
-            reqs.append(Implies(t >= t_prime, r))
+        for t_prime in range(t_a, t_b + 1):
+            sub_reqs = []
+            for t in range(t_prime, t_b + 1):
+                self.current_time = t
+                sub_reqs.append(self.visit(node.children[2]))
+            reqs.append(And(sub_reqs))
         self.time_flag = False
-
-        return And(t_prime >= t_a, t_prime <= t_b, And(reqs))
+        return Or(reqs)
 
 def STL2literal(input_sentence, grammar):
     p = Lark(grammar)
@@ -651,10 +607,17 @@ def get_smt(parsed_input):
 if __name__ == '__main__':
     grammar = "?start: omega\n?u: gt | lt | eq | d_gt | d_lt | d_eq\ngt: s \"(t)\" \">\" c\nlt: s \"(t)\" \"<\" c\neq: s \"(t)\" \"=\" c\nd_gt: \"d_\" s \"(t)\" \">\" D_C\nd_lt: \"d_\" s \"(t)\" \"<\" D_C\nd_eq: \"d_\" s \"(t)\" \"=\" D_C\nc: s \"(\" t_a \")\" | C_LOW | C_MID | C_HIGH\nC_LOW: \"c(low)\"\nC_MID: \"c(mid)\"\nC_HIGH: \"c(high)\"\nD_C : \"0\" | \"d_c(low)\" | \"d_c(high)\" | \"-d_c(low)\" | \"-d_c(high)\"\n?nu : u | u_implies_u | u_and_u\nu_implies_u: u \"implies\" u\nu_and_u: u \"and\" u\n?psi: temp_op_fg | temp_op_g | temp_op_f\ntemp_op_fg: \"eventually\" \"[\" t_a \",\" t_a \"]\" \"globally\" \"(\" nu \")\"\ntemp_op_f: \"eventually\" \"[\" t_a \",\" t_a \"]\" \"(\" nu \")\"\ntemp_op_g: \"globally\" \"[\" t_a \",\" t_a \"]\" \"(\" nu \")\"\nomega: nu | psi | omega_and_omega | psi_implies_psi\nomega_and_omega: omega \"and\" omega\npsi_implies_psi: psi \"implies\" psi\nTANUM: /[0-9]+/\nINFINITY: \"inf\" | \"∞\"\nt_a: TANUM | INFINITY\ns: /[\\w]+/\nd_s: /d_[\\w]+/\n%import common.WS\n%ignore WS"
     p = Lark(grammar)
-    input_sentence = 'eventually[4,5](IL8(t)<c(low))' # "d_IL6(t)>d_c(low)" # implies eventually[4,5](IL8(t)<c(low))
-    tree = p.parse(input_sentence)
-    print(get_smt(tree))
+    input_sentence1 = "eventually[8,18]globally(d_IL1RN(t) > d_c(high))"
+    input_sentence2 = "globally[8,18](d_IL1RN(t) > d_c(high))"
 
+    tree1 = p.parse(input_sentence1)
+    print(input_sentence1)
+    print(get_smt(tree1))
+
+    print('\n')
+    tree2 = p.parse(input_sentence2)
+    print(input_sentence2)
+    print(get_smt(tree2))
 #  Tree(Token('RULE', 'd_lt')
 #   [Tree(Token('RULE', 's')
 #       [Token('__ANON_1', 'IL6')]),
