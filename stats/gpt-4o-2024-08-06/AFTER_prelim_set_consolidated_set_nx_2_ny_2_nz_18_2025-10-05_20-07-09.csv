@@ -1,17 +1,17 @@
-0,1,2,3
-"From day 8 to 18 eventually at every point in that interval the rate of change of IL1RN was close to a fast, increasing rate.","eventually[8,18]globally(d_IL1RN(t) = d_c(high))","eventually[8,18]globally(d_IL1RN(t) > d_c(high))","globally[8,18](d_IL1RN(t) > d_c(high))"
-From day 12 onward if IL-1β was above its low levels then eventually at every point in that interval the rate of change of IL1RN was decreasing.,"eventually[12,inf]globally(IL1β(t) > c(low) implies d_IL1RN(t) < 0)",,
-From day 20 onward at every point in that interval SARS-CoV-2 was above its low levels.,"globally[20,inf](SARSCoV2(t) > c(low))",,
-If IL-1β was below its low levels then IL-6 was close to its low levels.,IL1β(t) < c(low) implies IL6(t) = c(low),,
-"If from day 8 to 10 eventually in that interval the rate of change of IFN-α was close to a fast, increasing rate, then from day 0 to 15 at every point in that interval IL-8 was below its moderate levels.","eventually[8,10](d_IFNα(t)=d_c(high)) implies globally[0,15](IL8(t) < c(mid))",,
-If IFN-β was close to its low levels then IL-6 was below its high levels.,IFNβ(t) = c(low) implies IL6(t) < c(high),,
-"The rate of change of IL-1Ra was increasing and the rate of change of IL-1Ra was increasing slower than a low rate, and if TNF-α was close to its low levels then IL-6 was above its low levels.",d_IL1Ra(t) > 0 and d_IL1Ra(t) < d_c(low) and TNFα(t) = c(low) implies IL6(t) > c(low),,
-From day 17 onward eventually at every point in that interval IL-1Ra was below its high levels.,"eventually[17,inf]globally(IL1Ra(t) < c(high))","globally[17,inf](IL1Ra(t) < c(high))",
-If the rate of change of IFN-α was increasing then IL1RN was below its moderate levels.,d_IFNα(t) > 0 implies IL1RN(t) < c(mid),d_IFNα(t) > d_c(low) implies IL1RN(t) < c(mid),
-From day 5 to 11 eventually at every point in that interval SARS-CoV-2 was below its moderate levels.,"eventually[5,11]globally(SARSCoV2(t) < c(mid))","globally[5,11](SARSCoV2(t) < c(mid))",
-If the rate of change of IL-12 was increasing then IL-8 was close to its moderate levels.,d_IL12(t) > 0 implies IL8(t) = c(mid),d_IL12(t) > d_c(low) implies IL8(t) = c(mid),"globally[0,inf](d_IL12(t) > 0 implies IL8(t) = c(mid))"
-From day 6 to 18 eventually at every point in that interval the rate of change of IL-6 was increasing.,"eventually[6,18]globally(d_IL6(t) > 0)","globally[6,18](d_IL6(t) > 0)","eventually[6,18]globally(d_IL6(t) > d_c(low))"
-"If from day 7 to 18 eventually at every point in that interval IL-1Ra was close to its moderate levels, then from day 3 onward at every point in that interval IL-6 was below its high levels.","eventually[7,18]globally(IL1Ra(t)=c(mid)) implies globally[3,inf](IL6(t)<c(high))","globally[7,18](IL1Ra(t)=c(mid)) implies globally[3,inf](IL6(t)<c(high))","eventually[7,18]globally(IL1Ra(t)=c(mid)) implies globally[3,18](IL6(t)<c(high))"
-From day 0 to 18 eventually at every point in that interval IL-6 was close to its high levels.,"eventually[0,18]globally(IL6(t)=c(high))",,
-From day 9 to 12 at every point in that interval IFN-α was close to its low levels.,"globally[9,12](IFNα(t)=c(low))",,
-"If from day 3 to 12 eventually in that interval the rate of change of IL-12 was decreasing, then from day 2 to 16 eventually at every point in that interval IL-8 was below its high levels.","eventually[3,12](d_IL12(t) < -d_c(low)) implies eventually[2,16]globally(IL8(t) < c(high))","eventually[3,12](d_IL12(t) < 0) implies eventually[2,16]globally(IL8(t) < c(high))",
+0,1,2
+"From day 8 to 18 eventually at every point in that interval the rate of change of IL1RN was close to a fast, increasing rate.","eventually[8,18]globally(d_IL1RN(t) = d_c(high))","eventually[8,18]globally(d_IL1RN(t) > d_c(high))"
+From day 12 onward if IL-1β was above its low levels then eventually at every point in that interval the rate of change of IL1RN was decreasing.,"eventually[12,inf]globally(IL1β(t) > c(low) implies d_IL1RN(t) < 0)",
+From day 20 onward at every point in that interval SARS-CoV-2 was above its low levels.,"globally[20,inf](SARSCoV2(t) > c(low))",
+If IL-1β was below its low levels then IL-6 was close to its low levels.,IL1β(t) < c(low) implies IL6(t) = c(low),
+"If from day 8 to 10 eventually in that interval the rate of change of IFN-α was close to a fast, increasing rate, then from day 0 to 15 at every point in that interval IL-8 was below its moderate levels.","eventually[8,10](d_IFNα(t)=d_c(high)) implies globally[0,15](IL8(t) < c(mid))",
+If IFN-β was close to its low levels then IL-6 was below its high levels.,IFNβ(t) = c(low) implies IL6(t) < c(high),
+"The rate of change of IL-1Ra was increasing and the rate of change of IL-1Ra was increasing slower than a low rate, and if TNF-α was close to its low levels then IL-6 was above its low levels.",d_IL1Ra(t) > 0 and d_IL1Ra(t) < d_c(low) and TNFα(t) = c(low) implies IL6(t) > c(low),
+From day 17 onward eventually at every point in that interval IL-1Ra was below its high levels.,"eventually[17,inf]globally(IL1Ra(t) < c(high))",
+If the rate of change of IFN-α was increasing then IL1RN was below its moderate levels.,d_IFNα(t) > 0 implies IL1RN(t) < c(mid),
+From day 5 to 11 eventually at every point in that interval SARS-CoV-2 was below its moderate levels.,"eventually[5,11]globally(SARSCoV2(t) < c(mid))",
+If the rate of change of IL-12 was increasing then IL-8 was close to its moderate levels.,d_IL12(t) > 0 implies IL8(t) = c(mid),
+From day 6 to 18 eventually at every point in that interval the rate of change of IL-6 was increasing.,"eventually[6,18]globally(d_IL6(t) > 0)","eventually[6,18]globally(d_IL6(t) > d_c(low))"
+"If from day 7 to 18 eventually at every point in that interval IL-1Ra was close to its moderate levels, then from day 3 onward at every point in that interval IL-6 was below its high levels.","eventually[7,18]globally(IL1Ra(t)=c(mid)) implies globally[3,inf](IL6(t)<c(high))","globally[7,18](IL1Ra(t)=c(mid)) implies globally[3,inf](IL6(t)<c(high))"
+From day 0 to 18 eventually at every point in that interval IL-6 was close to its high levels.,"eventually[0,18]globally(IL6(t)=c(high))",
+From day 9 to 12 at every point in that interval IFN-α was close to its low levels.,"globally[9,12](IFNα(t)=c(low))",
+"If from day 3 to 12 eventually in that interval the rate of change of IL-12 was decreasing, then from day 2 to 16 eventually at every point in that interval IL-8 was below its high levels.","eventually[3,12](d_IL12(t) < -d_c(low)) implies eventually[2,16]globally(IL8(t) < c(high))","eventually[3,12](d_IL12(t) < 0) implies eventually[2,16]globally(IL8(t) < c(high))"

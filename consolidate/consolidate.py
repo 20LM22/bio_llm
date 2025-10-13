@@ -78,7 +78,7 @@ for index, row in translations.iterrows():
 #     2a. bin the sentences into groups based on whether they have the exact same APs
 #     2b. what to do with the sentences that don't fall into a bin? that's ok, there can be bins with just 1 element
 print("starting step 2")
-for input_sentence in res.keys():
+for index, input_sentence in enumerate(res.keys()):
     stl_set = res[input_sentence] # stl_set is [stl1, stl2, etc.]
     bin_dict = defaultdict(list)
 
@@ -101,33 +101,43 @@ for input_sentence in res.keys():
             # pairwise comparisons
             for i in range(0, len(bin_dict[key])-1):
                 stl1 = parser.parse(bin_dict[key][i])
-                # need to come up with a mapping of this parse tree to an SMT boolean expression
-
-                result_1, signals_1, derivatives_1 = get_smt(stl1)
-                for s, t_a, t_b in signals_1:
-                    s = [Real(f'{s}_{t}') for t in range(int(t_a), int(t_b))]
-                for d, t_a, t_b in derivatives_1:
-                    d = [Real(f'{d}_{t}') for t in range(int(t_a), int(t_b))]
-                    d_derivative = [d[i+1] - d[i] for i in range(len(d) - 1)]
+                result_1 = get_smt(stl1)
 
                 for j in range(i+1, len(bin_dict[key])):
                     if j in remove_items:
                         continue
                     # need to compare bin_dict[key][i] and bin_dict[key][j]
                     stl2 = parser.parse(bin_dict[key][j])
-                    # get phi and psi from stl1 and stl2
-                    result_2, signals_2, derivatives_2 = get_smt(stl2)
-                    for s, t_a, t_b in signals_2:
-                        s = [Real(f'{s}_{t}') for t in range(int(t_a), int(t_b))]
-                    for d, t_a, t_b in derivatives_2:
-                        d = [Real(f'{d}_{t}') for t in range(int(t_a), int(t_b))]
-                        d_derivative = [d[i + 1] - d[i] for i in range(len(d) - 1)]
+                    result_2 = get_smt(stl2)
 
                     s = Solver()
-                    s.add(Not(result_1 == result_2))
-                    if s.check() == unsat:
-                        # stl1 == stl2 so stl2 can be removed
+
+                    # # stl2 --> stl1 so stl2 can be removed --> keeping the more specific subset
+                    # s.add(Not(Implies(result_1, result_2)))
+                    # if s.check() == z3.unsat:
+                    #     print("stl2 is redundant and will be dropped")
+                    #     remove_items.add(j)
+
+                    # stl1 --> stl2 so stl2 can be removed --> keeping the more general superset
+                    s.add(Not(Implies(result_1, result_2)))
+
+                    if bin_dict[key][i]=='eventually[3,12](d_IL12(t) < -d_c(low)) implies eventually[2,16]globally(IL8(t) < c(high))' and bin_dict[key][j]=='eventually[3,12](d_IL12(t) < 0) implies eventually[2,16]globally(IL8(t) < c(high))':
+                        print("stl1 is more specific, stl2 is more general")
+                        print(result_1)
+                        print(result_2)
+                    elif bin_dict[key][j]=='eventually[3,12](d_IL12(t) < -d_c(low)) implies eventually[2,16]globally(IL8(t) < c(high))' and bin_dict[key][i]=='eventually[3,12](d_IL12(t) < 0) implies eventually[2,16]globally(IL8(t) < c(high))':
+                        print("stl2 is more specific, stl1 is more general")
+                        print(result_1)
+                        print(result_2)
+
+                    if s.check() == z3.unsat:
+                        print("stl2 is redundant and will be dropped")
                         remove_items.add(j)
+
+                    # # stl1 == stl2 so stl2 can be removed
+                    # s.add(Not(result_1 == result_2))
+                    # if s.check() == unsat:
+                    #     remove_items.add(j)
 
             bin_dict[key] = [stl for i, stl in enumerate(bin_dict[key]) if i not in remove_items]
 
@@ -138,6 +148,7 @@ for input_sentence in res.keys():
     for k in bin_dict.keys():
         output.extend(bin_dict[k])
     res[input_sentence] = output
+    print(f'finished stl {index}')
 
 row_arr = [[key] + value for key, value in res.items()]
 max_len = max(len(row) for row in row_arr)
