@@ -1,25 +1,57 @@
-from dreal import *
+from z3 import *
 
-# Declare time and signal
-t1 = Variable("t1")
-t2 = Variable("t2")
-phi1 = Function("phi1", t1)  # uninterpreted function phi1(t)
+T = 3
+x = [Real(f"x_{t}") for t in range(T)]
+# this creates 6 different variables called x_0, x_1, etc.
+solver = Solver()
 
-# Formula 1: F_[1,5] (phi1 > 0)
-phi1_pos = Exists([t1], And(t1 >= 1, t1 <= 5, phi1 > 0))
+# Encode phi = F[0,3]G(x > 0)
+# "there exists t0 such that for all t>=t0: x[t] > 0"
+t0 = Int("t0")
+phi = And(t0 >= 0, t0 <= T,
+          And([Implies(t >= t0, x[t] > 0) for t in range(T)]))
 
-# Formula 2: F_[2,4] (phi1 > 1)
-phi1_gt1 = Exists([t2], And(t2 >= 2, t2 <= 4, phi1 > 1))
+# Encode psi = F[0,3](x > -1)
+# "there exists t with x[t] > -1"
+psi = Or([x[t] > -1 for t in range(T+1)])
 
-# Check redundancy: (φ1 ∧ ¬φ2) satisfiable?
-f = And(phi1_pos, Not(phi1_gt1))
+# encode psi implies psi **draw out the diagram
 
-# Call dReal delta-solver
-result = CheckSatisfiability(f, 0.001)
+# To check phi <=> psi, check Not(phi == psi) --> if not satisfiable then it's because the statements must be the same
+solver.add(Not(phi == psi))
 
-if result:
-    print("SAT with witness:", result)
-    print("→ φ2 is NOT redundant (counterexample exists).")
+print(solver.check())
+if solver.check() == sat:
+    print("They are NOT equivalent!:")
+    print(solver.model())
 else:
-    print("UNSAT")
-    print("→ φ2 is redundant given φ1.")
+    print("They are equivalent!:")
+
+"""
+?start: omega
+?u: gt | lt | eq | d_gt | d_lt | d_eq
+gt: s \"(t)\" \">\" c
+lt: s \"(t)\" \"<\" c
+eq: s \"(t)\" \"=\" c
+d_gt: \"d_\" s \"(t)\" \">\" D_C
+d_lt: \"d_\" s \"(t)\" \"<\" D_C
+d_eq: \"d_\" s \"(t)\" \"=\" D_C
+c: s \"(\" t_a \")\" | C_LOW | C_MID | C_HIGH
+C_LOW: \"c(low)\"\nC_MID: \"c(mid)\"
+C_HIGH: \"c(high)\"
+D_C : \"0\" | \"d_c(low)\" | \"d_c(high)\" | \"-d_c(low)\" | \"-d_c(high)\"
+?nu : u | u_implies_u | u_and_u\nu_implies_u: u \"implies\" u
+u_and_u: u \"and\" u
+?psi: temp_op_fg | temp_op_g | temp_op_f
+temp_op_fg: \"eventually\" \"[\" t_a \",\" t_a \"]\" \"globally\" \"(\" nu \")\"
+temp_op_f: \"eventually\" \"[\" t_a \",\" t_a \"]\" \"(\" nu \")\"
+temp_op_g: \"globally\" \"[\" t_a \",\" t_a \"]\" \"(\" nu \")\"
+omega: nu | psi | omega_and_omega | psi_implies_psi
+omega_and_omega: omega \"and\" omega
+psi_implies_psi: psi \"implies\" psi
+TANUM: /[0-9]+/
+INFINITY: \"inf\" | \"∞\"
+t_a: TANUM | INFINITY
+s: /[\\w]+/
+d_s: /d_[\\w]+/
+"""

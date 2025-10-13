@@ -1,0 +1,2 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"eventually[3,12](d_IL12(t) < 0) implies eventually[2,16]globally(IL8(t) < c(high))",1.0000002,"eventually[3,12](d_IL12(t) < 0) implies eventually[2,16]globally(IL8(t) < c(high))",1.0000002,0,0,1

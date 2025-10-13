@@ -14,12 +14,12 @@ do
   i=0
   for model in "${models[@]}"
     do
-      time=$(/usr/bin/date +%F_%H-%M-%S)
+      time='2025-10-05_20-07-09' # $(/usr/bin/date +%F_%H-%M-%S) # 2025-10-05_20-07-09
       convo="../stats/${model}/config_${experiment}_${time}.txt"
       translations="${set_name}_translations_${model}_${experiment}_${time}.pkl"
-      python stl_generator_gpt.py ${official_model_names[i]} $config $experiment $time >| $convo
-      python ../evaluations/stl_evaluation_v6.py $model $translations $config $time
-#      python ../evaluations/generate_semantic_distribution_dict.py $model $translations $config $time
+     # python stl_generator_gpt.py ${official_model_names[i]} $config $experiment $time # >| $convo
+     #  python ../evaluations/stl_evaluation_v6.py $model $translations $config $time
+      python ../evaluations/generate_semantic_distribution_dict.py $model $translations $config $time
 #      python ../evaluations/generate_semantic_distribution_plots.py $model $config $time
       i=i+1
     done

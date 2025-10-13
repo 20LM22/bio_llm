@@ -1,3 +1,4 @@
+from z3 import *
 from lark import Lark, Tree
 from lark.visitors import Interpreter
 
@@ -7,7 +8,6 @@ nl_to_literal_dict = {
     "c(mid)": "moderate",
     "c(high)": "high"
 }
-
 signal_names_dict = {
     "IL6": "IL-6",
     "IL12": "IL-12",
@@ -325,6 +325,9 @@ class Test(Interpreter):
 class DerivativeChecker(Interpreter):
     error = False
 
+    def __init__(self):
+        self.error = False
+
     def eq(self, node):
         if 'd_' in node.children[0].children[0] and node.children[1] == 'c':
             self.error = True
@@ -334,6 +337,207 @@ class DerivativeChecker(Interpreter):
     def gt(self, node):
         if 'd_' in node.children[0].children[0] and node.children[1] == 'c':
             self.error = True
+
+class SpeciesSearch(Interpreter):
+    species_list = set()
+
+    def __init__(self):
+        self.species_list = set()
+
+    def eq(self, node):
+        self.species_list.add(node.children[0].children[0].value)
+    def lt(self, node):
+        self.species_list.add(node.children[0].children[0].value)
+    def gt(self, node):
+        self.species_list.add(node.children[0].children[0].value)
+    def d_eq(self, node):
+        self.species_list.add(f'd_{node.children[0].children[0].value}')
+    def d_lt(self, node):
+        self.species_list.add(f'd_{node.children[0].children[0].value}')
+    def d_gt(self, node):
+        self.species_list.add(f'd_{node.children[0].children[0].value}')
+
+class SMTSolver(Interpreter):
+    T = 100
+    signals = set()
+    derivatives = set()
+    current_t_a = 0
+    current_t_b = 0
+    time_flag = False
+    fg_counter = 0
+
+    def __init__(self):
+        self.T = 100
+        self.signals = set()
+        self.derivatives = set()
+        self.current_t_a = 0
+        self.current_t_b = 0
+        self.time_flag = False
+        self.fg_counter = 0
+
+    def omega(self, node):
+        if node.children[0].data == 'psi_implies_psi':
+            r1 = self.visit(node.children[0].children[0])
+            r2 = self.visit(node.children[0].children[1])
+            return f'Implies({r1},{r2})'
+        elif node.children[0].data == 'nu' or node.children[0].data == 'psi':
+            return self.visit(node.children[0].children[0])
+        elif node.children[0].data == "omega_and_omega":
+            r1 = self.visit(node.children[0].children[0])
+            r2 = self.visit(node.children[0].children[1])
+            return f'And({r1},{r2})'
+        else:
+            return self.visit(node.children[0])
+
+    def u_implies_u(self, node):
+        r1 = self.visit(node.children[0])
+        r2 = self.visit(node.children[1])
+        return f'Implies({r1},{r2})'
+
+    def u(self, node):
+        return self.visit(node.children[0])
+
+    def u_and_u(self, node):
+        r1 = self.visit(node.children[0])
+        r2 = self.visit(node.children[1])
+        return f'And({r1}, {r2})'
+
+    def gt(self, node):
+        if self.time_flag:
+            self.signals.add((node.children[0].children[0].value, self.current_t_a, self.current_t_b))
+        else:
+            self.signals.add((node.children[0].children[0].value, 0, self.T))
+
+        if node.children[1].children[0] == 'c(high)':
+            return f'{node.children[0].children[0]}[t] > 3'
+        elif node.children[1].children[0] == 'c(mid)':
+            return f'{node.children[0].children[0]}[t] > 2'
+        elif node.children[1].children[0] == 'c(low)':
+            return f'{node.children[0].children[0]}[t] > 1'
+        else:
+            return Exception()
+
+    def lt(self, node):
+        if self.time_flag:
+            self.signals.add((node.children[0].children[0].value, self.current_t_a, self.current_t_b))
+        else:
+            self.signals.add((node.children[0].children[0].value, 0, self.T))
+
+        if node.children[1].children[0] == 'c(high)':
+            return f'{node.children[0].children[0]}[t] < 3'
+        elif node.children[1].children[0] == 'c(mid)':
+            return f'{node.children[0].children[0]}[t] < 2'
+        elif node.children[1].children[0] == 'c(low)':
+            return f'{node.children[0].children[0]}[t] < 1'
+        else:
+            return Exception()
+
+    def eq(self, node):
+        if self.time_flag:
+            self.signals.add((node.children[0].children[0].value, self.current_t_a, self.current_t_b))
+        else:
+            self.signals.add((node.children[0].children[0].value, 0, self.T))
+
+        if node.children[1].children[0] == 'c(high)':
+            return f'{node.children[0].children[0]}[t] == 3'
+        elif node.children[1].children[0] == 'c(mid)':
+            return f'{node.children[0].children[0]}[t] == 2'
+        elif node.children[1].children[0] == 'c(low)':
+            return f'{node.children[0].children[0]}[t] == 1'
+        else:
+            return Exception()
+
+    def d_gt(self, node):
+        if self.time_flag:
+            self.derivatives.add((node.children[0].children[0].value, self.current_t_a, self.current_t_b))
+        else:
+            self.derivatives.add((node.children[0].children[0].value, 0, self.T))
+
+        if node.children[1] == 'd_c(low)':
+            return f'd_{node.children[0].children[0]}[t] > 1'
+        elif node.children[1] == 'd_c(high)':
+            return f'd_{node.children[0].children[0]}[t] > 2'
+        elif node.children[1] == '-d_c(low)':
+            return f'd_{node.children[0].children[0]}[t] > -1'
+        elif node.children[1] == '-d_c(high)':
+            return f'd_{node.children[0].children[0]}[t] > -2'
+        elif node.children[1] == 0:
+            return f'd_{node.children[0].children[0]}[t] > 0'
+        else:
+            return Exception()
+
+    def d_lt(self, node):
+        if self.time_flag:
+            self.derivatives.add((node.children[0].children[0].value, self.current_t_a, self.current_t_b))
+        else:
+            self.derivatives.add((node.children[0].children[0].value, 0, self.T))
+
+        if node.children[1] == 'd_c(low)':
+            return f'd_{node.children[0].children[0]}[t] < 1'
+        elif node.children[1] == 'd_c(high)':
+            return f'd_{node.children[0].children[0]}[t] < 2'
+        elif node.children[1] == '-d_c(low)':
+            return f'd_{node.children[0].children[0]}[t] < -1'
+        elif node.children[1] == '-d_c(high)':
+            return f'd_{node.children[0].children[0]}[t] < -2'
+        elif node.children[1] == 0:
+            return f'd_{node.children[0].children[0]}[t] < 0'
+        else:
+            return Exception()
+
+    def d_eq(self, node):
+        if self.time_flag:
+            self.derivatives.add((node.children[0].children[0].value, self.current_t_a, self.current_t_b))
+        else:
+            self.derivatives.add((node.children[0].children[0].value, 0, self.T))
+
+        if node.children[1] == 'd_c(low)':
+            return f'd_{node.children[0].children[0]}[t] == 1'
+        elif node.children[1] == 'd_c(high)':
+            return f'd_{node.children[0].children[0]}[t] == 2'
+        elif node.children[1] == '-d_c(low)':
+            return f'd_{node.children[0].children[0]}[t] == -1'
+        elif node.children[1] == '-d_c(high)':
+            return f'd_{node.children[0].children[0]}[t] == -2'
+        elif node.children[1] == 0:
+            return f'd_{node.children[0].children[0]}[t] == 0'
+        else:
+            return Exception()
+
+    def temp_op_g(self, node):
+        self.time_flag = True
+        t_a = node.children[0].children[0].value
+        t_b = self.T if (node.children[1].children[0].value == '∞' or node.children[1].children[0].value == 'inf') else node.children[1].children[0].value
+        self.current_t_a = t_a
+        self.current_t_b = t_b
+        recurse = self.visit(node.children[2])
+        self.time_flag = False
+
+        return f'And([{recurse} for t in range({t_a},{int(t_b)+1})])'
+
+    def temp_op_f(self, node):
+        self.time_flag = True
+        t_a = node.children[0].children[0].value
+        t_b = self.T if (node.children[1].children[0].value == '∞' or node.children[1].children[0].value == 'inf') else node.children[1].children[0].value
+        self.current_t_a = t_a
+        self.current_t_b = t_b
+        recurse = self.visit(node.children[2])
+        self.time_flag = False
+
+        return f'Or([{recurse} for t in range({t_a},{int(t_b)+1})])'
+
+    def temp_op_fg(self, node):
+        self.time_flag = True
+        t_a = node.children[0].children[0].value
+        t_b = self.T if (node.children[1].children[0].value == '∞' or node.children[1].children[0].value == 'inf') else node.children[1].children[0].value
+        self.current_t_a = t_a
+        self.current_t_b = t_b
+        recurse = self.visit(node.children[2])
+        self.time_flag = False
+
+        statement = f'And(t{self.fg_counter} >= {t_a}, t{self.fg_counter} <= {t_b}, And([Implies(t >= t{self.fg_counter}, {recurse}) for t in range({t_a},{int(t_b)+1})]))'
+        self.fg_counter += 1
+        return statement
 
 def STL2literal(input_sentence, grammar):
     p = Lark(grammar)
@@ -356,15 +560,23 @@ def check_derivative_STL2literal(parsed_input):
     d.visit(parsed_input)
     return d.error
 
+def get_species_list_STL2literal(parsed_input):
+    s = SpeciesSearch()
+    s.visit(parsed_input)
+    list(s.species_list).sort()
+    return '-'.join(s.species_list)
+
+def get_smt(parsed_input):
+    smt = SMTSolver()
+    result = smt.visit(parsed_input)
+    return [result, smt.signals, smt.derivatives]
+
 if __name__ == '__main__':
     grammar = "?start: omega\n?u: gt | lt | eq | d_gt | d_lt | d_eq\ngt: s \"(t)\" \">\" c\nlt: s \"(t)\" \"<\" c\neq: s \"(t)\" \"=\" c\nd_gt: \"d_\" s \"(t)\" \">\" D_C\nd_lt: \"d_\" s \"(t)\" \"<\" D_C\nd_eq: \"d_\" s \"(t)\" \"=\" D_C\nc: s \"(\" t_a \")\" | C_LOW | C_MID | C_HIGH\nC_LOW: \"c(low)\"\nC_MID: \"c(mid)\"\nC_HIGH: \"c(high)\"\nD_C : \"0\" | \"d_c(low)\" | \"d_c(high)\" | \"-d_c(low)\" | \"-d_c(high)\"\n?nu : u | u_implies_u | u_and_u\nu_implies_u: u \"implies\" u\nu_and_u: u \"and\" u\n?psi: temp_op_fg | temp_op_g | temp_op_f\ntemp_op_fg: \"eventually\" \"[\" t_a \",\" t_a \"]\" \"globally\" \"(\" nu \")\"\ntemp_op_f: \"eventually\" \"[\" t_a \",\" t_a \"]\" \"(\" nu \")\"\ntemp_op_g: \"globally\" \"[\" t_a \",\" t_a \"]\" \"(\" nu \")\"\nomega: nu | psi | omega_and_omega | psi_implies_psi\nomega_and_omega: omega \"and\" omega\npsi_implies_psi: psi \"implies\" psi\nTANUM: /[0-9]+/\nINFINITY: \"inf\" | \"∞\"\nt_a: TANUM | INFINITY\ns: /[\\w]+/\nd_s: /d_[\\w]+/\n%import common.WS\n%ignore WS"
     p = Lark(grammar)
-    input_sentence = "globally[0,0](d_IL6(t)<d_c(low))"
-
+    input_sentence = "d_IL6(t)>d_c(low)" # implies eventually[4,5](IL8(t)<c(low))
     tree = p.parse(input_sentence)
-
-    if check_derivative_STL2literal(tree):
-            print("error")
+    print(get_smt(tree))
 
 #  Tree(Token('RULE', 'd_lt')
 #   [Tree(Token('RULE', 's')

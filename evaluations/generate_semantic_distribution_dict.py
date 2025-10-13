@@ -16,7 +16,6 @@ model_name = sys.argv[1]
 for i in range(0,4):
     print(f'{i}: {sys.argv[i]}')
 
-
 try:
     with open(f'../pkl/{model_name}/{sys.argv[2]}', 'rb') as f:
         translations = pickle.load(f)

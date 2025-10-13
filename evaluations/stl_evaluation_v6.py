@@ -18,6 +18,10 @@ except Exception as e:
     print("there was an exception")
     print(e)
 
+print("just loaded the translations")
+print(translations)
+translations.to_csv(f'../stats/{model_name}/TRANSLATIONS_test.csv', index=False)
+
 # load in the config specified by the script
 with open(f'../config/{sys.argv[3]}') as f:
     params = json.load(f)
