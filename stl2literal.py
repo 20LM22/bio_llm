@@ -361,18 +361,14 @@ class SMTSolver(Interpreter):
     T = 30
     signal_vars = {}
     derivatives_vars = {}
-    current_t_a = 0
-    current_t_b = 0
     time_flag = False
     fg_counter = 0
     current_time = 0
 
     def __init__(self):
         self.T = 30
-        self.signal_vars = {}  # {(signal_name, t): RealVar}
-        self.derivatives_vars = {}  # {(signal_name, t): RealVar}
-        self.current_t_a = 0
-        self.current_t_b = 0
+        self.signal_vars = {}
+        self.derivatives_vars = {}
         self.time_flag = False
         self.fg_counter = 0
         self.current_time = 0
