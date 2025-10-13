@@ -28,7 +28,7 @@ class STLResponse(BaseModel):
 guided_decoding_params = GuidedDecodingParams(json=STLResponse.model_json_schema())
 stl_response_json = STLResponse.model_json_schema()
 
-with open('../config/config_v1.json') as f:
+with open('../config/old_configs/config_v1.json') as f:
     params = json.load(f)
 
 sampling_params = SamplingParams(
