@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"globally[2,4](d_IP10(t) < d_c(low))",0.5202433,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[2,4]globally(IP10(t) = c(mid)) and d_IP10(t) < 0",0.6342932,N/A,N/A,N/A,N/A,0,2,0
+"eventually[2,4](IP10(t) < c(mid)) and eventually[4,inf](IP10(t) > c(mid))",0.641623,N/A,N/A,N/A,N/A,0,2,0
+"eventually[2,4]globally(IP10(t) < c(mid)) and eventually[4,inf]globally(IP10(t) = c(low))",0.6625122,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[2,4](IP10(t) < c(mid)) and eventually[4,inf](IP10(t) = c(mid))",0.64612633,"eventually[2,4](d_IP10(t) < 0) and IP10(t)=c(mid)",0.6493268,N/A,N/A,1,1,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[2,4](d_IP10(t) < d_c(low) and IP10(t)=c(mid))",0.59610784,N/A,N/A,"eventually[2,4]globally(d_IP10(t) < 0) and d_IP10(t)=0",0.53176236,0,2,0
+"eventually[2,4]globally(d_IP10(t) < d_c(low))",0.53282493,N/A,N/A,N/A,N/A,0,2,0
+"d_IP10(t) < 0 and eventually[2,4](IP10(t) = c(low))",0.6516896,N/A,N/A,N/A,N/A,0,2,0
+"globally[2,4](IP10(t) < c(mid))",0.674426,N/A,N/A,N/A,N/A,0,2,0
+"eventually[2,4]globally(d_IP10(t) < d_c(low)) and d_IP10(t) = c(low)",0.6052772,"eventually[2,4]globally(d_IP10(t) < 0) and globally[4,inf](IP10(t) = c(mid))",0.613708,"eventually[2,4]globally(d_IP10(t) < d_c(high) and IP10(t) > c(mid)) and eventually[4,inf]globally(d_IP10(t) = d_c(high))",0.52771544,1,1,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[2,4](IP10(t) < c(mid)) and eventually[4,inf](IP10(t) = c(mid))",0.64612633,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[2,4]globally(IP10(t) < c(mid)) and globally[4,inf](IP10(t) = c(mid))",0.64482176,N/A,N/A,N/A,N/A,0,2,0
