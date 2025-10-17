@@ -31,6 +31,11 @@ try:
 except Exception as e:
     print(e)
 
+print(res)
+
+for i in range(100):
+    print("generating distribution")
+
 # TODO: uncomment when you have annotations for top3/bottom3
 # zeroes_top = [] # list of sim values
 # ones_top = []
@@ -64,8 +69,12 @@ except Exception as e:
 #         else:
 #             raise Exception(f'no choice associated with {stl}')
 
+for i in range(1000):
+    print(f'the sentence is: ff')
+
 for _id, sentence in enumerate(res.keys()): # key is sentence
-    print(f'the sentence is: {sentence}')
+    for i in range(1000):
+        print(f'the sentence is: {sentence}')
 
     zeroes = []  # list of sim values
     ones = []

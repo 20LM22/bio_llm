@@ -86,7 +86,7 @@ do
     model="${models[$i]}"
     time="${times[$i]}"
     translations="${set_name}_translations_${model}_${experiment}_${time}.pkl"
-    python ../evaluations/generate_semantic_distribution_plots.py "$model" "$config" "$time"
+    python ../evaluations/generate_semantic_distribution_plots.py "$model" "$config" "$time" > 'output.txt'
   done
 done
 
