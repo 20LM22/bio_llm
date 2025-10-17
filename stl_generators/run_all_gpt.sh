@@ -4,7 +4,7 @@
 models=('gpt-4o-2024-08-06')
 official_model_names=('gpt-4o-2024-08-06')
 experiments=("nx_4_ny_2_nz_18")
-set_name="test_set"
+set_name="val_set"
 
 # Optional safety check
 if [ ${#models[@]} -ne ${#official_model_names[@]} ]; then
@@ -20,17 +20,19 @@ do
   i=0
   for model in "${models[@]}"
   do
-    time=$(/usr/bin/date +%F_%H-%M-%S)  # e.g., 2025-10-05_20-07-09
+    time="2025-10-13_21-16-58"
+
+    #$(/usr/bin/date +%F_%H-%M-%S)  # e.g., 2025-10-05_20-07-09
     convo="../stats/${model}/config_${experiment}_${time}.txt"
     translations="${set_name}_translations_${model}_${experiment}_${time}.pkl"
 
     echo "$config"
-    python stl_generator_gpt.py "${official_model_names[i]}" "$config" "$experiment" "$time" >| "$convo"
-    echo "Done with config: $config"
-
-    python ../evaluations/stl_evaluation_v6.py "$model" "$translations" "$config" "$time"
+#    python stl_generator_gpt.py "${official_model_names[i]}" "$config" "$experiment" "$time" >| "$convo"
+#    echo "Done with config: $config"
+#
+#    python ../evaluations/stl_evaluation_v6.py "$model" "$translations" "$config" "$time"
     # python ../evaluations/generate_semantic_distribution_dict.py "$model" "$translations" "$config" "$time"
-    # python ../evaluations/generate_semantic_distribution_plots.py "$model" "$config" "$time"
+    python ../evaluations/generate_semantic_distribution_plots.py "$model" "$config" "$time"
 
     ((i++))
   done

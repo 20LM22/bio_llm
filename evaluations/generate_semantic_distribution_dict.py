@@ -45,13 +45,13 @@ print("waiting")
 
 # fill in semantic successes
 for index, row in translations.iterrows():
-    print("in translations")
+    print(f"row['input statement']: {row['input statement']}")
     # for the nx=2, ny=2, nz=18, all have to be done
 
     # for the nx=2, ny=1, nz=18 results, only TNF ("times intervals, then decreased at the")
     # and It is reported ("It is reported that in recovered case") need to be recorded
-    #if "It is reported that in recovered case" in row['input statement'] or "times intervals, then decreased at the" in row['input statement']:
-    if 1==1:
+    if "It is reported that in recovered case" in row['input statement'] or "times intervals, then decreased at the" in row['input statement']:
+    #if 1==1:
         nl_embedding = np.array(model.encode(row['input statement'], normalize_embeddings=True))
         row_subset = pandas.DataFrame()
         row_counter = 0
