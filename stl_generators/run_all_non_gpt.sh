@@ -66,28 +66,28 @@
 #  done
 #done
 
-##!/bin/bash
-#
-#models=('DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen3-1.7B')
-#official_model_names=('deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen/Qwen3-1.7B')
-#experiments=("nx_4_ny_2_nz_18")
-#set_name="val_set"
-#times=('2025-10-13_23-11-29' '2025-10-14_00-20-08')
-#
-#for experiment in "${experiments[@]}"
-#do
-#  config="config_${experiment}_${set_name}.json"
-#  echo "$config"
-#
-#  i=0
-#  for i in "${!models[@]}"
-#  do
-#    model="${models[$i]}"
-#    time="${times[$i]}"
-#    translations="${set_name}_translations_${model}_${experiment}_${time}.pkl"
-#    python ../evaluations/generate_semantic_distribution_plots.py "$model" "$config" "$time"
-#  done
-#done
+#!/bin/bash
+
+models=('DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen3-1.7B')
+official_model_names=('deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen/Qwen3-1.7B')
+experiments=("nx_4_ny_2_nz_18")
+set_name="test_set"
+times=('2025-10-17_03-24-49' '2025-10-17_05-38-17')
+
+for experiment in "${experiments[@]}"
+do
+  config="config_${experiment}_${set_name}.json"
+  echo "$config"
+
+  i=0
+  for i in "${!models[@]}"
+  do
+    model="${models[$i]}"
+    time="${times[$i]}"
+    translations="${set_name}_translations_${model}_${experiment}_${time}.pkl"
+    python ../evaluations/generate_semantic_distribution_dict.py "$model" "$translations" "$config" "$time"
+  done
+done
 
 # test_set_stats_nx_4_ny_2_nz_18_2025-10-17_03-24-49.csv <-- deepseek test set redo
 # test_set_stats_nx_4_ny_2_nz_18_2025-10-17_05-38-17.csv <-- qwen test set redo
