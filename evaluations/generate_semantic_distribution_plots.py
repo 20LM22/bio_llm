@@ -31,22 +31,6 @@ try:
 except Exception as e:
     print(e)
 
-zeroes = [] # list of sim values
-ones = []
-ones_and_zeroes = []
-
-for key in res.keys():
-    for stl, sim, choice in res[key]:
-        ones_and_zeroes.append(sim)
-        if choice is None or choice == '':
-            continue
-        elif int(choice) == 0:
-            zeroes.append(sim)
-        elif int(choice) == 1:
-            ones.append(sim)
-        else:
-            raise Exception(f'no choice associated with {stl}')
-
 # TODO: uncomment when you have annotations for top3/bottom3
 # zeroes_top = [] # list of sim values
 # ones_top = []
@@ -81,6 +65,22 @@ for key in res.keys():
 #             raise Exception(f'no choice associated with {stl}')
 
 for _id, sentence in enumerate(res.keys()): # key is sentence
+    print(f'the sentence is: {sentence}')
+
+    zeroes = []  # list of sim values
+    ones = []
+    ones_and_zeroes = []
+
+    for stl, sim, choice in res[sentence]:
+        ones_and_zeroes.append(sim)
+        if choice is None or choice == '':
+            continue
+        elif int(choice) == 0:
+            zeroes.append(sim)
+        elif int(choice) == 1:
+            ones.append(sim)
+        else:
+            raise Exception(f'no choice associated with {stl}')
 
     plt.rcParams['font.size'] = 14
     plt.rcParams['axes.titlesize'] = 10
@@ -88,14 +88,13 @@ for _id, sentence in enumerate(res.keys()): # key is sentence
     max_sim = 0
     min_sim = 0
     first_time_max = first_time_min = True
-    for key in res.keys():
-        for stl, sim, choice in res[key]:
-            if first_time_max or sim > max_sim:
-                max_sim = sim
-                first_time_max = False
-            if first_time_min or sim < min_sim:
-                min_sim = sim
-                first_time_min = False
+    for stl, sim, choice in res[sentence]:
+        if first_time_max or sim > max_sim:
+            max_sim = sim
+            first_time_max = False
+        if first_time_min or sim < min_sim:
+            min_sim = sim
+            first_time_min = False
 
     bins = np.linspace(min_sim, max_sim, 10)
     plt.figure(figsize=(10, 6))
