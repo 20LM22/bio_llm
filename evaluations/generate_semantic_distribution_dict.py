@@ -43,31 +43,36 @@ res = defaultdict(list)
 
 # fill in semantic successes
 for index, row in translations.iterrows():
+    # for the nx=2, ny=2, nz=18, all have to be done
 
-    nl_embedding = np.array(model.encode(row['input statement'], normalize_embeddings=True))
-    row_subset = pandas.DataFrame()
-    row_counter = 0
+    # for the nx=2, ny=1, nz=18 results, only TNF ("times intervals, then decreased at the")
+    # and It is reported ("It is reported that in recovered case") need to be recorded
+    if row['input statement'].contains("It is reported that in recovered case") or row['input statement'].contains("times intervals, then decreased at the"):
 
-    syntactically_valid_translations = []
+        nl_embedding = np.array(model.encode(row['input statement'], normalize_embeddings=True))
+        row_subset = pandas.DataFrame()
+        row_counter = 0
 
-    for i in range(shot_count):
-        relevant_translations_cols = []
-        for col in translations.columns:
-            if f'shot{i}-' in col:
-                relevant_translations_cols.append(col)
-        row_subset = row[relevant_translations_cols] # row subset has everything with shot-i in the column name
+        syntactically_valid_translations = []
 
-        for entry in row_subset:
-            if entry != 'STL could not be extracted' and entry != 'STL could not be parsed' and entry is not None:
-                # add this entry
-                entry = entry.replace("∞", "inf")
-                literal = STL2literal(entry, grammar)
-                literal_embedding = ( np.array(model.encode(literal, normalize_embeddings=True)) )
-                sim = cosine_similarity(np.array(literal_embedding).reshape(1,-1), np.array(nl_embedding).reshape(1,-1))[0][0]
-                # need to record stl and its similarity
-                syntactically_valid_translations.append((entry, sim))
+        for i in range(shot_count):
+            relevant_translations_cols = []
+            for col in translations.columns:
+                if f'shot{i}-' in col:
+                    relevant_translations_cols.append(col)
+            row_subset = row[relevant_translations_cols] # row subset has everything with shot-i in the column name
 
-    res[row['input statement']] = syntactically_valid_translations
+            for entry in row_subset:
+                if entry != 'STL could not be extracted' and entry != 'STL could not be parsed' and entry is not None:
+                    # add this entry
+                    entry = entry.replace("∞", "inf")
+                    literal = STL2literal(entry, grammar)
+                    literal_embedding = ( np.array(model.encode(literal, normalize_embeddings=True)) )
+                    sim = cosine_similarity(np.array(literal_embedding).reshape(1,-1), np.array(nl_embedding).reshape(1,-1))[0][0]
+                    # need to record stl and its similarity
+                    syntactically_valid_translations.append((entry, sim))
+
+        res[row['input statement']] = syntactically_valid_translations
 
 # # print these out to the user and have them mark whether they think they're good or not
 translations_total = 0
@@ -120,10 +125,10 @@ for key in res_bottom.keys():
 """
 
 p = pandas.DataFrame(data=[[correct, incorrect, translations_total]], columns=["correct", "incorrect", "total"]) # deepseek has 17/347 correct
-p.to_csv(f'../stats/{model_name}/{set_name}_semantic_correct_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.csv', index=False)
+p.to_csv(f'../stats/{model_name}/{set_name}_semantically_correct_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.csv', index=False)
 
 try:
-    with open(f'../pkl/{set_name}_full_set_histogram_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pkl', 'wb') as r:
+    with open(f'../pkl/{set_name}_semantic_labels_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pkl', 'wb') as r:
         pickle.dump(res, r)
     """
     with open(f'../pkl/{set_name}_top_3_histogram_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pkl', 'wb') as r:
