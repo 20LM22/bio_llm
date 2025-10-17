@@ -1,0 +1,4 @@
+,Sentence Embeddings,Nomic-Embed-Text,Qwen Embeddings
+Sentence Embeddings,1.0000,0.9334,0.9285
+Nomic-Embed-Text,0.9334,1.0000,0.9287
+Qwen Embeddings,0.9285,0.9287,1.0000

@@ -1,49 +1,144 @@
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
-import seaborn as sns
-import matplotlib.pyplot as plt
-import pickle
+import pickle, os, pandas, sys, json
+from sentence_transformers import SentenceTransformer
+import json, requests
+from collections import defaultdict
+sys.stdout.reconfigure(encoding='utf-8')
+from scipy.stats import spearmanr
 
-# Generates 1 16x16 NL vs. Literal heatmap for all pkl files (<filename>) included in 'filenames'
-# Saves heatmaps as 'ambiguous_mod_nl_vs_literal_<filename>' in ../images/<filename>_images/nl_vs_literal_<filename>.png
+sys.path.insert(1, '../..')
+from stl2literal import STL2literal
 
-filenames = ['ambiguous_mod_ollama_nomic_v2.pkl', 'ambiguous_mod_st_mini_lm_v2.pkl', 'ambiguous_mod_st_qwen_p6_v2.pkl'] # specify pkl files
+model_name = sys.argv[1]
 
-for _id, file in enumerate(filenames):
+for i in range(0,4):
+    print(f'{i}: {sys.argv[i]}')
 
-  # load the data
-  results_dict = {}
-  try:
-    with open(f'../pkl/{filenames[_id]}', 'rb') as f:
-      results_dict = pickle.load(f)
-      print(f'Loaded {file}')
-  except Exception as e:
+try:
+    with open(f'../../pkl/{model_name}/{sys.argv[2]}', 'rb') as f:
+        translations = pickle.load(f)
+        print(f'Loaded {f}')
+except Exception as e:
     print(e)
 
-  sim_arr = []
-  nl_statements = [] # labels on the y-axis
-  literal_statements = [] # labels on the x-axis
-  A = [] # array of all literal embeddings 
-  B = [] # array of all nl embeddings
+# Make sure model folder is available
+os.makedirs(f'../../stats/{model_name}', exist_ok=True)
 
-  for _id, (key, value) in enumerate(results_dict.items()):
-    # record the nl statement
-    nl_statement = key[:10]
-    num_stl = len(value['stl'])
-    for i in range(num_stl): # for each STL statement
-      # add the nl, literal statements for the axis labels
-      nl_statements.append(f"{nl_statement}-{i+1}")
-      literal_statements.append(f"{value['literal'][i][0][:10]}")
-      A.append(value['literal'][i][1]) # literal embedding
-      B.append(value['embedding']) # nl embedding
+# Load config specified by the script
+with open(f'../../config/{sys.argv[3]}') as f:
+    params = json.load(f)
 
-  # compute similarity matrix
-  sim_matrix = cosine_similarity(np.array(A), np.array(B))
+model = SentenceTransformer(params['embedding_model_name'], device='cpu')
+shot_count = params['num_shots_per_input_sentence']
+syntax_count = params['num_correction_attempts_per_shot']
+semantic_count = params['num_semantic_checks']
+time = sys.argv[4]
+set_name = params["set_name"]
 
-  # export heatmap
-  plt.figure(figsize=(10,10))
-  ax = sns.heatmap(sim_matrix, annot=True, vmin=0, vmax=1)
-  plt.title(f'NL vs. Literal Cosine Similarities\nModel:{file}')
-  ax.set_yticklabels(nl_statements, rotation=0)
-  ax.set_xticklabels(literal_statements, rotation=45)
-  plt.savefig(f'../images/{file[14:-4]}_images/ambiguous_mod_nl_vs_literal_{file[14:-4]}.png')
+grammar = params['grammar']
+
+res = defaultdict(list)
+
+ollama_url = "http://localhost:11434/api/embeddings"
+ollama_model_2 = "nomic-embed-text"
+ollama_model_3 = "qwen3-embedding:0.6b"
+
+model_1 = []
+model_2 = []
+model_3 = []
+
+for index, row in translations.iterrows():
+    print(f"row['input statement']: {row['input statement']}")
+
+    nl_embedding_1 = np.array(model.encode(row['input statement'], normalize_embeddings=True))
+
+    nl_response_2 = requests.post(
+        ollama_url,
+        json={"model": ollama_model_2, "prompt": row['input statement']}
+    )
+    if nl_response_2.status_code != 200:
+        raise RuntimeError(f"Ollama error: {nl_response_2.text}")
+    nl_embedding_2 = nl_response_2.json()["embedding"]
+
+    nl_response_3 = requests.post(
+        ollama_url,
+        json={"model": ollama_model_3, "prompt": row['input statement']}
+    )
+    if nl_response_3.status_code != 200:
+        raise RuntimeError(f"Ollama error: {nl_response_3.text}")
+    nl_embedding_3 = nl_response_3.json()["embedding"]
+
+    row_subset = pandas.DataFrame()
+    row_counter = 0
+
+    for i in range(shot_count):
+        relevant_translations_cols = []
+        for col in translations.columns:
+            if f'shot{i}-' in col:
+                relevant_translations_cols.append(col)
+        row_subset = row[relevant_translations_cols] # row subset has everything with shot-i in the column name
+
+        for entry in row_subset:
+            if entry != 'STL could not be extracted' and entry != 'STL could not be parsed' and entry is not None:
+                # add this entry
+                entry = entry.replace("∞", "inf")
+                literal = STL2literal(entry, grammar)
+                # TODO: for each embedding model that i want to try, update it here
+                literal_embedding_1 = ( np.array(model.encode(literal, normalize_embeddings=True)) )
+                sim_1 = cosine_similarity(np.array(literal_embedding_1).reshape(1,-1), np.array(nl_embedding_1).reshape(1,-1))[0][0]
+                model_1.append(sim_1)
+
+                response_2 = requests.post(
+                    ollama_url,
+                    json={"model": ollama_model_2, "prompt": literal}
+                )
+                if response_2.status_code != 200:
+                    raise RuntimeError(f"Ollama error: {response_2.text}")
+                literal_embedding_2 = response_2.json()["embedding"]
+                sim_2 = cosine_similarity(np.array(literal_embedding_2).reshape(1,-1), np.array(nl_embedding_2).reshape(1,-1))[0][0]
+                model_2.append(sim_2)
+
+                response_3 = requests.post(
+                    ollama_url,
+                    json={"model": ollama_model_3, "prompt": literal}
+                )
+                if response_3.status_code != 200:
+                    raise RuntimeError(f"Ollama error: {response_3.text}")
+                literal_embedding_3 = response_3.json()["embedding"]
+                sim_3 = cosine_similarity(np.array(literal_embedding_3).reshape(1,-1), np.array(nl_embedding_3).reshape(1,-1))[0][0]
+                model_3.append(sim_3)
+
+from scipy.stats import spearmanr
+import pandas as pd
+
+# Compute correlation and p-values
+r_12, p_12 = spearmanr(model_1, model_2)
+r_13, p_13 = spearmanr(model_1, model_3)
+r_23, p_23 = spearmanr(model_2, model_3)
+
+# Correlation matrix (r-values)
+r_df = pd.DataFrame(
+    data=[
+        [1.0, r_12, r_13],
+        [r_12, 1.0, r_23],
+        [r_13, r_23, 1.0]
+    ],
+    columns=["Sentence Embeddings", "Nomic-Embed-Text", "Qwen Embeddings"],
+    index=["Sentence Embeddings", "Nomic-Embed-Text", "Qwen Embeddings"]
+)
+
+# P-value matrix
+p_df = pd.DataFrame(
+    data=[
+        [0.0, p_12, p_13],
+        [p_12, 0.0, p_23],
+        [p_13, p_23, 0.0]
+    ],
+    columns=["Sentence Embeddings", "Nomic-Embed-Text", "Qwen Embeddings"],
+    index=["Sentence Embeddings", "Nomic-Embed-Text", "Qwen Embeddings"]
+)
+
+# Save both to CSV
+r_df.to_csv(f"../../stats/{model_name}/{set_name}_embedding_rvalues_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.csv", float_format="%.4f")
+p_df.to_csv(f"../../stats/{model_name}/{set_name}_embedding_pvalues_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.csv", float_format="%.4g")

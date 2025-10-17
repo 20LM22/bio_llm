@@ -3,6 +3,7 @@
 */__pycache__
 __pycache__
 dreal4
+*ollama*/
 
 # Do not add any .tmp files from vim
 *.swp
