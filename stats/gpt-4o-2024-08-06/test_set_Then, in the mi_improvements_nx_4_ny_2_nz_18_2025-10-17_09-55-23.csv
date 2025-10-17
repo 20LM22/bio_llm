@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[14,28](d_IL8(t) < 0) and IL8(t) = c(mid)",0.4984994,"globally[14,28](d_IFNβ(t) < 0) and eventually[28,inf]globally(IFNβ(t) = c(low))",0.40426102,N/A,N/A,0,2,0
+"globally[14,28](d_IFNβ(t) < -d_c(low)) and globally[28,inf](IFNβ(t) = c(mid))",0.3915713,"globally[14,28](d_IFNβ(t) < 0) and eventually[28,28](IFNβ(t) = c(low))",0.41470784,"globally[14,28](d_SARSCoV2(t) < 0) and eventually[28,28](SARSCoV2(t) = c(low))",0.36033502,1,1,0
+"globally[14,28](d_IFNβ(t) < 0) and eventually[14,28]globally(IFNβ(t) = c(mid))",0.41593063,N/A,N/A,"globally[14,28](d_IFNβ(t) < 0) and eventually[28,28](IFNβ(t) = c(mid))",0.41796517,1,1,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[14,28](d_IFNβ(t) < 0) and eventually[28,28](IFNβ(t) = c(mid))",0.41796517,"globally[14,28](d_SARSCoV2(t) < 0) and eventually[28,28](SARSCoV2(t) = c(low))",0.36033502,"globally[14,28](d_IFNβ(t) < 0) and IFNβ(t)=c(low)",0.41957378,1,1,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[14,28](d_IL8(t) < 0) and eventually[28,28](IL8(t) = c(mid))",0.49213395,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[14,28](d_IFNβ(t) < 0) and eventually[28,28](IFNβ(t) = c(low))",0.41470784,"eventually[14,28](d_IFNβ(t) < 0 and IFNβ(t) = c(low))",0.4256251,N/A,N/A,1,1,0
+"globally[14,28](d_IFNβ(t) < 0) and IFNβ(t) = c(mid)",0.42602074,"globally[14,28](d_IFNβ(t) < 0) and IFNβ(t) = c(low)",0.41957378,"globally[14,28](d_IFNβ(t) < 0) and eventually[28,28](IFNβ(t) = c(mid))",0.41796517,0,2,0
+"eventually[14,28](d_IFNβ(t) < 0) and eventually[28,28](IFNβ(t) = c(mid))",0.41660082,N/A,N/A,"globally[14,28](d_IFNβ(t) < 0) and IFNβ(t) = c(low)",0.41957378,1,1,0
+"eventually[14,28](d_IFNβ(t) < 0) and eventually[28,28](IFNβ(t) = c(mid))",0.41660082,N/A,N/A,"globally[14,28](d_IFNβ(t) < 0) and eventually[28,28](IFNβ(t) = c(mid))",0.41796517,1,1,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[14,28](d_IFNβ(t) < 0) and eventually[28,28](IFNβ(t) = c(low))",0.41470784,N/A,N/A,"globally[14,28](d_IFNβ(t) < 0) and globally[28,inf](IFNβ(t) = c(mid))",0.40683827,0,2,0
+"globally[14,28](d_IL8(t) < 0) and IL8(t) = c(mid)",0.4984994,"globally[14,28](d_IFNβ(t) < 0) and eventually[28,28](IFNβ(t) = c(low))",0.41470784,N/A,N/A,0,2,0
+"globally[14,28](d_IL1RN(t) < 0) and IL1RN(t) = c(mid)",0.4987015,"globally[14,28](d_IFNβ(t) < 0) and eventually[28,28](IFNβ(t)=c(low))",0.41470784,N/A,N/A,0,2,0

@@ -1,0 +1,21 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"IL6(t) < c(mid) and d_IL6(t) < d_c(low) and globally[15,inf](d_IL1β(t) > d_c(high) implies d_IL1β(t) < 0)",0.56731755,"IL1β(t) < c(low) and eventually[0,inf]globally(d_IL1β(t) > d_c(low))",0.6827713,IL1β(t) < c(low) implies d_IL1β(t) = 0,0.69332564,2,0,0
+"eventually[5,18]globally(d_IL1β(t)=d_c(high))",0.6295204,IL1β(t) < c(low) implies d_IL1β(t)=d_c(low),0.68227977,"eventually[19,20]globally(d_IL1Ra(t) < 0) and d_IFNα(t)=0",0.48484987,1,1,0
+IL1β(t) < c(low),0.80507445,N/A,N/A,N/A,N/A,0,2,0
+d_IL1β(t) > c(low) implies SARSCoV2(t) < c(mid),0.60917056,N/A,N/A,N/A,N/A,0,2,0
+IL1β(t) < c(low) and SARSCoV2(t) < c(mid) and IL1Ra(t) > c(high) and IL12(t)=c(low),0.62002933,d_IL1β(t) = c(low) and SARSCoV2(t) > c(high),0.6488534,"globally[4,13](d_IL6(t) < d_c(low) and d_IFNα(t) > 0)",0.40459555,1,1,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[0,inf](d_IL1β(t)=c(mid))",0.6964543,"IL1β(t) < c(low) and eventually[2,15]globally(TNFα(t) > c(low) implies d_TNFα(t)=d_c(high))",0.60814416,"IL1β(t) = c(low) and eventually[0,inf]globally(d_IL1β(t) < d_c(low))",0.7005967,1,1,0
+IL1β(t) < c(low) implies IFNα(t)=c(high),0.68689054,N/A,N/A,"eventually[2,16]globally(IL8(t) < c(high)) and d_IL8(t) > d_c(low)",0.44274434,0,2,0
+"eventually[8,15]globally(IFNβ(t)=c(high) implies IL1β(t) > c(high))",0.6491321,IL1β(t)=c(low) and d_SARSCoV2(t) < d_c(high),0.62993187,N/A,N/A,0,2,0
+IL1β(t) = c(low) implies d_IL1β(t) < d_c(high),0.6742827,IL1β(t)=c(low) implies d_IL1β(t) = d_c(high),0.6729998,IL1β(t) = c(low) implies d_IL1β(t) < d_c(low),0.66606414,0,2,0
+IL1β(t)=c(low) implies IL1β(t) < c(low),0.7343676,IL1β(t) < c(low),0.80507445,IL1β(t) = c(low) implies d_IFNα(t) = d_c(high) and d_IL1β(t) = d_c(high),0.616425,1,1,0
+"IL6(t) < c(mid) and d_IL6(t) < d_c(low) and globally[15,inf](d_IL1β(t) > d_c(high) implies d_IL1β(t) < 0)",0.56731755,N/A,N/A,"eventually[3,16]globally(d_IL1β(t) > d_c(low))",0.6453811,1,1,0
+IL12(t)=c(high) implies d_SARSCoV2(t) > d_c(high),0.34234098,IL1β(t) < c(low) implies d_IL1β(t)=d_c(high),0.6679959,IL1β(t) = c(low) implies d_IL1β(t) < d_c(high),0.6742827,2,0,0
+"eventually[19,20]globally(d_IL1Ra(t) = 0 and d_IFNα(t) = 0)",0.49423766,N/A,N/A,N/A,N/A,0,2,0
+IL1β(t) < c(mid) and d_IL1β(t) = 0,0.7967098,N/A,N/A,d_IL1β(t) = d_c(low) implies d_IL6(t) > d_c(high),0.5149634,0,2,0
+"globally[2,inf](d_IL1β(t) < d_c(low))",0.6250157,N/A,N/A,N/A,N/A,0,2,0
+d_IL1β(t) = c(low) implies d_IFNα(t) > d_c(low) and d_TNFα(t) < 0 and d_SARSCoV2(t) = 0 and IL1Ra(t) > c(low),0.6126874,"IL6(t) > c(mid) and eventually[0,inf]globally(d_IL6(t) = d_c(low))",0.35746497,"globally[1, inf](IL1β(t) = c(low))",0.7173799,1,1,0
+"eventually[7,inf]globally(IL1β(t)=c(low)) implies globally[3,inf](IL1β(t) < c(high))",0.6142918,N/A,N/A,"eventually[5,12](d_SARSCoV2(t) > 0 and SARSCoV2(t) < c(high))
+and
+IL1RN(t)=c(low)",0.36839557,0,2,0
