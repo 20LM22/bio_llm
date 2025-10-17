@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[7,12]globally(IL8(t) < c(mid))",0.2767254,N/A,N/A,"globally[17,inf](IL8(t)=c(mid))",0.2527991,0,2,0
+"eventually[17,19]globally(IL1Ra(t) < c(low))",0.29996008,IL1β(t) < c(low) implies IFNα(t)=c(high),0.20448607,N/A,N/A,0,2,0
+"eventually[17,inf]globally(d_IL1Ra(t) = c(mid))",0.3016715,"eventually[17,inf]globally(IL8(t)=c(mid))",0.27523065,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[11,16](IFNα(t) > c(mid) implies d_SARSCoV2(t)=0)",0.3030477,"globally[17,19](d_IL6(t) = d_c(low))",0.26617354,N/A,N/A,0,2,0
+IFNα(t) > c(high) implies IFNα(t)=c(mid),0.12375721,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"d_IL1RN(t) < d_c(high) and eventually[14,15]globally(d_IFNα(t)=d_c(high) and IFNβ(t) > c(low))",0.27828705,N/A,N/A,"eventually[17,19](d_IL8(t)=c(mid) and d_TNFα(t) > 0)",0.32567266,1,1,0
+"globally[15,inf](IL8(t) > c(low) implies d_IL1Ra(t) > d_c(high)) and IL6(t) < c(mid)",0.26461822,IL1RN(t)=c(mid) implies IL1Ra(t) > c(mid),0.24870029,N/A,N/A,0,2,0
+"globally[14,inf](d_IL12(t)=0)",0.25445992,"eventually[17,inf]globally(IL12(t) > c(mid) and d_IL12(t)=d_c(low))",0.29153794,N/A,N/A,1,1,0
+"eventually[17,19]globally(d_IL1Ra(t) < 0)",0.30223885,"globally[17,inf](IL6(t)=c(mid))",0.24367493,N/A,N/A,0,2,0
+"eventually[17,inf]globally(d_IL6(t) < 0 and IL6(t) < c(mid))",0.27753296,d_IFNβ(t) < 0 implies IL12(t) > c(mid),0.21028863,N/A,N/A,0,2,0
+IL1β(t) < c(low) implies IFNα(t)=c(high),0.20448607,"eventually[17,19](IL8(t) < c(mid) implies d_IL12(t) = d_c(high))",0.29802257,N/A,N/A,1,1,0
+IL1β(t) = c(low) and IFNβ(t) = c(low),0.18585719,"eventually[6,20]globally(d_IL1Ra(t) < d_c(high))",0.30317265,IL6(t)=c(low) implies d_IL12(t) < d_c(high),0.20902953,2,0,0
