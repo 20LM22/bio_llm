@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"eventually[1,7]globally(TNFα(t) > c(high)) and eventually[8,14]globally(TNFα(t) > c(high)) and eventually[15,inf]globally(TNFα(t) < c(low))",0.87108487,N/A,N/A,"globally[1,7](TNFα(t) > c(mid)) and globally[8,14](TNFα(t) > c(mid)) and eventually[14,inf](TNFα(t) < c(mid))",0.893471,1,1,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"d_TNFα(t) > d_c(high) and d_TNFα(t) > d_c(high) and d_TNFα(t) < d_c(low) and globally[15,inf](d_TNFα(t) < d_c(low))",0.65598726,"eventually[1,7](TNFα(t) > c(low)) and eventually[8,14](TNFα(t) > c(low)) and eventually[15,inf](TNFα(t) < c(low))",0.8568833,"eventually[1,7]globally(TNFα(t) = c(high)) and eventually[8,14]globally(TNFα(t) = c(high)) and eventually[15,inf]globally(TNFα(t) = c(low))",0.85293764,2,0,0
+"globally[1,7](TNFα(t)=c(high))",0.8522457,"globally[1,7](TNFα(t) > c(mid)) and globally[8,14](TNFα(t) > c(mid)) and eventually[14,inf](TNFα(t) < c(low))",0.8943811,"eventually[1,7](TNFα(t) > c(mid)) and eventually[8,14](TNFα(t) > c(mid)) and eventually[15,inf](TNFα(t) < c(mid))",0.88308054,2,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[1,7]globally(TNFα(t)=c(high)) and eventually[8,14]globally(TNFα(t)=c(high)) and globally[15,inf](TNFα(t)=c(low))",0.8522879,"eventually[1,7]globally(d_TNFα(t)=0) and eventually[8,14]globally(d_TNFα(t)=0) and eventually[15,inf](d_TNFα(t) < d_c(high))",0.7220728,TNFα(t) > c(high) and TNFα(t) > c(high) and TNFα(t) < c(low) and d_TNFα(t) = d_c(low),0.76559526,0,2,0
+"eventually[1,7]globally(TNFα(t) > c(high)) and eventually[8,14]globally(TNFα(t) > c(high)) and eventually[15,inf]globally(TNFα(t) < c(low))",0.87108487,N/A,N/A,"TNFα(t) > c(high) and TNFα(t) > c(high) and TNFα(t) < c(low) and globally[14,inf](TNFα(t) < c(low))",0.86482775,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[1,7]globally(d_TNFα(t)=d_c(high)) and eventually[8,14]globally(d_TNFα(t)=d_c(high)) and eventually[15,inf]globally(d_TNFα(t)=d_c(low))",0.70138687,TNFα(t) > c(low) and TNFα(t) > c(mid) and TNFα(t) > c(high) and TNFα(t) < c(low) and TNFα(t) < c(mid) and TNFα(t) < c(high) and d_TNFα(t) > 0 and d_TNFα(t) < 0,0.7780488,"eventually[1,7]globally(TNFα(t) > c(high)) and eventually[8,14]globally(TNFα(t) > c(high)) and eventually[15,inf]globally(TNFα(t) < c(low))",0.87108487,2,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[1,7](TNFα(t) > c(high)) and globally[8,14](TNFα(t) > c(high)) and eventually[15,inf](TNFα(t) < c(low))",0.88062406,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[1,7]globally(TNFα(t) > c(mid)) and eventually[8,14]globally(TNFα(t) > c(mid)) and eventually[15,inf]globally(TNFα(t) < c(low))",0.8884924,"eventually[1,7](TNFα(t) > c(mid)) and eventually[8,14](TNFα(t) > c(mid)) and eventually[inf,inf](TNFα(t) < c(low))",0.8724798,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[1,7](TNFα(t) > c(low)) and globally[8,14](TNFα(t) > c(low)) and eventually[14,inf](TNFα(t) < c(low))",0.8688556,N/A,N/A,"globally[1,7](TNFα(t) > c(high)) and globally[8,14](TNFα(t) > c(high)) and eventually[15,inf](TNFα(t) < c(low))",0.88062406,1,1,0
+"globally[1,7](TNFα(t) > c(high)) and globally[8,14](TNFα(t) > c(high)) and eventually[15,inf](TNFα(t) < c(high))",0.876739,"eventually[1,7](TNFα(t)=c(high)) and eventually[8,14](TNFα(t)=c(high)) and globally[14,inf](TNFα(t) < c(low))",0.85625947,"globally[1,7](TNFα(t) > c(mid)) and globally[8,14](TNFα(t) > c(mid)) and globally[15,inf](TNFα(t) < c(low))",0.8915576,1,1,0

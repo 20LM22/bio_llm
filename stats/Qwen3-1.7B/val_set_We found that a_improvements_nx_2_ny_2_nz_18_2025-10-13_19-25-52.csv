@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[1,7](IFNβ(t) = c(mid)) and eventually[8,14] (IFNβ(t) > c(mid) implies IL1RN(t) < c(mid)) and eventually[14,inf] (IFNβ(t) > c(mid) implies IL1RN(t) < c(mid))",0.553437,"eventually[1,7]globally(IFNβ(t) = c(mid)) and eventually[8,14]globally(d_IFNβ(t) > d_c(high)) and eventually[14,inf]globally(d_IFNβ(t) > d_c(high))",0.540488,N/A,N/A,0,2,0
+"eventually[1,7]globally(IFNβ(t) = c(mid)) and eventually[8,14]globally(IFNβ(t) > c(mid)) and eventually[15,inf]globally(IFNβ(t) > c(high))",0.5867618,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[1,7]globally(IFNβ(t) = c(low)) and eventually[8,14]globally(IFNβ(t) > c(low)) and eventually[15,inf]globally(IFNβ(t) > c(low))",0.53701544,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[1,7]globally(IFNβ(t)=c(mid)) and eventually[8,14]globally(IFNβ(t) > c(mid) and IFNβ(t) > c(low))",0.6034165,N/A,N/A,N/A,N/A,0,2,0
+"eventually[8,14]globally(IFNβ(t) > c(mid) and IFNβ(t) > c(high)) and eventually[1,7]globally(IFNβ(t) < c(low))",0.57998407,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[1,7]globally(IFNβ(t) = c(mid)) implies eventually[8,14]globally(IFNβ(t) > c(high)) and eventually[15,inf]globally(IFNβ(t) > c(high))",0.5662329,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[1,7](IFNβ(t) = c(mid)) and eventually[8,14]globally(IFNβ(t) > c(mid)) and eventually[15,inf]globally(IFNβ(t) > c(mid))",0.58409965,"eventually[1,7]globally(IFNβ(t) = c(mid)) and eventually[8,14]globally(IFNβ(t) > c(high)) and eventually[15,inf]globally(IFNβ(t) > c(high)) and eventually[1,7]globally(IFNβ(t) < c(high)) and eventually[8,14]globally(IFNβ(t) < c(high)) and eventually[15,inf]globally(IFNβ(t) < c(high))",0.56130874,N/A,N/A,0,2,0
+"globally[1,7](IFNβ(t)=c(mid)) and eventually[8,14]globally(IFNβ(t)=c(high)) implies eventually[1,7]globally(IFNβ(t)=c(mid))",0.58055425,N/A,N/A,N/A,N/A,0,2,0

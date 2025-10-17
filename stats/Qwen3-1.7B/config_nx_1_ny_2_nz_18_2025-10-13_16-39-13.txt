@@ -1,0 +1,1 @@
+INFO 10-13 16:39:15 [__init__.py:244] Automatically detected platform cuda.

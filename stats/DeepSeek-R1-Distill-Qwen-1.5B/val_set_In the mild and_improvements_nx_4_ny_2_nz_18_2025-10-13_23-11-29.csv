@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"eventually[1,inf]globally(d_IL6(t)=0)",0.6068255,N/A,N/A,"globally[1, inf](d_IL6(t) = c(high) implies d_IL6(t) < d_c(high))",0.6520216,1,1,0
+"globally[1,inf](d_IL6(t) > d_c(high)) and IL6(t)=c(mid)",0.71840346,"eventually[1, inf]globally(IL6(t) = c(high) implies d_IL6(t) < d_c(low))",0.66830134,N/A,N/A,0,2,0
+"globally[14,inf](d_IL1Ra(t) > d_c(high))",0.37695253,N/A,N/A,N/A,N/A,0,2,0
+IL1RN(t)=c(low) and d_IL1β(t) < d_c(low),0.52772415,N/A,N/A,N/A,N/A,0,2,0
+"globally[1,inf](d_IL6(t) = c(low))",0.65989566,N/A,N/A,N/A,N/A,0,2,0
+IL12(t) = c(mid),0.50437665,N/A,N/A,"IL6(t) = c(high) implies d_IL6(t) < d_c(low) and eventually[1,16]globally(d_IL6(t)=0)",0.67226005,1,1,0
+d_IL6(t) > d_c(low) and TNFα(t) < c(high),0.71210957,"eventually[1,inf](IL6(t) < c(low))",0.6911293,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+IL6(t)=c(high) implies d_IL6(t) < d_c(high),0.6422123,IL6(t)=c(high) implies d_IL6(t) > d_c(high),0.6339134,"d_IL6(t) = c(high) and globally[1,inf](d_IL6(t) < 0)",0.7358312,1,1,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[8,19](IL1β(t) > c(high))",0.64700234,N/A,N/A,N/A,N/A,0,2,0
+"eventually[7,16](IL1β(t)=c(mid))",0.6302936,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[0,18](d_IL6(t) > 0)",0.6534064,IL6(t) > c(high) implies d_IL6(t) < d_c(low),0.64201283,IL6(t) < c(high) and d_IL6(t) < d_c(low),0.66717637,1,1,0
+IL6(t)=c(high) implies d_IL6(t) < d_c(low),0.6420119,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+IL6(t) < c(high),0.6672562,N/A,N/A,"eventually[1,inf](d_IL6(t) = c(mid) implies d_IL6(t)=c(high)) and d_IL6(t) > d_c(low)",0.69675255,1,1,0
+"globally[1, inf](IL6(t)=c(high) implies d_IL6(t) < d_c(low))",0.65345806,N/A,N/A,"IL6(t) > c(mid) and eventually[0,inf]globally(d_IL6(t) < d_c(high))",0.70871973,1,1,0

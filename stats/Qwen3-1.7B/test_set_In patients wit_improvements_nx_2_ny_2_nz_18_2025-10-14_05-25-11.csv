@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"eventually[0,2](SARSCoV2(t) = c(mid))",0.5342928,"eventually[0,2]globally(IL1β(t) = c(mid))",0.38328516,"eventually[0,2](SARSCoV2(t) = c(mid))",0.5342928,0,1,1
+"eventually[0,14]globally(SARSCoV2(t) = c(mid))",0.5314421,N/A,N/A,"eventually[0,2](SARSCoV2(t) = c(mid))",0.5342928,1,1,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[0,2]globally(IL1Ra(t) > c(high))",0.24398759,N/A,N/A,"eventually[0,14]globally(SARSCoV2(t)=c(high))",0.5128783,1,1,0
+"eventually[0,2]globally(IL6(t) = c(mid))",0.26197436,"eventually[0,2](SARSCoV2(t) = c(mid))",0.5342928,"eventually[0,14](SARSCoV2(t)=c(high))",0.5198985,2,0,0
+"eventually[0,14]globally(SARSCoV2(t) > c(low))",0.50080484,N/A,N/A,"eventually[0,14]globally(SARSCoV2(t) = c(low))",0.5056535,1,1,0
+"eventually[0,14]globally(SARSCoV2(t) > c(low))",0.50080484,"eventually[0,2]globally(IL1β(t) < c(low))",0.35532832,"eventually[14,inf]globally(IL1Ra(t) > c(low)) and IL1Ra(t) > c(mid)",0.24552184,0,2,0
+"eventually[0,2]globally(SARSCoV2(t) = c(mid))",0.53554094,N/A,N/A,SARSCoV2(t) = c(low),0.4834408,0,2,0
+"eventually[0,2]globally(SARSCoV2(t) = c(mid))",0.53554094,"globally[0,2](SARSCoV2(t)=c(mid))",0.5120258,"eventually[0,14](IL1RN(t) = c(mid))",0.21888158,0,2,0
+"eventually[0,14]globally(SARSCoV2(t) = c(mid))",0.5314421,"eventually[0,2](SARSCoV2(t) = c(high))",0.5268795,N/A,N/A,0,2,0
+"SARSCoV2(t)=c(mid) and eventually[0,14](SARSCoV2(t)=c(mid) implies d_SARSCoV2(t) < d_c(low))",0.48135197,"eventually[0,14]globally(IL1Ra(t) = c(low))",0.24091451,"globally[0,14](SARSCoV2(t)=c(low))",0.4838689,1,1,0
+"eventually[0,2]globally(SARSCoV2(t) = c(low))",0.5134362,"eventually[0,14](SARSCoV2(t) > c(high)) and globally[0,14](SARSCoV2(t) = c(high))",0.49527743,"eventually[0,14](SARSCoV2(t) = c(low))",0.5068074,0,2,0
+"eventually[0,2](SARSCoV2(t) = c(mid))",0.5342928,"eventually[0,14]globally(SARSCoV2(t) = c(low))",0.5056535,N/A,N/A,0,2,0
+"globally[0,14](SARSCoV2(t) = c(low))",0.4838689,N/A,N/A,"eventually[0,2](SARSCoV2(t) > c(mid))",0.5268947,1,1,0
+"eventually[0,2](SARSCoV2(t) = c(mid))",0.5342928,"eventually[0,14]globally(SARSCoV2(t) = c(low)) and d_SARSCoV2(t) > 0",0.4917126,"eventually[0,14]globally(SARSCoV2(t) = c(mid))",0.5314421,0,2,0
+"eventually[0,14]globally(SARSCoV2(t) = c(low))",0.5056535,N/A,N/A,N/A,N/A,0,2,0
+"eventually[0,14]globally(IL6(t) = c(mid)) and d_SARSCoV2(t) = d_c(low)",0.50659865,"eventually[0,2]globally(SARSCoV2(t) > c(low) and IL1β(t) = c(low))",0.60611403,"eventually[0,2]globally(IL6(t)=c(low) implies d_IL6(t) > 0)",0.25517154,1,1,0
+"eventually[0,14]globally(SARSCoV2(t) = c(mid))",0.5314421,"eventually[0,14]globally(SARSCoV2(t)=c(mid))",0.5314421,N/A,N/A,0,1,1

@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[17, inf] globally(IL6(t) < c(high))",0.6813444,N/A,N/A,"IL6(t) > c(high) and eventually[1,inf]globally(d_IL6(t)=d_c(low)) and IL6(t) < c(mid)",0.76692253,1,1,0
+IL6(t) < c(high) and IFNα(t) > c(low),0.70745933,N/A,N/A,N/A,N/A,0,2,0
+IL6(t) > c(high) implies d_IL6(t) = d_c(low),0.6695465,N/A,N/A,d_IL6(t) < 0 implies IL6(t) > c(high),0.67457724,1,1,0
+"globally[0,8](IL1Ra(t) = c(high)) implies eventually[1,inf](d_IL1Ra(t) < d_c(low))",0.43680018,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"d_IL6(t)=c(high) implies d_IL6(t) < 0 and eventually[1,inf](d_IL6(t)=d_c(low))",0.67443717,N/A,N/A,IL6(t) < c(low) and d_IL6(t)=d_c(low),0.67284083,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[1,inf](d_IL6(t)=d_c(low) and IL8(t)<c(low))",0.69607246,N/A,N/A,N/A,N/A,0,2,0
+"eventually[7,16](IL1β(t)=c(mid))",0.6302936,N/A,N/A,"eventually[7, inf]globally(d_IL6(t) < d_c(high) implies IL6(t) < c(high))",0.69786775,1,1,0
+"eventually[7,16](IL6(t)=c(low) implies IL6(t)=c(low))",0.6986567,"d_IL6(t) > c(high) and eventually[1, inf]globally(d_IL6(t) < d_c(low))",0.6976933,"globally[0,1](IL6(t) < c(high)) and eventually[1,inf]globally(IL6(t) < c(high))",0.70873964,1,1,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[1,7](d_IL6(t) > 0)",0.69851184,"globally[0,1](IL6(t) = c(high)) and eventually[1,inf]globally(IL6(t) < c(high))",0.71873826,IL6(t) > c(high) and d_IL6(t) < d_c(high),0.6562935,1,1,0
+"globally[1,inf](d_IL6(t) = 0) implies eventually[1,inf](IL6(t) < c(mid))",0.6879362,N/A,N/A,"globally[0,inf](IL6(t) < c(high))",0.67305416,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0

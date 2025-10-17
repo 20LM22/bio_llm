@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[2,inf](IFNβ(t) > c(high) and SARSCoV2(t) > c(high))",0.5073601,"eventually[0,2]globally(IL1RN(t)=c(high) and IL8(t)=c(high))",0.32318753,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[2,inf](SARSCoV2(t) > c(low))",0.4700737,"eventually[2,inf](IL6(t) = c(high) and IL12(t) = c(high))",0.30572292,N/A,N/A,0,2,0
+"globally[0,2](IL1β(t) > c(high) and SARSCoV2(t) > c(high))",0.54410404,N/A,N/A,"eventually[2,4]globally(IL1β(t) > c(high) and SARSCoV2(t) > c(high))",0.5281125,0,2,0
+"globally[0,2](IL6(t)=c(high) and IL12(t)=c(high))",0.34103483,"eventually[2,inf]globally(IL1β(t) > c(high) and IL1Ra(t) > c(high))",0.40380418,"eventually[2,2]globally(IL1Ra(t) > c(high) and IL1β(t) > c(high))",0.41408008,2,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[2,inf]globally(d_IL1RN(t) = d_c(high))",0.25558466,N/A,N/A,"eventually[2,inf]globally(d_IL1RN(t) > d_c(high) and SARSCoV2(t)=c(high))",0.45274886,1,1,0
+"eventually[0,2](IL1β(t) > c(high)) and IL1Ra(t) > c(high) and SARSCoV2(t) > c(high) and IL6(t) > c(high)",0.49930692,N/A,N/A,IL1β(t) < c(high) and IL1Ra(t) < c(high) and d_IL1β(t) < d_c(high) and d_IL1Ra(t) < d_c(high),0.24638659,0,2,0
+"eventually[2,inf]globally(IL1β(t) > c(high) and IL1RN(t) > c(high))",0.376043,"eventually[2,inf]globally(IL1β(t) > c(high) and IL1Ra(t) > c(high))",0.40380418,"eventually[2,2](IL1β(t) > c(high) and SARSCoV2(t) > c(high))",0.52786624,2,0,0
+"eventually[2,inf]globally(IL8(t)=c(high) and IL1Ra(t)=c(high)) and d_IL8(t) = d_c(high) and d_SARSCoV2(t) = d_c(high)",0.41547325,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[2,2](IL12(t) > c(high) and SARSCoV2(t) > c(high))",0.5013713,"globally[0,2](IL1β(t)=c(high) and IL1Ra(t)=c(high))",0.41716623,N/A,N/A,0,2,0
+"eventually[2,inf](IL1β(t) > c(high) and SARSCoV2(t) > c(high))",0.51164633,"eventually[0,2]globally(IL1β(t) > c(high)) and eventually[0,2]globally(IL1Ra(t) > c(high)) and d_IL1β(t) > d_c(high) and d_IL1Ra(t) > d_c(high)",0.34274942,"eventually[2,inf](IL1β(t)=c(high) and IL1Ra(t)=c(high))",0.38912892,0,2,0
+"eventually[0,2]globally(IL1Ra(t) < c(high)) and eventually[0,2]globally(SARSCoV2(t) < c(high))",0.51839876,N/A,N/A,"eventually[0,2]globally(IL1Ra(t) > c(high) and IL6(t) > c(high)) and d_IL6(t) > d_c(low) and d_IL1Ra(t) > d_c(low)",0.33699286,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0

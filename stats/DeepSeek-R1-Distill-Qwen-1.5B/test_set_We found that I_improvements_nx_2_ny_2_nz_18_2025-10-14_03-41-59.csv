@@ -1,0 +1,21 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+IL6(t)=c(high) implies d_SARSCoV2(t) > c(high) and IL8(t)=c(high) implies d_SARSCoV2(t) > c(high) and TNFα(t)=c(high) implies d_SARSCoV2(t) > c(high),0.4944856,"globally[20,inf](SARSCoV2(t) > c(low))",0.24628167,N/A,N/A,0,2,0
+"eventually[7,16](IL6(t)=c(mid))",0.33217248,"globally[0,inf](IL6(t) > c(low)) implies eventually[0,inf](IL6(t) < c(mid))",0.31265745,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+IL6(t) > c(mid) and IL8(t) > c(mid) and TNFα(t) > c(mid),0.57551336,IL6(t) > c(low) and IL8(t) > c(low) and TNFα(t) > c(low),0.55618757,"globally[20,inf](d_IL6(t)=c(mid) implies d_TNFα(t)=c(mid)) and globally[20,inf](d_IL8(t)=c(mid) implies d_TNFα(t)=c(mid)) and globally[20,inf](d_SARSCoV2(t)=c(mid) implies d_TNFα(t)=c(mid))",0.516235,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"IL6(t) > c(mid) and eventually[0,inf]globally(d_TNFα(t) < d_c(high) and IL8(t)=c(low))",0.52657294,N/A,N/A,N/A,N/A,0,2,0
+IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.55078906,"globally[0,inf](d_IL6(t) > c(high) implies d_TNFα(t) > c(high))",0.523832,IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.55078906,0,1,1
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[1,inf](IL6(t)=c(high) and IFNα(t) > c(mid))",0.41225657,"IL6(t) = c(high) and IL8(t) = c(high) and TNFα(t) = c(high)
+and
+SARSCoV2(t) = c(mid) and IL1RN(t) = c(low)",0.5501479,IL6(t) = c(high) and IL8(t) = c(high) and TNFα(t) = c(high),0.55015904,2,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[11, inf] (IL1β(t) < c(low))",0.3216016,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+IL6(t) < c(low) and IL8(t) < c(low) and TNFα(t) < c(high) and d_IL1Ra(t) < 0,0.54485285,IL6(t) > c(high) and IL8(t) > c(high) and TNFα(t) > c(high),0.55078906,N/A,N/A,1,1,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
