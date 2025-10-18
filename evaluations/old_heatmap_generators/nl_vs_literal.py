@@ -109,36 +109,44 @@ for index, row in translations.iterrows():
                 sim_3 = cosine_similarity(np.array(literal_embedding_3).reshape(1,-1), np.array(nl_embedding_3).reshape(1,-1))[0][0]
                 model_3.append(sim_3)
 
-from scipy.stats import spearmanr
-import pandas as pd
+output = [model_1, model_2, model_3]
+try:
+    with open(f'../../pkl/{set_name}_cosine_sims_3_embedding_models_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pkl', 'wb') as r:
+        pickle.dump(res, r)
+except Exception as e:
+    print("there was a pickle problem")
+    print(e)
 
-# Compute correlation and p-values
-r_12, p_12 = spearmanr(model_1, model_2)
-r_13, p_13 = spearmanr(model_1, model_3)
-r_23, p_23 = spearmanr(model_2, model_3)
-
-# Correlation matrix (r-values)
-r_df = pd.DataFrame(
-    data=[
-        [1.0, r_12, r_13],
-        [r_12, 1.0, r_23],
-        [r_13, r_23, 1.0]
-    ],
-    columns=["Sentence Embeddings", "Nomic-Embed-Text", "Qwen Embeddings"],
-    index=["Sentence Embeddings", "Nomic-Embed-Text", "Qwen Embeddings"]
-)
-
-# P-value matrix
-p_df = pd.DataFrame(
-    data=[
-        [0.0, p_12, p_13],
-        [p_12, 0.0, p_23],
-        [p_13, p_23, 0.0]
-    ],
-    columns=["Sentence Embeddings", "Nomic-Embed-Text", "Qwen Embeddings"],
-    index=["Sentence Embeddings", "Nomic-Embed-Text", "Qwen Embeddings"]
-)
-
-# Save both to CSV
-r_df.to_csv(f"../../stats/{model_name}/{set_name}_embedding_rvalues_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.csv", float_format="%.4f")
-p_df.to_csv(f"../../stats/{model_name}/{set_name}_embedding_pvalues_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.csv", float_format="%.4g")
+# from scipy.stats import spearmanr
+# import pandas as pd
+#
+# # Compute correlation and p-values
+# r_12, p_12 = spearmanr(model_1, model_2)
+# r_13, p_13 = spearmanr(model_1, model_3)
+# r_23, p_23 = spearmanr(model_2, model_3)
+#
+# # Correlation matrix (r-values)
+# r_df = pd.DataFrame(
+#     data=[
+#         [1.0, r_12, r_13],
+#         [r_12, 1.0, r_23],
+#         [r_13, r_23, 1.0]
+#     ],
+#     columns=["Sentence Embeddings", "Nomic-Embed-Text", "Qwen Embeddings"],
+#     index=["Sentence Embeddings", "Nomic-Embed-Text", "Qwen Embeddings"]
+# )
+#
+# # P-value matrix
+# p_df = pd.DataFrame(
+#     data=[
+#         [0.0, p_12, p_13],
+#         [p_12, 0.0, p_23],
+#         [p_13, p_23, 0.0]
+#     ],
+#     columns=["Sentence Embeddings", "Nomic-Embed-Text", "Qwen Embeddings"],
+#     index=["Sentence Embeddings", "Nomic-Embed-Text", "Qwen Embeddings"]
+# )
+#
+# # Save both to CSV
+# r_df.to_csv(f"../../stats/{model_name}/{set_name}_embedding_rvalues_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.csv", float_format="%.4f")
+# p_df.to_csv(f"../../stats/{model_name}/{set_name}_embedding_pvalues_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.csv", float_format="%.4g")
