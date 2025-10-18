@@ -1,8 +1,8 @@
 ##!/bin/bash
 #
 ### TODO: make sure that official model names and models line up correctly
-models=('DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen3-1.7B')
-official_model_names=('deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen/Qwen3-1.7B')
+#models=('DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen3-1.7B')
+#official_model_names=('deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen/Qwen3-1.7B')
 #experiments=("nx_4_ny_2_nz_18")
 #set_name="val_set"
 #
@@ -67,13 +67,14 @@ official_model_names=('deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen/Qwen3-1.
 #  done
 #done
 #
-##!/bin/bash
-#
-#models=('DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen3-1.7B')
-#official_model_names=('deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen/Qwen3-1.7B')
+
+#!/bin/bash
+
+models=('Qwen3-1.7B') # 'DeepSeek-R1-Distill-Qwen-1.5B'
+official_model_names=('Qwen/Qwen3-1.7B') # 'deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B'
 experiments=("nx_4_ny_2_nz_18")
-set_name="val_set"
-times=('2025-10-13_23-11-29' '2025-10-14_00-20-08')
+set_name="test_set"
+times=('2025-10-17_12-42-22') # '2025-10-17_10-25-53'
 
 for experiment in "${experiments[@]}"
 do
@@ -86,11 +87,12 @@ do
     model="${models[$i]}"
     time="${times[$i]}"
     translations="${set_name}_translations_${model}_${experiment}_${time}.pkl"
+    python ../evaluations/generate_semantic_distribution_dict.py "$model" "$translations" "$config" "$time"
     # python ../evaluations/generate_semantic_distribution_plots.py "$model" "$config" "$time" > 'output.txt'
   done
 done
 
-# for the embeddings, we're comparing
-python nl_vs_literal.py 'DeepSeek-R1-Distill-Qwen-1.5B' "val_set_translations_DeepSeek-R1-Distill-Qwen-1.5B_nx_4_ny_2_nz_18_2025-10-13_23-11-29.pkl" "config_nx_4_ny_2_nz_18_val_set.json" '2025-10-13_23-11-29'
-python nl_vs_literal.py 'Qwen3-1.7B' "val_set_translations_Qwen3-1.7B_nx_4_ny_2_nz_18_2025-10-14_00-20-08.pkl" "config_nx_4_ny_2_nz_18_val_set.json" '2025-10-14_00-20-08'
-python nl_vs_literal.py 'gpt-4o-2024-08-06' "val_set_translations_gpt-4o-2024-08-06_nx_4_ny_2_nz_18_2025-10-13_21-16-58.pkl" "config_nx_4_ny_2_nz_18_val_set.json" '2025-10-13_21-16-58'
+## for the embeddings, we're comparing
+#python nl_vs_literal.py 'DeepSeek-R1-Distill-Qwen-1.5B' "val_set_translations_DeepSeek-R1-Distill-Qwen-1.5B_nx_4_ny_2_nz_18_2025-10-13_23-11-29.pkl" "config_nx_4_ny_2_nz_18_val_set.json" '2025-10-13_23-11-29'
+#python nl_vs_literal.py 'Qwen3-1.7B' "val_set_translations_Qwen3-1.7B_nx_4_ny_2_nz_18_2025-10-14_00-20-08.pkl" "config_nx_4_ny_2_nz_18_val_set.json" '2025-10-14_00-20-08'
+#python nl_vs_literal.py 'gpt-4o-2024-08-06' "val_set_translations_gpt-4o-2024-08-06_nx_4_ny_2_nz_18_2025-10-13_21-16-58.pkl" "config_nx_4_ny_2_nz_18_val_set.json" '2025-10-13_21-16-58'
