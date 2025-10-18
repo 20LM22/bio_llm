@@ -20,16 +20,17 @@ do
   i=0
   for model in "${models[@]}"
   do
-    time='2025-10-17_09-55-23'
+    # time='2025-10-17_09-55-23'
+    time=$(/usr/bin/date +%F_%H-%M-%S)
     convo="../stats/${model}/config_${experiment}_${time}.txt"
     translations="${set_name}_translations_${model}_${experiment}_${time}.pkl"
 
     echo "$config"
-#    python stl_generator_gpt.py "${official_model_names[i]}" "$config" "$experiment" "$time" >| "$convo"
+    python stl_generator_gpt.py "${official_model_names[i]}" "$config" "$experiment" "$time" >| "$convo"
 #    echo "Done with config: $config"
 #    python ../evaluations/stl_evaluation_v6.py "$model" "$translations" "$config" "$time"
     # python ../evaluations/generate_semantic_distribution_dict.py "$model" "$translations" "$config" "$time"
-    python ../evaluations/generate_semantic_distribution_plots.py "$model" "$config" "$time"
+#    python ../evaluations/generate_semantic_distribution_dict.py "$model" "$translations" "$config" "$time"
 
     ((i++))
   done
