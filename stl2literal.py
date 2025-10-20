@@ -329,13 +329,13 @@ class DerivativeChecker(Interpreter):
         self.error = False
 
     def eq(self, node):
-        if 'd_' in node.children[0].children[0] and node.children[1] == 'c':
+        if 'd_' in node.children[0].children[0] and node.children[1].data == 'c':
             self.error = True
     def lt(self, node):
         if 'd_' in node.children[0].children[0] and node.children[1].data == 'c':
             self.error = True
     def gt(self, node):
-        if 'd_' in node.children[0].children[0] and node.children[1] == 'c':
+        if 'd_' in node.children[0].children[0] and node.children[1].data == 'c':
             self.error = True
 
 class SpeciesSearch(Interpreter):
@@ -603,17 +603,20 @@ def get_smt(parsed_input):
 if __name__ == '__main__':
     grammar = "?start: omega\n?u: gt | lt | eq | d_gt | d_lt | d_eq\ngt: s \"(t)\" \">\" c\nlt: s \"(t)\" \"<\" c\neq: s \"(t)\" \"=\" c\nd_gt: \"d_\" s \"(t)\" \">\" D_C\nd_lt: \"d_\" s \"(t)\" \"<\" D_C\nd_eq: \"d_\" s \"(t)\" \"=\" D_C\nc: s \"(\" t_a \")\" | C_LOW | C_MID | C_HIGH\nC_LOW: \"c(low)\"\nC_MID: \"c(mid)\"\nC_HIGH: \"c(high)\"\nD_C : \"0\" | \"d_c(low)\" | \"d_c(high)\" | \"-d_c(low)\" | \"-d_c(high)\"\n?nu : u | u_implies_u | u_and_u\nu_implies_u: u \"implies\" u\nu_and_u: u \"and\" u\n?psi: temp_op_fg | temp_op_g | temp_op_f\ntemp_op_fg: \"eventually\" \"[\" t_a \",\" t_a \"]\" \"globally\" \"(\" nu \")\"\ntemp_op_f: \"eventually\" \"[\" t_a \",\" t_a \"]\" \"(\" nu \")\"\ntemp_op_g: \"globally\" \"[\" t_a \",\" t_a \"]\" \"(\" nu \")\"\nomega: nu | psi | omega_and_omega | psi_implies_psi\nomega_and_omega: omega \"and\" omega\npsi_implies_psi: psi \"implies\" psi\nTANUM: /[0-9]+/\nINFINITY: \"inf\" | \"∞\"\nt_a: TANUM | INFINITY\ns: /[\\w]+/\nd_s: /d_[\\w]+/\n%import common.WS\n%ignore WS"
     p = Lark(grammar)
-    input_sentence1 = "eventually[8,18]globally(d_IL1RN(t) > d_c(high))"
-    input_sentence2 = "globally[8,18](d_IL1RN(t) > d_c(high))"
+    input_sentence1 = "eventually[8,18]globally(d_IL1RN(t) > c(high))"
+    input_sentence2 = "d_IL1RN(t) = c(high)"
 
-    tree1 = p.parse(input_sentence1)
-    print(input_sentence1)
-    print(get_smt(tree1))
+    tree = p.parse(input_sentence2)
+    print(check_derivative_STL2literal(tree))
 
-    print('\n')
-    tree2 = p.parse(input_sentence2)
-    print(input_sentence2)
-    print(get_smt(tree2))
+    # tree1 = p.parse(input_sentence1)
+    # print(input_sentence1)
+    # print(get_smt(tree1))
+    #
+    # print('\n')
+    # tree2 = p.parse(input_sentence2)
+    # print(input_sentence2)
+    # print(get_smt(tree2))
 #  Tree(Token('RULE', 'd_lt')
 #   [Tree(Token('RULE', 's')
 #       [Token('__ANON_1', 'IL6')]),
