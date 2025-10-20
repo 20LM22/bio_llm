@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"globally[2,4](d_IP10(t) < d_c(low) and IP10(t)=c(high))",0.570536,N/A,N/A,N/A,N/A,0,2,0
+d_IFNβ(t) < 0 implies IL12(t) > c(high),0.37901837,N/A,N/A,N/A,N/A,0,2,0
+"globally[2,inf](d_IP10(t) < d_c(low))",0.51193506,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[2,4](IP10(t) < c(mid))",0.674426,N/A,N/A,"globally[2,4](IL1Ra(t) > c(high)) implies eventually[5,inf](d_IFNα(t) > d_c(low))",0.37013447,0,2,0
+"eventually[2,4](d_IP10(t) < d_c(low))",0.5409517,N/A,N/A,N/A,N/A,0,2,0
+d_IFNβ(t) = d_c(high),0.218925,N/A,N/A,"globally[1,inf](d_IP10(t) < d_c(low)) and eventually[2,4](d_IP10(t)=d_c(high))",0.46066678,1,1,0
+"eventually[9,inf](d_IL8(t)=d_c(low)) and IL1RN(t)=c(mid)",0.47185344,IL6(t) < c(low) and IL1Ra(t)=c(low),0.38879716,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"d_IL1RN(t)=d_c(low) and eventually[12,inf]globally(IL1Ra(t) > c(high) implies SARSCoV2(t)=c(high))",0.31854934,N/A,N/A,N/A,N/A,0,2,0
+"globally[2,4](IP10(t)=c(low))",0.66404694,N/A,N/A,IL1Ra(t) < c(high) implies IFNβ(t)=c(mid),0.35437614,0,2,0
+IFNα(t) > c(mid) implies IL1β(t)=c(low),0.39727974,"globally[2,4](d_IP10(t) < 0)",0.5617027,N/A,N/A,1,1,0
+"globally[2,inf](IP10(t) < c(low))",0.65335006,"eventually[2,4]globally(d_IL1β(t)=d_c(high))",0.41821858,"globally[2,4](d_IP10(t) < 0)",0.5617027,0,2,0
+"IP10(t)=c(low) implies d_IP10(t) < d_c(high) and eventually[2,4](IP10(t) > c(low))",0.6185659,"globally[2,4](IL1Ra(t) < c(low))",0.47438005,N/A,N/A,0,2,0
+"eventually[4,5]globally(d_IP10(t)=d_c(low))",0.5458455,N/A,N/A,N/A,N/A,0,2,0
+IL6(t) > c(mid) implies SARSCoV2(t) < c(high),0.38978082,N/A,N/A,"globally[2,inf](d_IP10(t) < 0) and globally[4,4](d_IP10(t) = 0)",0.48318368,1,1,0
+"globally[2,4](IL1Ra(t) < c(mid)) implies eventually[5,inf](IL1Ra(t) > c(low))",0.4327259,N/A,N/A,N/A,N/A,0,2,0

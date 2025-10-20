@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+CCL2(t) = c(high) and CCR2(t) = c(high) implies IL1β(t) < c(low),0.53536284,N/A,N/A,N/A,N/A,0,2,0
+CCL2(t) > c(high) and CCR2(t) > c(high),0.42465425,IL6(t) > c(high) and IL8(t) > c(high) and IL1β(t) < c(low),0.22935238,N/A,N/A,0,2,0
+CCL2(t) > c(mid) and CCR2(t) > c(mid),0.41968262,N/A,N/A,N/A,N/A,0,2,0
+d_CCL2(t) > d_c(low) and d_CCR2(t) > d_c(low) implies CCL2(t) < c(low),0.3131243,"globally[0,inf](IL6(t) > c(mid) and TNFα(t) > c(mid)) implies eventually[0,inf](IL8(t) < c(low))",0.19963828,N/A,N/A,0,2,0
+d_CCL2(t) > d_c(low) and d_CCR2(t) > d_c(low) implies CCL2(t) > c(mid),0.30260003,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+CCL2(t) > c(mid) and CCR2(t) > c(mid),0.41968262,"eventually[0,inf](IL6(t) > c(mid) implies IL1β(t) < c(low))",0.2290122,IL1RN(t) > c(mid) and IL1β(t) < c(low),0.30581784,0,2,0
+CCL2(t) = c(high) and CCR2(t) = c(high) implies MCP1(t) < c(low),0.39642414,N/A,N/A,N/A,N/A,0,2,0
+"eventually[0,inf](CCL2(t) > c(mid) and CCR2(t) > c(mid))",0.37497687,N/A,N/A,N/A,N/A,0,2,0
+d_CCL2(t) > d_c(low) and d_CCR2(t) > d_c(low) and CCL2(t) < c(low),0.31337565,d_IL6(t) > d_c(low) and d_IL8(t) > d_c(low) implies IL1β(t) < c(low),0.21072426,IL8(t) > c(high) and IL1RN(t) > c(high) and TNFα(t) < c(low),0.25727558,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[0,inf](CCL2(t) = c(high) and CCR2(t) < c(low))",0.37354672,N/A,N/A,N/A,N/A,0,2,0
+CCL2(t) > c(mid) and CCR2(t) > c(mid) implies MCP1(t) < c(low),0.40764773,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"d_CCL2(t) > d_c(low) and d_CCR2(t) > d_c(low) and eventually[0,inf](CCL2(t) > c(mid) and CCR2(t) > c(mid))",0.299437,N/A,N/A,N/A,N/A,0,2,0
+"eventually[0,inf](d_CCL2(t) > d_c(low) and d_CCR2(t) > d_c(low)) implies eventually[0,inf](IL1β(t) < c(low))",0.3968752,d_IL8(t) > d_c(low) and d_IL1β(t) > d_c(low) implies IL8(t) < c(low),0.2063402,N/A,N/A,0,2,0
+d_CCL2(t) > d_c(low) and d_CCR2(t) > d_c(low) implies CCL2(t) > c(mid) and CCR2(t) > c(mid) and MCP1(t) < c(low),0.3149653,IL6(t) > c(high) and d_IL12(t) > d_c(low) implies IL1β(t) < c(low),0.23969513,d_IL6(t) > d_c(low) and IL1β(t) < c(low),0.23004393,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0

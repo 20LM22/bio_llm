@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"eventually[15,inf](IL12(t) > c(high))",0.7702452,"eventually[14,inf]globally(d_IL12(t) = 0)",0.61303324,"eventually[14,inf](d_IL12(t) = 0 and IL12(t) = c(high))",0.6982337,0,2,0
+"eventually[14,inf](d_IL12(t) = 0)",0.6187272,"eventually[14,inf](d_IL12(t) = 0)",0.6187272,N/A,N/A,0,1,1
+"eventually[14,inf](d_IL12(t) = 0 and IL12(t) = c(high))",0.6982337,"eventually[14,inf]globally(IL12(t) = c(high) and d_IL12(t) = 0)",0.69630766,"eventually[14,inf](IL12(t) = c(high))",0.76093566,1,1,0
+"eventually[15,inf]globally(IL12(t) = c(high))",0.7538755,N/A,N/A,"eventually[14,inf]globally(IL12(t) = c(high))",0.75818545,1,1,0
+"eventually[14,inf](d_IL12(t) = 0)",0.6187272,"eventually[14,inf](d_IL12(t) = 0)",0.6187272,N/A,N/A,0,1,1
+"eventually[14,inf](IL12(t) = c(high))",0.76093566,"globally[14,inf](IL12(t) = c(high))",0.7503511,"eventually[0,14](d_IL12(t) > 0) and globally[14,inf](d_IL12(t) = 0)",0.5833484,0,2,0
+"eventually[14,inf](d_IL12(t) = 0 and IL12(t) = c(high))",0.6982337,"eventually[14,inf](IL12(t) = c(high))",0.76093566,N/A,N/A,1,1,0
+"globally[0,14](d_IL12(t) > 0) and eventually[14,inf](d_IL12(t) = 0)",0.5902877,N/A,N/A,"eventually[14,inf](d_IL12(t) = 0)",0.6187272,1,1,0
+"globally[15,inf](IL12(t)=c(high))",0.7458484,"eventually[14,inf]globally(IL12(t) = c(high))",0.75818545,"eventually[0,14](d_IL12(t)=d_c(low)) and globally[14,inf](d_IL12(t)=0)",0.56741846,1,1,0
+"eventually[14,inf](d_IL12(t) = 0 and IL12(t) = c(high))",0.6982337,"eventually[0,14](d_IL12(t) > 0) and globally[14,inf](d_IL12(t) = 0 and IL12(t) = c(high))",0.6841003,"globally[0,14](d_IL12(t) > 0) and eventually[14,inf](d_IL12(t) = 0)",0.5902877,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[15,inf]globally(IL12(t)=c(high))",0.7538755,N/A,N/A,"eventually[14,inf](IL12(t) = c(high) and d_IL12(t) < d_c(low))",0.68136126,0,2,0
+"eventually[14,inf]globally(IL12(t)=c(high))",0.75818545,"eventually[14,inf]globally(IL12(t) = c(high))",0.75818545,"eventually[15,inf](d_IL12(t) < 0) and globally[0,14](d_IL12(t) > 0)",0.58347285,0,1,1
+"globally[14,inf](IL12(t) = c(high))",0.7503511,"eventually[14,inf](d_IL12(t)=0)",0.6187272,"eventually[14,inf]globally(IL12(t)=c(high))",0.75818545,1,1,0
+"eventually[15,inf](IL12(t) = c(high))",0.75716263,"eventually[14,inf](IL12(t) > c(high))",0.77567303,"eventually[14,inf]globally(IL12(t)=c(high))",0.75818545,2,0,0
+"eventually[14,inf]globally(d_IL12(t) = 0)",0.61303324,N/A,N/A,"eventually[14,inf](d_IL12(t) = 0)",0.6187272,1,1,0
+"eventually[15,inf](d_IL12(t) = 0)",0.60479987,"eventually[14,inf]globally(IL12(t) = c(high))",0.75818545,"eventually[15,inf](d_IL12(t) = 0)",0.60479987,1,0,1
+"eventually[15,inf]globally(IL12(t) > c(high))",0.7619343,N/A,N/A,"globally[15,inf](IL12(t) = c(high) and d_IL12(t) = 0)",0.6838864,0,2,0

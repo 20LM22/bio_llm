@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[1,7](IP10(t) > c(low))",0.52642167,N/A,N/A,N/A,N/A,0,2,0
+"globally[1,inf](IP10(t) > c(mid)) and globally[1,inf](IP10(t) > c(mid))",0.51682293,"eventually[1,inf]globally(IP10(t) > c(low) and IP10(t)=c(mid)) and d_IP10(t) > 0",0.508942,N/A,N/A,0,2,0
+IP10(t) > c(high) and IP10(t) = c(high),0.5230851,N/A,N/A,N/A,N/A,0,2,0
+IP10(t) > c(low),0.5089637,"eventually[1,1]globally(IP10(t) > c(high)) implies globally[1,1](IP10(t) = c(high)) and globally[1,1](IP10(t) = c(high)) and globally[1,1](IP10(t) = c(high)) and globally[1,1](IP10(t) = c(high))",0.46595585,IP10(t) > c(low) and IP10(t) > c(mid) and IP10(t) > c(high) and IP10(t) < c(low) and IP10(t) < c(mid) and IP10(t) < c(high),0.46197736,0,2,0
+IP10(t) > c(mid),0.5352831,N/A,N/A,N/A,N/A,0,2,0
+"globally[1,7](IP10(t) > c(high)) and IP10(t) > c(high) and IP10(t) < c(low)",0.5267171,N/A,N/A,"IP10(t) > c(high) and eventually[1,inf](IP10(t) > c(high))",0.55172515,1,1,0
+IP10(t) > c(high) and d_IP10(t) = 0,0.4951511,"eventually[1,7]globally(IP10(t) > c(low)) and globally[1,7](IP10(t) > c(mid))",0.55175847,N/A,N/A,1,1,0
+"IP10(t) > c(mid) and globally[1,inf](IP10(t) > c(mid))",0.5735656,N/A,N/A,N/A,N/A,0,2,0
+"eventually[1,inf]globally(IP10(t) > c(high))",0.5294057,N/A,N/A,N/A,N/A,0,2,0
+IP10(t) > c(low) and IP10(t) > c(mid) and IP10(t) > c(high) and IP10(t) < c(low) and IP10(t) < c(mid) and IP10(t) < c(high) and IP10(t) > c(low) and IP10(t) > c(mid) and IP10(t) > c(high) and IP10(t) < c(low) and IP10(t) < c(mid) and IP10(t) < c(high) and IP10(t) > c(low) and IP10(t) > c(mid) and IP10(t) > c(high) and IP10(t) < c(low) and IP10(t) < c(mid) and IP10(t) < c(high),0.37493163,N/A,N/A,N/A,N/A,0,2,0
+"eventually[1,inf]globally(IP10(t) > c(low))",0.51620543,N/A,N/A,N/A,N/A,0,2,0
+"eventually[1,inf]globally(IP10(t) > c(high) and IP10(t) > c(high)) and IP10(t) > c(low) and IP10(t) > c(mid)",0.5191261,N/A,N/A,N/A,N/A,0,2,0
+"IP10(t) > c(high) and eventually[1,inf]globally(IP10(t) > c(high) implies IP10(t) > c(high))",0.5288631,N/A,N/A,"eventually[1,inf]globally(IL6(t) > c(low)) and eventually[1,inf]globally(IL6(t) > c(mid))",0.37505347,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[1,inf]globally(IP10(t) > c(high) implies d_IP10(t) > d_c(high))",0.45200568,N/A,N/A,N/A,N/A,0,2,0
+"eventually[1,1](IP10(t) > c(mid)) and globally[1,1](IP10(t) = c(mid))",0.54078937,N/A,N/A,"eventually[1,7](IP10(t) > c(mid)) implies globally[1,7](IP10(t) = c(mid))",0.49011162,0,2,0
+"globally[1,inf](IP10(t) > c(low)) and globally[1,inf](IP10(t) > c(low)) and globally[1,inf](IP10(t) > c(low)) and globally[1,inf](IP10(t) > c(low))",0.46282405,N/A,N/A,"eventually[1,7]globally(IP10(t) > c(high) implies IP10(t) > c(high))",0.52713984,1,1,0

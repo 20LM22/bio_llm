@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"globally[0,14](MCP1(t) > c(mid)) and globally[21,28](MCP1(t) = c(mid))",0.6141387,N/A,N/A,"globally[7,14](IL6(t) > c(mid)) and globally[21,28](IL6(t) = c(mid))",0.30830997,0,2,0
+"globally[0,14](MCP1(t) > c(mid)) and globally[14,28](MCP1(t) = c(mid))",0.6141949,"globally[7,14](IL6(t) > c(mid)) and globally[21,28](IL6(t) = c(mid))",0.30830997,"globally[1,14](IL8(t) > c(mid)) and globally[15,28](IL8(t) = c(mid))",0.34702945,0,2,0
+"globally[7,14](MCP1(t) > c(mid)) and globally[21,28](MCP1(t) = c(mid))",0.62373734,"globally[7,14](IL1RN(t) > c(mid)) and globally[21,28](IL1RN(t) < c(high))",0.3932922,N/A,N/A,0,2,0
+"eventually[7,14](MCP1(t) > c(high)) and globally[21,28](MCP1(t) = c(mid))",0.6416351,N/A,N/A,N/A,N/A,0,2,0
+"globally[7,14](MCP1(t) > c(mid)) and globally[21,28](MCP1(t) = c(mid))",0.62373734,N/A,N/A,"globally[7,14](IL1RN(t) > c(mid)) and globally[21,28](IL1RN(t) = c(mid))",0.38694012,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[0,14](MCP1(t) > c(mid)) and globally[21,28](MCP1(t) = c(mid))",0.6141387,"globally[7,14](IL6(t) > c(high)) and globally[21,28](IL6(t) = c(mid))",0.30855286,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[0,14](MCP1(t) > c(mid)) and globally[15,28](MCP1(t) = c(mid))",0.62409914,N/A,N/A,N/A,N/A,0,2,0
+"globally[7,14](MCP1(t) > c(high)) and globally[21,28](MCP1(t) = c(mid))",0.6325999,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[7,14](MCP1(t) > c(mid)) and globally[21,28](MCP1(t) = c(mid))",0.62373734,N/A,N/A,"eventually[7,14](IL6(t) > c(mid)) and globally[21,28](IL6(t) = c(mid))",0.3055546,0,2,0
+"globally[7,14](MCP1(t) > c(mid)) and globally[21,28](MCP1(t) = c(mid))",0.62373734,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[0,14](MCP1(t) > c(high)) and globally[14,28](MCP1(t) = c(mid))",0.6237507,"globally[7,14](MCP1(t) > c(mid))",0.61127776,N/A,N/A,0,2,0
+"globally[7,14](MCP1(t) > c(mid)) and globally[21,28](MCP1(t) = c(mid))",0.62373734,"globally[7,14](IL6(t) > c(mid)) and globally[21,28](IL6(t) = c(mid))",0.30830997,"eventually[7,14](MCP1(t) > c(high)) and globally[21,28](MCP1(t) = c(mid))",0.6416351,1,1,0

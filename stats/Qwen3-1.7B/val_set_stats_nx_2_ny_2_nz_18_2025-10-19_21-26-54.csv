@@ -1,0 +1,10 @@
+Input Sentence,STL Extraction Success Rate,STL Parsing Success Rate,Number of Translations,Number of Syntactically Correct Translations,Semantic Passes,Semantic Success Rate
+"In the mild and moderate groups, IL-6 concentrations were at their highest level in the first week after the symptom onset and then exhibited a decreasing trend.",0.7945205479452055,0.5517241379310345,73,32.0,27,0.84375
+"Remarkably, in the mild group, the amount of these cytokines (IL-1β and IL-1Ra) increased at the day 1–7, reached a peak at the day 8–14, and diminished after >14 days.",0.7647058823529411,0.3538461538461538,85,22.999999999999993,16,0.6956521739130437
+"TNF-α levels elevated at the day 1–7 and 8–14 times intervals, then decreased at the day>14.",0.725,0.5862068965517242,80,34.0,32,0.9411764705882353
+We detected that IL-8 was significantly elevated in all COVID-19 subgroups at three studied time intervals compared to the control group.,0.7469879518072289,0.3709677419354839,83,23.0,0,0.0
+"We found that although there was no difference in the production of IFN-β in all patients with COVID-19 compared to the control group at the day 1–7, IFN-β levels were higher in moderate, severe, and critical subjects at the day 8–14 or >14 compared to the healthy control and themselves at the day 1–7.",0.7428571428571429,0.11538461538461542,70,6.000000000000002,0,0.0
+IL-12 reached its maximum level at the day>14 in mild patients.,0.7530864197530864,0.6229508196721312,81,38.0,25,0.6578947368421053
+"It is reported that in recovered cases, within a few hrs of virus entry, both α and β IFNs (at first day of infection) are rapidly produced and an antiviral state is soon reached [23]",0.6705882352941177,0.4385964912280702,85,25.000000000000007,0,0.0
+"By day 14, we detected no viral reads for SARS-CoV-2, and the observed cytokines returned to baseline, with the exception of IL-6 and IL1RN or IL1RA, which remained elevated, similar to results observed with MERS (Pascal et al., 2015; Figures 3B and 3C).",0.9375,0.0,48,0.0,0,
+Overall,0.7570247933884298,0.3951965065502183,605,181.0,100,0.5524861878453039

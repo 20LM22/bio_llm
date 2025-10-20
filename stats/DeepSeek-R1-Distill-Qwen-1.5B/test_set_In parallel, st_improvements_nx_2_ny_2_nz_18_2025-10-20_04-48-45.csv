@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[0,8](IL1Ra(t) > c(high)) implies eventually[1,inf](IFNα(t) > c(high))",0.29944503,"globally[13,inf](d_IL1β(t) = 0 and IL1RN(t) < c(high)) and eventually[1,7](IL8(t) < c(mid)) and d_IL8(t) > d_c(low)",0.28582513,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[1,inf](IL1Ra(t) = c(mid))",0.18429051,IL12(t)=c(mid) implies IL1β(t) > c(low),0.3216976,"globally[0,inf](IFNα(t)=c(low))",0.34587586,2,0,0
+"IFNα(t) < c(low) and globally[0,30](d_IFNα(t) < d_c(high)) and IFNα(t) > c(mid)",0.44345838,"d_IL1RN(t) = 0 and eventually[3,19](IL1Ra(t) < c(low)) implies globally[11,inf](d_IFNα(t) > 0)",0.36150074,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[6,inf]globally(IL1β(t) < c(mid) and IFNγ(t) > c(high))",0.4094664,"eventually[11,12]globally(IL1β(t) > c(low))",0.28640914,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[7,inf](d_IFNβ(t)=0) implies eventually[15,inf](IL8(t) < c(high))",0.37244946,"eventually[17,inf]globally(d_IL1Ra(t) > d_c(high)) implies globally[17,inf](IL1Ra(t)=c(high))",0.19714932,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+d_IFNα(t) = d_c(low) and d_IFNβ(t) = d_c(high),0.37852067,d_IFNα(t) > d_c(high),0.43209055,d_IL1Ra(t) < d_c(low) and IL1RN(t)=c(mid),0.27381298,1,1,0
+IL12(t) = c(mid) implies d_IFNβ(t) > d_c(low),0.4444279,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"IFNα(t) < c(mid) and CpG2216(t) < c(mid) and globally[18,inf](d_IFNα(t)=0)",0.59190834,"eventually[12,15](SARSCoV2(t)=c(high))",0.290022,N/A,N/A,0,2,0
+IFNα(t) > c(high) implies IFNα(t)=c(mid),0.46604872,N/A,N/A,N/A,N/A,0,2,0
+"eventually[7,inf]globally(d_IFNα(t) < d_c(high))",0.39682007,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0

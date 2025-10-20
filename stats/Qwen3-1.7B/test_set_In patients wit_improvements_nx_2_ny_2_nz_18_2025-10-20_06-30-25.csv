@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[0,14]globally(SARSCoV2(t) = c(mid))",0.5314421,"eventually[0,2]globally(SARSCoV2(t) > c(low)) and SARSCoV2(t) > c(low)",0.5058013,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[14,inf]globally(IL1RN(t) = c(low) implies d_IL1RN(t)=d_c(low))",0.22024788,N/A,N/A,N/A,N/A,0,2,0
+"eventually[0,14]globally(SARSCoV2(t) = c(high))",0.5128783,"eventually[14,14](SARSCoV2(t) = c(high))",0.51344603,SARSCoV2(t) = c(mid),0.5082039,1,1,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[0,2]globally(SARSCoV2(t) > c(low))",0.50702596,N/A,N/A,N/A,N/A,0,2,0
+"eventually[0,14]globally(SARSCoV2(t) = c(mid))",0.5314421,N/A,N/A,"eventually[0,14]globally(SARSCoV2(t) = c(mid))",0.5314421,0,1,1
+"globally[0,2](SARSCoV2(t) = c(mid))",0.5120258,"eventually[0,14]globally(SARSCoV2(t) = c(mid))",0.5314421,"eventually[0,14](SARSCoV2(t)=c(mid))",0.5323291,2,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[0,2](SARSCoV2(t) > c(mid)) implies globally[0,inf](IL6(t) < c(mid))",0.48423046,"SARSCoV2(t) = c(low) and eventually[0,2]globally(SARSCoV2(t) = c(low))",0.5138247,N/A,N/A,1,1,0
+"eventually[0,14]globally(IL1β(t) = c(low))",0.36087587,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,SARSCoV2(t) = c(mid),0.5082039,2,0,0
+"eventually[0,14]globally(IL6(t) = c(mid) implies IL12(t) = c(mid))",0.25896773,"eventually[0,2](SARSCoV2(t) = c(low))",0.5128979,"eventually[0,2](SARSCoV2(t) = c(mid))",0.5342928,2,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[0,2](SARSCoV2(t) = c(mid))",0.5120258,N/A,N/A,N/A,N/A,0,2,0
+"eventually[0,14]globally(SARSCoV2(t) = c(low))",0.5056535,"eventually[0,2](SARSCoV2(t)=c(low))",0.5128979,N/A,N/A,1,1,0

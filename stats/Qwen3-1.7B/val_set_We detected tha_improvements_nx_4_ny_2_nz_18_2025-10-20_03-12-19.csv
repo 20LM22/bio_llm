@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"eventually[0,3]globally(IL8(t) > c(high))",0.5640466,N/A,N/A,N/A,N/A,0,2,0
+"globally[0,inf](IL8(t) > c(low))",0.53072387,N/A,N/A,N/A,N/A,0,2,0
+"eventually[0,3]globally(IL8(t)=c(high)) and eventually[3,6]globally(IL8(t)=c(high)) and eventually[6,9]globally(IL8(t)=c(high))",0.6135626,"eventually[0,inf]globally(IL8(t) > c(high))",0.55410326,N/A,N/A,0,2,0
+"eventually[0,3]globally(IL8(t) > c(low))",0.53635705,"eventually[0,inf]globally(IL8(t) > c(low)) and eventually[1,2]globally(IL8(t) > c(low)) and eventually[3,4]globally(IL8(t) > c(low))",0.5701595,N/A,N/A,1,1,0
+"eventually[3,6](IL8(t) = c(low))",0.55530053,N/A,N/A,N/A,N/A,0,2,0
+"IL8(t) > c(low) and eventually[0,3](IL8(t) > c(low))",0.583954,"eventually[0,3]globally(IL8(t) = c(low)) and globally[0,3](IL8(t) = c(low))",0.55158424,N/A,N/A,0,2,0
+"eventually[0,inf]globally(IL8(t) > c(low)) implies eventually[3,6]globally(IL8(t) > c(low)) and eventually[6,9]globally(IL8(t) > c(low)) and eventually[0,inf]globally(IL8(t) > c(low))",0.5593201,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[0,inf](IL8(t) = c(low)) implies eventually[0,inf]globally(IL8(t) = c(low))",0.49706712,N/A,N/A,N/A,N/A,0,2,0
+"eventually[0,3]globally(IL8(t) = c(mid))",0.5497869,N/A,N/A,"eventually[3,16]globally(IL8(t) > c(low) and d_IL8(t)=0)",0.5564549,1,1,0
+"eventually[3,3]globally(IL8(t) > c(low)) implies globally[inf,inf](d_IL8(t) = 0)",0.50572956,N/A,N/A,"eventually[0,inf]globally(IL8(t)=c(high))",0.5386658,1,1,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[0,inf]globally(IL8(t) > c(low))",0.52415204,N/A,N/A,N/A,N/A,0,2,0
+"eventually[0,3](IL8(t) > c(low))",0.549666,N/A,N/A,"eventually[0,inf]globally(IL8(t)=c(mid))",0.5355544,0,2,0
+"eventually[0,3]globally(IL8(t) > c(mid))",0.578167,N/A,N/A,N/A,N/A,0,2,0
+"eventually[2,3]globally(d_IL8(t) > d_c(high)) and eventually[4,5]globally(d_IL8(t) > d_c(high)) and eventually[6,7]globally(d_IL8(t) > d_c(high))",0.51366895,N/A,N/A,"eventually[0,3]globally(IL8(t) = c(mid))",0.5497869,1,1,0
+"eventually[0,3](IL8(t) > c(low))",0.549666,N/A,N/A,N/A,N/A,0,2,0

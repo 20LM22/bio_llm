@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"eventually[0,14](d_SARSCoV2(t) > d_c(low))",0.47616112,"eventually[0,14](d_SARSCoV2(t) > d_c(low))",0.47616112,"eventually[0,14](d_SARSCoV2(t) > d_c(low))",0.47616112,0,0,2
+"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,0,0,2
+"eventually[0,14](d_SARSCoV2(t) > d_c(low))",0.47616112,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,2,0,0
+"eventually[0,14](d_SARSCoV2(t) > d_c(low))",0.47616112,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](d_IL1RN(t) > d_c(low))",0.20527557,1,1,0
+"eventually[0,14](d_SARSCoV2(t) > 0)",0.49770415,"eventually[0,14](SARSCoV2(t) > c(high))",0.511147,"eventually[0,14](d_SARSCoV2(t) > d_c(low))",0.47616112,1,1,0
+"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](d_SARSCoV2(t) > d_c(low))",0.47616112,0,1,1
+"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,0,0,2
+"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](d_SARSCoV2(t) > 0)",0.49770415,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,0,1,1
+"eventually[0,14](d_SARSCoV2(t) > d_c(low))",0.47616112,"eventually[0,14](SARSCoV2(t) = c(low))",0.5068074,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,2,0,0
+"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,0,0,2
+"eventually[0,14](d_SARSCoV2(t) > d_c(low))",0.47616112,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,2,0,0
+"eventually[0,14](IFNγ(t) > c(low))",0.2223741,"eventually[0,14](d_SARSCoV2(t) > 0)",0.49770415,"eventually[0,14](d_SARSCoV2(t) > 0)",0.49770415,2,0,0
+"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](d_SARSCoV2(t) > d_c(low))",0.47616112,0,1,1
+"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](d_SARSCoV2(t) > d_c(low))",0.47616112,"eventually[0,14](d_SARSCoV2(t)=d_c(high))",0.4985053,0,2,0
+"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](d_SARSCoV2(t) > d_c(low))",0.47616112,0,1,1
+"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](d_SARSCoV2(t) > d_c(low))",0.47616112,"eventually[0,14](d_SARSCoV2(t) > 0)",0.49770415,0,2,0
+"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](d_SARSCoV2(t) > d_c(low))",0.47616112,0,1,1
+"eventually[0,14](d_SARSCoV2(t) > 0)",0.49770415,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](d_SARSCoV2(t) > 0)",0.49770415,1,0,1

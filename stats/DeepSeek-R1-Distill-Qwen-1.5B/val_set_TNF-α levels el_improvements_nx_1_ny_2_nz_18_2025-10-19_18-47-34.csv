@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[2,inf]globally(TNFα(t) < c(low))",0.8139992,"eventually[0,inf]globally(TNFα(t) < c(low) and d_TNFα(t) > 0)",0.8468486,"eventually[14,inf]globally(TNFα(t) > c(low)) implies eventually[7,inf]globally(IL8(t) > c(mid))",0.7859546,1,1,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[1,14](TNFα(t) > c(high)) implies globally[1,inf](d_TNFα(t) < d_c(low))",0.7343341,N/A,N/A,N/A,N/A,0,2,0
+TNFα(t) < c(high) implies d_TNFα(t) > d_c(low),0.6852143,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[1,14](TNFα(t) < c(low))",0.87584686,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[1,7](TNFα(t) > c(low)) and eventually[8,14](TNFα(t) > c(low)) implies globally[15,inf](TNFα(t) < c(high))",0.8570627,"eventually[3,19](d_TNFα(t) > d_c(low))",0.7442346,N/A,N/A,0,2,0
+"globally[1,inf](TNFα(t) < c(high)) and eventually[15,inf](TNFα(t) < c(low))",0.83742535,N/A,N/A,N/A,N/A,0,2,0

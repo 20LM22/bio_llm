@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[10,17](d_IFNα(t) > d_c(high)) implies eventually[1,inf](IFNα(t) > c(high))",0.18149191,N/A,N/A,SARSCoV2(t) < c(low) and SARSCoV2(t) > c(low),0.24255803,1,1,0
+d_SARSCoV2(t)=0 and IL1Ra(t) > c(low),0.2830762,N/A,N/A,N/A,N/A,0,2,0
+"globally[17,inf](IL8(t)=c(mid)) and eventually[0,18](d_IL1β(t)>d_c(low)) and IL8(t)=c(mid)",0.29447648,"globally[4,inf](d_IL1Ra(t)=d_c(low) and IL1Ra(t) > c(mid))",0.26783672,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[15,inf]globally(IL8(t)=c(mid))",0.2648635,d_IL1Ra(t)=d_c(low) implies d_TNFα(t) > 0,0.21745041,N/A,N/A,0,2,0
+IL1RN(t)=c(low),0.24376963,IL6(t) = c(mid) and d_IL6(t) = 0,0.18686017,N/A,N/A,0,2,0
+d_IL6(t) > d_c(high) implies d_IL12(t)=d_c(low),0.14948371,N/A,N/A,"eventually[1,16]globally(d_SARSCoV2(t)=0)",0.31319255,1,1,0
+"globally[17,inf](SARSCoV2(t) > c(low))",0.31517634,N/A,N/A,"eventually[17,19](IL6(t)=c(high))",0.25828978,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[9,inf](IL1β(t) < c(low))",0.3333003,IL1RN(t) < c(mid) and d_IFNβ(t) > 0,0.31498253,"globally[6,inf](d_IL8(t) > d_c(low))",0.25221866,0,2,0
+"eventually[17,inf]globally(IL1Ra(t) < c(high))",0.2929454,"eventually[17,19]globally(IL1β(t)=c(high) implies IL1β(t) > c(high))",0.31508034,N/A,N/A,1,1,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[17,inf](IL8(t)=c(mid) and IL8(t) > c(mid)) and d_SARSCoV2(t) > 0 implies IL1Ra(t) < c(low)",0.33769754,"globally[17,19](IL8(t) > c(low) implies d_IFNα(t) > 0)",0.27858466,N/A,N/A,0,2,0
+"globally[17,inf](d_IL1Ra(t) < d_c(low)) implies eventually[1,inf](IFNα(t) > c(high))",0.2945545,N/A,N/A,N/A,N/A,0,2,0
+d_IL12(t) < d_c(low),0.20836496,N/A,N/A,N/A,N/A,0,2,0

@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"globally[0,7](IP10(t) > c(high))",0.52276725,"globally[0,7](IL6(t) > c(high))",0.3760203,N/A,N/A,0,2,0
+"globally[0,7](IP10(t) > c(mid))",0.5371225,"globally[0,7](SARSCoV2(t) > c(high))",0.3438146,N/A,N/A,0,2,0
+"globally[0,7](IP10(t) > c(high))",0.52276725,"globally[1,7](IFNα(t) > c(high))",0.31993988,"globally[0,7](IP10(t) > c(high))",0.52276725,0,1,1
+"globally[0,7](IP10(t) > c(mid))",0.5371225,"globally[0,7](IFNα(t) > c(high))",0.30390328,"globally[0,7](IP10(t) > c(high))",0.52276725,0,2,0
+"globally[0,7](IP10(t) > c(mid))",0.5371225,"eventually[0,7](IFNβ(t) > c(high))",0.27223784,N/A,N/A,0,2,0
+"globally[0,7](IP10(t) > c(high))",0.52276725,"globally[1,7](IL6(t) > c(high))",0.39113936,N/A,N/A,0,2,0
+"globally[0,7](IP10(t) > c(mid))",0.5371225,"globally[1,7](IFNα(t) > c(high))",0.31993988,"globally[0,7](IP10(t) > c(high))",0.52276725,0,2,0
+"globally[0,7](IP10(t) > c(low))",0.5038897,N/A,N/A,"globally[0,7](IFNα(t) > c(high))",0.30390328,0,2,0
+"globally[1,7](IP10(t) > c(high))",0.5409645,"globally[1,7](IFNβ(t) > c(high))",0.29991454,N/A,N/A,0,2,0
+"globally[0,7](IP10(t) > c(high))",0.52276725,N/A,N/A,"globally[0,7](IFNβ(t) > c(high))",0.2844475,0,2,0
+"globally[0,7](IP10(t) > c(high))",0.52276725,N/A,N/A,"globally[1,7](IP10(t) > c(high))",0.5409645,1,1,0
+"globally[0,7](IP10(t) > c(high))",0.52276725,N/A,N/A,"globally[0,7](IP10(t) > c(high))",0.52276725,0,1,1
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[0,7](IP10(t) > c(high))",0.52276725,"globally[0,7](IL6(t) > c(high))",0.3760203,N/A,N/A,0,2,0
+"globally[0,7](IP10(t) > c(low))",0.5038897,"globally[0,7](IP10(t) > c(high))",0.52276725,"globally[7,14](IL6(t) > c(high) and IL6(t) > c(high))",0.39983422,1,1,0
+"globally[0,7](IP10(t) > c(low))",0.5038897,"globally[1,7](IL8(t) > c(high))",0.37577718,"globally[1,7](IFNα(t) > c(high))",0.31993988,0,2,0
+"globally[0,7](IP10(t) > c(high))",0.52276725,"eventually[0,7](IFNβ(t) > c(high) and IFNα(t) > c(high))",0.2699455,"globally[0,7](IL6(t) > c(high))",0.3760203,0,2,0
+"globally[0,7](IP10(t) > c(high))",0.52276725,"globally[0,7](IL8(t) > c(low))",0.3382752,N/A,N/A,0,2,0

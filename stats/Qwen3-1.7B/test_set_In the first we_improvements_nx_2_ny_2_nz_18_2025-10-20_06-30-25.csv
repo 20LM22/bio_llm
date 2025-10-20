@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[1,1]globally(RANTES(t) > c(high)) and RANTES(t) > c(mid) and globally[1,inf](RANTES(t) > c(high)) and eventually[3,4]globally(RANTES(t) > c(high))",0.54689014,N/A,N/A,N/A,N/A,0,2,0
+RANTES(t) > c(high),0.42052007,N/A,N/A,"globally[1,7](RANTES(t) > c(high)) implies globally[3,inf](RANTES(t) > c(high)) and globally[1,7](RANTES(t) > c(high)) implies eventually[1,7](RANTES(t) > c(high))",0.46148545,1,1,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+d_RANTES(t) > d_c(high),0.37562105,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[1,7](RANTES(t) > c(high)) and globally[1,7](RANTES(t) > c(low)) and RANTES(t) = c(high) and RANTES(t) = c(mid)",0.6147481,N/A,N/A,"eventually[1,7]globally(RANTES(t) > c(high)) and eventually[1,7]globally(RANTES(t) > c(low)) and eventually[1,7]globally(RANTES(t) > c(mid)) and eventually[1,7]globally(RANTES(t) > c(low)) and eventually[1,7]globally(RANTES(t) > c(mid)) and eventually[1,7]globally(RANTES(t) > c(high)) and eventually[1,7]globally(RANTES(t) > c(low))",0.5679063,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[0,1](RANTES(t) > c(high)) and eventually[1,inf]globally(RANTES(t) > c(high)) and globally[0,1](RANTES(t) > c(mid)) and eventually[1,inf]globally(RANTES(t) > c(mid)) and globally[0,1](RANTES(t) > c(low)) and eventually[1,inf]globally(RANTES(t) > c(low)) and globally[0,1](RANTES(t) > c(high)) and eventually[1,inf]globally(RANTES(t) > c(high)) and globally[0,1](RANTES(t) > c(mid)) and eventually[1,inf]globally(RANTES(t) > c(mid)) and globally[0,1](RANTES(t) > c(low)) and eventually[1,inf]globally(RANTES(t) > c(low)) and globally[0,1](RANTES(t) > c(high)) and eventually[1,inf]globally(RANTES(t) > c(high))",0.5007547,N/A,N/A,N/A,N/A,0,2,0
+RANTES(t) > c(high),0.42052007,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"RANTES(t) > c(high) and RANTES(t) > c(mid) and eventually[1,1]globally(RANTES(t) > c(high) implies d_RANTES(t) > d_c(high)) and eventually[3,4]globally(RANTES(t) > c(high) implies d_RANTES(t) > d_c(high))",0.48569423,N/A,N/A,"eventually[1,7]globally(RANTES(t) > c(mid)) and eventually[1,inf]globally(RANTES(t) > c(mid))",0.5451446,1,1,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0

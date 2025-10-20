@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"globally[0,7](RANTES(t) > c(high)) and globally[21,28](RANTES(t) > c(high))",0.5236214,"globally[0,7](RANTES(t) > c(high)) and globally[21,28](RANTES(t) = c(high))",0.5408168,"RANTES(t) > c(high) and globally[21,28](RANTES(t) > c(high))",0.55373544,2,0,0
+"RANTES(t) > c(high) and globally[21,28](RANTES(t) > c(high))",0.55373544,"globally[0,7](IL1RN(t) > c(high)) and globally[21,28](IL1RN(t) = c(high))",0.3152299,N/A,N/A,0,2,0
+"globally[0,7](RANTES(t) > c(high)) and globally[21,28](RANTES(t) > c(high))",0.5236214,"globally[0,7](RANTES(t) > c(high)) and globally[21,28](RANTES(t) = c(high))",0.5408168,"globally[0,7](RANTES(t) > c(high)) and globally[21,28](RANTES(t) > c(high))",0.5236214,1,0,1
+"globally[0,7](RANTES(t) > c(high)) and globally[21,28](RANTES(t) > c(high))",0.5236214,"globally[0,7](RANTES(t) > c(high)) and globally[21,28](RANTES(t) > c(high))",0.5236214,"globally[0,7](RANTES(t) > c(high)) and globally[21,28](RANTES(t) = c(high))",0.5408168,1,0,1
+"globally[0,7](RANTES(t) > c(high)) and globally[21,28](RANTES(t) > c(high))",0.5236214,N/A,N/A,N/A,N/A,0,2,0
+"globally[0,7](RANTES(t) > c(high)) and globally[21,28](RANTES(t) > c(high))",0.5236214,N/A,N/A,"IL6(t) > c(high) and globally[7,28](IL6(t) = c(high))",0.25263143,0,2,0
+"globally[0,7](RANTES(t) > c(high)) and globally[14,28](RANTES(t) = c(high))",0.5359423,"globally[1,28](RANTES(t) > c(mid))",0.5638914,"globally[0,7](RANTES(t) > c(high)) and globally[21,28](RANTES(t) > c(high))",0.5236214,1,1,0
+"globally[0,28](RANTES(t) > c(high))",0.4853621,"RANTES(t) > c(high) and globally[7,28](RANTES(t) > c(high))",0.5522605,N/A,N/A,1,1,0
+"globally[0,7](RANTES(t) > c(high)) and globally[21,28](RANTES(t) = c(high))",0.5408168,"globally[0,28](RANTES(t) > c(high))",0.4853621,"RANTES(t) > c(high) and globally[7,28](RANTES(t) > c(mid))",0.60446006,1,1,0
+"globally[0,7](RANTES(t) > c(high)) and globally[21,28](RANTES(t) > c(high))",0.5236214,N/A,N/A,N/A,N/A,0,2,0
+"globally[0,7](RANTES(t) > c(high)) and globally[14,28](RANTES(t) > c(high))",0.51813984,N/A,N/A,N/A,N/A,0,2,0
+"RANTES(t) > c(high) and globally[7,28](RANTES(t) > c(high))",0.5522605,N/A,N/A,N/A,N/A,0,2,0
+"RANTES(t) > c(high) and globally[21,28](RANTES(t) > c(high))",0.55373544,N/A,N/A,N/A,N/A,0,2,0
+"globally[0,7](RANTES(t) > c(high)) and globally[21,28](RANTES(t) = c(high)) and globally[28,35](RANTES(t) = c(high))",0.553025,"globally[0,7](RANTES(t) > c(high)) and globally[21,28](RANTES(t) > c(high))",0.5236214,"globally[0,7](RANTES(t) > c(high)) and globally[7,28](RANTES(t) > c(high))",0.5164552,0,2,0
+"globally[0,7](RANTES(t) > c(high)) and globally[14,28](RANTES(t) > c(high))",0.51813984,"globally[0,7](RANTES(t) > c(high)) and globally[21,28](RANTES(t) > c(high)) and globally[28,35](RANTES(t) > c(high))",0.5417185,N/A,N/A,1,1,0
+"RANTES(t) > c(high) and globally[21,28](RANTES(t) > c(high))",0.55373544,"globally[0,7](IL6(t) > c(high)) and globally[21,28](IL6(t) > c(high))",0.28966683,"globally[0,7](RANTES(t) > c(high)) and globally[21,28](RANTES(t) > c(high))",0.5236214,0,2,0
+"globally[0,7](RANTES(t) > c(high)) and globally[21,28](RANTES(t) > c(high))",0.5236214,"IL8(t) > c(high) and globally[7,28](IL8(t) > c(high))",0.23864488,"globally[0,7](RANTES(t) > c(high)) and globally[21,28](RANTES(t) > c(high))",0.5236214,0,1,1
+"globally[0,7](RANTES(t) > c(high)) and globally[21,28](RANTES(t) > c(high))",0.5236214,N/A,N/A,"globally[0,7](RANTES(t) > c(high)) and globally[21,28](RANTES(t) = c(high))",0.5408168,1,1,0

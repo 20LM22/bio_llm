@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"eventually[10,11]globally(IL8(t)=c(mid) and IL12(t)=c(low))",0.25009584,N/A,N/A,IL6(t)=c(high) implies IL12(t) > c(high),0.13299182,0,2,0
+"RANTES(t) < c(low) and eventually[3,4]globally(d_RANTES(t) > d_c(low))",0.5196361,IL1β(t) > c(high) and SARSCoV2(t) < c(low),0.22104076,N/A,N/A,0,2,0
+TNFα(t) > c(mid) implies d_IL1Ra(t) > d_c(high),0.25932592,N/A,N/A,RANTES(t)=c(high),0.42984378,1,1,0
+"globally[1,inf](RANTES(t) > c(high)) implies eventually[3,inf](RANTES(t) > c(mid))",0.49512553,"eventually[1, inf]globally(d_RANTES(t)=0)",0.34719175,RANTES(t) > c(high) and SARSCoV2(t) < c(low),0.4224015,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[1,4](RANTES(t) > c(high))",0.49065977,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"d_IL8(t) > d_c(low) and globally[18,20](d_IFNα(t) < 0)",0.19668096,"IL12(t) > c(low) and globally[1,9](d_IL12(t) > d_c(low))",0.20502536,N/A,N/A,1,1,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[1,4]globally(RANTES(t)=c(high))",0.47775882,N/A,N/A,IL8(t) > c(mid) implies d_IL1Ra(t) > d_c(low),0.1563349,0,2,0
+RANTES(t)=c(high) implies RANTES(t) > c(mid),0.5081048,RANTES(t) > c(high) implies RANTES(t)=c(mid),0.5061283,N/A,N/A,0,2,0
+RANTES(t)=c(high) implies RANTES(t) > c(high),0.45828652,d_IL8(t)=0 and d_IFNα(t) > d_c(high),0.17191413,N/A,N/A,0,2,0
+"globally[1,4](RANTES(t)=c(mid))",0.5305135,"eventually[0, inf](RANTES(t)=c(high))",0.43368173,"globally[1,inf](IL1β(t) > c(low)) and d_IL1β(t) < d_c(high)",0.26611412,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[0,1]globally(RANTES(t)=c(high)) and eventually[2,inf](RANTES(t) > c(low))",0.4753185,"globally[1,inf](RANTES(t) > c(high)) and d_RANTES(t) > d_c(high)",0.44807595,"globally[1,inf](RANTES(t)=c(low))",0.43354213,0,2,0
