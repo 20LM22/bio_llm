@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"globally[0,7](IL6(t) > c(high)) and eventually[7,inf](d_IL6(t) > d_c(high))",0.6925633,N/A,N/A,0,1,0
+"eventually[1,7]globally(IL6(t) > c(high)) and globally[7,inf](IL6(t) < c(mid))",0.7620391,"eventually[1,7](IL6(t)=c(high)) and eventually[8,inf](IL6(t) < c(high))",0.72896636,0,1,0
+"eventually[0,7]globally(d_IL6(t) < 0) and globally[7,inf](d_IL6(t) < 0)",0.6441347,"globally[0,7](IL6(t) > c(mid) and IL6(t) > c(low)) and globally[7,inf](d_IL6(t) < d_c(low))",0.7235749,1,0,0
+"eventually[0,7]globally(IL6(t)=c(high)) and eventually[7,inf]globally(IL6(t) < c(low))",0.72566694,N/A,N/A,0,1,0
+"globally[1,inf](IL6(t) < c(high)) and eventually[1,inf](d_IL6(t) < d_c(low))",0.68412757,"eventually[0,7]globally(IL6(t) > c(mid)) and eventually[7,inf]globally(IL6(t) < c(high))",0.7543994,1,0,0
+"eventually[0,7]globally(IL6(t) = c(high)) implies globally[7,inf](d_IL6(t) < d_c(high))",0.65261793,N/A,N/A,0,1,0
+"eventually[0,7]globally(IL6(t) = c(high)) and eventually[7,inf]globally(IL6(t) < c(high))",0.7266917,"eventually[0,7]globally(IL6(t) > c(high)) and eventually[7,inf]globally(d_IL6(t) < 0)",0.73863435,1,0,0
+"eventually[0,7](IL6(t)=c(mid) and IL6(t)=c(low)) and globally[7,inf](IL6(t) < c(low))",0.751023,N/A,N/A,0,1,0
+"eventually[0,7]globally(IL6(t) > c(high)) and eventually[7,inf]globally(IL6(t) < c(high))",0.71358335,"eventually[0,7](IL6(t) > c(high)) and eventually[7,inf](IL6(t) < c(high))",0.7086555,0,1,0
+"globally[0,7](IL6(t)=c(high)) implies eventually[7,inf](d_IL6(t) < -d_c(high))",0.68154734,N/A,N/A,0,1,0
+"eventually[0,7]globally(IL6(t) > c(mid) and d_IL6(t) < d_c(low))",0.7362695,N/A,N/A,0,1,0
+"eventually[0,7]globally(IL6(t)=c(high)) and eventually[7,inf]globally(IL6(t) < c(high))",0.7266917,N/A,N/A,0,1,0
+N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,0,0,0
+"globally[0,7](IL6(t) > c(high)) and eventually[7,inf](IL6(t) < c(mid))",0.7569896,"globally[0,inf](IL6(t) > c(mid)) and globally[0,7](IL6(t) < c(mid)) and globally[7,inf](IL6(t) < c(mid))",0.75874805,1,0,0
+"globally[0,7](IL6(t) = c(high)) implies eventually[7,inf](IL6(t) < c(high))",0.6774854,"eventually[1,7]globally(IL6(t) = c(high)) and eventually[7,inf]globally(IL6(t) < c(high))",0.74119097,1,0,0
+"eventually[0,7]globally(IL6(t) > c(high)) and eventually[7,inf]globally(IL6(t) < c(low))",0.7151816,"eventually[1,7]globally(IL6(t) > c(high)) and eventually[7,inf]globally(IL6(t) < c(low))",0.7310788,1,0,0
+"globally[1,7](IL6(t) > c(mid)) and d_IL6(t) < 0",0.76377225,N/A,N/A,0,1,0
