@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"globally[0,inf](RANTES(t) = c(low)) and eventually[0,inf](RANTES(t) = c(low))",0.5023432,"eventually[0,inf](IL1Ra(t) = c(low)) and globally[0,inf](d_IL1Ra(t) = d_c(low))",0.12317116,N/A,N/A,0,2,0
+RANTES(t) < c(high),0.5874609,N/A,N/A,RANTES(t) = c(mid),0.5436907,0,2,0
+"eventually[0,inf](RANTES(t) < c(low))",0.5342422,N/A,N/A,N/A,N/A,0,2,0
+d_RANTES(t) < d_c(low),0.40636712,N/A,N/A,N/A,N/A,0,2,0
+"eventually[0,inf](RANTES(t) < c(low))",0.5342422,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+RANTES(t) = c(low) implies d_RANTES(t) < d_c(low),0.5280103,N/A,N/A,N/A,N/A,0,2,0
+"globally[0,inf](RANTES(t) < c(mid) implies d_RANTES(t)=0)",0.5193049,N/A,N/A,N/A,N/A,0,2,0
+"eventually[0,inf](RANTES(t) < c(high))",0.54406095,N/A,N/A,RANTES(t) = c(low) implies d_RANTES(t) = d_c(low),0.5457306,1,1,0
+"RANTES(t) = c(low) and eventually[0,inf]globally(d_RANTES(t)=0)",0.54708177,N/A,N/A,N/A,N/A,0,2,0
+RANTES(t) = c(low) and d_RANTES(t) = d_c(low),0.5391525,RANTES(t) < c(low) and TNFα(t) > c(mid) and IFNα(t) > c(high) and d_IL1Ra(t) < 0,0.5864735,N/A,N/A,1,1,0
+RANTES(t) < c(low) and d_RANTES(t) > d_c(high) implies RANTES(t) < c(low),0.56019616,N/A,N/A,"eventually[0,inf]globally(RANTES(t) = c(low)) implies eventually[0,inf]globally(RANTES(t) > c(low))",0.47033283,0,2,0
+"eventually[0,inf](RANTES(t) = c(low))",0.528641,N/A,N/A,"eventually[0,inf](IL1RN(t) < c(high)) and d_IL1RN(t) = d_c(high)",0.17319642,0,2,0
+"eventually[0,inf](RANTES(t) = c(mid)) and RANTES(t) = c(mid)",0.5859866,N/A,N/A,N/A,N/A,0,2,0
+RANTES(t) = c(mid),0.5436907,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[0,inf]globally(RANTES(t) > c(mid))",0.5337271,N/A,N/A,N/A,N/A,0,2,0

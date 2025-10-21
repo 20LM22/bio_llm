@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[0,inf]globally(d_CpG2216(t) < d_c(low)) and eventually[0,inf]globally(d_IFNα(t) < d_c(low))",0.5412893,N/A,N/A,"eventually[0,inf]globally(IL1β(t)=c(low) and d_IL1β(t) < d_c(low)) and eventually[0,inf]globally(IFNα(t)=c(low) and d_IFNα(t) < d_c(low))",0.3437783,0,2,0
+IL1β(t) < c(mid) and d_IL1β(t) = 0,0.21000937,N/A,N/A,"eventually[inf,inf]globally(IL1β(t) < c(low)) and eventually[inf,inf]globally(IL1Ra(t) = c(low))",0.24412015,1,1,0
+"globally[0,inf](IL1β(t) < c(low))",0.26666063,N/A,N/A,N/A,N/A,0,2,0
+d_CpG2216(t) < d_c(low) and d_IFNα(t) < d_c(low) and IL1β(t) = c(mid),0.59568703,N/A,N/A,"globally[inf, inf](IFNα(t) < c(low)) and globally[inf, inf](IFNβ(t) < c(low))",0.33282813,0,2,0
+IL1β(t) < c(low),0.26292527,N/A,N/A,N/A,N/A,0,2,0
+d_CpG2216(t) > 0 and d_IL6(t) < d_c(low),0.44874126,N/A,N/A,IL1β(t) < c(low) and d_IL1β(t) = 0,0.23221913,0,2,0
+IFNα(t) < c(low),0.5078008,N/A,N/A,N/A,N/A,0,2,0
+CpG2216(t) > c(low) implies d_CpG2216(t) > d_c(low) and IFNβ(t) < c(low) and IFNγ(t) < c(low) and IL17(t) < c(low) and IL27(t) < c(low),0.57639205,N/A,N/A,"eventually[inf,inf]globally(d_IFNα(t) < d_c(low)) and eventually[inf,inf]globally(d_IFNβ(t) < d_c(low))",0.34673604,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[inf,inf](CpG2216(t) < c(mid))",0.41260478,N/A,N/A,N/A,N/A,0,2,0
+"CpG2216(t) < c(low) and globally[0,inf](d_IL1β(t) < d_c(low))",0.50766814,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+CpG2216(t) < c(low),0.4906832,N/A,N/A,N/A,N/A,0,2,0
+"globally[inf,inf](IFNα(t) < c(mid) and IFNβ(t) < c(mid))",0.3954146,N/A,N/A,"eventually[0,inf](IFNα(t) < c(low)) and eventually[0,inf](IFNβ(t) < c(low))",0.27927917,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0

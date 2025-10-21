@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"eventually[7,inf]globally(d_IP10(t) > d_c(low) and IP10(t) > c(mid))",0.4902587,N/A,N/A,N/A,N/A,0,2,0
+"eventually[1,inf]globally(IP10(t) > c(high)) and IP10(t) > c(mid) implies IP10(t) > c(high)",0.52661014,N/A,N/A,"globally[1,7](IP10(t) > c(low)) and globally[1,7](IP10(t) > c(mid)) and globally[1,7](IP10(t) > c(high)) and eventually[1,7]globally(IP10(t) > c(high))",0.5380962,1,1,0
+"IP10(t) > c(high) and globally[1,7](IP10(t) > c(high)) and globally[1,7](IP10(t) > c(high)) and globally[1,7](IP10(t) > c(high))",0.54170895,N/A,N/A,IP10(t) > c(low) implies IL6(t) = c(low),0.4824463,0,2,0
+IP10(t) > c(high),0.52200496,N/A,N/A,"IL6(t) > c(high) and IL12(t) > c(high) and IL1β(t) > c(high) and IL1Ra(t) > c(high) and TNFα(t) > c(high) and IL8(t) > c(high) and IFNα(t) > c(high) and IFNβ(t) > c(high) and SARSCoV2(t) > c(high) and IL1RN(t) > c(high) and globally[1,inf](IL6(t) > c(high)) and globally[1,inf](IL12(t) > c(high)) and globally[1,inf](IL1β(t) > c(high)) and globally[1,inf](IL1Ra(t) > c(high)) and globally[1,inf](TNFα(t) > c(high)) and globally[1,inf](IL8(t) > c(high)) and globally[1,inf](IFNα(t) > c(high)) and globally[1,inf](IFNβ(t) > c(high)) and globally[1,inf](SARSCoV2(t) > c(high)) and globally[1,inf](IL1RN(t) > c(high)) and d_IL6(t) > d_c(high) and d_IL12(t) > d_c(high) and d_IL1β(t) > d_c(high) and d_IL1Ra(t) > d_c(high) and d_TNFα(t) > d_c(high) and d_IL8(t) > d_c(high) and d_IFNα(t) > d_c(high) and d_IFNβ(t) > d_c(high) and d_SARSCoV2(t) > d_c(high) and d_IL1RN(t) > d_c(high)",0.37665683,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[1,1](IP10(t) > c(low) and IP10(t) > c(mid))",0.5516684,N/A,N/A,N/A,N/A,0,2,0
+"globally[1,1](IP10(t) > c(low))",0.52834153,N/A,N/A,N/A,N/A,0,2,0
+"IP10(t) > c(high) and globally[1,7](IP10(t) > c(high)) implies eventually[1,7](IP10(t) > c(high))",0.52734345,IP10(t) > c(low) and IL8(t) > c(mid),0.5284606,N/A,N/A,1,1,0
+IP10(t) > c(high) implies IP10(t) > c(high),0.52588403,N/A,N/A,N/A,N/A,0,2,0
+"d_IP10(t) > d_c(high) and globally[1,7](d_IP10(t) > d_c(high))",0.40100455,N/A,N/A,N/A,N/A,0,2,0
+"eventually[1,inf]globally(IP10(t) > c(low))",0.51620543,N/A,N/A,N/A,N/A,0,2,0
+"eventually[1,1]globally(IP10(t) > c(high))",0.5352544,N/A,N/A,N/A,N/A,0,2,0
+"eventually[1,inf](IP10(t) > c(low)) implies globally[1,inf](IP10(t) > c(low))",0.45927763,N/A,N/A,"eventually[1,inf]globally(IP10(t) > c(high)) and globally[1,inf](d_IP10(t) = d_c(high)) and globally[1,inf](IP10(t) > c(low))",0.4804786,1,1,0
+"eventually[1,1]globally(IP10(t) > c(high)) and eventually[1,1]globally(IP10(t) < c(high))",0.5173673,"eventually[1,7](IP10(t) > c(mid)) implies globally[1,inf](d_IP10(t) > 0)",0.4665452,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[1,7]globally(IP10(t) > c(high)) and eventually[1,7]globally(IP10(t) > c(mid))",0.566199,"eventually[1,7]globally(IP10(t) > c(high)) and IP10(t) < c(low) and globally[1,7](IP10(t) > c(high))",0.5094632,IP10(t) > c(high) and IP10(t) > c(high),0.5233825,0,2,0
+"globally[1,1](IP10(t) > c(high) and IP10(t) = c(mid))",0.57975495,IP10(t) > c(high) and IL6(t) > c(high) and IL12(t) > c(high) and IL1β(t) > c(high) and IL1Ra(t) > c(high) and TNFα(t) > c(high) and IL8(t) > c(high) and IFNα(t) > c(high) and IFNβ(t) > c(high) and SARSCoV2(t) > c(high) and IL1RN(t) > c(high),0.50818944,N/A,N/A,0,2,0
+"IP10(t) > c(low) and eventually[1,inf]globally(IP10(t) > c(low) implies d_IP10(t)=d_c(low))",0.4603385,N/A,N/A,"eventually[1,inf]globally(IP10(t) > c(mid)) and IP10(t) > c(low) and IP10(t) > c(high)",0.53124684,1,1,0
