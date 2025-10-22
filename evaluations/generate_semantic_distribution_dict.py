@@ -98,9 +98,17 @@ for key in res.keys(): # res_top.keys():
         print(f"Sentence: {key}")
         print(f"STL: {stl}")
         choice = input("1 for yes, 0 for no: ")
-        if int(choice) == 1:
-            correct += 1
-        elif int(choice) == 0:
+
+        try:
+            if choice == "":
+                raise Exception()
+
+            if int(choice) == 1:
+                correct += 1
+            elif int(choice) == 0:
+                incorrect += 1
+
+        except Exception as e:
             incorrect += 1
         # then need to construct a new array that we will replace the current one in the dictionary with
         # but this array will have the user's annotation
