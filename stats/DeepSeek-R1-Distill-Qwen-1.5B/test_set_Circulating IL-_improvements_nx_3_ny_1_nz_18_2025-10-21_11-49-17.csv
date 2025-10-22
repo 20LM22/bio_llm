@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+IL1α(t) > c(low),0.6632428,N/A,N/A,0,1,0
+N/A,N/A,N/A,N/A,0,0,0
+IL6(t) < c(mid),0.36453095,"globally[0,inf](IL1α(t) < c(low))",0.57373595,1,0,0
+"globally[0,inf](IL1α(t)=c(low))",0.56895745,IL1α(t) < c(low),0.6748161,1,0,0
+N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,0,0,0
+IL1α(t) < c(low),0.6748161,N/A,N/A,0,1,0
+"IL6(t) > c(mid) and eventually[0,inf]globally(d_IL6(t) < d_c(high) and IL6(t)=c(low))",0.3555115,N/A,N/A,0,1,0
+N/A,N/A,N/A,N/A,0,0,0
+"globally[9,inf](IL1α(t) < c(low))",0.5963659,N/A,N/A,0,1,0
+IL1α(t) < c(low),0.6748161,N/A,N/A,0,1,0
+"eventually[1,inf]globally(d_IL1α(t)=0) and IL1α(t) < c(mid)",0.6092429,N/A,N/A,0,1,0
+"globally[inf, inf](IL1α(t) < c(low))",0.559053,N/A,N/A,0,1,0
+IL1α(t) < c(mid),0.668374,N/A,N/A,0,1,0
+IL1α(t) = c(low),0.6308896,N/A,N/A,0,1,0
+IL1α(t) = c(low),0.6308896,N/A,N/A,0,1,0
+IL1α(t) > c(mid) implies SARSCoV2(t)=c(high),0.51821434,IL6(t) > c(mid) implies SARSCoV2(t) < c(high),0.3617063,0,1,0
+IL1α(t) = c(mid) implies SARSCoV2(t) < c(high),0.52562547,N/A,N/A,0,1,0

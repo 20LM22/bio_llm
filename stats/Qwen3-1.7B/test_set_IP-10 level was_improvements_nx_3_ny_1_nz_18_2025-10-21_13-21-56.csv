@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"eventually[1,inf](IP10(t) > c(mid))",0.54333466,N/A,N/A,0,1,0
+N/A,N/A,N/A,N/A,0,0,0
+"eventually[1,1]globally(IP10(t) > c(high)) implies globally[1,1](IP10(t) = c(high))",0.49402404,"eventually[1,7]globally(IP10(t) > c(high)) implies globally[1,7](IP10(t) > c(high)) and eventually[1,7]globally(IP10(t) > c(high)) and eventually[1,7]globally(IP10(t) > c(high))",0.4655108,0,1,0
+"eventually[1,inf](IP10(t) > c(high) implies IP10(t) > c(high))",0.52481043,N/A,N/A,0,1,0
+N/A,N/A,N/A,N/A,0,0,0
+IP10(t) > c(low) and IP10(t) > c(low) and IP10(t) > c(low) and IP10(t) > c(low),0.47038922,N/A,N/A,0,1,0
+IP10(t) > c(low) and IP10(t) > c(low),0.5125278,N/A,N/A,0,1,0
+N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,0,0,0
+IP10(t) > c(high) and IP10(t) > c(high),0.5233825,N/A,N/A,0,1,0
+IP10(t) > c(high) and IP10(t) > c(high) and IP10(t) > c(high) and IP10(t) > c(high),0.47583818,N/A,N/A,0,1,0
+"eventually[1,inf]globally(IP10(t) = c(high)) and IP10(t) = c(high)",0.5289805,"IP10(t) > c(high) and globally[1,7](IP10(t) > c(high))",0.5725012,1,0,0
+N/A,N/A,N/A,N/A,0,0,0
+"eventually[1,inf]globally(IP10(t) > c(high) and d_IP10(t) > d_c(high))",0.45846105,N/A,N/A,0,1,0
+N/A,N/A,N/A,N/A,0,0,0
+IP10(t) > c(high) and d_IP10(t) > d_c(high) and IP10(t) > c(high) and IP10(t) > c(high),0.45425785,N/A,N/A,0,1,0
+N/A,N/A,N/A,N/A,0,0,0
+IP10(t) = c(high),0.51729393,N/A,N/A,0,1,0

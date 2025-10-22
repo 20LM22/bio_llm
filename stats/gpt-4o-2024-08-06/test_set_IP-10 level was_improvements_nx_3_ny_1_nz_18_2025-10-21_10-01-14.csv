@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"globally[0,7](IP10(t) > c(high))",0.52276725,"globally[0,7](IFNα(t) > c(high))",0.30390328,0,1,0
+"globally[0,7](IP10(t) > c(mid))",0.5371225,N/A,N/A,0,1,0
+"globally[1,7](IP10(t) > c(high))",0.5409645,"globally[0,7](IP10(t) > c(high))",0.52276725,0,1,0
+"globally[0,7](IP10(t) > c(mid))",0.5371225,N/A,N/A,0,1,0
+"globally[1,7](IP10(t) > c(high))",0.5409645,N/A,N/A,0,1,0
+"globally[1,7](IP10(t) > c(high))",0.5409645,"globally[0,7](IL6(t) > c(mid) and IL1Ra(t) > c(mid))",0.41803002,0,1,0
+"globally[0,7](IP10(t) > c(high))",0.52276725,"globally[0,7](IP10(t) > c(high))",0.52276725,0,0,1
+"globally[0,7](IP10(t) > c(high))",0.52276725,"globally[0,7](IL6(t) > c(high))",0.3760203,0,1,0
+"globally[1,7](IP10(t) > c(high))",0.5409645,"globally[0,7](IL6(t) > c(high))",0.3760203,0,1,0
+"globally[0,7](IP10(t) > c(high))",0.52276725,"globally[0,7](IL8(t) > c(high))",0.35949308,0,1,0
+"eventually[0,7]globally(IP10(t) > c(high))",0.51634824,"globally[0,7](IP10(t) > c(high))",0.52276725,1,0,0
+"globally[0,7](IP10(t) > c(high))",0.52276725,"globally[0,7](IL6(t) > c(high))",0.3760203,0,1,0
+"globally[1,7](IP10(t) > c(mid))",0.5562371,"eventually[0,7](IL6(t) > c(high))",0.37429658,0,1,0
+"globally[0,7](IP10(t) > c(high))",0.52276725,N/A,N/A,0,1,0
+"globally[0,7](IP10(t) > c(high))",0.52276725,"globally[0,7](IL6(t) > c(high) and IL8(t) > c(high))",0.3837958,0,1,0
+"globally[0,7](IP10(t) > c(high))",0.52276725,N/A,N/A,0,1,0
+"globally[0,7](IP10(t) > c(high))",0.52276725,"globally[1,7](IL6(t) > c(high)) and globally[1,7](IL6(t) > c(high))",0.37029755,0,1,0
+"globally[0,7](IP10(t) > c(low)) and globally[0,7](IP10(t) > c(low))",0.4765376,"globally[0,7](IP10(t) > c(high))",0.52276725,1,0,0

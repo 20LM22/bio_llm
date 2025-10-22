@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"globally[inf,inf](IFNα(t) < c(low)) and IFNα(t) > c(low)",0.37557992,N/A,N/A,0,1,0
+N/A,N/A,N/A,N/A,0,0,0
+"eventually[0,inf]globally(d_CpG2216(t) > 0 and d_IFNα(t) < 0)",0.53371227,N/A,N/A,0,1,0
+N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,0,0,0
+"eventually[0,inf]globally(IFNα(t) < c(low))",0.33358234,N/A,N/A,0,1,0
+"d_IFNα(t) < d_c(low) and eventually[0,inf]globally(d_IFNα(t) < d_c(low))",0.33532915,N/A,N/A,0,1,0
+"globally[0,inf](IL1β(t) < c(low))",0.26666063,N/A,N/A,0,1,0
+CpG2216(t) < c(low) and IL1Ra(t) < c(low) and IFNα(t) < c(low) and IFNβ(t) < c(low),0.63320094,IL1β(t) < c(low),0.26292527,0,1,0
+CpG2216(t) < c(low),0.4906832,N/A,N/A,0,1,0
+"eventually[inf,inf]globally(IFNα(t) < c(mid))",0.3678056,"eventually[inf,inf]globally(IL1β(t) < c(low)) and d_IL1β(t) > 0",0.2595871,0,1,0
+"eventually[inf, inf]globally(IFNα(t) < c(low))",0.36048955,"eventually[0,inf]globally(IL1β(t) < c(low)) and d_IL1β(t) = d_c(low)",0.2306031,0,1,0
+"eventually[0,inf](d_IFNα(t) < d_c(low))",0.3889348,N/A,N/A,0,1,0
+"globally[inf,inf](IL1β(t) < c(low)) and CpG2216(t) > c(low) and IL1β(t) < c(low)",0.47287348,"globally[0,inf](IFNα(t) < c(mid))",0.36128575,0,1,0
+"globally[0,inf](CpG2216(t) > c(low)) implies eventually[0,inf](IFNα(t) < c(low))",0.48193616,"eventually[0,inf](IFNα(t)=c(low) and IFNβ(t)=c(mid))",0.3956684,0,1,0
+d_CpG2216(t) > d_c(low) implies IL1β(t) < c(mid) and IL1β(t) > c(low),0.47868955,"eventually[0,inf](IFNα(t) < c(low) and IFNβ(t)=c(low))",0.37897187,0,1,0
+"eventually[inf,inf]globally(IFNα(t) < c(low))",0.36048955,"eventually[0,inf]globally(IL1β(t) < c(low)) and d_IL1β(t) > 0",0.22131725,0,1,0
+CpG2216(t) < c(low),0.4906832,"globally[0,inf](IFNα(t)=c(low) and IFNβ(t)=c(mid)) and d_IFNα(t) < d_c(low) and d_IFNβ(t) < d_c(low)",0.39663687,0,1,0

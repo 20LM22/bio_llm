@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"globally[0,28](IL1Ra(t) = c(high))",0.538893,N/A,N/A,0,1,0
+"eventually[0,4]globally(IL1Ra(t) > c(high))",0.5770307,N/A,N/A,0,1,0
+"eventually[4,inf]globally(IL1Ra(t) > c(high)) and eventually[4,inf]globally(IL1Ra(t) = c(high))",0.5914466,"globally[0,28](IL1Ra(t) = c(high))",0.538893,0,1,0
+"eventually[0,28](IL1Ra(t)=c(high))",0.5762216,"globally[0,4](IL1Ra(t) > c(high))",0.5579516,0,1,0
+"IL1Ra(t) = c(high) and eventually[0,4]globally(IL1Ra(t) = c(high))",0.6316342,"eventually[0,inf]globally(IL1Ra(t) > c(high))",0.5680593,0,1,0
+"IL1Ra(t) > c(high) and globally[0,28](IL1Ra(t) = c(high))",0.6117396,"eventually[0,inf]globally(IL1Ra(t) > c(high)) and d_IL1Ra(t) = d_c(high)",0.5602302,0,1,0
+N/A,N/A,N/A,N/A,0,0,0
+"IL1Ra(t) > c(high) and globally[0,28](IL1Ra(t) = c(high))",0.6117396,"eventually[0,28]globally(IL1Ra(t) > c(high))",0.5717586,0,1,0
+IL1Ra(t) > c(high),0.5822355,N/A,N/A,0,1,0
+"IL1Ra(t) > c(mid) and eventually[0,4]globally(IL1Ra(t) = c(high))",0.65794027,N/A,N/A,0,1,0
+"IL1Ra(t) > c(high) and eventually[1,4]globally(IL1Ra(t)=c(high))",0.6597171,"globally[0,28](IL1Ra(t) > c(high))",0.5516707,0,1,0
+"IL1Ra(t) > c(high) and globally[0,28](IL1Ra(t) > c(high))",0.61414474,"eventually[0,inf]globally(IL1Ra(t) > c(high))",0.5680593,0,1,0
+"globally[0,28](IL1Ra(t) = c(high))",0.538893,N/A,N/A,0,1,0
+"globally[0,4](IL1Ra(t) > c(high)) and d_IL1Ra(t) = 0",0.55303496,"eventually[0,4](IL1Ra(t) > c(high)) and IL1Ra(t)=c(high)",0.6238296,1,0,0
+"globally[0,4](IL1Ra(t) > c(high))",0.5579516,"eventually[0,4](IL1Ra(t) > c(high)) and globally[0,4](IL1Ra(t) = c(high))",0.5828886,1,0,0
+"eventually[0,4]globally(IL1Ra(t)=c(high)) and d_IL1Ra(t)=d_c(high)",0.5708083,"IL1Ra(t) > c(high) and globally[0,4](IL1Ra(t) > c(high))",0.6150826,1,0,0
+"eventually[0,4]globally(IL1Ra(t) > c(high))",0.5770307,"eventually[0,4]globally(IL1Ra(t) > c(high)) and d_IL1Ra(t) = 0",0.5769975,0,1,0
+"eventually[0,4]globally(IL1Ra(t) = c(high))",0.5639458,"eventually[0,28]globally(IL1Ra(t) > c(high))",0.5717586,1,0,0
