@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[2,4](d_IP10(t) < d_c(low)) and IL6(t) > c(low)",0.54555887,N/A,N/A,N/A,N/A,0,2,0
+"globally[18,20](IL12(t)=c(low) and TNFα(t) < c(mid))",0.5302578,N/A,N/A,N/A,N/A,0,2,0
+"globally[2,4](d_IP10(t) = 0)",0.53538924,N/A,N/A,"IL6(t) > c(mid) and eventually[0,inf]globally(d_IFNβ(t) < d_c(high) and IL8(t)=c(low))",0.44013822,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"IL1Ra(t) > c(low) and globally[0,inf](d_IL8(t) > 0)",0.38995165,N/A,N/A,N/A,N/A,0,2,0
+"eventually[2,4]globally(d_IP10(t) < 0)",0.57620174,N/A,N/A,d_IL8(t) < d_c(high) implies IL1Ra(t) < c(mid),0.37327456,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[2,4]globally(d_IFNα(t)=d_c(low)) and IFNα(t) < c(mid)",0.41859466,d_IL8(t) < d_c(high) implies IL1Ra(t) < c(mid),0.37327456,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[2,4]globally(d_IL6(t)=0)",0.38435185,N/A,N/A,"globally[2,inf](IL6(t) < c(low)) and IL6(t) > c(low)",0.4572119,1,1,0
+"eventually[2,4]globally(d_IL6(t)=0)",0.38435185,d_TNFα(t) < 0 and IL12(t) < c(high),0.44136703,N/A,N/A,1,1,0
+"globally[2,inf](d_IP10(t) < 0)",0.5569751,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+IL6(t)=c(low) implies d_IL12(t) < d_c(high),0.3735301,IL6(t)=c(low) and d_IL12(t) < d_c(high),0.39031285,d_IL1Ra(t) > 0 and d_IL1Ra(t) < d_c(low) implies IL6(t) > c(low),0.3019948,1,1,0

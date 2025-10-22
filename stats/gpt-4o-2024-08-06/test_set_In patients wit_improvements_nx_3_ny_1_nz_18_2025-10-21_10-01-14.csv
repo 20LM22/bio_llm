@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,0,0,1
+"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,0,0,1
+"eventually[0,14](d_SARSCoV2(t) > 0)",0.49770415,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,1,0,0
+"eventually[0,14](IFNγ(t) > c(low))",0.2223741,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,1,0,0
+"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,0,0,1
+"eventually[0,14](d_SARSCoV2(t) > d_c(low))",0.47616112,"eventually[0,14](SARSCoV2(t) = c(mid))",0.5323291,1,0,0
+"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,0,0,1
+"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](SARSCoV2(t)=c(high))",0.5198985,1,0,0
+"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,0,0,1
+"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,0,0,1
+"eventually[0,14](d_SARSCoV2(t) > 0)",0.49770415,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,1,0,0
+"eventually[0,14](d_SARSCoV2(t) > d_c(low))",0.47616112,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,1,0,0
+"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,0,0,1
+"eventually[0,14](d_SARSCoV2(t) > d_c(low))",0.47616112,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,1,0,0
+"eventually[0,14](SARSCoV2(t) > c(mid))",0.5264584,"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,0,1,0
+"eventually[0,14](SARSCoV2(t) > c(low))",0.5027462,"eventually[0,14](d_SARSCoV2(t) > d_c(low))",0.47616112,0,1,0
+"eventually[0,14](d_SARSCoV2(t) > d_c(low))",0.47616112,"eventually[0,14](d_SARSCoV2(t) > d_c(low))",0.47616112,0,0,1
+"eventually[0,14](d_SARSCoV2(t) > d_c(low))",0.47616112,"eventually[0,14](d_SARSCoV2(t) > d_c(low))",0.47616112,0,0,1

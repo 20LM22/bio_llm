@@ -1,0 +1,4 @@
+INFO 10-21 10:03:59 [__init__.py:244] Automatically detected platform cuda.
+sys argv 2
+../config/config_nx_3_ny_1_nz_18_test_set.json
+Loaded curated dataset

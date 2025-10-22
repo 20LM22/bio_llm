@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # TODO: make sure that official model names and models line up correctly
-models=('Qwen3-1.7B')
-official_model_names=('Qwen/Qwen3-1.7B')
+models=('DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen3-1.7B')
+official_model_names=('deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen/Qwen3-1.7B')
 experiments=("nx_3_ny_1_nz_18")
-set_name="val_set"
+set_name="test_set"
 
 # Optional: check that arrays line up
 if [ ${#models[@]} -ne ${#official_model_names[@]} ]; then
