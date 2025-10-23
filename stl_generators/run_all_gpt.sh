@@ -62,7 +62,8 @@ do
 #    python stl_generator_gpt.py "${official_model_names[i]}" "$config" "$experiment" "$time" >| "$convo"
 #    echo "Done with config: $config"
 #    python ../evaluations/stl_evaluation_v6.py "$model" "$translations" "$config" "$time"
-    python ../evaluations/generate_semantic_distribution_dict.py "$model" "$translations" "$config" "$time"
+#    python ../evaluations/generate_semantic_distribution_dict.py "$model" "$translations" "$config" "$time"
+     python ../evaluations/generate_semantic_distribution_plots.py "$model" "$config" "$time"
     ((i++))
   done
 done

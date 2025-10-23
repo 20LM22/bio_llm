@@ -31,8 +31,8 @@ do
 #    python stl_generator_v7.py "${official_model_names[i]}" "$config" "$experiment" "$time" >| "$convo"
 #    echo "Done with version: $config"
 #    python ../evaluations/stl_evaluation_v6.py "$model" "$translations" "$config" "$time"
-    python ../evaluations/generate_semantic_distribution_dict.py "$model" "$translations" "$config" "$time"
-#    python ../evaluations/generate_semantic_distribution_plots.py "$model" "$config" "$time"
+#    python ../evaluations/generate_semantic_distribution_dict.py "$model" "$translations" "$config" "$time"
+    python ../evaluations/generate_semantic_distribution_plots.py "$model" "$config" "$time"
   done
 done
 
@@ -98,3 +98,18 @@ done
 ##python nl_vs_literal.py 'DeepSeek-R1-Distill-Qwen-1.5B' "val_set_translations_DeepSeek-R1-Distill-Qwen-1.5B_nx_4_ny_2_nz_18_2025-10-13_23-11-29.pkl" "config_nx_4_ny_2_nz_18_val_set.json" '2025-10-13_23-11-29'
 ##python nl_vs_literal.py 'Qwen3-1.7B' "val_set_translations_Qwen3-1.7B_nx_4_ny_2_nz_18_2025-10-14_00-20-08.pkl" "config_nx_4_ny_2_nz_18_val_set.json" '2025-10-14_00-20-08'
 ##python nl_vs_literal.py 'gpt-4o-2024-08-06' "val_set_translations_gpt-4o-2024-08-06_nx_4_ny_2_nz_18_2025-10-13_21-16-58.pkl" "config_nx_4_ny_2_nz_18_val_set.json" '2025-10-13_21-16-58'
+
+
+# TODO:
+# (1) make the validation graphs --> already have the annotations so need to edit the plots file
+# how to edit the plots file? Make sure that only the 2 sentences are being processed
+# need to find the times
+# val_set, nx_3_ny_1_nz_18, 2025-10-21
+
+# /val_set_semantic_labels_DeepSeek-R1-Distill-Qwen-1.5B_nx_3_ny_1_nz_18_2025-10-19_22-39-33.pkl
+# /val_set_semantic_labels_Qwen3-1.7B_nx_3_ny_1_nz_18_2025-10-21_09-52-46.pkl
+# /val_set_semantic_labels_gpt-4o-2024-08-06_nx_3_ny_1_nz_18_2025-10-19_21-39-51.pkl
+
+# /test_set_semantic_labels_DeepSeek-R1-Distill-Qwen-1.5B_nx_3_ny_1_nz_18_2025-10-21_11-49-17.pkl
+# /test_set_semantic_labels_Qwen3-1.7B_nx_3_ny_1_nz_18_2025-10-21_13-21-56.pkl
+# /test_set_semantic_labels_gpt-4o-2024-08-06_nx_3_ny_1_nz_18_2025-10-21_10-01-14.pkl
