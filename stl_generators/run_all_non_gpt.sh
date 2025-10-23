@@ -32,7 +32,7 @@ do
 #    echo "Done with version: $config"
 #    python ../evaluations/stl_evaluation_v6.py "$model" "$translations" "$config" "$time"
 #    python ../evaluations/generate_semantic_distribution_dict.py "$model" "$translations" "$config" "$time"
-    python ../evaluations/generate_semantic_distribution_plots.py "$model" "$config" "$time"
+    python ../evaluations/generate_semantic_distribution_plots.py "$model" "$config" "$time" >| "output.txt" 2>| "errors.txt"
   done
 done
 

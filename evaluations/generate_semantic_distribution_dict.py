@@ -98,11 +98,9 @@ for key in res.keys(): # res_top.keys():
         print(f"Sentence: {key}")
         print(f"STL: {stl}")
         choice = input("1 for yes, 0 for no: ")
-
         try:
             if choice == "":
                 raise Exception()
-
             if int(choice) == 1:
                 correct += 1
             elif int(choice) == 0:

@@ -31,11 +31,6 @@ try:
 except Exception as e:
     print(e)
 
-print(res)
-
-for i in range(100):
-    print("generating distribution")
-
 # TODO: uncomment when you have annotations for top3/bottom3
 # zeroes_top = [] # list of sim values
 # ones_top = []
@@ -69,27 +64,23 @@ for i in range(100):
 #         else:
 #             raise Exception(f'no choice associated with {stl}')
 
-for i in range(1000):
-    print(f'the sentence is: ff')
-
 for _id, sentence in enumerate(res.keys()): # key is sentence
-    for i in range(1000):
-        print(f'the sentence is: {sentence}')
-
+    # print(res[sentence])
     zeroes = []  # list of sim values
     ones = []
     ones_and_zeroes = []
 
     for stl, sim, choice in res[sentence]:
         ones_and_zeroes.append(sim)
-        if choice is None or choice == '':
-            continue
-        elif int(choice) == 0:
+        try:
+            if choice == "":
+                raise Exception()
+            if int(choice) == 1:
+                ones.append(sim)
+            elif int(choice) == 0:
+                zeroes.append(sim)
+        except Exception as e:
             zeroes.append(sim)
-        elif int(choice) == 1:
-            ones.append(sim)
-        else:
-            raise Exception(f'no choice associated with {stl}')
 
     plt.rcParams['font.size'] = 14
     plt.rcParams['axes.titlesize'] = 10
