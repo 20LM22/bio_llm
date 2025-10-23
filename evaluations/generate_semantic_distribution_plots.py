@@ -109,7 +109,7 @@ for _id, sentence in enumerate(res.keys()): # key is sentence
 
     plt.xlabel('Similarity')
     plt.ylabel('Frequency')
-    plt.ylim(0, 15)
+    plt.ylim(0, 12)
     plt.title(
         f'Hi/Lo Similarity Distribution with Semantic Correctness Labels\nmodel: {model_name}\nnx: {syntax_count}, ny: {semantic_count}, nz: {shot_count}, median: {median}\nsentence: {sentence[0:10]}')
     plt.savefig(
