@@ -66,6 +66,7 @@ do
      rm -f "output.txt"
      rm -f "errors.txt"
      python ../evaluations/generate_semantic_distribution_plots.py "$model" "$config" "$time" >| "output.txt" 2>| "errors.txt"
+
     ((i++))
   done
 done
