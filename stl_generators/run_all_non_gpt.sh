@@ -4,8 +4,8 @@
 models=('DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen3-1.7B')
 official_model_names=('deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen/Qwen3-1.7B')
 experiments=("nx_3_ny_1_nz_18")
-set_name="val_set"
-times=("2025-10-19_22-39-33" "2025-10-21_09-52-46")
+set_name="test_set"
+times=("2025-10-21_11-49-17" "2025-10-21_13-21-56")
 
 # Optional: check that arrays line up
 if [ ${#models[@]} -ne ${#official_model_names[@]} ]; then
@@ -101,7 +101,7 @@ done
 
 
 # TODO:
-# (1) make the validation graphs --> already have the annotations so need to edit the plots file
+# (1) make the validation graphs --> already have the annotations so need to edit the plots file - DONE
 # how to edit the plots file? Make sure that only the 2 sentences are being processed
 # need to find the times
 # val_set, nx_3_ny_1_nz_18, 2025-10-21
@@ -110,6 +110,17 @@ done
 # /val_set_semantic_labels_Qwen3-1.7B_nx_3_ny_1_nz_18_2025-10-21_09-52-46.pkl
 # /val_set_semantic_labels_gpt-4o-2024-08-06_nx_3_ny_1_nz_18_2025-10-19_21-39-51.pkl
 
+# (2) get the test semantic numbers --> check what file they're in - DONE
+# (3) make the test graphs
+
+# first, change the times
 # /test_set_semantic_labels_DeepSeek-R1-Distill-Qwen-1.5B_nx_3_ny_1_nz_18_2025-10-21_11-49-17.pkl
 # /test_set_semantic_labels_Qwen3-1.7B_nx_3_ny_1_nz_18_2025-10-21_13-21-56.pkl
 # /test_set_semantic_labels_gpt-4o-2024-08-06_nx_3_ny_1_nz_18_2025-10-21_10-01-14.pkl
+
+# now the plot file needs to be run 2x to tell us which are the top 3 and bottom 3 for each file
+# comment out the stuff to do with creating the plots <-- here
+# say that they're top and bottom 3 with at least 1 example produced
+
+# (4) rerun the spearman correlation stuff on the test set outputs across 3x models
+
