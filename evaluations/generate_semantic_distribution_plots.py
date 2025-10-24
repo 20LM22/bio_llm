@@ -127,7 +127,7 @@ max_sim = np.max(ones_and_zeroes_bottom)
 min_sim = np.min(ones_and_zeroes_bottom)
 
 bins = np.linspace(min_sim, max_sim, 10)
-plt.figure(figsize=(10,6.5))
+plt.figure(figsize=(10,7))
 plt.hist(ones_bottom, bins=bins, alpha=0.5, color='forestgreen', edgecolor='black')
 plt.hist(zeroes_bottom, bins=bins, alpha=0.5, color='firebrick', edgecolor='black')
 if len(ones_and_zeroes_bottom) > 0:
