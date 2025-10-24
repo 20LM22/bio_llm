@@ -137,10 +137,10 @@ if len(ones_and_zeroes_bottom) > 0:
 
 bottom_median = np.median(ones_and_zeroes_bottom)
 
-plt.xlabel('Similarity', fontsize=22)
-plt.ylabel('Frequency', fontsize=22)
+plt.xlabel('Similarity', fontsize=24)
+plt.ylabel('Frequency', fontsize=24)
 plt.ylim(0, 15) # 15
-plt.tick_params(axis='both', which='major', labelsize=22)
+plt.tick_params(axis='both', which='major', labelsize=24)
 plt.title(f'Bottom Sentences Semantic Pass/Fail Distribution\nmodel: {model_name}\nnx: {syntax_count}, ny: {semantic_count}, nz: {shot_count}, median: {bottom_median}\n')
 plt.savefig(f'../images/{model_name}/{set_name}_bottom_histogram_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pdf')
 plt.close()
