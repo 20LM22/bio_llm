@@ -65,7 +65,7 @@ for _id, sentence in enumerate(res.keys()): # key is sentence
 
     median = np.median(ones_and_zeroes)
 
-    plt.ylim(0, 12) # TODO: update this!
+    plt.ylim(0, 30) # TODO: update this!
     plt.xlabel('Similarity', fontsize=24)
     plt.ylabel('Frequency', fontsize=24)
     plt.tick_params(axis='both', which='major', labelsize=24)
