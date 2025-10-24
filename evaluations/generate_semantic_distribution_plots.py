@@ -23,8 +23,8 @@ try:
 except Exception as e:
     print(e)
 
-sentence_results = []
 for _id, sentence in enumerate(res.keys()): # key is sentence
+    # print(res[sentence])
     zeroes = []  # list of sim values
     ones = []
     ones_and_zeroes = []
@@ -41,109 +41,162 @@ for _id, sentence in enumerate(res.keys()): # key is sentence
         except Exception as e:
             zeroes.append(sim)
 
-    if len(ones_and_zeroes) <= 0:
-        continue
-    median = np.median(ones_and_zeroes)
-    mean = np.average(ones_and_zeroes)
-    sentence_result = [sentence, median, mean]
-    sentence_results.append(sentence_result)
+    plt.rcParams['axes.titlesize'] = 10
 
-df = pandas.DataFrame(sentence_results, columns=["Sentence", "Median", "Mean"])
-sorted_df = df.sort_values(by='Median')
-
-# take rows 1-3 and put them into low, take rows length-3 to length-1 and put them into high
-# get the sentence names and put them into an array
-top_sentences = sorted_df['Sentence'].tail(3).to_numpy()
-bottom_sentences = sorted_df['Sentence'].head(3).to_numpy()
-
-
-zeroes_top = [] # list of sim values
-ones_top = []
-ones_and_zeroes_top = []
-
-zeroes_bottom = [] # list of sim values
-ones_bottom = []
-ones_and_zeroes_bottom = []
-
-for _id, sentence in enumerate(res.keys()): # key is sentence
-    if sentence not in top_sentences and sentence not in bottom_sentences:
-        continue
-
+    max_sim = 0
+    min_sim = 0
+    first_time_max = first_time_min = True
     for stl, sim, choice in res[sentence]:
-        if sentence in top_sentences:
-            ones_and_zeroes_top.append(sim)
-        elif sentence in bottom_sentences:
-            ones_and_zeroes_bottom.append(sim)
-        else:
-            continue
+        if first_time_max or sim > max_sim:
+            max_sim = sim
+            first_time_max = False
+        if first_time_min or sim < min_sim:
+            min_sim = sim
+            first_time_min = False
 
-        try:
-            if choice == "":
-                raise Exception()
-            if int(choice) == 1:
-                if sentence in top_sentences:
-                    ones_top.append(sim)
-                elif sentence in bottom_sentences:
-                    ones_bottom.append(sim)
-            elif int(choice) == 0:
-                if sentence in top_sentences:
-                    zeroes_top.append(sim)
-                elif sentence in bottom_sentences:
-                    zeroes_bottom.append(sim)
-        except Exception as e:
-            if sentence in top_sentences:
-                zeroes_top.append(sim)
-            elif sentence in bottom_sentences:
-                zeroes_bottom.append(sim)
+    bins = np.linspace(min_sim, max_sim, 10)
+    plt.figure(figsize=(10, 8))
+    plt.hist(ones, bins=bins, alpha=0.5, color='forestgreen', edgecolor='black')
+    plt.hist(zeroes, bins=bins, alpha=0.5, color='firebrick', edgecolor='black')
+    if len(ones_and_zeroes) > 0:
+        plt.axvline(np.average(ones_and_zeroes), color='blue', linestyle='dashed', linewidth=1)
+        plt.axvline(np.median(ones_and_zeroes), color='orange', linestyle='dashed', linewidth=1)
+        plt.axvline(np.percentile(ones_and_zeroes, 80), color='purple', linestyle='dashed', linewidth=1)
 
-# Top histogram
-plt.rcParams['font.size'] = 14
-plt.rcParams['axes.titlesize'] = 10
+    median = np.median(ones_and_zeroes)
 
-max_sim = np.max(ones_and_zeroes_top)
-min_sim = np.min(ones_and_zeroes_top)
+    plt.ylim(0, 12) # TODO: update this!
+    plt.xlabel('Similarity', fontsize=24)
+    plt.ylabel('Frequency', fontsize=24)
+    plt.tick_params(axis='both', which='major', labelsize=24)
+    plt.title(
+        f'Hi/Lo Similarity Distribution with Semantic Correctness Labels\nmodel: {model_name}\nnx: {syntax_count}, ny: {semantic_count}, nz: {shot_count}, median: {median}\nsentence: {sentence[0:10]}')
+    plt.savefig(
+        f'../images/{model_name}/{set_name}_hi_lo_sentence_{sentence[0:10]}_histogram_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}.pdf')
+    plt.close()
 
-bins = np.linspace(min_sim, max_sim, 10)
-plt.figure(figsize=(10,8))
-plt.hist(ones_top, bins=bins, alpha=0.5, color='forestgreen', edgecolor='black')
-plt.hist(zeroes_top, bins=bins, alpha=0.5, color='firebrick', edgecolor='black')
-if len(ones_and_zeroes_top) > 0:
-    plt.axvline(np.average(ones_and_zeroes_top), color='blue', linestyle='dashed', linewidth=1)
-    plt.axvline(np.median(ones_and_zeroes_top), color='orange', linestyle='dashed', linewidth=1)
-    plt.axvline(np.percentile(ones_and_zeroes_top,80), color='purple', linestyle='dashed', linewidth=1)
-
-top_median = np.median(ones_and_zeroes_top)
-
-plt.xlabel('Similarity', fontsize=24)
-plt.ylabel('Frequency', fontsize=24)
-plt.ylim(0, 35) # 15
-plt.tick_params(axis='both', which='major', labelsize=24)
-plt.title(f'Top Sentences Semantic Pass/Fail Distribution\nmodel: {model_name}\nnx: {syntax_count}, ny: {semantic_count}, nz: {shot_count}, median: {top_median}\n')
-plt.savefig(f'../images/{model_name}/{set_name}_top_histogram_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pdf')
-plt.close()
-
-# Bottom histogram
-max_sim = np.max(ones_and_zeroes_bottom)
-min_sim = np.min(ones_and_zeroes_bottom)
-
-bins = np.linspace(min_sim, max_sim, 10)
-plt.figure(figsize=(10,8))
-plt.hist(ones_bottom, bins=bins, alpha=0.5, color='forestgreen', edgecolor='black')
-plt.hist(zeroes_bottom, bins=bins, alpha=0.5, color='firebrick', edgecolor='black')
-if len(ones_and_zeroes_bottom) > 0:
-    plt.axvline(np.average(ones_and_zeroes_bottom), color='blue', linestyle='dashed', linewidth=1)
-    plt.axvline(np.median(ones_and_zeroes_bottom), color='orange', linestyle='dashed', linewidth=1)
-    plt.axvline(np.percentile(ones_and_zeroes_bottom,80), color='purple', linestyle='dashed', linewidth=1)
-
-bottom_median = np.median(ones_and_zeroes_bottom)
-
-plt.xlabel('Similarity', fontsize=24)
-plt.ylabel('Frequency', fontsize=24)
-plt.ylim(0, 35) # 15
-plt.tick_params(axis='both', which='major', labelsize=24)
-plt.title(f'Bottom Sentences Semantic Pass/Fail Distribution\nmodel: {model_name}\nnx: {syntax_count}, ny: {semantic_count}, nz: {shot_count}, median: {bottom_median}\n')
-plt.savefig(f'../images/{model_name}/{set_name}_bottom_histogram_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pdf')
-plt.close()
+#
+# sentence_results = []
+# for _id, sentence in enumerate(res.keys()): # key is sentence
+#     zeroes = []  # list of sim values
+#     ones = []
+#     ones_and_zeroes = []
+#
+#     for stl, sim, choice in res[sentence]:
+#         ones_and_zeroes.append(sim)
+#         try:
+#             if choice == "":
+#                 raise Exception()
+#             if int(choice) == 1:
+#                 ones.append(sim)
+#             elif int(choice) == 0:
+#                 zeroes.append(sim)
+#         except Exception as e:
+#             zeroes.append(sim)
+#
+#     if len(ones_and_zeroes) <= 0:
+#         continue
+#     median = np.median(ones_and_zeroes)
+#     mean = np.average(ones_and_zeroes)
+#     sentence_result = [sentence, median, mean]
+#     sentence_results.append(sentence_result)
+#
+# df = pandas.DataFrame(sentence_results, columns=["Sentence", "Median", "Mean"])
+# sorted_df = df.sort_values(by='Median')
+#
+# # take rows 1-3 and put them into low, take rows length-3 to length-1 and put them into high
+# # get the sentence names and put them into an array
+# top_sentences = sorted_df['Sentence'].tail(3).to_numpy()
+# bottom_sentences = sorted_df['Sentence'].head(3).to_numpy()
+#
+#
+# zeroes_top = [] # list of sim values
+# ones_top = []
+# ones_and_zeroes_top = []
+#
+# zeroes_bottom = [] # list of sim values
+# ones_bottom = []
+# ones_and_zeroes_bottom = []
+#
+# for _id, sentence in enumerate(res.keys()): # key is sentence
+#     if sentence not in top_sentences and sentence not in bottom_sentences:
+#         continue
+#
+#     for stl, sim, choice in res[sentence]:
+#         if sentence in top_sentences:
+#             ones_and_zeroes_top.append(sim)
+#         elif sentence in bottom_sentences:
+#             ones_and_zeroes_bottom.append(sim)
+#         else:
+#             continue
+#
+#         try:
+#             if choice == "":
+#                 raise Exception()
+#             if int(choice) == 1:
+#                 if sentence in top_sentences:
+#                     ones_top.append(sim)
+#                 elif sentence in bottom_sentences:
+#                     ones_bottom.append(sim)
+#             elif int(choice) == 0:
+#                 if sentence in top_sentences:
+#                     zeroes_top.append(sim)
+#                 elif sentence in bottom_sentences:
+#                     zeroes_bottom.append(sim)
+#         except Exception as e:
+#             if sentence in top_sentences:
+#                 zeroes_top.append(sim)
+#             elif sentence in bottom_sentences:
+#                 zeroes_bottom.append(sim)
+#
+# # Top histogram
+# plt.rcParams['font.size'] = 14
+# plt.rcParams['axes.titlesize'] = 10
+#
+# max_sim = np.max(ones_and_zeroes_top)
+# min_sim = np.min(ones_and_zeroes_top)
+#
+# bins = np.linspace(min_sim, max_sim, 10)
+# plt.figure(figsize=(10,8))
+# plt.hist(ones_top, bins=bins, alpha=0.5, color='forestgreen', edgecolor='black')
+# plt.hist(zeroes_top, bins=bins, alpha=0.5, color='firebrick', edgecolor='black')
+# if len(ones_and_zeroes_top) > 0:
+#     plt.axvline(np.average(ones_and_zeroes_top), color='blue', linestyle='dashed', linewidth=1)
+#     plt.axvline(np.median(ones_and_zeroes_top), color='orange', linestyle='dashed', linewidth=1)
+#     plt.axvline(np.percentile(ones_and_zeroes_top,80), color='purple', linestyle='dashed', linewidth=1)
+#
+# top_median = np.median(ones_and_zeroes_top)
+#
+# plt.xlabel('Similarity', fontsize=24)
+# plt.ylabel('Frequency', fontsize=24)
+# plt.ylim(0, 35) # 15
+# plt.tick_params(axis='both', which='major', labelsize=24)
+# plt.title(f'Top Sentences Semantic Pass/Fail Distribution\nmodel: {model_name}\nnx: {syntax_count}, ny: {semantic_count}, nz: {shot_count}, median: {top_median}\n')
+# plt.savefig(f'../images/{model_name}/{set_name}_top_histogram_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pdf')
+# plt.close()
+#
+# # Bottom histogram
+# max_sim = np.max(ones_and_zeroes_bottom)
+# min_sim = np.min(ones_and_zeroes_bottom)
+#
+# bins = np.linspace(min_sim, max_sim, 10)
+# plt.figure(figsize=(10,8))
+# plt.hist(ones_bottom, bins=bins, alpha=0.5, color='forestgreen', edgecolor='black')
+# plt.hist(zeroes_bottom, bins=bins, alpha=0.5, color='firebrick', edgecolor='black')
+# if len(ones_and_zeroes_bottom) > 0:
+#     plt.axvline(np.average(ones_and_zeroes_bottom), color='blue', linestyle='dashed', linewidth=1)
+#     plt.axvline(np.median(ones_and_zeroes_bottom), color='orange', linestyle='dashed', linewidth=1)
+#     plt.axvline(np.percentile(ones_and_zeroes_bottom,80), color='purple', linestyle='dashed', linewidth=1)
+#
+# bottom_median = np.median(ones_and_zeroes_bottom)
+#
+# plt.xlabel('Similarity', fontsize=24)
+# plt.ylabel('Frequency', fontsize=24)
+# plt.ylim(0, 35) # 15
+# plt.tick_params(axis='both', which='major', labelsize=24)
+# plt.title(f'Bottom Sentences Semantic Pass/Fail Distribution\nmodel: {model_name}\nnx: {syntax_count}, ny: {semantic_count}, nz: {shot_count}, median: {bottom_median}\n')
+# plt.savefig(f'../images/{model_name}/{set_name}_bottom_histogram_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pdf')
+# plt.close()
 
 # #----------------------------------------------------------------------------------------------
 # # # do them as sentences

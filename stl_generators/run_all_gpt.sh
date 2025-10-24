@@ -37,7 +37,7 @@ official_model_names=('gpt-4o-2024-08-06')
 #done
 
 experiments=("nx_3_ny_1_nz_18")
-set_name="test_set"
+set_name="val_set"
 
 # Optional safety check
 if [ ${#models[@]} -ne ${#official_model_names[@]} ]; then
@@ -53,7 +53,7 @@ do
   i=0
   for model in "${models[@]}"
   do
-    time="2025-10-21_10-01-14" #$(/usr/bin/date +%F_%H-%M-%S)
+    time='2025-10-19_21-39-51' # "2025-10-21_10-01-14" #$(/usr/bin/date +%F_%H-%M-%S)
     convo="../stats/${model}/convo_${experiment}_${time}.txt"
     translations="${set_name}_translations_${model}_${experiment}_${time}.pkl"
 #test_set_stats_nx_3_ny_1_nz_18_2025-10-21_10-01-14.csv
