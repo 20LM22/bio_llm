@@ -104,7 +104,7 @@ max_sim = np.max(ones_and_zeroes_top)
 min_sim = np.min(ones_and_zeroes_top)
 
 bins = np.linspace(min_sim, max_sim, 10)
-plt.figure(figsize=(10,6))
+plt.figure(figsize=(10,8))
 plt.hist(ones_top, bins=bins, alpha=0.5, color='forestgreen', edgecolor='black')
 plt.hist(zeroes_top, bins=bins, alpha=0.5, color='firebrick', edgecolor='black')
 if len(ones_and_zeroes_top) > 0:
@@ -114,10 +114,10 @@ if len(ones_and_zeroes_top) > 0:
 
 top_median = np.median(ones_and_zeroes_top)
 
-plt.xlabel('Similarity', fontsize=22)
-plt.ylabel('Frequency', fontsize=22)
+plt.xlabel('Similarity', fontsize=24)
+plt.ylabel('Frequency', fontsize=24)
 plt.ylim(0, 15) # 15
-plt.tick_params(axis='both', which='major', labelsize=22)
+plt.tick_params(axis='both', which='major', labelsize=24)
 plt.title(f'Top Sentences Semantic Pass/Fail Distribution\nmodel: {model_name}\nnx: {syntax_count}, ny: {semantic_count}, nz: {shot_count}, median: {top_median}\n')
 plt.savefig(f'../images/{model_name}/{set_name}_top_histogram_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pdf')
 plt.close()
