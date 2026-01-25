@@ -1,0 +1,457 @@
+[
+  {
+    "input_sentence": "This is the reason that seroconversion (undetectable stage to production of IgM followed by IgG) in 100% of infected people (with positive virus-specific IgG) is achieved 17–19 days after commencement of indications [7].",
+    "stl": [
+      {
+        "formula": "eventually[17,19](IgG(t) > c(low))",
+        "absorbed": 7
+      },
+      {
+        "formula": "eventually[0,19](IgG(t) = c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "globally[17,19](SARSCoV2(t) = c(low) and d_SARSCoV2(t) = 0)",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[17,19](SARSCoV2(t) = c(low))",
+        "absorbed": 1
+      },
+      {
+        "formula": "globally[17,19](SARSCoV2(t) < c(low) implies SARSCoV2(t) = c(low))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[17,19](SARSCoV2(t) > c(mid))",
+        "absorbed": 22
+      },
+      {
+        "formula": "eventually[17,19](SARSCoV2(t) < c(low))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[17,19](d_IgM(t) > d_c(low) and d_IgG(t) > d_c(low))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[17,19](IL6(t) = c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[17,19](IgM(t) > c(low) and IgG(t) > c(low))",
+        "absorbed": 8
+      },
+      {
+        "formula": "globally[17,19](SARSCoV2(t) > c(low) implies IL1RN(t) > c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[17,19](SARSCoV2(t) > c(low) implies IgG(t) = c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[17,19](d_IgM(t) > 0 and IgG(t) = c(high))",
+        "absorbed": 1
+      },
+      {
+        "formula": "eventually[0,17](IgM(t) = c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "globally[17,19](SARSCoV2(t) = c(low) implies IFNα(t) = c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[17,19](d_SARSCoV2(t) = d_c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "globally[17,19](d_IL6(t) > d_c(low) and IL6(t) = c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[17,19](IFNβ(t) = c(high))",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 57,
+      "final": 18,
+      "reduction": 39,
+      "reduction_ratio": 0.3157894736842105
+    },
+    "per_bin_stats": {
+      "IgG": {
+        "initial": 9,
+        "final": 2,
+        "reduction": 7,
+        "reduction_ratio": 0.7777777777777778
+      },
+      "SARSCoV2-d_SARSCoV2": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "SARSCoV2": {
+        "initial": 27,
+        "final": 4,
+        "reduction": 23,
+        "reduction_ratio": 0.8518518518518519
+      },
+      "d_IgM-d_IgG": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "IL6": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "IgG-IgM": {
+        "initial": 9,
+        "final": 1,
+        "reduction": 8,
+        "reduction_ratio": 0.8888888888888888
+      },
+      "SARSCoV2-IL1RN": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "IgG-SARSCoV2": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "IgG-d_IgM": {
+        "initial": 2,
+        "final": 1,
+        "reduction": 1,
+        "reduction_ratio": 0.5
+      },
+      "IgM": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "SARSCoV2-IFNα": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "d_SARSCoV2": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "IL6-d_IL6": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "IFNβ": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "In parallel, stimulation with CpG 2216 also resulted in lower, but clearly detectable, amounts of IFNs.",
+    "stl": [
+      {
+        "formula": "eventually[0,inf](IFNα(t) > c(low) and IFNα(t) < c(mid))",
+        "absorbed": 8
+      },
+      {
+        "formula": "IFNα(t) > c(low)",
+        "absorbed": 28
+      },
+      {
+        "formula": "IFNα(t) < c(high)",
+        "absorbed": 27
+      },
+      {
+        "formula": "IFNβ(t) > c(low)",
+        "absorbed": 20
+      },
+      {
+        "formula": "IFNβ(t) < c(high)",
+        "absorbed": 16
+      },
+      {
+        "formula": "CpG2216(t) > c(low) implies IFNα(t) > c(low)",
+        "absorbed": 0
+      },
+      {
+        "formula": "CpG2216(t) = c(mid) implies IFNα(t) = c(mid)",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 106,
+      "final": 7,
+      "reduction": 99,
+      "reduction_ratio": 0.06603773584905659
+    },
+    "per_bin_stats": {
+      "IFNα": {
+        "initial": 66,
+        "final": 3,
+        "reduction": 63,
+        "reduction_ratio": 0.9545454545454546
+      },
+      "IFNβ": {
+        "initial": 38,
+        "final": 2,
+        "reduction": 36,
+        "reduction_ratio": 0.9473684210526316
+      },
+      "CpG2216-IFNα": {
+        "initial": 2,
+        "final": 2,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "Monocyte chemotactic factor chemokine(C-C motif) ligand 2 (CCL2) was increased in the blood of infected patients as well as the transcripts of its receptor CCR2; this was associated with low counts of circulating inflammatory monocytes (Fig. 4I), suggesting a rolefor the CCL2/CCR2 axis in the monocyte chemo-attraction into the inflamed lungs.",
+    "stl": [
+      {
+        "formula": "CCL2(t) > c(mid)",
+        "absorbed": 3
+      },
+      {
+        "formula": "CCR2(t) > c(mid) implies CCL2(t) < c(low)",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[0,inf](CCL2(t) > c(mid) and CCR2(t) > c(mid))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[0,inf](d_IL8(t) > d_c(low) and IL1β(t) < c(low))",
+        "absorbed": 1
+      },
+      {
+        "formula": "globally[0,inf](d_IL8(t) > d_c(high) and IL1β(t) < c(low)) implies eventually[0,inf](IL1Ra(t) < c(low))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[0,inf](d_CCL2(t) = d_c(high) and d_CCR2(t) = d_c(low))",
+        "absorbed": 1
+      },
+      {
+        "formula": "d_CCL2(t) > 0",
+        "absorbed": 3
+      },
+      {
+        "formula": "d_CCR2(t) > 0 implies MCP1(t) < c(low)",
+        "absorbed": 0
+      },
+      {
+        "formula": "d_IL6(t) > 0",
+        "absorbed": 0
+      },
+      {
+        "formula": "d_IL1β(t) > 0 implies IL1RN(t) < c(low)",
+        "absorbed": 0
+      },
+      {
+        "formula": "d_IL8(t) > d_c(low)",
+        "absorbed": 1
+      },
+      {
+        "formula": "IL1β(t) < c(low)",
+        "absorbed": 2
+      },
+      {
+        "formula": "d_CCR2(t) > d_c(low)",
+        "absorbed": 2
+      },
+      {
+        "formula": "eventually[0,inf](d_IL8(t) > d_c(low) and IL8(t) < c(low))",
+        "absorbed": 0
+      },
+      {
+        "formula": "MCP1(t) < c(low)",
+        "absorbed": 0
+      },
+      {
+        "formula": "IL12(t) < c(low)",
+        "absorbed": 0
+      },
+      {
+        "formula": "CCR2(t) > c(mid) implies IL8(t) < c(low)",
+        "absorbed": 0
+      },
+      {
+        "formula": "IL1α(t) < c(low)",
+        "absorbed": 0
+      },
+      {
+        "formula": "IL1Ra(t) > c(high)",
+        "absorbed": 0
+      },
+      {
+        "formula": "IL8(t) > c(high)",
+        "absorbed": 0
+      },
+      {
+        "formula": "CCR2(t) > c(high) implies MCP1(t) < c(low)",
+        "absorbed": 0
+      },
+      {
+        "formula": "CCR2(t) > c(mid)",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 35,
+      "final": 22,
+      "reduction": 13,
+      "reduction_ratio": 0.6285714285714286
+    },
+    "per_bin_stats": {
+      "CCL2": {
+        "initial": 4,
+        "final": 1,
+        "reduction": 3,
+        "reduction_ratio": 0.75
+      },
+      "CCR2-CCL2": {
+        "initial": 2,
+        "final": 2,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "IL1β-d_IL8": {
+        "initial": 2,
+        "final": 1,
+        "reduction": 1,
+        "reduction_ratio": 0.5
+      },
+      "IL1β-d_IL8-IL1Ra": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "d_CCR2-d_CCL2": {
+        "initial": 2,
+        "final": 1,
+        "reduction": 1,
+        "reduction_ratio": 0.5
+      },
+      "d_CCL2": {
+        "initial": 4,
+        "final": 1,
+        "reduction": 3,
+        "reduction_ratio": 0.75
+      },
+      "d_CCR2-MCP1": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "d_IL6": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "d_IL1β-IL1RN": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "d_IL8": {
+        "initial": 2,
+        "final": 1,
+        "reduction": 1,
+        "reduction_ratio": 0.5
+      },
+      "IL1β": {
+        "initial": 3,
+        "final": 1,
+        "reduction": 2,
+        "reduction_ratio": 0.6666666666666667
+      },
+      "d_CCR2": {
+        "initial": 3,
+        "final": 1,
+        "reduction": 2,
+        "reduction_ratio": 0.6666666666666667
+      },
+      "d_IL8-IL8": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "MCP1": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "IL12": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "CCR2-IL8": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "IL1α": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "IL1Ra": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "IL8": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "CCR2-MCP1": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "CCR2": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  }
+]

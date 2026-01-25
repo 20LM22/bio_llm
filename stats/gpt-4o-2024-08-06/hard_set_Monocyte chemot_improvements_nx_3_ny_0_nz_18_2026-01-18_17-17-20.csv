@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+d_CCL2(t) > 0 and d_CCR2(t) > 0 implies MCP1(t) < c(low),0.34233645,0,0,0
+"globally[0,inf](d_CCL2(t) > d_c(low) and d_CCR2(t) > d_c(low)) implies eventually[0,inf](CCL2(t) < c(low))",0.28185397,0,0,0
+CCL2(t) > c(mid) and CCR2(t) > c(mid) implies IL1β(t) < c(mid),0.5520078,0,0,0
+N/A,N/A,0,0,0
+"d_CCL2(t) > d_c(low) and d_CCR2(t) > d_c(low) and eventually[0,inf]globally(CCL2(t) > c(mid) and CCR2(t) > c(low))",0.30560088,0,0,0
+N/A,N/A,0,0,0
+N/A,N/A,0,0,0
+N/A,N/A,0,0,0
+CCL2(t) > c(mid) and CCR2(t) > c(mid),0.41968256,0,0,0
+d_CCL2(t) > d_c(low) and d_CCR2(t) > d_c(low) and MCP1(t) < c(low) implies IFNγ(t) > c(mid),0.25773305,0,0,0
+CCL2(t) = c(high) and CCR2(t) = c(high) implies IL1β(t) < c(low),0.53536266,0,0,0
+CCL2(t) = c(high) and CCR2(t) = c(high) implies MCP1(t) < c(low),0.39642408,0,0,0
+d_CCL2(t) > 0 and d_CCR2(t) > 0 implies CCL2(t) < c(low),0.33895224,0,0,0
+d_CCL2(t) > d_c(low) and d_CCR2(t) > d_c(low) implies CCL2(t) < c(low),0.31312424,0,0,0
+"d_CCL2(t) > 0 and d_CCR2(t) > 0 and eventually[0,inf](CCL2(t) > c(mid) and CCR2(t) < c(low))",0.3530184,0,0,0
+N/A,N/A,0,0,0
+N/A,N/A,0,0,0
+d_CCL2(t) = d_c(high) and d_CCR2(t) = d_c(high) and MCP1(t) < c(low),0.3403199,0,0,0

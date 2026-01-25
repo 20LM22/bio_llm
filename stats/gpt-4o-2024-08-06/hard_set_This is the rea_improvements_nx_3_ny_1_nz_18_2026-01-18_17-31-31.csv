@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"eventually[17,19](IgM(t) > c(low) and IgG(t) > c(low))",0.6225954,"eventually[17,19](SARSCoV2(t) = c(high))",0.34618282,0,1,0
+"eventually[17,19](IgG(t) = c(high))",0.4870479,N/A,N/A,0,1,0
+"globally[17,19](IgG(t) = c(high))",0.4699595,"eventually[17,19](IFNβ(t) = c(high))",0.2744577,0,1,0
+"globally[17,19](IgG(t) = c(high))",0.4699595,"eventually[17,19](SARSCoV2(t)=c(high))",0.34618282,0,1,0
+"eventually[17,19](d_IgM(t) = d_c(high) and d_IgG(t) = d_c(high)) and globally[19,inf](IgG(t) > c(mid))",0.5373039,"eventually[17,19](SARSCoV2(t) = c(high))",0.34618282,0,1,0
+"eventually[17,19](IgG(t) = c(high))",0.4870479,"globally[17,19](SARSCoV2(t) = c(low) implies IL1RN(t) = c(high))",0.40130204,0,1,0
+"eventually[17,19](d_IgM(t) > 0 and IgG(t) > c(high))",0.61297274,"eventually[0,19](SARSCoV2(t) < c(low) and IFNα(t) = c(high))",0.34540161,0,1,0
+"eventually[17,19](IgG(t)=c(high))",0.4870479,"eventually[17,19](SARSCoV2(t) = c(high))",0.34618282,0,1,0
+"eventually[17,19](d_IgM(t) > 0 and IgG(t) = c(high))",0.6132473,"eventually[17,19](d_IFNα(t) > d_c(high))",0.22707959,0,1,0
+"eventually[17,19](IgG(t) = c(high))",0.4870479,"eventually[17,19](SARSCoV2(t)=c(high))",0.34618282,0,1,0
+"eventually[17,19](IgM(t) > c(low) and IgG(t) > c(low))",0.6225954,"eventually[17,19](IL6(t)=c(high))",0.25828975,0,1,0
+"globally[17,19](IgG(t) = c(high))",0.4699595,"eventually[17,19]globally(d_IL6(t) > d_c(low))",0.2823482,0,1,0
+"eventually[17,19](IgG(t) = c(high)) and eventually[0,17](d_IgM(t) > d_c(low)) and eventually[0,19](d_IgG(t) > d_c(low))",0.51891255,"eventually[17,19]globally(SARSCoV2(t)=c(high))",0.33000875,0,1,0
+"eventually[17,19]globally(IgG(t) > c(low))",0.4997236,"eventually[17,19](SARSCoV2(t) = c(high))",0.34618282,0,1,0
+"eventually[17,19]globally(IgG(t) > c(low) and IgM(t) > c(low))",0.6244751,"eventually[17,19]globally(IL6(t) > c(high))",0.25181937,0,1,0
+"eventually[17,19](IgG(t) = c(high))",0.4870479,"eventually[17,19](SARSCoV2(t)=c(high))",0.34618282,0,1,0
+"eventually[17,19]globally(IgG(t) = c(high))",0.4822804,"eventually[17,19](SARSCoV2(t) = c(low))",0.3410998,0,1,0
+"eventually[0,17](d_IgM(t) > d_c(low)) and eventually[17,19](IgG(t) = c(high))",0.5436964,"eventually[17,19]globally(SARSCoV2(t)=c(high))",0.33000875,0,1,0

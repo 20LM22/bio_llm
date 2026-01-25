@@ -1,0 +1,4 @@
+input_sentence,mean_sim,percentile_used,threshold,before,after
+This is the reason that seroconversion (undetectable stage to production of IgM followed by IgG) in 100% of infected people (with positive virus-specific IgG) is achieved 17–19 days after commencement of indications [7].,0.5240330100059509,89.51933979988098,0.6176967,6,1
+"In parallel, stimulation with CpG 2216 also resulted in lower, but clearly detectable, amounts of IFNs.",0.49175944924354553,90.0,0.528581,7,1
+"Monocyte chemotactic factor chemokine(C-C motif) ligand 2 (CCL2) was increased in the blood of infected patients as well as the transcripts of its receptor CCR2; this was associated with low counts of circulating inflammatory monocytes (Fig. 4I), suggesting a rolefor the CCL2/CCR2 axis in the monocyte chemo-attraction into the inflamed lungs.",0.35354083776474,90.0,0.49402162,14,2

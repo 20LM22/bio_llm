@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+CCL2(t) > c(mid) and CCR2(t) > c(mid) implies CCL2(t) < c(low),0.4225052,"eventually[0,inf](d_IL8(t) > d_c(low) and IL1β(t) < c(low))",0.22782038,"globally[0,inf](d_IL8(t) > d_c(high) and IL1β(t) < c(low)) implies eventually[0,inf](IL1Ra(t) < c(low))",0.20676067,0,2,0
+"eventually[0,inf](d_CCL2(t)=d_c(high) and d_CCR2(t)=d_c(low))",0.2966072,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"eventually[0,inf](d_CCL2(t) = d_c(high) and d_CCR2(t) = d_c(low))",0.2966072,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+d_CCL2(t) > 0 and d_CCR2(t) > 0 implies MCP1(t) < c(low),0.34233645,d_IL6(t) > 0 and d_IL1β(t) > 0 implies IL1RN(t) < c(low),0.2630121,d_IL8(t)=d_c(high) and IL1β(t) < c(low),0.23500535,0,2,0
+"d_CCL2(t) > d_c(low) and d_CCR2(t) > d_c(low) and eventually[0,inf](CCL2(t) > c(mid) and CCR2(t) > c(mid))",0.299437,"eventually[0,inf](d_IL8(t) > d_c(low) and IL8(t) < c(low))",0.13065502,N/A,N/A,0,2,0
+d_CCL2(t) > d_c(low) and d_CCR2(t) > d_c(low) and MCP1(t) < c(low),0.31821066,d_IL8(t) > d_c(low) and IL12(t) < c(low),0.13389453,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+CCL2(t) > c(mid) and CCR2(t) > c(mid) implies IL8(t) < c(low),0.42994025,"eventually[0,inf](d_IL8(t) > d_c(low) and IL1β(t) < c(low))",0.22782038,N/A,N/A,0,2,0
+d_CCL2(t) > d_c(low) and d_CCR2(t) > d_c(low) and IL1α(t) < c(low),0.38296008,N/A,N/A,IL1Ra(t) > c(high) and IL8(t) > c(high) and IL1β(t) < c(low),0.22953236,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+CCL2(t) > c(high) and CCR2(t) > c(high) implies MCP1(t) < c(low),0.39887843,N/A,N/A,N/A,N/A,0,2,0
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+CCL2(t) > c(mid) and CCR2(t) > c(mid) and IL1β(t) < c(low),0.5493592,N/A,N/A,N/A,N/A,0,2,0
