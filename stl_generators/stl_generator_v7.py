@@ -68,6 +68,7 @@ try:
     with open(f'{params['curated_dataset']}', 'rb') as f:
         curated_dataset = pickle.load(f)
         print(f'Loaded curated dataset')
+        print(f"curated dset: \n{curated_dataset}")
 except Exception as e:
     print(e)
 
