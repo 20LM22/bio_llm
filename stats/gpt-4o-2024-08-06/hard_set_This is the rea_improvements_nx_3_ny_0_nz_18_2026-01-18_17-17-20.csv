@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"eventually[17,19]globally(IgG(t) = c(high)) and eventually[0,17](d_IgM(t) > d_c(low)) and eventually[0,19](d_IgG(t) > d_c(low))",0.50881624,0,0,0
+"eventually[17,19](IgM(t) > c(low) and IgG(t) = c(high))",0.6165038,0,0,0
+"globally[17,19](IgG(t) = c(high))",0.4699595,0,0,0
+"eventually[17,19]globally(IgG(t)=c(high) and d_IgM(t) > 0)",0.6131235,0,0,0
+"eventually[17,19]globally(IgG(t) = c(high))",0.4822804,0,0,0
+"eventually[17,19]globally(IgG(t) > c(low))",0.4997236,0,0,0
+"globally[17,19](IgM(t) > c(low) and IgG(t) > c(low))",0.6177775,0,0,0
+"eventually[17,19](IgM(t) > c(low) and IgG(t) = c(high))",0.6165038,0,0,0
+"eventually[17,19](IgG(t) = c(high))",0.4870479,0,0,0
+"eventually[17,19](d_IgM(t) > 0 and IgG(t) = c(high))",0.6132473,0,0,0
+"globally[17,19](IgM(t) > c(low) and IgG(t) > c(low))",0.6177775,0,0,0
+"eventually[17,19](IgM(t) > c(low) and IgG(t) > c(low))",0.6225954,0,0,0
+"eventually[17,19](d_IgM(t) > d_c(low) and IgG(t) = c(high))",0.6019162,0,0,0
+"eventually[17,19](IgM(t) > c(low) and IgG(t) = c(high))",0.6165038,0,0,0
+"eventually[17,19](IgM(t) > c(low) and IgG(t) = c(high))",0.6165038,0,0,0
+"globally[17,19](IgG(t) = c(high) and IgM(t) > c(low))",0.61327523,0,0,0
+"eventually[17,19](IgG(t) = c(high))",0.4870479,0,0,0
+"eventually[17,19](IgM(t) > c(low) and IgG(t) > c(low))",0.6225954,0,0,0

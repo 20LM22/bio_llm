@@ -380,7 +380,7 @@ class SMTSolver(Interpreter):
         if key not in self.signal_vars:
             self.signal_vars[key] = Real(f"{name}_{t}")
         return self.signal_vars[key]
-
+    
     def get_derivative_threshold(self, value):
         if value == 'd_c(low)':
             return RealVal(1)
@@ -396,6 +396,8 @@ class SMTSolver(Interpreter):
             raise Exception("Unknown derivative c-value")
 
     def get_signal_threshold(self, value):
+        # print("hellllllooo")
+        # print(f"value: {value}")
         if value == 'c(high)':
             return RealVal(3)
         elif value == 'c(mid)':
@@ -433,7 +435,13 @@ class SMTSolver(Interpreter):
         return And(r1,r2)
 
     def gt(self, node):
-        threshold = self.get_signal_threshold(node.children[1].children[0])
+        threshold = ""
+        try:    
+            threshold = self.get_signal_threshold(node.children[1].children[0])
+        except Exception as e:
+            name = node.children[1].children[0].children[0].value
+            time = node.children[1].children[1].children[0].value
+            threshold = Real(f"{name}_{time}")
 
         if self.time_flag:
             t = self.current_time
@@ -446,7 +454,13 @@ class SMTSolver(Interpreter):
             return And(reqs)
 
     def lt(self, node):
-        threshold = self.get_signal_threshold(node.children[1].children[0])
+        threshold = ""
+        try:    
+            threshold = self.get_signal_threshold(node.children[1].children[0])
+        except Exception as e:
+            name = node.children[1].children[0].children[0].value
+            time = node.children[1].children[1].children[0].value
+            threshold = Real(f"{name}_{time}")
 
         if self.time_flag:
             t = self.current_time
@@ -459,7 +473,13 @@ class SMTSolver(Interpreter):
             return And(reqs)
 
     def eq(self, node):
-        threshold = self.get_signal_threshold(node.children[1].children[0])
+        threshold = ""
+        try:
+            threshold = self.get_signal_threshold(node.children[1].children[0])
+        except Exception as e:
+            name = node.children[1].children[0].children[0].value
+            time = node.children[1].children[1].children[0].value
+            threshold = Real(f"{name}_{time}")
 
         if self.time_flag:
             t = self.current_time
@@ -597,17 +617,20 @@ def get_species_list_STL2literal(parsed_input):
     return '-'.join(s.species_list)
 
 def get_smt(parsed_input):
+    # print(f"get smt: {parsed_input}")
     smt = SMTSolver()
     return smt.visit(parsed_input)
 
 if __name__ == '__main__':
     grammar = "?start: omega\n?u: gt | lt | eq | d_gt | d_lt | d_eq\ngt: s \"(t)\" \">\" c\nlt: s \"(t)\" \"<\" c\neq: s \"(t)\" \"=\" c\nd_gt: \"d_\" s \"(t)\" \">\" D_C\nd_lt: \"d_\" s \"(t)\" \"<\" D_C\nd_eq: \"d_\" s \"(t)\" \"=\" D_C\nc: s \"(\" t_a \")\" | C_LOW | C_MID | C_HIGH\nC_LOW: \"c(low)\"\nC_MID: \"c(mid)\"\nC_HIGH: \"c(high)\"\nD_C : \"0\" | \"d_c(low)\" | \"d_c(high)\" | \"-d_c(low)\" | \"-d_c(high)\"\n?nu : u | u_implies_u | u_and_u\nu_implies_u: u \"implies\" u\nu_and_u: u \"and\" u\n?psi: temp_op_fg | temp_op_g | temp_op_f\ntemp_op_fg: \"eventually\" \"[\" t_a \",\" t_a \"]\" \"globally\" \"(\" nu \")\"\ntemp_op_f: \"eventually\" \"[\" t_a \",\" t_a \"]\" \"(\" nu \")\"\ntemp_op_g: \"globally\" \"[\" t_a \",\" t_a \"]\" \"(\" nu \")\"\nomega: nu | psi | omega_and_omega | psi_implies_psi\nomega_and_omega: omega \"and\" omega\npsi_implies_psi: psi \"implies\" psi\nTANUM: /[0-9]+/\nINFINITY: \"inf\" | \"∞\"\nt_a: TANUM | INFINITY\ns: /[\\w]+/\nd_s: /d_[\\w]+/\n%import common.WS\n%ignore WS"
     p = Lark(grammar)
-    input_sentence1 = "eventually[8,18]globally(d_IL1RN(t) > c(high))"
-    input_sentence2 = "d_IL1RN(t) = c(high)"
+    # input_sentence1 = "eventually[8,18]globally(d_IL1RN(t) > c(high))"
+    # input_sentence2 = "d_IL1RN(t) = c(high)"
+    input_sentence2 = "eventually[1,7](IL1RN(t)=c(high)) and eventually[15,21](IL1RN(t)=c(high)) and eventually[22,28](IL1RN(t)=c(high))"
 
     tree = p.parse(input_sentence2)
-    print(check_derivative_STL2literal(tree))
+    # print(check_derivative_STL2literal(tree))
+    print(tree)
 
     # tree1 = p.parse(input_sentence1)
     # print(input_sentence1)

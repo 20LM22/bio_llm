@@ -1,8 +1,6 @@
 #!/bin/bash
 
 # TODO: make sure that official model names and models line up correctly
-models=('gpt-4o-2024-08-06')
-official_model_names=('gpt-4o-2024-08-06')
 #experiments=("nx_1_ny_2_nz_18" "nx_2_ny_2_nz_18" "nx_3_ny_1_nz_18" "nx_3_ny_2_nz_18" "nx_4_ny_2_nz_18")
 #set_name="val_set"
 #
@@ -36,42 +34,36 @@ official_model_names=('gpt-4o-2024-08-06')
 #  done
 #done
 
+models=('gpt-4o-2024-08-06') # ('gpt-5.2-2025-12-11')
+official_model_names=('gpt-4o-2024-08-06') # ('gpt-5.2-2025-12-11')
+
 experiments=("nx_3_ny_1_nz_18")
-set_name="val_set"
+set_name="final_test_set" 
+# times=("2025-12-30_00-35-54")
 
-# Optional safety check
-if [ ${#models[@]} -ne ${#official_model_names[@]} ]; then
-  echo "Error: 'models' and 'official_model_names' arrays must have the same length."
-  exit 1
-fi
-
+i=0
 for experiment in "${experiments[@]}"
 do
   config="config_${experiment}_${set_name}.json"
   echo "$config"
-
-  i=0
   for model in "${models[@]}"
   do
-    time='2025-10-19_21-39-51' # "2025-10-21_10-01-14" #$(/usr/bin/date +%F_%H-%M-%S)
+    time=$(/usr/bin/date +%F_%H-%M-%S) # "${times[$i]}"
     convo="../stats/${model}/convo_${experiment}_${time}.txt"
     translations="${set_name}_translations_${model}_${experiment}_${time}.pkl"
-#test_set_stats_nx_3_ny_1_nz_18_2025-10-21_10-01-14.csv
-# test_set_translations_gpt-4o-2024-08-06_nx_3_ny_1_nz_18_2025-10-21_10-01-14
-    echo "$config"
-#    python stl_generator_gpt.py "${official_model_names[i]}" "$config" "$experiment" "$time" >| "$convo"
-#    echo "Done with config: $config"
-#    python ../evaluations/stl_evaluation_v6.py "$model" "$translations" "$config" "$time"
-#    python ../evaluations/generate_semantic_distribution_dict.py "$model" "$translations" "$config" "$time"
-     rm -f "output.txt"
-     rm -f "errors.txt"
-     python ../evaluations/generate_semantic_distribution_plots.py "$model" "$config" "$time" >| "output.txt" 2>| "errors.txt"
-
-    ((i++))
+    consolidated_pkl="../pkl/${set_name}_consolidated_${model}_${experiment}_${time}.pkl"
+    filtered_pkl="../pkl/${set_name}_cosine_filtered_${model}_${experiment}_${time}.pkl"
+    
+    python stl_generator_gpt.py "$model" "$config" "$experiment" "$time" >| "$convo"
+    python ../evaluations/stl_evaluation_v6.py "$model" "$translations" "$config" "$time"
+    python ../consolidate/consolidate.py "$model" "$translations" "$config" "$time"
+    python ../consolidate/filter_by_cosine_similarity.py "$model" "$consolidated_pkl" "$config" "$time"       
+    python ../consolidate/annotate_after_cosine_filter.py "$model" "$filtered_pkl" "$config" "$time"       
+  
+    # python stl_generator_gpt.py "$model" "$config" "$experiment" "$time" >| "$convo"
+    # python ../evaluations/stl_evaluation_v6.py "$model" "$translations" "$config" "$time"
+    # python ../evaluations/generate_semantic_distribution_dict.py "$model" "$translations" "$config" "$time"
   done
+  ((++i))
 done
 
-# annotations:
-# GPT: 2025-10-21_10-01-14
-# Qwen: 2025-10-21_13-21-56
-# Deepseek: 2025-10-21_11-49-17

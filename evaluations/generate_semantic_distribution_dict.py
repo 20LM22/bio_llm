@@ -50,32 +50,32 @@ for index, row in translations.iterrows():
 
     # for the nx=2, ny=1, nz=18 results, only TNF ("times intervals, then decreased at the")
     # and It is reported ("It is reported that in recovered case") need to be recorded
-    if "It is reported that in recovered case" in row['input statement'] or "times intervals, then decreased at the" in row['input statement']:
+    # if "It is reported that in recovered case" in row['input statement'] or "times intervals, then decreased at the" in row['input statement']:
     # if 1==1:
-        nl_embedding = np.array(model.encode(row['input statement'], normalize_embeddings=True))
-        row_subset = pandas.DataFrame()
-        row_counter = 0
+    nl_embedding = np.array(model.encode(row['input statement'], normalize_embeddings=True))
+    row_subset = pandas.DataFrame()
+    row_counter = 0
 
-        syntactically_valid_translations = []
+    syntactically_valid_translations = []
 
-        for i in range(shot_count):
-            relevant_translations_cols = []
-            for col in translations.columns:
-                if f'shot{i}-' in col:
-                    relevant_translations_cols.append(col)
-            row_subset = row[relevant_translations_cols] # row subset has everything with shot-i in the column name
+    for i in range(shot_count):
+        relevant_translations_cols = []
+        for col in translations.columns:
+            if f'shot{i}-' in col:
+                relevant_translations_cols.append(col)
+        row_subset = row[relevant_translations_cols] # row subset has everything with shot-i in the column name
 
-            for entry in row_subset:
-                if entry != 'STL could not be extracted' and entry != 'STL could not be parsed' and entry is not None:
-                    # add this entry
-                    entry = entry.replace("∞", "inf")
-                    literal = STL2literal(entry, grammar)
-                    literal_embedding = ( np.array(model.encode(literal, normalize_embeddings=True)) )
-                    sim = cosine_similarity(np.array(literal_embedding).reshape(1,-1), np.array(nl_embedding).reshape(1,-1))[0][0]
-                    # need to record stl and its similarity
-                    syntactically_valid_translations.append((entry, sim))
+        for entry in row_subset:
+            if entry != 'STL could not be extracted' and entry != 'STL could not be parsed' and entry is not None:
+                # add this entry
+                entry = entry.replace("∞", "inf")
+                literal = STL2literal(entry, grammar)
+                literal_embedding = ( np.array(model.encode(literal, normalize_embeddings=True)) )
+                sim = cosine_similarity(np.array(literal_embedding).reshape(1,-1), np.array(nl_embedding).reshape(1,-1))[0][0]
+                # need to record stl and its similarity
+                syntactically_valid_translations.append((entry, sim))
 
-        res[row['input statement']] = syntactically_valid_translations
+    res[row['input statement']] = syntactically_valid_translations
 
 # # print these out to the user and have them mark whether they think they're good or not
 translations_total = 0

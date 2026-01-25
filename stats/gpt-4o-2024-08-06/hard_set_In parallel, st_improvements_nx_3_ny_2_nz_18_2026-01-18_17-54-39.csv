@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"eventually[0,inf](IFNα(t) > c(low) and IFNα(t) < c(mid))",0.37772048,N/A,N/A,"globally[0,inf](IFNα(t) > c(low) and IFNα(t) < c(mid))",0.37585735,0,2,0
+IFNα(t) > c(low) and IFNα(t) < c(mid) and IFNβ(t) > c(low) and IFNβ(t) < c(mid),0.40964085,IFNα(t) < c(mid) and IFNα(t) > c(low),0.4934541,N/A,N/A,1,1,0
+IFNα(t) > c(low) and IFNα(t) < c(mid),0.49393755,IFNα(t) > c(low) and IFNα(t) < c(mid),0.49393755,IFNα(t) > c(low) and IFNβ(t) > c(low),0.48232284,0,1,1
+IFNα(t) > c(low) and IFNα(t) < c(mid),0.49393755,IFNα(t) > c(low) and IFNα(t) < c(mid) and IFNβ(t) > c(low) and IFNβ(t) < c(mid),0.40964085,IFNα(t) > c(low) and IFNα(t) < c(mid),0.49393755,0,1,1
+IFNα(t) > c(low) and IFNα(t) < c(mid) and IFNβ(t) > c(low) and IFNβ(t) < c(mid),0.40964085,N/A,N/A,IFNα(t)=c(low) and IFNβ(t)=c(low),0.49154806,1,1,0
+"globally[0,inf](IFNα(t) < c(mid) and IFNα(t) > c(low))",0.3788666,"globally[0,inf](IFNα(t) > c(low) and IFNα(t) < c(mid))",0.37585735,IFNα(t) < c(mid) and IFNα(t) > c(low) and IFNβ(t) < c(mid) and IFNβ(t) > c(low),0.41199934,1,1,0
+CpG2216(t) > c(low) implies IFNα(t) > c(low) and IFNβ(t) > c(low),0.63808125,IFNα(t) > c(low) and IFNα(t) < c(mid) and IFNβ(t) > c(low) and IFNβ(t) < c(mid),0.40964085,N/A,N/A,0,2,0
+IFNα(t) > c(low) and IFNα(t) < c(mid),0.49393755,"globally[0,inf](IFNα(t) < c(mid) and IFNα(t) > c(low))",0.3788666,IFNα(t) > c(low) and IFNα(t) < c(mid) and IFNβ(t) > c(low) and IFNβ(t) < c(mid),0.40964085,0,2,0
+IFNα(t) > c(low) and IFNα(t) < c(mid) and IFNβ(t) > c(low) and IFNβ(t) < c(mid),0.40964085,N/A,N/A,"globally[0,inf](IFNα(t) > c(low) and IFNα(t) < c(mid))",0.37585735,0,2,0
+IFNα(t) > c(low) and IFNα(t) < c(mid) and IFNβ(t) > c(low) and IFNβ(t) < c(mid),0.40964085,IFNα(t) > c(low) and IFNα(t) < c(mid) and IFNβ(t) > c(low) and IFNβ(t) < c(mid),0.40964085,IFNα(t) > c(low) and IFNα(t) < c(mid),0.49393755,1,0,1
+IFNα(t) > c(low) and IFNβ(t) > c(low),0.48232284,IFNα(t) > c(low) and IFNβ(t) > c(low),0.48232284,N/A,N/A,0,1,1
+N/A,N/A,N/A,N/A,N/A,N/A,0,0,0
+"globally[0,inf](IFNα(t) < c(mid))",0.3612858,IFNα(t) = c(low) and IFNβ(t) = c(low),0.49154806,N/A,N/A,1,1,0
+IFNα(t) > c(low) and IFNα(t) < c(mid) and IFNβ(t) > c(low) and IFNβ(t) < c(mid),0.40964085,IFNα(t) > c(low) and IFNα(t) < c(high) and IFNβ(t) > c(low) and IFNβ(t) < c(high),0.41340274,IFNα(t) < c(mid) and IFNα(t) > c(low),0.4934541,2,0,0
+IFNα(t) > c(low) and IFNβ(t) > c(low),0.48232284,"globally[0,inf](IFNα(t) > c(low) and IFNα(t) < c(mid))",0.37585735,IFNα(t) > c(low) and IFNα(t) < c(high) and IFNβ(t) > c(low) and IFNβ(t) < c(high),0.41340274,0,2,0
+IFNα(t) > c(low) and IFNα(t) < c(mid) and IFNβ(t) > c(low) and IFNβ(t) < c(mid),0.40964085,"globally[0,inf](IFNα(t) < c(mid) and IFNα(t) > c(low))",0.3788666,IFNα(t) < c(mid) and IFNα(t) > c(low),0.4934541,1,1,0
+IFNα(t) > c(low) and IFNα(t) < c(mid),0.49393755,IFNα(t) > c(low) and IFNα(t) < c(mid) and IFNβ(t) > c(low) and IFNβ(t) < c(mid),0.40964085,"globally[0,inf](IFNα(t) > c(low) and IFNα(t) < c(mid))",0.37585735,0,2,0
+CpG2216(t) = c(mid) implies IFNα(t) = c(mid) and IFNβ(t) = c(mid),0.61290276,IFNα(t) > c(low) and IFNα(t) < c(mid) and IFNβ(t) > c(low) and IFNβ(t) < c(mid),0.40964085,N/A,N/A,0,2,0

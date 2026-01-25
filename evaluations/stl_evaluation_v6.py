@@ -191,8 +191,11 @@ for (index, row) in translations.iterrows():
     # back at the sentence level
     number_of_times_semantic_feedback_portion_reached = 0
     for shot in range(shots):
-        if translations.loc[index, f'STL-shot{shot}-S1-F0'] is not None:
-            number_of_times_semantic_feedback_portion_reached += 1
+        try:
+            if translations.loc[index, f'STL-shot{shot}-S1-F0'] is not None:
+                number_of_times_semantic_feedback_portion_reached += 1
+        except Exception as e:
+            print("no semantic feedback attempts")
 
     sentence_table['Number of improving translations (relative to initial result)'] = 0
     sentence_table['Number of worsening translations (relative to initial result)'] = 0
