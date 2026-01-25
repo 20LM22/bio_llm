@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # TODO: make sure that official model names and models line up correctly
-models=('Qwen3-1.7B')
-official_model_names=('Qwen/Qwen3-1.7B')
+models=('Qwen3-4B')
+official_model_names=('Qwen/Qwen3-4B')
 experiments=("nx_3_ny_1_nz_18")
-set_name="val_set"
+set_name="test_set"
 
 # Optional: check that arrays line up
 if [ ${#models[@]} -ne ${#official_model_names[@]} ]; then
