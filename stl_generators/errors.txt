@@ -1,0 +1,132 @@
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py:62: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  translations[f'STL-shot{i}-S{j}-F{k}'] = None
+Traceback (most recent call last):
+  File "/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py", line 458, in <module>
+    last_literal = STL2literal(last_stl, grammar)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/llm/llms/bio_llm/stl_generators/../stl2literal.py", line 596, in STL2literal
+    tester.visit(tree)
+  File "/home/llm/llms/.venv/lib/python3.12/site-packages/lark/visitors.py", line 423, in visit
+    return self._visit_tree(tree)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/llm/llms/.venv/lib/python3.12/site-packages/lark/visitors.py", line 431, in _visit_tree
+    return f(tree)
+           ^^^^^^^
+  File "/home/llm/llms/bio_llm/stl_generators/../stl2literal.py", line 92, in omega
+    self.visit(node.children[0])
+  File "/home/llm/llms/.venv/lib/python3.12/site-packages/lark/visitors.py", line 423, in visit
+    return self._visit_tree(tree)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/llm/llms/.venv/lib/python3.12/site-packages/lark/visitors.py", line 431, in _visit_tree
+    return f(tree)
+           ^^^^^^^
+  File "/home/llm/llms/bio_llm/stl_generators/../stl2literal.py", line 303, in temp_op_f
+    self.visit(node.children[2])
+  File "/home/llm/llms/.venv/lib/python3.12/site-packages/lark/visitors.py", line 423, in visit
+    return self._visit_tree(tree)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/llm/llms/.venv/lib/python3.12/site-packages/lark/visitors.py", line 431, in _visit_tree
+    return f(tree)
+           ^^^^^^^
+  File "/home/llm/llms/bio_llm/stl_generators/../stl2literal.py", line 225, in d_gt
+    self.sentence.append(signal_names_dict[node.children[0].children[0]]) # SPECIES
+                         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: Token('__ANON_1', 'tcells')
+Traceback (most recent call last):
+  File "/home/llm/llms/bio_llm/stl_generators/../evaluations/stl_evaluation_v6.py", line 22, in <module>
+    print(translations)
+          ^^^^^^^^^^^^
+NameError: name 'translations' is not defined
+Traceback (most recent call last):
+  File "/home/llm/llms/bio_llm/stl_generators/../consolidate/consolidate.py", line 126, in <module>
+    for index, row in translations.iterrows():
+                      ^^^^^^^^^^^^
+NameError: name 'translations' is not defined
