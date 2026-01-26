@@ -90,7 +90,8 @@ def generate_example_prompt(num_examples):
     for _id, sample in enumerate(samples):
         sample = sample.replace("âˆž", "∞")
         sample = sample.replace("∞", "inf")
-        # print(sample)
+        print("in loop")
+        print(sample)
         literal_translations.append(STL2literal(sample, grammar))
 
     examples = ""

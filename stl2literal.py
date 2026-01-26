@@ -687,6 +687,8 @@ def STL2literal(input_sentence, grammar):
     p = Lark(grammar)
     tree = p.parse(input_sentence)
     tester = Test()
+    print("the tree is:")
+    print(f"{tree}")
     tester.visit(tree)
 
     tester.sentence = ' '.join(tester.sentence)
