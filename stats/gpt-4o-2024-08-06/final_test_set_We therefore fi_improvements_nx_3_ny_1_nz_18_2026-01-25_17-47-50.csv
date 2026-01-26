@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"eventually[0,7](d_cd19(t) > d_c(high) and d_cd24(t) < -d_c(high))",0.33456448,N/A,N/A,0,1,0
+"globally[7,7](cd19(t)=c(high) and cd24(t) < c(high))",0.38109413,N/A,N/A,0,1,0
+"cd19(t)=c(high) and cd24(t)=c(low) and cd38(t)=c(high) and eventually[7,7](bcells(t)=c(high))",0.62488234,N/A,N/A,0,1,0
+"eventually[0,7](bcells(t) = c(high))",0.5596925,"eventually[0,7](sarscov2(t) = c(high))",0.19617875,0,1,0
+"eventually[0,7](bcells(t) = c(high))",0.5596925,N/A,N/A,0,1,0
+"eventually[7,7](cd19(t) > c(mid) and cd24(t) < c(mid))",0.3762383,N/A,N/A,0,1,0
+N/A,N/A,N/A,N/A,0,0,0
+"eventually[0,7](bcells(t) > c(high))",0.5626489,N/A,N/A,0,1,0
+"eventually[7,7](cd19(t) > c(high) and cd24(t) < c(low))",0.37765545,N/A,N/A,0,1,0
+"eventually[7,7](cd19(t) > c(high) and cd24(t) < c(high))",0.3826979,N/A,N/A,0,1,0
+"eventually[0,7](d_cd19(t) > d_c(low) and d_cd24(t) < -d_c(low)) and cd19(t) > c(mid) and cd24(t) < c(mid) and cd38(t) > c(mid)",0.38151467,N/A,N/A,0,1,0
+"globally[7,7](cd19(t) = c(high) and cd24(t) < c(high))",0.38109413,N/A,N/A,0,1,0
+N/A,N/A,N/A,N/A,0,0,0
+"eventually[7,7](cd19(t) > c(mid) and cd24(t) < c(mid))",0.3762383,N/A,N/A,0,1,0
+cd19(t) > c(low) and cd24(t) < c(low) and cd38(t) > c(low),0.34136468,N/A,N/A,0,1,0
+"eventually[7,7](bcells(t) = c(high))",0.55921805,N/A,N/A,0,1,0
+"eventually[0,7](d_cd19(t) > d_c(high) and d_cd24(t) < -d_c(high)) and cd19(t) = c(high) and cd24(t) = c(low) and cd38(t) = c(high)",0.37997812,N/A,N/A,0,1,0
+"eventually[7,7](bcells(t) = c(high))",0.55921805,N/A,N/A,0,1,0

@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"eventually[9,9](d_ifnγ(t) > d_c(low)) and globally[21,inf](d_ifnγ(t) < 0)",0.5215066,N/A,N/A,0,1,0
+"eventually[9,21](d_ifnγ(t) > d_c(low)) and eventually[21,inf](d_ifnγ(t) < -d_c(low))",0.5334097,N/A,N/A,0,1,0
+"globally[9,21](d_ifnγ(t)=d_c(high)) and globally[21,inf](d_ifnγ(t)<0)",0.4974041,N/A,N/A,0,1,0
+"eventually[9,21](d_ifnγ(t) > d_c(low)) and eventually[21,inf](d_ifnγ(t) < -d_c(low))",0.5334097,N/A,N/A,0,1,0
+"eventually[9,10](d_ifnγ(t) > d_c(low)) and eventually[21,inf](d_ifnγ(t) < -d_c(low))",0.5355113,N/A,N/A,0,1,0
+"eventually[9,21](d_ifnγ(t) > d_c(low)) and eventually[21,inf](d_ifnγ(t) < -d_c(low))",0.5334097,N/A,N/A,0,1,0
+"eventually[9,9](d_ifnγ(t) > d_c(low)) and eventually[21,inf](d_ifnγ(t) < -d_c(low))",0.5324774,N/A,N/A,0,1,0
+"eventually[9,21](d_ifnγ(t) > d_c(low)) and eventually[21,inf](d_ifnγ(t) < -d_c(low))",0.5334097,N/A,N/A,0,1,0
+"eventually[9,9](d_ifnγ(t) = d_c(high)) and eventually[21,inf](d_ifnγ(t) = -d_c(low))",0.5099651,N/A,N/A,0,1,0
+"eventually[9,9](d_ifnγ(t) = d_c(high)) and eventually[21,inf](d_ifnγ(t) = -d_c(high))",0.51624733,N/A,N/A,0,1,0
+"eventually[9,21](d_ifnγ(t) > d_c(low)) and eventually[21,inf](d_ifnγ(t) < -d_c(low))",0.5334097,N/A,N/A,0,1,0
+N/A,N/A,N/A,N/A,0,0,0
+"eventually[9,9](d_ifnγ(t) > 0) and eventually[21,inf](d_ifnγ(t) < 0)",0.5164023,N/A,N/A,0,1,0
+"globally[9,21](d_ifnγ(t) > d_c(low)) and eventually[21,inf](d_ifnγ(t) < -d_c(low))",0.5225796,N/A,N/A,0,1,0
+"eventually[9,21](d_ifnγ(t) = d_c(high)) and eventually[21,inf](d_ifnγ(t) < 0)",0.51988494,N/A,N/A,0,1,0
+"eventually[9,21](d_ifnγ(t) = d_c(high)) and eventually[21,inf](d_ifnγ(t) = -d_c(low))",0.5107122,N/A,N/A,0,1,0
+"eventually[9,21](d_ifnγ(t) = d_c(high)) and eventually[22,inf](d_ifnγ(t) < 0)",0.52081126,N/A,N/A,0,1,0
+"eventually[9,21](d_ifnγ(t) > d_c(low)) and eventually[21,inf](d_ifnγ(t) < -d_c(low))",0.5334097,N/A,N/A,0,1,0

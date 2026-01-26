@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"eventually[0,5](virus(t) < c(low))",0.3905276,N/A,N/A,0,1,0
+"globally[5,inf](virus(t) < c(low))",0.3632655,N/A,N/A,0,1,0
+"eventually[0,5](virus(t) < c(low))",0.3905276,N/A,N/A,0,1,0
+"globally[5,inf](virus(t) < c(low))",0.3632655,N/A,N/A,0,1,0
+"globally[5,inf](virus(t) < c(low))",0.3632655,N/A,N/A,0,1,0
+"eventually[5,5](virus(t) < c(low))",0.39073038,N/A,N/A,0,1,0
+"globally[5,inf](virus(t) < c(low))",0.3632655,N/A,N/A,0,1,0
+"eventually[5,5](virus(t) < c(low))",0.39073038,N/A,N/A,0,1,0
+"globally[5,5](virus(t) < c(low))",0.375299,N/A,N/A,0,1,0
+"globally[0,5](virus(t) < c(low))",0.37726796,N/A,N/A,0,1,0
+"eventually[5,5](virus(t) < c(low))",0.39073038,N/A,N/A,0,1,0
+"eventually[0,5](virus(t) < c(low))",0.3905276,N/A,N/A,0,1,0
+"eventually[0,5](virus(t) < c(low))",0.3905276,N/A,N/A,0,1,0
+"globally[5,5](virus(t) < c(low)) implies globally[5,5](virus(t) < c(low))",0.34227225,N/A,N/A,0,1,0
+"eventually[0,5](virus(t) < c(low))",0.3905276,N/A,N/A,0,1,0
+"globally[5,inf](virus(t) < c(low))",0.3632655,N/A,N/A,0,1,0
+"globally[0,5](virus(t) < c(low))",0.37726796,N/A,N/A,0,1,0
+"eventually[0,5](virus(t) < c(low))",0.3905276,N/A,N/A,0,1,0

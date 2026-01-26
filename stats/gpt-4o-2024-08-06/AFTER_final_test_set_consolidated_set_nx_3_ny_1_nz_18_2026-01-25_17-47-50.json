@@ -1,0 +1,2979 @@
+[
+  {
+    "input_sentence": "In patients with COVID-19, SARS-CoV-2-specific T-cells appear in peripheral blood within two weeks of symptom onset (31).",
+    "stl": [
+      {
+        "formula": "eventually[0,14](d_tcells(t) > 0)",
+        "absorbed": 6
+      },
+      {
+        "formula": "eventually[0,14](tcells(t) > c(low))",
+        "absorbed": 10
+      },
+      {
+        "formula": "eventually[0,14](sarscov2(t) > c(low))",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 19,
+      "final": 3,
+      "reduction": 16,
+      "reduction_ratio": 0.1578947368421053
+    },
+    "per_bin_stats": {
+      "d_tcells": {
+        "initial": 7,
+        "final": 1,
+        "reduction": 6,
+        "reduction_ratio": 0.8571428571428572
+      },
+      "tcells": {
+        "initial": 11,
+        "final": 1,
+        "reduction": 10,
+        "reduction_ratio": 0.9090909090909091
+      },
+      "sarscov2": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "This is the reason that seroconversion (undetectable stage to production of IgM followed by IgG) in 100% of infected people (with positive virus-specific IgG) is achieved 17–19 days after commencement of indications [7].",
+    "stl": [
+      {
+        "formula": "eventually[17,19](igg(t) > c(low))",
+        "absorbed": 13
+      },
+      {
+        "formula": "eventually[17,19](igm(t) > c(low) and igg(t) > c(low))",
+        "absorbed": 5
+      },
+      {
+        "formula": "eventually[17,19](sarscov2(t)=c(high))",
+        "absorbed": 1
+      },
+      {
+        "formula": "eventually[17,19](sarscov2(t) > c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[17,19]globally(sarscov2(t) < c(low) implies igg(t) > c(mid))",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 24,
+      "final": 5,
+      "reduction": 19,
+      "reduction_ratio": 0.20833333333333337
+    },
+    "per_bin_stats": {
+      "igg": {
+        "initial": 14,
+        "final": 1,
+        "reduction": 13,
+        "reduction_ratio": 0.9285714285714286
+      },
+      "igm-igg": {
+        "initial": 6,
+        "final": 1,
+        "reduction": 5,
+        "reduction_ratio": 0.8333333333333334
+      },
+      "sarscov2": {
+        "initial": 3,
+        "final": 2,
+        "reduction": 1,
+        "reduction_ratio": 0.33333333333333337
+      },
+      "sarscov2-igg": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "Following day 10, IL-6 remains increased whereas IFN-α tapered.",
+    "stl": [
+      {
+        "formula": "eventually[10,inf]globally(il6(t) > c(mid) and d_ifnα(t) < -d_c(low))",
+        "absorbed": 0
+      },
+      {
+        "formula": "globally[11,inf](il6(t) > c(mid) and d_ifnα(t) < 0)",
+        "absorbed": 11
+      },
+      {
+        "formula": "globally[11,inf](il6(t) > c(mid))",
+        "absorbed": 4
+      },
+      {
+        "formula": "eventually[10,inf]globally(d_ifnα(t) = 0)",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[10,inf](d_ifnα(t) < 0)",
+        "absorbed": 3
+      }
+    ],
+    "global": {
+      "initial": 23,
+      "final": 5,
+      "reduction": 18,
+      "reduction_ratio": 0.21739130434782605
+    },
+    "per_bin_stats": {
+      "d_ifnα-il6": {
+        "initial": 13,
+        "final": 2,
+        "reduction": 11,
+        "reduction_ratio": 0.8461538461538461
+      },
+      "il6": {
+        "initial": 5,
+        "final": 1,
+        "reduction": 4,
+        "reduction_ratio": 0.8
+      },
+      "d_ifnα": {
+        "initial": 5,
+        "final": 2,
+        "reduction": 3,
+        "reduction_ratio": 0.6
+      }
+    }
+  },
+  {
+    "input_sentence": "Two days postinfection, permissive Vero cells produced high peak titers of 5 x 10^6 TCID_50s/ml and 1 x 10^7 TCID_50s/ml of MERS- and SARS-CoV, respectively (Fig. 1B, panel i).",
+    "stl": [
+      {
+        "formula": "merscov(t) = c(high)",
+        "absorbed": 1
+      },
+      {
+        "formula": "eventually[2,2](merscov(t) > c(high))",
+        "absorbed": 2
+      },
+      {
+        "formula": "sarscov(t) = c(high)",
+        "absorbed": 1
+      },
+      {
+        "formula": "sarscov(t) > c(high)",
+        "absorbed": 0
+      },
+      {
+        "formula": "globally[2,2](titers(t) = c(high) and merscov(t) = c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "globally[2,2](merscov(t) > c(high) and sarscov(t) > c(high))",
+        "absorbed": 3
+      },
+      {
+        "formula": "eventually[2,2](merscov(t) = c(high) and sarscov(t) = c(high))",
+        "absorbed": 3
+      },
+      {
+        "formula": "sarscov2(t) > c(high)",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 18,
+      "final": 8,
+      "reduction": 10,
+      "reduction_ratio": 0.4444444444444444
+    },
+    "per_bin_stats": {
+      "merscov": {
+        "initial": 5,
+        "final": 2,
+        "reduction": 3,
+        "reduction_ratio": 0.6
+      },
+      "sarscov": {
+        "initial": 3,
+        "final": 2,
+        "reduction": 1,
+        "reduction_ratio": 0.33333333333333337
+      },
+      "titers-merscov": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "sarscov-merscov": {
+        "initial": 8,
+        "final": 2,
+        "reduction": 6,
+        "reduction_ratio": 0.75
+      },
+      "sarscov2": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "In parallel, stimulation with CpG 2216 also resulted in lower, but clearly detectable, amounts of IFNs.",
+    "stl": [
+      {
+        "formula": "ifn(t) < c(high)",
+        "absorbed": 9
+      },
+      {
+        "formula": "globally[0,inf](ifn(t) > c(low))",
+        "absorbed": 12
+      },
+      {
+        "formula": "ifnα(t) > c(low)",
+        "absorbed": 6
+      },
+      {
+        "formula": "ifnα(t) < c(high)",
+        "absorbed": 8
+      },
+      {
+        "formula": "cpg2216(t) > c(low) implies ifn(t) > c(low)",
+        "absorbed": 0
+      },
+      {
+        "formula": "cpg2216(t) > c(low) implies ifn(t) < c(mid)",
+        "absorbed": 0
+      },
+      {
+        "formula": "cpg2216(t) > c(low)",
+        "absorbed": 2
+      },
+      {
+        "formula": "cpg2216(t) < c(mid)",
+        "absorbed": 1
+      },
+      {
+        "formula": "ifnβ(t) > c(low)",
+        "absorbed": 0
+      },
+      {
+        "formula": "ifnβ(t) < c(high)",
+        "absorbed": 2
+      }
+    ],
+    "global": {
+      "initial": 50,
+      "final": 10,
+      "reduction": 40,
+      "reduction_ratio": 0.19999999999999996
+    },
+    "per_bin_stats": {
+      "ifn": {
+        "initial": 23,
+        "final": 2,
+        "reduction": 21,
+        "reduction_ratio": 0.9130434782608696
+      },
+      "ifnα": {
+        "initial": 16,
+        "final": 2,
+        "reduction": 14,
+        "reduction_ratio": 0.875
+      },
+      "cpg2216-ifn": {
+        "initial": 2,
+        "final": 2,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "cpg2216": {
+        "initial": 5,
+        "final": 2,
+        "reduction": 3,
+        "reduction_ratio": 0.6
+      },
+      "ifnβ": {
+        "initial": 4,
+        "final": 2,
+        "reduction": 2,
+        "reduction_ratio": 0.5
+      }
+    }
+  },
+  {
+    "input_sentence": "Circulating IL-1α also was not detected (fig. S9F).",
+    "stl": [
+      {
+        "formula": "il1α(t) < c(low)",
+        "absorbed": 14
+      },
+      {
+        "formula": "il1α(t) = c(low)",
+        "absorbed": 2
+      }
+    ],
+    "global": {
+      "initial": 18,
+      "final": 2,
+      "reduction": 16,
+      "reduction_ratio": 0.11111111111111116
+    },
+    "per_bin_stats": {
+      "il1α": {
+        "initial": 18,
+        "final": 2,
+        "reduction": 16,
+        "reduction_ratio": 0.8888888888888888
+      }
+    }
+  },
+  {
+    "input_sentence": "Monocyte chemotactic factor chemokine(C-C motif) ligand 2 (CCL2) was increased in the blood of infected patients as well as the transcripts of its receptor CCR2; this was associated with low counts of circulating inflammatory monocytes (Fig. 4I), suggesting a role for the CCL2/CCR2 axis in the monocyte chemo-attraction into the inflamed lungs.",
+    "stl": [
+      {
+        "formula": "ccl2(t) > c(mid)",
+        "absorbed": 11
+      },
+      {
+        "formula": "ccr2(t)=c(high) implies monocytes(t)<c(low)",
+        "absorbed": 5
+      },
+      {
+        "formula": "ccr2(t) > c(high) implies monocytes(t) < c(low)",
+        "absorbed": 2
+      },
+      {
+        "formula": "ccr2(t) > c(mid)",
+        "absorbed": 3
+      },
+      {
+        "formula": "monocytes(t) < c(low)",
+        "absorbed": 4
+      },
+      {
+        "formula": "d_ccl2(t) > d_c(low)",
+        "absorbed": 2
+      },
+      {
+        "formula": "d_ccr2(t) > d_c(low)",
+        "absorbed": 1
+      },
+      {
+        "formula": "ccl2(t) = c(high) implies monocytes(t) < c(low)",
+        "absorbed": 0
+      },
+      {
+        "formula": "d_ccr2(t) > d_c(low) implies monocytes(t) < c(low)",
+        "absorbed": 0
+      },
+      {
+        "formula": "globally[0,inf](ccl2(t) > c(mid) and ccr2(t) < c(low))",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 38,
+      "final": 10,
+      "reduction": 28,
+      "reduction_ratio": 0.26315789473684204
+    },
+    "per_bin_stats": {
+      "ccl2": {
+        "initial": 12,
+        "final": 1,
+        "reduction": 11,
+        "reduction_ratio": 0.9166666666666666
+      },
+      "ccr2-monocytes": {
+        "initial": 9,
+        "final": 2,
+        "reduction": 7,
+        "reduction_ratio": 0.7777777777777778
+      },
+      "ccr2": {
+        "initial": 4,
+        "final": 1,
+        "reduction": 3,
+        "reduction_ratio": 0.75
+      },
+      "monocytes": {
+        "initial": 5,
+        "final": 1,
+        "reduction": 4,
+        "reduction_ratio": 0.8
+      },
+      "d_ccl2": {
+        "initial": 3,
+        "final": 1,
+        "reduction": 2,
+        "reduction_ratio": 0.6666666666666667
+      },
+      "d_ccr2": {
+        "initial": 2,
+        "final": 1,
+        "reduction": 1,
+        "reduction_ratio": 0.5
+      },
+      "ccl2-monocytes": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "monocytes-d_ccr2": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "ccl2-ccr2": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "Then, in the mild group of patients, IP-10 levels declined from week 2 and returned back to normal on week 4.",
+    "stl": [
+      {
+        "formula": "eventually[14,28](d_ip10(t) < 0)",
+        "absorbed": 19
+      },
+      {
+        "formula": "eventually[14,28](ip10(t) = c(mid))",
+        "absorbed": 11
+      },
+      {
+        "formula": "eventually[14,28](ip10(t) = c(low))",
+        "absorbed": 7
+      },
+      {
+        "formula": "globally[14,28](d_ip10(t) < 0) implies eventually[14,28](ip10(t) = c(mid))",
+        "absorbed": 1
+      }
+    ],
+    "global": {
+      "initial": 42,
+      "final": 4,
+      "reduction": 38,
+      "reduction_ratio": 0.09523809523809523
+    },
+    "per_bin_stats": {
+      "d_ip10": {
+        "initial": 20,
+        "final": 1,
+        "reduction": 19,
+        "reduction_ratio": 0.95
+      },
+      "ip10": {
+        "initial": 20,
+        "final": 2,
+        "reduction": 18,
+        "reduction_ratio": 0.9
+      },
+      "d_ip10-ip10": {
+        "initial": 2,
+        "final": 1,
+        "reduction": 1,
+        "reduction_ratio": 0.5
+      }
+    }
+  },
+  {
+    "input_sentence": "IP-10 level was significantly elevated in COVID-19 patients in week 1 of onset of symptoms in both mild and severe groups when compared with healthy volunteer controls (P = 1.36 × 10–8 and 4.39 × 10–8, respectively).",
+    "stl": [
+      {
+        "formula": "eventually[0,7]globally(ip10(t) > c(mid))",
+        "absorbed": 21
+      }
+    ],
+    "global": {
+      "initial": 22,
+      "final": 1,
+      "reduction": 21,
+      "reduction_ratio": 0.045454545454545414
+    },
+    "per_bin_stats": {
+      "ip10": {
+        "initial": 22,
+        "final": 1,
+        "reduction": 21,
+        "reduction_ratio": 0.9545454545454546
+      }
+    }
+  },
+  {
+    "input_sentence": "Significantly higher levels of MCP-1 in severe cases were observed when compared with mild cases at early an time point of the infection (week 1 and 2; P = 0.047 and 8.62 × 10–5, respectively) but not at later time points (week 3 and 4; P = 0.136 and 0.030, respectively, Supplemental Table 1 and Figure 2).",
+    "stl": [
+      {
+        "formula": "eventually[7,14](mcp1(t) > c(high))",
+        "absorbed": 5
+      },
+      {
+        "formula": "globally[7,14](mcp1(t) > c(mid))",
+        "absorbed": 6
+      },
+      {
+        "formula": "eventually[21,28]globally(mcp1(t) = c(mid))",
+        "absorbed": 12
+      },
+      {
+        "formula": "globally[7,14](il1rn(t) > c(mid))",
+        "absorbed": 0
+      },
+      {
+        "formula": "globally[21,28](il1rn(t) = c(mid))",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 28,
+      "final": 5,
+      "reduction": 23,
+      "reduction_ratio": 0.1785714285714286
+    },
+    "per_bin_stats": {
+      "mcp1": {
+        "initial": 26,
+        "final": 3,
+        "reduction": 23,
+        "reduction_ratio": 0.8846153846153846
+      },
+      "il1rn": {
+        "initial": 2,
+        "final": 2,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "We also found that IL-1 receptor antagonist (IL-1RA) levels were elevated in both severe and mild cases and remained at a high level during the 4 weeks of follow-up.",
+    "stl": [
+      {
+        "formula": "globally[0,28](il1ra(t) > c(mid))",
+        "absorbed": 17
+      }
+    ],
+    "global": {
+      "initial": 18,
+      "final": 1,
+      "reduction": 17,
+      "reduction_ratio": 0.05555555555555558
+    },
+    "per_bin_stats": {
+      "il1ra": {
+        "initial": 18,
+        "final": 1,
+        "reduction": 17,
+        "reduction_ratio": 0.9444444444444444
+      }
+    }
+  },
+  {
+    "input_sentence": "Most cytokines observed in previous publications of “cytokine storms” in association with disease severity (9, 10, 14) were observed only in the late stage of severe cases, mostly at 4 weeks after onset of symptom — for example, IL-6, IL-12, IL-1β, IFN-γ, IL-17, and IL-27.",
+    "stl": [],
+    "global": {
+      "initial": 0,
+      "final": 0,
+      "reduction": 0,
+      "reduction_ratio": 0.0
+    },
+    "per_bin_stats": {}
+  },
+  {
+    "input_sentence": "In the first week, RANTES in the mild group (638.62 ± 174.81 pg/mL) was much higher than that in healthy controls (358.36 ± 123.44 pg/mL, P = 1.0 × 10–6) and remained high in mild cases during their recovery phase (630.57 ± 171.00 pg/mL in week 3 and 654.14 ± 162.86 pg/mL in week 4).",
+    "stl": [
+      {
+        "formula": "globally[0,7](rantes(t) > c(mid))",
+        "absorbed": 20
+      },
+      {
+        "formula": "globally[21,28](rantes(t) > c(mid))",
+        "absorbed": 18
+      },
+      {
+        "formula": "globally[28,35](rantes(t) > c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "globally[14,21](rantes(t) > c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "globally[28,35](rantes(t) = c(high))",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 43,
+      "final": 5,
+      "reduction": 38,
+      "reduction_ratio": 0.11627906976744184
+    },
+    "per_bin_stats": {
+      "rantes": {
+        "initial": 43,
+        "final": 5,
+        "reduction": 38,
+        "reduction_ratio": 0.8837209302325582
+      }
+    }
+  },
+  {
+    "input_sentence": "No elevation of RANTES was observed in the severe group during the disease progression, suggesting that RANTES may play an important role in protecting COVID-19 patients from developing severe illness (Supplemental Table 1 and Figure 5A).",
+    "stl": [
+      {
+        "formula": "globally[0,inf](d_rantes(t) = 0)",
+        "absorbed": 8
+      },
+      {
+        "formula": "globally[0,inf](d_rantes(t) < 0)",
+        "absorbed": 0
+      },
+      {
+        "formula": "rantes(t) < c(low)",
+        "absorbed": 1
+      }
+    ],
+    "global": {
+      "initial": 12,
+      "final": 3,
+      "reduction": 9,
+      "reduction_ratio": 0.25
+    },
+    "per_bin_stats": {
+      "d_rantes": {
+        "initial": 10,
+        "final": 2,
+        "reduction": 8,
+        "reduction_ratio": 0.8
+      },
+      "rantes": {
+        "initial": 2,
+        "final": 1,
+        "reduction": 1,
+        "reduction_ratio": 0.5
+      }
+    }
+  },
+  {
+    "input_sentence": "We found that IL-6 (P<0.0001), IL-8 (P<0.0001) and TNF-α (P<0.0001) were significantly elevated in COVID-19 serum compared to healthy donor serum or plasma isolated from CAR T cell-treated patients with no CRS (Fig. 1).",
+    "stl": [
+      {
+        "formula": "il6(t) > c(mid)",
+        "absorbed": 17
+      },
+      {
+        "formula": "il8(t) > c(mid)",
+        "absorbed": 17
+      },
+      {
+        "formula": "tnfα(t) > c(mid)",
+        "absorbed": 17
+      }
+    ],
+    "global": {
+      "initial": 54,
+      "final": 3,
+      "reduction": 51,
+      "reduction_ratio": 0.05555555555555558
+    },
+    "per_bin_stats": {
+      "il6": {
+        "initial": 18,
+        "final": 1,
+        "reduction": 17,
+        "reduction_ratio": 0.9444444444444444
+      },
+      "il8": {
+        "initial": 18,
+        "final": 1,
+        "reduction": 17,
+        "reduction_ratio": 0.9444444444444444
+      },
+      "tnfα": {
+        "initial": 18,
+        "final": 1,
+        "reduction": 17,
+        "reduction_ratio": 0.9444444444444444
+      }
+    }
+  },
+  {
+    "input_sentence": "In line with previous reports, IL-1β levels were mostly low or at the limit of detection of 0.1pg ml−1, even though the assay was able to detect various levels of recombinant control cytokines (Extended Data Fig. 1b).",
+    "stl": [
+      {
+        "formula": "globally[0,inf](il1β(t) < c(low))",
+        "absorbed": 16
+      },
+      {
+        "formula": "il1β(t) = c(low)",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 18,
+      "final": 2,
+      "reduction": 16,
+      "reduction_ratio": 0.11111111111111116
+    },
+    "per_bin_stats": {
+      "il1β": {
+        "initial": 18,
+        "final": 2,
+        "reduction": 16,
+        "reduction_ratio": 0.8888888888888888
+      }
+    }
+  },
+  {
+    "input_sentence": "These asymptomatic infections were characterized by transiently high levels of IL-1b, IL-6, TNFα, the b chemokine macrophage chemotactic protein-1, MIP-1α, and MIP-1β in plasma about one week after the first potentially infectious contact, followed two weeks later by the emergence of EboZ-specific IgG [11].",
+    "stl": [],
+    "global": {
+      "initial": 0,
+      "final": 0,
+      "reduction": 0,
+      "reduction_ratio": 0.0
+    },
+    "per_bin_stats": {}
+  },
+  {
+    "input_sentence": "While specific IgG were never detected in fatally-infected patients, high levels of Ebola virus-specific IgG were found in survivors as soon as the symptoms appeared.",
+    "stl": [
+      {
+        "formula": "globally[0,inf](igg(t) < c(low)) implies eventually[0,inf]globally(igg(t) > c(high))",
+        "absorbed": 19
+      },
+      {
+        "formula": "globally[0,inf](igg(t)<c(low))",
+        "absorbed": 13
+      }
+    ],
+    "global": {
+      "initial": 34,
+      "final": 2,
+      "reduction": 32,
+      "reduction_ratio": 0.05882352941176472
+    },
+    "per_bin_stats": {
+      "igg": {
+        "initial": 34,
+        "final": 2,
+        "reduction": 32,
+        "reduction_ratio": 0.9411764705882353
+      }
+    }
+  },
+  {
+    "input_sentence": "IFNα, IL-12 and IL-8 were undetectable in all the plasma samples tested.",
+    "stl": [
+      {
+        "formula": "ifnα(t) < c(low)",
+        "absorbed": 2
+      },
+      {
+        "formula": "ifnα(t) = c(low)",
+        "absorbed": 1
+      },
+      {
+        "formula": "il12(t) < c(low)",
+        "absorbed": 2
+      },
+      {
+        "formula": "il12(t) = c(low)",
+        "absorbed": 1
+      },
+      {
+        "formula": "il8(t) < c(low)",
+        "absorbed": 2
+      },
+      {
+        "formula": "il8(t) = c(low)",
+        "absorbed": 1
+      }
+    ],
+    "global": {
+      "initial": 15,
+      "final": 6,
+      "reduction": 9,
+      "reduction_ratio": 0.4
+    },
+    "per_bin_stats": {
+      "ifnα": {
+        "initial": 5,
+        "final": 2,
+        "reduction": 3,
+        "reduction_ratio": 0.6
+      },
+      "il12": {
+        "initial": 5,
+        "final": 2,
+        "reduction": 3,
+        "reduction_ratio": 0.6
+      },
+      "il8": {
+        "initial": 5,
+        "final": 2,
+        "reduction": 3,
+        "reduction_ratio": 0.6
+      }
+    }
+  },
+  {
+    "input_sentence": "Finally, IL-10 was barely detectable in survivors, while high and significant levels were found in all patients who died.",
+    "stl": [
+      {
+        "formula": "il10(t)=c(low) implies il10(t)=c(high)",
+        "absorbed": 28
+      },
+      {
+        "formula": "il10(t) < c(low) implies il10(t) = c(high)",
+        "absorbed": 5
+      }
+    ],
+    "global": {
+      "initial": 35,
+      "final": 2,
+      "reduction": 33,
+      "reduction_ratio": 0.05714285714285716
+    },
+    "per_bin_stats": {
+      "il10": {
+        "initial": 35,
+        "final": 2,
+        "reduction": 33,
+        "reduction_ratio": 0.9428571428571428
+      }
+    }
+  },
+  {
+    "input_sentence": "In fatalities, neopterin plasma concentrations increased markedly during the 5 days before death, and were significantly higher than those measured in survivors.",
+    "stl": [
+      {
+        "formula": "eventually[0,5](d_neopterin(t) > d_c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "neopterin(t) > c(high)",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[0,5](d_neopterin(t) > d_c(high) and neopterin(t) > c(high))",
+        "absorbed": 3
+      }
+    ],
+    "global": {
+      "initial": 6,
+      "final": 3,
+      "reduction": 3,
+      "reduction_ratio": 0.5
+    },
+    "per_bin_stats": {
+      "d_neopterin": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "neopterin": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "neopterin-d_neopterin": {
+        "initial": 4,
+        "final": 1,
+        "reduction": 3,
+        "reduction_ratio": 0.75
+      }
+    }
+  },
+  {
+    "input_sentence": "High levels of IL-6 and, particularly, detection of IL-1b in the plasma of patients during the symptomatic phase could represent markers of non-fatal Ebola virus infection.",
+    "stl": [
+      {
+        "formula": "il6(t) > c(high)",
+        "absorbed": 2
+      },
+      {
+        "formula": "il1β(t) > c(low)",
+        "absorbed": 1
+      },
+      {
+        "formula": "eventually[0,inf](il6(t) > c(high) and il1β(t) > c(low))",
+        "absorbed": 2
+      },
+      {
+        "formula": "il1β(t) > c(low) implies virus(t) < c(high)",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 9,
+      "final": 4,
+      "reduction": 5,
+      "reduction_ratio": 0.4444444444444444
+    },
+    "per_bin_stats": {
+      "il6": {
+        "initial": 3,
+        "final": 1,
+        "reduction": 2,
+        "reduction_ratio": 0.6666666666666667
+      },
+      "il1β": {
+        "initial": 2,
+        "final": 1,
+        "reduction": 1,
+        "reduction_ratio": 0.5
+      },
+      "il1β-il6": {
+        "initial": 3,
+        "final": 1,
+        "reduction": 2,
+        "reduction_ratio": 0.6666666666666667
+      },
+      "il1β-virus": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "Elevated plasma concentrations of IL-1RA or neopterin from a few days after disease onset are potential markers for fatal outcome, while high levels of sTNF-RI are only significant the last days before death.",
+    "stl": [
+      {
+        "formula": "eventually[3,inf](il1ra(t) > c(mid)) implies eventually[0,3](stnfri(t) > c(high))",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 1,
+      "final": 1,
+      "reduction": 0,
+      "reduction_ratio": 1.0
+    },
+    "per_bin_stats": {
+      "stnfri-il1ra": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "IL-6 and MCP-1 showed marked increases by day 4 after infection; and MIP1α and MIP-1β exhibited moderate increases on day 4, coinciding with gene expression data. By day 5 these four cytokines were elevated, and there was also an increase in TNF-α and IL-18 in serum.",
+    "stl": [],
+    "global": {
+      "initial": 0,
+      "final": 0,
+      "reduction": 0,
+      "reduction_ratio": 0.0
+    },
+    "per_bin_stats": {}
+  },
+  {
+    "input_sentence": "The earliest major transcriptional response apparent in all animals by day 2 or 3 was an increase in transcript levels of a large set of interferon (IFN) regulated genes (Figure 1), including the following: myxovirus resistance protein (MX)1 and MX2, IFN-γ inducible protein-10, 2'-5' oligoadenylate synthetase-1, -2, and -3, guanylate binding protein-1 and -2, signal transducer and activators of transcription (STAT)-1, double-stranded DNA activated protein kinase, and IFN-γ receptors 1 and 2.",
+    "stl": [
+      {
+        "formula": "eventually[2,3](d_mx1(t) > 0 and d_mx2(t) > 0)",
+        "absorbed": 13
+      },
+      {
+        "formula": "eventually[2,3](d_ifnα(t) > d_c(low) and d_ifnβ(t) > d_c(low))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[2,3](mx1(t) > c(low) and mx2(t) > c(low))",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 16,
+      "final": 3,
+      "reduction": 13,
+      "reduction_ratio": 0.1875
+    },
+    "per_bin_stats": {
+      "d_mx1-d_mx2": {
+        "initial": 14,
+        "final": 1,
+        "reduction": 13,
+        "reduction_ratio": 0.9285714285714286
+      },
+      "d_ifnα-d_ifnβ": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "mx1-mx2": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "We noted an increase in TNF-α converting enzyme/α-disintegrin and metalloproteinase (ADAM)-17 at days 4 to 6 after infection, peaking at an average 3.1-fold increase above baseline at day 5 after infection.",
+    "stl": [
+      {
+        "formula": "eventually[4,6](d_adam17(t) > 0)",
+        "absorbed": 8
+      },
+      {
+        "formula": "eventually[4,6](adam17(t) = c(high))",
+        "absorbed": 1
+      },
+      {
+        "formula": "eventually[5,5](adam17(t) > c(mid))",
+        "absorbed": 6
+      },
+      {
+        "formula": "eventually[4,6](adam17(t) > c(mid) and d_adam17(t) > d_c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[4,6](d_adam17(t) = d_c(high) and adam17(t) = c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[4,6]globally(d_adam17(t) > 0 and adam17(t) = c(high))",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 21,
+      "final": 6,
+      "reduction": 15,
+      "reduction_ratio": 0.2857142857142857
+    },
+    "per_bin_stats": {
+      "d_adam17": {
+        "initial": 9,
+        "final": 1,
+        "reduction": 8,
+        "reduction_ratio": 0.8888888888888888
+      },
+      "adam17": {
+        "initial": 9,
+        "final": 2,
+        "reduction": 7,
+        "reduction_ratio": 0.7777777777777778
+      },
+      "d_adam17-adam17": {
+        "initial": 3,
+        "final": 3,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "IL-1β, which was highly induced at later stages of infection (Figure 2), was initially repressed on the first day after infection.",
+    "stl": [
+      {
+        "formula": "eventually[1,inf](il1β(t) > c(high))",
+        "absorbed": 11
+      },
+      {
+        "formula": "eventually[1,inf](il1β(t) = c(high))",
+        "absorbed": 4
+      },
+      {
+        "formula": "globally[1,1](il1β(t) < c(low))",
+        "absorbed": 9
+      },
+      {
+        "formula": "globally[0,1](il1β(t) < c(mid))",
+        "absorbed": 2
+      },
+      {
+        "formula": "globally[1,1](d_il1β(t) < 0)",
+        "absorbed": 4
+      }
+    ],
+    "global": {
+      "initial": 35,
+      "final": 5,
+      "reduction": 30,
+      "reduction_ratio": 0.1428571428571428
+    },
+    "per_bin_stats": {
+      "il1β": {
+        "initial": 30,
+        "final": 4,
+        "reduction": 26,
+        "reduction_ratio": 0.8666666666666667
+      },
+      "d_il1β": {
+        "initial": 5,
+        "final": 1,
+        "reduction": 4,
+        "reduction_ratio": 0.8
+      }
+    }
+  },
+  {
+    "input_sentence": "In addition, several chemokines (macrophage inflammatory protein [MIP]-1α, MIP-1β, growth related oncogene-α, growth related oncogene-β, monocyte chemoattractant protein [MCP]-1, MCP-2, MCP-3, and MCP-4) exhibited increased transcript levels at days 4 to 6 after infection in all animals (Figure 2a).",
+    "stl": [],
+    "global": {
+      "initial": 0,
+      "final": 0,
+      "reduction": 0,
+      "reduction_ratio": 0.0
+    },
+    "per_bin_stats": {}
+  },
+  {
+    "input_sentence": "A significant increase in cytokine and chemokine transcripts was observed at days 4 to 6 after infection (Figure 2a). Transcripts encoding the proinflammatory cytokines IL-1β, IL-6, IL-8, and tumor necrosis factor (TNF)-α were markedly increased in late-stage animals (average fold increase at day 5 after infection: IL-1β, 3.9; IL-6, 4.3; IL-8, 11.3; and TNF-α, 5.2; Figure 2b).",
+    "stl": [
+      {
+        "formula": "eventually[4,6](d_il1β(t) > d_c(low) and d_il6(t) > d_c(low))",
+        "absorbed": 7
+      }
+    ],
+    "global": {
+      "initial": 8,
+      "final": 1,
+      "reduction": 7,
+      "reduction_ratio": 0.125
+    },
+    "per_bin_stats": {
+      "d_il1β-d_il6": {
+        "initial": 8,
+        "final": 1,
+        "reduction": 7,
+        "reduction_ratio": 0.875
+      }
+    }
+  },
+  {
+    "input_sentence": "Transcripts for several other cytokines (IL-2, IL-4, IL-10, and IL-12) were detected on the array, but their levels did not change significantly during the course of infection.",
+    "stl": [
+      {
+        "formula": "globally[0,inf](d_il2(t)=0 and d_il4(t)=0)",
+        "absorbed": 5
+      },
+      {
+        "formula": "d_il2(t) = 0",
+        "absorbed": 0
+      },
+      {
+        "formula": "d_il4(t) = 0",
+        "absorbed": 0
+      },
+      {
+        "formula": "d_il10(t) = 0",
+        "absorbed": 0
+      },
+      {
+        "formula": "d_il12(t) = 0",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 10,
+      "final": 5,
+      "reduction": 5,
+      "reduction_ratio": 0.5
+    },
+    "per_bin_stats": {
+      "d_il4-d_il2": {
+        "initial": 6,
+        "final": 1,
+        "reduction": 5,
+        "reduction_ratio": 0.8333333333333334
+      },
+      "d_il2": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "d_il4": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "d_il10": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "d_il12": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "We first examined the relative cytokine and chemokine levels in serum samples collected 6 days following EBOV challenge by using a multiplex-based bead assay. Quantitative analysis revealed that multiple Th1 cytokines, including gamma interferon (IFN-γ), interleukin-2 (IL-2), and tumor necrosis factor alpha (TNF-α), were significantly reduced in Tim-1/ mice compared to EBOV-infected wild-type mice (Fig. 2A to C), while IL-12p40 was increased (Fig. 2B).",
+    "stl": [
+      {
+        "formula": "eventually[6,6](ifnγ(t) < c(mid) and il2(t) < c(mid))",
+        "absorbed": 13
+      },
+      {
+        "formula": "ifnγ(t) < c(mid)",
+        "absorbed": 0
+      },
+      {
+        "formula": "il2(t) < c(mid)",
+        "absorbed": 0
+      },
+      {
+        "formula": "tnfα(t) < c(mid)",
+        "absorbed": 0
+      },
+      {
+        "formula": "il12(t) > c(mid)",
+        "absorbed": 1
+      }
+    ],
+    "global": {
+      "initial": 19,
+      "final": 5,
+      "reduction": 14,
+      "reduction_ratio": 0.26315789473684204
+    },
+    "per_bin_stats": {
+      "ifnγ-il2": {
+        "initial": 14,
+        "final": 1,
+        "reduction": 13,
+        "reduction_ratio": 0.9285714285714286
+      },
+      "ifnγ": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "il2": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "tnfα": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "il12": {
+        "initial": 2,
+        "final": 1,
+        "reduction": 1,
+        "reduction_ratio": 0.5
+      }
+    }
+  },
+  {
+    "input_sentence": "Flow cytometry analysis demonstrated that at day 6, gated CD4 T cells from Tim-1/ mice appeared to produce elevated levels of IL-2, IFN-γ, and TNF-α compared to wild-type, EBOV-infected mice (Fig. 2D).",
+    "stl": [
+      {
+        "formula": "il2(t) > c(mid)",
+        "absorbed": 5
+      },
+      {
+        "formula": "ifnγ(t) > c(mid)",
+        "absorbed": 5
+      },
+      {
+        "formula": "tnfα(t) > c(mid)",
+        "absorbed": 5
+      }
+    ],
+    "global": {
+      "initial": 18,
+      "final": 3,
+      "reduction": 15,
+      "reduction_ratio": 0.16666666666666663
+    },
+    "per_bin_stats": {
+      "il2": {
+        "initial": 6,
+        "final": 1,
+        "reduction": 5,
+        "reduction_ratio": 0.8333333333333334
+      },
+      "ifnγ": {
+        "initial": 6,
+        "final": 1,
+        "reduction": 5,
+        "reduction_ratio": 0.8333333333333334
+      },
+      "tnfα": {
+        "initial": 6,
+        "final": 1,
+        "reduction": 5,
+        "reduction_ratio": 0.8333333333333334
+      }
+    }
+  },
+  {
+    "input_sentence": "The initial innate immune response is restricted due to inhibition of the interferon (IFN) response and allows extensive virus replication and spread during a clinically silent latent period of 10–14 days.",
+    "stl": [
+      {
+        "formula": "globally[0,10](ifn(t) < c(low)) implies eventually[0,14]globally(virus(t) > c(high))",
+        "absorbed": 11
+      },
+      {
+        "formula": "globally[0,14](ifn(t) < c(mid) and virus(t) > c(mid))",
+        "absorbed": 0
+      },
+      {
+        "formula": "globally[0,14](ifn(t) < c(low) and d_virus(t) > d_c(high))",
+        "absorbed": 1
+      },
+      {
+        "formula": "globally[0,10](ifnα(t) < c(low) and ifnβ(t) < c(low)) implies eventually[0,10](d_sarscov2(t) > d_c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "globally[0,10](ifn(t) < c(low))",
+        "absorbed": 2
+      },
+      {
+        "formula": "eventually[10,14](virus(t) > c(high))",
+        "absorbed": 1
+      },
+      {
+        "formula": "globally[10,14](ifnα(t) < c(low) and sarscov2(t) > c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[0,14](d_virus(t) > d_c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "globally[0,10](ifnα(t) < c(low) and ifnβ(t) < c(low)) implies eventually[0,14](sarscov2(t) > c(high))",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 24,
+      "final": 9,
+      "reduction": 15,
+      "reduction_ratio": 0.375
+    },
+    "per_bin_stats": {
+      "virus-ifn": {
+        "initial": 13,
+        "final": 2,
+        "reduction": 11,
+        "reduction_ratio": 0.8461538461538461
+      },
+      "d_virus-ifn": {
+        "initial": 2,
+        "final": 1,
+        "reduction": 1,
+        "reduction_ratio": 0.5
+      },
+      "d_sarscov2-ifnα-ifnβ": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "ifn": {
+        "initial": 3,
+        "final": 1,
+        "reduction": 2,
+        "reduction_ratio": 0.6666666666666667
+      },
+      "virus": {
+        "initial": 2,
+        "final": 1,
+        "reduction": 1,
+        "reduction_ratio": 0.5
+      },
+      "ifnα-sarscov2": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "d_virus": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "ifnα-ifnβ-sarscov2": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "After an initial peak at 7–10 days (during the viremia when infectious virus can be recovered), there is a period of rapid decline coincident with clearance of infectious virus (10–14 days), followed by a rebound with up to a 10-fold increase in RNA levels (14–24 days) and then a slow decline (24–60 days) to an undetectable level.",
+    "stl": [
+      {
+        "formula": "eventually[7,10](virus(t) > c(mid))",
+        "absorbed": 14
+      },
+      {
+        "formula": "eventually[14,24](virus(t) > c(mid))",
+        "absorbed": 5
+      },
+      {
+        "formula": "eventually[14,24](d_virus(t)=d_c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "globally[24,60](d_virus(t)=-d_c(low))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[7,10](d_virus(t) > d_c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[10,14](d_virus(t) < -d_c(high))",
+        "absorbed": 14
+      },
+      {
+        "formula": "eventually[14,24](d_virus(t) > d_c(high))",
+        "absorbed": 7
+      },
+      {
+        "formula": "eventually[24,60]globally(d_virus(t) < -d_c(low))",
+        "absorbed": 11
+      },
+      {
+        "formula": "eventually[7,10](sarscov2(t) = c(high))",
+        "absorbed": 2
+      },
+      {
+        "formula": "eventually[14,24](sarscov2(t) > c(high))",
+        "absorbed": 1
+      },
+      {
+        "formula": "globally[7,10](sarscov2(t) > c(mid))",
+        "absorbed": 0
+      },
+      {
+        "formula": "globally[10,14](d_sarscov2(t) = -d_c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "globally[24,60](d_sarscov2(t) = -d_c(low))",
+        "absorbed": 0
+      },
+      {
+        "formula": "globally[24,60](d_sarscov2(t) < -d_c(low))",
+        "absorbed": 1
+      },
+      {
+        "formula": "globally[10,14](d_sarscov2(t) < -d_c(high))",
+        "absorbed": 1
+      },
+      {
+        "formula": "globally[14,24](d_sarscov2(t) > d_c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[14,24](sarscov(t) > c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "globally[24,60](d_sarscov(t) < -d_c(low))",
+        "absorbed": 0
+      },
+      {
+        "formula": "globally[24,60](d_virus(t) < -d_c(low) and virus(t) = c(low))",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 75,
+      "final": 19,
+      "reduction": 56,
+      "reduction_ratio": 0.2533333333333334
+    },
+    "per_bin_stats": {
+      "virus": {
+        "initial": 21,
+        "final": 2,
+        "reduction": 19,
+        "reduction_ratio": 0.9047619047619048
+      },
+      "d_virus": {
+        "initial": 38,
+        "final": 6,
+        "reduction": 32,
+        "reduction_ratio": 0.8421052631578947
+      },
+      "sarscov2": {
+        "initial": 6,
+        "final": 3,
+        "reduction": 3,
+        "reduction_ratio": 0.5
+      },
+      "d_sarscov2": {
+        "initial": 7,
+        "final": 5,
+        "reduction": 2,
+        "reduction_ratio": 0.2857142857142857
+      },
+      "sarscov": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "d_sarscov": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "d_virus-virus": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "We have previously shown that EBOV-specific IgG starts to emerge 3±4 weeks after initial exposure and reaches moderate titres 1 month later.",
+    "stl": [
+      {
+        "formula": "eventually[21,28](d_igg(t) > 0)",
+        "absorbed": 16
+      },
+      {
+        "formula": "eventually[17,31](d_igg(t)=d_c(low))",
+        "absorbed": 0
+      },
+      {
+        "formula": "globally[51,inf](igg(t) = c(mid))",
+        "absorbed": 21
+      },
+      {
+        "formula": "eventually[21,28](d_il1rn(t) > d_c(low))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[51,58](il1rn(t) = c(mid))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[21,28](d_sarscov2(t) > d_c(low))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[30,inf](sarscov2(t) = c(mid))",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 44,
+      "final": 7,
+      "reduction": 37,
+      "reduction_ratio": 0.15909090909090906
+    },
+    "per_bin_stats": {
+      "d_igg": {
+        "initial": 18,
+        "final": 2,
+        "reduction": 16,
+        "reduction_ratio": 0.8888888888888888
+      },
+      "igg": {
+        "initial": 22,
+        "final": 1,
+        "reduction": 21,
+        "reduction_ratio": 0.9545454545454546
+      },
+      "d_il1rn": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "il1rn": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "d_sarscov2": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "sarscov2": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "In this previous study, levels of all pro-inflammatory cytokines tested (IL-1b , TNFα , IL-6, MCP and, MIP-1α /β ) fell to normal within two to three days of their initial observation [14].",
+    "stl": [],
+    "global": {
+      "initial": 0,
+      "final": 0,
+      "reduction": 0,
+      "reduction_ratio": 0.0
+    },
+    "per_bin_stats": {}
+  },
+  {
+    "input_sentence": "The IL-1 receptor antagonist (IL-1RA) and the two soluble TNF receptors (sTNFRI and sTNFRII) were found at moderate to high concentrations (3±7 ng/ml IL-1RA versus 1¥6 ng/ml in 10 endemic controls; 1¥3±2¥6 ng/ml sTNFRI versus 1¥8 ng/ml; 3¥5± 7 ng/ml sTNFRII versus 5 ng/ml) 7 days after initial exposure. Values fell two days later to normal endemic control levels, simultaneously with the fall in pro-inflammatory cytokines.",
+    "stl": [
+      {
+        "formula": "globally[7,7](il1ra(t) > c(mid) and stnfri(t) > c(mid))",
+        "absorbed": 8
+      },
+      {
+        "formula": "eventually[9,inf]globally(il1ra(t) < c(mid) and stnfri(t) < c(mid))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[9,9](il1ra(t) = c(low) and stnfri(t) = c(low))",
+        "absorbed": 1
+      },
+      {
+        "formula": "globally[7,7](il1ra(t) = c(mid) and stnfri(t) = c(mid))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[9,11](d_il1ra(t) < -d_c(low) and d_stnfri(t) < -d_c(low))",
+        "absorbed": 2
+      },
+      {
+        "formula": "eventually[7,9](d_il1ra(t) < 0 and d_stnfri(t) < 0)",
+        "absorbed": 4
+      },
+      {
+        "formula": "globally[7,7](il1ra(t) > c(mid) and stnfrii(t) > c(mid))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[7,9]globally(d_il1ra(t) = -d_c(low) and d_stnfrii(t) = -d_c(low))",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 23,
+      "final": 8,
+      "reduction": 15,
+      "reduction_ratio": 0.34782608695652173
+    },
+    "per_bin_stats": {
+      "stnfri-il1ra": {
+        "initial": 13,
+        "final": 4,
+        "reduction": 9,
+        "reduction_ratio": 0.6923076923076923
+      },
+      "d_il1ra-d_stnfri": {
+        "initial": 8,
+        "final": 2,
+        "reduction": 6,
+        "reduction_ratio": 0.75
+      },
+      "stnfrii-il1ra": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "d_il1ra-d_stnfrii": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "No T-cell-derived cytokines (IL-2, IL-4, IL-5, IL-12 and, IFNγ ) were detected in the plasma of the 7 asymptomatic subjects at any time.",
+    "stl": [],
+    "global": {
+      "initial": 0,
+      "final": 0,
+      "reduction": 0,
+      "reduction_ratio": 0.0
+    },
+    "per_bin_stats": {}
+  },
+  {
+    "input_sentence": "IL-2, IL-4 and IL-10 and IL-12 showed identical mRNA expression profiles, peaking 9 days after initial exposure (i.e. at the end of the inflammatory process), and falling below the detection limit 7 days later (Fig. 3).",
+    "stl": [],
+    "global": {
+      "initial": 0,
+      "final": 0,
+      "reduction": 0,
+      "reduction_ratio": 0.0
+    },
+    "per_bin_stats": {}
+  },
+  {
+    "input_sentence": "Expression of IFNγ mRNA increased at the same time as the other cytokines (i.e. 9 days after initial exposure), but only declined in the final samples (more than 3 weeks after initial exposure) (Fig. 4a).",
+    "stl": [
+      {
+        "formula": "eventually[9,21](d_ifnγ(t) > d_c(low))",
+        "absorbed": 15
+      },
+      {
+        "formula": "eventually[9,9](d_ifnγ(t) > 0)",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[21,inf](d_ifnγ(t) < 0)",
+        "absorbed": 16
+      }
+    ],
+    "global": {
+      "initial": 34,
+      "final": 3,
+      "reduction": 31,
+      "reduction_ratio": 0.08823529411764708
+    },
+    "per_bin_stats": {
+      "d_ifnγ": {
+        "initial": 34,
+        "final": 3,
+        "reduction": 31,
+        "reduction_ratio": 0.9117647058823529
+      }
+    }
+  },
+  {
+    "input_sentence": "We therefore first investigated B-cell dynamics via staining CD19, CD24 and CD38 (Fig. 4a) and observed a peak in the number of plasmablasts (CD19+ CD24− CD38+) at day 7 (Fig. 4b).",
+    "stl": [
+      {
+        "formula": "eventually[0,7](d_cd19(t) > d_c(low) and d_cd24(t) < -d_c(low))",
+        "absorbed": 2
+      },
+      {
+        "formula": "eventually[7,7](cd19(t) > c(mid) and cd24(t) < c(mid))",
+        "absorbed": 2
+      },
+      {
+        "formula": "eventually[7,7](cd19(t) > c(high) and cd24(t) < c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "globally[7,7](cd19(t) = c(high) and cd24(t) < c(high))",
+        "absorbed": 1
+      },
+      {
+        "formula": "cd19(t) > c(low)",
+        "absorbed": 3
+      },
+      {
+        "formula": "cd24(t) < c(mid)",
+        "absorbed": 3
+      },
+      {
+        "formula": "cd38(t) > c(low)",
+        "absorbed": 3
+      },
+      {
+        "formula": "eventually[0,7](bcells(t) = c(high))",
+        "absorbed": 4
+      },
+      {
+        "formula": "eventually[0,7](bcells(t) > c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[0,7](sarscov2(t) = c(high))",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 28,
+      "final": 10,
+      "reduction": 18,
+      "reduction_ratio": 0.3571428571428572
+    },
+    "per_bin_stats": {
+      "d_cd19-d_cd24": {
+        "initial": 3,
+        "final": 1,
+        "reduction": 2,
+        "reduction_ratio": 0.6666666666666667
+      },
+      "cd19-cd24": {
+        "initial": 6,
+        "final": 3,
+        "reduction": 3,
+        "reduction_ratio": 0.5
+      },
+      "cd19": {
+        "initial": 4,
+        "final": 1,
+        "reduction": 3,
+        "reduction_ratio": 0.75
+      },
+      "cd24": {
+        "initial": 4,
+        "final": 1,
+        "reduction": 3,
+        "reduction_ratio": 0.75
+      },
+      "cd38": {
+        "initial": 4,
+        "final": 1,
+        "reduction": 3,
+        "reduction_ratio": 0.75
+      },
+      "bcells": {
+        "initial": 6,
+        "final": 2,
+        "reduction": 4,
+        "reduction_ratio": 0.6666666666666667
+      },
+      "sarscov2": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "In line with the cytokine responses, expression of CD107a by CD8+ T cells was increased at day 56 post vaccination in the highest dose cohort following stimulation with Ebola GP OLP-pools (Fig. 6a).",
+    "stl": [
+      {
+        "formula": "globally[56,inf](cd107a(t) > c(mid))",
+        "absorbed": 8
+      },
+      {
+        "formula": "eventually[0,56](d_cd107a(t) > d_c(low))",
+        "absorbed": 7
+      },
+      {
+        "formula": "eventually[56,56](d_cd107a(t) > 0)",
+        "absorbed": 10
+      },
+      {
+        "formula": "d_cd107a(t) > 0",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 29,
+      "final": 4,
+      "reduction": 25,
+      "reduction_ratio": 0.13793103448275867
+    },
+    "per_bin_stats": {
+      "cd107a": {
+        "initial": 9,
+        "final": 1,
+        "reduction": 8,
+        "reduction_ratio": 0.8888888888888888
+      },
+      "d_cd107a": {
+        "initial": 20,
+        "final": 3,
+        "reduction": 17,
+        "reduction_ratio": 0.85
+      }
+    }
+  },
+  {
+    "input_sentence": "At days 4 and 5 postinfection, platelets, lymphocytes, reticulocytes, and monocyte counts and percentages all began to gradually decrease, while neutrophil counts/percentages increased.",
+    "stl": [],
+    "global": {
+      "initial": 0,
+      "final": 0,
+      "reduction": 0,
+      "reduction_ratio": 0.0
+    },
+    "per_bin_stats": {}
+  },
+  {
+    "input_sentence": "In following up of viremia, there was no viral RNA detected in the plasma of group A and group B animals on day 2, while on day 3 viral RNA loads were measurable in almost all assayed animals and increased thereafter.",
+    "stl": [
+      {
+        "formula": "globally[2,2](virus(t) < c(low))",
+        "absorbed": 12
+      },
+      {
+        "formula": "globally[3,3](virus(t) > c(low))",
+        "absorbed": 3
+      },
+      {
+        "formula": "eventually[3,inf](virus(t) > c(mid))",
+        "absorbed": 0
+      },
+      {
+        "formula": "virus(t) = c(low)",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[3,inf](virus(t) > c(low) and d_virus(t) > 0)",
+        "absorbed": 8
+      },
+      {
+        "formula": "globally[3,inf](d_virus(t) > 0)",
+        "absorbed": 3
+      }
+    ],
+    "global": {
+      "initial": 32,
+      "final": 6,
+      "reduction": 26,
+      "reduction_ratio": 0.1875
+    },
+    "per_bin_stats": {
+      "virus": {
+        "initial": 19,
+        "final": 4,
+        "reduction": 15,
+        "reduction_ratio": 0.7894736842105263
+      },
+      "virus-d_virus": {
+        "initial": 9,
+        "final": 1,
+        "reduction": 8,
+        "reduction_ratio": 0.8888888888888888
+      },
+      "d_virus": {
+        "initial": 4,
+        "final": 1,
+        "reduction": 3,
+        "reduction_ratio": 0.75
+      }
+    }
+  },
+  {
+    "input_sentence": "In group A that underwent CSF sampling, on the other hand, viral RNA was detected in the CSF by days 4 and 5 postinfection with dramatic increases seen in some animals by day 7.",
+    "stl": [
+      {
+        "formula": "eventually[4,5](virus(t) > c(low))",
+        "absorbed": 15
+      },
+      {
+        "formula": "eventually[4,7](d_virus(t) > d_c(high))",
+        "absorbed": 13
+      },
+      {
+        "formula": "eventually[6,7](d_virus(t) = d_c(high))",
+        "absorbed": 1
+      },
+      {
+        "formula": "eventually[4,5](sarscov2(t) > c(low))",
+        "absorbed": 5
+      },
+      {
+        "formula": "eventually[5,7](d_sarscov2(t) > d_c(high))",
+        "absorbed": 5
+      }
+    ],
+    "global": {
+      "initial": 44,
+      "final": 5,
+      "reduction": 39,
+      "reduction_ratio": 0.11363636363636365
+    },
+    "per_bin_stats": {
+      "virus": {
+        "initial": 16,
+        "final": 1,
+        "reduction": 15,
+        "reduction_ratio": 0.9375
+      },
+      "d_virus": {
+        "initial": 16,
+        "final": 2,
+        "reduction": 14,
+        "reduction_ratio": 0.875
+      },
+      "sarscov2": {
+        "initial": 6,
+        "final": 1,
+        "reduction": 5,
+        "reduction_ratio": 0.8333333333333334
+      },
+      "d_sarscov2": {
+        "initial": 6,
+        "final": 1,
+        "reduction": 5,
+        "reduction_ratio": 0.8333333333333334
+      }
+    }
+  },
+  {
+    "input_sentence": "Plasma cytokines levels, reflecting both pro-inflammatory as well as anti-inflammatory systemic responses to the infection, increased gradually, with interleukin (IL)-10 and IL-6 beginning to increase on day 4.",
+    "stl": [
+      {
+        "formula": "eventually[4,inf](d_il10(t) > 0 and d_il6(t) > 0)",
+        "absorbed": 19
+      },
+      {
+        "formula": "d_il10(t) > d_c(low)",
+        "absorbed": 0
+      },
+      {
+        "formula": "d_il6(t) > d_c(low)",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 22,
+      "final": 3,
+      "reduction": 19,
+      "reduction_ratio": 0.13636363636363635
+    },
+    "per_bin_stats": {
+      "d_il6-d_il10": {
+        "initial": 20,
+        "final": 1,
+        "reduction": 19,
+        "reduction_ratio": 0.95
+      },
+      "d_il10": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "d_il6": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "IL-8 and tumor necrosis factor alpha (TNF-α), on the other hand, began increasing on day 6, while GM-CSF and IL-2 began increasing on day 7.",
+    "stl": [
+      {
+        "formula": "eventually[6,inf](d_il8(t) > 0 and d_tnfα(t) > 0)",
+        "absorbed": 13
+      },
+      {
+        "formula": "eventually[7,inf](d_gmcsf(t) > 0 and d_il2(t) > 0)",
+        "absorbed": 13
+      }
+    ],
+    "global": {
+      "initial": 28,
+      "final": 2,
+      "reduction": 26,
+      "reduction_ratio": 0.0714285714285714
+    },
+    "per_bin_stats": {
+      "d_il8-d_tnfα": {
+        "initial": 14,
+        "final": 1,
+        "reduction": 13,
+        "reduction_ratio": 0.9285714285714286
+      },
+      "d_il2-d_gmcsf": {
+        "initial": 14,
+        "final": 1,
+        "reduction": 13,
+        "reduction_ratio": 0.9285714285714286
+      }
+    }
+  },
+  {
+    "input_sentence": "In the CSF, levels of MCP-1, IL1Ra, IL-2, G-CSF, and IL-18 started increasing on day 5 postinfection.",
+    "stl": [
+      {
+        "formula": "eventually[5,inf]globally(d_mcp1(t) > d_c(low) and d_il1ra(t) > d_c(low))",
+        "absorbed": 2
+      },
+      {
+        "formula": "globally[5,inf](d_mcp1(t) > 0 and d_il1ra(t) > 0)",
+        "absorbed": 1
+      }
+    ],
+    "global": {
+      "initial": 5,
+      "final": 2,
+      "reduction": 3,
+      "reduction_ratio": 0.4
+    },
+    "per_bin_stats": {
+      "d_il1ra-d_mcp1": {
+        "initial": 5,
+        "final": 2,
+        "reduction": 3,
+        "reduction_ratio": 0.6
+      }
+    }
+  },
+  {
+    "input_sentence": "Increases in IL-15, IL-1β, IL-6, and TNF-α levels were slightly more delayed in the CSF, beginning closer to day 6 postinfection.",
+    "stl": [
+      {
+        "formula": "eventually[6,inf](d_il15(t) > 0 and d_il1β(t) > 0)",
+        "absorbed": 8
+      },
+      {
+        "formula": "eventually[6,inf](il15(t) > c(low) and il1β(t) > c(low))",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 10,
+      "final": 2,
+      "reduction": 8,
+      "reduction_ratio": 0.19999999999999996
+    },
+    "per_bin_stats": {
+      "d_il1β-d_il15": {
+        "initial": 9,
+        "final": 1,
+        "reduction": 8,
+        "reduction_ratio": 0.8888888888888888
+      },
+      "il1β-il15": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "Levels of IFN-γ were not appreciably elevated.",
+    "stl": [
+      {
+        "formula": "globally[0,inf](ifnγ(t) < c(high))",
+        "absorbed": 23
+      }
+    ],
+    "global": {
+      "initial": 24,
+      "final": 1,
+      "reduction": 23,
+      "reduction_ratio": 0.04166666666666663
+    },
+    "per_bin_stats": {
+      "ifnγ": {
+        "initial": 24,
+        "final": 1,
+        "reduction": 23,
+        "reduction_ratio": 0.9583333333333334
+      }
+    }
+  },
+  {
+    "input_sentence": "In the infected animals, on the other hand, we identified extravascular albumin staining, which increased between day 4 and day 6/7, both qualitatively (Fig. 4a, b) and quantitatively (Fig. 4c).",
+    "stl": [
+      {
+        "formula": "eventually[4,7](d_albumin(t) > 0)",
+        "absorbed": 19
+      }
+    ],
+    "global": {
+      "initial": 20,
+      "final": 1,
+      "reduction": 19,
+      "reduction_ratio": 0.050000000000000044
+    },
+    "per_bin_stats": {
+      "d_albumin": {
+        "initial": 20,
+        "final": 1,
+        "reduction": 19,
+        "reduction_ratio": 0.95
+      }
+    }
+  },
+  {
+    "input_sentence": "Quantitatively, higher staining for VP40 (EBOV antigen) was noted in the infected animals compared to the control animal, in the thalamus and in the midbrain, increasing further on day 6/7 compared to day 4.",
+    "stl": [
+      {
+        "formula": "globally[0,4](vp40(t) > c(mid))",
+        "absorbed": 1
+      },
+      {
+        "formula": "globally[4,6](vp40(t) > c(mid))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[4,7]globally(vp40(t) > c(low))",
+        "absorbed": 2
+      },
+      {
+        "formula": "eventually[4,7](d_vp40(t) > d_c(low))",
+        "absorbed": 5
+      },
+      {
+        "formula": "eventually[4,7]globally(vp40(t) > c(low) and d_vp40(t) > d_c(low))",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 13,
+      "final": 5,
+      "reduction": 8,
+      "reduction_ratio": 0.3846153846153846
+    },
+    "per_bin_stats": {
+      "vp40": {
+        "initial": 6,
+        "final": 3,
+        "reduction": 3,
+        "reduction_ratio": 0.5
+      },
+      "d_vp40": {
+        "initial": 6,
+        "final": 1,
+        "reduction": 5,
+        "reduction_ratio": 0.8333333333333334
+      },
+      "d_vp40-vp40": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "There is increased VP40, CC3/PARP1, GLUT1 and GLUT3 staining in the brainstem, more so on days 6 and 7 compared to day 4 post inoculation (n = 10 animals).",
+    "stl": [],
+    "global": {
+      "initial": 0,
+      "final": 0,
+      "reduction": 0,
+      "reduction_ratio": 0.0
+    },
+    "per_bin_stats": {}
+  },
+  {
+    "input_sentence": "At the same time, the expression of GLUT3, a neuronal glucose transporter46, was seen both in the thalamus and in the midbrain, increasing further on day 6/7 compared to day 4 (Fig. 5a, b).",
+    "stl": [
+      {
+        "formula": "eventually[4,7](d_glut3(t) > 0)",
+        "absorbed": 19
+      },
+      {
+        "formula": "globally[4,6](glut3(t) > c(low))",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 21,
+      "final": 2,
+      "reduction": 19,
+      "reduction_ratio": 0.09523809523809523
+    },
+    "per_bin_stats": {
+      "d_glut3": {
+        "initial": 20,
+        "final": 1,
+        "reduction": 19,
+        "reduction_ratio": 0.95
+      },
+      "glut3": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "Many of those stained positively for CC3/PARP1, consistent with apoptosis, starting on day 4 post inoculation, and progressing over time (Figs. 5 and 6).",
+    "stl": [
+      {
+        "formula": "eventually[4,inf](d_cc3(t) > 0)",
+        "absorbed": 16
+      },
+      {
+        "formula": "eventually[4,inf]globally(d_il1β(t) > d_c(low))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[4,inf](cc3(t) > c(low) and d_cc3(t) > d_c(low))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[4,inf]globally(cc3(t) > c(low))",
+        "absorbed": 1
+      },
+      {
+        "formula": "eventually[4,inf](d_sarscov2(t) > d_c(low))",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 22,
+      "final": 5,
+      "reduction": 17,
+      "reduction_ratio": 0.2272727272727273
+    },
+    "per_bin_stats": {
+      "d_cc3": {
+        "initial": 17,
+        "final": 1,
+        "reduction": 16,
+        "reduction_ratio": 0.9411764705882353
+      },
+      "d_il1β": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "cc3-d_cc3": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "cc3": {
+        "initial": 2,
+        "final": 1,
+        "reduction": 1,
+        "reduction_ratio": 0.5
+      },
+      "d_sarscov2": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "Therefore, we analyzed control and TIM-1-/- organs following EBOV GPΔO/rVSV infection for the chemokines, CXCL10 (IP-10) and CCL2 (MCP-1). At least one of the two transcripts for these proinflammatory chemokines in all three organs was elevated in the control mice at both day 3 and/or 5 of infection compared to the TIM-1-/- mouse tissues (Fig 4).",
+    "stl": [
+      {
+        "formula": "eventually[3,5](ip10(t) > c(low))",
+        "absorbed": 2
+      },
+      {
+        "formula": "eventually[3,5](ip10(t) > c(mid) and mcp(t) > c(mid))",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 4,
+      "final": 2,
+      "reduction": 2,
+      "reduction_ratio": 0.5
+    },
+    "per_bin_stats": {
+      "ip10": {
+        "initial": 3,
+        "final": 1,
+        "reduction": 2,
+        "reduction_ratio": 0.6666666666666667
+      },
+      "mcp-ip10": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "However, by day 5 of EBOV GPΔO/rVSV infection, TIM-1-/- mice had a 100-fold reduction in viremia compared to control mice (Fig 2) and a similar trend was observed during infections with full length EBOV GP/rVSV (S3 Fig).",
+    "stl": [
+      {
+        "formula": "globally[5,5](virus(t) < c(low)) implies globally[5,5](virus(t) < c(low))",
+        "absorbed": 17
+      }
+    ],
+    "global": {
+      "initial": 18,
+      "final": 1,
+      "reduction": 17,
+      "reduction_ratio": 0.05555555555555558
+    },
+    "per_bin_stats": {
+      "virus": {
+        "initial": 18,
+        "final": 1,
+        "reduction": 17,
+        "reduction_ratio": 0.9444444444444444
+      }
+    }
+  },
+  {
+    "input_sentence": "Ebola survivors need 158 days to clear the virus, and Ebola fatalities result when the individual cannot clear the virus before death (17).",
+    "stl": [
+      {
+        "formula": "globally[0,158](d_virus(t) < 0 and virus(t) > c(high)) implies eventually[0,158](virus(t) < c(high))",
+        "absorbed": 2
+      },
+      {
+        "formula": "globally[158,inf](virus(t) = c(low))",
+        "absorbed": 18
+      },
+      {
+        "formula": "eventually[0,158](sarscov2(t) = c(low)) implies globally[0,17](sarscov2(t) > c(low))",
+        "absorbed": 1
+      },
+      {
+        "formula": "eventually[0,158]globally(d_virus(t) < 0)",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 25,
+      "final": 4,
+      "reduction": 21,
+      "reduction_ratio": 0.16000000000000003
+    },
+    "per_bin_stats": {
+      "d_virus-virus": {
+        "initial": 3,
+        "final": 1,
+        "reduction": 2,
+        "reduction_ratio": 0.6666666666666667
+      },
+      "virus": {
+        "initial": 19,
+        "final": 1,
+        "reduction": 18,
+        "reduction_ratio": 0.9473684210526316
+      },
+      "sarscov2": {
+        "initial": 2,
+        "final": 1,
+        "reduction": 1,
+        "reduction_ratio": 0.5
+      },
+      "d_virus": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "Patients with primary dengue hemorrhagic fever need a long time (far more than 12 days) to clear the viral protein NS1 (18).",
+    "stl": [
+      {
+        "formula": "eventually[12,inf](ns1(t) = c(low))",
+        "absorbed": 1
+      },
+      {
+        "formula": "globally[0,12](ns1(t) > c(low))",
+        "absorbed": 13
+      },
+      {
+        "formula": "eventually[12,inf](ns1(t) < c(low))",
+        "absorbed": 2
+      },
+      {
+        "formula": "globally[12,inf](ns1(t) > c(low))",
+        "absorbed": 3
+      },
+      {
+        "formula": "globally[0,12](d_ns1(t) > -d_c(high))",
+        "absorbed": 1
+      },
+      {
+        "formula": "eventually[12,inf](d_ns1(t) < -d_c(low))",
+        "absorbed": 2
+      },
+      {
+        "formula": "globally[0,12](ns1(t) > c(low)) implies eventually[12,inf](d_ns1(t) < 0)",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[12,inf](d_sarscov2(t) < -d_c(low))",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 30,
+      "final": 8,
+      "reduction": 22,
+      "reduction_ratio": 0.2666666666666666
+    },
+    "per_bin_stats": {
+      "ns1": {
+        "initial": 23,
+        "final": 4,
+        "reduction": 19,
+        "reduction_ratio": 0.8260869565217391
+      },
+      "d_ns1": {
+        "initial": 5,
+        "final": 2,
+        "reduction": 3,
+        "reduction_ratio": 0.6
+      },
+      "ns1-d_ns1": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "d_sarscov2": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "85% of HCV patients cannot clear the virus within 9 months (15% of patients cleared HCV spontaneously within 108 days) (19, 20).",
+    "stl": [
+      {
+        "formula": "globally[0,270](virus(t) > c(low))",
+        "absorbed": 18
+      },
+      {
+        "formula": "eventually[0,108](virus(t) < c(mid))",
+        "absorbed": 14
+      },
+      {
+        "formula": "eventually[0,108](d_virus(t) < -d_c(low))",
+        "absorbed": 2
+      },
+      {
+        "formula": "eventually[0,108](sarscov2(t) < c(low))",
+        "absorbed": 4
+      },
+      {
+        "formula": "eventually[0,108](sarscov2(t) = c(low))",
+        "absorbed": 0
+      },
+      {
+        "formula": "globally[0,270](sarscov2(t) > c(low))",
+        "absorbed": 6
+      },
+      {
+        "formula": "eventually[0,108](d_sarscov2(t) < 0)",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 51,
+      "final": 7,
+      "reduction": 44,
+      "reduction_ratio": 0.13725490196078427
+    },
+    "per_bin_stats": {
+      "virus": {
+        "initial": 34,
+        "final": 2,
+        "reduction": 32,
+        "reduction_ratio": 0.9411764705882353
+      },
+      "d_virus": {
+        "initial": 3,
+        "final": 1,
+        "reduction": 2,
+        "reduction_ratio": 0.6666666666666667
+      },
+      "sarscov2": {
+        "initial": 13,
+        "final": 3,
+        "reduction": 10,
+        "reduction_ratio": 0.7692307692307692
+      },
+      "d_sarscov2": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "Viral RNA decreased slightly in the survivor between days 8 and 10 and was no longer detectable after day 12.",
+    "stl": [
+      {
+        "formula": "eventually[8,10](d_virus(t) < -d_c(low))",
+        "absorbed": 16
+      },
+      {
+        "formula": "globally[8,10](d_virus(t) < 0)",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[12,inf]globally(virus(t) < c(low))",
+        "absorbed": 16
+      },
+      {
+        "formula": "globally[12,inf](virus(t) = c(low))",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 36,
+      "final": 4,
+      "reduction": 32,
+      "reduction_ratio": 0.11111111111111116
+    },
+    "per_bin_stats": {
+      "d_virus": {
+        "initial": 18,
+        "final": 2,
+        "reduction": 16,
+        "reduction_ratio": 0.8888888888888888
+      },
+      "virus": {
+        "initial": 18,
+        "final": 2,
+        "reduction": 16,
+        "reduction_ratio": 0.8888888888888888
+      }
+    }
+  },
+  {
+    "input_sentence": "One animal, which succumbed on day 12, experienced a slight decrease in both ALT and AST on day 12 compared to day 10 post-infection.",
+    "stl": [
+      {
+        "formula": "eventually[10,12](d_alt(t) < 0 and d_ast(t) < 0)",
+        "absorbed": 18
+      },
+      {
+        "formula": "d_alt(t) < -d_c(low)",
+        "absorbed": 1
+      },
+      {
+        "formula": "d_ast(t) < -d_c(low)",
+        "absorbed": 1
+      }
+    ],
+    "global": {
+      "initial": 23,
+      "final": 3,
+      "reduction": 20,
+      "reduction_ratio": 0.13043478260869568
+    },
+    "per_bin_stats": {
+      "d_alt-d_ast": {
+        "initial": 19,
+        "final": 1,
+        "reduction": 18,
+        "reduction_ratio": 0.9473684210526316
+      },
+      "d_alt": {
+        "initial": 2,
+        "final": 1,
+        "reduction": 1,
+        "reduction_ratio": 0.5
+      },
+      "d_ast": {
+        "initial": 2,
+        "final": 1,
+        "reduction": 1,
+        "reduction_ratio": 0.5
+      }
+    }
+  },
+  {
+    "input_sentence": "The animal that survived challenge experienced peak ALKP on day 10, and levels were comparable to those of the animals that succumbed to infection.",
+    "stl": [
+      {
+        "formula": "eventually[10,10](alkp(t) = c(high))",
+        "absorbed": 17
+      }
+    ],
+    "global": {
+      "initial": 18,
+      "final": 1,
+      "reduction": 17,
+      "reduction_ratio": 0.05555555555555558
+    },
+    "per_bin_stats": {
+      "alkp": {
+        "initial": 18,
+        "final": 1,
+        "reduction": 17,
+        "reduction_ratio": 0.9444444444444444
+      }
+    }
+  },
+  {
+    "input_sentence": "The animal that survived challenge experienced a 3.7-fold increase in triglycerides over baseline on day 10, which returned to baseline by day 14 (data not shown).",
+    "stl": [
+      {
+        "formula": "eventually[10,14](triglycerides(t) = triglycerides(10))",
+        "absorbed": 21
+      },
+      {
+        "formula": "eventually[10,14](d_triglycerides(t) = 0)",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[0,10](d_triglycerides(t) > d_c(high))",
+        "absorbed": 3
+      },
+      {
+        "formula": "eventually[10,14](d_triglycerides(t) < -d_c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[0,10](d_triglycerides(t) = d_c(high))",
+        "absorbed": 2
+      }
+    ],
+    "global": {
+      "initial": 31,
+      "final": 5,
+      "reduction": 26,
+      "reduction_ratio": 0.16129032258064513
+    },
+    "per_bin_stats": {
+      "triglycerides": {
+        "initial": 22,
+        "final": 1,
+        "reduction": 21,
+        "reduction_ratio": 0.9545454545454546
+      },
+      "d_triglycerides": {
+        "initial": 9,
+        "final": 4,
+        "reduction": 5,
+        "reduction_ratio": 0.5555555555555556
+      }
+    }
+  },
+  {
+    "input_sentence": "The animal that survived challenge experienced peak CRP levels on day 8, and levels were comparable to animals that did not survive challenge.",
+    "stl": [
+      {
+        "formula": "crp(t) = c(mid)",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[8,8](crp(t)=c(high))",
+        "absorbed": 11
+      }
+    ],
+    "global": {
+      "initial": 13,
+      "final": 2,
+      "reduction": 11,
+      "reduction_ratio": 0.15384615384615385
+    },
+    "per_bin_stats": {
+      "crp": {
+        "initial": 13,
+        "final": 2,
+        "reduction": 11,
+        "reduction_ratio": 0.8461538461538461
+      }
+    }
+  },
+  {
+    "input_sentence": "Neither IL-10 nor IFN-γ were detected in the serum of the animal that survived challenge, on the days tested.",
+    "stl": [
+      {
+        "formula": "globally[0,inf](il10(t) < c(low) and ifnγ(t) < c(low))",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 1,
+      "final": 1,
+      "reduction": 0,
+      "reduction_ratio": 1.0
+    },
+    "per_bin_stats": {
+      "ifnγ-il10": {
+        "initial": 1,
+        "final": 1,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      }
+    }
+  },
+  {
+    "input_sentence": "In most animals, an approximate two- to threefold decrease of CD3 +T-cells was observed, which began between days 3 and 5, reaching a nadir by day 8 (Fig. 7B).",
+    "stl": [
+      {
+        "formula": "eventually[3,8](d_tcells(t) < -d_c(low))",
+        "absorbed": 18
+      },
+      {
+        "formula": "eventually[3,5]globally(d_tcells(t) < 0)",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[8,inf](tcells(t) < c(low))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[3,8](tcells(t) < c(low))",
+        "absorbed": 12
+      },
+      {
+        "formula": "eventually[8,8](tcells(t) = c(low))",
+        "absorbed": 0
+      }
+    ],
+    "global": {
+      "initial": 35,
+      "final": 5,
+      "reduction": 30,
+      "reduction_ratio": 0.1428571428571428
+    },
+    "per_bin_stats": {
+      "d_tcells": {
+        "initial": 20,
+        "final": 2,
+        "reduction": 18,
+        "reduction_ratio": 0.9
+      },
+      "tcells": {
+        "initial": 15,
+        "final": 3,
+        "reduction": 12,
+        "reduction_ratio": 0.8
+      }
+    }
+  },
+  {
+    "input_sentence": "As seen with CD3 + T-cells, a steady decline in CD20 + B-cells was observed beginning by days 3 and 5, with the largest decrease of approximately two to threefold noted by day 7 or 8.",
+    "stl": [
+      {
+        "formula": "eventually[7,8](d_bcells(t) < -d_c(high))",
+        "absorbed": 14
+      },
+      {
+        "formula": "eventually[3,5]globally(d_bcells(t) < 0)",
+        "absorbed": 16
+      },
+      {
+        "formula": "eventually[7,8](d_bcells(t) = -d_c(high))",
+        "absorbed": 1
+      },
+      {
+        "formula": "eventually[7,8](bcells(t) < c(low))",
+        "absorbed": 1
+      }
+    ],
+    "global": {
+      "initial": 36,
+      "final": 4,
+      "reduction": 32,
+      "reduction_ratio": 0.11111111111111116
+    },
+    "per_bin_stats": {
+      "d_bcells": {
+        "initial": 34,
+        "final": 3,
+        "reduction": 31,
+        "reduction_ratio": 0.9117647058823529
+      },
+      "bcells": {
+        "initial": 2,
+        "final": 1,
+        "reduction": 1,
+        "reduction_ratio": 0.5
+      }
+    }
+  },
+  {
+    "input_sentence": "Within 5–6 days of symptom onset, SARS-CoV-2 viral load reaches its peak, which is much earlier than SARS-CoV.",
+    "stl": [
+      {
+        "formula": "eventually[5,6](sarscov2(t) = c(high))",
+        "absorbed": 13
+      },
+      {
+        "formula": "eventually[5,6](d_sarscov2(t) = 0 and sarscov2(t) = c(high))",
+        "absorbed": 1
+      },
+      {
+        "formula": "eventually[5,6](sarscov2(t) = c(high) and sarscov(t) < c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[5,6](sarscov2(t) > c(high) and sarscov(t) < c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "eventually[5,6](d_sarscov2(t) = 0)",
+        "absorbed": 0
+      },
+      {
+        "formula": "globally[0,4](d_sarscov2(t) > 0)",
+        "absorbed": 4
+      },
+      {
+        "formula": "eventually[5,6](d_sarscov2(t) = d_c(high))",
+        "absorbed": 0
+      },
+      {
+        "formula": "globally[5,6](sarscov(t) < c(high))",
+        "absorbed": 1
+      }
+    ],
+    "global": {
+      "initial": 27,
+      "final": 8,
+      "reduction": 19,
+      "reduction_ratio": 0.2962962962962963
+    },
+    "per_bin_stats": {
+      "sarscov2": {
+        "initial": 14,
+        "final": 1,
+        "reduction": 13,
+        "reduction_ratio": 0.9285714285714286
+      },
+      "d_sarscov2-sarscov2": {
+        "initial": 2,
+        "final": 1,
+        "reduction": 1,
+        "reduction_ratio": 0.5
+      },
+      "sarscov2-sarscov": {
+        "initial": 2,
+        "final": 2,
+        "reduction": 0,
+        "reduction_ratio": 0.0
+      },
+      "d_sarscov2": {
+        "initial": 7,
+        "final": 3,
+        "reduction": 4,
+        "reduction_ratio": 0.5714285714285714
+      },
+      "sarscov": {
+        "initial": 2,
+        "final": 1,
+        "reduction": 1,
+        "reduction_ratio": 0.5
+      }
+    }
+  }
+]

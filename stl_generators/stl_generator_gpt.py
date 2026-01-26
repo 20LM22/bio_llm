@@ -73,7 +73,7 @@ def generate_example_prompt(num_examples):
     samples = []
     for n in range(num_examples):
         a = random.choice(curated_dataset)
-        print(f"random choice: {a}")
+        # print(f"random choice: {a}")
         samples.append(a) # random.choice(curated_dataset))
 
     for _id, sample in enumerate(samples):
@@ -84,14 +84,14 @@ def generate_example_prompt(num_examples):
         sample = sample.replace('implies',' implies ')
         samples[_id] = sample
         
-    print(f"samples: {samples}")
+    # print(f"samples: {samples}")
 
     literal_translations = []
     for _id, sample in enumerate(samples):
         sample = sample.replace("âˆž", "∞")
         sample = sample.replace("∞", "inf")
-        print("in loop")
-        print(sample)
+        # print("in loop")
+        # print(sample)
         literal_translations.append(STL2literal(sample, grammar))
 
     examples = ""

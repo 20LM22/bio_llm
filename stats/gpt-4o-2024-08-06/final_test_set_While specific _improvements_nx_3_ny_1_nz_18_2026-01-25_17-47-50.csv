@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"globally[0,inf](igg(t) < c(low)) and eventually[0,inf](igg(t) > c(high))",0.3486339,N/A,N/A,0,1,0
+"globally[0,inf](igg(t) < c(low)) implies eventually[0,inf](igg(t) > c(high))",0.30045563,N/A,N/A,0,1,0
+"globally[0,inf](igg(t) < c(low)) implies eventually[0,inf]globally(igg(t) > c(high))",0.28551885,N/A,N/A,0,1,0
+"globally[0,inf](igg(t) < c(low)) and eventually[0,inf](igg(t) > c(high))",0.3486339,N/A,N/A,0,1,0
+"globally[0,inf](igg(t)<c(low)) and eventually[0,inf](igg(t)=c(high))",0.371957,"globally[0,inf](igg(t) < c(low)) and eventually[0,inf](igg(t) > c(high))",0.3486339,0,1,0
+"globally[0,inf](igg(t) = c(low)) and eventually[0,inf](igg(t) > c(high))",0.35800016,N/A,N/A,0,1,0
+N/A,N/A,N/A,N/A,0,0,0
+"globally[0,inf](igg(t) < c(low)) and eventually[0,inf](igg(t) = c(high))",0.371957,N/A,N/A,0,1,0
+"globally[0,inf](igg(t) < c(low)) and eventually[0,inf](igg(t) > c(high))",0.3486339,N/A,N/A,0,1,0
+"globally[0,inf](igg(t) < c(low)) implies eventually[0,inf](igg(t) > c(high))",0.30045563,N/A,N/A,0,1,0
+"globally[0,inf](igg(t) < c(low)) and eventually[0,inf](igg(t) > c(high))",0.3486339,N/A,N/A,0,1,0
+"globally[0,inf](igg(t) < c(low)) and eventually[0,inf](igg(t) > c(high))",0.3486339,N/A,N/A,0,1,0
+"globally[0,inf](igg(t) < c(low)) and eventually[0,inf](igg(t) > c(high))",0.3486339,N/A,N/A,0,1,0
+"globally[0,inf](igg(t) < c(low)) and eventually[0,inf](igg(t) > c(high))",0.3486339,N/A,N/A,0,1,0
+"globally[0,inf](igg(t) < c(low)) and eventually[0,inf](igg(t) > c(high))",0.3486339,N/A,N/A,0,1,0
+"globally[0,inf](igg(t) < c(low)) and eventually[0,inf](igg(t) > c(high))",0.3486339,N/A,N/A,0,1,0
+"globally[0,inf](igg(t) < c(low)) and eventually[0,inf](igg(t) > c(high))",0.3486339,N/A,N/A,0,1,0
+"globally[0,inf](igg(t) < c(low)) and eventually[0,inf](igg(t) > c(high))",0.3486339,"globally[0,inf](igg(t) < c(low)) implies eventually[0,inf](igg(t) > c(high))",0.30045563,0,1,0

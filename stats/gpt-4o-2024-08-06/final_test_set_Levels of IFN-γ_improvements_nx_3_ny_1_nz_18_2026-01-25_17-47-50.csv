@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+ifnγ(t) < c(high),0.8599688,N/A,N/A,0,1,0
+ifnγ(t) < c(mid),0.879204,N/A,N/A,0,1,0
+"globally[0,inf](ifnγ(t) < c(high))",0.67829776,N/A,N/A,0,1,0
+ifnγ(t) < c(high),0.8599688,ifnγ(t) < c(high),0.8599688,0,0,1
+ifnγ(t) < c(mid),0.879204,ifnγ(t) < c(mid),0.879204,0,0,1
+ifnγ(t) < c(mid),0.879204,ifnγ(t) < c(high),0.8599688,0,1,0
+ifnγ(t) = c(mid),0.84422725,N/A,N/A,0,1,0
+ifnγ(t) < c(high),0.8599688,N/A,N/A,0,1,0
+ifnγ(t) < c(high),0.8599688,N/A,N/A,0,1,0
+N/A,N/A,N/A,N/A,0,0,0
+ifnγ(t) < c(high),0.8599688,N/A,N/A,0,1,0
+ifnγ(t) < c(mid),0.879204,ifnγ(t) = c(mid),0.84422725,0,1,0
+ifnγ(t) < c(high),0.8599688,ifnγ(t) < c(high),0.8599688,0,0,1
+ifnγ(t) < c(high),0.8599688,ifnγ(t) < c(low),0.8644662,1,0,0
+ifnγ(t) = c(mid),0.84422725,ifnγ(t) = c(mid),0.84422725,0,0,1
+ifnγ(t) < c(high),0.8599688,N/A,N/A,0,1,0
+ifnγ(t) < c(mid),0.879204,N/A,N/A,0,1,0
+ifnγ(t) < c(mid),0.879204,N/A,N/A,0,1,0

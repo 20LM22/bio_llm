@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"eventually[4,5](virus(t) > c(low)) and eventually[7,7](d_virus(t) > d_c(high))",0.60090244,N/A,N/A,0,1,0
+"eventually[4,5](virus(t) > c(low)) and eventually[5,7](d_virus(t) > d_c(high))",0.5991739,N/A,N/A,0,1,0
+"eventually[4,5](virus(t) > c(low)) and eventually[5,7](d_virus(t) > d_c(high))",0.5991739,"eventually[4,5](sarscov2(t) > c(low)) and eventually[7,7](d_sarscov2(t) > d_c(high))",0.37691593,0,1,0
+"eventually[4,5](virus(t) > c(low)) and eventually[7,7](d_virus(t) > d_c(high))",0.60090244,"eventually[4,5](sarscov2(t) > c(low)) and eventually[5,7](d_sarscov2(t) > d_c(high))",0.37574175,0,1,0
+"eventually[4,5](virus(t) > c(low)) and eventually[7,7](d_virus(t) > d_c(high))",0.60090244,N/A,N/A,0,1,0
+"eventually[4,5](virus(t) > c(low)) and eventually[7,7](d_virus(t) > d_c(high))",0.60090244,"eventually[4,5](sarscov2(t) > c(low)) and eventually[7,7](d_sarscov2(t) > d_c(high))",0.37691593,0,1,0
+"eventually[4,5](virus(t) > c(low)) and eventually[7,7](d_virus(t) > d_c(high))",0.60090244,N/A,N/A,0,1,0
+"eventually[4,5](virus(t) > c(low)) and eventually[7,7](d_virus(t) = d_c(high))",0.6035495,N/A,N/A,0,1,0
+"eventually[4,5](virus(t) > c(low)) and eventually[7,7](d_virus(t) > d_c(high))",0.60090244,N/A,N/A,0,1,0
+"eventually[4,5](virus(t) > c(low)) and eventually[7,7](d_virus(t) > d_c(high))",0.60090244,N/A,N/A,0,1,0
+"eventually[4,5](virus(t) > c(low)) and eventually[4,7](d_virus(t) > d_c(high))",0.60238194,N/A,N/A,0,1,0
+"eventually[4,5](virus(t) > c(low)) and eventually[4,7](d_virus(t) > d_c(high))",0.60238194,N/A,N/A,0,1,0
+"eventually[4,5](virus(t) > c(low)) and eventually[6,7](d_virus(t) = d_c(high))",0.603925,"eventually[4,5](sarscov2(t) > c(low)) and eventually[7,7](d_sarscov2(t) > d_c(high))",0.37691593,0,1,0
+"globally[4,5](sarscov2(t) > c(low)) and eventually[7,7](d_sarscov2(t) > d_c(high))",0.3633521,N/A,N/A,0,1,0
+"eventually[4,5](virus(t) > c(low)) and eventually[7,7](d_virus(t) > d_c(high))",0.60090244,N/A,N/A,0,1,0
+"eventually[4,5](virus(t) > c(low)) and eventually[7,7](d_virus(t) > d_c(high))",0.60090244,N/A,N/A,0,1,0
+"eventually[4,5](virus(t) > c(low)) and eventually[7,7](d_virus(t) > d_c(high))",0.60090244,N/A,N/A,0,1,0
+"eventually[4,5](sarscov2(t) > c(low)) and eventually[7,7](d_sarscov2(t) > d_c(high))",0.37691593,N/A,N/A,0,1,0

@@ -54,7 +54,7 @@ do
     consolidated_pkl="../pkl/${set_name}_consolidated_${model}_${experiment}_${time}.pkl"
     filtered_pkl="../pkl/${set_name}_cosine_filtered_${model}_${experiment}_${time}.pkl"
     
-    python stl_generator_gpt.py "$model" "$config" "$experiment" "$time" # >| "$convo"
+    python stl_generator_gpt.py "$model" "$config" "$experiment" "$time" >| "$convo"
     python ../evaluations/stl_evaluation_v6.py "$model" "$translations" "$config" "$time"
     python ../consolidate/consolidate.py "$model" "$translations" "$config" "$time"
     python ../consolidate/filter_by_cosine_similarity.py "$model" "$consolidated_pkl" "$config" "$time"       

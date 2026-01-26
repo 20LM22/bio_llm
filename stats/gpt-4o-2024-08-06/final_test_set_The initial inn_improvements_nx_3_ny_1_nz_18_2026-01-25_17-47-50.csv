@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"globally[0,10](ifn(t) < c(low)) implies eventually[0,14]globally(virus(t) > c(high))",0.4689706,N/A,N/A,0,1,0
+"globally[0,14](ifn(t) < c(low) and d_virus(t) > d_c(high))",0.45451045,N/A,N/A,0,1,0
+"globally[10,14](ifn(t) < c(low) and virus(t) > c(high))",0.483541,N/A,N/A,0,1,0
+"globally[10,14](ifn(t) < c(low) and virus(t) > c(high))",0.483541,"globally[0,10](ifnα(t) < c(low) and ifnβ(t) < c(low)) implies eventually[0,10](d_sarscov2(t) > d_c(high))",0.26475728,0,1,0
+"globally[10,14](ifn(t) < c(low) and virus(t) > c(high))",0.483541,N/A,N/A,0,1,0
+"ifn(t) < c(low) and eventually[10,14](virus(t) > c(high))",0.5245091,N/A,N/A,0,1,0
+"globally[0,14](ifn(t) < c(low) and virus(t) > c(high))",0.4713043,N/A,N/A,0,1,0
+"globally[10,14](ifn(t) < c(low) and virus(t) > c(high))",0.483541,"globally[10,14](ifnα(t) < c(low) and sarscov2(t) > c(high))",0.39734823,0,1,0
+"globally[10,14](ifn(t) < c(low) and virus(t) > c(high))",0.483541,N/A,N/A,0,1,0
+"globally[0,14](ifn(t) < c(low) and virus(t) > c(high))",0.4713043,N/A,N/A,0,1,0
+"globally[0,14](ifn(t) < c(low) and virus(t) > c(high))",0.4713043,N/A,N/A,0,1,0
+"globally[0,10](ifn(t) < c(low)) and eventually[0,14](d_virus(t) > d_c(high))",0.42959225,N/A,N/A,0,1,0
+"ifn(t) < c(low) and eventually[10,14]globally(virus(t) > c(high))",0.5263235,N/A,N/A,0,1,0
+"globally[0,14](ifn(t) < c(low) and virus(t) > c(high))",0.4713043,N/A,N/A,0,1,0
+"globally[0,14](ifn(t) < c(mid) and virus(t) > c(mid))",0.49432722,N/A,N/A,0,1,0
+"globally[0,14](ifn(t) < c(low) and d_virus(t) > d_c(high))",0.45451045,N/A,N/A,0,1,0
+"globally[0,14](ifn(t) < c(low) and virus(t) > c(high))",0.4713043,N/A,N/A,0,1,0
+"globally[10,14](ifn(t) < c(low) and virus(t) > c(high))",0.483541,"globally[0,10](ifnα(t) < c(low) and ifnβ(t) < c(low)) implies eventually[0,14](sarscov2(t) > c(high))",0.33871087,0,1,0

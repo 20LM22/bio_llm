@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+"eventually[4,inf](d_cc3(t) = d_c(high))",0.40367407,"eventually[4,inf]globally(d_il1β(t) > d_c(low))",0.27751848,0,1,0
+"eventually[4,inf](cc3(t) > c(low) and d_cc3(t) > d_c(low))",0.4079305,N/A,N/A,0,1,0
+"eventually[4,inf]globally(d_cc3(t) > d_c(low))",0.39362898,N/A,N/A,0,1,0
+"eventually[4,inf]globally(d_cc3(t) > 0)",0.411582,N/A,N/A,0,1,0
+"eventually[4,inf](d_cc3(t) > d_c(low))",0.39622408,N/A,N/A,0,1,0
+"eventually[4,inf](d_cc3(t) > d_c(low))",0.39622408,N/A,N/A,0,1,0
+"eventually[4,inf]globally(d_cc3(t) > d_c(low))",0.39362898,N/A,N/A,0,1,0
+"eventually[4,inf]globally(cc3(t) > c(mid))",0.43031657,"eventually[4,inf]globally(cc3(t) > c(low)) and d_cc3(t) > d_c(low)",0.42699975,0,1,0
+"eventually[4,inf](d_cc3(t) > 0)",0.4139002,N/A,N/A,0,1,0
+"eventually[4,inf]globally(d_cc3(t) > d_c(low))",0.39362898,N/A,N/A,0,1,0
+"eventually[4,inf]globally(d_cc3(t) > 0)",0.411582,N/A,N/A,0,1,0
+"eventually[4,inf](d_cc3(t) > d_c(low))",0.39622408,N/A,N/A,0,1,0
+"eventually[4,inf](d_cc3(t) > d_c(low))",0.39622408,"eventually[4,inf](d_sarscov2(t) > d_c(low))",0.16825666,0,1,0
+"globally[4,inf](d_cc3(t) > d_c(low))",0.36847752,N/A,N/A,0,1,0
+"eventually[4,inf](d_cc3(t) > d_c(low))",0.39622408,N/A,N/A,0,1,0
+"eventually[4,inf](d_cc3(t)=d_c(high))",0.40367407,N/A,N/A,0,1,0
+"eventually[4,inf]globally(d_cc3(t) > d_c(low))",0.39362898,N/A,N/A,0,1,0
+"globally[4,inf](d_cc3(t) > 0)",0.38563654,N/A,N/A,0,1,0

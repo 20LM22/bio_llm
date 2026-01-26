@@ -1,0 +1,19 @@
+Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
+N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,0,0,0
+"eventually[8,8](crp(t) = c(high))",0.6546248,"eventually[8,8](crp(t)=c(high) and crp(t)=c(high))",0.6531738,0,1,0
+"eventually[8,8](crp(t) = c(high)) and crp(t) = c(mid)",0.644507,N/A,N/A,0,1,0
+"globally[8,8](crp(t)=c(high))",0.63464737,N/A,N/A,0,1,0
+"globally[8,8](crp(t) = c(high))",0.63464737,N/A,N/A,0,1,0
+N/A,N/A,N/A,N/A,0,0,0
+N/A,N/A,N/A,N/A,0,0,0
+"eventually[8,8](crp(t)=c(high)) and crp(t)=c(high)",0.6524062,N/A,N/A,0,1,0
+"globally[8,8](crp(t) = c(high))",0.63464737,N/A,N/A,0,1,0
+"eventually[8,8](crp(t) = c(high)) and crp(t) = c(high)",0.6524062,N/A,N/A,0,1,0
+N/A,N/A,N/A,N/A,0,0,0
+"eventually[8,8](crp(t) = c(high)) and crp(t) = c(high)",0.6524062,N/A,N/A,0,1,0
