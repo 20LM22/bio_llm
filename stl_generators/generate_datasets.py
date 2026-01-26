@@ -1762,6 +1762,7 @@ print(f'curated: {len(curated_arr)}')
 try:
     with open(f'../pkl/curated_dataset.pkl', 'wb') as results:
         pickle.dump(curated_arr, results)
+        print(curated_arr)
 except Exception as e:
     print(e)
 
