@@ -32,6 +32,24 @@ def compute_min_depth(sym, rule_map, min_depth_map, visited):
     return min_depth
 
 class STLBase(ABC):
+    def sample_terminal(self, name):
+        if name == "D_C":
+            return random.choice([
+                "0",
+                "d_c(low)",
+                "d_c(high)",
+                "-d_c(low)",
+                "-d_c(high)"
+            ])
+        elif name == "C_LOW":
+            return "c(low)"
+        elif name == "C_MID":
+            return "c(mid)"
+        elif name == "C_HIGH":
+            return "c(high)"
+        else:
+            return self.anon_map.get(name, "")
+
     def __init__(self, grammar, ids):
         self.ids = ids
 
@@ -78,16 +96,16 @@ class STLBase(ABC):
         t_a_str = "t_a"
 
         if sym == "t_a":
-            parts.append(random.choices([str(random.randint(0, 20)), '∞'], weights=[0.7, 0.3])[0])
+            parts.append(str(random.choices([str(random.randint(0, 20)), 'inf'], weights=[0.7, 0.3])[0]))
         elif sym == "s":
-            parts.append(random.choice(self.ids))
+            parts.append(str(random.choice(self.ids)))
         elif sym == "d_s":
-            parts.append("d_" + random.choice(self.ids))
+            parts.append(str("d_" + random.choice(self.ids)))
         elif sym == "c":
             signal = random.choice(self.ids)
-            parts.append(random.choice([f"{signal}_{self.sample(t_a_str)}", "c(low)", "c(mid)", "c(high)"]))
+            parts.append(str(random.choice([f"{signal}_{self.sample(t_a_str)}", "c(low)", "c(mid)", "c(high)"])))
         elif sym == "d_c":
-            parts.append(random.choice(["0", "d_c(low)", "d_c(high)"]))
+            parts.append(str(random.choice(["0", "d_c(low)", "d_c(high)"])))
         else:
             if sym in self.rule_map:
                 if depth > max_depth:
@@ -116,23 +134,24 @@ class STLBase(ABC):
                 for t in expansion:
                     if not t.is_term:
                         if t.name == "t_a":
-                            parts.append(random.choices([str(random.randint(0, 20)), '∞'], weights=[0.7, 0.3])[0])
+                            parts.append(str(random.choices([str(random.randint(0, 20)), "inf"], weights=[0.7, 0.3])[0]))
                         elif t.name == "s":
                             s_select += 1
-                            parts.append(random.choice(self.ids))
+                            parts.append(str(random.choice(self.ids)))
                         elif t.name == "d_s":
                             d_select += 1
-                            parts.append("d_" + str(random.choice(self.ids)))
+                            parts.append(str("d_" + str(random.choice(self.ids))))
                         elif t.name == "c":
-                            parts.append(random.choice(["c(low)", "c(mid)", "c(high)"]))
+                            parts.append(str(random.choice(["c(low)", "c(mid)", "c(high)"])))
                         elif t.name == "d_c":
-                            parts.append(random.choice(["0", "d_c(low)", "d_c(high)"]))
+                            parts.append(str(random.choice(["0", "d_c(low)", "d_c(high)"])))
                         else:
                             parts.append(self.sample(t.name, depth + 1))
                     else:
-                        parts.append(self.anon_map[t.name])  # Use literal if available
+                        parts.append(str(self.sample_terminal(t.name))) # Use literal if available
 
-            return ''.join(parts)
+            # return ''.join(parts)
+            return ''.join(str(p) for p in parts if p is not None)
 
 if __name__ == "__main__":
     stl = STLBase()
