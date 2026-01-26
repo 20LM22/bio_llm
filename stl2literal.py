@@ -720,7 +720,7 @@ if __name__ == '__main__':
     p = Lark(grammar)
     # input_sentence1 = "eventually[8,18]globally(d_IL1RN(t) > c(high))"
     # input_sentence2 = "d_IL1RN(t) = c(high)"
-    input_sentence2 = "eventually[1,7](IL1RN(t)=c(high)) and eventually[15,21](IL1RN(t)=c(high)) and eventually[22,28](IL1RN(t)=c(high))"
+    input_sentence2 = "eventually[1,7](IL1α(t)=c(high)) and eventually[15,21](IL1RN(t)=c(high)) and eventually[22,28](IL1RN(t)=c(high))"
 
     tree = p.parse(input_sentence2)
     # print(check_derivative_STL2literal(tree))
