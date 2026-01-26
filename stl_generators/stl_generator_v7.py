@@ -102,7 +102,7 @@ def generate_example_prompt(num_examples):
         sample = sample.replace('and',' and ')
         sample = sample.replace('<',' < ')
         sample = sample.replace('>',' > ')
-        sample = sample.replace('-',' - ')
+        sample = sample.replace('-',' -')
         sample = sample.replace('implies',' implies ')
         samples[_id] = sample
 
