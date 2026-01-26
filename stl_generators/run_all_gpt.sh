@@ -67,3 +67,50 @@ do
   ((++i))
 done
 
+
+  File "/home/llm/llms/bio_llm/stl_generators/stl_generator_gpt.py", line 90, in generate_example_prompt
+    literal_translations.append(STL2literal(sample, grammar))
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/llm/llms/bio_llm/stl_generators/../stl2literal.py", line 690, in STL2literal
+    tester.visit(tree)
+  File "/home/llm/llms/.venv/lib/python3.12/site-packages/lark/visitors.py", line 423, in visit
+    return self._visit_tree(tree)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/llm/llms/.venv/lib/python3.12/site-packages/lark/visitors.py", line 431, in _visit_tree
+    return f(tree)
+           ^^^^^^^
+  File "/home/llm/llms/bio_llm/stl_generators/../stl2literal.py", line 183, in omega
+    self.visit(node.children[0].children[1])
+  File "/home/llm/llms/.venv/lib/python3.12/site-packages/lark/visitors.py", line 423, in visit
+    return self._visit_tree(tree)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/llm/llms/.venv/lib/python3.12/site-packages/lark/visitors.py", line 431, in _visit_tree
+    return f(tree)
+           ^^^^^^^
+  File "/home/llm/llms/bio_llm/stl_generators/../stl2literal.py", line 186, in omega
+    self.visit(node.children[0])
+  File "/home/llm/llms/.venv/lib/python3.12/site-packages/lark/visitors.py", line 423, in visit
+    return self._visit_tree(tree)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/llm/llms/.venv/lib/python3.12/site-packages/lark/visitors.py", line 431, in _visit_tree
+    return f(tree)
+           ^^^^^^^
+  File "/home/llm/llms/bio_llm/stl_generators/../stl2literal.py", line 378, in temp_op_g
+    self.visit(node.children[2])
+  File "/home/llm/llms/.venv/lib/python3.12/site-packages/lark/visitors.py", line 423, in visit
+    return self._visit_tree(tree)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/llm/llms/.venv/lib/python3.12/site-packages/lark/visitors.py", line 431, in _visit_tree
+    return f(tree)
+           ^^^^^^^
+  File "/home/llm/llms/bio_llm/stl_generators/../stl2literal.py", line 319, in d_gt
+    self.sentence.append(signal_names_dict[node.children[0].children[0]]) # SPECIES
+                         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: Token('__ANON_1', 'IL8')
+model name: gpt-4o-2024-08-06
+there was an exception
+[Errno 2] No such file or directory: '../pkl/gpt-4o-2024-08-06/final_test_set_translations_gpt-4o-2024-08-06_nx_3_ny_1_nz_18_2026-01-25_16-52-50.pkl'
+just loaded the translations
+Traceback (most recent call last):
+  File "/home/llm/llms/bio_llm/stl_generators/../evaluations/stl_evaluation_v6.py", line 22, in <module>
+    print(translations)
