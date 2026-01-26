@@ -150,8 +150,8 @@ class STLBase(ABC):
                     else:
                         parts.append(str(self.sample_terminal(t.name))) # Use literal if available
 
-            # return ''.join(parts)
-            return ''.join(str(p) for p in parts if p is not None)
+            return ''.join(parts)
+            # return ''.join(str(p) for p in parts if p is not None)
 
 if __name__ == "__main__":
     stl = STLBase()
