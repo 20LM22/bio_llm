@@ -72,8 +72,9 @@ client = OpenAI()
 def generate_example_prompt(num_examples):
     samples = []
     for n in range(num_examples):
-        print(f"random choice: {random_choice}")
-        samples.append(random.choice(curated_dataset))
+        a = random.choice(curated_dataset)
+        print(f"random choice: {a}")
+        samples.append(a) # random.choice(curated_dataset))
 
     for _id, sample in enumerate(samples):
         sample = sample.replace('and',' and ')
