@@ -72,6 +72,7 @@ client = OpenAI()
 def generate_example_prompt(num_examples):
     samples = []
     for n in range(num_examples):
+        print(f"random choice: {random_choice}")
         samples.append(random.choice(curated_dataset))
 
     for _id, sample in enumerate(samples):
@@ -81,6 +82,8 @@ def generate_example_prompt(num_examples):
         sample = sample.replace('-',' -')
         sample = sample.replace('implies',' implies ')
         samples[_id] = sample
+        
+    print(f"samples: {samples}")
 
     literal_translations = []
     for _id, sample in enumerate(samples):
