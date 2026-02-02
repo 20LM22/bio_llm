@@ -1,19 +1,19 @@
 Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
 "eventually[0,14](d_tcells(t) > 0)",0.41303766,N/A,N/A,0,1,0
-"eventually[0,14](tcells(t) > c(low))",0.4278581,N/A,N/A,0,1,0
-"eventually[0,14](tcells(t) > c(low))",0.4278581,N/A,N/A,0,1,0
-"eventually[0,14](tcells(t) > c(low))",0.4278581,N/A,N/A,0,1,0
+"eventually[0,14](tcells(t) > c(low))",0.42785817,N/A,N/A,0,1,0
+"eventually[0,14](tcells(t) > c(low))",0.42785817,N/A,N/A,0,1,0
+"eventually[0,14](tcells(t) > c(low))",0.42785817,N/A,N/A,0,1,0
 "eventually[0,14](d_tcells(t) > d_c(low))",0.3924111,N/A,N/A,0,1,0
 "eventually[0,14](d_tcells(t) > d_c(low))",0.3924111,N/A,N/A,0,1,0
-"eventually[0,14](tcells(t) > c(low))",0.4278581,N/A,N/A,0,1,0
-"eventually[0,14](tcells(t) > c(low))",0.4278581,N/A,N/A,0,1,0
-"eventually[0,14](tcells(t) > c(low))",0.4278581,N/A,N/A,0,1,0
+"eventually[0,14](tcells(t) > c(low))",0.42785817,N/A,N/A,0,1,0
+"eventually[0,14](tcells(t) > c(low))",0.42785817,N/A,N/A,0,1,0
+"eventually[0,14](tcells(t) > c(low))",0.42785817,N/A,N/A,0,1,0
 "eventually[0,14](d_tcells(t) > 0)",0.41303766,N/A,N/A,0,1,0
-"eventually[0,14](tcells(t) > c(low))",0.4278581,N/A,N/A,0,1,0
+"eventually[0,14](tcells(t) > c(low))",0.42785817,N/A,N/A,0,1,0
 "eventually[0,14](d_tcells(t) > d_c(low))",0.3924111,N/A,N/A,0,1,0
 "eventually[0,14](d_tcells(t) > d_c(low))",0.3924111,N/A,N/A,0,1,0
 "eventually[0,14](d_tcells(t) > d_c(low))",0.3924111,N/A,N/A,0,1,0
-"eventually[0,14](tcells(t) > c(low))",0.4278581,N/A,N/A,0,1,0
-"eventually[0,14](tcells(t) > c(low))",0.4278581,"eventually[0,14](sarscov2(t) > c(low))",0.5027462,1,0,0
-"eventually[0,14](tcells(t) > c(low))",0.4278581,N/A,N/A,0,1,0
-"eventually[0,14](tcells(t) > c(low))",0.4278581,N/A,N/A,0,1,0
+"eventually[0,14](tcells(t) > c(low))",0.42785817,N/A,N/A,0,1,0
+"eventually[0,14](tcells(t) > c(low))",0.42785817,"eventually[0,14](sarscov2(t) > c(low))",0.5027461,1,0,0
+"eventually[0,14](tcells(t) > c(low))",0.42785817,N/A,N/A,0,1,0
+"eventually[0,14](tcells(t) > c(low))",0.42785817,N/A,N/A,0,1,0

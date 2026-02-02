@@ -1,7 +1,6 @@
 import numpy as np
-import pickle, sys, json
+import pickle, sys, json, os
 import matplotlib.pyplot as plt
-import pandas
 
 model_name = sys.argv[1]
 
@@ -15,6 +14,7 @@ semantic_count = params['num_semantic_checks']
 time = sys.argv[3]
 set_name = params['set_name']
 
+# Load results
 res = {}
 try:
     with open(f'../pkl/{set_name}_semantic_labels_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pkl', 'rb') as f:
@@ -22,14 +22,31 @@ try:
         print(f'Loaded distribution')
 except Exception as e:
     print(e)
+    sys.exit(1)
 
-for _id, sentence in enumerate(res.keys()): # key is sentence
-    # print(res[sentence])
-    zeroes = []  # list of sim values
+# Sentences to plot
+target_sentences = [
+    "Levels of IFN-γ were not appreciably elevated.",
+    # "We first examined the relative cytokine and chemokine levels in serum samples collected 6 days following EBOV challenge by using a multiplex-based bead assay. Quantitative analysis revealed that multiple Th1 cytokines, including gamma interferon (IFN-γ), interleukin-2 (IL-2), and tumor necrosis factor alpha (TNF-α), were significantly reduced in Tim-1/ mice compared to EBOV-infected wild-type mice (Fig. 2A to C), while IL-12p40 was increased (Fig. 2B)."
+]
+
+# Ensure output folder exists
+output_folder = f'../images/{model_name}/'
+os.makedirs(output_folder, exist_ok=True)
+
+plt.rcParams['axes.titlesize'] = 10
+
+for target_sentence in target_sentences:
+    if target_sentence not in res:
+        print(f"Sentence not found in results: {target_sentence[:50]}...")
+        continue
+
+    zeroes = []
     ones = []
     ones_and_zeroes = []
 
-    for stl, sim, choice in res[sentence]:
+    for stl, sim, choice in res[target_sentence]:
+        print(f"SIM={sim:.4f}\tCHOICE={choice}\nSTL: {stl}\n")
         ones_and_zeroes.append(sim)
         try:
             if choice == "":
@@ -38,42 +55,123 @@ for _id, sentence in enumerate(res.keys()): # key is sentence
                 ones.append(sim)
             elif int(choice) == 0:
                 zeroes.append(sim)
-        except Exception as e:
+        except Exception:
             zeroes.append(sim)
 
-    plt.rcParams['axes.titlesize'] = 10
+    if not ones_and_zeroes:
+        print(f"No similarity data for sentence: {target_sentence[:50]}...")
+        continue
 
-    max_sim = 0
-    min_sim = 0
-    first_time_max = first_time_min = True
-    for stl, sim, choice in res[sentence]:
-        if first_time_max or sim > max_sim:
-            max_sim = sim
-            first_time_max = False
-        if first_time_min or sim < min_sim:
-            min_sim = sim
-            first_time_min = False
-
+    max_sim = max(ones_and_zeroes)
+    min_sim = min(ones_and_zeroes)
     bins = np.linspace(min_sim, max_sim, 10)
+    
+    print("\nHistogram bin boundaries:")
+    for i in range(len(bins) - 1):
+        print(f"Bin {i}: [{bins[i]:.4f}, {bins[i+1]:.4f})")
+
     plt.figure(figsize=(10, 8))
-    plt.hist(ones, bins=bins, alpha=0.5, color='forestgreen', edgecolor='black')
-    plt.hist(zeroes, bins=bins, alpha=0.5, color='firebrick', edgecolor='black')
-    if len(ones_and_zeroes) > 0:
-        plt.axvline(np.average(ones_and_zeroes), color='blue', linestyle='dashed', linewidth=1)
-        plt.axvline(np.median(ones_and_zeroes), color='orange', linestyle='dashed', linewidth=1)
-        plt.axvline(np.percentile(ones_and_zeroes, 80), color='purple', linestyle='dashed', linewidth=1)
+    plt.hist(ones, bins=bins, alpha=0.5, color='forestgreen', edgecolor='black', label='Choice=1')
+    plt.hist(zeroes, bins=bins, alpha=0.5, color='firebrick', edgecolor='black', label='Choice=0')
+
+    plt.axvline(np.average(ones_and_zeroes), color='blue', linestyle='dashed', linewidth=1, label='Average')
+    plt.axvline(np.median(ones_and_zeroes), color='orange', linestyle='dashed', linewidth=1, label='Median')
+    plt.axvline(np.percentile(ones_and_zeroes, 80), color='purple', linestyle='dashed', linewidth=1, label='80th percentile')
 
     median = np.median(ones_and_zeroes)
 
-    plt.ylim(0, 27) # TODO: update this!
+    plt.ylim(0, 20)  # adjust as needed
     plt.xlabel('Similarity', fontsize=24)
     plt.ylabel('Frequency', fontsize=24)
     plt.tick_params(axis='both', which='major', labelsize=24)
     plt.title(
-        f'Hi/Lo Similarity Distribution with Semantic Correctness Labels\nmodel: {model_name}\nnx: {syntax_count}, ny: {semantic_count}, nz: {shot_count}, median: {median}\nsentence: {sentence[0:10]}')
-    plt.savefig(
-        f'../images/{model_name}/{set_name}_hi_lo_sentence_{sentence[0:10]}_histogram_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}.pdf')
+        f'Hi/Lo Similarity Distribution with Semantic Correctness Labels\n'
+        # f'model: {model_name}, nx: {syntax_count}, ny: {semantic_count}, nz: {shot_count}, median: {median}\n'
+        # f'sentence: {target_sentence[:50]}...'
+    )
+    filename = f"{set_name}_hi_lo_sentence_{target_sentence[:30].replace(' ', '_')}_histogram_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}.pdf"
+    plt.savefig(os.path.join(output_folder, filename))
     plt.close()
+
+    print(f"Histogram saved for sentence: {target_sentence[:50]}...")
+
+
+# import numpy as np
+# import pickle, sys, json
+# import matplotlib.pyplot as plt
+# import pandas
+
+# model_name = sys.argv[1]
+
+# # Load config specified by the script
+# with open(f'../config/{sys.argv[2]}') as f:
+#     params = json.load(f)
+
+# shot_count = params['num_shots_per_input_sentence']
+# syntax_count = params['num_correction_attempts_per_shot']
+# semantic_count = params['num_semantic_checks']
+# time = sys.argv[3]
+# set_name = params['set_name']
+
+# res = {}
+# try:
+#     with open(f'../pkl/{set_name}_semantic_labels_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pkl', 'rb') as f:
+#         res = pickle.load(f)
+#         print(f'Loaded distribution')
+# except Exception as e:
+#     print(e)
+
+# for _id, sentence in enumerate(res.keys()): # key is sentence
+#     # print(res[sentence])
+#     zeroes = []  # list of sim values
+#     ones = []
+#     ones_and_zeroes = []
+
+#     for stl, sim, choice in res[sentence]:
+#         ones_and_zeroes.append(sim)
+#         try:
+#             if choice == "":
+#                 raise Exception()
+#             if int(choice) == 1:
+#                 ones.append(sim)
+#             elif int(choice) == 0:
+#                 zeroes.append(sim)
+#         except Exception as e:
+#             zeroes.append(sim)
+
+#     plt.rcParams['axes.titlesize'] = 10
+
+#     max_sim = 0
+#     min_sim = 0
+#     first_time_max = first_time_min = True
+#     for stl, sim, choice in res[sentence]:
+#         if first_time_max or sim > max_sim:
+#             max_sim = sim
+#             first_time_max = False
+#         if first_time_min or sim < min_sim:
+#             min_sim = sim
+#             first_time_min = False
+
+#     bins = np.linspace(min_sim, max_sim, 10)
+#     plt.figure(figsize=(10, 8))
+#     plt.hist(ones, bins=bins, alpha=0.5, color='forestgreen', edgecolor='black')
+#     plt.hist(zeroes, bins=bins, alpha=0.5, color='firebrick', edgecolor='black')
+#     if len(ones_and_zeroes) > 0:
+#         plt.axvline(np.average(ones_and_zeroes), color='blue', linestyle='dashed', linewidth=1)
+#         plt.axvline(np.median(ones_and_zeroes), color='orange', linestyle='dashed', linewidth=1)
+#         plt.axvline(np.percentile(ones_and_zeroes, 80), color='purple', linestyle='dashed', linewidth=1)
+
+#     median = np.median(ones_and_zeroes)
+
+#     plt.ylim(0, 27) # TODO: update this!
+#     plt.xlabel('Similarity', fontsize=24)
+#     plt.ylabel('Frequency', fontsize=24)
+#     plt.tick_params(axis='both', which='major', labelsize=24)
+#     plt.title(
+#         f'Hi/Lo Similarity Distribution with Semantic Correctness Labels\nmodel: {model_name}\nnx: {syntax_count}, ny: {semantic_count}, nz: {shot_count}, median: {median}\nsentence: {sentence[0:10]}')
+#     plt.savefig(
+#         f'../images/{model_name}/{set_name}_hi_lo_sentence_{sentence[0:10]}_histogram_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}.pdf')
+#     plt.close()
 
 #
 # sentence_results = []

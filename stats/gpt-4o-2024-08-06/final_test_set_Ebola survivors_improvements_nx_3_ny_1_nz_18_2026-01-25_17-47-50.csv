@@ -1,19 +1,19 @@
 Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
-"globally[0,158](d_virus(t) < 0) implies eventually[0,inf](virus(t) < c(low))",0.38485384,"eventually[0,158](virus(t) = c(low)) implies globally[0,inf](virus(t) > c(low))",0.44257262,1,0,0
+"globally[0,158](d_virus(t) < 0) implies eventually[0,inf](virus(t) < c(low))",0.38485387,"eventually[0,158](virus(t) = c(low)) implies globally[0,inf](virus(t) > c(low))",0.44257265,1,0,0
 "globally[0,158](d_virus(t) < 0 and virus(t) > c(low)) implies eventually[0,158](d_virus(t) = 0)",0.40427107,N/A,N/A,0,1,0
-"globally[0,158](virus(t) < c(low)) and globally[0,inf](virus(t) > c(low) implies virus(t) > c(low))",0.402004,N/A,N/A,0,1,0
+"globally[0,158](virus(t) < c(low)) and globally[0,inf](virus(t) > c(low) implies virus(t) > c(low))",0.40200394,N/A,N/A,0,1,0
 N/A,N/A,N/A,N/A,0,0,0
-"eventually[0,158]globally(virus(t) < c(low)) and globally[0,17](virus(t) > c(low))",0.4270363,N/A,N/A,0,1,0
+"eventually[0,158]globally(virus(t) < c(low)) and globally[0,17](virus(t) > c(low))",0.42703614,N/A,N/A,0,1,0
 "eventually[0,158](virus(t) < c(low)) and globally[0,17](virus(t) > c(high))",0.42501867,N/A,N/A,0,1,0
 N/A,N/A,N/A,N/A,0,0,0
 "eventually[0,158](virus(t) < c(low)) and globally[0,17](virus(t) > c(high)) implies globally[0,17](virus(t) > c(high))",0.42162946,N/A,N/A,0,1,0
 N/A,N/A,N/A,N/A,0,0,0
-"eventually[0,158](virus(t)=c(low)) and globally[0,17](virus(t)>c(low))",0.4384578,"eventually[0,158](sarscov2(t) = c(low)) implies globally[0,17](sarscov2(t) > c(low))",0.3091758,0,1,0
-"globally[0,158](virus(t) < c(low)) implies eventually[0,inf](virus(t) > c(high))",0.42669767,N/A,N/A,0,1,0
+"eventually[0,158](virus(t)=c(low)) and globally[0,17](virus(t)>c(low))",0.43845785,"eventually[0,158](sarscov2(t) = c(low)) implies globally[0,17](sarscov2(t) > c(low))",0.30917573,0,1,0
+"globally[0,158](virus(t) < c(low)) implies eventually[0,inf](virus(t) > c(high))",0.42669773,N/A,N/A,0,1,0
 "eventually[0,158](virus(t) = c(low)) and globally[0,inf](virus(t) > c(low))",0.41831702,N/A,N/A,0,1,0
-"globally[0,158](d_virus(t) < 0 and virus(t) > c(high)) implies eventually[0,158](virus(t) < c(high))",0.41654935,N/A,N/A,0,1,0
+"globally[0,158](d_virus(t) < 0 and virus(t) > c(high)) implies eventually[0,158](virus(t) < c(high))",0.41654944,N/A,N/A,0,1,0
 N/A,N/A,N/A,N/A,0,0,0
-"globally[0,158](virus(t) > c(low)) and globally[158,inf](virus(t) = c(low))",0.41725323,N/A,N/A,0,1,0
+"globally[0,158](virus(t) > c(low)) and globally[158,inf](virus(t) = c(low))",0.4172532,N/A,N/A,0,1,0
 N/A,N/A,N/A,N/A,0,0,0
 "eventually[0,158]globally(d_virus(t) < 0) and globally[0,17](virus(t) > c(high))",0.40150094,N/A,N/A,0,1,0
-"globally[0,158](virus(t)=c(low)) and globally[0,17](virus(t)>c(high)) implies eventually[0,17](virus(t)=c(low))",0.43689322,"eventually[0,158](sarscov2(t) = c(low)) implies globally[0,inf](sarscov2(t) > c(low))",0.28321332,0,1,0
+"globally[0,158](virus(t)=c(low)) and globally[0,17](virus(t)>c(high)) implies eventually[0,17](virus(t)=c(low))",0.43689328,"eventually[0,158](sarscov2(t) = c(low)) implies globally[0,inf](sarscov2(t) > c(low))",0.28321332,0,1,0

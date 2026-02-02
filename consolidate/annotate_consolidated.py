@@ -21,10 +21,16 @@ time = sys.argv[4]
 res = []  # list of entries
 
 try:
-    with open(consolidated_json, 'r', encoding='utf-8') as f:
-        for line in f:
-            obj = json.loads(line)
-            res.append(obj)
+    with open(consolidated_json, 'r', encoding='utf-8') as f:        
+        content = f.read().strip()
+
+        # Case 1: JSON array
+        if content.startswith('['):
+            data = json.loads(content)
+            if not isinstance(data, list):
+                raise ValueError("Top-level JSON is not a list")
+            res.extend(data)
+
     print(f"Loaded {consolidated_json}, {len(res)} sentences")
 except Exception as e:
     print("Error loading JSON:", e)
@@ -79,7 +85,7 @@ for entry in res:
 
 # -------------------- Save annotated JSON --------------------
 os.makedirs(f'../stats/{model_name}', exist_ok=True)
-annotated_json_file = f'../stats/{model_name}/{set_name}_annotated_AFTER_CONSOLIDATED_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.json'
+annotated_json_file = f'../stats/{model_name}/{set_name}_annotate_consolidated_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.json'
 
 with open(annotated_json_file, 'w', encoding='utf-8') as f:
     for entry in annotated:
@@ -93,7 +99,7 @@ stats_df = pd.DataFrame(
     columns=["correct", "incorrect", "total"]
 )
 
-stats_csv_file = f'../stats/{model_name}/{set_name}_semantic_labels_AFTER_CONSOLIDATED_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.csv'
+stats_csv_file = f'../stats/{model_name}/{set_name}_annotate_consolidated_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.csv'
 stats_df.to_csv(stats_csv_file, index=False)
 
 print(f"Summary CSV saved to {stats_csv_file}")

@@ -11,7 +11,7 @@ model_name = sys.argv[1]
 print(f'model name: {model_name}')
 
 try:
-    with open(f'../pkl/{model_name}/{sys.argv[2]}', 'rb') as f:
+    with open(f'{sys.argv[2]}', 'rb') as f:
         translations = pickle.load(f)
         print(f'Loaded {f}')
 except Exception as e:

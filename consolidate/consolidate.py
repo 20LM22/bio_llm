@@ -101,7 +101,6 @@ def remove_duplicates(entries):
 
 with open(f'../config/{sys.argv[3]}') as f:
     params = json.load(f)
-# print("done with that")
 
 model_name = sys.argv[1]
 model = SentenceTransformer(params['embedding_model_name'], device='cpu')
@@ -112,41 +111,41 @@ grammar = params['grammar']
 set_name = params["set_name"]
 time = sys.argv[4]
 parser = Lark(grammar, propagate_positions=True)
-
+    
+with open(sys.argv[2], "rb") as f:
+    filtered = pickle.load(f)
+    
 res = defaultdict(list)
 
-try:
-    with open(f'../pkl/{model_name}/{sys.argv[2]}', 'rb') as f:
-        translations = pickle.load(f)
-        print(f'Loaded {f}')
-except Exception as e:
-    print(e)
-
 print("starting step 1")
-for index, row in translations.iterrows():
+for sentence, stl_sims in filtered.items():
+    for stl, sim in stl_sims:
+        stl = stl.replace("∞", "inf")
+        res[sentence].append(stl)
 
-    nl_embedding = np.array(model.encode(row['input statement'], normalize_embeddings=True))
-    row_subset = pandas.DataFrame()
-    row_counter = 0
+# for index, row in translations.iterrows():
 
-    syntactically_valid_translations = []
+#     nl_embedding = np.array(model.encode(row['input statement'], normalize_embeddings=True))
+#     row_subset = pandas.DataFrame()
+#     row_counter = 0
 
-    for i in range(shot_count):
-        relevant_translations_cols = []
-        for col in translations.columns:
-            if f'shot{i}-' in col:
-                relevant_translations_cols.append(col)
-        row_subset = row[relevant_translations_cols] # row subset has everything with shot-i in the column name
+#     syntactically_valid_translations = []
 
-        for entry in row_subset:
-            if entry != 'STL could not be extracted' and entry != 'STL could not be parsed' and entry is not None:
-                # add this entry
-                entry = entry.replace("∞", "inf")
-                # need to record stl
-                syntactically_valid_translations.append(entry)
+#     for i in range(shot_count):
+#         relevant_translations_cols = []
+#         for col in translations.columns:
+#             if f'shot{i}-' in col:
+#                 relevant_translations_cols.append(col)
+#         row_subset = row[relevant_translations_cols] # row subset has everything with shot-i in the column name
 
-    res[row['input statement']] = syntactically_valid_translations
-# print(res)
+#         for entry in row_subset:
+#             if entry != 'STL could not be extracted' and entry != 'STL could not be parsed' and entry is not None:
+#                 # add this entry
+#                 entry = entry.replace("∞", "inf")
+#                 # need to record stl
+#                 syntactically_valid_translations.append(entry)
+
+#     res[row['input statement']] = syntactically_valid_translations
 
 # now res is filled like this: {'input sentence 1': [stl1, stl2, etc.], 'input sentence 2': [stl1, stl2, etc.]}
 # 2. we want to start by being as restrictive as possible:
@@ -321,9 +320,10 @@ for input_sentence, entries in res.items():
 
     records.append(record)
     
+#### Save the annotations in a JSON file ####
 out_path = Path(
-    f'../stats/{model_name}/AFTER_{set_name}_consolidated_set_'
-    f'nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.json'
+    f'../stats/{model_name}/{set_name}_consolidated_output_'
+    f'{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.json'
 )
 
 out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -331,7 +331,7 @@ out_path.parent.mkdir(parents=True, exist_ok=True)
 with open(out_path, "w", encoding="utf-8") as f:
     json.dump(records, f, ensure_ascii=False, indent=2)
 
-####
+#### Save the annotations in a pkl file ####
 consolidated_for_cosine = {}
 
 for input_sentence, entries in res.items():
@@ -340,51 +340,10 @@ for input_sentence, entries in res.items():
     ]
 
 cosine_out_path = Path(
-    f'../pkl/{set_name}_consolidated_{model_name}_'
-    f'nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pkl'
+    f'../pkl/{model_name}/{set_name}_consolidated_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pkl'
 )
 
 with open(cosine_out_path, "wb") as f:
     pickle.dump(consolidated_for_cosine, f)
 
-print(f"Saved consolidated STL pickle to {cosine_out_path}")
-
-
-""" 
-test set should be bigger: 70 total
-more models and more sentences
-when you have consolidated results then what?
-future work, user study
-annotate the cosine filtered version
-if we run a user study --> conslidating with correctness
-bring it back to human level with backtranslation: human in the loop
-frequency doens't correlate with the final correctness
-need to annotate results
-do the resuting sentences capture the full breadht of the sentence
-make contributions clear
-start getting th eresults
-narrow the next steps
-share a draft again
-first run the 90th percentile heuristic, then run consolidation
-
-todo:
-run on the test set without any semantic feedback, llm of the power, best run on the hardest ones --> does it hurt them??
-    step 1: find the three hardest sentences from the test set
-        (1) This is the reason that seroconversion (undetectable stage to production of IgM followed by
-        IgG) in 100% of infected people (with positive virus-specific IgG) is achieved 17–19 days
-        after commencement of indications [7].
-        
-        (2) In parallel, stimulation with CpG 2216 also resulted in lower, but clearly detectable, amounts
-        of IFNs.
-        
-        (3) Monocyte chemotactic factor chemokine(C-C motif) ligand 2 (CCL2) was increased in the
-        blood of infected patients as well as the transcripts of its receptor CCR2; this was associated
-        with low counts of circulating inflammatory monocytes (Fig. 4I), suggesting a rolefor the
-        CCL2/CCR2 axis in the monocyte chemo-attraction into the inflamed lungs.
-    step 2: we need to make a config file with just these three options. let's run gpt.
-        the configs are:
-            config_nx_3_ny_{0,1,2}_nz_18_hard_set.json
-    step 3: we need to run each of these.
-        i'd like to close my laptop, so that means running each of these in tmux i think
-
-"""
+print(f"Saved consolidated STL pkl to {cosine_out_path}")

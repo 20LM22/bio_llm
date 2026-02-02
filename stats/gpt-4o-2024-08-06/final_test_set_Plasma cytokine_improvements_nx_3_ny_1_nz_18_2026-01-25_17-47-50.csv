@@ -1,19 +1,19 @@
 Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
-"eventually[4,inf](d_il10(t) > d_c(low) and d_il6(t) > d_c(low))",0.5725683,N/A,N/A,0,1,0
-"globally[0,inf](d_il10(t) > d_c(low) and d_il6(t) > d_c(low)) and eventually[4,inf](d_il10(t) > 0 and d_il6(t) > 0)",0.56409776,N/A,N/A,0,1,0
-"eventually[4,inf](d_il10(t) > d_c(low) and d_il6(t) > d_c(low))",0.5725683,N/A,N/A,0,1,0
+"eventually[4,inf](d_il10(t) > d_c(low) and d_il6(t) > d_c(low))",0.5725684,N/A,N/A,0,1,0
+"globally[0,inf](d_il10(t) > d_c(low) and d_il6(t) > d_c(low)) and eventually[4,inf](d_il10(t) > 0 and d_il6(t) > 0)",0.5640979,N/A,N/A,0,1,0
+"eventually[4,inf](d_il10(t) > d_c(low) and d_il6(t) > d_c(low))",0.5725684,N/A,N/A,0,1,0
 "d_il10(t) > d_c(low) and d_il6(t) > d_c(low) and eventually[4,inf](d_il10(t) > 0 and d_il6(t) > 0)",0.5453011,N/A,N/A,0,1,0
-"eventually[4,inf](d_il10(t) > 0 and d_il6(t) > 0)",0.6189302,N/A,N/A,0,1,0
-"globally[0,inf](d_il10(t) > 0 and d_il6(t) > 0) and eventually[4,inf](d_il10(t) > d_c(low) and d_il6(t) > d_c(low))",0.5569675,N/A,N/A,0,1,0
-"globally[0,inf](d_il10(t) > d_c(low) and d_il6(t) > d_c(low)) and eventually[4,inf](d_il10(t) > 0 and d_il6(t) > 0)",0.56409776,N/A,N/A,0,1,0
-"eventually[4,inf](d_il10(t) > d_c(low) and d_il6(t) > d_c(low))",0.5725683,N/A,N/A,0,1,0
-"globally[0,inf](d_il10(t) > d_c(low) and d_il6(t) > d_c(low)) and eventually[4,inf](d_il10(t) > 0 and d_il6(t) > 0)",0.56409776,N/A,N/A,0,1,0
-"globally[4,inf](d_il10(t) > 0 and d_il6(t) > 0)",0.60375994,N/A,N/A,0,1,0
-"globally[4,inf](d_il10(t) > d_c(low) and d_il6(t) > d_c(low))",0.55791485,N/A,N/A,0,1,0
+"eventually[4,inf](d_il10(t) > 0 and d_il6(t) > 0)",0.61893034,N/A,N/A,0,1,0
+"globally[0,inf](d_il10(t) > 0 and d_il6(t) > 0) and eventually[4,inf](d_il10(t) > d_c(low) and d_il6(t) > d_c(low))",0.55696756,N/A,N/A,0,1,0
+"globally[0,inf](d_il10(t) > d_c(low) and d_il6(t) > d_c(low)) and eventually[4,inf](d_il10(t) > 0 and d_il6(t) > 0)",0.5640979,N/A,N/A,0,1,0
+"eventually[4,inf](d_il10(t) > d_c(low) and d_il6(t) > d_c(low))",0.5725684,N/A,N/A,0,1,0
+"globally[0,inf](d_il10(t) > d_c(low) and d_il6(t) > d_c(low)) and eventually[4,inf](d_il10(t) > 0 and d_il6(t) > 0)",0.5640979,N/A,N/A,0,1,0
+"globally[4,inf](d_il10(t) > 0 and d_il6(t) > 0)",0.60376006,N/A,N/A,0,1,0
+"globally[4,inf](d_il10(t) > d_c(low) and d_il6(t) > d_c(low))",0.5579151,N/A,N/A,0,1,0
 "eventually[4,inf]globally(d_il10(t) > d_c(low) and d_il6(t) > d_c(low))",0.5644798,N/A,N/A,0,1,0
-"eventually[4,inf](d_il10(t) > 0 and d_il6(t) > 0)",0.6189302,N/A,N/A,0,1,0
-"globally[4,inf](d_il10(t) > 0 and d_il6(t) > 0)",0.60375994,N/A,N/A,0,1,0
+"eventually[4,inf](d_il10(t) > 0 and d_il6(t) > 0)",0.61893034,N/A,N/A,0,1,0
+"globally[4,inf](d_il10(t) > 0 and d_il6(t) > 0)",0.60376006,N/A,N/A,0,1,0
 N/A,N/A,N/A,N/A,0,0,0
-"globally[0,inf](d_il10(t) > 0 and d_il6(t) > 0) and eventually[4,inf](d_il10(t) > d_c(low) and d_il6(t) > d_c(low))",0.5569675,N/A,N/A,0,1,0
+"globally[0,inf](d_il10(t) > 0 and d_il6(t) > 0) and eventually[4,inf](d_il10(t) > d_c(low) and d_il6(t) > d_c(low))",0.55696756,N/A,N/A,0,1,0
 N/A,N/A,N/A,N/A,0,0,0
 N/A,N/A,N/A,N/A,0,0,0

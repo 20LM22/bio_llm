@@ -1,19 +1,19 @@
 Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
-"rantes(t) > c(high) and globally[0,7](rantes(t) > c(high)) and globally[21,28](rantes(t) > c(high))",0.5613544,N/A,N/A,0,1,0
+"rantes(t) > c(high) and globally[0,7](rantes(t) > c(high)) and globally[21,28](rantes(t) > c(high))",0.56135434,N/A,N/A,0,1,0
 "globally[0,7](rantes(t) > c(high)) and globally[14,28](rantes(t) > c(high))",0.51813984,N/A,N/A,0,1,0
-"globally[0,7](rantes(t) > c(mid)) and globally[21,28](rantes(t) > c(mid))",0.58813757,N/A,N/A,0,1,0
-"globally[0,7](rantes(t) > c(high)) and globally[21,28](rantes(t) > c(high)) and globally[28,35](rantes(t) > c(high))",0.5417185,N/A,N/A,0,1,0
-"globally[0,7](rantes(t) > c(high)) and globally[14,28](rantes(t) > c(high))",0.51813984,"globally[0,7](rantes(t) > c(high)) and globally[21,28](rantes(t) > c(high))",0.5236214,1,0,0
-"rantes(t) > c(high) and globally[21,28](rantes(t) > c(high))",0.55373544,N/A,N/A,0,1,0
-"globally[0,7](rantes(t) > c(high)) and globally[21,28](rantes(t) > c(high))",0.5236214,N/A,N/A,0,1,0
-"globally[0,7](rantes(t) > c(mid)) and globally[21,28](rantes(t) > c(mid))",0.58813757,N/A,N/A,0,1,0
+"globally[0,7](rantes(t) > c(mid)) and globally[21,28](rantes(t) > c(mid))",0.58813745,N/A,N/A,0,1,0
+"globally[0,7](rantes(t) > c(high)) and globally[21,28](rantes(t) > c(high)) and globally[28,35](rantes(t) > c(high))",0.54171836,N/A,N/A,0,1,0
+"globally[0,7](rantes(t) > c(high)) and globally[14,28](rantes(t) > c(high))",0.51813984,"globally[0,7](rantes(t) > c(high)) and globally[21,28](rantes(t) > c(high))",0.5236212,1,0,0
+"rantes(t) > c(high) and globally[21,28](rantes(t) > c(high))",0.55373526,N/A,N/A,0,1,0
+"globally[0,7](rantes(t) > c(high)) and globally[21,28](rantes(t) > c(high))",0.5236212,N/A,N/A,0,1,0
+"globally[0,7](rantes(t) > c(mid)) and globally[21,28](rantes(t) > c(mid))",0.58813745,N/A,N/A,0,1,0
 "globally[0,7](rantes(t) > c(high)) and globally[14,28](rantes(t) > c(high))",0.51813984,N/A,N/A,0,1,0
-"globally[0,7](rantes(t) > c(high)) and globally[21,28](rantes(t) > c(high))",0.5236214,N/A,N/A,0,1,0
-"globally[0,28](rantes(t) > c(mid))",0.5468372,N/A,N/A,0,1,0
+"globally[0,7](rantes(t) > c(high)) and globally[21,28](rantes(t) > c(high))",0.5236212,N/A,N/A,0,1,0
+"globally[0,28](rantes(t) > c(mid))",0.54683715,N/A,N/A,0,1,0
 "globally[0,7](rantes(t) > c(high)) and globally[14,28](rantes(t) > c(high))",0.51813984,N/A,N/A,0,1,0
 N/A,N/A,N/A,N/A,0,0,0
-"globally[0,7](rantes(t) > c(high)) and globally[21,28](rantes(t) = c(high))",0.5408168,N/A,N/A,0,1,0
-"rantes(t) > c(high) and globally[21,28](rantes(t) = c(high))",0.5627928,N/A,N/A,0,1,0
-"globally[0,7](rantes(t) > c(high)) and globally[21,28](rantes(t) > c(high))",0.5236214,"globally[0,7](rantes(t) > c(high)) and globally[21,28](rantes(t) > c(high)) and globally[14,21](rantes(t) > c(high))",0.52712655,1,0,0
-"globally[0,7](rantes(t) > c(high)) and globally[21,28](rantes(t) > c(high))",0.5236214,"globally[0,7](rantes(t) > c(high)) and globally[21,28](rantes(t) = c(high)) and globally[28,35](rantes(t) = c(high))",0.553025,1,0,0
-"rantes(t) > c(high) and globally[21,28](rantes(t) = c(high))",0.5627928,N/A,N/A,0,1,0
+"globally[0,7](rantes(t) > c(high)) and globally[21,28](rantes(t) = c(high))",0.5408167,N/A,N/A,0,1,0
+"rantes(t) > c(high) and globally[21,28](rantes(t) = c(high))",0.5627927,N/A,N/A,0,1,0
+"globally[0,7](rantes(t) > c(high)) and globally[21,28](rantes(t) > c(high))",0.5236212,"globally[0,7](rantes(t) > c(high)) and globally[21,28](rantes(t) > c(high)) and globally[14,21](rantes(t) > c(high))",0.52712643,1,0,0
+"globally[0,7](rantes(t) > c(high)) and globally[21,28](rantes(t) > c(high))",0.5236212,"globally[0,7](rantes(t) > c(high)) and globally[21,28](rantes(t) = c(high)) and globally[28,35](rantes(t) = c(high))",0.5530248,1,0,0
+"rantes(t) > c(high) and globally[21,28](rantes(t) = c(high))",0.5627927,N/A,N/A,0,1,0

@@ -78,7 +78,14 @@ stats_df = pandas.DataFrame(
     columns=["correct", "incorrect", "total"]
 )
 
-stats_df.to_csv(
-    f'../stats/{model_name}/{set_name}_semantic_labels_AFTER_COSINE_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.csv',
-    index=False
-)
+csv_path = f'../stats/{model_name}/{set_name}_filtered_output_annotations_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.csv'
+stats_df.to_csv(csv_path, index=False)
+print(f"Stats saved to {csv_path}")
+
+# ------------------------------------------------------------
+# Save annotated pickle
+# ------------------------------------------------------------
+pkl_path = f'../pkl/{model_name}/{set_name}_filtered_output_annotations_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pkl'
+with open(pkl_path, 'wb') as f:
+    pickle.dump(annotated, f)
+print(f"Annotated data saved to {pkl_path}")

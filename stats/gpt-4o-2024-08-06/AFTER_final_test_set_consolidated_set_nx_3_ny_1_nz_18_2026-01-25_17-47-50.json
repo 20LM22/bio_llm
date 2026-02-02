@@ -130,7 +130,7 @@
       "reduction_ratio": 0.21739130434782605
     },
     "per_bin_stats": {
-      "d_ifnα-il6": {
+      "il6-d_ifnα": {
         "initial": 13,
         "final": 2,
         "reduction": 11,
@@ -205,7 +205,7 @@
         "reduction": 1,
         "reduction_ratio": 0.33333333333333337
       },
-      "titers-merscov": {
+      "merscov-titers": {
         "initial": 1,
         "final": 1,
         "reduction": 0,
@@ -288,7 +288,7 @@
         "reduction": 14,
         "reduction_ratio": 0.875
       },
-      "cpg2216-ifn": {
+      "ifn-cpg2216": {
         "initial": 2,
         "final": 2,
         "reduction": 0,
@@ -392,7 +392,7 @@
         "reduction": 11,
         "reduction_ratio": 0.9166666666666666
       },
-      "ccr2-monocytes": {
+      "monocytes-ccr2": {
         "initial": 9,
         "final": 2,
         "reduction": 7,
@@ -428,7 +428,7 @@
         "reduction": 0,
         "reduction_ratio": 0.0
       },
-      "monocytes-d_ccr2": {
+      "d_ccr2-monocytes": {
         "initial": 1,
         "final": 1,
         "reduction": 0,
@@ -481,7 +481,7 @@
         "reduction": 18,
         "reduction_ratio": 0.9
       },
-      "d_ip10-ip10": {
+      "ip10-d_ip10": {
         "initial": 2,
         "final": 1,
         "reduction": 1,
@@ -1016,13 +1016,13 @@
         "reduction": 13,
         "reduction_ratio": 0.9285714285714286
       },
-      "d_ifnα-d_ifnβ": {
+      "d_ifnβ-d_ifnα": {
         "initial": 1,
         "final": 1,
         "reduction": 0,
         "reduction_ratio": 0.0
       },
-      "mx1-mx2": {
+      "mx2-mx1": {
         "initial": 1,
         "final": 1,
         "reduction": 0,
@@ -1077,7 +1077,7 @@
         "reduction": 7,
         "reduction_ratio": 0.7777777777777778
       },
-      "d_adam17-adam17": {
+      "adam17-d_adam17": {
         "initial": 3,
         "final": 3,
         "reduction": 0,
@@ -1258,7 +1258,7 @@
       "reduction_ratio": 0.26315789473684204
     },
     "per_bin_stats": {
-      "ifnγ-il2": {
+      "il2-ifnγ": {
         "initial": 14,
         "final": 1,
         "reduction": 13,
@@ -1380,19 +1380,19 @@
       "reduction_ratio": 0.375
     },
     "per_bin_stats": {
-      "virus-ifn": {
+      "ifn-virus": {
         "initial": 13,
         "final": 2,
         "reduction": 11,
         "reduction_ratio": 0.8461538461538461
       },
-      "d_virus-ifn": {
+      "ifn-d_virus": {
         "initial": 2,
         "final": 1,
         "reduction": 1,
         "reduction_ratio": 0.5
       },
-      "d_sarscov2-ifnα-ifnβ": {
+      "ifnα-d_sarscov2-ifnβ": {
         "initial": 1,
         "final": 1,
         "reduction": 0,
@@ -1422,7 +1422,7 @@
         "reduction": 0,
         "reduction_ratio": 0.0
       },
-      "ifnα-ifnβ-sarscov2": {
+      "ifnα-sarscov2-ifnβ": {
         "initial": 1,
         "final": 1,
         "reduction": 0,
@@ -1553,7 +1553,7 @@
         "reduction": 0,
         "reduction_ratio": 0.0
       },
-      "d_virus-virus": {
+      "virus-d_virus": {
         "initial": 1,
         "final": 1,
         "reduction": 0,
@@ -1698,7 +1698,7 @@
         "reduction": 9,
         "reduction_ratio": 0.6923076923076923
       },
-      "d_il1ra-d_stnfri": {
+      "d_stnfri-d_il1ra": {
         "initial": 8,
         "final": 2,
         "reduction": 6,
@@ -1828,7 +1828,7 @@
         "reduction": 2,
         "reduction_ratio": 0.6666666666666667
       },
-      "cd19-cd24": {
+      "cd24-cd19": {
         "initial": 6,
         "final": 3,
         "reduction": 3,
@@ -2255,7 +2255,7 @@
         "reduction": 5,
         "reduction_ratio": 0.8333333333333334
       },
-      "d_vp40-vp40": {
+      "vp40-d_vp40": {
         "initial": 1,
         "final": 1,
         "reduction": 0,
@@ -2395,7 +2395,7 @@
         "reduction": 2,
         "reduction_ratio": 0.6666666666666667
       },
-      "mcp-ip10": {
+      "ip10-mcp": {
         "initial": 1,
         "final": 1,
         "reduction": 0,
@@ -2453,7 +2453,7 @@
       "reduction_ratio": 0.16000000000000003
     },
     "per_bin_stats": {
-      "d_virus-virus": {
+      "virus-d_virus": {
         "initial": 3,
         "final": 1,
         "reduction": 2,
@@ -2677,7 +2677,7 @@
       "reduction_ratio": 0.13043478260869568
     },
     "per_bin_stats": {
-      "d_alt-d_ast": {
+      "d_ast-d_alt": {
         "initial": 19,
         "final": 1,
         "reduction": 18,
@@ -2950,7 +2950,7 @@
         "reduction": 13,
         "reduction_ratio": 0.9285714285714286
       },
-      "d_sarscov2-sarscov2": {
+      "sarscov2-d_sarscov2": {
         "initial": 2,
         "final": 1,
         "reduction": 1,

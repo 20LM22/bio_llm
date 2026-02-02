@@ -1,19 +1,19 @@
 Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
-"globally[6,6](ifnγ(t) < c(mid) and il2(t) < c(mid))",0.4109363,N/A,N/A,0,1,0
-"globally[6,6](ifnγ(t) < c(mid) and il2(t) < c(mid))",0.4109363,N/A,N/A,0,1,0
-ifnγ(t) < c(mid) and il2(t) < c(mid) and tnfα(t) < c(mid) and il12(t) > c(mid),0.5362075,N/A,N/A,0,1,0
-"globally[6,6](ifnγ(t) < c(mid) and il2(t) < c(mid))",0.4109363,N/A,N/A,0,1,0
-"globally[6,6](ifnγ(t) < c(mid) and il2(t) < c(mid))",0.4109363,N/A,N/A,0,1,0
+"globally[6,6](ifnγ(t) < c(mid) and il2(t) < c(mid))",0.41093627,N/A,N/A,0,1,0
+"globally[6,6](ifnγ(t) < c(mid) and il2(t) < c(mid))",0.41093627,N/A,N/A,0,1,0
+ifnγ(t) < c(mid) and il2(t) < c(mid) and tnfα(t) < c(mid) and il12(t) > c(mid),0.53620756,N/A,N/A,0,1,0
+"globally[6,6](ifnγ(t) < c(mid) and il2(t) < c(mid))",0.41093627,N/A,N/A,0,1,0
+"globally[6,6](ifnγ(t) < c(mid) and il2(t) < c(mid))",0.41093627,N/A,N/A,0,1,0
 N/A,N/A,N/A,N/A,0,0,0
-"globally[6,6](ifnγ(t) < c(mid) and il2(t) < c(low)) and il12(t) > c(mid)",0.43414468,N/A,N/A,0,1,0
-"globally[6,6](ifnγ(t) < c(mid) and il2(t) < c(mid))",0.4109363,N/A,N/A,0,1,0
-"globally[6,6](ifnγ(t) < c(mid) and il2(t) < c(mid))",0.4109363,N/A,N/A,0,1,0
-"globally[6,6](ifnγ(t) < c(low) and il2(t) < c(mid))",0.40213755,N/A,N/A,0,1,0
-"globally[6,inf](ifnγ(t) < c(mid) and il2(t) < c(mid))",0.39553043,N/A,N/A,0,1,0
+"globally[6,6](ifnγ(t) < c(mid) and il2(t) < c(low)) and il12(t) > c(mid)",0.43414465,N/A,N/A,0,1,0
+"globally[6,6](ifnγ(t) < c(mid) and il2(t) < c(mid))",0.41093627,N/A,N/A,0,1,0
+"globally[6,6](ifnγ(t) < c(mid) and il2(t) < c(mid))",0.41093627,N/A,N/A,0,1,0
+"globally[6,6](ifnγ(t) < c(low) and il2(t) < c(mid))",0.4021376,N/A,N/A,0,1,0
+"globally[6,inf](ifnγ(t) < c(mid) and il2(t) < c(mid))",0.3955304,N/A,N/A,0,1,0
 N/A,N/A,N/A,N/A,0,0,0
-"globally[6,6](ifnγ(t) < c(low) and il2(t) < c(low))",0.38383865,N/A,N/A,0,1,0
+"globally[6,6](ifnγ(t) < c(low) and il2(t) < c(low))",0.3838387,N/A,N/A,0,1,0
 N/A,N/A,N/A,N/A,0,0,0
-"globally[6,inf](ifnγ(t) < c(mid) and il2(t) < c(mid))",0.39553043,N/A,N/A,0,1,0
-"eventually[6,6](ifnγ(t) < c(mid) and il2(t) < c(mid))",0.40517086,N/A,N/A,0,1,0
-"globally[6,6](ifnγ(t) < c(mid) and il2(t) < c(mid))",0.4109363,N/A,N/A,0,1,0
-"globally[6,6](ifnγ(t) < c(mid) and il2(t) < c(mid))",0.4109363,N/A,N/A,0,1,0
+"globally[6,inf](ifnγ(t) < c(mid) and il2(t) < c(mid))",0.3955304,N/A,N/A,0,1,0
+"eventually[6,6](ifnγ(t) < c(mid) and il2(t) < c(mid))",0.4051708,N/A,N/A,0,1,0
+"globally[6,6](ifnγ(t) < c(mid) and il2(t) < c(mid))",0.41093627,N/A,N/A,0,1,0
+"globally[6,6](ifnγ(t) < c(mid) and il2(t) < c(mid))",0.41093627,N/A,N/A,0,1,0

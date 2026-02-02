@@ -4,16 +4,16 @@ N/A,N/A,N/A,N/A,0,0,0
 N/A,N/A,N/A,N/A,0,0,0
 N/A,N/A,N/A,N/A,0,0,0
 N/A,N/A,N/A,N/A,0,0,0
-"eventually[3,5](ip10(t) > c(low))",0.08977793,N/A,N/A,0,1,0
+"eventually[3,5](ip10(t) > c(low))",0.08977796,N/A,N/A,0,1,0
 N/A,N/A,N/A,N/A,0,0,0
 N/A,N/A,N/A,N/A,0,0,0
 N/A,N/A,N/A,N/A,0,0,0
-"globally[3,5](ip10(t) > c(mid))",0.08908568,N/A,N/A,0,1,0
+"globally[3,5](ip10(t) > c(mid))",0.08908575,N/A,N/A,0,1,0
 N/A,N/A,N/A,N/A,0,0,0
 N/A,N/A,N/A,N/A,0,0,0
 N/A,N/A,N/A,N/A,0,0,0
 N/A,N/A,N/A,N/A,0,0,0
-"globally[3,5](ip10(t) > c(high))",0.09542987,N/A,N/A,0,1,0
+"globally[3,5](ip10(t) > c(high))",0.09542985,N/A,N/A,0,1,0
 N/A,N/A,N/A,N/A,0,0,0
-"eventually[3,5](ip10(t) > c(mid) and mcp(t) > c(mid))",0.18474808,N/A,N/A,0,1,0
+"eventually[3,5](ip10(t) > c(mid) and mcp(t) > c(mid))",0.1847481,N/A,N/A,0,1,0
 N/A,N/A,N/A,N/A,0,0,0

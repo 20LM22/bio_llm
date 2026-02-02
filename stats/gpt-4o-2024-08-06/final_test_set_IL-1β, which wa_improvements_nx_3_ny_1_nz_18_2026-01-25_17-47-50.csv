@@ -1,19 +1,19 @@
 Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
-"globally[0,1](il1β(t) < c(low))",0.65783346,N/A,N/A,0,1,0
-"globally[1,1](d_il1β(t) < 0) and eventually[2,inf](il1β(t) > c(high))",0.6795784,N/A,N/A,0,1,0
-"globally[1,1](il1β(t)<c(low)) and eventually[2,inf](il1β(t)>c(high))",0.6736667,N/A,N/A,0,1,0
+"globally[0,1](il1β(t) < c(low))",0.6578334,N/A,N/A,0,1,0
+"globally[1,1](d_il1β(t) < 0) and eventually[2,inf](il1β(t) > c(high))",0.67957824,N/A,N/A,0,1,0
+"globally[1,1](il1β(t)<c(low)) and eventually[2,inf](il1β(t)>c(high))",0.6736666,N/A,N/A,0,1,0
 "globally[0,1](d_il1β(t) < 0) and eventually[2,inf](il1β(t) > c(high))",0.67651594,N/A,N/A,0,1,0
 "globally[0,1](il1β(t) < c(low)) and eventually[1,inf](il1β(t) > c(high))",0.6673098,N/A,N/A,0,1,0
 "globally[0,1](il1β(t) < c(low)) and eventually[1,inf](il1β(t) > c(high))",0.6673098,N/A,N/A,0,1,0
-"globally[0,1](il1β(t) < c(low)) and eventually[1,inf](il1β(t) = c(high))",0.6530534,N/A,N/A,0,1,0
-"globally[1,1](il1β(t) < c(low)) and eventually[2,inf](il1β(t) > c(high))",0.6736667,N/A,N/A,0,1,0
-"globally[0,1](d_il1β(t) < 0) and eventually[2,inf](il1β(t) = c(high))",0.6690389,N/A,N/A,0,1,0
-"il1β(t) = c(low) and eventually[2,inf](il1β(t) = c(high))",0.7024206,N/A,N/A,0,1,0
-"globally[0,1](il1β(t) < c(mid)) and eventually[2,inf](il1β(t) = c(high))",0.6692297,N/A,N/A,0,1,0
-"il1β(t) < c(low) and eventually[2,inf](il1β(t) > c(high))",0.7374557,N/A,N/A,0,1,0
-"globally[0,1](il1β(t) < c(mid)) and eventually[1,inf](il1β(t) > c(high))",0.6832427,N/A,N/A,0,1,0
+"globally[0,1](il1β(t) < c(low)) and eventually[1,inf](il1β(t) = c(high))",0.6530533,N/A,N/A,0,1,0
+"globally[1,1](il1β(t) < c(low)) and eventually[2,inf](il1β(t) > c(high))",0.6736666,N/A,N/A,0,1,0
+"globally[0,1](d_il1β(t) < 0) and eventually[2,inf](il1β(t) = c(high))",0.6690388,N/A,N/A,0,1,0
+"il1β(t) = c(low) and eventually[2,inf](il1β(t) = c(high))",0.70242053,N/A,N/A,0,1,0
+"globally[0,1](il1β(t) < c(mid)) and eventually[2,inf](il1β(t) = c(high))",0.6692296,N/A,N/A,0,1,0
+"il1β(t) < c(low) and eventually[2,inf](il1β(t) > c(high))",0.73745555,N/A,N/A,0,1,0
+"globally[0,1](il1β(t) < c(mid)) and eventually[1,inf](il1β(t) > c(high))",0.6832426,N/A,N/A,0,1,0
 "globally[0,1](il1β(t) < c(low)) and eventually[2,inf](il1β(t) > c(high))",0.667127,N/A,N/A,0,1,0
 "globally[0,1](il1β(t) < c(low)) and eventually[1,inf](il1β(t) > c(high))",0.6673098,N/A,N/A,0,1,0
-"globally[0,1](d_il1β(t) < 0) and eventually[1,inf](il1β(t) > c(high))",0.6759803,N/A,N/A,0,1,0
+"globally[0,1](d_il1β(t) < 0) and eventually[1,inf](il1β(t) > c(high))",0.6759802,N/A,N/A,0,1,0
 "d_il1β(t) < 0 and eventually[1,inf](il1β(t) > c(high))",0.70086646,N/A,N/A,0,1,0
-"globally[0,1](il1β(t) < c(low)) and eventually[1,inf]globally(il1β(t) = c(high))",0.6442629,N/A,N/A,0,1,0
+"globally[0,1](il1β(t) < c(low)) and eventually[1,inf]globally(il1β(t) = c(high))",0.64426285,N/A,N/A,0,1,0
