@@ -78,11 +78,11 @@ do
     # python ../consolidate/consolidate.py "$model" "$filtered_output" "$config" "$time"
     # python ../consolidate/annotate_consolidated.py "$model" "$consolidated_output" "$config" "$time"       
 
-    # python ../consolidate/annotate_consolidated_stats.py "$filtered_annotations_output" "$consolidated_annotations_output"      
+    python ../consolidate/annotate_consolidated_stats.py "$translations" "$filtered_annotations_output" "$consolidated_annotations_output"      
     # python check_consolidated_structure.py "$consolidated_annotations_output"
 
     # python stl_generator_gpt.py "$model" "$config" "$experiment" "$time" >| "$convo"
-    python ../evaluations/stl_evaluation_v6.py "$model" "$translations" "$config" "$time"
+    # python ../evaluations/stl_evaluation_v6.py "$model" "$translations" "$config" "$time"
     # python ../evaluations/generate_semantic_distribution_dict.py "$model" "$translations" "$config" "$time"
   done
   ((++i))

@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # TODO: make sure that official model names and models line up correctly
-models=('DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen3-1.7B')
-official_model_names=('deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen/Qwen3-1.7B')
+models=('Llama-3.1-8B-Instruct') # ('DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen3-1.7B')
+official_model_names=('meta-llama/Llama-3.1-8B-Instruct') # ('deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen/Qwen3-1.7B')
 experiments=("nx_3_ny_1_nz_18")
-set_name="val_set"
-times=("2025-10-19_22-39-33" "2025-10-21_09-52-46")
+set_name="final_test_set"
+# times=("2025-10-19_22-39-33" "2025-10-21_09-52-46")
 
 # Optional: check that arrays line up
 if [ ${#models[@]} -ne ${#official_model_names[@]} ]; then
@@ -28,13 +28,11 @@ do
     translations="${set_name}_translations_${model}_${experiment}_${time}.pkl"
 
     echo "$config"
-#    python stl_generator_v7.py "${official_model_names[i]}" "$config" "$experiment" "$time" >| "$convo"
+    python stl_generator_v7.py "${official_model_names[i]}" "$config" "$experiment" "$time" >| "$convo"
 #    echo "Done with version: $config"
 #    python ../evaluations/stl_evaluation_v6.py "$model" "$translations" "$config" "$time"
 #    python ../evaluations/generate_semantic_distribution_dict.py "$model" "$translations" "$config" "$time"
-     rm -f "output.txt"
-     rm -f "errors.txt"
-     python ../evaluations/generate_semantic_distribution_plots.py "$model" "$config" "$time" >| "output.txt" 2>| "errors.txt"
+  
   done
 done
 

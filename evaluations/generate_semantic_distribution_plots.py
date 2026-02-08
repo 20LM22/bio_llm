@@ -26,16 +26,48 @@ except Exception as e:
 
 # Sentences to plot
 target_sentences = [
-    "Levels of IFN-γ were not appreciably elevated.",
-    # "We first examined the relative cytokine and chemokine levels in serum samples collected 6 days following EBOV challenge by using a multiplex-based bead assay. Quantitative analysis revealed that multiple Th1 cytokines, including gamma interferon (IFN-γ), interleukin-2 (IL-2), and tumor necrosis factor alpha (TNF-α), were significantly reduced in Tim-1/ mice compared to EBOV-infected wild-type mice (Fig. 2A to C), while IL-12p40 was increased (Fig. 2B)."
+    "We first examined the relative cytokine and chemokine levels in serum samples collected 6 days following EBOV challenge by using a multiplex-based bead assay. Quantitative analysis revealed that multiple Th1 cytokines, including gamma interferon (IFN-γ), interleukin-2 (IL-2), and tumor necrosis factor alpha (TNF-α), were significantly reduced in Tim-1/ mice compared to EBOV-infected wild-type mice (Fig. 2A to C), while IL-12p40 was increased (Fig. 2B).",
+    # "In patients with COVID-19, SARS-CoV-2-specific T-cells appear in peripheral blood within two weeks of symptom onset (31).",
+    # "Neither IL-10 nor IFN-γ were detected in the serum of the animal that survived challenge, on the days tested.",
+    "In parallel, stimulation with CpG 2216 also resulted in lower, but clearly detectable, amounts of IFNs.",
+    # "In addition, several chemokines (macrophage inflammatory protein [MIP]-1α, MIP-1β, growth related oncogene-α, growth related oncogene-β, monocyte chemoattractant protein [MCP]-1, MCP-2, MCP-3, and MCP-4) exhibited increased transcript levels at days 4 to 6 after infection in all animals (Figure 2a).",
+    # "IFNα, IL-12 and IL-8 were undetectable in all the plasma samples tested.",
+    # "Following day 10, IL-6 remains increased whereas IFN-α tapered.",
+    # "We noted an increase in TNF-α converting enzyme/α-disintegrin and metalloproteinase (ADAM)-17 at days 4 to 6 after infection, peaking at an average 3.1-fold increase above baseline at day 5 after infection.",
+    # "We have previously shown that EBOV-specific IgG starts to emerge 3±4 weeks after initial exposure and reaches moderate titres 1 month later.",
+    # "Viral RNA decreased slightly in the survivor between days 8 and 10 and was no longer detectable after day 12.",
+    # "Circulating IL-1α also was not detected (fig. S9F).",
+    # "Levels of IFN-γ were not appreciably elevated."
 ]
 
 # Ensure output folder exists
 output_folder = f'../images/{model_name}/'
 os.makedirs(output_folder, exist_ok=True)
 
-plt.rcParams['axes.titlesize'] = 10
+# # -----------------------------
+# Step 0: Compute global min/max across all sentences
+# -----------------------------
+all_sims = []
+for target_sentence in target_sentences:
+    if target_sentence not in res:
+        continue
+    for stl, sim, choice in res[target_sentence]:
+        all_sims.append(sim)
 
+if not all_sims:
+    print("No similarity data found for any sentence!")
+    sys.exit(1)
+
+global_min = min(all_sims)
+global_max = max(all_sims)
+num_bins = 40
+bins = np.linspace(global_min, global_max, num_bins)
+
+print(f"Global bin edges: {bins}")
+
+# -----------------------------
+# Step 1: Plot histograms using same bins
+# -----------------------------
 for target_sentence in target_sentences:
     if target_sentence not in res:
         print(f"Sentence not found in results: {target_sentence[:50]}...")
@@ -46,7 +78,6 @@ for target_sentence in target_sentences:
     ones_and_zeroes = []
 
     for stl, sim, choice in res[target_sentence]:
-        print(f"SIM={sim:.4f}\tCHOICE={choice}\nSTL: {stl}\n")
         ones_and_zeroes.append(sim)
         try:
             if choice == "":
@@ -59,41 +90,164 @@ for target_sentence in target_sentences:
             zeroes.append(sim)
 
     if not ones_and_zeroes:
-        print(f"No similarity data for sentence: {target_sentence[:50]}...")
         continue
-
-    max_sim = max(ones_and_zeroes)
-    min_sim = min(ones_and_zeroes)
-    bins = np.linspace(min_sim, max_sim, 10)
-    
-    print("\nHistogram bin boundaries:")
-    for i in range(len(bins) - 1):
-        print(f"Bin {i}: [{bins[i]:.4f}, {bins[i+1]:.4f})")
 
     plt.figure(figsize=(10, 8))
     plt.hist(ones, bins=bins, alpha=0.5, color='forestgreen', edgecolor='black', label='Choice=1')
     plt.hist(zeroes, bins=bins, alpha=0.5, color='firebrick', edgecolor='black', label='Choice=0')
+    plt.axvline(np.percentile(ones_and_zeroes, 80), color='purple', linestyle='solid', linewidth=2, label='80th percentile')
 
-    plt.axvline(np.average(ones_and_zeroes), color='blue', linestyle='dashed', linewidth=1, label='Average')
-    plt.axvline(np.median(ones_and_zeroes), color='orange', linestyle='dashed', linewidth=1, label='Median')
-    plt.axvline(np.percentile(ones_and_zeroes, 80), color='purple', linestyle='dashed', linewidth=1, label='80th percentile')
-
-    median = np.median(ones_and_zeroes)
-
-    plt.ylim(0, 20)  # adjust as needed
+    plt.ylim(0, 8.4)
     plt.xlabel('Similarity', fontsize=24)
     plt.ylabel('Frequency', fontsize=24)
     plt.tick_params(axis='both', which='major', labelsize=24)
-    plt.title(
-        f'Hi/Lo Similarity Distribution with Semantic Correctness Labels\n'
-        # f'model: {model_name}, nx: {syntax_count}, ny: {semantic_count}, nz: {shot_count}, median: {median}\n'
-        # f'sentence: {target_sentence[:50]}...'
-    )
+    plt.title('Hi/Lo Similarity Distribution with Semantic Correctness Labels')
+    
     filename = f"{set_name}_hi_lo_sentence_{target_sentence[:30].replace(' ', '_')}_histogram_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}.pdf"
     plt.savefig(os.path.join(output_folder, filename))
     plt.close()
 
     print(f"Histogram saved for sentence: {target_sentence[:50]}...")
+
+target_sentence = "We first examined the relative cytokine and chemokine levels in serum samples collected 6 days following EBOV challenge by using a multiplex-based bead assay. Quantitative analysis revealed that multiple Th1 cytokines, including gamma interferon (IFN-γ), interleukin-2 (IL-2), and tumor necrosis factor alpha (TNF-α), were significantly reduced in Tim-1/ mice compared to EBOV-infected wild-type mice (Fig. 2A to C), while IL-12p40 was increased (Fig. 2B)."
+# "In parallel, stimulation with CpG 2216 also resulted in lower, but clearly detectable, amounts of IFNs."
+
+import numpy as np
+
+if target_sentence in res:
+    sims = []
+
+    # Collect all cosine similarities, ignoring choice
+    for stl, sim, choice in res[target_sentence]:
+        try:
+            sims.append(sim)
+        except Exception:
+            continue  # skip invalid entries
+
+    if sims:
+        sims = np.array(sims)
+        # Compute the 80th percentile
+        percentile_80 = np.percentile(sims, 80)
+
+        # Get all STLs with similarity >= 80th percentile
+        top_stls = [stl for stl, sim, _ in res[target_sentence] if sim >= percentile_80]
+
+        print(f"80th percentile of cosine similarities: {percentile_80:.4f}")
+        print(f"STLs at or above 80th percentile ({len(top_stls)} STLs):")
+        for stl in top_stls:
+            print(stl)
+    else:
+        print("No similarities found for this sentence.")
+else:
+    print("Sentence not found in results.")
+
+
+# import numpy as np
+# import pickle, sys, json, os
+# import matplotlib.pyplot as plt
+
+# model_name = sys.argv[1]
+
+# # Load config specified by the script
+# with open(f'../config/{sys.argv[2]}') as f:
+#     params = json.load(f)
+
+# shot_count = params['num_shots_per_input_sentence']
+# syntax_count = params['num_correction_attempts_per_shot']
+# semantic_count = params['num_semantic_checks']
+# time = sys.argv[3]
+# set_name = params['set_name']
+
+# # Load results
+# res = {}
+# try:
+#     with open(f'../pkl/{set_name}_semantic_labels_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pkl', 'rb') as f:
+#         res = pickle.load(f)
+#         print(f'Loaded distribution')
+# except Exception as e:
+#     print(e)
+#     sys.exit(1)
+
+# # Sentences to plot
+# target_sentences = [
+#     "We first examined the relative cytokine and chemokine levels in serum samples collected 6 days following EBOV challenge by using a multiplex-based bead assay. Quantitative analysis revealed that multiple Th1 cytokines, including gamma interferon (IFN-γ), interleukin-2 (IL-2), and tumor necrosis factor alpha (TNF-α), were significantly reduced in Tim-1/ mice compared to EBOV-infected wild-type mice (Fig. 2A to C), while IL-12p40 was increased (Fig. 2B).",
+#     # "In patients with COVID-19, SARS-CoV-2-specific T-cells appear in peripheral blood within two weeks of symptom onset (31).",
+#     # "Neither IL-10 nor IFN-γ were detected in the serum of the animal that survived challenge, on the days tested.",
+#     "In parallel, stimulation with CpG 2216 also resulted in lower, but clearly detectable, amounts of IFNs.",
+#     # "In addition, several chemokines (macrophage inflammatory protein [MIP]-1α, MIP-1β, growth related oncogene-α, growth related oncogene-β, monocyte chemoattractant protein [MCP]-1, MCP-2, MCP-3, and MCP-4) exhibited increased transcript levels at days 4 to 6 after infection in all animals (Figure 2a).",
+#     # "IFNα, IL-12 and IL-8 were undetectable in all the plasma samples tested.",
+#     # "Following day 10, IL-6 remains increased whereas IFN-α tapered.",
+#     # "We noted an increase in TNF-α converting enzyme/α-disintegrin and metalloproteinase (ADAM)-17 at days 4 to 6 after infection, peaking at an average 3.1-fold increase above baseline at day 5 after infection.",
+#     # "We have previously shown that EBOV-specific IgG starts to emerge 3±4 weeks after initial exposure and reaches moderate titres 1 month later.",
+#     # "Viral RNA decreased slightly in the survivor between days 8 and 10 and was no longer detectable after day 12.",
+#     # "Circulating IL-1α also was not detected (fig. S9F).",
+#     # "Levels of IFN-γ were not appreciably elevated."
+# ]
+
+# # Ensure output folder exists
+# output_folder = f'../images/{model_name}/'
+# os.makedirs(output_folder, exist_ok=True)
+
+# plt.rcParams['axes.titlesize'] = 10
+
+# for target_sentence in target_sentences:
+#     if target_sentence not in res:
+#         print(f"Sentence not found in results: {target_sentence[:50]}...")
+#         continue
+
+#     zeroes = []
+#     ones = []
+#     ones_and_zeroes = []
+
+#     for stl, sim, choice in res[target_sentence]:
+#         print(f"SIM={sim:.4f}\tCHOICE={choice}\nSTL: {stl}\n")
+#         ones_and_zeroes.append(sim)
+#         try:
+#             if choice == "":
+#                 raise Exception()
+#             if int(choice) == 1:
+#                 ones.append(sim)
+#             elif int(choice) == 0:
+#                 zeroes.append(sim)
+#         except Exception:
+#             zeroes.append(sim)
+
+#     if not ones_and_zeroes:
+#         print(f"No similarity data for sentence: {target_sentence[:50]}...")
+#         continue
+
+#     max_sim = max(ones_and_zeroes)
+#     min_sim = min(ones_and_zeroes)
+#     bins = np.linspace(min_sim, max_sim, 10)
+    
+#     print("\nHistogram bin boundaries:")
+#     for i in range(len(bins) - 1):
+#         print(f"Bin {i}: [{bins[i]:.4f}, {bins[i+1]:.4f})")
+
+#     plt.figure(figsize=(10, 8))
+#     plt.hist(ones, bins=bins, alpha=0.5, color='forestgreen', edgecolor='black', label='Choice=1')
+#     plt.hist(zeroes, bins=bins, alpha=0.5, color='firebrick', edgecolor='black', label='Choice=0')
+
+#     # plt.axvline(np.average(ones_and_zeroes), color='blue', linestyle='dashed', linewidth=1, label='Average')
+#     # plt.axvline(np.median(ones_and_zeroes), color='orange', linestyle='dashed', linewidth=1, label='Median')
+#     plt.axvline(np.percentile(ones_and_zeroes, 80), color='purple', linestyle='dashed', linewidth=1, label='80th percentile')
+
+#     median = np.median(ones_and_zeroes)
+
+#     plt.ylim(0, 11)  # adjust as needed
+#     plt.xlabel('Similarity', fontsize=24)
+#     plt.ylabel('Frequency', fontsize=24)
+#     plt.tick_params(axis='both', which='major', labelsize=24)
+#     plt.title(
+#         f'Hi/Lo Similarity Distribution with Semantic Correctness Labels\n'
+#         # f'model: {model_name}, nx: {syntax_count}, ny: {semantic_count}, nz: {shot_count}, median: {median}\n'
+#         # f'sentence: {target_sentence[:50]}...'
+#     )
+#     filename = f"{set_name}_hi_lo_sentence_{target_sentence[:30].replace(' ', '_')}_histogram_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}.pdf"
+#     plt.savefig(os.path.join(output_folder, filename))
+#     plt.close()
+
+#     print(f"Histogram saved for sentence: {target_sentence[:50]}...")
 
 
 # import numpy as np
