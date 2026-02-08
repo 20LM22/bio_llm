@@ -278,6 +278,7 @@ for sentence_index, sentence in sentences['input statement'].items():
                 
         response = response.text
         print(f'response: {response}')
+        time.sleep(15)
 
         ####################################################################
         # 2a) STL Prompt
@@ -305,6 +306,7 @@ for sentence_index, sentence in sentences['input statement'].items():
         # response = response.output_parsed.model_dump_json(indent=2)
         response = response.parsed
         print(f'response: {response}')
+        time.sleep(15) 
 
         ####################################################################
         # 2b) Process the STL response
@@ -409,6 +411,7 @@ for sentence_index, sentence in sentences['input statement'].items():
             
             response = response.parsed
             print(f'response: {response}')
+            time.sleep(15) 
 
             # Try extraction
             try:
@@ -500,6 +503,7 @@ for sentence_index, sentence in sentences['input statement'].items():
  
             response = response.text
             print(f'semantic response thinking is: {response}')
+            time.sleep(15) 
 
             semantic_prompt = "Now that you have thought about how you would improve your STL statement, please output your new and improved STL translation.\nAs a reminder, here is the natural language sentence that you are trying to translate:\n" + sentence + "\n\nFormat your response in JSON. Include (1) your thinking process, (2) the input sentence, and (3) your STL response. Your STL response must conform to the following rules:\n[BEGIN RULES]\nu : less_than | greater_than | is | derivative_greater_than | derivative_less_than | derivative_is\nless_than : s(t) < c # Species s is less than c\ngreater_than : s(t) > c # Species s is greater than c\nis : s(t) = c # Species s is close to c\nderivative_greater_than : d_s(t) > d_c # The rate of change of species s is greater than d_c\nderivative_less_than : d_s(t) < d_c # The rate of change of species s is less than d_c\nderivative_is : d_s(t) = d_c # The rate of change species s is close to d_c\nc : s(t_a) | \"c(low)\" | \"c(mid)\" | \"c(high)\" # c is the level of a species, it can be a specific value or generally just low, moderate, or high\nd_c : 0 # Rate of change is 0\n\t| \"d_c(low)\" # Species is slowly increasing\n\t| \"d_c(high)\" # Species is rapidly increasing\n\t| \"-d_c(low)\" # Species is slowly decreasing\n\t| \"-d_c(high)\" # Species is quickly decreasing\npredicate : u | u1 and u2 | u1 implies u2 # You can combine predicates with Boolean operators\ntemporal_operator : eventually[t_a,t_b]globally(predicate) # This means that between day t_a and t_b, there is a point when the predicate becomes true for the rest of the interval\n\t| globally[t_a,t_b](phi) # This means the predicate is true over the entire interval from day t_a to t_b\n\t| eventually[t_a,t_b](phi) # This means there is at least 1 time between days t_a and t_b that the predicate is true\nt_a : number | ∞ # Time in days\ns : IL6 | IL12 | IL1β | IL1Ra | TNFα | IL8 | IFNα | IFNβ | SARSCoV2 | IL1RN # Species names you can use\nd_s : d_IL6 | d_IL12 | d_IL1β | d_IL1Ra | d_TNFα | d_IL8 | d_IFNα | d_IFNβ | d_SARSCoV2 | d_IL1RN # Names for derivatives of the species\n[END RULES]\n\nThe d_s terms represent the derivative of a signal, so you may find those terms helpful for describing how signals increase or decrease. For general statements describing the levels of some species as \"high\" or \"low\" for example, you may find comparison statements helpful." + "\n\n" + generate_example_prompt(params['num_examples'])
             print(f'semantic prompt: {semantic_prompt}')
@@ -524,6 +528,7 @@ for sentence_index, sentence in sentences['input statement'].items():
 
             response = response.parsed
             print(f'semantic response: {response}')
+            time.sleep(15) 
 
             # extract STL
             try:
@@ -604,6 +609,7 @@ for sentence_index, sentence in sentences['input statement'].items():
 
                 response = response.parsed
                 print(f'semantic response: {response}')
+                time.sleep(15) 
 
                 # extract STL
                 try:
