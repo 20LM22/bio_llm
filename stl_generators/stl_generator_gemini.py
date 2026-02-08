@@ -314,7 +314,7 @@ for sentence_index, sentence in sentences['input statement'].items():
         # Try extraction
         try:
             # extracted_response = response.output_STL
-            extracted_response = response["output_stl"]
+            extracted_response = response["output_STL"]
             print('stl extracted')
             translations.at[sentence_index, f'STL-shot{i}-S0-F0'] = extracted_response
         except Exception as e:
@@ -415,7 +415,7 @@ for sentence_index, sentence in sentences['input statement'].items():
             # Try extraction
             try:
                 # extracted_response = response.output_STL
-                extracted_response = response["output_stl"]
+                extracted_response = response["output_STL"]
                 translations.at[sentence_index, f'STL-shot{i}-S0-F{count}'] = extracted_response
                 print('stl extracted')
             except Exception as e:
@@ -532,7 +532,7 @@ for sentence_index, sentence in sentences['input statement'].items():
             # extract STL
             try:
                 # extracted_response = response.output_STL
-                extracted_response = response["output_stl"]
+                extracted_response = response["output_STL"]
                 print('STL extracted')
                 translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F0'] = extracted_response
             except Exception as e:
@@ -613,7 +613,7 @@ for sentence_index, sentence in sentences['input statement'].items():
                 # extract STL
                 try:
                     # extracted_response = response.output_STL
-                    extracted_response = response["output_stl"]
+                    extracted_response = response["output_STL"]
                     print('STL extracted')
                     translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F{count}'] = extracted_response
                 except Exception as e:
