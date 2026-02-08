@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # TODO: make sure that official model names and models line up correctly
-models=('Llama-3.1-8B-Instruct') # ('DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen3-1.7B')
-official_model_names=('meta-llama/Llama-3.1-8B-Instruct') # ('deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen/Qwen3-1.7B')
+models=('Llama-3.1-3B-Instruct') # ('DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen3-1.7B')
+official_model_names=('meta-llama/Llama-3.1-3B-Instruct') # ('deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen/Qwen3-1.7B')
 experiments=("nx_3_ny_1_nz_18")
 set_name="final_test_set"
 # times=("2025-10-19_22-39-33" "2025-10-21_09-52-46")

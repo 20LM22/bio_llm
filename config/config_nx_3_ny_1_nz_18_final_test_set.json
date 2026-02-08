@@ -7,7 +7,7 @@
     "presence_penalty": 1.5,
     "max_tokens": 1024,
     "model_dtype": "half",
-    "max_model_len": 2048,
+    "max_model_len": 13000,
     "gpu_memory_utilization": 0.8
   },
   "set_name": "final_test_set",
