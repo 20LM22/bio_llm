@@ -290,7 +290,7 @@ for sentence_index, sentence in sentences['input statement'].items():
         response = client.models.generate_content(
             model=model_name,
             contents=stl_prompt,
-            max_output_tokens=params['model_parameters']['max_tokens'],
+            # max_output_tokens=params['model_parameters']['max_tokens'],
             # generation_config=genai.types.GenerationConfig(
             #     max_output_tokens=params['model_parameters']['max_tokens'],
             # ),
