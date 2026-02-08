@@ -304,6 +304,7 @@ for sentence_index, sentence in sentences['input statement'].items():
 
         # response = response.output_parsed.model_dump_json(indent=2)
         response = response.parsed
+        print(type(response.parsed))
         print(f'response: {response}')
         time.sleep(1) 
 
@@ -409,6 +410,7 @@ for sentence_index, sentence in sentences['input statement'].items():
             )
             
             response = response.parsed
+            print(type(response.parsed))
             print(f'response: {response}')
             time.sleep(1) 
 
@@ -526,6 +528,7 @@ for sentence_index, sentence in sentences['input statement'].items():
             )
 
             response = response.parsed
+            print(type(response.parsed))
             print(f'semantic response: {response}')
             time.sleep(1) 
 
@@ -607,6 +610,7 @@ for sentence_index, sentence in sentences['input statement'].items():
                 )   
 
                 response = response.parsed
+                print(type(response.parsed))
                 print(f'semantic response: {response}')
                 time.sleep(1) 
 
