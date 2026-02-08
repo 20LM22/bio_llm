@@ -304,7 +304,6 @@ for sentence_index, sentence in sentences['input statement'].items():
 
         # response = response.output_parsed.model_dump_json(indent=2)
         response = response.parsed
-        print(type(response.parsed))
         print(f'response: {response}')
         time.sleep(1) 
 
@@ -315,7 +314,7 @@ for sentence_index, sentence in sentences['input statement'].items():
         # Try extraction
         try:
             # extracted_response = response.output_STL
-            extracted_response = json.loads(response)["output_STL"]
+            extracted_response = response["output_stl"]
             print('stl extracted')
             translations.at[sentence_index, f'STL-shot{i}-S0-F0'] = extracted_response
         except Exception as e:
@@ -410,14 +409,13 @@ for sentence_index, sentence in sentences['input statement'].items():
             )
             
             response = response.parsed
-            print(type(response.parsed))
             print(f'response: {response}')
             time.sleep(1) 
 
             # Try extraction
             try:
                 # extracted_response = response.output_STL
-                extracted_response = json.loads(response)["output_STL"]
+                extracted_response = response["output_stl"]
                 translations.at[sentence_index, f'STL-shot{i}-S0-F{count}'] = extracted_response
                 print('stl extracted')
             except Exception as e:
@@ -528,14 +526,13 @@ for sentence_index, sentence in sentences['input statement'].items():
             )
 
             response = response.parsed
-            print(type(response.parsed))
             print(f'semantic response: {response}')
             time.sleep(1) 
 
             # extract STL
             try:
                 # extracted_response = response.output_STL
-                extracted_response = json.loads(response)["output_STL"]
+                extracted_response = response["output_stl"]
                 print('STL extracted')
                 translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F0'] = extracted_response
             except Exception as e:
@@ -610,14 +607,13 @@ for sentence_index, sentence in sentences['input statement'].items():
                 )   
 
                 response = response.parsed
-                print(type(response.parsed))
                 print(f'semantic response: {response}')
                 time.sleep(1) 
 
                 # extract STL
                 try:
                     # extracted_response = response.output_STL
-                    extracted_response = json.loads(response)["output_stl"]
+                    extracted_response = response["output_stl"]
                     print('STL extracted')
                     translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F{count}'] = extracted_response
                 except Exception as e:
