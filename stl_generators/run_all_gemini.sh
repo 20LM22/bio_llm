@@ -5,7 +5,7 @@ official_model_names=('gemini-3-flash-preview')
 
 experiments=("nx_3_ny_1_nz_18")
 set_name="final_test_set" 
-# times=("2026-01-25_17-47-50")
+times=("2026-02-08_13-40-42") # ("2026-01-25_17-47-50")
 
 i=0
 for experiment in "${experiments[@]}"
@@ -14,7 +14,7 @@ do
   echo "$config"
   for model in "${models[@]}" 
   do 
-    time=$(/usr/bin/date +%F_%H-%M-%S) # "${times[$i]}"
+    time="${times[$i]}" # $(/usr/bin/date +%F_%H-%M-%S) 
     convo="../stats/${model}/convo_${experiment}_${time}.txt"
     
     translations="../pkl/${model}/${set_name}_translations_${model}_${experiment}_${time}.pkl"
@@ -32,9 +32,13 @@ do
     echo "$time"
 
     python stl_generator_gemini.py "$model" "$config" "$experiment" "$time" # >| "$convo"
+    # python ../evaluations/stl_evaluation_v6.py "$model" "$translations" "$config" "$time"
     # python ../consolidate/filter_by_cosine_similarity.py "$model" "$translations" "$config" "$time"       
     # python ../consolidate/consolidate.py "$model" "$filtered_output" "$config" "$time"
     # python ../consolidate/annotate_consolidated_stats.py "$translations" "$filtered_annotations_output" "$consolidated_annotations_output"      
+
+# Failed to load translations: [Errno 2] No such file or directory: '../pkl/gemini-3-flash-preview/final_test_set_translations_gemini-3-flash-preview_nx_3_ny_1_nz_18_2026-02-07_20-13-35.pkl'
+
 
   done
   ((++i))

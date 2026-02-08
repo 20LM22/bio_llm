@@ -42,7 +42,6 @@ grammar = params['grammar']
 parser = Lark(grammar)
 
 signal_names = params['signal_names']
-# print(f"signal names is: {signal_names}")
 
 curated_dataset = []
 try:
@@ -141,7 +140,7 @@ def get_hole_feedback(error, res, s):
                 right_bound += 1
 
         if left_bound_found and right_bound_found:
-            print('getting hole feedback')
+            # print('getting hole feedback')
             end_response = res[right_bound + 1:] if right_bound < len(res) - 1 else ''
             res = res[:left_bound] + '<??>' + end_response
             return params['feedback_prompt']['hole_prompt_1'] + '\n' + res + '\n\n' + params['feedback_prompt']['hole_prompt_2'] + '\n' + s + '\n\n' + params['feedback_prompt']['hole_prompt_3']
@@ -156,20 +155,20 @@ def get_hole_feedback(error, res, s):
 def check_signal_names(parsed, res, s):
     signals = re.findall(r"Tree\(Token\('RULE', 's'\), \[Token\('\w+', '\w+'\)\]\)", str(parsed))
     for sig in signals:
-        print(f'sig: {sig}')
+        # print(f'sig: {sig}')
         sig = sig.split("Tree(Token('RULE', 's'), [Token('__ANON_1',")
-        print(sig)
+        # print(sig)
         sig = re.findall(r"'.*'", sig[1])[0]
-        print(sig)
+        # print(sig)
         try:
             sig = sig[1:-1]
-            print(sig)
+            # print(sig)
             if sig not in signal_names:
-                print('getting species name feedback')
+                # print('getting species name feedback')
                 # TODO: try a hole approach, could do all bad names at once
                 return 'You are trying to translate this sentence to STL:\n' + s + '\n\n' + 'Your previous response was:\n' + res + '\n\n' + 'However, you used ' + sig + ' as a species name in your response, which is not allowed. Fix your response so it uses the allowed species names.\n\n' + "Format your response in JSON. Include (1) your thinking process, (2) the input statement, and (3) your STL response.\nYour STL response must conform to the following rules\n:[BEGIN RULES]\nu : less_than | greater_than | is | derivative_greater_than | derivative_less_than | derivative_is\nless_than : s(t) < c # Species s is less than c\ngreater_than : s(t) > c # Species s is greater than c\nis : s(t) = c # Species s is close to c\nderivative_greater_than : d_s(t) > d_c # The rate of change of species s is greater than d_c\nderivative_less_than : d_s(t) < d_c # The rate of change of species s is less than d_c\nderivative_is : d_s(t) = d_c # The rate of change species s is close to d_c\nc : s(t_a) | \"c(low)\" | \"c(mid)\" | \"c(high)\" # c is the level of a species, it can be a specific value or generally just low, moderate, or high\nd_c : 0 # Rate of change is 0\n\t| \"d_c(low)\" # Species is slowly increasing\n\t| \"d_c(high)\" # Species is rapidly increasing\n\t| \"-d_c(low)\" # Species is slowly decreasing\n\t| \"-d_c(high)\" # Species is quickly decreasing\npredicate : u | u1 and u2 | u1 implies u2 # You can combine predicates with Boolean operators\ntemporal_operator : eventually[t_a,t_b]globally(predicate) # This means that between day t_a and t_b, there is a point when the predicate becomes true for the rest of the interval\n\t| globally[t_a,t_b](phi) # This means the predicate is true over the entire interval from day t_a to t_b\n\t| eventually[t_a,t_b](phi) # This means there is at least 1 time between days t_a and t_b that the predicate is true\nt_a : number | ∞ # Time in days\ns : IL6 | IL12 | IL1β | IL1Ra | TNFα | IL8 | IFNα | IFNβ | SARSCoV2 | IL1RN | IgM | IgG | MERSCoV | SARSCoV | CpG2216 | IL1α | CCL2 | CCR2 | IP10 | MCP1 | IFNγ | IL17 | IL27 | RANTES # Species names you can use\nd_s : d_IL6 | d_IL12 | d_IL1β | d_IL1Ra | d_TNFα | d_IL8 | d_IFNα | d_IFNβ | d_SARSCoV2 | d_IL1RN | d_IgM | d_IgG | d_MERSCoV | d_SARSCoV | d_CpG2216 | d_IL1α | d_CCL2 | d_CCR2 | d_IP10 | d_MCP1 | d_IFNγ | d_IL17 | d_IL27 | d_RANTES # Names for derivatives of the species\n[END RULES]\n\nThe d_s terms represent the derivative of a signal, so you may find those terms helpful for describing how signals increase or decrease. For general statements describing the levels of some species as \"high\" or \"low\" for example, you may find comparison statements helpful."
         except Exception as error:
-            print('getting species name feedback')
+            # print('getting species name feedback')
             return 'You are trying to translate this sentence to STL:\n' + s + '\n\n' + 'Your previous response was:\n' + res + '\n\n' + 'However, you used ' + sig + ' as a species name in your response, which is not allowed. Fix your response so it uses the allowed species names.\n\n' + "Format your response in JSON. Include (1) your thinking process, (2) the input statement, and (3) your STL response.\nYour STL response must conform to the following rules\n:[BEGIN RULES]\nu : less_than | greater_than | is | derivative_greater_than | derivative_less_than | derivative_is\nless_than : s(t) < c # Species s is less than c\ngreater_than : s(t) > c # Species s is greater than c\nis : s(t) = c # Species s is close to c\nderivative_greater_than : d_s(t) > d_c # The rate of change of species s is greater than d_c\nderivative_less_than : d_s(t) < d_c # The rate of change of species s is less than d_c\nderivative_is : d_s(t) = d_c # The rate of change species s is close to d_c\nc : s(t_a) | \"c(low)\" | \"c(mid)\" | \"c(high)\" # c is the level of a species, it can be a specific value or generally just low, moderate, or high\nd_c : 0 # Rate of change is 0\n\t| \"d_c(low)\" # Species is slowly increasing\n\t| \"d_c(high)\" # Species is rapidly increasing\n\t| \"-d_c(low)\" # Species is slowly decreasing\n\t| \"-d_c(high)\" # Species is quickly decreasing\npredicate : u | u1 and u2 | u1 implies u2 # You can combine predicates with Boolean operators\ntemporal_operator : eventually[t_a,t_b]globally(predicate) # This means that between day t_a and t_b, there is a point when the predicate becomes true for the rest of the interval\n\t| globally[t_a,t_b](phi) # This means the predicate is true over the entire interval from day t_a to t_b\n\t| eventually[t_a,t_b](phi) # This means there is at least 1 time between days t_a and t_b that the predicate is true\nt_a : number | ∞ # Time in days\ns : IL6 | IL12 | IL1β | IL1Ra | TNFα | IL8 | IFNα | IFNβ | SARSCoV2 | IL1RN | IgM | IgG | MERSCoV | SARSCoV | CpG2216 | IL1α | CCL2 | CCR2 | IP10 | MCP1 | IFNγ | IL17 | IL27 | RANTES # Species names you can use\nd_s : d_IL6 | d_IL12 | d_IL1β | d_IL1Ra | d_TNFα | d_IL8 | d_IFNα | d_IFNβ | d_SARSCoV2 | d_IL1RN | d_IgM | d_IgG | d_MERSCoV | d_SARSCoV | d_CpG2216 | d_IL1α | d_CCL2 | d_CCR2 | d_IP10 | d_MCP1 | d_IFNγ | d_IL17 | d_IL27 | d_RANTES # Names for derivatives of the species\n[END RULES]\n\nThe d_s terms represent the derivative of a signal, so you may find those terms helpful for describing how signals increase or decrease. For general statements describing the levels of some species as \"high\" or \"low\" for example, you may find comparison statements helpful."
     return None
 
@@ -181,23 +180,23 @@ def check_parentheses(res, s):
     left_count = len(re.findall(r"\(", res))
     right_count = len(re.findall(r"\)", res))
     if left_count != right_count:
-        print('getting parentheses feedback')
+        # print('getting parentheses feedback')
         response = f'Your response has an unmatched number of parentheses. There are {left_count} left parentheses and {right_count} right parentheses. Fix your response so that there are not any unmatched parentheses.'
         return params['feedback_prompt']['default_prompt_1'] + '\n' + res + '\n\n' + response + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + s + '\n\n' + params['feedback_prompt']['default_prompt_4']
 
     left_count = len(re.findall(r"\{", res))
     right_count = len(re.findall(r"\}", res))
     if left_count != right_count:
-        print('getting parentheses feedback')
+        # print('getting parentheses feedback')
         response = f'Your response has an unmatched number of curly brackets. There are {left_count} left curly brackets and {right_count} right curly brackets. Fix your response so that there are not any unmatched curly brackets.'
         return params['feedback_prompt']['default_prompt_1'] + '\n' + res + '\n\n' + response + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + s + '\n\n' + params['feedback_prompt']['default_prompt_4']
     left_count = len(re.findall(r"\[", res))
     right_count = len(re.findall(r"\]", res))
     if left_count != right_count:
-        print('getting parentheses feedback')
+        # print('getting parentheses feedback')
         response = f'Your response has an unmatched number of square brackets. There are {left_count} left square brackets and {right_count} right square brackets. Fix your response so that there are not any unmatched square brackets.'
         return params['feedback_prompt']['default_prompt_1'] + '\n' + res + '\n\n' + response + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + s + '\n\n' + params['feedback_prompt']['default_prompt_4']
-    print('no problems with parentheses')
+    # print('no problems with parentheses')
     return None
 
 ####################################################################################
@@ -209,7 +208,7 @@ def check_json(res, s):
         json.loads(res)
         if '{' in res and '}' in res and ':' in res:
             error = 'It looks like you formatted the output STL incorrectly. The JSON format should have three fields: (1) your thinking, (2) the input sentence, and (3) your output STL. However, the output STL field should not contain JSON inside of it, but instead it should be a single string. Here is an example of correct formatting:\n' + generate_example_prompt(1)
-            print("getting json feedback")
+            # print("getting json feedback")
             return params['feedback_prompt']['default_prompt_1'] + '\n' + res + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + s + '\n\n' + params['feedback_prompt']['default_prompt_4']
         return None
 
@@ -221,9 +220,9 @@ def check_json(res, s):
 ####################################################################################
 
 def default_feedback(e, res, s):
-    print('inside default feedback')
-    print(f'extracted response: {res}')
-    print(f'{e}')
+    # print('inside default feedback')
+    # print(f'extracted response: {res}')
+    # print(f'{e}')
     try:
         error_message_more_descriptive = str(e).split('Expected')[0]
         return params['feedback_prompt']['default_prompt_1'] + '\n' + res + '\n\n' + params['feedback_prompt']['default_prompt_2'] + '\n' + error_message_more_descriptive + '\n\n' + params['feedback_prompt']['default_prompt_2a'] + '\n\n' + params['feedback_prompt']['default_prompt_3'] + '\n' + s + '\n\n' + params['feedback_prompt']['default_prompt_4']
@@ -261,9 +260,9 @@ for sentence_index, sentence in sentences['input statement'].items():
         # 1) Thinking prompt
         ####################################################################
 
-        print('thinking prompt')
+        # print('thinking prompt')
         thinking_prompt = params['thinking_prompt']['prompt_1'] + '\n' + sentence + '\n\n' + params['thinking_prompt']['prompt_2']
-        print(f'thinking prompt: {thinking_prompt}')
+        # print(f'thinking prompt: {thinking_prompt}')
 
         response = client.models.generate_content(
             model=model_name,
@@ -284,9 +283,9 @@ for sentence_index, sentence in sentences['input statement'].items():
         # 2a) STL Prompt
         ####################################################################
 
-        print('stl prompt')
+        # print('stl prompt')
         stl_prompt = params['stl_prompt']['prompt_1'] + '\n' + sentence + '\n\n' + params['stl_prompt']['prompt_2'] + "\n\n" + generate_example_prompt(params['num_examples'])
-        print(f'stl prompt: {stl_prompt}')
+        # print(f'stl prompt: {stl_prompt}')
 
         response = client.models.generate_content(
             model=model_name,
@@ -331,12 +330,12 @@ for sentence_index, sentence in sentences['input statement'].items():
 
         try:
             parsed_stl = parser.parse(extracted_response)
-            print('right before checking signal names')
+            # print('right before checking signal names')
             if check_signal_names(parsed_stl, extracted_response, sentence) is not None:
-                print(f'first check of shot, signal name is getting flagged')
+                # print(f'first check of shot, signal name is getting flagged')
                 raise Exception("bad signal name")
             if check_derivative_STL2literal(parsed_stl):  # if true
-                print('mismatched d_s and c')
+                # print('mismatched d_s and c')
                 raise Exception("mismatched d_s and c")
             syntax_passed = True
             print('stl parsed')
@@ -359,20 +358,20 @@ for sentence_index, sentence in sentences['input statement'].items():
             print(f'extracted_response: {extracted_response}')
 
             if check_json(extracted_response, sentence) is not None:
-                print('feedback is check json')
+                # print('feedback is check json')
                 feedback = check_json(extracted_response, sentence)
             elif check_parentheses(extracted_response, sentence) is not None:
-                print('feedback is parentheses')
+                # print('feedback is parentheses')
                 feedback = check_parentheses(extracted_response, sentence)
             elif parsed_stl != '' and check_signal_names(parsed_stl, extracted_response, sentence) is not None:
                 feedback = check_signal_names(parsed_stl, extracted_response, sentence)
-                print('feedback is bad signal names')
+                # print('feedback is bad signal names')
             elif get_hole_feedback(e, extracted_response, sentence) is not None:
                 feedback = get_hole_feedback(e, extracted_response, sentence)
-                print('feedback is fix hole')
+                # print('feedback is fix hole')
             else:
                 feedback = default_feedback(e, extracted_response, sentence)
-                print('feedback is default')
+                # print('feedback is default')
 
         ####################################################################
         # 3) Feedback prompts for this shot if necessary
@@ -387,9 +386,9 @@ for sentence_index, sentence in sentences['input statement'].items():
             feedback_attempts_remaining -= 1
             syntax_passed = False
 
-            print('now prompting with the feedback')
+            # print('now prompting with the feedback')
             m = feedback + '\n\n' + generate_example_prompt(params['num_examples'])
-            print(f'feedback prompt: {m}')
+            # print(f'feedback prompt: {m}')
 
             response = client.models.generate_content(
                 model=model_name,
@@ -429,38 +428,38 @@ for sentence_index, sentence in sentences['input statement'].items():
             parsed_stl = ''
 
             try:
-                print('right before trying to parse')
+                # print('right before trying to parse')
                 parsed_stl = parser.parse(extracted_response)
-                print('right before checking signal names')
+                # print('right before checking signal names')
                 if check_signal_names(parsed_stl, extracted_response, sentence) is not None:
                     raise Exception("bad signal name")
                 if check_derivative_STL2literal(parsed_stl):  # if true
-                    print('mismatched d_s and c')
+                    # print('mismatched d_s and c')
                     raise Exception("mismatched d_s and c")
-                print('stl parsed')
+                # print('stl parsed')
                 syntax_passed = True
                 translations.at[sentence_index, f'STL-shot{i}-S0-F{count}'] = extracted_response
             except Exception as e:
                 if translations.at[sentence_index, f'STL-shot{i}-S0-F{count}'] != 'STL could not be extracted':
                     translations.at[sentence_index, f'STL-shot{i}-S0-F{count}'] = "STL could not be parsed"
                 syntax_passed = False
-                print('parsing failed')
+                # print('parsing failed')
 
                 if check_json(extracted_response, sentence) is not None:
-                    print('feedback is check json')
+                    # print('feedback is check json')
                     feedback = check_json(extracted_response, sentence)
                 elif check_parentheses(extracted_response, sentence) is not None:
-                    print('feedback is parentheses')
+                    # print('feedback is parentheses')
                     feedback = check_parentheses(extracted_response, sentence)
                 elif parsed_stl != '' and check_signal_names(parsed_stl, extracted_response, sentence) is not None:
                     feedback = check_signal_names(parsed_stl, extracted_response, sentence)
-                    print('feedback is bad signal names')
+                    # print('feedback is bad signal names')
                 elif get_hole_feedback(e, extracted_response, sentence) is not None:
                     feedback = get_hole_feedback(e, extracted_response, sentence)
-                    print('feedback is fix hole')
+                    # print('feedback is fix hole')
                 else:
                     feedback = default_feedback(e, extracted_response, sentence)
-                    print('feedback is default')
+                    # print('feedback is default')
 
         ####################################################################
         # 4) perform semantic checks
@@ -480,14 +479,14 @@ for sentence_index, sentence in sentences['input statement'].items():
         responses_this_shot[f'shot-{i}'].append(extracted_response)
 
         for j in range(num_semantic_checks):
-            print(f'prompting semantic iteration {j}')
+            # print(f'prompting semantic iteration {j}')
 
             last_literal = STL2literal(last_stl, grammar)
             best_literal = STL2literal(best_stl, grammar)
 
             # Think first
             semantic_prompt_thinking = "You were asked to translate the following natural language sentence into STL:\n" + sentence + "\n\nIn response, you produced the following STL statement:\n" + best_stl + "\n\nThis statement means:\n" + best_literal + "\n\nGive an explanation of how you would improve your STL statement so that it is closer in meaning to the natural language sentence you were asked to translate. Your STL response must conform to the following rules:\n[BEGIN RULES]\nu : less_than | greater_than | is | derivative_greater_than | derivative_less_than | derivative_is\nless_than : s(t) < c # Species s is less than c\ngreater_than : s(t) > c # Species s is greater than c\nis : s(t) = c # Species s is close to c\nderivative_greater_than : d_s(t) > d_c # The rate of change of species s is greater than d_c\nderivative_less_than : d_s(t) < d_c # The rate of change of species s is less than d_c\nderivative_is : d_s(t) = d_c # The rate of change species s is close to d_c\nc : s(t_a) | \"c(low)\" | \"c(mid)\" | \"c(high)\" # c is the level of a species, it can be a specific value or generally just low, moderate, or high\nd_c : 0 # Rate of change is 0\n\t| \"d_c(low)\" # Species is slowly increasing\n\t| \"d_c(high)\" # Species is rapidly increasing\n\t| \"-d_c(low)\" # Species is slowly decreasing\n\t| \"-d_c(high)\" # Species is quickly decreasing\npredicate : u | u1 and u2 | u1 implies u2 # You can combine predicates with Boolean operators\ntemporal_operator : eventually[t_a,t_b]globally(predicate) # This means that between day t_a and t_b, there is a point when the predicate becomes true for the rest of the interval\n\t| globally[t_a,t_b](phi) # This means the predicate is true over the entire interval from day t_a to t_b\n\t| eventually[t_a,t_b](phi) # This means there is at least 1 time between days t_a and t_b that the predicate is true\nt_a : number | ∞ # Time in days\ns : IL6 | IL12 | IL1β | IL1Ra | TNFα | IL8 | IFNα | IFNβ | SARSCoV2 | IL1RN # Species names you can use\nd_s : d_IL6 | d_IL12 | d_IL1β | d_IL1Ra | d_TNFα | d_IL8 | d_IFNα | d_IFNβ | d_SARSCoV2 | d_IL1RN # Names for derivatives of the species\n[END RULES]\n\nThe d_s terms represent the derivative of a signal, so you may find those terms helpful for describing how signals increase or decrease. For general statements describing the levels of some species as \"high\" or \"low\" for example, you may find comparison statements helpful."
-            print(f'semantic prompt thinking is: {semantic_prompt_thinking}')
+            # print(f'semantic prompt thinking is: {semantic_prompt_thinking}')
 
             response = client.models.generate_content(
                 model=model_name,
@@ -506,7 +505,7 @@ for sentence_index, sentence in sentences['input statement'].items():
             time.sleep(1) 
 
             semantic_prompt = "Now that you have thought about how you would improve your STL statement, please output your new and improved STL translation.\nAs a reminder, here is the natural language sentence that you are trying to translate:\n" + sentence + "\n\nFormat your response in JSON. Include (1) your thinking process, (2) the input sentence, and (3) your STL response. Your STL response must conform to the following rules:\n[BEGIN RULES]\nu : less_than | greater_than | is | derivative_greater_than | derivative_less_than | derivative_is\nless_than : s(t) < c # Species s is less than c\ngreater_than : s(t) > c # Species s is greater than c\nis : s(t) = c # Species s is close to c\nderivative_greater_than : d_s(t) > d_c # The rate of change of species s is greater than d_c\nderivative_less_than : d_s(t) < d_c # The rate of change of species s is less than d_c\nderivative_is : d_s(t) = d_c # The rate of change species s is close to d_c\nc : s(t_a) | \"c(low)\" | \"c(mid)\" | \"c(high)\" # c is the level of a species, it can be a specific value or generally just low, moderate, or high\nd_c : 0 # Rate of change is 0\n\t| \"d_c(low)\" # Species is slowly increasing\n\t| \"d_c(high)\" # Species is rapidly increasing\n\t| \"-d_c(low)\" # Species is slowly decreasing\n\t| \"-d_c(high)\" # Species is quickly decreasing\npredicate : u | u1 and u2 | u1 implies u2 # You can combine predicates with Boolean operators\ntemporal_operator : eventually[t_a,t_b]globally(predicate) # This means that between day t_a and t_b, there is a point when the predicate becomes true for the rest of the interval\n\t| globally[t_a,t_b](phi) # This means the predicate is true over the entire interval from day t_a to t_b\n\t| eventually[t_a,t_b](phi) # This means there is at least 1 time between days t_a and t_b that the predicate is true\nt_a : number | ∞ # Time in days\ns : IL6 | IL12 | IL1β | IL1Ra | TNFα | IL8 | IFNα | IFNβ | SARSCoV2 | IL1RN # Species names you can use\nd_s : d_IL6 | d_IL12 | d_IL1β | d_IL1Ra | d_TNFα | d_IL8 | d_IFNα | d_IFNβ | d_SARSCoV2 | d_IL1RN # Names for derivatives of the species\n[END RULES]\n\nThe d_s terms represent the derivative of a signal, so you may find those terms helpful for describing how signals increase or decrease. For general statements describing the levels of some species as \"high\" or \"low\" for example, you may find comparison statements helpful." + "\n\n" + generate_example_prompt(params['num_examples'])
-            print(f'semantic prompt: {semantic_prompt}')
+            # print(f'semantic prompt: {semantic_prompt}')
 
             response = client.models.generate_content(
                 model=model_name,
@@ -548,7 +547,7 @@ for sentence_index, sentence in sentences['input statement'].items():
                 if check_signal_names(parsed_stl, extracted_response, sentence) is not None:
                     raise Exception("bad signal name")
                 if check_derivative_STL2literal(parsed_stl):  # if true
-                    print('mismatched d_s and c')
+                    # print('mismatched d_s and c')
                     raise Exception("mismatched d_s and c")
                 print('STL parsed')
                 translations.at[sentence_index, f'STL-shot{i}-S{j+1}-F0'] = extracted_response
@@ -560,20 +559,20 @@ for sentence_index, sentence in sentences['input statement'].items():
                 print('parsing failed')
 
                 if check_json(extracted_response, sentence) is not None:
-                    print('feedback is check json')
+                    # print('feedback is check json')
                     feedback = check_json(extracted_response, sentence)
                 elif check_parentheses(extracted_response, sentence) is not None:
-                    print('feedback is parentheses')
+                    # print('feedback is parentheses')
                     feedback = check_parentheses(extracted_response, sentence)
                 elif parsed_stl != '' and check_signal_names(parsed_stl, extracted_response, sentence) is not None:
                     feedback = check_signal_names(parsed_stl, extracted_response, sentence)
-                    print('feedback is bad signal names')
+                    # print('feedback is bad signal names')
                 elif get_hole_feedback(e, extracted_response, sentence) is not None:
                     feedback = get_hole_feedback(e, extracted_response, sentence)
-                    print('feedback is fix hole')
+                    # print('feedback is fix hole')
                 else:
                     feedback = default_feedback(e, extracted_response, sentence)
-                    print('feedback is default')
+                    # print('feedback is default')
 
             feedback_attempts_remaining = params["num_correction_attempts_per_shot"]
 
@@ -585,9 +584,9 @@ for sentence_index, sentence in sentences['input statement'].items():
                 syntax_passed = False
 
                 m = feedback + '\n\n' + generate_example_prompt(params['num_examples'])
-                print(f'feedback prompt: {m}')
+                # print(f'feedback prompt: {m}')
 
-                print('prompting with feedback')
+                # print('prompting with feedback')
                 
                 response = client.models.generate_content(
                     model=model_name,
@@ -629,7 +628,7 @@ for sentence_index, sentence in sentences['input statement'].items():
                     if check_signal_names(parsed_stl, extracted_response, sentence) is not None:
                         raise Exception("bad signal name")
                     if check_derivative_STL2literal(parsed_stl):  # if true
-                        print('mismatched d_s and c')
+                        # print('mismatched d_s and c')
                         raise Exception("mismatched d_s and c")
                     print('STL parsed')
                     syntax_passed = True
@@ -641,20 +640,20 @@ for sentence_index, sentence in sentences['input statement'].items():
                     print('parsing failed')
 
                     if check_json(extracted_response, sentence) is not None:
-                        print('feedback is check json')
+                        # print('feedback is check json')
                         feedback = check_json(extracted_response, sentence)
                     elif check_parentheses(extracted_response, sentence) is not None:
-                        print('feedback is parentheses')
+                        # print('feedback is parentheses')
                         feedback = check_parentheses(extracted_response, sentence)
                     elif parsed_stl != '' and check_signal_names(parsed_stl, extracted_response, sentence) is not None:
                         feedback = check_signal_names(parsed_stl, extracted_response, sentence)
-                        print('feedback is bad signal names')
+                        # print('feedback is bad signal names')
                     elif get_hole_feedback(e, extracted_response, sentence) is not None:
                         feedback = get_hole_feedback(e, extracted_response, sentence)
-                        print('feedback is fix hole')
+                        # print('feedback is fix hole')
                     else:
                         feedback = default_feedback(e, extracted_response, sentence)
-                        print('feedback is default')
+                        # print('feedback is default')
 
             if syntax_passed:
                 print(f'feedback was able to correct this semantic attempt')
