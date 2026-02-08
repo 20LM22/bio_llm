@@ -37,8 +37,13 @@ do
     # python ../consolidate/consolidate.py "$model" "$filtered_output" "$config" "$time"
     # python ../consolidate/annotate_consolidated_stats.py "$translations" "$filtered_annotations_output" "$consolidated_annotations_output"      
 
-# Failed to load translations: [Errno 2] No such file or directory: '../pkl/gemini-3-flash-preview/final_test_set_translations_gemini-3-flash-preview_nx_3_ny_1_nz_18_2026-02-07_20-13-35.pkl'
-
+# response: {'thinking': "The sentence indicates that within two weeks (days 0 to 14) of symptom onset, SARS-CoV-2-specific T-cells (represented by the 'tcells' species) begin to appear in peripheral blood, implying that at some point in this interval their levels or rate of increase becomes significant. I will translate this as the species 'tcells' eventually having a positive rate of change between day 0 and day 14.",
+#  'input_statement': 'In patients with COVID-19, SARS-CoV-2-specific T-cells appear in peripheral blood within two weeks of symptom onset (31).',
+#  'output_STL': 'eventually[0,14](d_tcells(t) > 0)'}
+# class STLResponse(BaseModel):
+#     thinking: str
+#     input_statement: str
+#     output_STL: str
 
   done
   ((++i))
