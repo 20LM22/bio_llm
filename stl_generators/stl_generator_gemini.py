@@ -9,6 +9,7 @@ import io
 from stl_example_generator import STLBase
 from google import genai
 from typing import List, Optional
+from google.genai.types import GenerateContentConfig, HttpOptions
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
@@ -267,10 +268,10 @@ for sentence_index, sentence in sentences['input statement'].items():
         response = client.models.generate_content(
             model=model_name,
             contents=thinking_prompt,
-            max_output_tokens=params['model_parameters']['max_tokens'],
-            # generation_config=genai.types.GenerationConfig(
-            #     max_output_tokens=params['model_parameters']['max_tokens'],
-            # )
+            # max_output_tokens=params['model_parameters']['max_tokens'],
+            config=GenerateContentConfig(
+                max_output_tokens=params['model_parameters']['max_tokens'],
+            )
             # max_output_tokens = params['model_parameters']['max_tokens'],
             # temperature = params['model_parameters']['temperature'],
         )
@@ -293,10 +294,12 @@ for sentence_index, sentence in sentences['input statement'].items():
             # generation_config=genai.types.GenerationConfig(
             #     max_output_tokens=params['model_parameters']['max_tokens'],
             # ),
-            config={
-                "response_mime_type": "application/json",
-                "response_json_schema": STLResponse.model_json_schema(),
-            }
+            config=GenerateContentConfig(
+                max_output_tokens=params['model_parameters']['max_tokens'],
+                response_mime_type="application/json",
+                response_json_schema=STLResponse.model_json_schema(),
+            )
+            
         )
 
         # response = response.output_parsed.model_dump_json(indent=2)
@@ -389,14 +392,19 @@ for sentence_index, sentence in sentences['input statement'].items():
             response = client.models.generate_content(
                 model=model_name,
                 contents=m,
-                max_output_tokens=params['model_parameters']['max_tokens'],
-                # generation_config=genai.types.GenerationConfig(
-                #     max_output_tokens=params['model_parameters']['max_tokens'],
-                # ),
-                config={
-                    "response_mime_type": "application/json",
-                    "response_json_schema": STLResponse.model_json_schema(),
-                }
+                config=GenerateContentConfig(
+                    max_output_tokens=params['model_parameters']['max_tokens'],
+                    response_mime_type="application/json",
+                    response_json_schema=STLResponse.model_json_schema(),
+                )
+                # max_output_tokens=params['model_parameters']['max_tokens'],
+                # # generation_config=genai.types.GenerationConfig(
+                # #     max_output_tokens=params['model_parameters']['max_tokens'],
+                # # ),
+                # config={
+                #     "response_mime_type": "application/json",
+                #     "response_json_schema": STLResponse.model_json_schema(),
+                # }
             )
             
             response = response.parsed
@@ -481,7 +489,10 @@ for sentence_index, sentence in sentences['input statement'].items():
             response = client.models.generate_content(
                 model=model_name,
                 contents=semantic_prompt_thinking,
-                max_output_tokens=params['model_parameters']['max_tokens'],
+                config=GenerateContentConfig(
+                    max_output_tokens=params['model_parameters']['max_tokens'],
+                )
+                # max_output_tokens=params['model_parameters']['max_tokens'],
                 # generation_config=genai.types.GenerationConfig(
                 #     max_output_tokens=params['model_parameters']['max_tokens'],
                 # )
@@ -496,14 +507,19 @@ for sentence_index, sentence in sentences['input statement'].items():
             response = client.models.generate_content(
                 model=model_name,
                 contents=semantic_prompt,
-                max_output_tokens=params['model_parameters']['max_tokens'],
-                # generation_config=genai.types.GenerationConfig(
-                #     max_output_tokens=params['model_parameters']['max_tokens'],
-                # ),
-                config={
-                    "response_mime_type": "application/json",
-                    "response_json_schema": STLResponse.model_json_schema(),
-                }
+                config=GenerateContentConfig(
+                    max_output_tokens=params['model_parameters']['max_tokens'],
+                    response_mime_type="application/json",
+                    response_json_schema=STLResponse.model_json_schema(),
+                )
+                # max_output_tokens=params['model_parameters']['max_tokens'],
+                # # generation_config=genai.types.GenerationConfig(
+                # #     max_output_tokens=params['model_parameters']['max_tokens'],
+                # # ),
+                # config={
+                #     "response_mime_type": "application/json",
+                #     "response_json_schema": STLResponse.model_json_schema(),
+                # }
             )
 
             response = response.parsed
@@ -571,14 +587,19 @@ for sentence_index, sentence in sentences['input statement'].items():
                 response = client.models.generate_content(
                     model=model_name,
                     contents=m,
-                    max_output_tokens=params['model_parameters']['max_tokens'],
-                    # generation_config=genai.types.GenerationConfig(
-                    #     max_output_tokens=params['model_parameters']['max_tokens'],
-                    # ),
-                    config={
-                        "response_mime_type": "application/json",
-                        "response_json_schema": STLResponse.model_json_schema(),
-                    }
+                    config=GenerateContentConfig(
+                        max_output_tokens=params['model_parameters']['max_tokens'],
+                        response_mime_type="application/json",
+                        response_json_schema=STLResponse.model_json_schema(),
+                    )
+                    # max_output_tokens=params['model_parameters']['max_tokens'],
+                    # # generation_config=genai.types.GenerationConfig(
+                    # #     max_output_tokens=params['model_parameters']['max_tokens'],
+                    # # ),
+                    # config={
+                    #     "response_mime_type": "application/json",
+                    #     "response_json_schema": STLResponse.model_json_schema(),
+                    # }
                 )   
 
                 response = response.parsed
