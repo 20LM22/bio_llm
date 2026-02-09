@@ -7,8 +7,8 @@
     "presence_penalty": 1.5,
     "max_tokens": 1024,
     "model_dtype": "half",
-    "max_model_len": 13000,
-    "gpu_memory_utilization": 0.9
+    "max_model_len": 12000,
+    "gpu_memory_utilization": 0.85
   },
   "set_name": "final_test_set",
   "curated_dataset": "../pkl/curated_dataset.pkl",
