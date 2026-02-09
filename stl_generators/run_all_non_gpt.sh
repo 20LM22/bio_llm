@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # TODO: make sure that official model names and models line up correctly
-models=('Qwen3-4B-Thinking-2507') # ('DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen3-1.7B')
-official_model_names=('Qwen/Qwen3-4B-Thinking-2507') # ('deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen/Qwen3-1.7B')
+models=('Qwen3-4B-Thinking-2507-AWQ') # ('DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen3-1.7B')
+official_model_names=('Eslzzyl/Qwen3-4B-Thinking-2507-AWQ') # ('deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen/Qwen3-1.7B')
 experiments=("nx_3_ny_1_nz_18")
 set_name="final_test_set"
 # times=("2025-10-19_22-39-33" "2025-10-21_09-52-46")
