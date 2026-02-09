@@ -5,7 +5,7 @@ official_model_names=('gemini-3-flash-preview')
 
 experiments=("nx_3_ny_1_nz_18")
 set_name="final_test_set" 
-# times=("2026-02-08_13-40-42") # ("2026-01-25_17-47-50")
+# times=("2026-02-08_14-30-39") # ("2026-01-25_17-47-50")
 
 i=0
 for experiment in "${experiments[@]}"
@@ -31,19 +31,12 @@ do
     echo "$config"
     echo "$time"
 
-    python stl_generator_gemini.py "$model" "$config" "$experiment" "$time" # >| "$convo"
+    python stl_generator_gemini.py "$model" "$config" "$experiment" "$time" >| "$convo"
     # python ../evaluations/stl_evaluation_v6.py "$model" "$translations" "$config" "$time"
-    # python ../consolidate/filter_by_cosine_similarity.py "$model" "$translations" "$config" "$time"       
-    # python ../consolidate/consolidate.py "$model" "$filtered_output" "$config" "$time"
-    # python ../consolidate/annotate_consolidated_stats.py "$translations" "$filtered_annotations_output" "$consolidated_annotations_output"      
-
-# response: {'thinking': "The sentence indicates that within two weeks (days 0 to 14) of symptom onset, SARS-CoV-2-specific T-cells (represented by the 'tcells' species) begin to appear in peripheral blood, implying that at some point in this interval their levels or rate of increase becomes significant. I will translate this as the species 'tcells' eventually having a positive rate of change between day 0 and day 14.",
-#  'input_statement': 'In patients with COVID-19, SARS-CoV-2-specific T-cells appear in peripheral blood within two weeks of symptom onset (31).',
-#  'output_STL': 'eventually[0,14](d_tcells(t) > 0)'}
-# class STLResponse(BaseModel):
-#     thinking: str
-#     input_statement: str
-#     output_STL: str
+    python ../consolidate/filter_by_cosine_similarity.py "$model" "$translations" "$config" "$time"       
+    python ../consolidate/consolidate.py "$model" "$filtered_output" "$config" "$time"
+    # python ../consolidate/annotate_consolidated.py "$model" "$consolidated_output" "$config" "$time"
+    # "$translations" "$filtered_annotations_output" "$consolidated_annotations_output"      
 
   done
   ((++i))
