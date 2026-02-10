@@ -25,10 +25,20 @@ do
 
     #time=$(/usr/bin/date +%F_%H-%M-%S) # Example: 2025-10-05_20-07-09
     convo="../stats/${model}/convo_${experiment}_${time}.txt"
-    translations="${set_name}_translations_${model}_${experiment}_${time}.pkl"
+    # translations="${set_name}_translations_${model}_${experiment}_${time}.pkl"
+    translations="../pkl/${model}/${set_name}_translations_${model}_${experiment}_${time}.pkl"
+
+    filtered_output="../pkl/${model}/${set_name}_filtered_output_${model}_${experiment}_${time}.pkl"
+    consolidated_output="../stats/${model}/${set_name}_consolidated_output_${model}_${experiment}_${time}.json"
 
     echo "$config"
-    python stl_generator_v7.py "${official_model_names[i]}" "$config" "$experiment" "$time" >| "$convo"
+    # python stl_generator_v7.py "${official_model_names[i]}" "$config" "$experiment" "$time" >| "$convo"
+    # python ../consolidate/filter_by_cosine_similarity.py "$model" "$translations" "$config" "$time"       
+    # python ../consolidate/consolidate.py "$model" "$filtered_output" "$config" "$time"
+    
+    # TODO: Lauren - do 33 annotations
+    python ../consolidate/annotate_consolidated.py "$model" "$consolidated_output" "$config" "$time"
+
 #    echo "Done with version: $config"
 #    python ../evaluations/stl_evaluation_v6.py "$model" "$translations" "$config" "$time"
 #    python ../evaluations/generate_semantic_distribution_dict.py "$model" "$translations" "$config" "$time"

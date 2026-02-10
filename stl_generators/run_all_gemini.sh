@@ -33,8 +33,8 @@ do
 
     python stl_generator_gemini.py "$model" "$config" "$experiment" "$time" >| "$convo"
     # python ../evaluations/stl_evaluation_v6.py "$model" "$translations" "$config" "$time"
-    python ../consolidate/filter_by_cosine_similarity.py "$model" "$translations" "$config" "$time"       
-    python ../consolidate/consolidate.py "$model" "$filtered_output" "$config" "$time"
+    # python ../consolidate/filter_by_cosine_similarity.py "$model" "$translations" "$config" "$time"       
+    # python ../consolidate/consolidate.py "$model" "$filtered_output" "$config" "$time"
     # python ../consolidate/annotate_consolidated.py "$model" "$consolidated_output" "$config" "$time"
     # "$translations" "$filtered_annotations_output" "$consolidated_annotations_output"      
 
