@@ -1,160 +1,204 @@
-# import pickle
-# import json
-# import sys
-# import csv
-# import pandas as pd
-# import numpy as np
-# from sentence_transformers import SentenceTransformer
-# from sklearn.metrics.pairwise import cosine_similarity
-# from sentence_groups import sentence_to_group
+import pickle
+import json
+import sys
+import csv
+import pandas as pd
+import numpy as np
+from sentence_transformers import SentenceTransformer
+from sklearn.metrics.pairwise import cosine_similarity
+from sentence_groups import sentence_to_group
 
-# sys.stdout.reconfigure(encoding='utf-8')
+sys.stdout.reconfigure(encoding='utf-8')
 
-# from sklearn.metrics.pairwise import cosine_similarity
-# from sentence_transformers import SentenceTransformer
+sys.path.insert(1, '..')
+from stl2literal import STL2literal
 
-# sys.path.insert(1, '..')
-# from stl2literal import STL2literal
+# ------------------------------------------------------------
+# Command line arguments
+# ------------------------------------------------------------
+translations_pkl = sys.argv[1]
+consolidated_json = sys.argv[2]
+input_sentences_csv = sys.argv[3]
+output_csv = sys.argv[4] if len(sys.argv) > 4 else "gpt_stl_step_by_step_with_groups.csv"
 
-# translations_pkl = sys.argv[1]
-# filtered_pkl = sys.argv[2]
-# consolidated_json = sys.argv[3]
-# output_csv = sys.argv[4] if len(sys.argv) > 4 else "stl_step_by_step_with_groups.csv"
+# ------------------------------------------------------------
+# Load config
+# ------------------------------------------------------------
+with open(f"../config/config_nx_3_ny_1_nz_18_final_test_set.json") as f:
+    params = json.load(f)
 
-# with open(f"../config/config_nx_3_ny_1_nz_18_final_test_set.json") as f:
-#     params = json.load(f)
+set_name = params["set_name"]
+grammar = params["grammar"]
 
-# set_name = params["set_name"]
-# grammar = params["grammar"]
+# ------------------------------------------------------------
+# Load raw translations DataFrame
+# ------------------------------------------------------------
+with open(translations_pkl, "rb") as f:
+    translations = pickle.load(f)
 
-# # ------------------------------------------------------------
-# # Load raw translations DataFrame
-# # ------------------------------------------------------------
-# with open(translations_pkl, "rb") as f:
-#     translations = pickle.load(f)
+# ------------------------------------------------------------
+# Load consolidated JSON
+# ------------------------------------------------------------
+consolidated = []
+with open(consolidated_json, "r", encoding="utf-8") as f:
+    for line in f:
+        line = line.strip()
+        if line:
+            consolidated.append(json.loads(line))
 
-# # ------------------------------------------------------------
-# # Load filtered pickle
-# # ------------------------------------------------------------
-# with open(filtered_pkl, "rb") as f:
-#     filtered = pickle.load(f)
+# ------------------------------------------------------------
+# Load input sentences from CSV
+# ------------------------------------------------------------
+df_input = pd.read_csv(input_sentences_csv)
 
-# # ------------------------------------------------------------
-# # Load consolidated JSON
-# # ------------------------------------------------------------
-# consolidated = []
-# with open(consolidated_json, "r", encoding="utf-8") as f:
-#     for line in f:
-#         line = line.strip()
-#         if line:
-#             consolidated.append(json.loads(line))
+if "input statement" not in df_input.columns:
+    raise ValueError("CSV must contain column 'input statement'")
 
-# # ------------------------------------------------------------
-# # Extract raw STL candidates per sentence
-# # ------------------------------------------------------------
-# raw_stl = {}
+input_sentences = df_input["input statement"].dropna().tolist()
+print(f"Loaded {len(input_sentences)} sentences from CSV")
 
-# for _, row in translations.iterrows():
-#     sentence = row["input statement"]
-#     stls = []
+# ------------------------------------------------------------
+# Build consolidated lookup
+# ------------------------------------------------------------
+consolidated_lookup = {
+    entry["input_sentence"]: entry.get("stl", [])
+    for entry in consolidated
+}
 
-#     for col in translations.columns:
-#         if "shot" not in col:
-#             continue
+# ------------------------------------------------------------
+# Find sentences missing after consolidation
+# ------------------------------------------------------------
+missing_sentences = []
+no_stl_sentences = []
 
-#         entry = row[col]
-#         if entry in (
-#             None,
-#             "STL could not be extracted",
-#             "STL could not be parsed"
-#         ):
-#             continue
+for sentence in input_sentences:
+    if sentence not in consolidated_lookup:
+        missing_sentences.append(sentence)
+    elif not consolidated_lookup[sentence]:
+        no_stl_sentences.append(sentence)
 
-#         entry = entry.replace("∞", "inf")
-#         stls.append(entry)
+print("\n===== SUMMARY (AFTER CONSOLIDATION) =====")
+print(f"Total input sentences: {len(input_sentences)}")
+print(f"Missing from consolidated file: {len(missing_sentences)}")
+print(f"Present but no STL after consolidation: {len(no_stl_sentences)}")
 
-#     raw_stl[sentence] = stls
+if missing_sentences:
+    print("\nSentences NOT in consolidated:")
+    for s in missing_sentences:
+        print("-", s)
 
-# # ------------------------------------------------------------
-# # Load embedding model
-# # ------------------------------------------------------------
-# model = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")  # or use your param
-# print("Loaded embedding model")
+if no_stl_sentences:
+    print("\nSentences with NO consolidated STL:")
+    for s in no_stl_sentences:
+        print("-", s)
 
-# # ------------------------------------------------------------
-# # Write CSV with cosine similarity
-# # ------------------------------------------------------------
-# with open(output_csv, "w", newline="", encoding="utf-8") as csvfile:
-#     writer = csv.DictWriter(
-#         csvfile,
-#         fieldnames=["sentence", "group", "step", "stl_formula", "label", "cosine_sim"]
-#     )
-#     writer.writeheader()
+# ------------------------------------------------------------
+# Extract raw STL candidates per sentence
+# ------------------------------------------------------------
+raw_stl = {}
 
-#     for entry in consolidated:
-#         sentence = entry["input_sentence"]
-#         group = sentence_to_group.get(sentence, "UNKNOWN")
+for _, row in translations.iterrows():
+    sentence = row["input statement"]
+    stls = []
 
-#         # Compute sentence embedding once
-#         nl_embedding = model.encode(sentence, normalize_embeddings=True)
+    for col in translations.columns:
+        if "shot" not in col:
+            continue
 
-#         # ---------- RAW ----------
-#         for stl in raw_stl.get(sentence, []):
-#             literal = STL2literal(stl, grammar)  # pass grammar if you have it
-#             literal_embedding = model.encode(literal, normalize_embeddings=True)
-#             sim = float(cosine_similarity(
-#                 literal_embedding.reshape(1, -1),
-#                 nl_embedding.reshape(1, -1)
-#             )[0][0])
+        entry = row[col]
+        if entry in (
+            None,
+            "STL could not be extracted",
+            "STL could not be parsed"
+        ):
+            continue
 
-#             writer.writerow({
-#                 "sentence": sentence,
-#                 "group": group,
-#                 "step": "raw",
-#                 "stl_formula": stl,
-#                 "label": "",
-#                 "cosine_sim": f"{sim:.6f}"
-#             })
+        entry = entry.replace("∞", "inf")
+        stls.append(entry)
 
-#         # ---------- FILTERED ----------
-#         for stl_formula, *_, label in filtered.get(sentence, []):
-#             literal = STL2literal(stl_formula, grammar)
-#             literal_embedding = model.encode(literal, normalize_embeddings=True)
-#             sim = float(cosine_similarity(
-#                 literal_embedding.reshape(1, -1),
-#                 nl_embedding.reshape(1, -1)
-#             )[0][0])
+    raw_stl[sentence] = stls
 
-#             writer.writerow({
-#                 "sentence": sentence,
-#                 "group": group,
-#                 "step": "filtered",
-#                 "stl_formula": stl_formula,
-#                 "label": label,
-#                 "cosine_sim": f"{sim:.6f}"
-#             })
+# ------------------------------------------------------------
+# Analyze RAW STL (before consolidation)
+# ------------------------------------------------------------
+total_raw_stl_count = 0
+no_raw_stl_sentences = []
 
-#         # ---------- CONSOLIDATED ----------
-#         for stl in entry.get("stl", []):
-#             literal = STL2literal(stl["formula"], grammar)
-#             literal_embedding = model.encode(literal, normalize_embeddings=True)
-#             sim = float(cosine_similarity(
-#                 literal_embedding.reshape(1, -1),
-#                 nl_embedding.reshape(1, -1)
-#             )[0][0])
+for sentence in input_sentences:
+    stls = raw_stl.get(sentence, [])
+    total_raw_stl_count += len(stls)
 
-#             writer.writerow({
-#                 "sentence": sentence,
-#                 "group": group,
-#                 "step": "consolidated",
-#                 "stl_formula": stl["formula"],
-#                 "label": stl["label"],
-#                 "cosine_sim": f"{sim:.6f}"
-#             })
+    if len(stls) == 0:
+        no_raw_stl_sentences.append(sentence)
 
-# print(f"CSV written to {output_csv}")
+print("\n===== RAW STL (BEFORE CONSOLIDATION) =====")
+print(f"Total raw STL statements produced: {total_raw_stl_count}")
+print(f"Sentences with NO raw STL statements: {len(no_raw_stl_sentences)}")
 
+if no_raw_stl_sentences:
+    print("\nSentences with NO raw STL before consolidation:")
+    for s in no_raw_stl_sentences:
+        print("-", s)
 
+# ------------------------------------------------------------
+# Load embedding model
+# ------------------------------------------------------------
+model = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")
+print("Loaded embedding model")
+
+# ------------------------------------------------------------
+# Write CSV with cosine similarity
+# ------------------------------------------------------------
+with open(output_csv, "w", newline="", encoding="utf-8") as csvfile:
+    writer = csv.DictWriter(
+        csvfile,
+        fieldnames=["sentence", "group", "step", "stl_formula", "label", "cosine_sim"]
+    )
+    writer.writeheader()
+
+    for entry in consolidated:
+        sentence = entry["input_sentence"]
+        group = sentence_to_group.get(sentence, "UNKNOWN")
+
+        nl_embedding = model.encode(sentence, normalize_embeddings=True)
+
+        # ---------- RAW ----------
+        for stl in raw_stl.get(sentence, []):
+            literal = STL2literal(stl, grammar)
+            literal_embedding = model.encode(literal, normalize_embeddings=True)
+            sim = float(cosine_similarity(
+                literal_embedding.reshape(1, -1),
+                nl_embedding.reshape(1, -1)
+            )[0][0])
+
+            writer.writerow({
+                "sentence": sentence,
+                "group": group,
+                "step": "raw",
+                "stl_formula": stl,
+                "label": "",
+                "cosine_sim": f"{sim:.6f}"
+            })
+
+        # ---------- CONSOLIDATED ----------
+        for stl in entry.get("stl", []):
+            literal = STL2literal(stl["formula"], grammar)
+            literal_embedding = model.encode(literal, normalize_embeddings=True)
+            sim = float(cosine_similarity(
+                literal_embedding.reshape(1, -1),
+                nl_embedding.reshape(1, -1)
+            )[0][0])
+
+            writer.writerow({
+                "sentence": sentence,
+                "group": group,
+                "step": "consolidated",
+                "stl_formula": stl["formula"],
+                "label": stl["label"],
+                "cosine_sim": f"{sim:.6f}"
+            })
+
+print(f"\nCSV written to {output_csv}")
 
 
 

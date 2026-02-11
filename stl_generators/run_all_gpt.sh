@@ -61,6 +61,8 @@ do
     consolidated_output="../stats/${model}/${set_name}_consolidated_output_${model}_${experiment}_${time}.json"
     consolidated_annotations_output="../stats/${model}/${set_name}_annotate_consolidated_${model}_${experiment}_${time}.json"
   
+    input_sentences_csv="../csv_inputs/final_test_set_sentences.csv"
+
     echo "$model"
     echo "$translations"
     echo "$config"
@@ -78,7 +80,9 @@ do
     # python ../consolidate/consolidate.py "$model" "$filtered_output" "$config" "$time"
     # python ../consolidate/annotate_consolidated.py "$model" "$consolidated_output" "$config" "$time"       
 
-    python ../consolidate/annotate_consolidated_stats.py "$translations" "$filtered_annotations_output" "$consolidated_annotations_output"      
+    python ../consolidate/annotate_consolidated_stats.py "$translations" "$consolidated_annotations_output" "$input_sentences_csv"
+
+    # python ../consolidate/annotate_consolidated_stats.py "$translations" "$filtered_annotations_output" "$consolidated_annotations_output"      
     # python check_consolidated_structure.py "$consolidated_annotations_output"
 
     # python stl_generator_gpt.py "$model" "$config" "$experiment" "$time" >| "$convo"
