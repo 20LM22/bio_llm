@@ -34,12 +34,12 @@
 #  done
 #done
 
-models=('gpt-4o-2024-08-06') # ('gpt-5.2-2025-12-11')
-official_model_names=('gpt-4o-2024-08-06') # ('gpt-5.2-2025-12-11')
+models=('gpt-5.4') # ('gpt-5.2-2025-12-11')
+official_model_names=('gpt-5.4') # ('gpt-5.2-2025-12-11')
 
 experiments=("nx_3_ny_1_nz_18")
 set_name="final_test_set" 
-times=("2026-01-25_17-47-50")
+# times=("2026-01-25_17-47-50")
 
 i=0
 for experiment in "${experiments[@]}"
@@ -48,7 +48,7 @@ do
   echo "$config"
   for model in "${models[@]}" 
   do 
-    time="${times[$i]}" # $(/usr/bin/date +%F_%H-%M-%S)
+    time=$(/usr/bin/date +%F_%H-%M-%S)
     convo="../stats/${model}/convo_${experiment}_${time}.txt"
     
     translations="../pkl/${model}/${set_name}_translations_${model}_${experiment}_${time}.pkl"
@@ -80,14 +80,14 @@ do
     # python ../consolidate/consolidate.py "$model" "$filtered_output" "$config" "$time"
     # python ../consolidate/annotate_consolidated.py "$model" "$consolidated_output" "$config" "$time"       
 
-    python ../consolidate/annotate_consolidated_stats.py "$translations" "$consolidated_annotations_output" "$input_sentences_csv"
+    # python ../consolidate/annotate_consolidated_stats.py "$translations" "$consolidated_annotations_output" "$input_sentences_csv"
 
     # python ../consolidate/annotate_consolidated_stats.py "$translations" "$filtered_annotations_output" "$consolidated_annotations_output"      
     # python check_consolidated_structure.py "$consolidated_annotations_output"
 
-    # python stl_generator_gpt.py "$model" "$config" "$experiment" "$time" >| "$convo"
-    # python ../evaluations/stl_evaluation_v6.py "$model" "$translations" "$config" "$time"
-    # python ../evaluations/generate_semantic_distribution_dict.py "$model" "$translations" "$config" "$time"
+    python stl_generator_gpt.py "$model" "$config" "$experiment" "$time" >| "$convo"
+    python ../evaluations/stl_evaluation_v6.py "$model" "$translations" "$config" "$time"
+    python ../evaluations/generate_semantic_distribution_dict.py "$model" "$translations" "$config" "$time"
   done
   ((++i))
 done
