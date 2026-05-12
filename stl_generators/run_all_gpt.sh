@@ -41,6 +41,9 @@ experiments=("nx_3_ny_1_nz_18")
 set_name="final_test_set" 
 # times=("2026-01-25_17-47-50")
 
+mkdir -p ../stats/${model_name}
+mkdir -p ../pkl/${model_name}
+
 i=0
 for experiment in "${experiments[@]}"
 do
