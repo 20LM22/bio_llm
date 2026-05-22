@@ -8,34 +8,21 @@ from collections import defaultdict
 from sklearn.metrics.pairwise import cosine_similarity
 from sentence_transformers import SentenceTransformer
 
-sys.path.insert(1, '..')
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from stl2literal import STL2literal
 
-print("starting semantic annotation")
-
-# ------------------------------------------------------------
-# Args
-# ------------------------------------------------------------
 model_name = sys.argv[1]
 translations_pkl = sys.argv[2]
 config_file = sys.argv[3]
 time = sys.argv[4]
 
-# ------------------------------------------------------------
-# Load translations DataFrame
-# ------------------------------------------------------------
-
 try:
     with open(f'../pkl/{model_name}/{translations_pkl}', 'rb') as f:
         translations = pickle.load(f)
         print(f'Loaded {f}')
-        print(f'Loaded {translations}')        
 except Exception as e:
     print(e)
 
-# ------------------------------------------------------------
-# Load config
-# ------------------------------------------------------------
 with open(f'../config/{config_file}') as f:
     params = json.load(f)
 
@@ -45,19 +32,15 @@ semantic_count = params['num_semantic_checks']
 set_name = params["set_name"]
 grammar = params["grammar"]
 
-# ------------------------------------------------------------
-# Load embedding model
-# ------------------------------------------------------------
 model = SentenceTransformer(
     params['embedding_model_name'],
     device='cpu'
 )
 
 # ------------------------------------------------------------
-# Build (sentence → [(stl, similarity)])
+# Prepare translations for annotation (sentence → [(stl, similarity)])
 # ------------------------------------------------------------
 res = defaultdict(list)
-print("computing semantic similarities...")
 
 for _, row in translations.iterrows():
     sentence = row['input statement']
@@ -101,7 +84,7 @@ for _, row in translations.iterrows():
     res[sentence] = syntactically_valid
 
 # ------------------------------------------------------------
-# Manual annotation loop
+# Annotate initial translations
 # ------------------------------------------------------------
 translations_total = sum(len(v) for v in res.values())
 translations_count = 0
@@ -109,8 +92,6 @@ correct = 0
 incorrect = 0
 
 annotated = defaultdict(list)
-
-print(res)
 
 for sentence, stl_sims in res.items():
     print("=" * 80)
@@ -146,19 +127,17 @@ stats_df = pd.DataFrame(
 )
 
 stats_df.to_csv(
-    f'../stats/{model_name}/{set_name}_semantic_labels_'
+    f'../stats/{model_name}/{set_name}_initial_output_annotations_'
     f'nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.csv',
     index=False
 )
 
 # ------------------------------------------------------------
-# Save annotated pickle
+# Save annotations
 # ------------------------------------------------------------
 with open(
-    f'../pkl/{set_name}_semantic_labels_{model_name}_'
+    f'../pkl/{model_name}/{set_name}_initial_output_annotations_'
     f'nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pkl',
     'wb'
 ) as f:
     pickle.dump(annotated, f)
-
-print("annotation complete")
