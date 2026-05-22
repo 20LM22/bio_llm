@@ -1,6 +1,0 @@
-Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
-"globally[1,∞](d_IL6(t) < c(low)) implies eventually[8,∞]globally(d_IL6(t) < d_c(high)) and globally[1,∞](d_IL12(t) < c(low)) implies eventually[8,∞]globally(d_IL12(t) < d_c(high))",0.45557272,"globally[1,∞](d_IL6(t) < c(low)) implies eventually[8,∞]globally(d_IL6(t) < d_c(high)) and globally[1,∞](d_IL12(t) < c(low)) implies eventually[8,∞]globally(d_IL12(t) < d_c(high))",0.45557272,"IL1β(t) < c(mid) and globally[1,∞](d_IL1β(t) = d_c(low)) and IL1Ra(t) < c(high) and eventually[8,14]globally(d_IL1β(t) = d_c(high)) and globally[14,∞](d_IL1Ra(t) < d_c(low))",0.7063389,1,0,1
-N/A,N/A,N/A,N/A,N/A,N/A,0,0,2
-N/A,N/A,N/A,N/A,N/A,N/A,0,0,2
-N/A,N/A,N/A,N/A,N/A,N/A,0,0,2
-N/A,N/A,N/A,N/A,N/A,N/A,0,0,2

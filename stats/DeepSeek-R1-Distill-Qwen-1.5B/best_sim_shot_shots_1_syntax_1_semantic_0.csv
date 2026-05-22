@@ -1,9 +1,0 @@
-shot0,shot0 sim
-IL6(t) < c(high) implies d_IL12(t) < d_c(high),0.62968826
-,
-"globally[1,∞](TNFα(t) > c(high)) and eventually[15,∞](d_TNFα(t) < d_c(high))",0.7509855
-"d_IL8(t)=c(high) and eventually[3,∞](d_IL8(t) > d_c(low))",0.5512682
-"globally[19,∞](IL12(t)=c(mid))",0.30238014
-d_IL12(t) > c(high),0.714465
-,
-IL6(t) > c(low) implies SARSCoV2(t) < c(mid),0.63381255

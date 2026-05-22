@@ -1,7 +1,0 @@
-,Sentence,Median Similarity,Mean Similarity,Variance Similarity,Top Similarity Result Is Correct?,Number Translations Syntactically Correct
-0,"Following day 10, IL-6 remains increased whereas IFN-α tapered.",0.84608525,0.8403096,9.651467e-05,1,35
-1,"In parallel, stimulation with CpG 2216 also resulted in lower, but clearly detectable, amounts of IFNs.",0.4115218,0.45331195,0.006643113,1,26
-2,Circulating IL-1α also was not detected (fig. S9F).,0.674816,0.6629864,0.0010422068,1,36
-3,"Monocyte chemotactic factor chemokine(C-C motif) ligand 2 (CCL2) was increased in the blood of infected patients as well as the transcripts of its receptor CCR2; this was associated with low counts of circulating inflammatory monocytes (Fig. 4I), suggesting a rolefor the CCL2/CCR2 axis in the monocyte chemo-attraction into the inflamed lungs.",0.3709966,0.33492252,0.0056508863,1,11
-4,"No elevation of RANTES was observed in the severe group during the disease progression, suggesting that RANTES may play an important role in protecting COVID-19 patients from developing severe illness (Supplemental Table 1 and Figure 5A). ",0.42582643,0.42582643,0.0001582847,0,2
-5,"In line with previous reports, IL-1β levels were mostly low or at the limit of detection of 0.1pg ml−1, even though the assay was able to detect various levels of recombinant control cytokines (Extended Data Fig. 1b).",0.8050745,0.76472706,0.003255841,1,18

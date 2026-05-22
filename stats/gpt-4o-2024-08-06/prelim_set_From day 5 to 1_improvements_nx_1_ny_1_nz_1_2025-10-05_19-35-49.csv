@@ -1,2 +1,0 @@
-Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
-"eventually[5,11]globally(SARSCoV2(t) < c(mid))",1.0,"globally[5,11](SARSCoV2(t) < c(mid))",0.98619235,0,1,0

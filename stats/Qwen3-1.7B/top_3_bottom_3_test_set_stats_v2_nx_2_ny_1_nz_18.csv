@@ -1,8 +1,0 @@
-,Sentence,Median Similarity,Mean Similarity,Variance Similarity,Top Similarity Result Is Correct?,Number Translations Syntactically Correct
-0,This is the reason that seroconversion (undetectable stage to production of IgM followed by IgG) in 100% of infected people (with positive virus-specific IgG) is achieved 17–19 days after commencement of indications [7].,0.40585637,0.41244397,0.014568695,0,6
-1,"Following day 10, IL-6 remains increased whereas IFN-α tapered.",0.8376181,0.827753,0.00044438828,0,15
-2,"Two days postinfection, permissive Vero cells produced high peak titers of 5 x 10^6 TCID_50s/ml and 1 x 10^7 TCID_50s/ml of MERS- and SARS-CoV, respectively (Fig. 1B, panel
-i).",0.435189,0.42651397,0.0052093063,0,20
-3,Circulating IL-1α also was not detected (fig. S9F).,0.6308896,0.64311814,0.00074877095,1,26
-4,"Monocyte chemotactic factor chemokine(C-C motif) ligand 2 (CCL2) was increased in the blood of infected patients as well as the transcripts of its receptor CCR2; this was associated with low counts of circulating inflammatory monocytes (Fig. 4I), suggesting a rolefor the CCL2/CCR2 axis in the monocyte chemo-attraction into the inflamed lungs.",0.3065635,0.32975948,0.002029941,0,6
-5,"In line with previous reports, IL-1β levels were mostly low or at the limit of detection of 0.1pg ml−1, even though the assay was able to detect various levels of recombinant control cytokines (Extended Data Fig. 1b).",0.66600823,0.6815536,0.004593867,1,9

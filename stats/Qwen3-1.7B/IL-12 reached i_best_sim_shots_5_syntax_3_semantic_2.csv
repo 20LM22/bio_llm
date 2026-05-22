@@ -1,6 +1,0 @@
-Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improving translations (relative to initial result),Number of worsening translations (relative to initial result),Number of consistent translations (relative to initial result)
-"IL12(t) > c(high) and eventually[14,∞]globally(d_IL12(t) < d_c(high))",0.5393065,"IL12(t) > c(high) and eventually[14,∞]globally(d_IL12(t) < d_c(high))",0.5393065,"IL12(t) > c(high) and eventually[14,∞]globally(d_IL12(t) < d_c(high))",0.5393065,0,0,2
-"eventually[14,∞](IL12(t) = c(mid))",0.5393065,"eventually[14,∞](IL12(t) = c(mid))",0.5393065,"eventually[14,∞](IL12(t) = c(mid))",0.5393065,0,0,2
-"eventually[14,∞]globally(IL12(t) > c(high))",0.5393065,"eventually[14,∞]globally(IL12(t) > c(high))",0.5393065,"eventually[14,∞]globally(IL12(t) > c(high))",0.5393065,0,0,2
-"eventually[14,∞](IL12(t) > c(high))",0.5393065,"eventually[14,∞](IL12(t) > c(high))",0.5393065,"eventually[14,∞](IL12(t) > c(high))",0.5393065,0,0,2
-IL12(t) = c(high),0.5393065,IL12(t) = c(high),0.5393065,IL12(t) = c(high),0.5393065,0,0,2

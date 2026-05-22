@@ -1,6 +1,0 @@
-S0-F0,S0-F0 sim,S0-F1,S0-F1 sim,S0-F2,S0-F2 sim,S0-F3,S0-F3 sim,S1-F0,S1-F0 sim,S1-F1,S1-F1 sim,S1-F2,S1-F2 sim,S1-F3,S1-F3 sim,S2-F0,S2-F0 sim,S2-F1,S2-F1 sim,S2-F2,S2-F2 sim,S2-F3,S2-F3 sim
-N/A,N/A,N/A,N/A,0.67078876,"globally[2,4](d_IP10(t) < c(low))",N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,0.67078876,"globally[2,4](IP10(t) < c(low))",N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-0.4357828,"globally[2,4](IL1Ra(t)=c(low) implies d_IL1Ra(t) < d_c(high)) and IL6(t) < c(mid)",N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,0.42252657,IL8(t)=c(low) and SARSCoV2(t) > c(mid),N/A,N/A,N/A,N/A,N/A,N/A
-0.62410223,"eventually[2,∞]globally(IL1Ra(t) < c(high)) and IP10(t) = c(low)",N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A

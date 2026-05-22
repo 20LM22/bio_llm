@@ -1,5 +1,0 @@
-Input Sentence,STL Extraction Success Rate,STL Parsing Success Rate,Number of Translations,Number of Syntactically Correct Translations,Semantic Passes,Semantic Success Rate
-This is the reason that seroconversion (undetectable stage to production of IgM followed by IgG) in 100% of infected people (with positive virus-specific IgG) is achieved 17–19 days after commencement of indications [7].,1.0,1.0,54,54.0,0,0.0
-"In parallel, stimulation with CpG 2216 also resulted in lower, but clearly detectable, amounts of IFNs.",0.7037037037037037,0.7543859649122807,81,43.0,0,0.0
-"Monocyte chemotactic factor chemokine(C-C motif) ligand 2 (CCL2) was increased in the blood of infected patients as well as the transcripts of its receptor CCR2; this was associated with low counts of circulating inflammatory monocytes (Fig. 4I), suggesting a rolefor the CCL2/CCR2 axis in the monocyte chemo-attraction into the inflamed lungs.",0.6635514018691588,0.2535211267605634,107,18.0,0,0.0
-Overall,0.7520661157024793,0.6318681318681318,242,114.99999999999999,0,0.0

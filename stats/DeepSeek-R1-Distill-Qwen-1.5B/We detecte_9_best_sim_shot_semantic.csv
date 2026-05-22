@@ -1,7 +1,0 @@
-Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Semantic attempt 3,Semantic attempt 3 sim
-"globally[3,∞](IL8(t) > c(high))",0.56892985,"globally[3,∞](IL8(t) > c(high))",0.56892985,"globally[3,∞](IL8(t) > c(high))",0.56892985,"globally[3,∞](IL8(t) > c(high))",0.56892985
-d_IL8(t)=d_c(high) and SARSCoV2(t) > c(high),0.5770308,d_IL8(t)=d_c(high) and SARSCoV2(t) > c(high),0.5770308,d_IL8(t)=d_c(high) and SARSCoV2(t) > c(high),0.5770308,d_IL8(t)=d_c(high) and SARSCoV2(t) > c(high),0.5770308
-"eventually[3,∞]globally(IL8(t) < c(low))",0.53335214,"eventually[3,∞]globally(IL8(t) < c(low))",0.53335214,"eventually[3,∞]globally(IL8(t) < c(low))",0.53335214,"eventually[3,∞]globally(IL8(t) < c(low))",0.53335214
-IL8(t) > c(mid) implies d_IL1Ra(t) > d_c(low),0.5250906,IL8(t) > c(mid) implies d_IL1Ra(t) > d_c(low),0.5250906,IL8(t) > c(mid) implies d_IL1Ra(t) > d_c(low),0.5250906,IL8(t) > c(mid) implies d_IL1Ra(t) > d_c(low),0.5250906
-IL8(t) > c(high),0.5479461,IL8(t) > c(high),0.5479461,IL8(t) > c(high),0.5479461,IL8(t) > c(high),0.5479461
-IL8(t) = c(high),0.5221932,IL8(t) = c(high),0.5221932,IL8(t) = c(high),0.5221932,IL8(t) = c(high),0.5221932

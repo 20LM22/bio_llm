@@ -1,6 +1,0 @@
-Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
-d_IL1Ra(t) > c(high),0.20316255,d_IL1Ra(t) > c(high),0.20316255,d_IL1Ra(t) > c(high),0.20316255,0
-N/A,N/A,N/A,N/A,N/A,N/A,0
-d_IFNα(t)=d_c(high) and IFNβ(t)=c(high),0.15079801,d_IFNα(t)=d_c(high) and IFNβ(t)=c(high),0.15079801,d_IFNα(t)=d_c(high) and IFNβ(t)=c(high),0.15079801,0
-d_MCP1(t)=c(high) and d_MCP1(t)=c(mid),0.5614344,d_MCP1(t)=c(high) and d_MCP1(t)=c(mid),0.5614344,d_MCP1(t)=c(high) and d_MCP1(t)=c(mid),0.5614344,0
-"eventually[1,2](d_MCP1(t)=c(high)) and eventually[3,4](d_MCP1(t)=c(low))",0.61820257,"eventually[1,2](d_MCP1(t)=c(high)) and eventually[3,4](d_MCP1(t)=c(low))",0.61820257,"eventually[1,2](d_MCP1(t)=c(high)) and eventually[3,4](d_MCP1(t)=c(low))",0.61820257,0

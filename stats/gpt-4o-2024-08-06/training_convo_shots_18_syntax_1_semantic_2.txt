@@ -1,4 +1,0 @@
-Loaded curated dataset
-sentence being translated: In the mild and moderate groups, IL-6 concentrations were at their highest level in the first week after the symptom onset and then exhibited a decreasing trend.
-beginning of shot 0
-thinking prompt

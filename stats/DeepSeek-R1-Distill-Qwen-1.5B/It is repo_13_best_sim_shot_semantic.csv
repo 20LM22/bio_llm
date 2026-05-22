@@ -1,7 +1,0 @@
-Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Semantic attempt 3,Semantic attempt 3 sim
-"d_IFNα(t) > d_c(low) and d_IFNβ(t) > d_c(low) and eventually[0,∞](d_IFNα(t)=0 and d_IFNβ(t)=0)",0.47000042,"d_IFNα(t) > d_c(low) and d_IFNβ(t) > d_c(low) and eventually[0,∞](d_IFNα(t)=0 and d_IFNβ(t)=0)",0.47000042,"d_IFNα(t) > d_c(low) and d_IFNβ(t) > d_c(low) and eventually[0,∞](d_IFNα(t)=0 and d_IFNβ(t)=0)",0.47000042,"d_IFNα(t) > d_c(low) and d_IFNβ(t) > d_c(low) and eventually[0,∞](d_IFNα(t)=0 and d_IFNβ(t)=0)",0.47000042
-"globally[1,∞](IL6(t)=c(low) implies d_IL12(t) < d_c(high))",0.2212365,"globally[1,∞](IL6(t)=c(low) implies d_IL12(t) < d_c(high))",0.2212365,"globally[1,∞](IL6(t)=c(low) implies d_IL12(t) < d_c(high))",0.2212365,"globally[1,∞](IL6(t)=c(low) implies d_IL12(t) < d_c(high))",0.2212365
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-IL1Ra(t) < c(high) and d_IFNβ(t) < d_c(high),0.48457274,IL1Ra(t) < c(high) and d_IFNβ(t) < d_c(high),0.48457274,IL1Ra(t) < c(high) and d_IFNβ(t) < d_c(high),0.48457274,IL1Ra(t) < c(high) and d_IFNβ(t) < d_c(high),0.48457274
-"eventually[1, ∞]globally(d_IL8(t)=0)",0.21862078,"eventually[1, ∞]globally(d_IL8(t)=0)",0.21862078,"eventually[1, ∞]globally(d_IL8(t)=0)",0.21862078,"eventually[1, ∞]globally(d_IL8(t)=0)",0.21862078

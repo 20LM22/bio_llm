@@ -1,6 +1,0 @@
-S0-F0,S0-F0 sim,S0-F1,S0-F1 sim,S0-F2,S0-F2 sim,S0-F3,S0-F3 sim,S1-F0,S1-F0 sim,S1-F1,S1-F1 sim,S1-F2,S1-F2 sim,S1-F3,S1-F3 sim,S2-F0,S2-F0 sim,S2-F1,S2-F1 sim,S2-F2,S2-F2 sim,S2-F3,S2-F3 sim
-N/A,N/A,N/A,N/A,N/A,N/A,0.28899598,"globally[14,∞](SARSCoV2(t) > c(mid)) and d_IL6(t) = c(low) and d_IL12(t) = c(low) and d_IL1β(t) = c(low) and d_TNFα(t) = d_c(low) and d_IL8(t) = d_c(low) and d_IFNα(t) = d_c(low) and eventually[1,6](d_IL1β(t)=0) and IL1RN(t) > c(high) and IL8(t) > c(mid)",N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,,,,,,,,,,,,,,,
-0.28899598,"eventually[14, ∞]globally(d_IL6(t) = d_c(low) and d_IL1RN(t) = d_c(low)) implies eventually[14, ∞](IL8(t) < c(high))",,,,,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,,,,,,,,,,,,,,,,,,
-N/A,N/A,,,,,,,,,,,,,,,,,,,,,,

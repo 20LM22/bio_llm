@@ -1,6 +1,0 @@
-Semantic attempt 0,Semantic attempt 0 sim,Semantic attempt 1,Semantic attempt 1 sim,Semantic attempt 2,Semantic attempt 2 sim,Number of improvements (relative to start)
-"globally[17,∞](d_IL12(t) < d_c(low))",0.2573632,"globally[17,∞](d_IL12(t) < d_c(low))",0.2573632,"globally[17,∞](d_IL12(t) < d_c(low))",0.2573632,0
-"globally[17,19](IL1β(t) > c(mid)) implies eventually[16,20](d_IL1β(t)=0 and d_IgM(t)=c(low))",0.46297222,"globally[17,19](IL1β(t) > c(mid)) implies eventually[16,20](d_IL1β(t)=0 and d_IgM(t)=c(low))",0.46297222,"globally[17,19](IL1β(t) > c(mid)) implies eventually[16,20](d_IL1β(t)=0 and d_IgM(t)=c(low))",0.46297222,0
-"globally[17,19](d_IL1Ra(t)=d_c(low) implies d_TNFα(t) > 0)",0.28817737,"eventually[17,19]globally(IL8(t)=c(mid) and IL12(t)=c(low))",0.29279017,"eventually[17,19]globally(IL8(t)=c(mid) and IL12(t)=c(low))",0.29279017,2
-"globally[17,19](IL1Ra(t)=c(mid))",0.29507244,"eventually[17,∞]globally(IL1β(t) > c(mid))",0.3618092,"eventually[17,∞]globally(IL1β(t) > c(mid))",0.3618092,2
-"eventually[17,19](d_IL8(t)=d_c(high))",0.27771118,"globally[8,∞](SARSCoV2(t) > c(mid)) implies eventually[1,6](d_IL1β(t)=0)",0.37769228,"globally[8,∞](SARSCoV2(t) > c(mid)) implies eventually[1,6](d_IL1β(t)=0)",0.37769228,2

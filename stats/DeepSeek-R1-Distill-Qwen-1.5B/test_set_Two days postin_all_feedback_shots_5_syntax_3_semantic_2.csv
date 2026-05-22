@@ -1,6 +1,0 @@
-S0-F0,S0-F0 sim,S0-F1,S0-F1 sim,S0-F2,S0-F2 sim,S0-F3,S0-F3 sim,S1-F0,S1-F0 sim,S1-F1,S1-F1 sim,S1-F2,S1-F2 sim,S1-F3,S1-F3 sim,S2-F0,S2-F0 sim,S2-F1,S2-F1 sim,S2-F2,S2-F2 sim,S2-F3,S2-F3 sim
-0.41165227,d_MERSCoV(t) > c(high) and d_SARSCoV(t) > c(low),N/A,N/A,N/A,N/A,N/A,N/A,0.3062507,d_IFNα(t) < d_c(high) implies TNFα(t) < c(low),N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,0.47451103,"eventually[5,∞]globally(SARSCoV2(t) > c(mid) implies d_IFNα(t) > d_c(low))",N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,0.49251434,"globally[0,18](d_SARSCoV2(t) > 0 implies IL1Ra(t) < c(low))",N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,0.42679608,"eventually[2, ∞]globally(d_MERSCoV(t) < d_c(high)) and eventually[2, ∞]globally(d_SARSCoV(t) < d_c(high))",N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,0.39791188,IL12(t)=c(high) implies d_SARSCoV2(t) > d_c(high),N/A,N/A,N/A,N/A,N/A,N/A
-0.39706808,d_MERSCoV(t) = c(high) and d_SARSCoV(t) = c(high),N/A,N/A,N/A,N/A,N/A,N/A,0.33537087,"globally[12,13](IL1RN(t)=c(mid) and IFNα(t) > c(mid))",N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A

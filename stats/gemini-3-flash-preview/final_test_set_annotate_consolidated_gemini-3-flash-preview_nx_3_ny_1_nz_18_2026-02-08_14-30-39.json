@@ -1,1 +1,0 @@
-{"input_sentence": "In patients with COVID-19, SARS-CoV-2-specific T-cells appear in peripheral blood within two weeks of symptom onset (31).", "stl": [{"formula": "eventually[0,14](tcells(t) > c(low))", "absorbed": 11, "label": 1}]}
