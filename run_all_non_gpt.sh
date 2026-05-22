@@ -1,5 +1,7 @@
 ﻿#!/bin/bash
 
+export PYTHONPATH="${PYTHONPATH}:."
+
 models=('DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen3-1.7B')
 official_model_names=('deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen/Qwen3-1.7B')
 experiments=("nx_1_ny_0_nz_1")

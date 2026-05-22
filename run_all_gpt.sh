@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Ensure the current directory is in the Python path so stl2literal can be imported
+export PYTHONPATH="${PYTHONPATH}:."
+
 models=('gpt-5.4')
 experiments=("nx_1_ny_0_nz_1")
 set_name="sample_test_set" 
