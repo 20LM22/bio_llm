@@ -53,7 +53,7 @@ gpu_memory_utilization=params['model_parameters']['gpu_memory_utilization']
 num_shots_per_input_sentence=params['num_shots_per_input_sentence']
 
 model_name = sys.argv[1]
-full_model_name = sys.argv[]
+full_model_name = sys.argv[5]
 sentences = pandas.read_csv(params['sentences_csv'])
 embedding_model = SentenceTransformer(params['embedding_model_name'], device='cpu')
 grammar = params['grammar']
