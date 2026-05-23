@@ -23,7 +23,7 @@ class STLResponse(BaseModel):
     input_statement: str
     output_STL: str
 
-file_name = f'../config/{sys.argv[2]}'
+file_name = f'./config/{sys.argv[2]}'
 with open(file_name, 'r', encoding='utf-8') as f:
     params = json.load(f)
 
@@ -643,13 +643,11 @@ for sentence_index, sentence in sentences['input statement'].items():
 # writing to pkl
 try:
     config = sys.argv[3]
-    with open(f'../pkl/{model_name}/{set_name}_all_responses_all_sentences_{model_name}_{config}_{time}.pkl', 'wb') as r:
+    with open(f'./pkl/{model_name}/{set_name}_all_responses_all_sentences_{model_name}_{config}_{time}.pkl', 'wb') as r:
         pickle.dump(all_responses_all_sentences, r)
-    with open(f'../pkl/{model_name}/{set_name}_translations_{model_name}_{config}_{time}.pkl', 'wb') as r:
-        print("we are dumping the translation file")
+    with open(f'./pkl/{model_name}/{set_name}_translations_{model_name}_{config}_{time}.pkl', 'wb') as r:
         pickle.dump(translations, r)
-        print("it was dumped")
 except Exception as e:
-    print("there was a pickle problem")
+    print("There was a pickle problem")
     print(e)
 

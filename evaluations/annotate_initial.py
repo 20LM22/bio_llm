@@ -17,13 +17,13 @@ config_file = sys.argv[3]
 time = sys.argv[4]
 
 try:
-    with open(f'../pkl/{model_name}/{translations_pkl}', 'rb') as f:
+    with open(f'./pkl/{model_name}/{translations_pkl}', 'rb') as f:
         translations = pickle.load(f)
         print(f'Loaded {f}')
 except Exception as e:
     print(e)
 
-with open(f'../config/{config_file}') as f:
+with open(f'./config/{config_file}') as f:
     params = json.load(f)
 
 shot_count = params['num_shots_per_input_sentence']
@@ -119,7 +119,7 @@ for sentence, stl_sims in res.items():
 # ------------------------------------------------------------
 # Save stats
 # ------------------------------------------------------------
-os.makedirs(f'../stats/{model_name}', exist_ok=True)
+os.makedirs(f'./stats/{model_name}', exist_ok=True)
 
 stats_df = pd.DataFrame(
     [[correct, incorrect, translations_total]],
@@ -127,7 +127,7 @@ stats_df = pd.DataFrame(
 )
 
 stats_df.to_csv(
-    f'../stats/{model_name}/{set_name}_initial_output_annotations_'
+    f'./stats/{model_name}/{set_name}_initial_output_annotations_'
     f'nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.csv',
     index=False
 )
@@ -136,7 +136,7 @@ stats_df.to_csv(
 # Save annotations
 # ------------------------------------------------------------
 with open(
-    f'../pkl/{model_name}/{set_name}_initial_output_annotations_'
+    f'./pkl/{model_name}/{set_name}_initial_output_annotations_'
     f'nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pkl',
     'wb'
 ) as f:

@@ -9,7 +9,7 @@ from stl2literal import STL2literal
 
 model_name = sys.argv[1]
 
-with open(f'../config/{sys.argv[3]}') as f:
+with open(f'./config/{sys.argv[3]}') as f:
     params = json.load(f)
 
 shot_count = params['num_shots_per_input_sentence']
@@ -30,8 +30,8 @@ try:
 except Exception as e:
     print(e)
 
-os.makedirs(f'../stats/{model_name}', exist_ok=True)
-translations.to_csv(f'../stats/{model_name}/{set_name}_raw_results_nx_{syntaxs}_ny_{semantics}_nz_{shot_count}_{time}.csv', index=False)
+os.makedirs(f'./stats/{model_name}', exist_ok=True)
+translations.to_csv(f'./stats/{model_name}/{set_name}_raw_results_nx_{syntaxs}_ny_{semantics}_nz_{shot_count}_{time}.csv', index=False)
 
 #######################################################################################################################
 # Write table for per-sentence STL extraction, parsing success rate
@@ -73,7 +73,7 @@ total_success_rate['Number of Translations'] = success_rate['Number of Translati
 total_success_rate['Number of Syntactically Correct Translations'] = total_success_rate['STL Extraction Success Rate'] * total_success_rate['STL Parsing Success Rate'] * total_success_rate['Number of Translations']
 
 stats = pandas.concat([success_rate, total_success_rate], ignore_index=True)
-stats.to_csv(f'../stats/{model_name}/{set_name}_extraction_parsing_stats_nx_{syntaxs}_ny_{semantics}_nz_{shot_count}_{time}.csv', index=False)
+stats.to_csv(f'./stats/{model_name}/{set_name}_extraction_parsing_stats_nx_{syntaxs}_ny_{semantics}_nz_{shot_count}_{time}.csv', index=False)
 
 #######################################################################################################################
 # Write table for per-sentence semantic attempt improvements/degradations
@@ -192,4 +192,4 @@ overall.loc[0, 'Number of consistent translations (relative to initial result) a
 overall.loc[0, 'Number of Times Semantic Feedback Portion Reached'] = improvements_all_sentences['Number of Times Semantic Feedback Portion Reached'].sum()
 
 improvements_all_sentences = pandas.concat([improvements_all_sentences, overall], ignore_index=False)
-improvements_all_sentences.to_csv(f'../stats/{model_name}/{set_name}_semantic_improvements_nx_{syntaxs}_ny_{semantics}_nz_{shot_count}_{time}.csv', index=False)
+improvements_all_sentences.to_csv(f'./stats/{model_name}/{set_name}_semantic_improvements_nx_{syntaxs}_ny_{semantics}_nz_{shot_count}_{time}.csv', index=False)

@@ -55,8 +55,7 @@ class STLBase(ABC):
 
         self.parser = Lark(grammar, start='omega', parser='lalr')
 
-        rule_map = {}
-        # Build map from nonterminal name to list of expansions (each expansion is a list of symbols)
+        rule_map = {} # Build map from nonterminal name to list of expansions (each expansion is a list of symbols)
         
         for rule in self.parser.rules:
             lhs = rule.origin.name
@@ -124,9 +123,6 @@ class STLBase(ABC):
                                         best_depth_ids.append(idx)
                                         min_depth = self.rule_depth_map[t.name]
                     expansion = self.rule_map[sym][random.choice(best_depth_ids)]
-                    # terminal_only = [e for e in expansion if e.is_term]
-                    # if terminal_only:
-                    #     expansion = terminal_only
                 else:
                     expansion = random.choice(self.rule_map[sym])
                 
@@ -151,7 +147,6 @@ class STLBase(ABC):
                         parts.append(str(self.sample_terminal(t.name))) # Use literal if available
 
             return ''.join(parts)
-            # return ''.join(str(p) for p in parts if p is not None)
 
 if __name__ == "__main__":
     stl = STLBase()

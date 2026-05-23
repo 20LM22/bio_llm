@@ -29,7 +29,7 @@ except Exception as e:
 
 consolidation_type = sys.argv[5] if len(sys.argv) > 5 else 'general'
 
-with open(f'../config/{config_file}', 'r', encoding='utf-8') as f:
+with open(f'./config/{config_file}', 'r', encoding='utf-8') as f:
     params = json.load(f)
 
 shot_count = params['num_shots_per_input_sentence']
@@ -80,8 +80,8 @@ for entry in res:
 # ------------------------------------------------------------
 # Save annotations
 # ------------------------------------------------------------
-os.makedirs(f'../stats/{model_name}', exist_ok=True)
-annotated_json_file = f'../stats/{model_name}/{set_name}_consolidated_output_annotations_{consolidation_type}_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.json'
+os.makedirs(f'./stats/{model_name}', exist_ok=True)
+annotated_json_file = f'./stats/{model_name}/{set_name}_consolidated_output_annotations_{consolidation_type}_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.json'
 
 with open(annotated_json_file, 'w', encoding='utf-8') as f:
     for entry in annotated:
@@ -95,5 +95,5 @@ stats_df = pd.DataFrame(
     columns=["correct", "incorrect", "total"]
 )
 
-stats_csv_file = f'../stats/{model_name}/{set_name}_consolidated_output_annotations_{consolidation_type}_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.csv'
+stats_csv_file = f'./stats/{model_name}/{set_name}_consolidated_output_annotations_{consolidation_type}_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.csv'
 stats_df.to_csv(stats_csv_file, index=False)

@@ -73,7 +73,7 @@ def remove_duplicates(entries):
             merged[key]["absorbed"] += entry["absorbed"] + 1
     return list(merged.values())
 
-with open(f'../config/{sys.argv[3]}') as f:
+with open(f'./config/{sys.argv[3]}') as f:
     params = json.load(f)
 
 model_name = sys.argv[1]
@@ -159,7 +159,7 @@ stl_statements = collect_stl_candidates(raw_input)
 
 if output_json_path is None:
     output_json_path = (
-        f'../stats/{model_name}/{set_name}_consolidated_output_{consolidation_type}_'
+        f'./stats/{model_name}/{set_name}_consolidated_output_{consolidation_type}_'
         f'{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.json'
     )
 

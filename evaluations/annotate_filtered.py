@@ -18,7 +18,7 @@ except Exception as e:
     print(e)
     sys.exit(1)
 
-with open(f'../config/{config_file}') as f:
+with open(f'./config/{config_file}') as f:
     params = json.load(f)
 
 shot_count = params['num_shots_per_input_sentence']
@@ -63,19 +63,19 @@ for sentence, stl_sims in res.items():
 # ------------------------------------------------------------
 # Save stats
 # ------------------------------------------------------------
-os.makedirs(f'../stats/{model_name}', exist_ok=True)
+os.makedirs(f'./stats/{model_name}', exist_ok=True)
 
 stats_df = pandas.DataFrame(
     [[correct, incorrect, translations_total]],
     columns=["correct", "incorrect", "total"]
 )
 
-csv_path = f'../stats/{model_name}/{set_name}_filtered_output_annotations_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.csv'
+csv_path = f'./stats/{model_name}/{set_name}_filtered_output_annotations_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.csv'
 stats_df.to_csv(csv_path, index=False)
 
 # ------------------------------------------------------------
 # Save annotations
 # ------------------------------------------------------------
-pkl_path = f'../pkl/{model_name}/{set_name}_filtered_output_annotations_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pkl'
+pkl_path = f'./pkl/{model_name}/{set_name}_filtered_output_annotations_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pkl'
 with open(pkl_path, 'wb') as f:
     pickle.dump(annotated, f)

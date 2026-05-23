@@ -23,10 +23,7 @@ class STLResponse(BaseModel):
 guided_decoding_params = GuidedDecodingParams(json=STLResponse.model_json_schema())
 stl_response_json = STLResponse.model_json_schema()
 
-print("sys argv 2")
-print(f'../config/{sys.argv[2]}')
-
-with open(f'../config/{sys.argv[2]}', 'r') as f:
+with open(f'./config/{sys.argv[2]}', 'r') as f:
     params = json.load(f)
 
 stl_base_instance = STLBase(grammar=params['grammar'],ids=params['ids'])
@@ -590,12 +587,10 @@ for sentence_index, sentence in sentences['input statement'].items():
 # writing to pkl
 try:
     config = sys.argv[3]
-    with open(f'../pkl/{model_name}/{set_name}_all_responses_all_sentences_{model_name}_{config}_{time}.pkl', 'wb') as r:
+    with open(f'./pkl/{model_name}/{set_name}_all_responses_all_sentences_{model_name}_{config}_{time}.pkl', 'wb') as r:
         pickle.dump(all_responses_all_sentences, r)
-    with open(f'../pkl/{model_name}/{set_name}_translations_{model_name}_{config}_{time}.pkl', 'wb') as r:
-        print("we are dumping the translation file")
+    with open(f'./pkl/{model_name}/{set_name}_translations_{model_name}_{config}_{time}.pkl', 'wb') as r:
         pickle.dump(translations, r)
-        print("it was dumped")
 except Exception as e:
-    print("there was a pickle problem")
+    print("There was a pickle problem")
     print(e)

@@ -91,7 +91,7 @@ except Exception as e:
     print(f"Failed to load input: {e}")
     sys.exit(1)
 
-with open(f"../config/{config_name}") as f:
+with open(f"./config/{config_name}") as f:
     params = json.load(f)
 
 set_name = params['set_name']
@@ -102,12 +102,12 @@ semantic_count = params['num_semantic_checks']
 
 if filtered_pkl_path is None:
     filtered_pkl_path = (
-        f"../pkl/{model_name}/{set_name}_filtered_output_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pkl"
+        f"./pkl/{model_name}/{set_name}_filtered_output_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pkl"
     )
 
 if stats_csv_path is None:
     stats_csv_path = (
-        f"../stats/{model_name}/{set_name}_filtered_stats_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.csv"
+        f"./stats/{model_name}/{set_name}_filtered_stats_{model_name}_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.csv"
     )
 
 os.makedirs(os.path.dirname(filtered_pkl_path), exist_ok=True)
