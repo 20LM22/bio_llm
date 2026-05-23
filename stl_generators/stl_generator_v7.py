@@ -66,7 +66,6 @@ try:
     with open(f'{params['curated_dataset']}', 'rb') as f:
         curated_dataset = pickle.load(f)
         print(f'Loaded curated dataset')
-        print(f"curated dset: \n{curated_dataset}")
 except Exception as e:
     print(e)
 
@@ -264,7 +263,6 @@ for sentence_index, sentence in sentences['input statement'].items():
         # 1) Thinking prompt
         ####################################################################
 
-        print('thinking prompt')
         thinking_prompt = params['thinking_prompt']['prompt_1'] + '\n' + sentence + '\n\n' + params['thinking_prompt']['prompt_2']
         print(f'thinking prompt: {thinking_prompt}')
         response = llm.chat([{"role": "user", "content": thinking_prompt}], sampling_params_thinking)[0].outputs[0].text
@@ -274,7 +272,6 @@ for sentence_index, sentence in sentences['input statement'].items():
         # 2a) STL Prompt
         ####################################################################
 
-        print('stl prompt')
         stl_prompt = params['stl_prompt']['prompt_1'] + '\n' + sentence + '\n\n' + params['stl_prompt']['prompt_2'] + "\n\n" + generate_example_prompt(params['num_examples'])
         print(f'stl prompt: {stl_prompt}')
         response = llm.chat([{"role": "user", "content": stl_prompt}], sampling_params)[0].outputs[0].text
@@ -302,7 +299,7 @@ for sentence_index, sentence in sentences['input statement'].items():
             if check_signal_names(parsed_stl, extracted_response, sentence) is not None:
                 print(f'first check of shot, signal name is getting flagged')
                 raise Exception("bad signal name")
-            if check_derivative_STL2literal(parsed_stl):  # if true --> error
+            if check_derivative_STL2literal(parsed_stl):
                 print('mismatched d_s and c')
                 raise Exception("mismatched d_s and c")
             syntax_passed = True
@@ -321,7 +318,7 @@ for sentence_index, sentence in sentences['input statement'].items():
             # (2) Wrong parentheses
             # (3) Bad signal names
             # (4) Fill in hole
-            # (5) None of the above --> just give it the parsing error message
+            # (5) None of the above --> give it the parsing error message
 
             print(f'extracted_response: {extracted_response}')
 
@@ -381,7 +378,7 @@ for sentence_index, sentence in sentences['input statement'].items():
                 if check_signal_names(parsed_stl, extracted_response, sentence) is not None:
                     print(f'first check of shot, signal name is getting flagged')
                     raise Exception("bad signal name")
-                if check_derivative_STL2literal(parsed_stl):  # if true
+                if check_derivative_STL2literal(parsed_stl):
                     print('mismatched d_s and c')
                     raise Exception("mismatched d_s and c")
                 syntax_passed = True
@@ -432,7 +429,6 @@ for sentence_index, sentence in sentences['input statement'].items():
             last_literal = STL2literal(last_stl, grammar)
             best_literal = STL2literal(best_stl, grammar)
 
-            # Think first
             semantic_prompt_thinking = "You were asked to translate the following natural language sentence into STL:\n" + sentence + "\n\nIn response, you produced the following STL statement:\n" + best_stl + "\n\nThis statement means:\n" + best_literal + "\n\nGive an explanation of how you would improve your STL statement so that it is closer in meaning to the natural language sentence you were asked to translate. Your STL response must conform to the following rules:\n[BEGIN RULES]\nu : less_than | greater_than | is | derivative_greater_than | derivative_less_than | derivative_is\nless_than : s(t) < c # Species s is less than c\ngreater_than : s(t) > c # Species s is greater than c\nis : s(t) = c # Species s is close to c\nderivative_greater_than : d_s(t) > d_c # The rate of change of species s is greater than d_c\nderivative_less_than : d_s(t) < d_c # The rate of change of species s is less than d_c\nderivative_is : d_s(t) = d_c # The rate of change species s is close to d_c\nc : s(t_a) | \"c(low)\" | \"c(mid)\" | \"c(high)\" # c is the level of a species, it can be a specific value or generally just low, moderate, or high\nd_c : 0 # Rate of change is 0\n\t| \"d_c(low)\" # Species is slowly increasing\n\t| \"d_c(high)\" # Species is rapidly increasing\n\t| \"-d_c(low)\" # Species is slowly decreasing\n\t| \"-d_c(high)\" # Species is quickly decreasing\npredicate : u | u1 and u2 | u1 implies u2 # You can combine predicates with Boolean operators\ntemporal_operator : eventually[t_a,t_b]globally(predicate) # This means that between day t_a and t_b, there is a point when the predicate becomes true for the rest of the interval\n\t| globally[t_a,t_b](phi) # This means the predicate is true over the entire interval from day t_a to t_b\n\t| eventually[t_a,t_b](phi) # This means there is at least 1 time between days t_a and t_b that the predicate is true\nt_a : number | ∞ # Time in days\ns : IL6 | IL12 | IL1β | IL1Ra | TNFα | IL8 | IFNα | IFNβ | SARSCoV2 | IL1RN # Species names you can use\nd_s : d_IL6 | d_IL12 | d_IL1β | d_IL1Ra | d_TNFα | d_IL8 | d_IFNα | d_IFNβ | d_SARSCoV2 | d_IL1RN # Names for derivatives of the species\n[END RULES]\n\nThe d_s terms represent the derivative of a signal, so you may find those terms helpful for describing how signals increase or decrease. For general statements describing the levels of some species as \"high\" or \"low\" for example, you may find comparison statements helpful."
             print(f'semantic prompt thinking is: {semantic_prompt_thinking}')
             response = llm.chat([{"role": "user", "content": semantic_prompt_thinking}], sampling_params_thinking)[0].outputs[0].text
@@ -461,7 +457,7 @@ for sentence_index, sentence in sentences['input statement'].items():
                 if check_signal_names(parsed_stl, extracted_response, sentence) is not None:
                     print(f'first check of shot, signal name is getting flagged')
                     raise Exception("bad signal name")
-                if check_derivative_STL2literal(parsed_stl):  # if true
+                if check_derivative_STL2literal(parsed_stl):
                     print('mismatched d_s and c')
                     raise Exception("mismatched d_s and c")
                 syntax_passed = True
@@ -522,7 +518,7 @@ for sentence_index, sentence in sentences['input statement'].items():
                     if check_signal_names(parsed_stl, extracted_response, sentence) is not None:
                         print(f'first check of shot, signal name is getting flagged')
                         raise Exception("bad signal name")
-                    if check_derivative_STL2literal(parsed_stl):  # if true
+                    if check_derivative_STL2literal(parsed_stl):
                         print('mismatched d_s and c')
                         raise Exception("mismatched d_s and c")
                     syntax_passed = True

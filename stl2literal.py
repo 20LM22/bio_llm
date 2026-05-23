@@ -2,7 +2,6 @@ from z3 import *
 from lark import Lark, Tree
 from lark.visitors import Interpreter
 
-# TODO: when changing species names, they need to be updated here as well
 nl_to_literal_dict = {
     "c(low)": "low",
     "c(mid)": "moderate",
@@ -166,18 +165,14 @@ class Test(Interpreter):
         self.FG_flag = False
 
     def omega(self, node):
-
         if node.children[0].data == 'psi_implies_psi':
-           # print("psi and psi")
             self.sentence.append('if')
             self.visit(node.children[0].children[0])
             self.sentence.append(', then')
             self.visit(node.children[0].children[1])
         elif node.children[0].data == 'nu' or node.children[0].data == 'psi':
-            #print("nu")
             self.visit(node.children[0].children[0])
         elif node.children[0].data == "omega_and_omega":
-            #print("omega and omega")
             self.visit(node.children[0].children[0])
             self.sentence.append(', and')
             self.visit(node.children[0].children[1])
@@ -247,76 +242,76 @@ class Test(Interpreter):
         self.sentence.append("above")
         if isinstance(node.children[1].children[0], Tree):
             # len > 1 means further signals to break down for c-threshold
-            time = node.children[1].children[1].children[0] # TODO: may be wrong
+            time = node.children[1].children[1].children[0]
             if time == '∞' or time == 'inf':
                 self.sentence.append('the final level of')
-                self.sentence.append(node.children[1].children[0].children[0]) # TODO: may be wrong, supposed to be comparison SPECIES
+                self.sentence.append(node.children[1].children[0].children[0])
             else:
-                self.sentence.append(node.children[1].children[0].children[0]) # TODO: may be wrong, comparison SPECIES
-                self.sentence.append('at day') # TODO: might want to replace day with dictionary item
+                self.sentence.append(node.children[1].children[0].children[0])
+                self.sentence.append('at day')
                 self.sentence.append(time)
         else:
             try:
                 self.sentence.append('its')
-                self.sentence.append(nl_to_literal_dict[node.children[1].children[0]]) # TODO: c-threshold --> take into account c vs. s
+                self.sentence.append(nl_to_literal_dict[node.children[1].children[0]]) 
                 self.sentence.append('levels')
             except Exception as e:
                 self.sentence.append('the value of')
-                self.sentence.append(signal_names_dict[node.children[1].children[0].children[0]]) # TODO: c-threshold --> take into account c vs. s
+                self.sentence.append(signal_names_dict[node.children[1].children[0].children[0]])
                 self.sentence.append("at day")
                 self.sentence.append(node.children[1].children[1].children[0])
 
     def lt(self, node):
-        self.sentence.append(signal_names_dict[node.children[0].children[0].value]) # name of species --> would need to find and replace using the LLM's dictionary
+        self.sentence.append(signal_names_dict[node.children[0].children[0].value])
         self.sentence.append("was below")
         if isinstance(node.children[1].children[0], Tree):
             # len > 1 means further signals to break down for c-threshold
-            time = node.children[1].children[1].children[0] # TODO: may be wrong
+            time = node.children[1].children[1].children[0]
             if time == '∞' or time == 'inf':
                 self.sentence.append('the final level of')
-                self.sentence.append(node.children[1].children[0].children[0]) # TODO: may be wrong, supposed to be comparison SPECIES
+                self.sentence.append(node.children[1].children[0].children[0]) 
             else:
-                self.sentence.append(node.children[1].children[0].children[0]) # TODO: may be wrong, comparison SPECIES
-                self.sentence.append('at day') # TODO: might want to replace day with dictionary item
+                self.sentence.append(node.children[1].children[0].children[0]) 
+                self.sentence.append('at day') 
                 self.sentence.append(time)
         else:
             try:
                 self.sentence.append('its')
-                self.sentence.append(nl_to_literal_dict[node.children[1].children[0]]) # TODO: c-threshold --> take into account c vs. s
+                self.sentence.append(nl_to_literal_dict[node.children[1].children[0]])
                 self.sentence.append('levels')
             except Exception as e:
                 self.sentence.append('the value of')
-                self.sentence.append(signal_names_dict[node.children[1].children[0].children[0]]) # TODO: c-threshold --> take into account c vs. s
+                self.sentence.append(signal_names_dict[node.children[1].children[0].children[0]])
                 self.sentence.append("at day")
                 self.sentence.append(node.children[1].children[1].children[0])
   
     def eq(self, node):
-        self.sentence.append(signal_names_dict[node.children[0].children[0].value]) # SPECIES
+        self.sentence.append(signal_names_dict[node.children[0].children[0].value])
         self.sentence.append("was close to")
         if isinstance(node.children[1].children[0], Tree):
             # len > 1 means further signals to break down for c-threshold
-            time = node.children[1].children[1].children[0] # TODO: may be wrong
+            time = node.children[1].children[1].children[0] 
             if time == '∞' or time == 'inf':
                 self.sentence.append('the final level of')
-                self.sentence.append(node.children[1].children[0].children[0]) # TODO: may be wrong, supposed to be comparison SPECIES
+                self.sentence.append(node.children[1].children[0].children[0]) 
             else:
-                self.sentence.append(node.children[1].children[0].children[0]) # TODO: may be wrong, comparison SPECIES
-                self.sentence.append('at day') # TODO: might want to replace day with dictionary item
+                self.sentence.append(node.children[1].children[0].children[0])
+                self.sentence.append('at day')
                 self.sentence.append(time)
         else:
             try:
                 self.sentence.append('its')
-                self.sentence.append(nl_to_literal_dict[node.children[1].children[0]]) # TODO: c-threshold --> take into account c vs. s
+                self.sentence.append(nl_to_literal_dict[node.children[1].children[0]]) 
                 self.sentence.append('levels')
             except Exception as e:
                 self.sentence.append('the value of')
-                self.sentence.append(signal_names_dict[node.children[1].children[0].children[0]]) # TODO: c-threshold --> take into account c vs. s
+                self.sentence.append(signal_names_dict[node.children[1].children[0].children[0]])
                 self.sentence.append("at day")
                 self.sentence.append(node.children[1].children[1].children[0])
 
     def d_gt(self, node):
         self.sentence.append("the rate of change of")
-        self.sentence.append(signal_names_dict[node.children[0].children[0]]) # SPECIES
+        self.sentence.append(signal_names_dict[node.children[0].children[0]])
         match node.children[1]:
             case 'd_c(low)':
                 self.sentence.append('was increasing faster than a low rate')
@@ -331,7 +326,7 @@ class Test(Interpreter):
         
     def d_lt(self, node):
         self.sentence.append('the rate of change of')
-        self.sentence.append(signal_names_dict[node.children[0].children[0]]) # SPECIES
+        self.sentence.append(signal_names_dict[node.children[0].children[0]]) 
         match node.children[1]:
             case 'd_c(low)':
                 self.sentence.append('was increasing slower than a low rate')
@@ -346,7 +341,7 @@ class Test(Interpreter):
         
     def d_eq(self, node):
         self.sentence.append('the rate of change of')
-        self.sentence.append(signal_names_dict[node.children[0].children[0]]) # SPECIES
+        self.sentence.append(signal_names_dict[node.children[0].children[0]]) 
         self.sentence.append('was close to')
         match node.children[1]:
             case 'd_c(low)':
@@ -490,8 +485,6 @@ class SMTSolver(Interpreter):
             raise Exception("Unknown derivative c-value")
 
     def get_signal_threshold(self, value):
-        # print("hellllllooo")
-        # print(f"value: {value}")
         if value == 'c(high)':
             return RealVal(3)
         elif value == 'c(mid)':
@@ -687,8 +680,6 @@ def STL2literal(input_sentence, grammar):
     p = Lark(grammar)
     tree = p.parse(input_sentence)
     tester = Test()
-    # print("the tree is:")
-    # print(f"{tree}")
     tester.visit(tree)
 
     tester.sentence = ' '.join(tester.sentence)
@@ -713,36 +704,12 @@ def get_species_list_STL2literal(parsed_input):
     return '-'.join(s.species_list)
 
 def get_smt(parsed_input):
-    # print(f"get smt: {parsed_input}")
     smt = SMTSolver()
     return smt.visit(parsed_input)
 
 if __name__ == '__main__':
     grammar = "?start: omega\n?u: gt | lt | eq | d_gt | d_lt | d_eq\ngt: s \"(t)\" \">\" c\nlt: s \"(t)\" \"<\" c\neq: s \"(t)\" \"=\" c\nd_gt: \"d_\" s \"(t)\" \">\" D_C\nd_lt: \"d_\" s \"(t)\" \"<\" D_C\nd_eq: \"d_\" s \"(t)\" \"=\" D_C\nc: s \"(\" t_a \")\" | C_LOW | C_MID | C_HIGH\nC_LOW: \"c(low)\"\nC_MID: \"c(mid)\"\nC_HIGH: \"c(high)\"\nD_C : \"0\" | \"d_c(low)\" | \"d_c(high)\" | \"-d_c(low)\" | \"-d_c(high)\"\n?nu : u | u_implies_u | u_and_u\nu_implies_u: u \"implies\" u\nu_and_u: u \"and\" u\n?psi: temp_op_fg | temp_op_g | temp_op_f\ntemp_op_fg: \"eventually\" \"[\" t_a \",\" t_a \"]\" \"globally\" \"(\" nu \")\"\ntemp_op_f: \"eventually\" \"[\" t_a \",\" t_a \"]\" \"(\" nu \")\"\ntemp_op_g: \"globally\" \"[\" t_a \",\" t_a \"]\" \"(\" nu \")\"\nomega: nu | psi | omega_and_omega | psi_implies_psi\nomega_and_omega: omega \"and\" omega\npsi_implies_psi: psi \"implies\" psi\nTANUM: /[0-9]+/\nINFINITY: \"inf\" | \"∞\"\nt_a: TANUM | INFINITY\ns: /[\\w]+/\nd_s: /d_[\\w]+/\n%import common.WS\n%ignore WS"
     p = Lark(grammar)
-    # input_sentence1 = "eventually[8,18]globally(d_IL1RN(t) > c(high))"
-    # input_sentence2 = "d_IL1RN(t) = c(high)"
     input_sentence2 = "eventually[1,7](IL1α(t)=c(high)) and eventually[15,21](IL1RN(t)=c(high)) and eventually[22,28](IL1RN(t)=c(high))"
-
     tree = p.parse(input_sentence2)
-    # print(check_derivative_STL2literal(tree))
     print(tree)
-
-    # tree1 = p.parse(input_sentence1)
-    # print(input_sentence1)
-    # print(get_smt(tree1))
-    #
-    # print('\n')
-    # tree2 = p.parse(input_sentence2)
-    # print(input_sentence2)
-    # print(get_smt(tree2))
-#  Tree(Token('RULE', 'd_lt')
-#   [Tree(Token('RULE', 's')
-#       [Token('__ANON_1', 'IL6')]),
-#   Token('D_C', '0')])])])
-
-# Tree(Token('RULE', 'eq'),
-#   [Tree(Token('RULE', 's'),
-#       [Token('__ANON_1', 'IL6')]),
-#    Tree(Token('RULE', 'c'),
-#       [Token('C_LOW', 'c(low)')])])])])

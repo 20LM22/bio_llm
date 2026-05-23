@@ -1,14 +1,13 @@
 #!/bin/bash
 
-# Ensure the current directory is in the Python path so stl2literal can be imported
 export PYTHONPATH="${PYTHONPATH}:."
 
-models=('DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen3-1.7B')
-official_model_names=('deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen/Qwen3-1.7B')
-experiments=("nx_1_ny_0_nz_1")
-set_name="sample_test_set"
+models=('DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen3-1.7B') # Input short, slash-free model nicknames here, such as 'DeepSeek-R1-Distill-Qwen-1.5B' or 'Qwen3-1.7B' to be used as directory names and filename components
+official_model_names=('deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen/Qwen3-1.7B') # Input full model names here, such as 'deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' or 'Qwen/Qwen3-1.7B'
+experiments=("nx_1_ny_0_nz_1") # This should match the experiment name used in the config file, e.g., config_nx_1_ny_0_nz_1_sample_test_set.json
+set_name="sample_test_set" # This should match the set name used in the config file, e.g., config_nx_1_ny_0_nz_1_sample_test_set.json
 consolidation_type="general" # Can be "general" or "specific" - determines how the consolidation is performed
-filter_first=false # Set to true to apply filter before consolidation, false to apply consolidation before filter
+filter_first=true # Set to true to apply filter before consolidation, false to apply consolidation before filter
 
 if [ ${#models[@]} -ne ${#official_model_names[@]} ]; then
   echo "Error: 'models' and 'official_model_names' arrays must have the same length."

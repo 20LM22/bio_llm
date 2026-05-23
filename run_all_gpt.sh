@@ -2,9 +2,9 @@
 
 export PYTHONPATH="${PYTHONPATH}:."
 
-models=('gpt-5.4')
-experiments=("nx_3_ny_0_nz_5")
-set_name="sample_test_set" 
+models=('gpt-5.4') # Input model names here, such as 'gpt-4o-2024-08-06' or 'gpt-5.4'
+experiments=("nx_1_ny_0_nz_1") # This should match the experiment name used in the config file, e.g., config_nx_1_ny_0_nz_1_sample_test_set.json
+set_name="sample_test_set" # This should match the set name used in the config file, e.g., config_nx_1_ny_0_nz_1_sample_test_set.json
 consolidation_type="general" # Can be "general" or "specific" - determines how the consolidation is performed
 filter_first=true # Set to true to apply filter before consolidation, false to apply consolidation before filter
 
