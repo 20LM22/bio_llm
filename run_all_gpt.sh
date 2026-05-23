@@ -6,7 +6,7 @@ export PYTHONPATH="${PYTHONPATH}:."
 models=('gpt-5.4')
 experiments=("nx_1_ny_0_nz_1")
 set_name="sample_test_set" 
-consolidation_type="general" # Can be "general" or "specific" - determines how the consolidation is performed
+consolidation_type="specific" # Can be "general" or "specific" - determines how the consolidation is performed
 
 for experiment in "${experiments[@]}"
 do
