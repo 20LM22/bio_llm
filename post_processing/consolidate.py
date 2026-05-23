@@ -108,7 +108,7 @@ def collect_stl_candidates(raw_input):
     res = defaultdict(list)
 
     if isinstance(raw_input, pandas.DataFrame):
-        relevant_cols = [col for col in raw_input.columns if col.startswith('shot')]
+        relevant_cols = [col for col in raw_input.columns if 'shot' in col.lower()]
         for _, row in raw_input.iterrows():
             sentence = row['input statement']
             for entry in row[relevant_cols]:
