@@ -1,4 +1,0 @@
-Sentence,Number of Times Semantic Feedback Portion Reached,Number of improving translations (relative to initial result) across all attempts,Number of worsening translations (relative to initial result) across all attempts,Number of consistent translations (relative to initial result) across all attempts
-"In patients with COVID-19, SARS-CoV-2-specific T-cells appear in peripheral blood within two weeks of symptom onset (31).",0.0,0.0,0.0,0.0
-"Following day 10, IL-6 remains increased whereas IFN-α tapered.",0.0,0.0,0.0,0.0
-Overall,0.0,0.0,0.0,0.0

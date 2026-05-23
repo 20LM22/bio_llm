@@ -1,2 +1,0 @@
-input statement,STL-shot0-S0-F0,STL-shot0-S0-F1
-"In patients with COVID-19, SARS-CoV-2-specific T-cells appear in peripheral blood within two weeks of symptom onset (31).","eventually[0,14](tcells(t) > c(low))",

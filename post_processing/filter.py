@@ -1,6 +1,4 @@
-﻿# Below supports filtering -> consolidation or consolidated -> filtering
-
-import sys
+﻿import sys
 sys.stdout.reconfigure(encoding='utf-8')
 
 import os
@@ -35,12 +33,7 @@ def extract_candidate_formulas(raw_input):
     stl_by_sentence = defaultdict(list)
 
     if isinstance(raw_input, pd.DataFrame):
-        print("  Input is DataFrame")
-        print(f"    Columns: {list(raw_input.columns)}")
-        print(f"    Shape: {raw_input.shape}")
         relevant_cols = [col for col in raw_input.columns if 'shot' in col.lower()]
-        print(f"    Shot columns found: {relevant_cols}")
-        print(f"    Has 'input statement' column: {'input statement' in raw_input.columns}")
         for _, row in raw_input.iterrows():
             sentence = row['input statement']
             for entry in row[relevant_cols]:
@@ -55,7 +48,6 @@ def extract_candidate_formulas(raw_input):
         return stl_by_sentence
 
     if isinstance(raw_input, dict):
-        print("  Input is dict")
         for sentence, entries in raw_input.items():
             if isinstance(entries, dict):
                 entries = [entries]
@@ -67,24 +59,19 @@ def extract_candidate_formulas(raw_input):
         return stl_by_sentence
 
     if isinstance(raw_input, list):
-        print(f"  Input is list with {len(raw_input)} items")
         for idx, record in enumerate(raw_input):
             sentence = record.get('input_sentence')
             if sentence is None:
-                print(f"    Item {idx}: No 'input_sentence' key, keys are: {record.keys()}")
                 continue
             stl_entries = record.get('stl', [])
-            print(f"    Item {idx}: sentence='{sentence[:40]}...', {len(stl_entries)} STL entries")
             for entry in stl_entries:
                 stl = normalize_entry(entry)
                 if stl is None:
-                    print(f"      Entry type {type(entry)} failed to normalize: {entry}")
                     continue
                 stl_by_sentence[sentence].append(str(stl).replace('∞', 'inf'))
         return stl_by_sentence
 
     raise ValueError('Unsupported input format for filtering')
-
 
 model_name = sys.argv[1]
 input_path = sys.argv[2]
@@ -123,16 +110,6 @@ os.makedirs(os.path.dirname(filtered_pkl_path), exist_ok=True)
 os.makedirs(os.path.dirname(stats_csv_path), exist_ok=True)
 
 candidate_map = extract_candidate_formulas(raw_input)
-print(f"Extracted {len(candidate_map)} sentences from input")
-if candidate_map:
-    first_sentence = next(iter(candidate_map))
-    print(f"  First sentence: {first_sentence[:80]}...")
-    print(f"  First sentence has {len(candidate_map[first_sentence])} candidates")
-else:
-    print(f"  WARNING: candidate_map is empty! Input structure may not match expected format")
-    print(f"  Input type: {type(raw_input)}")
-    if isinstance(raw_input, list) and raw_input:
-        print(f"  First item in input list: {raw_input[0]}")
 
 model = SentenceTransformer(
     params['embedding_model_name'],
@@ -187,8 +164,6 @@ for sentence, stl_sims in res_all.items():
 # ------------------------------------------------------------
 print(f"Before -> After: {total_before} -> {total_after} STLs")
 print(f"Per-sentence stats collected: {len(per_sentence_stats)} entries")
-if not per_sentence_stats:
-    print("  WARNING: No per-sentence stats! The res_all loop may not have executed.")
 
 pd.DataFrame(per_sentence_stats).to_csv(
     stats_csv_path,
