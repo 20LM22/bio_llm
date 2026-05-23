@@ -31,13 +31,13 @@ do
     python ./evaluations/generate_basic_stats.py "$model" "$translations" "$config" "$time" 
     python ./evaluations/annotate_initial.py "$model" "$translations" "$config" "$time"
 
-    # Filter the translations based on cosine similarity and annotate the filtered output with semantic labels
-    python ./post_processing/filter.py "$model" "$translations" "$config" "$time" "$filtered_output"
-    python ./evaluations/annotate_filtered.py "$model" "$filtered_output" "$config" "$time" 
-
     # Consolidate the filtered translations and annotate the consolidated output with semantic labels
     python ./post_processing/consolidate.py "$model" "$filtered_output" "$config" "$time" "$consolidation_type" "$consolidated_output"
     python ./evaluations/annotate_consolidated.py "$model" "$consolidated_output" "$config" "$time" "$consolidation_type"
+
+    # Filter the translations based on cosine similarity and annotate the filtered output with semantic labels
+    python ./post_processing/filter.py "$model" "$translations" "$config" "$time" "$filtered_output"
+    python ./evaluations/annotate_filtered.py "$model" "$filtered_output" "$config" "$time" 
 
   done
 done
