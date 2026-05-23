@@ -35,6 +35,7 @@ def extract_candidate_formulas(raw_input):
     stl_by_sentence = defaultdict(list)
 
     if isinstance(raw_input, pd.DataFrame):
+        print("  Input is DataFrame")
         relevant_cols = [col for col in raw_input.columns if col.startswith('shot')]
         for _, row in raw_input.iterrows():
             sentence = row['input statement']
@@ -50,6 +51,7 @@ def extract_candidate_formulas(raw_input):
         return stl_by_sentence
 
     if isinstance(raw_input, dict):
+        print("  Input is dict")
         for sentence, entries in raw_input.items():
             if isinstance(entries, dict):
                 entries = [entries]
@@ -61,14 +63,18 @@ def extract_candidate_formulas(raw_input):
         return stl_by_sentence
 
     if isinstance(raw_input, list):
-        for record in raw_input:
+        print(f"  Input is list with {len(raw_input)} items")
+        for idx, record in enumerate(raw_input):
             sentence = record.get('input_sentence')
             if sentence is None:
+                print(f"    Item {idx}: No 'input_sentence' key, keys are: {record.keys()}")
                 continue
             stl_entries = record.get('stl', [])
+            print(f"    Item {idx}: sentence='{sentence[:40]}...', {len(stl_entries)} STL entries")
             for entry in stl_entries:
                 stl = normalize_entry(entry)
                 if stl is None:
+                    print(f"      Entry type {type(entry)} failed to normalize: {entry}")
                     continue
                 stl_by_sentence[sentence].append(str(stl).replace('∞', 'inf'))
         return stl_by_sentence
@@ -113,6 +119,16 @@ os.makedirs(os.path.dirname(filtered_pkl_path), exist_ok=True)
 os.makedirs(os.path.dirname(stats_csv_path), exist_ok=True)
 
 candidate_map = extract_candidate_formulas(raw_input)
+print(f"Extracted {len(candidate_map)} sentences from input")
+if candidate_map:
+    first_sentence = next(iter(candidate_map))
+    print(f"  First sentence: {first_sentence[:80]}...")
+    print(f"  First sentence has {len(candidate_map[first_sentence])} candidates")
+else:
+    print(f"  WARNING: candidate_map is empty! Input structure may not match expected format")
+    print(f"  Input type: {type(raw_input)}")
+    if isinstance(raw_input, list) and raw_input:
+        print(f"  First item in input list: {raw_input[0]}")
 
 model = SentenceTransformer(
     params['embedding_model_name'],
@@ -165,6 +181,11 @@ for sentence, stl_sims in res_all.items():
 # ------------------------------------------------------------
 # Save outputs
 # ------------------------------------------------------------
+print(f"Before -> After: {total_before} -> {total_after} STLs")
+print(f"Per-sentence stats collected: {len(per_sentence_stats)} entries")
+if not per_sentence_stats:
+    print("  WARNING: No per-sentence stats! The res_all loop may not have executed.")
+
 pd.DataFrame(per_sentence_stats).to_csv(
     stats_csv_path,
     index=False
