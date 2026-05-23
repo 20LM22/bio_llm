@@ -1,13 +1,12 @@
 #!/bin/bash
 
-# Ensure the current directory is in the Python path so stl2literal can be imported
 export PYTHONPATH="${PYTHONPATH}:."
 
 models=('gpt-5.4')
-experiments=("nx_1_ny_0_nz_1")
+experiments=("nx_3_ny_0_nz_5")
 set_name="sample_test_set" 
-consolidation_type="specific" # Can be "general" or "specific" - determines how the consolidation is performed
-filter_first=false # Set to true to apply filter before consolidation, false to apply consolidation before filter
+consolidation_type="general" # Can be "general" or "specific" - determines how the consolidation is performed
+filter_first=true # Set to true to apply filter before consolidation, false to apply consolidation before filter
 
 for experiment in "${experiments[@]}"
 do
