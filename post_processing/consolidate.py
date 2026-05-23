@@ -90,7 +90,6 @@ output_json_path = sys.argv[6] if len(sys.argv) > 6 else None
 parser = Lark(grammar, propagate_positions=True)
 general = consolidation_type == "general"
 
-
 def load_input(path):
     if path.lower().endswith('.json'):
         with open(path, 'r', encoding='utf-8') as f:
@@ -98,14 +97,12 @@ def load_input(path):
     with open(path, 'rb') as f:
         return pickle.load(f)
 
-
 def normalize_entry(entry):
     if isinstance(entry, dict):
         return entry.get('formula') or entry.get('stl')
     if isinstance(entry, (tuple, list)):
         return entry[0] if len(entry) > 0 else None
     return entry
-
 
 def collect_stl_candidates(raw_input):
     res = defaultdict(list)
@@ -151,7 +148,6 @@ def collect_stl_candidates(raw_input):
         return res
 
     raise ValueError('Unsupported input format for consolidation')
-
 
 raw_input = load_input(input_path)
 print(f"Loaded consolidation input from {input_path}")

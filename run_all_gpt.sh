@@ -7,6 +7,7 @@ models=('gpt-5.4')
 experiments=("nx_1_ny_0_nz_1")
 set_name="sample_test_set" 
 consolidation_type="specific" # Can be "general" or "specific" - determines how the consolidation is performed
+filter_first=false # Set to true to apply filter before consolidation, false to apply consolidation before filter
 
 for experiment in "${experiments[@]}"
 do
@@ -31,13 +32,21 @@ do
     python ./evaluations/generate_basic_stats.py "$model" "$translations" "$config" "$time" 
     python ./evaluations/annotate_initial.py "$model" "$translations" "$config" "$time"
 
-    # Consolidate the filtered translations and annotate the consolidated output with semantic labels
-    python ./post_processing/consolidate.py "$model" "$filtered_output" "$config" "$time" "$consolidation_type" "$consolidated_output"
-    python ./evaluations/annotate_consolidated.py "$model" "$consolidated_output" "$config" "$time" "$consolidation_type"
+    if [ "$filter_first" = true ]; then
+      # Filter first workflow: translations -> filter -> consolidate
+      python ./post_processing/filter.py "$model" "$translations" "$config" "$time" "$filtered_output"
+      python ./evaluations/annotate_filtered.py "$model" "$filtered_output" "$config" "$time"
 
-    # Filter the translations based on cosine similarity and annotate the filtered output with semantic labels
-    python ./post_processing/filter.py "$model" "$translations" "$config" "$time" "$filtered_output"
-    python ./evaluations/annotate_filtered.py "$model" "$filtered_output" "$config" "$time" 
+      python ./post_processing/consolidate.py "$model" "$filtered_output" "$config" "$time" "$consolidation_type" "$consolidated_output"
+      python ./evaluations/annotate_consolidated.py "$model" "$consolidated_output" "$config" "$time" "$consolidation_type"
+    else
+      # Consolidate first workflow: translations -> consolidate -> filter
+      python ./post_processing/consolidate.py "$model" "$translations" "$config" "$time" "$consolidation_type" "$consolidated_output"
+      python ./evaluations/annotate_consolidated.py "$model" "$consolidated_output" "$config" "$time" "$consolidation_type"
+
+      python ./post_processing/filter.py "$model" "$consolidated_output" "$config" "$time" "$filtered_output"
+      python ./evaluations/annotate_filtered.py "$model" "$filtered_output" "$config" "$time"
+    fi
 
   done
 done
