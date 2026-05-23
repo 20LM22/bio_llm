@@ -38,7 +38,7 @@ def extract_candidate_formulas(raw_input):
         print("  Input is DataFrame")
         print(f"    Columns: {list(raw_input.columns)}")
         print(f"    Shape: {raw_input.shape}")
-        relevant_cols = [col for col in raw_input.columns if col.startswith('shot')]
+        relevant_cols = [col for col in raw_input.columns if 'shot' in col.lower()]
         print(f"    Shot columns found: {relevant_cols}")
         print(f"    Has 'input statement' column: {'input statement' in raw_input.columns}")
         for _, row in raw_input.iterrows():
