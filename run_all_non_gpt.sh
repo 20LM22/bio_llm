@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+#!/bin/bash
 
 # Ensure the current directory is in the Python path so stl2literal can be imported
 export PYTHONPATH="${PYTHONPATH}:."
