@@ -53,6 +53,7 @@ gpu_memory_utilization=params['model_parameters']['gpu_memory_utilization']
 num_shots_per_input_sentence=params['num_shots_per_input_sentence']
 
 model_name = sys.argv[1]
+full_model_name = sys.argv[]
 sentences = pandas.read_csv(params['sentences_csv'])
 embedding_model = SentenceTransformer(params['embedding_model_name'], device='cpu')
 grammar = params['grammar']
@@ -79,12 +80,10 @@ for i in range(num_shots_per_input_sentence):
             translations[f'STL-shot{i}-S{j}-F{k}'] = None
 
 # Create the LLM for this model
-llm = LLM(model=model_name,
+llm = LLM(model=full_model_name,
     dtype=model_dtype,
     max_model_len=max_model_len,
     gpu_memory_utilization=gpu_memory_utilization)
-
-model_name = model_name.split('/')[1]
 
 ####################################################################################
 # Helper function: generate examples

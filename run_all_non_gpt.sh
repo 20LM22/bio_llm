@@ -34,7 +34,7 @@ for experiment in "${experiments[@]}"; do
     consolidated_output="./stats/${model}/${set_name}_consolidated_output_${consolidation_type}_${model}_${experiment}_${time}.json" # consolidated output
 
     # Generate the STL-NL translations, record basic stats, and annotate the initial translations with semantic labels  
-    python ./stl_generators/stl_generator_v7.py "$model" "$config" "$experiment" "$time" >| "$convo"
+    python ./stl_generators/stl_generator_v7.py "$model" "$config" "$experiment" "$time" "$official_model_name" >| "$convo"
     python ./evaluations/generate_basic_stats.py "$model" "$translations" "$config" "$time" 
     python ./evaluations/annotate_initial.py "$model" "$translations" "$config" "$time"
 
