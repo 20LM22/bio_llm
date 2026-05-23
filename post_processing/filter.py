@@ -15,7 +15,6 @@ from sentence_transformers import SentenceTransformer
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from stl2literal import STL2literal
 
-
 def load_input(path):
     if path.lower().endswith('.json'):
         with open(path, 'r', encoding='utf-8') as f:

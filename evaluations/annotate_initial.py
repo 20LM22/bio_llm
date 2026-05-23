@@ -17,7 +17,7 @@ config_file = sys.argv[3]
 time = sys.argv[4]
 
 try:
-    with open(f'./pkl/{model_name}/{translations_pkl}', 'rb') as f:
+    with open(f'{translations_pkl}', 'rb') as f:
         translations = pickle.load(f)
         print(f'Loaded {f}')
 except Exception as e:
