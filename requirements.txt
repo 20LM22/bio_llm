@@ -1,13 +1,9 @@
-requests
-scipy
 lark==1.2.2
-matplotlib==3.10.6
 numpy==2.3.3
 openai==1.108.1
 pandas==2.3.2
 pydantic==2.11.9
-scikit_learn==1.7.2
-seaborn==0.13.2
+scikit-learn==1.7.2
 sentence_transformers==5.1.0
-thefuzz==0.22.1
 vllm==0.10.2
+z3-solver

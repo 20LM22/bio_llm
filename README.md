@@ -1,20 +1,169 @@
-Overview of the filesystem:
+# Project Overview
 
-1) Config. Specifies all model, feedback, etc. parameters. There are many versions, but the newest is [config_nx_0_ny_0_nz_0_test_set.json](https://github.com/hannakrasowski/bio_llm/blob/main/config/config_nx_0_ny_0_nz_0_test_set.json), and new experiments will use copies of this version with the nx (num_correction_attempts_per_shot), ny (num_semantic_checks), nz (num_shots_per_input_sentence), and "set_name" (test set vs. val set) updated.
-2) CSV_inputs. ``input_sentences.csv`` contains the input sentences. There are two versions, test and val.
-3) Evaluations.
-   - ``stl_evaluation_v6.py``. Produces tables of statistics regarding model performance by reading the ``{set_name}_translations_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.pkl`` file produced by ``stl_generator_v7.py`` and ``stl_generator_gpt.py``. The important tables include:
-      - ``{set_name}_stats_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.csv .pkl`` # This produces extraction, syntactically correct rates/counts
-      - ``{set_name}_improvements_nx_{syntaxs}_ny_{semantics}_nz_{shots}_{time}.csv`` # Number of times semantic feedback helps + how often it's reached
-   - ``generate_semantic_distribution_dict.py``. Interactive program to assign labels to results of STL generation. Works on the top 3 and bottom 3 sentences seperately and also produces an overall count of how many correct/incorrect STL statements there were. This needs to run before you make the histograms with ``generate_semantic_distribution_plots.py``.
-   - ``generate_semantic_distribution_plots.py``. Using labeled results, produces histogram of the top 3 sentences and bottom 3 sentences.
-5) Images. Contains figures organized per-model. They are nested inside the corresponding model folder.
-6) Pkl. Contains intermediate data structures organized per-model. The really important one is ``../pkl/{model_name}/{set_name}_translations_{model_name}_{config}_{time}.pkl`` because this is the results from the models that we work with in the evaluation parts.
-7) Stats. Contains statistics organized per-model. The important ones are ``{set_name}_stats_nx_{syntax_count}_ny_{semantic_count}_nz_{shot_count}_{time}.csv .pkl`` and ``{set_name}_improvements_nx_{syntaxs}_ny_{semantics}_nz_{shots}_{time}.csv`` like I pointed out in (3).
-8) STL_generators.
-   - ``generate_datasets.py``. Produces the curated dataset. This is run infrequently.
-   - ``stl_example_generator.py``. Randomly generates STL that conforms to the grammar. This is your code from earlier in the summer.
-   - ``stl_generator_v7.py`` and ``stl_generator_gpt.py``. The main files responsible for producing STL. ``stl_generator_v7.py`` is for non-GPT models and ``stl_generator_gpt.py`` is for GPT models. They include all the feedback steps and querying of the models. The outputs are the main ``../pkl/{model_name}/{set_name}_translations_{model_name}_{config}_{time}.pkl`` file of the STL statements, and I also record the raw conversation by piping the output to ``../stats/${model}/config_${experiment}_${time}.txt`` so that it can be viewed in detail.
-   - ``run_all_gpt.sh`` and ``run_all_non_gpt.sh``. Bash scripts for running the STL generator and evaluation metrics. They are set up to run the generator and then run ``stl_evaluation_v6.py`` followed by ``generate_semantic_distribution_dict.py`` and ``generate_semantic_distribution_dict.py``, but you can also comment out the later parts to only run the STL generation or individual steps of the evaluation.
-9) ``STL2literal.py``. Responsible for literal backtranslation. The overall Tester class is used to walk the parsed tree. When you input a tree, it starts at the top and finds rules/terminals that match up with the function names inside the Tester, going to other functions if they are explicitly called (tree.visit()) within the function you're currently in.
+This project generates Signal Temporal Logic (STL) formulas from natural language biomedical sentences using LLMs. It implements a pipeline for generating, evaluating, filtering, and consolidating STL translations.
+
+## Directory Structure
+
+### 1. `config/`
+Configuration files that specify all model, feedback, and experimental parameters. Each config file controls:
+- Model parameters (temperature, top_p, top_k, etc.)
+- Grammar for STL generation
+- Number of shots, semantic checks, and correction attempts
+- Input/output dataset paths
+- Signal names and embedding models
+
+New experiments should copy an existing config (e.g., `config_nx_1_ny_0_nz_1_sample_test_set.json`) and update:
+- `nx`: number of correction attempts per shot
+- `ny`: number of semantic checks
+- `nz`: number of shots per input sentence
+- `set_name`: dataset name (e.g., "sample_test_set", "final_test_set")
+
+### 2. `csv_inputs/`
+Input CSV files containing biomedical sentences to translate:
+- `sample_test_set_sentences.csv`: Small test dataset
+- `final_test_set_sentences.csv`: Full test dataset
+
+Each CSV should have a column with input sentences.
+
+### 3. `stl_generators/`
+Core code for generating STL formulas from natural language:
+- `stl_generator_gpt.py`: Generates STL using OpenAI GPT models (GPT-4o, GPT-5.4, etc.)
+- `stl_generator_v7.py`: Generates STL using open-source LLMs via vLLM (DeepSeek, Qwen, etc.)
+- `stl_example_generator.py`: Randomly generates STL examples conforming to the grammar
+- `generate_datasets.py`: Produces the curated dataset for few-shot prompting
+
+### 4. `post_processing/`
+Post-processing pipeline to refine and consolidate results:
+- `filter.py`: Filters STL translations based on semantic similarity to original sentences
+- `consolidate.py`: Consolidates filtered results and removes duplicates using Z3 SMT solver
+
+### 5. `evaluations/`
+Evaluation and annotation tools:
+- `generate_basic_stats.py`: Produces extraction and parsing success rate statistics
+- `annotate_initial.py`: Interactive tool to manually label initial STL translations
+- `annotate_filtered.py`: Interactive tool to label filtered translations
+- `annotate_consolidated.py`: Interactive tool to label consolidated translations
+
+### 6. `pkl/`
+Intermediate pickle files organized by model. Key outputs:
+- `{model_name}/{set_name}_translations_{model_name}_{experiment}_{timestamp}.pkl`: Raw STL-NL translation pairs from the model
+- `{model_name}/{set_name}_filtered_output_{model_name}_{experiment}_{timestamp}.pkl`: Filtered results
+- Results are input for evaluation scripts
+
+### 7. `stats/`
+Statistics and analysis files organized by model:
+- Extraction/parsing success rates
+- Semantic improvement metrics
+- Annotated results (JSON format)
+
+### 8. `STL2literal.py`
+Backtranslation utility that converts STL formulas to readable English literals. Used in semantic filtering to compare original sentences with their STL translations.
+
+---
+
+## How to Use the Main Scripts
+
+### Quick Start
+
+Before running either script, you need to:
+1. **Set up your environment**: `pip install -r requirements.txt`
+2. **Create a config file** in `config/` directory (copy and modify an existing one)
+3. **Prepare your input CSV** in `csv_inputs/` directory
+
+### `run_all_gpt.sh` - For OpenAI GPT Models
+
+**Use this script to generate STL using OpenAI's GPT models (GPT-4o, GPT-5.4, etc.)**
+
+#### Setup:
+1. Set `OPENAI_API_KEY` environment variable with your OpenAI API key
+2. Edit the script variables at the top:
+
+```bash
+models=('gpt-5.4')                              # GPT model name
+experiments=("nx_1_ny_0_nz_1")                  # Must match config filename
+set_name="sample_test_set"                      # Must match config filename
+consolidation_type="general"                    # "general" or "specific"
+filter_first=true                               # Filter before consolidate (true) or after (false)
+```
+
+#### Running:
+```bash
+bash run_all_gpt.sh
+```
+
+#### What it does:
+1. Generates STL translations from input sentences using GPT
+2. Computes extraction and parsing statistics
+3. Annotates initial translations (interactive - you label results)
+4. Filters translations by semantic similarity
+5. Annotates filtered results (interactive)
+6. Consolidates results to remove semantic duplicates
+7. Annotates consolidated results (interactive)
+
+#### Output files:
+- `pkl/{model_name}/{set_name}_translations_{model_name}_{experiment}_{timestamp}.pkl` - Raw results
+- `stats/{model_name}/convo_{experiment}_{timestamp}.txt` - Full conversation log
+- `stats/{model_name}/*_annotations_*.json` - Annotated results at each stage
+
+---
+
+### `run_all_non_gpt.sh` - For Open-Source LLMs
+
+**Use this script to generate STL using open-source models via vLLM (DeepSeek, Qwen, etc.)**
+
+#### Setup:
+1. Edit the script variables at the top:
+
+```bash
+# IMPORTANT: These two arrays MUST have the same length!
+models=('DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen3-1.7B')                    # Short names (for directories/filenames)
+official_model_names=('deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen/Qwen3-1.7B')  # Full HuggingFace names
+experiments=("nx_1_ny_0_nz_1")                  # Must match config filename
+set_name="sample_test_set"                      # Must match config filename
+consolidation_type="general"                    # "general" or "specific"
+filter_first=true                               # Filter before consolidate (true) or after (false)
+```
+
+#### Running:
+```bash
+bash run_all_non_gpt.sh
+```
+
+#### What it does:
+Same as `run_all_gpt.sh`, but uses open-source models via vLLM
+
+#### Output files:
+Same as GPT script, organized by short model name in `models` array
+
+---
+
+## Key Workflow Parameters
+
+- **nx** (correction attempts): Number of syntax correction attempts per shot (0-3+)
+- **ny** (semantic checks): Number of semantic feedback iterations (0-3+)
+- **nz** (shots): Number of few-shot examples to include (1-5+)
+- **consolidation_type**: 
+  - `"general"`: Removes formulas that are semantically equivalent using Z3 SMT solver
+  - `"specific"`: Alternative consolidation strategy
+- **filter_first**: 
+  - `true`: Filter by similarity first, then consolidate
+  - `false`: Consolidate first, then filter
+
+---
+
+## Interactive Annotation Steps
+
+Both scripts include **interactive annotation** steps where you manually label results:
+- **1** = correct STL translation
+- **0** or ENTER = incorrect STL translation
+
+You can skip these steps by commenting out the `annotate_*.py` lines in the bash scripts if you want to only run generation or post-processing.
+
+---
+
+## Troubleshooting
+
+**GPT script fails**: Check that `OPENAI_API_KEY` is set and you have API credits
+**Non-GPT script fails**: Ensure the model name exists on HuggingFace and you have disk space for model download
+**"models" and "official_model_names" arrays must have the same length**: Make sure both arrays in `run_all_non_gpt.sh` have matching lengths
 
