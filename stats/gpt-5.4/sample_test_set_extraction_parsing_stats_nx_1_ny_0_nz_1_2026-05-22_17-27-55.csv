@@ -1,0 +1,3 @@
+Input Sentence,STL Extraction Success Rate,STL Parsing Success Rate,Number of Translations,Number of Syntactically Correct Translations
+"In patients with COVID-19, SARS-CoV-2-specific T-cells appear in peripheral blood within two weeks of symptom onset (31).",1.0,1.0,1,1.0
+Overall,1.0,1.0,1,1.0
