@@ -106,9 +106,9 @@ bash run_all_gpt.sh
 
 ---
 
-### `run_all_non_gpt.sh` - For Open-Source LLMs
+### `run_all_non_gpt.sh` - For Local LLMs
 
-**Use this script to generate STL using open-source models via vLLM (DeepSeek, Qwen, etc.)**
+**Use this script to generate STL using local models via vLLM (DeepSeek, Qwen, etc.)**
 
 #### Setup:
 1. Edit the script variables at the top:
@@ -129,7 +129,7 @@ bash run_all_non_gpt.sh
 ```
 
 #### What it does:
-Same as `run_all_gpt.sh`, but uses open-source models via vLLM
+Same as `run_all_gpt.sh`, but uses local models via vLLM
 
 #### Output files:
 Same as GPT script, organized by short model name in `models` array
