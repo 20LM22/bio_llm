@@ -2,7 +2,7 @@
 
 Using LLMs, this project translates biomedical natural language statements to signal temporal logic (STL). The pipeline generates, filters, and consolidates the STL statements, and between steps a manual evaluation of the semantic correctness of remaining statements can be performed.
 
-If you use any part of this project in your work, please cite: 
+Please cite this project as:
 ```
 Hanna Krasowski, Lauren E. Malek, Sanjit A. Seshia, Murat Arcak; "Feedback and Filtering for Automated Translation of Biomedical Observations into Signal Temporal Logic using LLMs". Proceedings of the International Conference on Neuro-symbolic Systems, PMLR X:X-X
 ```
