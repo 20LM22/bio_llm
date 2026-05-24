@@ -97,11 +97,12 @@ bash run_all_gpt.sh
 6. Consolidates results to remove semantic duplicates - **note that you can choose `general` or `specific` consolidation**
 7. Annotates consolidated results  (interactive - you manually label results)
 
-#### Output files: TODO update this
-- `pkl/{model_name}/{set_name}_translations_{model_name}_{experiment}_{timestamp}.pkl` - Raw results
-- `stats/{model_name}/convo_{experiment}_{timestamp}.txt` - Full conversation log
-- `stats/{model_name}/*_annotations_*.json` - Annotated results at each stage
-#### TODO just update the output files section!!!
+#### Output files:
+- `stats/{model_name}/*_raw_results_*.csv` - Raw STL results
+- `stats/{model_name}/convo_*.txt` - Full conversation log
+- `stats/{model_name}/*_extraction_parsing_stats_*.csv` - STL extraction and syntactic parsing correctness rates
+- `stats/{model_name}/*_semantic_improvements_*.csv` - Semantic improvements between semantic feedback attempts
+- `stats/{model_name}/*_annotations_*.csv` - Annotated results at each pipeline stage
 
 ---
 
