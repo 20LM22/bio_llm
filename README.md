@@ -121,12 +121,12 @@ bash run_all_gpt.sh
 
 ```bash
 # Make sure these two arrays have the same length!
-models=('DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen3-1.7B')                    # Short names (for directories/filenames)
+models=('DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen3-1.7B')                                 # Short names (for directories/filenames)
 official_model_names=('deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen/Qwen3-1.7B')  # Full HuggingFace names
-experiments=("nx_1_ny_0_nz_1")                  # Must match config filename
-set_name="sample_test_set"                      # Must match config filename
-consolidation_type="general"                    # "general" or "specific"
-filter_first=true                               # Filter before consolidate (true) or after (false)
+experiments=("nx_1_ny_0_nz_1")                                                        # Must match config filename
+set_name="sample_test_set"                                                            # Must match config filename
+consolidation_type="general"                                                          # "general" or "specific"
+filter_first=true                                                                     # Filter before consolidate (true) or after (false)
 ```
 
 #### Running:
