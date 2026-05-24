@@ -34,7 +34,7 @@ Main code for NL->STL translation:
 ### 4. `post_processing/`
 Post-processing pipeline to improve semantic correctness of final results:
 - `filter.py`: Filters STL translations based on their semantic similarity to their original sentences
-- `consolidate.py`: Consolidates filtered results and removes duplicates using Z3 SMT solver
+- `consolidate.py`: Consolidates results and removes duplicates using Z3 SMT solver
 
 ### 5. `evaluations/`
 Evaluation and annotation tools:
