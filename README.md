@@ -2,7 +2,13 @@
 
 Using LLMs, this project translates biomedical natural language statements to signal temporal logic (STL). The pipeline generates, filters, and consolidates the STL statements, and between steps a manual evaluation of the semantic correctness of remaining statements can be performed.
 
-## Projct Structure
+If you use any part of this project in your work, please cite: 
+```
+Hanna Krasowski, Lauren E. Malek, Sanjit A. Seshia, Murat Arcak; Proceedings of the International Conference on Neuro-symbolic Systems, PMLR X:X-X
+```
+Additionally, further details on the structure and purpose of the tool may be found within the paper.
+
+## Project Structure
 
 ### 1. `config/`
 Configuration files specify model and experiment parameters. Each config file includes:
