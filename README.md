@@ -4,7 +4,7 @@ Using LLMs, this project translates biomedical natural language statements to si
 
 If you use any part of this project in your work, please cite: 
 ```
-Hanna Krasowski, Lauren E. Malek, Sanjit A. Seshia, Murat Arcak; Proceedings of the International Conference on Neuro-symbolic Systems, PMLR X:X-X
+Hanna Krasowski, Lauren E. Malek, Sanjit A. Seshia, Murat Arcak; "Feedback and Filtering for Automated Translation of Biomedical Observations into Signal Temporal Logic using LLMs". Proceedings of the International Conference on Neuro-symbolic Systems, PMLR X:X-X
 ```
 Additionally, further details on the structure and purpose of the tool may be found within the paper.
 
