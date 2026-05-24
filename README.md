@@ -101,6 +101,7 @@ bash run_all_gpt.sh
 - `pkl/{model_name}/{set_name}_translations_{model_name}_{experiment}_{timestamp}.pkl` - Raw results
 - `stats/{model_name}/convo_{experiment}_{timestamp}.txt` - Full conversation log
 - `stats/{model_name}/*_annotations_*.json` - Annotated results at each stage
+#### TODO just update the output files section!!!
 
 ---
 
@@ -112,7 +113,7 @@ bash run_all_gpt.sh
 1. Edit the script variables at the top:
 
 ```bash
-# IMPORTANT: These two arrays MUST have the same length!
+# Make sure these two arrays have the same length!
 models=('DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen3-1.7B')                    # Short names (for directories/filenames)
 official_model_names=('deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen/Qwen3-1.7B')  # Full HuggingFace names
 experiments=("nx_1_ny_0_nz_1")                  # Must match config filename
@@ -134,16 +135,16 @@ Same as GPT script, organized by short model name in `models` array
 
 ---
 
-## Key Workflow Parameters
+## Summary of Key Workflow Parameters
 
-- **nx** (correction attempts): Number of syntax correction attempts per shot (0-3+)
-- **ny** (semantic checks): Number of semantic feedback iterations (0-3+)
-- **nz** (shots): Number of few-shot examples to include (1-5+)
+- **nx** (syntactic correction attempts): Number of syntax correction attempts per shot (0-3+)
+- **ny** (semantic correction attempts): Number of semantic feedback iterations (0-3+)
+- **nz** (shots): Number of shots per input sentence to run (1-5+)
 - **consolidation_type**: 
-  - `"general"`: Removes formulas that are semantically equivalent using Z3 SMT solver
-  - `"specific"`: Alternative consolidation strategy
+  - `"general"`: Keep STL formulas that are superset of other STL formulas, i.e., the most general ones
+  - `"specific"`: Keep STL formulas that are a subset of other STL formulas, i.e., the most specific ones
 - **filter_first**: 
-  - `true`: Filter by similarity first, then consolidate
+  - `true`: Filter first, then consolidate
   - `false`: Consolidate first, then filter
 
 ---
@@ -153,14 +154,3 @@ Same as GPT script, organized by short model name in `models` array
 Both scripts include **interactive annotation** steps where you manually label results:
 - **1** = correct STL translation
 - **0** or ENTER = incorrect STL translation
-
-You can skip these steps by commenting out the `annotate_*.py` lines in the bash scripts if you want to only run generation or post-processing.
-
----
-
-## Troubleshooting
-
-**GPT script fails**: Check that `OPENAI_API_KEY` is set and you have API credits
-**Non-GPT script fails**: Ensure the model name exists on HuggingFace and you have disk space for model download
-**"models" and "official_model_names" arrays must have the same length**: Make sure both arrays in `run_all_non_gpt.sh` have matching lengths
-
