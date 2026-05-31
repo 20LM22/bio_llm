@@ -29,6 +29,7 @@ To create a configuration for a new experiment, copy an existing config (e.g., `
 Input CSV files containing biomedical sentences to translate:
 - `final_test_set_sentences.csv`: Full test dataset
 - `sample_test_set_sentences.csv`: Small, selected sentences from full test dataset
+- `validation_set_sentences.csv`: Dataset used for tuning 
 
 ### 3. `stl_generators/`
 Main code for NL->STL translation:
@@ -53,6 +54,8 @@ Evaluation and annotation tools:
 Intermediate pickle files organized by model. Key outputs:
 - `{model_name}/{set_name}_translations_{model_name}_{experiment}_{timestamp}.pkl`: Raw STL-NL translation pairs from the models
 - `{model_name}/{set_name}_filtered_output_{model_name}_{experiment}_{timestamp}.pkl`: Filtered results
+
+Note that if you do not want/cannot run an LLM, we have provided the pkl file for the raw GPT-4o responses discussed in the paper. Evaluation and post-processing can be run directly on this file.
 
 ### 7. `stats/`
 Statistics and analysis files organized by model:
@@ -128,6 +131,8 @@ set_name="sample_test_set"                                                      
 consolidation_type="general"                                                          # "general" or "specific"
 filter_first=true                                                                     # Filter before consolidate (true) or after (false)
 ```
+
+We used 'DeepSeek-R1-Distill-Qwen-1.5B' and 'Qwen3-1.7B', which can be found [here](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B) and [here](https://huggingface.co/Qwen/Qwen3-1.7B) on HuggingFace, respectively. You may also use any other LLM of your choice, so long as it is supported by vLLM.
 
 #### Running:
 ```bash
