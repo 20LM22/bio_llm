@@ -166,3 +166,34 @@ Same as GPT script, organized by short model name in `models` array
 Both scripts include **interactive annotation** steps where you manually label results:
 - **1** = correct STL translation
 - **0** or ENTER = incorrect STL translation
+
+---
+
+## Updating STL Grammar
+
+To change the set of valid STL which is considered syntactically correct, the following files should be updated as follows:
+
+### 1. `config/`
+The following parameters within each configuration file need to be updated:
+- ids
+- signal_names
+- grammar
+- thinking prompt prompt 2
+- stl prompt prompt 2
+- feedback prompt hole_prompt_3
+- feedback prompt default_prompt_4
+- semantic prompt prompt_6
+
+### 2. `stl_generators/`
+Need to update:
+- stl_example_generator.py sample_terminal()
+- generate_datasets.py
+- stl_generator_v7.py and stl_generator_gpt.py
+
+### 3. `stl2literal.py`
+Need to update:
+- Test class
+- DerivativeChecker, SpeciesSearch, SMTSolver classes
+- check_derivative_STL2literal()
+
+
