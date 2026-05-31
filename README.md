@@ -2,7 +2,13 @@
 
 Using LLMs, this project translates biomedical natural language statements to signal temporal logic (STL). The pipeline generates, filters, and consolidates the STL statements, and between steps a manual evaluation of the semantic correctness of remaining statements can be performed.
 
-## Projct Structure
+Please cite this project as:
+```
+Hanna Krasowski, Lauren E. Malek, Sanjit A. Seshia, Murat Arcak; "Feedback and Filtering for Automated Translation of Biomedical Observations into Signal Temporal Logic using LLMs". Proceedings of the International Conference on Neuro-symbolic Systems, PMLR X:X-X
+```
+Additionally, further details on the structure and purpose of the tool may be found within the paper.
+
+## Project Structure
 
 ### 1. `config/`
 Configuration files specify model and experiment parameters. Each config file includes:
@@ -23,6 +29,7 @@ To create a configuration for a new experiment, copy an existing config (e.g., `
 Input CSV files containing biomedical sentences to translate:
 - `final_test_set_sentences.csv`: Full test dataset
 - `sample_test_set_sentences.csv`: Small, selected sentences from full test dataset
+- `validation_set_sentences.csv`: Dataset used for tuning 
 
 ### 3. `stl_generators/`
 Main code for NL->STL translation:
@@ -47,6 +54,8 @@ Evaluation and annotation tools:
 Intermediate pickle files organized by model. Key outputs:
 - `{model_name}/{set_name}_translations_{model_name}_{experiment}_{timestamp}.pkl`: Raw STL-NL translation pairs from the models
 - `{model_name}/{set_name}_filtered_output_{model_name}_{experiment}_{timestamp}.pkl`: Filtered results
+
+Note that if you do not want/cannot run an LLM, we have provided the pkl file for the raw GPT-4o responses discussed in the paper. Evaluation and post-processing can be run directly on this file.
 
 ### 7. `stats/`
 Statistics and analysis files organized by model:
@@ -115,13 +124,15 @@ bash run_all_gpt.sh
 
 ```bash
 # Make sure these two arrays have the same length!
-models=('DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen3-1.7B')                    # Short names (for directories/filenames)
+models=('DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen3-1.7B')                                 # Short names (for directories/filenames)
 official_model_names=('deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B' 'Qwen/Qwen3-1.7B')  # Full HuggingFace names
-experiments=("nx_1_ny_0_nz_1")                  # Must match config filename
-set_name="sample_test_set"                      # Must match config filename
-consolidation_type="general"                    # "general" or "specific"
-filter_first=true                               # Filter before consolidate (true) or after (false)
+experiments=("nx_1_ny_0_nz_1")                                                        # Must match config filename
+set_name="sample_test_set"                                                            # Must match config filename
+consolidation_type="general"                                                          # "general" or "specific"
+filter_first=true                                                                     # Filter before consolidate (true) or after (false)
 ```
+
+We used 'DeepSeek-R1-Distill-Qwen-1.5B' and 'Qwen3-1.7B', which can be found [here](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B) and [here](https://huggingface.co/Qwen/Qwen3-1.7B) on HuggingFace, respectively. You may also use any other LLM of your choice, so long as it is supported by vLLM.
 
 #### Running:
 ```bash
