@@ -175,25 +175,24 @@ To change the set of valid STL which is considered syntactically correct, the fo
 
 ### 1. `config/`
 The following parameters within each configuration file need to be updated:
-- ids
-- signal_names
-- grammar
-- thinking prompt prompt 2
-- stl prompt prompt 2
-- feedback prompt hole_prompt_3
-- feedback prompt default_prompt_4
-- semantic prompt prompt_6
+- `ids`: a list of biological terms to be allowed
+- `signal_names`: like `ids` but also including a derivative term for each signal name, i.e., `d_albumin`
+- `grammar`: a string representing the allowed STL grammar parsable by [Lark](https://lark-parser.readthedocs.io/en/stable/json_tutorial.html) 
+- `thinking_prompt prompt_2`: update the grammar is listed in the prompt
+- `stl_prompt prompt_2`: update the grammar is listed in the prompt
+- `feedback_prompt hole_prompt_3`: update the grammar is listed in the prompt
+- `feedback_prompt default_prompt_4`: update the grammar is listed in the prompt
+- `semantic_prompt prompt_6`: update the grammar is listed in the prompt
 
 ### 2. `stl_generators/`
-Need to update:
-- stl_example_generator.py sample_terminal()
-- generate_datasets.py
-- stl_generator_v7.py and stl_generator_gpt.py
+Each file in the directory should be updated as follows:
+- `stl_example_generator.py`
+    `sample_terminal()`: the terminals should be updated to match those in the grammar
+- `generate_datasets.py`: This file is used to generate `curated_dataset.pkl` which contains STL examples to be included in the prompts. To update, would need to change the specified configuration file to the one using the updated grammar, and checks for certain grammar terms being included among the examples would need to be updated as well.
+- `stl_generator_v7.py` and `stl_generator_gpt.py`
+    `check_signal_names()`: parses responses to find signal names; thus depends on the specific grammar
 
 ### 3. `stl2literal.py`
-Need to update:
-- Test class
-- DerivativeChecker, SpeciesSearch, SMTSolver classes
-- check_derivative_STL2literal()
-
-
+- `nl_to_literal_dict` and `signal_names_dict`: update with correct grammar terminals and signals
+- class `Test()`: this class constructs a literal translation of an STL statement to an English sentence recursively; update to add the right words to the sentence at each level of recursion
+- class `DerivativeChecker()`, `SpeciesSearch()`, `SMTSolver()`: update each class to use the correct rule and terminal names
