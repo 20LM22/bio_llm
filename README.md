@@ -187,10 +187,10 @@ The following parameters within each configuration file need to be updated:
 ### 2. `stl_generators/`
 Each file in the directory should be updated as follows:
 - `stl_example_generator.py`
-    `sample_terminal()`: the terminals should be updated to match those in the grammar
+  - `sample_terminal()`: the terminals should be updated to match those in the grammar
 - `generate_datasets.py`: This file is used to generate `curated_dataset.pkl` which contains STL examples to be included in the prompts. To update, would need to change the specified configuration file to the one using the updated grammar, and checks for certain grammar terms being included among the examples would need to be updated as well.
 - `stl_generator_v7.py` and `stl_generator_gpt.py`
-    `check_signal_names()`: parses responses to find signal names; thus depends on the specific grammar
+  - `check_signal_names()`: parses responses to find signal names; thus depends on the specific grammar
 
 ### 3. `stl2literal.py`
 - `nl_to_literal_dict` and `signal_names_dict`: update with correct grammar terminals and signals
